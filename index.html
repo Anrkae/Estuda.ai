@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estuda.ai</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
     <header>
-        <div class="header-container">
-            <h1>Estuda.ai</h1>
-        </div>
+        <div class="logo">Estuda.ai</div>
+        <button class="theme-toggle-btn" id="theme-toggle">🌙</button>
     </header>
 
-    <main>
-        <div class="carousel">
+    <div class="sidebar">
+        <a href="#">Home</a>
+        <a href="#">Questões</a>
+        <a href="#">Estudos</a>
+        <a href="#">Configurações</a>
+    </div>
+
+    <div class="content">
+        <div class="carousel" id="carousel">
             <div class="card">
-                <h2>Card 1</h2>
-                <p>Conteúdo do card 1</p>
+                <h3>Card 1</h3>
+                <p>Descrição do card 1</p>
             </div>
             <div class="card">
-                <h2>Card 2</h2>
-                <p>Conteúdo do card 2</p>
+                <h3>Card 2</h3>
+                <p>Descrição do card 2</p>
             </div>
             <div class="card">
-                <h2>Card 3</h2>
-                <p>Conteúdo do card 3</p>
+                <h3>Card 3</h3>
+                <p>Descrição do card 3</p>
+            </div>
+            <div class="card">
+                <h3>Card 4</h3>
+                <p>Descrição do card 4</p>
             </div>
         </div>
-    </main>
+    </div>
 
     <script src="assets/js/script.js"></script>
 </body>
