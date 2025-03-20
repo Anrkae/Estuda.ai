@@ -1,185 +1,139 @@
-/* Definindo o corpo e a fonte */
-body {
+/* Tema Light */
+body.light {
+  background-color: #f7f7f7;
+  color: #333;
+}
+
+header.light {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.card.light {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+button.light {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.menu-lateral.light {
+  background-color: #ffffff;
+}
+
+.menu-lateral .theme-toggle.light {
+  color: #333;
+}
+
+/* Tema Dark */
+body.dark {
+  background-color: #1e1e2f;
+  color: #f5f5f5;
+}
+
+header.dark {
+  background-color: #282a36;
+  color: #f5f5f5;
+}
+
+.card.dark {
+  background-color: #383c56;
+  color: #f5f5f5;
+  border: 1px solid #555;
+}
+
+button.dark {
+  background-color: #555;
+  color: #f5f5f5;
+}
+
+.menu-lateral.dark {
+  background-color: #282a36;
+}
+
+.menu-lateral .theme-toggle.dark {
+  color: #f5f5f5;
+}
+
+/* Ícones de tema */
+.theme-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 24px;
+}
+
+.theme-toggle i {
+  margin-left: 5px;
+}
+
+/* Layout */
+body, html {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background-color: #f4f7fa; /* Cor de fundo */
-  color: #333;
-  overflow-x: hidden; /* Remove a rolagem horizontal */
 }
 
-/* Ajustes de layout para o cabeçalho */
-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #2e3b4e; /* Cor escura */
-  color: white;
-  padding: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  position: relative;
-}
-
-.menu-icon {
-  font-size: 26px;
-  cursor: pointer;
-  margin-right: 15px;
-}
-
-.titulo {
-  flex: 1;
-}
-
-/* Estilo da sidebar */
-.menu-lateral {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 3;
-  top: 0;
-  left: 0;
-  background-color: #222;
-  overflow-x: hidden;
-  transition: 0.3s;
-  padding-top: 60px;
-  box-sizing: border-box;
-}
-
-.menu-lateral button {
-  display: block;
-  padding: 12px;
-  margin: 10px 20px;
-  width: 80%;
-  font-size: 16px;
-  background-color: #444;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  text-align: left;
-}
-
-.menu-lateral .fechar {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 36px;
-  color: white;
-  text-decoration: none;
-}
-
-/* Estilo para os cards (carrossel) */
 .carousel {
   display: flex;
-  overflow-x: auto; /* Permite rolagem horizontal */
-  gap: 20px;
-  justify-content: center;
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  padding: 30px 20px 20px 20px;
-  scroll-snap-type: x mandatory; /* Alinha o carrossel */
-  scroll-padding-left: 20px;
+  gap: 25px;
+  margin: 0 auto;
+  max-width: 900px;
+  overflow-x: auto;
 }
 
 .card {
   background: white;
-  padding: 20px;
-  padding-top: 0;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  min-height: 120px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding: 20px;
+  min-width: 250px;
   text-align: center;
-  width: 100%;
-  max-width: 300px; /* Ajusta para caber bem na tela */
-  scroll-snap-align: start; /* Faz o carrossel alinhar corretamente */
+  flex: 0 0 30%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.card h2 {
-  font-size: 18px;
-  color: #161616;
-}
-
-/* Estilo do relógio e indicadores */
-.time-display {
-  font-size: 26px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.stats {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-/* Estilo do seletor de tema */
-.theme-toggle {
+header {
+  padding: 20px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #2e3b4e;
-  color: white;
+  align-items: center;
+  font-size: 24px;
   font-weight: bold;
 }
 
-.theme-toggle select {
-  background-color: #3d4951;
+/* Sidebar */
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: #282a36;
+  overflow-x: hidden;
+  transition: 0.3s;
+  z-index: 1000;
+  padding-top: 60px;
+}
+
+.menu-lateral a {
+  text-decoration: none;
   color: white;
-  border: none;
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 5px;
+  display: block;
+  padding: 15px;
+  font-size: 22px;
 }
 
-/* Adicionando transições suaves */
-* {
-  transition: all 0.3s ease;
-}
-
-/* Temas claro e escuro */
-body.light-theme {
-  background-color: #f4f7fa;
-  color: #333;
-}
-
-body.light-theme header {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-body.light-theme .card {
-  background-color: #ffffff;
-}
-
-body.dark-theme {
-  background-color: #2e3b4e;
+.menu-lateral .close-btn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
   color: white;
-}
-
-body.dark-theme header {
-  background-color: #1e2a35;
-}
-
-body.dark-theme .card {
-  background-color: #3e4a5c;
-  color: white;
-}
-
-/* Ajustes para os cards em telas maiores (desktop) */
-@media (min-width: 700px) {
-  .carousel {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 30px 0;
-  }
-
-  .card {
-    flex: 0 0 45%;
-  }
+  text-decoration: none;
 }
