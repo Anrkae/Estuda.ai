@@ -1,18 +1,18 @@
 /* Tema Light */
 body.light {
-  background-color: #f7f7f7;
-  color: #333;
+  background-color: #f5f5f5; /* Fundo claro */
+  color: #333; /* Texto escuro */
 }
 
 header.light {
-  background-color: #ffffff;
+  background-color: #ffffff; /* Cabeçalho branco */
   color: #333;
 }
 
 .card.light {
-  background-color: #fff;
+  background-color: #ffffff; /* Cards brancos */
   color: #333;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Borda leve */
 }
 
 button.light {
@@ -21,7 +21,11 @@ button.light {
 }
 
 .menu-lateral.light {
-  background-color: #ffffff;
+  background-color: #ffffff; /* Sidebar clara */
+}
+
+.menu-lateral a {
+  color: #333;
 }
 
 .menu-lateral .theme-toggle.light {
@@ -30,32 +34,36 @@ button.light {
 
 /* Tema Dark */
 body.dark {
-  background-color: #1e1e2f;
-  color: #f5f5f5;
+  background-color: #2e2e3a; /* Fundo escuro */
+  color: #f0f0f0; /* Texto claro */
 }
 
 header.dark {
-  background-color: #282a36;
-  color: #f5f5f5;
+  background-color: #1e1e2f; /* Cabeçalho escuro */
+  color: #f0f0f0;
 }
 
 .card.dark {
-  background-color: #383c56;
-  color: #f5f5f5;
+  background-color: #383c56; /* Cards escuros */
+  color: #f0f0f0;
   border: 1px solid #555;
 }
 
 button.dark {
   background-color: #555;
-  color: #f5f5f5;
+  color: #f0f0f0;
 }
 
 .menu-lateral.dark {
-  background-color: #282a36;
+  background-color: #282a36; /* Sidebar escura */
+}
+
+.menu-lateral a {
+  color: #f0f0f0;
 }
 
 .menu-lateral .theme-toggle.dark {
-  color: #f5f5f5;
+  color: #f0f0f0;
 }
 
 /* Ícones de tema */
