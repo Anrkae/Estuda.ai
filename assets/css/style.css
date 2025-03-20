@@ -110,17 +110,15 @@ header {
   padding-bottom: 10px;
 }
 
-.card h2 i {
-  margin-right: 10px;
-}
-
 .card .time-display {
   font-size: 26px;
-  margin-top: 10px;
+  margin-top: 15px;
+  align-items: center;
   font-weight: bold;
 }
 
 .card .stats {
   font-size: 18px;
-  margin-top: 10px;
+  margin-top: 15px;
+  align-items: center;
 }
