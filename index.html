@@ -1,39 +1,48 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estuda.ai</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estuda.ai</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
-    <!-- Cabeçalho -->
-    <header>
-        <div class="logo">Estuda.ai</div>
-        <!-- Botão de alternância da sidebar -->
-        <div class="sidebar-toggle" onclick="toggleSidebar()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </header>
+  <!-- Cabeçalho com o ícone do menu -->
+  <header>
+    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+    <div class="titulo">Estuda.ai</div>
+  </header>
 
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <a href="#">Início</a>
-        <a href="#">Perfil</a>
-        <a href="#">Configurações</a>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleSidebar()">×</a>
+    <div class="sidebar-content">
+      <!-- Aqui, você pode adicionar as opções da sidebar -->
+      <p>Configurações</p>
     </div>
+  </div>
 
-    <!-- Conteúdo principal -->
-    <main>
-        <div class="carousel">
-            <div class="card">Card 1</div>
-            <div class="card">Card 2</div>
-            <div class="card">Card 3</div>
-        </div>
-    </main>
+  <!-- Carrossel de Cards -->
+  <div class="carousel">
+    <div class="card">
+      <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
+      <div class="time-display" id="timer">00:00</div>
+    </div>
+    <div class="card">
+      <h2><i class="fa-solid fa-chart-line"></i> Desempenho</h2>
+      <div class="stats">
+        Resolvidas: <span id="questoes">0</span><br>
+        Acertos: <span id="acertos">0</span>
+      </div>
+    </div>
+    <div class="card">
+      <h2><i class="fa-solid fa-clipboard-list"></i> Questões Resolvidas</h2>
+      <div class="stats">
+        Total: <span id="questoes-total">0</span>
+      </div>
+    </div>
+  </div>
 
-    <script src="assets/js/script.js"></script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
