@@ -1,37 +1,26 @@
-// Função para alternar o tema
-function toggleTheme() {
-  const themeSelector = document.getElementById("theme-selector");
-  const theme = themeSelector.value;
-  if (theme === "light") {
-    document.body.classList.add("light-theme");
-    document.body.classList.remove("dark-theme");
-  } else {
-    document.body.classList.add("dark-theme");
-    document.body.classList.remove("light-theme");
-  }
-}
+// Verifica o tema preferido do usuário e aplica
+const body = document.body;
+const themeToggle = document.querySelector('.theme-toggle');
+const savedTheme = localStorage.getItem('theme');
 
-// Função para abrir a sidebar
-function toggleSidebar() {
-  const sidebar = document.getElementById("menuLateral");
-  sidebar.style.width = "250px";
-}
-
-// Função para fechar a sidebar
-function closeSidebar() {
-  const sidebar = document.getElementById("menuLateral");
-  sidebar.style.width = "0";
-}
-
-// Definindo o tema inicial conforme preferências do dispositivo
-window.onload = function() {
+// Aplica o tema salvo ou usa o preferido pelo sistema
+if (savedTheme) {
+  body.classList.add(savedTheme);
+} else {
   if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.body.classList.add("dark-theme");
-    document.body.classList.remove("light-theme");
-    document.getElementById("theme-selector").value = "dark";
+    body.classList.add('dark');
   } else {
-    document.body.classList.add("light-theme");
-    document.body.classList.remove("dark-theme");
-    document.getElementById("theme-selector").value = "light";
+    body.classList.add('light');
   }
-};
+}
+
+// Alterna entre tema claro e escuro
+themeToggle.addEventListener('click', () => {
+  if (body.classList.contains('dark')) {
+    body.classList.replace('dark', 'light');
+    localStorage.setItem('theme', 'light');
+  } else {
+    body.classList.replace('light', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+});
