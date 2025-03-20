@@ -64,6 +64,16 @@ header .theme-toggle {
   gap: 20px;
   padding: 20px;
   box-sizing: border-box;
+  scrollbar-width: none; /* Esconde a barra de rolagem em Firefox */
+  -ms-overflow-style: none; /* Esconde a barra de rolagem em IE 10+ */
+}
+
+.carousel::-webkit-scrollbar {
+  display: none; /* Esconde a barra de rolagem em Chrome/Safari */
+}
+
+.carousel .space {
+  flex: 0 0 10px; /* Espaço invisível para o primeiro card */
 }
 
 .card {
