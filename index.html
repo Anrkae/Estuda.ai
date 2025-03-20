@@ -4,21 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Estuda.ai</title>
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
 </head>
-<body>
+<body class="light-theme">
 
+  <!-- Cabeçalho -->
   <header>
     <div class="menu-icon" onclick="abrirMenu()">☰</div>
     <div class="titulo">Estuda.ai</div>
   </header>
 
+  <!-- Menu lateral -->
   <div id="menu-lateral" class="menu-lateral">
     <a href="javascript:void(0)" class="fechar" onclick="fecharMenu()">×</a>
+    <button class="tema-toggle" onclick="toggleTema()">
+      <i class="fa-solid fa-moon"></i> Alternar Tema
+    </button>
   </div>
 
+  <!-- Carrossel -->
   <div class="carousel">
     <div class="card">
       <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
@@ -32,13 +37,13 @@
       </div>
     </div>
     <div class="card">
-      <h2><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h2>
+      <h2><i class="fa-solid fa-layer-group"></i> Questões Resolvidas</h2>
       <div class="stats">
         Total: <span id="total-questoes">0</span>
       </div>
     </div>
   </div>
 
-  <script src="assets/js/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
