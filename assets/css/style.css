@@ -87,6 +87,6 @@ header {
 
 @media (max-width: 700px) {
   .card {
-    flex: 0 0 80%;
+    flex: 0 0 70%;
   }
 }
