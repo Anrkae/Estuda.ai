@@ -28,7 +28,7 @@ header {
 }
 
 .carousel {
-  margin-left: 260px; /* Deixa espaço para a sidebar */
+  margin-left: 20px; /* Deixa espaço para a sidebar */
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -44,7 +44,7 @@ header {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 250px;
   text-align: center;
-  min-height: 150px;
+  min-height: 120px;
   box-sizing: border-box;
 }
 
@@ -74,6 +74,6 @@ header {
   }
 
   .card {
-    width: 90%;
+    width: 70%;
   }
 }
