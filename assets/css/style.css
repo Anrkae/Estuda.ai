@@ -44,7 +44,7 @@ header.dark {
 }
 
 .card.dark {
-  background-color: #383c56; /* Cards escuros */
+  background-color: #121212; /* Cards escuros */
   color: #f0f0f0;
   border: 1px solid #555;
 }
@@ -121,7 +121,6 @@ header {
   left: 0;
   height: 100%;
   width: 0;
-  background-color: #282a36;
   overflow-x: hidden;
   transition: 0.3s;
   z-index: 1000;
