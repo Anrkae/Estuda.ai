@@ -1,39 +1,36 @@
-/* Temas */
-body.light-theme {
-  background: #f4f4f5;
-  color: #2d2d2f;
-}
-body.dark-theme {
-  background: #202123;
-  color: #ffffff;
-}
-
+/* Definindo o corpo e a fonte */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
-  transition: background 0.3s, color 0.3s;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f4f7fa; /* Cor de fundo */
+  color: #333;
+  overflow-x: hidden; /* Remove a rolagem horizontal */
 }
 
-/* Cabeçalho */
+/* Ajustes de layout para o cabeçalho */
 header {
   display: flex;
   align-items: center;
-  background-color: #10a37f;
+  justify-content: flex-start;
+  background-color: #2e3b4e; /* Cor escura */
   color: white;
   padding: 15px;
   font-size: 24px;
   font-weight: bold;
+  position: relative;
 }
+
 .menu-icon {
   font-size: 26px;
   cursor: pointer;
   margin-right: 15px;
 }
+
 .titulo {
   flex: 1;
 }
 
-/* Sidebar */
+/* Estilo da sidebar */
 .menu-lateral {
   height: 100%;
   width: 0;
@@ -41,71 +38,145 @@ header {
   z-index: 3;
   top: 0;
   left: 0;
-  background-color: #2d2d2f;
+  background-color: #222;
   overflow-x: hidden;
   transition: 0.3s;
   padding-top: 60px;
   box-sizing: border-box;
-  color: white;
 }
+
+.menu-lateral button {
+  display: block;
+  padding: 12px;
+  margin: 10px 20px;
+  width: 80%;
+  font-size: 16px;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+}
+
 .menu-lateral .fechar {
   position: absolute;
   top: 10px;
   right: 15px;
   font-size: 36px;
+  color: white;
   text-decoration: none;
-  color: white;
-}
-.menu-lateral button {
-  display: block;
-  background: none;
-  border: none;
-  color: white;
-  padding: 12px 20px;
-  font-size: 16px;
-  text-align: left;
-  cursor: pointer;
-}
-.menu-lateral button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Carrossel */
+/* Estilo para os cards (carrossel) */
 .carousel {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 30px 20px;
-  box-sizing: border-box;
+  overflow-x: hidden; /* Remove rolagem horizontal */
   gap: 20px;
-  -webkit-overflow-scrolling: touch;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 30px 20px 20px 20px;
 }
+
 .card {
-  scroll-snap-align: start;
-  flex: 0 0 75%;
   background: white;
-  color: #2d2d2f;
   padding: 20px;
+  padding-top: 0;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   min-height: 120px;
-  transition: background 0.3s, color 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 300px; /* Ajusta para caber bem na tela */
 }
-.dark-theme .card {
-  background: #2d2d2f;
-  color: white;
-}
+
 .card h2 {
-  font-size: 18px;
-  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #161616;
 }
+
+/* Estilo do relógio e indicadores */
 .time-display {
   font-size: 26px;
+  margin-top: 10px;
   font-weight: bold;
 }
+
 .stats {
   font-size: 18px;
   margin-top: 10px;
+}
+
+/* Estilo do seletor de tema */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #2e3b4e;
+  color: white;
+  font-weight: bold;
+}
+
+.theme-toggle select {
+  background-color: #3d4951;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+/* Adicionando transições suaves */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Temas claro e escuro */
+body.light-theme {
+  background-color: #f4f7fa;
+  color: #333;
+}
+
+body.light-theme header {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+body.light-theme .card {
+  background-color: #ffffff;
+}
+
+body.dark-theme {
+  background-color: #2e3b4e;
+  color: white;
+}
+
+body.dark-theme header {
+  background-color: #1e2a35;
+}
+
+body.dark-theme .card {
+  background-color: #3e4a5c;
+  color: white;
+}
+
+/* Ajustes para os cards em telas maiores (desktop) */
+@media (min-width: 700px) {
+  .carousel {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 0;
+  }
+
+  .card {
+    flex: 0 0 45%;
+  }
 }
