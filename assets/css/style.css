@@ -1,6 +1,6 @@
 /* Definindo o tema escuro */
 body {
-  background-color: #101010;
+  background-color: #141414;
   color: #f0f0f0;
   font-family: 'Montserrat', sans-serif;
   margin: 0;
@@ -30,7 +30,7 @@ header {
 .carousel {
   margin-left: 260px; /* Deixa espaço para a sidebar */
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 30px;
   padding: 20px;
