@@ -1,4 +1,3 @@
-// script.js - Seu JavaScript
 let minutos = 0;
 let horas = 0;
 let cronometro;
@@ -55,7 +54,12 @@ function registrarQuestoes() {
 function abrirMenu() {
   document.getElementById("menu-lateral").style.width = "250px";
 }
-
 function fecharMenu() {
   document.getElementById("menu-lateral").style.width = "0";
+}
+
+function toggleTema() {
+  const body = document.body;
+  body.classList.toggle("dark-theme");
+  body.classList.toggle("light-theme");
 }
