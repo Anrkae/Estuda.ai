@@ -137,3 +137,10 @@ header {
   color: white;
   text-decoration: none;
 }
+
+/* Ajuste do cabeçalho */
+header .titulo {
+  text-align: left;
+  flex-grow: 1;
+  padding-left: 20px;
+}
