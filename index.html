@@ -1,26 +1,56 @@
-<div class="carousel">
-  <!-- Espaço invisível para afastar o primeiro card -->
-  <div class="space"></div>
-  
-  <div class="card">
-    <h2>Card 1</h2>
-    <p class="time-display">24h</p>
-    <div class="stats">
-      <p>Estudo: 30h</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estuda.ai</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="titulo">Estuda.ai</div>
+        <div class="theme-toggle">
+            <i class="fas fa-sun"></i> <!-- Ícone do sol para alternar temas -->
+        </div>
+    </header>
+
+    <!-- Carrossel de Cards -->
+    <div class="carousel">
+        <!-- Espaço invisível à esquerda do primeiro card -->
+        <div class="space"></div>
+        
+        <div class="card">
+            <h2>Questões Resolvidas</h2>
+            <p class="time-display">24h</p>
+            <div class="stats">
+                <p>Estudo: 30h</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Últimos 7 dias</h2>
+            <p class="time-display">7 dias</p>
+            <div class="stats">
+                <p>Estudo: 45h</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Últimos 30 dias</h2>
+            <p class="time-display">30 dias</p>
+            <div class="stats">
+                <p>Estudo: 100h</p>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="card">
-    <h2>Card 2</h2>
-    <p class="time-display">7 dias</p>
-    <div class="stats">
-      <p>Estudo: 45h</p>
+
+    <!-- Sidebar -->
+    <div class="menu-lateral">
+        <a href="javascript:void(0)" class="fechar">&times;</a>
+        <!-- Adicione seus links de navegação aqui -->
     </div>
-  </div>
-  <div class="card">
-    <h2>Card 3</h2>
-    <p class="time-display">30 dias</p>
-    <div class="stats">
-      <p>Estudo: 100h</p>
-    </div>
-  </div>
-</div>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
