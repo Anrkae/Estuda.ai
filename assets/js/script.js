@@ -24,3 +24,12 @@ themeToggle.addEventListener('click', () => {
     localStorage.setItem('theme', 'dark');
   }
 });
+
+// Funções para abrir e fechar o menu lateral
+function abrirMenu() {
+  document.getElementById("menu-lateral").style.width = "250px";
+}
+
+function fecharMenu() {
+  document.getElementById("menu-lateral").style.width = "0";
+}
