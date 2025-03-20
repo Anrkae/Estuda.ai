@@ -1,50 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estudos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estuda.ai</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
+<body class="light">
+
   <header>
-    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
-    <div class="titulo">Estudos</div>
-    <div class="theme-toggle">
-      <label for="theme-selector">Tema:</label>
-      <select id="theme-selector" onchange="toggleTheme()">
-        <option value="light">Claro</option>
-        <option value="dark">Escuro</option>
-      </select>
-    </div>
+    <div class="menu-icon" onclick="abrirMenu()">☰</div>
+    <div class="titulo">Estuda.ai</div>
   </header>
 
-  <!-- Sidebar -->
-  <div id="menuLateral" class="menu-lateral">
-    <a href="javascript:void(0)" class="fechar" onclick="closeSidebar()">×</a>
-    <button onclick="alert('Opção 1')">Opção 1</button>
-    <button onclick="alert('Opção 2')">Opção 2</button>
-    <button onclick="alert('Opção 3')">Opção 3</button>
+  <!-- Menu lateral -->
+  <div id="menu-lateral" class="menu-lateral">
+    <a href="javascript:void(0)" class="close-btn" onclick="fecharMenu()">×</a>
+    <div class="theme-toggle">
+      <i class="fa-solid fa-sun"></i>
+      <i class="fa-solid fa-moon"></i>
+    </div>
   </div>
 
+  <!-- Carrossel informativo -->
   <div class="carousel">
     <div class="card">
-      <h2>Questões resolvidas</h2>
+      <h2>Tempo de Estudo</h2>
+      <div class="time-display" id="timer">00:00</div>
+    </div>
+    <div class="card">
+      <h2>Desempenho</h2>
       <div class="stats">
-        <span>150 questões</span>
+        Resolvidas: <span id="questoes">0</span><br>
+        Acertos: <span id="acertos">0</span>
       </div>
     </div>
     <div class="card">
-      <h2>Tempo total de estudo</h2>
-      <div class="time-display">
-        10h 45m
-      </div>
-    </div>
-    <div class="card">
-      <h2>Última revisão</h2>
+      <h2>Questões Resolvidas</h2>
       <div class="stats">
-        <span>Ontem</span>
+        Total: <span id="questoes-resolvidas">0</span>
       </div>
     </div>
   </div>
