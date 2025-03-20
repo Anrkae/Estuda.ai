@@ -5,11 +5,12 @@ let cronometro;
 const timerEl = document.getElementById("timer");
 const questoesEl = document.getElementById("questoes");
 const acertosEl = document.getElementById("acertos");
-const totalQuestoesEl = document.getElementById("total-questoes");
+const totalQuestoesEl = document.getElementById("totalQuestoes");
 
 let questoes = 0;
 let acertos = 0;
 
+// Cronômetro
 function startTimer() {
   if (!cronometro) {
     cronometro = setInterval(() => {
@@ -33,33 +34,29 @@ function atualizarTimer() {
   timerEl.textContent = `${formatar(horas)}:${formatar(minutos)}`;
 }
 
-function registrarQuestoes() {
-  let q = prompt("Quantas questões resolveu?");
-  let a = prompt("Quantas acertou?");
-  q = parseInt(q);
-  a = parseInt(a);
-
-  if (!isNaN(q) && q >= 0) {
-    questoes += q;
-  }
-  if (!isNaN(a) && a >= 0) {
-    acertos += a;
-  }
-
-  questoesEl.textContent = questoes;
-  acertosEl.textContent = acertos;
-  totalQuestoesEl.textContent = questoes;
-}
-
+// Menu lateral
 function abrirMenu() {
   document.getElementById("menu-lateral").style.width = "250px";
 }
+
 function fecharMenu() {
   document.getElementById("menu-lateral").style.width = "0";
 }
 
+// Tema: Detectar tema do sistema
+window.onload = () => {
+  const temaSalvo = localStorage.getItem('tema');
+  if (temaSalvo) {
+    document.body.classList.toggle('dark', temaSalvo === 'dark');
+  } else {
+    const prefereEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.body.classList.toggle('dark', prefereEscuro);
+  }
+};
+
+// Alternar tema manual
 function toggleTema() {
-  const body = document.body;
-  body.classList.toggle("dark-theme");
-  body.classList.toggle("light-theme");
+  document.body.classList.toggle('dark');
+  const temaAtual = document.body.classList.contains('dark') ? 'dark' : 'light';
+  localStorage.setItem('tema', temaAtual);
 }
