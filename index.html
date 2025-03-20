@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Estuda.ai</title>
-  <!-- CSS -->
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -17,14 +16,13 @@
     <div class="titulo">Estuda.ai</div>
   </header>
 
-  <!-- Sidebar -->
+  <!-- Menu lateral -->
   <div id="menu-lateral" class="menu-lateral">
     <a href="javascript:void(0)" class="fechar" onclick="fecharMenu()">×</a>
-    <!-- Botão para mudar o tema -->
-    <button onclick="toggleTema()" class="tema-btn"><i class="fa-solid fa-circle-half-stroke"></i> Alternar Tema</button>
+    <button onclick="toggleTema()"><i class="fa-solid fa-circle-half-stroke"></i> Alternar Tema</button>
   </div>
 
-  <!-- Carrossel -->
+  <!-- Carrossel de cards -->
   <div class="carousel">
     <div class="card">
       <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
@@ -39,13 +37,12 @@
     </div>
     <div class="card">
       <h2><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h2>
-      <div class="total-questoes">
-        Total: <span id="total-questoes">0</span>
+      <div class="stats">
+        Total: <span id="totalQuestoes">0</span>
       </div>
     </div>
   </div>
 
-  <!-- JS -->
-  <script src="assets/js/script.js"></script>
+  <script src="/assets/js/script.js"></script>
 </body>
 </html>
