@@ -1,100 +1,92 @@
-/* Reset de margens e padding para todos os elementos */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Corpo do site */
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #141414;
-    color: #fff;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background: #141414;
+  color: #fff;
 }
 
-/* Layout do cabeçalho */
 header {
-    padding: 20px;
-    background-color: #181818;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1c1c1c;
+  color: white;
+  padding: 10px 20px;
 }
 
-header .logo {
-    font-size: 24px;
-    color: #fff;
+.menu-icon {
+  font-size: 26px;
+  cursor: pointer;
 }
 
-/* Estilo da sidebar */
+.titulo {
+  font-size: 24px;
+}
+
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 240px;
-    background-color: #181818;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
-    transform: translateX(-100%);  /* Sidebar oculta por padrão */
-    transition: transform 0.3s ease; /* Animação suave para abrir/fechar */
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #181818;
+  overflow-x: hidden;
+  transition: 0.3s;
+  padding-top: 60px;
 }
 
-.sidebar.open {
-    transform: translateX(0);  /* Exibe a sidebar quando a classe 'open' é adicionada */
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  color: white;
+  text-decoration: none;
 }
 
-.sidebar a {
-    color: #fff;
-    text-decoration: none;
-    margin-bottom: 20px;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: bold;
+.sidebar-content {
+  margin-top: 20px;
+  padding-left: 30px;
+  padding-top: 30px;
 }
 
-.sidebar a:hover {
-    color: #ffdd57;
-}
-
-/* Estilo para o botão de três barras */
-.sidebar-toggle {
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.sidebar-toggle span {
-    width: 25px;
-    height: 3px;
-    margin: 4px 0;
-    background-color: #fff;
-}
-
-/* Carrossel */
 .carousel {
-    display: flex;
-    overflow-x: auto;
-    gap: 20px;
-    padding: 20px 30px;
-    scroll-snap-type: x mandatory;
+  display: flex;
+  overflow-x: scroll;
+  padding: 20px;
+  gap: 20px;
+  justify-content: center;
 }
 
-.carousel .card {
-    min-width: 200px;
-    height: 300px;
-    background-color: #222;
-    border-radius: 10px;
-    padding: 20px;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    scroll-snap-align: start;
+.card {
+  flex: 0 0 30%;
+  background: #202020;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 20px;
+  color: #f4f4f4;
+}
+
+.time-display {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.stats {
+  font-size: 18px;
+}
+
+.card i {
+  margin-right: 10px;
+}
+
+@media (max-width: 700px) {
+  .card {
+    flex: 0 0 80%;
+  }
 }
