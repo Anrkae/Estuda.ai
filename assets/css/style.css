@@ -71,13 +71,15 @@ header {
 /* Estilo para os cards (carrossel) */
 .carousel {
   display: flex;
-  overflow-x: hidden; /* Remove rolagem horizontal */
+  overflow-x: auto; /* Permite rolagem horizontal */
   gap: 20px;
   justify-content: center;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
   padding: 30px 20px 20px 20px;
+  scroll-snap-type: x mandatory; /* Alinha o carrossel */
+  scroll-padding-left: 20px;
 }
 
 .card {
@@ -95,10 +97,11 @@ header {
   text-align: center;
   width: 100%;
   max-width: 300px; /* Ajusta para caber bem na tela */
+  scroll-snap-align: start; /* Faz o carrossel alinhar corretamente */
 }
 
 .card h2 {
-  font-size: 20px;
+  font-size: 18px;
   color: #161616;
 }
 
