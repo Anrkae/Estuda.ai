@@ -39,7 +39,12 @@ header .logo {
     flex-direction: column;
     align-items: center;
     padding-top: 30px;
-    transition: transform 0.3s ease;
+    transform: translateX(-100%);  /* Sidebar oculta por padrão */
+    transition: transform 0.3s ease; /* Animação suave para abrir/fechar */
+}
+
+.sidebar.open {
+    transform: translateX(0);  /* Exibe a sidebar quando a classe 'open' é adicionada */
 }
 
 .sidebar a {
@@ -53,6 +58,20 @@ header .logo {
 
 .sidebar a:hover {
     color: #ffdd57;
+}
+
+/* Estilo para o botão de três barras */
+.sidebar-toggle {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.sidebar-toggle span {
+    width: 25px;
+    height: 3px;
+    margin: 4px 0;
+    background-color: #fff;
 }
 
 /* Carrossel */
@@ -78,52 +97,4 @@ header .logo {
     transition: transform 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     scroll-snap-align: start;
-}
-
-.carousel .card:hover {
-    transform: scale(1.05);
-}
-
-.carousel .card h3 {
-    font-size: 22px;
-}
-
-/* Tema dark */
-body {
-    background-color: #141414;
-}
-
-header {
-    background-color: #181818;
-}
-
-.sidebar {
-    background-color: #181818;
-}
-
-.sidebar a {
-    color: #fff;
-}
-
-.carousel .card {
-    background-color: #222;
-}
-
-/* Barra de rolagem */
-.carousel::-webkit-scrollbar {
-    display: none;
-}
-
-/* Para o botão de alternância de tema */
-.theme-toggle-btn {
-    cursor: pointer;
-    font-size: 20px;
-    color: #fff;
-    background-color: transparent;
-    border: none;
-    transition: transform 0.2s ease;
-}
-
-.theme-toggle-btn:hover {
-    transform: scale(1.1);
 }
