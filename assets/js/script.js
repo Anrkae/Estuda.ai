@@ -1,62 +1,37 @@
-let minutos = 0;
-let horas = 0;
-let cronometro;
-
-const timerEl = document.getElementById("timer");
-const questoesEl = document.getElementById("questoes");
-const acertosEl = document.getElementById("acertos");
-const totalQuestoesEl = document.getElementById("totalQuestoes");
-
-let questoes = 0;
-let acertos = 0;
-
-// Cronômetro
-function startTimer() {
-  if (!cronometro) {
-    cronometro = setInterval(() => {
-      minutos++;
-      if (minutos >= 60) {
-        minutos = 0;
-        horas++;
-      }
-      atualizarTimer();
-    }, 60000);
+// Função para alternar o tema
+function toggleTheme() {
+  const themeSelector = document.getElementById("theme-selector");
+  const theme = themeSelector.value;
+  if (theme === "light") {
+    document.body.classList.add("light-theme");
+    document.body.classList.remove("dark-theme");
+  } else {
+    document.body.classList.add("dark-theme");
+    document.body.classList.remove("light-theme");
   }
 }
 
-function stopTimer() {
-  clearInterval(cronometro);
-  cronometro = null;
+// Função para abrir a sidebar
+function toggleSidebar() {
+  const sidebar = document.getElementById("menuLateral");
+  sidebar.style.width = "250px";
 }
 
-function atualizarTimer() {
-  const formatar = (num) => num.toString().padStart(2, '0');
-  timerEl.textContent = `${formatar(horas)}:${formatar(minutos)}`;
+// Função para fechar a sidebar
+function closeSidebar() {
+  const sidebar = document.getElementById("menuLateral");
+  sidebar.style.width = "0";
 }
 
-// Menu lateral
-function abrirMenu() {
-  document.getElementById("menu-lateral").style.width = "250px";
-}
-
-function fecharMenu() {
-  document.getElementById("menu-lateral").style.width = "0";
-}
-
-// Tema: Detectar tema do sistema
-window.onload = () => {
-  const temaSalvo = localStorage.getItem('tema');
-  if (temaSalvo) {
-    document.body.classList.toggle('dark', temaSalvo === 'dark');
+// Definindo o tema inicial conforme preferências do dispositivo
+window.onload = function() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.body.classList.add("dark-theme");
+    document.body.classList.remove("light-theme");
+    document.getElementById("theme-selector").value = "dark";
   } else {
-    const prefereEscuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    document.body.classList.toggle('dark', prefereEscuro);
+    document.body.classList.add("light-theme");
+    document.body.classList.remove("dark-theme");
+    document.getElementById("theme-selector").value = "light";
   }
 };
-
-// Alternar tema manual
-function toggleTema() {
-  document.body.classList.toggle('dark');
-  const temaAtual = document.body.classList.contains('dark') ? 'dark' : 'light';
-  localStorage.setItem('tema', temaAtual);
-}
