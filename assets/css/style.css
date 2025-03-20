@@ -1,17 +1,15 @@
-/* Estilo básico da página */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #f0f0f0;
-  color: #333;
+  background: #141414; /* Cor escura do fundo */
+  color: #bdbdbd; /* Texto em cinza claro */
 }
 
-/* Cabeçalho com ícone e título alinhados */
 header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #4caf50;
+  background-color: #1d1d1d; /* Cor de fundo do cabeçalho */
   color: white;
   padding: 15px;
   font-size: 24px;
@@ -33,8 +31,8 @@ header {
 .date-selector {
   padding: 20px;
   text-align: center;
-  background-color: #fff;
-  border-bottom: 2px solid #ddd;
+  background-color: #1d1d1d; /* Fundo claro para o seletor */
+  border-bottom: 2px solid #2a2a2a; /* Cor da borda */
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -44,19 +42,19 @@ header {
 .calendar-icon {
   cursor: pointer;
   font-size: 24px;
-  color: #4caf50;
+  color: #ffffff; /* Ícones em branco */
   transition: color 0.3s;
 }
 
 .calendar-icon:hover {
-  color: #388e3c;
+  color: #bdbdbd; /* Cor de hover mais clara */
 }
 
 /* Menu de seleção de data */
 .date-options {
   display: none;
   padding: 15px;
-  background-color: #fff;
+  background-color: #1d1d1d;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: absolute;
@@ -69,7 +67,7 @@ header {
 .date-options button {
   width: 100%;
   padding: 10px;
-  background-color: #4caf50;
+  background-color: #3a3a3a; /* Cor de fundo dos botões */
   color: white;
   border: none;
   border-radius: 6px;
@@ -78,7 +76,7 @@ header {
 }
 
 .date-options button:hover {
-  background-color: #388e3c;
+  background-color: #616161; /* Hover em cinza mais suave */
 }
 
 .reset-button {
@@ -94,7 +92,7 @@ header {
 }
 
 .reset-button:hover {
-  color: #d32f2f;
+  color: #d32f2f; /* Cor de hover para o botão de reset */
 }
 
 /* Carrossel */
@@ -115,11 +113,11 @@ header {
 .card {
   scroll-snap-align: start;
   flex: 0 0 70%;
-  background: white;
+  background: #1d1d1d; /* Cor de fundo dos cards */
   padding: 20px;
   padding-top: 0;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra mais forte para dar destaque */
   box-sizing: border-box;
   min-height: 120px;
   display: flex;
@@ -130,8 +128,8 @@ header {
 }
 
 .card h2 {
-  font-size: 16px;
-  color: #161616;
+  font-size: 18px;
+  color: #ffffff; /* Título dos cards em branco */
 }
 
 .time-display {
