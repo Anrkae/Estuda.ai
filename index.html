@@ -1,41 +1,26 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Estuda.ai</title>
-  <link rel="stylesheet" href="/assets/css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
-  <header>
-    <div class="titulo">Estuda.ai</div>
-  </header>
-
-  <div class="sidebar" id="sidebar">
-    <!-- Sidebar não tem alternância de temas -->
-  </div>
-
-  <div class="carousel">
-    <div class="card">
-      <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
-      <div class="time-display" id="timer">00:00</div>
-    </div>
-    <div class="card">
-      <h2><i class="fa-solid fa-chart-line"></i> Desempenho</h2>
-      <div class="stats">
-        Resolvidas: <span id="questoes">0</span><br>
-        Acertos: <span id="acertos">0</span>
-      </div>
-    </div>
-    <div class="card">
-      <h2><i class="fa-solid fa-check"></i> Questões resolvidas</h2>
-      <div class="stats">
-        <span id="questoes-resolvidas">0</span> Resolvidas
-      </div>
+<div class="carousel">
+  <!-- Espaço invisível para afastar o primeiro card -->
+  <div class="space"></div>
+  
+  <div class="card">
+    <h2>Card 1</h2>
+    <p class="time-display">24h</p>
+    <div class="stats">
+      <p>Estudo: 30h</p>
     </div>
   </div>
-
-  <script src="/assets/js/script.js"></script>
-</body>
-</html>
+  <div class="card">
+    <h2>Card 2</h2>
+    <p class="time-display">7 dias</p>
+    <div class="stats">
+      <p>Estudo: 45h</p>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Card 3</h2>
+    <p class="time-display">30 dias</p>
+    <div class="stats">
+      <p>Estudo: 100h</p>
+    </div>
+  </div>
+</div>
