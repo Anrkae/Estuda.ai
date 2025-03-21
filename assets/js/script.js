@@ -52,59 +52,6 @@ function registrarQuestoes() {
   questoesEl.textContent = questoes;
   acertosEl.textContent = acertos;
   totalQuestoesEl.textContent = questoes;
-  atualizarGraficoDesempenho();
-}
-
-// Função para atualizar o gráfico de desempenho
-function atualizarGraficoDesempenho() {
-  const ctx = document.getElementById('performanceChart').getContext('2d');
-  
-  const total = questoes || 1;  // Para evitar divisão por zero
-  const acertosPorcentagem = (acertos / total) * 100;
-  const errosPorcentagem = 100 - acertosPorcentagem;
-
-  // Criação ou atualização do gráfico
-  if (window.performanceChart) {
-    window.performanceChart.data.datasets[0].data = [acertosPorcentagem, errosPorcentagem];
-    window.performanceChart.update();
-  } else {
-    window.performanceChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Acertos', 'Erros'],
-        datasets: [{
-          label: 'Desempenho',
-          data: [acertosPorcentagem, errosPorcentagem],
-          backgroundColor: ['#4caf50', '#f44336'], // verde para acertos, vermelho para erros
-          borderColor: ['#388e3c', '#d32f2f'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          x: {
-            beginAtZero: true,
-            ticks: {
-              font: {
-                size: 14
-              }
-            }
-          },
-          y: {
-            beginAtZero: true,
-            ticks: {
-              font: {
-                size: 14
-              },
-              stepSize: 20,
-              max: 100
-            }
-          }
-        }
-      }
-    });
-  }
 }
 
 // Funções de Data
@@ -162,3 +109,27 @@ function resetDates() {
   document.getElementById('startDate').value = '';
   document.getElementById('endDate').value = '';
 }
+
+// Inicialização do gráfico com Chart.js
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+  type: 'bar', // Tipo de gráfico
+  data: {
+    labels: ['Acertos', 'Erros'], // Labels para o gráfico
+    datasets: [{
+      label: 'Desempenho',
+      data: [75, 25], // Dados de acertos e erros
+      backgroundColor: ['#4caf50', '#f44336'], // Cores
+      borderColor: ['#4caf50', '#f44336'],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
