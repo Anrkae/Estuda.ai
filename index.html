@@ -1,53 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Estuda.ai</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+  <!-- Cabeçalho -->
   <header>
-    <span class="menu-icon">&#9776;</span>
+    <div class="menu-icon" onclick="abrirMenu()">☰</div>
     <div class="titulo">Estuda.ai</div>
   </header>
 
+  <!-- Carrossel -->
   <div class="carousel">
     <div class="card">
-      <h2>Desempenho</h2>
-      <div class="progress-container">
-        <div class="progress-bar" id="acertos-bar"></div>
-        <div class="progress-bar" id="erros-bar"></div>
-      </div>
+      <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
+      <div class="time-display" id="timer">00:00</div>
     </div>
+
     <div class="card">
-      <h2>Tempo de Estudo</h2>
-      <div class="time-display">
-        <span id="timer">00:00</span>
-      </div>
-    </div>
-    <div class="card">
-      <h2>Estatísticas</h2>
+      <h2><i class="fa-solid fa-chart-bar"></i> Desempenho</h2>
       <div class="stats">
-        <p>Total de Questões Resolvidas: <span id="questoes">0</span></p>
-        <p>Acertos: <span id="acertos">0</span></p>
+        Resolvidas: <span id="questoes">0</span><br />
+        Acertos: <span id="acertos">0</span>
+      </div>
+      <div class="bar-container">
+        <div class="bar acertos-bar" id="acertosBar"></div>
+        <div class="bar erros-bar" id="errosBar"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h2>
+      <div class="total-questoes" id="totalQuestoes">0</div>
+      <div class="stats">
+        Média Diária: <span id="mediaDiaria">0</span> questões
       </div>
     </div>
   </div>
 
-  <!-- Seção para registrar as questões -->
-  <div class="registro-questoes">
-    <h3>Registrar Questões Resolvidas</h3>
-    <form id="form-questoes">
-      <label for="total-questoes">Total de Questões Resolvidas:</label>
-      <input type="number" id="total-questoes" required min="0">
-
-      <label for="acertos-questoes">Acertos:</label>
-      <input type="number" id="acertos-questoes" required min="0">
-
-      <button type="submit">Registrar</button>
-    </form>
+  <!-- Seção para registrar questões -->
+  <div class="registro">
+    <button onclick="registrarQuestoes()">Registrar Questões</button>
   </div>
 
   <script src="assets/js/script.js"></script>
