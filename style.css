@@ -191,3 +191,15 @@ canvas {
 #intervaloGrafico {
     animation: fadeIn 0.5s ease-out;
 }
+
+/* Esconder a scrollbar */
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+}
+
+/* Para Firefox */
+html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
