@@ -48,7 +48,7 @@ header {
 .card {
   scroll-snap-align: start;
   flex: 0 0 75%; /* Cada card ocupará 75% da largura visível */
-  background: #1d1d1d;
+  background: white;
   padding: 20px;
   padding-top: 0;
   border-radius: 8px;
