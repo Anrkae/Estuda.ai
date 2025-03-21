@@ -32,9 +32,9 @@ header {
 /* Carrossel */
 .carousel {
   display: flex;
-  overflow-x: auto; /* Permitir rolagem por toque */
+  overflow-x: hidden; /* Mudança para ocultar os cards fora da área visível */
   scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch; /* Suporte ao toque */
+  -webkit-overflow-scrolling: touch;
   width: 100%;
   max-width: 900px;
   padding: 30px 20px 20px 20px;
@@ -42,22 +42,22 @@ header {
   box-sizing: border-box;
   gap: 25px;
   margin: auto;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Garantir uma transição suave ao passar de um card para o outro */
 }
 
 .card {
   scroll-snap-align: start;
-  flex: 0 0 75%;
-  background: #ffffff;
+  flex: 0 0 75%; /* Cada card ocupará 75% da largura visível */
+  background: #1d1d1d;
   padding: 20px;
   padding-top: 0;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   min-height: 120px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-end; /* Alinha o conteúdo do card para o final */
   align-items: center;
   text-align: center;
 }
