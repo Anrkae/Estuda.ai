@@ -43,7 +43,6 @@ header {
   gap: 25px;
   margin: auto;
   scroll-behavior: smooth; /* Garantir transição suave ao rolar */
-  touch-action: pan-x; /* Permite toque horizontal */
 }
 
 .card {
@@ -102,4 +101,52 @@ header {
 
 #erros-bar {
   background-color: #f44336; /* Cor para erros */
+}
+
+/* Estilo da seção de registro de questões */
+.registro-questoes {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombras leves */
+  margin: 30px auto;
+  max-width: 500px;
+  text-align: center;
+}
+
+.registro-questoes h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.registro-questoes form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.registro-questoes label {
+  font-size: 16px;
+}
+
+.registro-questoes input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.registro-questoes button {
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.registro-questoes button:hover {
+  background-color: #45a049;
 }
