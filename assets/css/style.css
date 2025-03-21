@@ -10,12 +10,13 @@ header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #1d1d1d;
-  color: white;
+  background-color: #ffffff;
+  color: #333333;
   padding: 15px;
   font-size: 24px;
   font-weight: bold;
   position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu-icon {
@@ -47,7 +48,7 @@ header {
 .card {
   scroll-snap-align: start;
   flex: 0 0 75%; /* Cada card ocupará 75% da largura visível */
-  background: #ffffff; /* Cards brancos */
+  background: #ffffff;
   padding: 20px;
   padding-top: 0;
   border-radius: 8px;
@@ -62,53 +63,58 @@ header {
 }
 
 .card h2 {
-  font-size: 20px; /* Tamanho do título ajustado */
-  margin-top: 0; /* Remove o espaçamento superior */
-  margin-bottom: 10px;
-  color: #333333; /* Cor escura para o título */
+  font-size: 20px;
+  margin-bottom: 5px; /* Remover o espaçamento superior */
+  color: #333333;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
+  gap: 10px; /* Espaço entre o ícone e o título */
 }
 
-.card h2 i {
+.card i {
   font-size: 24px; /* Tamanho do ícone */
 }
 
-.time-display,
-.stats,
-.total-questoes {
+/* Estilo para os gráficos de barra */
+.bar {
+  width: 100%;
+  height: 20px;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.bar.acertos {
+  background-color: #4caf50; /* Verde para acertos */
+}
+
+.bar.erros {
+  background-color: #f44336; /* Vermelho para erros */
+}
+
+.stats {
   margin-top: auto;
   font-size: 18px;
   font-weight: bold;
-  color: #444444; /* Texto de contraste suave */
+  color: #333333;
 }
 
-/* Estilo das barrinhas de progresso */
-.bar-container {
-  width: 100%;
-  display: flex;
-  gap: 10px;
-  justify-content: center;
+.total-questoes,
+.media-diaria {
+  font-size: 16px;
+  margin-top: 10px;
 }
 
-.bar {
-  width: 40%;
-  height: 12px;
-  border-radius: 6px;
-}
-
-.acertos-bar {
-  background-color: #4caf50; /* Barrinha verde para acertos */
-}
-
-.erros-bar {
-  background-color: #f44336; /* Barrinha vermelha para erros */
-}
-
+/* PC: blocos lado a lado */
 @media (min-width: 700px) {
   .carousel {
+    overflow-x: hidden;
     flex-wrap: wrap;
     justify-content: center;
     padding: 30px 0;
