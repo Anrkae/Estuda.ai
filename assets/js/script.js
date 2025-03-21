@@ -57,8 +57,11 @@ function registrarQuestoes() {
   let mediaDiaria = questoes / (horas + minutos / 60);
   mediaDiariaEl.textContent = mediaDiaria.toFixed(1);
 
-  // Atualizando as barras de acertos e erros
+  // Atualizando as barras de acertos e erros no card Estatísticas
   atualizarBarras();
+
+  // Atualizando as barras de acertos e erros no card Desempenho
+  atualizarBarrasDesempenho();
 }
 
 function atualizarBarras() {
@@ -82,5 +85,29 @@ function atualizarBarras() {
   if (porcentAcertosEl && porcentErrosEl) {
     porcentAcertosEl.textContent = `${porcentAcertos.toFixed(1)}% Acertos`;
     porcentErrosEl.textContent = `${porcentErros.toFixed(1)}% Erros`;
+  }
+}
+
+function atualizarBarrasDesempenho() {
+  // Calculando porcentagem de acertos e erros para o card de desempenho
+  const porcentAcertos = (acertos / questoes) * 100;
+  const porcentErros = (erros / questoes) * 100;
+
+  // Atualizando as larguras das barras no card de desempenho
+  const barraAcertosDesempenho = document.querySelector('.bar-desempenho .acertos');
+  const barraErrosDesempenho = document.querySelector('.bar-desempenho .erros');
+
+  if (barraAcertosDesempenho && barraErrosDesempenho) {
+    barraAcertosDesempenho.style.width = `${porcentAcertos}%`;
+    barraErrosDesempenho.style.width = `${porcentErros}%`;
+  }
+
+  // Exibindo as porcentagens de acertos e erros no card de desempenho
+  const porcentAcertosDesempenhoEl = document.querySelector('.bar-desempenho.acertos + span');
+  const porcentErrosDesempenhoEl = document.querySelector('.bar-desempenho.erros + span');
+
+  if (porcentAcertosDesempenhoEl && porcentErrosDesempenhoEl) {
+    porcentAcertosDesempenhoEl.textContent = `${porcentAcertos.toFixed(1)}% Acertos`;
+    porcentErrosDesempenhoEl.textContent = `${porcentErros.toFixed(1)}% Erros`;
   }
 }
