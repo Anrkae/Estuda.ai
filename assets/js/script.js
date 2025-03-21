@@ -21,7 +21,7 @@ function startTimer() {
         horas++;
       }
       atualizarTimer();
-    }, 60000); // Atualiza de minuto em minuto
+    }, 60000);
   }
 }
 
@@ -79,12 +79,16 @@ function setDateRange(range) {
   document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
 }
 
-function toggleCalendarInputs() {
+function toggleDateOptions() {
+  const options = document.getElementById('date-options');
+  options.style.display = options.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleCalendar() {
   const customDate = document.getElementById('custom-date');
   customDate.style.display = customDate.style.display === 'none' ? 'block' : 'none';
 
-  // Inicializa o flatpickr apenas na primeira vez
-  if (customDate.style.display === 'block' && !customDate.classList.contains('initialized')) {
+  if (customDate.style.display === 'block') {
     flatpickr("#startDate", {
       dateFormat: "Y-m-d",
       onChange: function(selectedDates) {
@@ -98,8 +102,10 @@ function toggleCalendarInputs() {
         console.log("Data Fim:", selectedDates);
       }
     });
-
-    // Marcar como inicializado para evitar múltiplas inicializações
-    customDate.classList.add('initialized');
   }
+}
+
+function resetDates() {
+  document.getElementById('startDate').value = '';
+  document.getElementById('endDate').value = '';
 }
