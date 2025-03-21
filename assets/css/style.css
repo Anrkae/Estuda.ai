@@ -64,7 +64,7 @@ header {
 .card h2 {
   font-size: 20px; /* Tamanho do título reduzido para não quebrar linha */
   margin-bottom: 10px;
-  margin-top: 20px; /* Ajuste para puxar o título mais para cima */
+  margin-top: 15px; /* Ajuste para puxar o título mais para cima */
 }
 
 .time-display,
