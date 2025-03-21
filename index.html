@@ -25,17 +25,20 @@
 
   <!-- Seletor de datas -->
   <div class="date-selector">
-    <i class="fa-solid fa-calendar calendar-icon" onclick="toggleDateOptions(event)"></i>
-    <div class="date-options" id="date-options">
-      <button onclick="setDateRange('24h')">Últimas 24h</button>
-      <button onclick="setDateRange('7d')">Últimos 7 dias</button>
-      <button onclick="setDateRange('30d')">Últimos 30 dias</button>
-      <button onclick="toggleDateInputs()">Intervalo Personalizado</button>
-      <button class="reset-button" onclick="resetDates()">Redefinir</button>
+    <div class="dropdown">
+      <button class="dropbtn"><i class="fa-solid fa-calendar"></i> Intervalo de Datas</button>
+      <div class="dropdown-content">
+        <button onclick="setDateRange('24h')">Últimas 24h</button>
+        <button onclick="setDateRange('7d')">Últimos 7 dias</button>
+        <button onclick="setDateRange('30d')">Últimos 30 dias</button>
+        <button onclick="toggleCalendarInputs()">Intervalo Personalizado</button>
+      </div>
     </div>
     <!-- Inputs de data para intervalo personalizado -->
-    <input type="text" id="startDate" style="display: none;" />
-    <input type="text" id="endDate" style="display: none;" />
+    <div id="custom-date" style="display: none;">
+      <input type="text" id="startDate" placeholder="Data Início" readonly />
+      <input type="text" id="endDate" placeholder="Data Fim" readonly />
+    </div>
   </div>
 
   <!-- Carrossel -->
