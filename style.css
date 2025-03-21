@@ -1,34 +1,194 @@
-body {
+/* Fonte Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #121212;
-    color: #f5f5f5;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #eceae2;  /* Cor de fundo da página */
+    color: #333;
+    padding: 0;
+    margin: 0;
 }
 
 header {
-    background: #1f1f1f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.2);
     padding: 1rem;
-    text-align: center;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: #6735bc;  /* Cor do título */
 }
 
 main {
+    margin-top: 50px; /* Espaço para o cabeçalho fixo */
     padding: 1rem;
+    max-width: 1200px;
+    margin: 70px auto 0; /* Ajusta a margem inferior para evitar sobreposição */
 }
 
 section {
-    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 2.5rem;
+    border-radius: 8px;
+}
+
+h2 {
+    text-align: center;
+    color: #474c5f;  /* Cor do subtítulo */
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
 }
 
 button {
-    background: #4caf50;
+    background: #6735bc;  /* Cor do botão */
     border: none;
     color: white;
     padding: 0.8rem 1.2rem;
     margin: 0.5rem 0;
     cursor: pointer;
     font-size: 1rem;
+    border-radius: 5px;
+    transition: background 0.3s ease;
 }
 
 button:hover {
-    background: #45a049;
+    background: #6735bc;  /* Cor do botão ao passar o mouse */
+}
+
+/* Carrossel */
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+}
+
+.carousel-card {
+    flex-shrink: 0;
+    width: 100;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.06); /* Borda fininha e suave */
+}
+
+.carousel-card h3 {
+    font-size: 1.2rem;
+    color: #474c5f;  /* Cor do título no card */
+    margin-bottom: 0.5rem;
+}
+
+.carousel-card p {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.grafico-container {
+    position: relative;
+    width: 100%;
+    
+}
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Estilo do gráfico */
+.chartjs-tooltip {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.chartjs-legend {
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+/* Gráfico */
+.chartjs-render-monitor {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Estilo do gráfico */
+.chart-line {
+    background-color: rgba(76, 175, 80, 0.2);
+    border-color: rgba(76, 175, 80, 0.8);
+    border-width: 2px;
+}
+
+.chart-line-questoes {
+    background-color: rgba(33, 150, 243, 0.2);
+    border-color: rgba(33, 150, 243, 0.8);
+    border-width: 2px;
+}
+
+/* Estilo do Dropdown */
+#intervaloGrafico {
+    padding: 10px 15px;
+    font-size: 10px;
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #6735bc;
+    border: 1px solid #eceae2;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    width: 100px;
+    appearance: none; /* Remove o estilo padrão do dropdown */
+    -webkit-appearance: none; /* Remover o estilo padrão no Safari */
+    -moz-appearance: none; /* Remover o estilo padrão no Firefox */
+    position: relative;
+}
+
+/* Efeito de hover */
+#intervaloGrafico:hover {
+    background-color: #f1f1f1;
+    border-color: rgba(102, 53, 188, 0.5);;
+}
+
+/* Efeito de foco (quando o campo estiver em foco) */
+#intervaloGrafico:focus {
+    outline: none;
+    background-color: #f1f1f1;
+    border-color: #6735bc;
+    box-shadow: 0 0 5px rgba(102, 53, 188, 0.1);
+}
+
+/* Estilo para a borda e cor ao clicar */
+#intervaloGrafico:active {
+    background-color: #e6f9f3;
+    border-color: #6735bc;
+}
+
+/* Adicionando animação sutil no dropdown */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+#intervaloGrafico {
+    animation: fadeIn 0.5s ease-out;
 }
