@@ -1,3 +1,4 @@
+// Variáveis globais
 let minutos = 0;
 let horas = 0;
 let cronometro;
@@ -10,6 +11,7 @@ const totalQuestoesEl = document.getElementById('totalQuestoes');
 let questoes = 0;
 let acertos = 0;
 
+// Funções de Timer
 function startTimer() {
   if (!cronometro) {
     cronometro = setInterval(() => {
@@ -19,7 +21,7 @@ function startTimer() {
         horas++;
       }
       atualizarTimer();
-    }, 60000); // Atualiza de minuto em minuto
+    }, 60000);
   }
 }
 
@@ -33,6 +35,7 @@ function atualizarTimer() {
   timerEl.textContent = `${formatar(horas)}:${formatar(minutos)}`;
 }
 
+// Funções de Questões
 function registrarQuestoes() {
   let q = prompt('Quantas questões resolveu?');
   let a = prompt('Quantas acertou?');
@@ -51,41 +54,7 @@ function registrarQuestoes() {
   totalQuestoesEl.textContent = questoes;
 }
 
-function resetDates() {
-  document.getElementById('startDate').value = '';
-  document.getElementById('endDate').value = '';
-}
-
-function toggleDateOptions() {
-  const options = document.getElementById('date-options');
-  options.style.display = options.style.display === 'none' ? 'block' : 'none';
-}
-
-function toggleDateInputs() {
-  const startDateInput = document.getElementById('startDate');
-  const endDateInput = document.getElementById('endDate');
-  
-  startDateInput.style.display = startDateInput.style.display === 'none' ? 'block' : 'none';
-  endDateInput.style.display = endDateInput.style.display === 'none' ? 'block' : 'none';
-
-  if (startDateInput.style.display === 'block' && endDateInput.style.display === 'block') {
-    // Inicializando o Flatpickr apenas quando os inputs de data estiverem visíveis
-    flatpickr("#startDate", {
-      dateFormat: "Y-m-d",
-      onChange: function(selectedDates) {
-        console.log("Data Início:", selectedDates);
-      }
-    });
-
-    flatpickr("#endDate", {
-      dateFormat: "Y-m-d",
-      onChange: function(selectedDates) {
-        console.log("Data Fim:", selectedDates);
-      }
-    });
-  }
-}
-
+// Funções de Data
 function setDateRange(range) {
   let startDate = '';
   let endDate = '';
@@ -106,7 +75,27 @@ function setDateRange(range) {
       break;
   }
 
-  // Exibindo intervalo selecionado
   document.getElementById('startDate').value = startDate.toISOString().split('T')[0];
   document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
+}
+
+function toggleCalendarInputs() {
+  const customDate = document.getElementById('custom-date');
+  customDate.style.display = customDate.style.display === 'none' ? 'block' : 'none';
+
+  if (customDate.style.display === 'block') {
+    flatpickr("#startDate", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates) {
+        console.log("Data Início:", selectedDates);
+      }
+    });
+
+    flatpickr("#endDate", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates) {
+        console.log("Data Fim:", selectedDates);
+      }
+    });
+  }
 }
