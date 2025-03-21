@@ -32,9 +32,9 @@ header {
 /* Carrossel */
 .carousel {
   display: flex;
-  overflow-x: hidden;
-  scroll-snap-type: x mandatory;
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
   width: 100%;
   max-width: 900px;
   padding: 30px 20px 20px 20px;
@@ -43,6 +43,12 @@ header {
   gap: 25px;
   margin: auto;
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .card {
@@ -57,7 +63,7 @@ header {
   min-height: 120px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
 }
