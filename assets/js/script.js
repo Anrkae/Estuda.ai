@@ -1,12 +1,16 @@
 // Variáveis globais
-let questoesResolvidas = 0;
-let acertos = 0;
+let minutos = 0;
+let horas = 0;
 let cronometro;
 
+const timerEl = document.getElementById('timer');
 const questoesEl = document.getElementById('questoes');
 const acertosEl = document.getElementById('acertos');
-const acertosBar = document.getElementById('acertos-bar');
-const errosBar = document.getElementById('erros-bar');
+const totalQuestoesEl = document.getElementById('totalQuestoes');
+const mediaDiariaEl = document.getElementById('mediaDiaria');
+
+let questoes = 0;
+let acertos = 0;
 
 // Funções de Timer
 function startTimer() {
@@ -33,40 +37,49 @@ function atualizarTimer() {
 }
 
 // Funções de Questões
-function registrarQuestoes(event) {
-  event.preventDefault(); // Evita o comportamento padrão de envio do formulário
+function registrarQuestoes() {
+  let q = prompt('Quantas questões resolveu?');
+  let a = prompt('Quantas acertou?');
+  q = parseInt(q);
+  a = parseInt(a);
 
-  // Pega os valores dos inputs
-  const totalQuestoes = parseInt(document.getElementById('total-questoes').value);
-  const acertosQuestoes = parseInt(document.getElementById('acertos-questoes').value);
-
-  if (!isNaN(totalQuestoes) && totalQuestoes >= 0) {
-    questoesResolvidas += totalQuestoes;
+  if (!isNaN(q) && q >= 0) {
+    questoes += q;
   }
-  if (!isNaN(acertosQuestoes) && acertosQuestoes >= 0) {
-    acertos += acertosQuestoes;
+  if (!isNaN(a) && a >= 0) {
+    acertos += a;
   }
 
-  // Atualiza as estatísticas na tela
-  questoesEl.textContent = questoesResolvidas;
+  questoesEl.textContent = questoes;
   acertosEl.textContent = acertos;
+  totalQuestoesEl.textContent = questoes;
 
-  // Atualiza as barras de progresso
-  atualizarBarras();
+  // Atualizando a média diária
+  let mediaDiaria = questoes / (horas + minutos / 60);
+  mediaDiariaEl.textContent = mediaDiaria.toFixed(1);
 }
 
-// Atualiza as barras de acertos e erros
-function atualizarBarras() {
-  // Calcular a quantidade de erros
-  let erros = questoesResolvidas - acertos;
+// Funções de Data (caso queira)
+function setDateRange(range) {
+  let startDate = '';
+  let endDate = '';
+  const now = new Date();
 
-  // Atualizar as larguras das barras de progresso
-  const percentualAcertos = (acertos / questoesResolvidas) * 100 || 0;
-  const percentualErros = (erros / questoesResolvidas) * 100 || 0;
+  switch (range) {
+    case '24h':
+      startDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+      endDate = now;
+      break;
+    case '7d':
+      startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+      endDate = now;
+      break;
+    case '30d':
+      startDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+      endDate = now;
+      break;
+  }
 
-  acertosBar.style.width = `${percentualAcertos}%`;
-  errosBar.style.width = `${percentualErros}%`;
-}
-
-// Adiciona o evento de envio do formulário
-document.getElementById('form-questoes').addEventListener('submit', registrarQuestoes);
+  document.getElementById('startDate').value = startDate.toISOString().split('T')[0];
+  document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
+                           }
