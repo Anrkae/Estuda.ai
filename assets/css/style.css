@@ -1,3 +1,4 @@
+/* Corpo da página */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
@@ -39,44 +40,49 @@ header {
   gap: 10px;
 }
 
-.calendar-icon {
-  cursor: pointer;
-  font-size: 24px;
-  color: #ffffff;
-  transition: color 0.3s;
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.calendar-icon:hover {
-  color: #bdbdbd;
-}
-
-/* Menu de seleção de data */
-.date-options {
-  display: none;
-  padding: 15px;
+.dropbtn {
   background-color: #1d1d1d;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 45px;
-  left: 0;
-  z-index: 10;
-  width: 250px;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
-.date-options button {
-  width: 100%;
-  padding: 10px;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1d1d1d;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.dropdown-content button {
   background-color: #3a3a3a;
   color: white;
   border: none;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
   border-radius: 6px;
-  margin-bottom: 10px;
   cursor: pointer;
 }
 
-.date-options button:hover {
+.dropdown-content button:hover {
   background-color: #616161;
+}
+
+.show {
+  display: block;
 }
 
 .reset-button {
@@ -95,6 +101,22 @@ header {
   color: #d32f2f;
 }
 
+/* Exibição de Intervalo Personalizado */
+#custom-date-option {
+  display: none;
+  padding: 10px;
+}
+
+#custom-date input {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #1d1d1d;
+  color: white;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  width: 200px;
+}
+
 /* Carrossel */
 .carousel {
   display: flex;
@@ -104,5 +126,61 @@ header {
   width: 100%;
   max-width: 900px;
   padding: 30px 20px 20px 20px;
-  scroll
-  
+  scroll-padding-left: 20px;
+  box-sizing: border-box;
+  gap: 25px;
+  margin: auto;
+}
+
+.card {
+  scroll-snap-align: start;
+  flex: 0 0 70%;
+  background: #1d1d1d;
+  padding: 20px;
+  padding-top: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.time-display {
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.stats {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.total-questoes {
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* PC: blocos lado a lado */
+@media (min-width: 700px) {
+  .carousel {
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 0;
+    gap: 20px;
+  }
+  .card {
+    flex: 0 0 45%;
+  }
+}
