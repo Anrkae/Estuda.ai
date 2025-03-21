@@ -1,56 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Estuda.ai</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estuda.ai</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="menu-icon">☰</div>
-    <div class="titulo">Estuda.ai</div>
-    <div id="timer">00:00</div>
-  </header>
+    <header>
+        <h1>Estuda.ai</h1>
+    </header>
 
-  <div class="carousel">
-    <div class="card">
-      <h2><i class="icon">⏱️</i> Tempo</h2>
-      <div id="timer"></div>
-    </div>
-    <div class="card">
-      <h2><i class="icon">📊</i> Estatísticas</h2>
-      <div class="bar">
-        <div class="acertos"></div>
-        <div class="erros"></div>
-      </div>
-      <div class="percentagem">
-        <span class="acertos">0% Acertos</span>
-        <span class="erros">0% Erros</span>
-      </div>
-    </div>
-    <div class="card">
-      <h2><i class="icon">📝</i> Desempenho</h2>
-      <div class="bar-desempenho">
-        <div class="acertos"></div>
-        <div class="erros"></div>
-      </div>
-      <div class="percentagem">
-        <span class="acertos">0% Acertos</span>
-        <span class="erros">0% Erros</span>
-      </div>
-    </div>
-  </div>
+    <main>
+        <section id="resumo-dia">
+            <h2>Resumo de Hoje</h2>
+            <p>Tempo Estudado: <span id="tempo-total">0h 0min</span></p>
+            <p>Questões Resolvidas: <span id="questoes-dia">0</span></p>
+            <p>Taxa de Acertos: <span id="acertos-dia">0%</span></p>
+        </section>
 
-  <div class="registro-questoes">
-    <h3>Registrar Questões</h3>
-    <button onclick="registrarQuestoes()">Registrar Questões</button>
-    <div>
-      <span>Total de Questões: <span id="totalQuestoes">0</span></span><br>
-      <span>Média Diária: <span id="mediaDiaria">0</span> questões</span>
-    </div>
-  </div>
+        <section id="acoes">
+            <button onclick="registrarEstudo()">Registrar Estudo</button>
+            <button onclick="registrarQuestoes()">Registrar Questões</button>
+        </section>
+    </main>
 
-  <script src="assets/js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
