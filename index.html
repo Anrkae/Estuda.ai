@@ -1,42 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estuda.ai</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <!-- Chart.js -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <!-- Cabeçalho -->
   <header>
-    <div class="menu-icon" onclick="abrirMenu()">☰</div>
+    <span class="menu-icon">&#9776;</span>
     <div class="titulo">Estuda.ai</div>
   </header>
 
-  <!-- Carrossel -->
   <div class="carousel">
     <div class="card">
-      <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
-      <div class="time-display" id="timer">00:00</div>
-    </div>
-
-    <div class="card">
-      <h2><i class="fa-solid fa-chart-line"></i> Desempenho</h2>
-      <div class="stats">
-        <canvas id="performanceChart" width="300" height="100"></canvas>
+      <h2>Desempenho</h2>
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
       </div>
     </div>
-
     <div class="card">
-      <h2><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h2>
-      <div class="total-questoes" id="totalQuestoes">0</div>
+      <h2>Tempo de Estudo</h2>
+      <div class="time-display">
+        <span id="timer">00:00</span>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Estatísticas</h2>
+      <div class="stats">
+        <p>Total de Questões Resolvidas: <span id="questoes">0</span></p>
+        <p>Acertos: <span id="acertos">0</span></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="date-options" id="date-options">
+    <button onclick="toggleCalendar()">Escolher Data</button>
+    <div id="custom-date" style="display: none;">
+      <input type="date" id="startDate">
+      <input type="date" id="endDate">
     </div>
   </div>
 
