@@ -28,7 +28,7 @@ header {
   flex: 1;
 }
 
-/* Seletor de intervalo de datas */
+/* Seletor de Intervalo de Datas */
 .date-selector {
   padding: 20px;
   text-align: center;
@@ -85,38 +85,6 @@ header {
   display: block;
 }
 
-.reset-button {
-  width: 100%;
-  padding: 10px;
-  color: #f44336;
-  background-color: transparent;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 15px;
-  text-align: center;
-}
-
-.reset-button:hover {
-  color: #d32f2f;
-}
-
-/* Exibição de Intervalo Personalizado */
-#custom-date-option {
-  display: none;
-  padding: 10px;
-}
-
-#custom-date input {
-  padding: 10px;
-  margin: 5px 0;
-  background-color: #1d1d1d;
-  color: white;
-  border: 1px solid #3a3a3a;
-  border-radius: 6px;
-  width: 200px;
-}
-
 /* Carrossel */
 .carousel {
   display: flex;
@@ -160,27 +128,8 @@ header {
   font-weight: bold;
 }
 
-.stats {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
 .total-questoes {
   font-size: 26px;
   margin-top: 10px;
   font-weight: bold;
-}
-
-/* PC: blocos lado a lado */
-@media (min-width: 700px) {
-  .carousel {
-    overflow-x: hidden;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 30px 0;
-    gap: 20px;
-  }
-  .card {
-    flex: 0 0 45%;
-  }
 }
