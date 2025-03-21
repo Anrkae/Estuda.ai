@@ -1,15 +1,16 @@
+/* Estilos Globais */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #141414;
-  color: #bdbdbd;
+  background: #141414; /* Cor escura de fundo */
+  color: #bdbdbd; /* Texto em cinza claro */
 }
 
 header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #1d1d1d;
+  background-color: #1d1d1d; /* Cor de fundo do cabeçalho */
   color: white;
   padding: 15px;
   font-size: 24px;
@@ -27,7 +28,20 @@ header {
   flex: 1;
 }
 
-/* Dropdown (Gaveta) */
+/* Seletor de Intervalo de Datas (Dropdown) */
+.date-selector {
+  padding: 20px;
+  text-align: center;
+  background-color: #1d1d1d; /* Fundo claro para o seletor */
+  border-bottom: 2px solid #2a2a2a; /* Cor da borda */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Dropdown para o botão */
 .date-selector .dropdown {
   position: relative;
   display: inline-block;
@@ -76,7 +90,7 @@ header {
   display: block;
 }
 
-/* Inputs do intervalo de datas */
+/* Inputs do intervalo de datas (quando clicado na opção "Intervalo Personalizado") */
 #custom-date input {
   padding: 10px;
   margin: 5px 0;
@@ -85,4 +99,72 @@ header {
   border: 1px solid #3a3a3a;
   border-radius: 6px;
   width: 200px;
+}
+
+/* Carrossel */
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 900px;
+  padding: 30px 20px 20px 20px;
+  scroll-padding-left: 20px;
+  box-sizing: border-box;
+  gap: 25px;
+  margin: auto;
+}
+
+.card {
+  scroll-snap-align: start;
+  flex: 0 0 70%;
+  background: #1d1d1d;
+  padding: 20px;
+  padding-top: 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra mais forte para dar destaque */
+  box-sizing: border-box;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 18px;
+  color: #ffffff; /* Título dos cards em branco */
+}
+
+.time-display {
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.stats {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.total-questoes {
+  font-size: 26px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Para telas maiores (PC) */
+@media (min-width: 700px) {
+  .carousel {
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 0;
+    gap: 20px;
+  }
+  .card {
+    flex: 0 0 45%;
+  }
 }
