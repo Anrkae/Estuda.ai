@@ -135,7 +135,7 @@ header {
 
 .card {
   scroll-snap-align: start;
-  flex: 0 0 70%; /* Cada card ocupará 70% da largura visível */
+  flex: 0 0 75%; /* Cada card ocupará 75% da largura visível */
   background: #1d1d1d;
   padding: 20px;
   padding-top: 0;
@@ -148,4 +148,9 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.card h2 {
+  font-size: 20px; /* Tamanho do título reduzido para não quebrar linha */
+  margin-bottom: 10px;
 }
