@@ -1,51 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minha Página</title>
-  <!-- Importando a biblioteca flatpickr -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <link rel="stylesheet" href="assets/css/style.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estuda.ai</title>
 
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
 <body>
+  <!-- Cabeçalho -->
   <header>
-    <div class="menu-icon">☰</div>
-    <div class="titulo">Minha Página de Estudos</div>
+    <div class="menu-icon" onclick="abrirMenu()">☰</div>
+    <div class="titulo">Estuda.ai</div>
   </header>
 
-  <!-- Botão para abrir o intervalo de datas -->
-  <button class="dropbtn" onclick="toggleCalendarInputs()">Selecionar Intervalo</button>
-
-  <!-- Bloco de seleção de intervalo de datas -->
-  <div id="custom-date" style="display:none;">
-    <label for="startDate">Data de Início:</label>
-    <input type="text" id="startDate" name="startDate">
-
-    <label for="endDate">Data de Fim:</label>
-    <input type="text" id="endDate" name="endDate">
-
-    <button class="reset-button" onclick="resetDates()">Resetar</button>
+  <!-- Seletor de datas -->
+  <div class="date-selector">
+    <i class="fa-solid fa-calendar calendar-icon" onclick="toggleDateOptions()"></i>
+    <div class="date-options" id="date-options">
+      <button onclick="setDateRange('24h')">Últimas 24h</button>
+      <button onclick="setDateRange('7d')">Últimos 7 dias</button>
+      <button onclick="setDateRange('30d')">Últimos 30 dias</button>
+      <button onclick="toggleCalendar()">Intervalo Personalizado</button>
+      <button class="reset-button" onclick="resetDates()">Redefinir</button>
+    </div>
+    <div id="custom-date" style="display:none;">
+      <input type="text" id="startDate" placeholder="Data Início">
+      <input type="text" id="endDate" placeholder="Data Fim">
+    </div>
   </div>
 
+  <!-- Carrossel -->
   <div class="carousel">
     <div class="card">
-      <h2>Card 1</h2>
+      <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
       <div class="time-display" id="timer">00:00</div>
-      <div class="stats">
-        <div><strong>Questões Resolvidas:</strong> <span id="questoes">0</span></div>
-        <div><strong>Acertos:</strong> <span id="acertos">0</span></div>
-        <div><strong>Total de Questões:</strong> <span id="totalQuestoes">0</span></div>
-      </div>
-      <button onclick="registrarQuestoes()">Registrar Questões</button>
     </div>
-    <!-- Adicione outros cards conforme necessário -->
+
+    <div class="card">
+      <h2><i class="fa-solid fa-chart-line"></i> Desempenho</h2>
+      <div class="stats">
+        Resolvidas: <span id="questoes">0</span><br />
+        Acertos: <span id="acertos">0</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h2>
+      <div class="total-questoes" id="totalQuestoes">0</div>
+    </div>
   </div>
 
   <script src="assets/js/script.js"></script>
 </body>
-
 </html>
