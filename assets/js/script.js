@@ -52,6 +52,59 @@ function registrarQuestoes() {
   questoesEl.textContent = questoes;
   acertosEl.textContent = acertos;
   totalQuestoesEl.textContent = questoes;
+  atualizarGraficoDesempenho();
+}
+
+// Função para atualizar o gráfico de desempenho
+function atualizarGraficoDesempenho() {
+  const ctx = document.getElementById('performanceChart').getContext('2d');
+  
+  const total = questoes || 1;  // Para evitar divisão por zero
+  const acertosPorcentagem = (acertos / total) * 100;
+  const errosPorcentagem = 100 - acertosPorcentagem;
+
+  // Criação ou atualização do gráfico
+  if (window.performanceChart) {
+    window.performanceChart.data.datasets[0].data = [acertosPorcentagem, errosPorcentagem];
+    window.performanceChart.update();
+  } else {
+    window.performanceChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Acertos', 'Erros'],
+        datasets: [{
+          label: 'Desempenho',
+          data: [acertosPorcentagem, errosPorcentagem],
+          backgroundColor: ['#4caf50', '#f44336'], // verde para acertos, vermelho para erros
+          borderColor: ['#388e3c', '#d32f2f'],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            beginAtZero: true,
+            ticks: {
+              font: {
+                size: 14
+              }
+            }
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              font: {
+                size: 14
+              },
+              stepSize: 20,
+              max: 100
+            }
+          }
+        }
+      }
+    });
+  }
 }
 
 // Funções de Data
@@ -109,47 +162,3 @@ function resetDates() {
   document.getElementById('startDate').value = '';
   document.getElementById('endDate').value = '';
 }
-
-// Carrossel
-let currentCardIndex = 0;
-
-function scrollCarousel(direction) {
-  const carousel = document.querySelector('.carousel');
-  const cards = document.querySelectorAll('.card');
-  
-  const cardWidth = cards[0].offsetWidth;
-  
-  if (direction === 'next' && currentCardIndex < cards.length - 1) {
-    currentCardIndex++;
-  } else if (direction === 'prev' && currentCardIndex > 0) {
-    currentCardIndex--;
-  }
-
-  // Move the carousel to the appropriate card
-  carousel.scrollTo({
-    left: currentCardIndex * cardWidth,
-    behavior: 'smooth'
-  });
-}
-
-// Detect swipe gestures
-let touchstartX = 0;
-let touchendX = 0;
-
-function checkSwipeGesture() {
-  if (touchendX < touchstartX) {
-    scrollCarousel('next');
-  }
-  if (touchendX > touchstartX) {
-    scrollCarousel('prev');
-  }
-}
-
-document.querySelector('.carousel').addEventListener('touchstart', e => {
-  touchstartX = e.changedTouches[0].screenX;
-});
-
-document.querySelector('.carousel').addEventListener('touchend', e => {
-  touchendX = e.changedTouches[0].screenX;
-  checkSwipeGesture();
-});
