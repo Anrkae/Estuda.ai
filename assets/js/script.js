@@ -11,6 +11,7 @@ const mediaDiariaEl = document.getElementById('mediaDiaria');
 
 let questoes = 0;
 let acertos = 0;
+let erros = 0;
 
 // Funções de Timer
 function startTimer() {
@@ -45,6 +46,7 @@ function registrarQuestoes() {
 
   if (!isNaN(q) && q >= 0) {
     questoes += q;
+    erros = q - a; // O número de erros é o total de questões menos os acertos
   }
   if (!isNaN(a) && a >= 0) {
     acertos += a;
@@ -57,29 +59,12 @@ function registrarQuestoes() {
   // Atualizando a média diária
   let mediaDiaria = questoes / (horas + minutos / 60);
   mediaDiariaEl.textContent = mediaDiaria.toFixed(1);
+
+  // Atualizando as barras de acertos e erros
+  const porcentAcertos = (acertos / questoes) * 100;
+  const porcentErros = (erros / questoes) * 100;
+
+  // Ajustando as larguras das barras
+  document.querySelector('.bar .acertos').style.width = `${porcentAcertos}%`;
+  document.querySelector('.bar .erros').style.width = `${porcentErros}%`;
 }
-
-// Funções de Data (caso queira)
-function setDateRange(range) {
-  let startDate = '';
-  let endDate = '';
-  const now = new Date();
-
-  switch (range) {
-    case '24h':
-      startDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
-      endDate = now;
-      break;
-    case '7d':
-      startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-      endDate = now;
-      break;
-    case '30d':
-      startDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
-      endDate = now;
-      break;
-  }
-
-  document.getElementById('startDate').value = startDate.toISOString().split('T')[0];
-  document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
-                           }
