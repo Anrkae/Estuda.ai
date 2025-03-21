@@ -62,9 +62,28 @@ function toggleDateOptions() {
 }
 
 function toggleDateInputs() {
-  const inputs = document.getElementById('startDate').style.display === 'block';
-  document.getElementById('startDate').style.display = inputs ? 'none' : 'block';
-  document.getElementById('endDate').style.display = inputs ? 'none' : 'block';
+  const startDateInput = document.getElementById('startDate');
+  const endDateInput = document.getElementById('endDate');
+  
+  startDateInput.style.display = startDateInput.style.display === 'none' ? 'block' : 'none';
+  endDateInput.style.display = endDateInput.style.display === 'none' ? 'block' : 'none';
+
+  if (startDateInput.style.display === 'block' && endDateInput.style.display === 'block') {
+    // Inicializando o Flatpickr apenas quando os inputs de data estiverem visíveis
+    flatpickr("#startDate", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates) {
+        console.log("Data Início:", selectedDates);
+      }
+    });
+
+    flatpickr("#endDate", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates) {
+        console.log("Data Fim:", selectedDates);
+      }
+    });
+  }
 }
 
 function setDateRange(range) {
