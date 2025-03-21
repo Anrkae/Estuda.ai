@@ -6,10 +6,6 @@ const timerEl = document.getElementById('timer');
 const questoesEl = document.getElementById('questoes');
 const acertosEl = document.getElementById('acertos');
 const totalQuestoesEl = document.getElementById('totalQuestoes');
-const dateSelector = document.querySelector('.date-selector');
-const dateOptions = document.getElementById('date-options');
-const startDateInput = document.getElementById('startDate');
-const endDateInput = document.getElementById('endDate');
 
 let questoes = 0;
 let acertos = 0;
@@ -56,22 +52,19 @@ function registrarQuestoes() {
 }
 
 function resetDates() {
-  startDateInput.value = '';
-  endDateInput.value = '';
+  document.getElementById('startDate').value = '';
+  document.getElementById('endDate').value = '';
 }
 
-function toggleDateOptions(event) {
-  if (!dateOptions.contains(event.target)) {
-    dateOptions.style.display = 'none';
-  } else {
-    dateOptions.style.display = dateOptions.style.display === 'none' ? 'block' : 'none';
-  }
+function toggleDateOptions() {
+  const options = document.getElementById('date-options');
+  options.style.display = options.style.display === 'none' ? 'block' : 'none';
 }
 
 function toggleDateInputs() {
-  const inputsVisible = startDateInput.style.display === 'block';
-  startDateInput.style.display = inputsVisible ? 'none' : 'block';
-  endDateInput.style.display = inputsVisible ? 'none' : 'block';
+  const inputs = document.getElementById('startDate').style.display === 'block';
+  document.getElementById('startDate').style.display = inputs ? 'none' : 'block';
+  document.getElementById('endDate').style.display = inputs ? 'none' : 'block';
 }
 
 function setDateRange(range) {
@@ -95,11 +88,6 @@ function setDateRange(range) {
   }
 
   // Exibindo intervalo selecionado
-  startDateInput.value = startDate.toISOString().split('T')[0];
-  endDateInput.value = endDate.toISOString().split('T')[0];
-
-  // Fechando o menu de datas após selecionar
-  dateOptions.style.display = 'none';
+  document.getElementById('startDate').value = startDate.toISOString().split('T')[0];
+  document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
 }
-
-document.addEventListener('click', toggleDateOptions);
