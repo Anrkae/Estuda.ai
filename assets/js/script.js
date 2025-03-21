@@ -6,6 +6,10 @@ const timerEl = document.getElementById('timer');
 const questoesEl = document.getElementById('questoes');
 const acertosEl = document.getElementById('acertos');
 const totalQuestoesEl = document.getElementById('totalQuestoes');
+const dateSelector = document.querySelector('.date-selector');
+const dateOptions = document.getElementById('date-options');
+const startDateInput = document.getElementById('startDate');
+const endDateInput = document.getElementById('endDate');
 
 let questoes = 0;
 let acertos = 0;
@@ -52,33 +56,22 @@ function registrarQuestoes() {
 }
 
 function resetDates() {
-  document.getElementById('startDate').value = '';
-  document.getElementById('endDate').value = '';
+  startDateInput.value = '';
+  endDateInput.value = '';
 }
 
 function toggleDateOptions(event) {
-  const options = document.getElementById('date-options');
-  options.style.display = options.style.display === 'none' ? 'block' : 'none';
-
-  // Impede que o clique no ícone de calendário feche o menu imediatamente
-  event.stopPropagation();
+  if (!dateOptions.contains(event.target)) {
+    dateOptions.style.display = 'none';
+  } else {
+    dateOptions.style.display = dateOptions.style.display === 'none' ? 'block' : 'none';
+  }
 }
 
-// Fecha o menu de datas se o clique for fora do ícone de calendário ou do menu
-document.addEventListener('click', function(event) {
-  const dateOptions = document.getElementById('date-options');
-  const calendarIcon = document.querySelector('.calendar-icon');
-  
-  // Se o clique não for no ícone de calendário ou no menu, fecha o menu
-  if (!calendarIcon.contains(event.target) && !dateOptions.contains(event.target)) {
-    dateOptions.style.display = 'none';
-  }
-});
-
 function toggleDateInputs() {
-  const inputs = document.getElementById('startDate').style.display === 'block';
-  document.getElementById('startDate').style.display = inputs ? 'none' : 'block';
-  document.getElementById('endDate').style.display = inputs ? 'none' : 'block';
+  const inputsVisible = startDateInput.style.display === 'block';
+  startDateInput.style.display = inputsVisible ? 'none' : 'block';
+  endDateInput.style.display = inputsVisible ? 'none' : 'block';
 }
 
 function setDateRange(range) {
@@ -102,9 +95,11 @@ function setDateRange(range) {
   }
 
   // Exibindo intervalo selecionado
-  document.getElementById('startDate').value = startDate.toISOString().split('T')[0];
-  document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
+  startDateInput.value = startDate.toISOString().split('T')[0];
+  endDateInput.value = endDate.toISOString().split('T')[0];
 
-  // Fecha o menu após selecionar a data
-  document.getElementById('date-options').style.display = 'none';
+  // Fechando o menu de datas após selecionar
+  dateOptions.style.display = 'none';
 }
+
+document.addEventListener('click', toggleDateOptions);
