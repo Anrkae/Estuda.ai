@@ -53,3 +53,103 @@ function registrarQuestoes() {
   acertosEl.textContent = acertos;
   totalQuestoesEl.textContent = questoes;
 }
+
+// Funções de Data
+function setDateRange(range) {
+  let startDate = '';
+  let endDate = '';
+  const now = new Date();
+
+  switch (range) {
+    case '24h':
+      startDate = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+      endDate = now;
+      break;
+    case '7d':
+      startDate = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+      endDate = now;
+      break;
+    case '30d':
+      startDate = new Date(now.getTime() - 30 * 24 * 60 * 60 * 1000);
+      endDate = now;
+      break;
+  }
+
+  document.getElementById('startDate').value = startDate.toISOString().split('T')[0];
+  document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
+}
+
+function toggleDateOptions() {
+  const options = document.getElementById('date-options');
+  options.style.display = options.style.display === 'none' ? 'block' : 'none';
+}
+
+function toggleCalendar() {
+  const customDate = document.getElementById('custom-date');
+  customDate.style.display = customDate.style.display === 'none' ? 'block' : 'none';
+
+  if (customDate.style.display === 'block') {
+    flatpickr("#startDate", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates) {
+        console.log("Data Início:", selectedDates);
+      }
+    });
+
+    flatpickr("#endDate", {
+      dateFormat: "Y-m-d",
+      onChange: function(selectedDates) {
+        console.log("Data Fim:", selectedDates);
+      }
+    });
+  }
+}
+
+function resetDates() {
+  document.getElementById('startDate').value = '';
+  document.getElementById('endDate').value = '';
+}
+
+// Carrossel
+let currentCardIndex = 0;
+
+function scrollCarousel(direction) {
+  const carousel = document.querySelector('.carousel');
+  const cards = document.querySelectorAll('.card');
+  
+  const cardWidth = cards[0].offsetWidth;
+  
+  if (direction === 'next' && currentCardIndex < cards.length - 1) {
+    currentCardIndex++;
+  } else if (direction === 'prev' && currentCardIndex > 0) {
+    currentCardIndex--;
+  }
+
+  // Move the carousel to the appropriate card
+  carousel.scrollTo({
+    left: currentCardIndex * cardWidth,
+    behavior: 'smooth'
+  });
+}
+
+// Detect swipe gestures
+let touchstartX = 0;
+let touchendX = 0;
+
+function checkSwipeGesture() {
+  if (touchendX < touchstartX) {
+    scrollCarousel('next');
+  }
+  if (touchendX > touchstartX) {
+    scrollCarousel('prev');
+  }
+}
+
+document.querySelector('.carousel').addEventListener('touchstart', e => {
+  touchstartX = e.changedTouches[0].screenX;
+});
+
+document.querySelector('.carousel').addEventListener('touchend', e => {
+  touchendX = e.changedTouches[0].screenX;
+  checkSwipeGesture();
+});
