@@ -56,10 +56,24 @@ function resetDates() {
   document.getElementById('endDate').value = '';
 }
 
-function toggleDateOptions() {
+function toggleDateOptions(event) {
   const options = document.getElementById('date-options');
   options.style.display = options.style.display === 'none' ? 'block' : 'none';
+
+  // Impede que o clique no ícone de calendário feche o menu imediatamente
+  event.stopPropagation();
 }
+
+// Fecha o menu de datas se o clique for fora do ícone de calendário ou do menu
+document.addEventListener('click', function(event) {
+  const dateOptions = document.getElementById('date-options');
+  const calendarIcon = document.querySelector('.calendar-icon');
+  
+  // Se o clique não for no ícone de calendário ou no menu, fecha o menu
+  if (!calendarIcon.contains(event.target) && !dateOptions.contains(event.target)) {
+    dateOptions.style.display = 'none';
+  }
+});
 
 function toggleDateInputs() {
   const inputs = document.getElementById('startDate').style.display === 'block';
@@ -90,4 +104,7 @@ function setDateRange(range) {
   // Exibindo intervalo selecionado
   document.getElementById('startDate').value = startDate.toISOString().split('T')[0];
   document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
+
+  // Fecha o menu após selecionar a data
+  document.getElementById('date-options').style.display = 'none';
 }
