@@ -69,7 +69,7 @@ function atualizarBarras() {
   const porcentAcertos = (acertos / questoes) * 100;
   const porcentErros = (erros / questoes) * 100;
 
-  // Atualizando as larguras das barras
+  // Atualizando as larguras das barras no card Estatísticas
   const barraAcertos = document.querySelector('.bar .acertos');
   const barraErros = document.querySelector('.bar .erros');
 
@@ -78,7 +78,7 @@ function atualizarBarras() {
     barraErros.style.width = `${porcentErros}%`;
   }
 
-  // Exibindo as porcentagens de acertos e erros
+  // Exibindo as porcentagens de acertos e erros no card Estatísticas
   const porcentAcertosEl = document.querySelector('.bar.acertos + span');
   const porcentErrosEl = document.querySelector('.bar.erros + span');
 
