@@ -4,8 +4,6 @@ let horas = 0;
 let cronometro;
 
 const timerEl = document.getElementById('timer');
-const questoesEl = document.getElementById('questoes');
-const acertosEl = document.getElementById('acertos');
 const totalQuestoesEl = document.getElementById('totalQuestoes');
 const mediaDiariaEl = document.getElementById('mediaDiaria');
 
@@ -52,19 +50,37 @@ function registrarQuestoes() {
     acertos += a;
   }
 
-  questoesEl.textContent = questoes;
-  acertosEl.textContent = acertos;
+  // Atualizando a exibição de questões e acertos
   totalQuestoesEl.textContent = questoes;
 
-  // Atualizando a média diária
+  // Calculando e atualizando a média diária
   let mediaDiaria = questoes / (horas + minutos / 60);
   mediaDiariaEl.textContent = mediaDiaria.toFixed(1);
 
   // Atualizando as barras de acertos e erros
+  atualizarBarras();
+}
+
+function atualizarBarras() {
+  // Calculando porcentagem de acertos e erros
   const porcentAcertos = (acertos / questoes) * 100;
   const porcentErros = (erros / questoes) * 100;
 
-  // Ajustando as larguras das barras
-  document.querySelector('.bar .acertos').style.width = `${porcentAcertos}%`;
-  document.querySelector('.bar .erros').style.width = `${porcentErros}%`;
+  // Atualizando as larguras das barras
+  const barraAcertos = document.querySelector('.bar .acertos');
+  const barraErros = document.querySelector('.bar .erros');
+
+  if (barraAcertos && barraErros) {
+    barraAcertos.style.width = `${porcentAcertos}%`;
+    barraErros.style.width = `${porcentErros}%`;
+  }
+
+  // Exibindo as porcentagens de acertos e erros
+  const porcentAcertosEl = document.querySelector('.bar.acertos + span');
+  const porcentErrosEl = document.querySelector('.bar.erros + span');
+
+  if (porcentAcertosEl && porcentErrosEl) {
+    porcentAcertosEl.textContent = `${porcentAcertos.toFixed(1)}% Acertos`;
+    porcentErrosEl.textContent = `${porcentErros.toFixed(1)}% Erros`;
+  }
 }
