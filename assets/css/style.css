@@ -145,7 +145,7 @@ header {
   min-height: 120px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end; /* Alinha o conteúdo do card para o final */
   align-items: center;
   text-align: center;
 }
@@ -153,4 +153,13 @@ header {
 .card h2 {
   font-size: 20px; /* Tamanho do título reduzido para não quebrar linha */
   margin-bottom: 10px;
+  margin-top: 10px; /* Ajuste para puxar o título mais para cima */
+}
+
+.time-display,
+.stats,
+.total-questoes {
+  margin-top: auto; /* Faz com que o conteúdo fique na parte inferior do card */
+  font-size: 18px;
+  font-weight: bold;
 }
