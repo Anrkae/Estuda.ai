@@ -7,6 +7,10 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
   
@@ -19,7 +23,7 @@
     <div class="titulo">Estuda.ai</div>
   </header>
 
-  <!-- Seletor de datas fora do cabeçalho, acima dos cards -->
+  <!-- Seletor de datas -->
   <div class="date-selector">
     <i class="fa-solid fa-calendar calendar-icon" onclick="toggleDateOptions(event)"></i>
     <div class="date-options" id="date-options">
@@ -30,19 +34,16 @@
       <button class="reset-button" onclick="resetDates()">Redefinir</button>
     </div>
     <!-- Inputs de data para intervalo personalizado -->
-    <input type="date" id="startDate" style="display: none;" />
-    <input type="date" id="endDate" style="display: none;" />
+    <input type="text" id="startDate" style="display: none;" />
+    <input type="text" id="endDate" style="display: none;" />
   </div>
 
   <!-- Carrossel -->
   <div class="carousel">
-    <!-- Card 1 -->
     <div class="card">
       <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
       <div class="time-display" id="timer">00:00</div>
     </div>
-
-    <!-- Card 2 -->
     <div class="card">
       <h2><i class="fa-solid fa-chart-line"></i> Desempenho</h2>
       <div class="stats">
@@ -50,8 +51,6 @@
         Acertos: <span id="acertos">0</span>
       </div>
     </div>
-
-    <!-- Card 3 -->
     <div class="card">
       <h2><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h2>
       <div class="total-questoes" id="totalQuestoes">0</div>
@@ -59,5 +58,7 @@
   </div>
 
   <script src="assets/js/script.js"></script>
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>
