@@ -3,14 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estuda</title>
+  <title>Estuda.ai</title>
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  
   <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <!-- Cabeçalho -->
@@ -29,8 +30,7 @@
     <div class="card">
       <h2><i class="fa-solid fa-chart-line"></i> Desempenho</h2>
       <div class="stats">
-        Resolvidas: <span id="questoes">0</span><br />
-        Acertos: <span id="acertos">0</span>
+        <canvas id="performanceChart" width="300" height="100"></canvas>
       </div>
     </div>
 
