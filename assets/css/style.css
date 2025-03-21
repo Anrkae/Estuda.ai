@@ -28,10 +28,99 @@ header {
   flex: 1;
 }
 
+/* Seletor de intervalo de datas */
+.date-selector {
+  padding: 20px;
+  text-align: center;
+  background-color: #1d1d1d;
+  border-bottom: 2px solid #2a2a2a;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: #1d1d1d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #1d1d1d;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.dropdown-content button {
+  background-color: #3a3a3a;
+  color: white;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dropdown-content button:hover {
+  background-color: #616161;
+}
+
+.show {
+  display: block;
+}
+
+.reset-button {
+  width: 100%;
+  padding: 10px;
+  color: #f44336;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.reset-button:hover {
+  color: #d32f2f;
+}
+
+/* Exibição de Intervalo Personalizado */
+#custom-date-option {
+  display: none;
+  padding: 10px;
+}
+
+#custom-date input {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #1d1d1d;
+  color: white;
+  border: 1px solid #3a3a3a;
+  border-radius: 6px;
+  width: 200px;
+}
+
 /* Carrossel */
 .carousel {
   display: flex;
-  overflow-x: auto;
+  overflow-x: hidden; /* Mudança para ocultar os cards fora da área visível */
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   width: 100%;
@@ -41,11 +130,12 @@ header {
   box-sizing: border-box;
   gap: 25px;
   margin: auto;
+  scroll-behavior: smooth; /* Garantir uma transição suave ao passar de um card para o outro */
 }
 
 .card {
   scroll-snap-align: start;
-  flex: 0 0 70%;
+  flex: 0 0 100%; /* Cada card ocupará 100% da largura visível */
   background: #1d1d1d;
   padding: 20px;
   padding-top: 0;
@@ -58,40 +148,4 @@ header {
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.card h2 {
-  font-size: 18px;
-  color: #ffffff;
-}
-
-.time-display {
-  font-size: 26px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-.stats {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.total-questoes {
-  font-size: 26px;
-  margin-top: 10px;
-  font-weight: bold;
-}
-
-/* PC: blocos lado a lado */
-@media (min-width: 700px) {
-  .carousel {
-    overflow-x: hidden;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 30px 0;
-    gap: 20px;
-  }
-  .card {
-    flex: 0 0 45%;
-  }
 }
