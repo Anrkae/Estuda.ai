@@ -7,24 +7,48 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Estuda.ai</h1>
-    </header>
 
-    <main>
-        <section id="resumo-semana">
-            <h2>Resumo da Semana</h2>
-            <p>Tempo Estudado: <span id="tempo-total">0h 0min</span></p>
-            <p>Questões Resolvidas: <span id="questoes-semana">0</span></p>
-            <p>Taxa de Acertos: <span id="acertos-semana">0%</span></p>
-        </section>
+<header>
+    <h1>Estuda.ai</h1>
+</header>
 
-        <section id="acoes">
-            <button onclick="registrarEstudo()">Registrar Estudo</button>
-            <button onclick="registrarQuestoes()">Registrar Questões</button>
-        </section>
-    </main>
+<main>
+    <section>
+        <h2>Resumo da Semana</h2>
+        <div class="carousel-container">
+            <div class="carousel-card">
+                <h3>Tempo Estudado</h3>
+                <p id="tempo-total">0h 0min</p>
+            </div>
+            <div class="carousel-card">
+                <h3>Questões Resolvidas</h3>
+                <p id="questoes-semana">0</p>
+            </div>
+            <div class="carousel-card">
+                <h3>Taxa de Acertos</h3>
+                <p id="acertos-semana">0%</p>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <section>
+        <h2>Estatisticas de estudo</h2>
+        <div class="grafico-container">
+            <canvas id="graficoEstudos"></canvas>
+        </div>
+        <!-- Dropdown para selecionar o período -->
+        <select id="intervaloGrafico" onchange="atualizarResumo()">
+            <option value="7">Últimos 7 dias</option>
+            <option value="30">Últimos 30 dias</option>
+            <option value="365">Último ano</option>
+        </select>
+    </section>
+
+    <button onclick="registrarEstudo()">Registrar Estudo</button>
+    <button onclick="registrarQuestoes()">Registrar Questões</button>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
