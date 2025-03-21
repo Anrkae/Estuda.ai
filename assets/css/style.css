@@ -1,16 +1,16 @@
-/* Estilos Globais */
+/* Corpo da página */
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #141414; /* Cor escura de fundo */
-  color: #bdbdbd; /* Texto em cinza claro */
+  background: #141414;
+  color: #bdbdbd;
 }
 
 header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #1d1d1d; /* Cor de fundo do cabeçalho */
+  background-color: #1d1d1d;
   color: white;
   padding: 15px;
   font-size: 24px;
@@ -28,41 +28,35 @@ header {
   flex: 1;
 }
 
-/* Seletor de Intervalo de Datas (Dropdown) */
+/* Seletor de intervalo de datas */
 .date-selector {
   padding: 20px;
   text-align: center;
-  background-color: #1d1d1d; /* Fundo claro para o seletor */
-  border-bottom: 2px solid #2a2a2a; /* Cor da borda */
+  background-color: #1d1d1d;
+  border-bottom: 2px solid #2a2a2a;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  margin-top: 20px;
 }
 
-/* Dropdown para o botão */
-.date-selector .dropdown {
+.dropdown {
   position: relative;
   display: inline-block;
 }
 
-.date-selector .dropbtn {
+.dropbtn {
   background-color: #1d1d1d;
   color: white;
-  padding: 12px 20px;
-  font-size: 16px;
   border: none;
+  padding: 10px 15px;
+  font-size: 16px;
   cursor: pointer;
   display: flex;
   align-items: center;
 }
 
-.date-selector .dropbtn i {
-  margin-right: 10px;
-}
-
-.date-selector .dropdown-content {
+.dropdown-content {
   display: none;
   position: absolute;
   background-color: #1d1d1d;
@@ -72,25 +66,47 @@ header {
   border-radius: 8px;
 }
 
-.date-selector .dropdown-content button {
+.dropdown-content button {
   background-color: #3a3a3a;
   color: white;
-  padding: 12px 16px;
   border: none;
-  width: 100%;
+  padding: 10px;
   text-align: left;
+  width: 100%;
+  border-radius: 6px;
   cursor: pointer;
 }
 
-.date-selector .dropdown-content button:hover {
+.dropdown-content button:hover {
   background-color: #616161;
 }
 
-.date-selector .dropdown:hover .dropdown-content {
+.show {
   display: block;
 }
 
-/* Inputs do intervalo de datas (quando clicado na opção "Intervalo Personalizado") */
+.reset-button {
+  width: 100%;
+  padding: 10px;
+  color: #f44336;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.reset-button:hover {
+  color: #d32f2f;
+}
+
+/* Exibição de Intervalo Personalizado */
+#custom-date-option {
+  display: none;
+  padding: 10px;
+}
+
 #custom-date input {
   padding: 10px;
   margin: 5px 0;
@@ -123,7 +139,7 @@ header {
   padding: 20px;
   padding-top: 0;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra mais forte para dar destaque */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   min-height: 120px;
   display: flex;
@@ -135,7 +151,7 @@ header {
 
 .card h2 {
   font-size: 18px;
-  color: #ffffff; /* Título dos cards em branco */
+  color: #ffffff;
 }
 
 .time-display {
@@ -155,7 +171,7 @@ header {
   font-weight: bold;
 }
 
-/* Para telas maiores (PC) */
+/* PC: blocos lado a lado */
 @media (min-width: 700px) {
   .carousel {
     overflow-x: hidden;
