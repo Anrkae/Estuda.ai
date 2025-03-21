@@ -1,15 +1,10 @@
 // Variáveis globais
-let minutos = 0;
-let horas = 0;
+let questoesResolvidas = 0;
+let acertos = 0;
 let cronometro;
 
-const timerEl = document.getElementById('timer');
 const questoesEl = document.getElementById('questoes');
 const acertosEl = document.getElementById('acertos');
-const totalQuestoesEl = document.getElementById('totalQuestoes');
-
-let questoes = 0;
-let acertos = 0;
 
 // Funções de Timer
 function startTimer() {
@@ -43,15 +38,15 @@ function registrarQuestoes() {
   a = parseInt(a);
 
   if (!isNaN(q) && q >= 0) {
-    questoes += q;
+    questoesResolvidas += q;
   }
   if (!isNaN(a) && a >= 0) {
     acertos += a;
   }
 
-  questoesEl.textContent = questoes;
+  questoesEl.textContent = questoesResolvidas;
   acertosEl.textContent = acertos;
-  totalQuestoesEl.textContent = questoes;
+  atualizarGrafico();
 }
 
 // Funções de Data
@@ -79,37 +74,6 @@ function setDateRange(range) {
   document.getElementById('endDate').value = endDate.toISOString().split('T')[0];
 }
 
-function toggleDateOptions() {
-  const options = document.getElementById('date-options');
-  options.style.display = options.style.display === 'none' ? 'block' : 'none';
-}
-
-function toggleCalendar() {
-  const customDate = document.getElementById('custom-date');
-  customDate.style.display = customDate.style.display === 'none' ? 'block' : 'none';
-
-  if (customDate.style.display === 'block') {
-    flatpickr("#startDate", {
-      dateFormat: "Y-m-d",
-      onChange: function(selectedDates) {
-        console.log("Data Início:", selectedDates);
-      }
-    });
-
-    flatpickr("#endDate", {
-      dateFormat: "Y-m-d",
-      onChange: function(selectedDates) {
-        console.log("Data Fim:", selectedDates);
-      }
-    });
-  }
-}
-
-function resetDates() {
-  document.getElementById('startDate').value = '';
-  document.getElementById('endDate').value = '';
-}
-
 // Inicialização do gráfico com Chart.js
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
@@ -118,18 +82,29 @@ const myChart = new Chart(ctx, {
     labels: ['Acertos', 'Erros'], // Labels para o gráfico
     datasets: [{
       label: 'Desempenho',
-      data: [75, 25], // Dados de acertos e erros
+      data: [0, 0], // Dados iniciais de acertos e erros
       backgroundColor: ['#4caf50', '#f44336'], // Cores
       borderColor: ['#4caf50', '#f44336'],
       borderWidth: 1
     }]
   },
   options: {
+    indexAxis: 'y', // Barra horizontal
     responsive: true,
     scales: {
-      y: {
+      x: {
         beginAtZero: true
       }
     }
   }
 });
+
+// Atualiza o gráfico quando as questões são registradas
+function atualizarGrafico() {
+  // Calcular a quantidade de erros
+  let erros = questoesResolvidas - acertos;
+
+  // Atualizar o gráfico
+  myChart.data.datasets[0].data = [acertos, erros];
+  myChart.update();
+}
