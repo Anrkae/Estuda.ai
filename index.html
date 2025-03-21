@@ -9,8 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  <!-- Flatpickr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
   
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
@@ -20,22 +18,6 @@
     <div class="menu-icon" onclick="abrirMenu()">☰</div>
     <div class="titulo">Estuda.ai</div>
   </header>
-
-  <!-- Seletor de datas -->
-  <div class="date-selector">
-    <i class="fa-solid fa-calendar calendar-icon" onclick="toggleDateOptions()"></i>
-    <div class="date-options" id="date-options">
-      <button onclick="setDateRange('24h')">Últimas 24h</button>
-      <button onclick="setDateRange('7d')">Últimos 7 dias</button>
-      <button onclick="setDateRange('30d')">Últimos 30 dias</button>
-      <button onclick="toggleCalendar()">Intervalo Personalizado</button>
-      <button class="reset-button" onclick="resetDates()">Redefinir</button>
-    </div>
-    <div id="custom-date" style="display:none;">
-      <input type="text" id="startDate" placeholder="Data Início">
-      <input type="text" id="endDate" placeholder="Data Fim">
-    </div>
-  </div>
 
   <!-- Carrossel -->
   <div class="carousel">
