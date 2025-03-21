@@ -1,57 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estuda.ai</title>
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
-  
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <!-- Cabeçalho -->
   <header>
-    <div class="menu-icon" onclick="abrirMenu()">☰</div>
+    <div class="menu-icon">☰</div>
     <div class="titulo">Estuda.ai</div>
+    <div id="timer">00:00</div>
   </header>
 
-  <!-- Carrossel -->
   <div class="carousel">
     <div class="card">
-      <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
-      <div class="time-display" id="timer">00:00</div>
+      <h2><i class="icon">⏱️</i> Tempo</h2>
+      <div id="timer"></div>
     </div>
-
     <div class="card">
-      <h2><i class="fa-solid fa-chart-line"></i> Desempenho</h2>
-      <!-- Barras de acertos e erros -->
+      <h2><i class="icon">📊</i> Estatísticas</h2>
       <div class="bar">
-        <span class="acertos" style="width: 50%;"></span> <!-- Exemplo: 50% de acertos -->
+        <div class="acertos"></div>
+        <div class="erros"></div>
       </div>
-      <div class="bar">
-        <span class="erros" style="width: 30%;"></span> <!-- Exemplo: 30% de erros -->
-      </div>
-      <!-- Exibição das porcentagens -->
-      <div>
-        <span>50% Acertos</span> | <span>30% Erros</span>
+      <div class="percentagem">
+        <span class="acertos">0% Acertos</span>
+        <span class="erros">0% Erros</span>
       </div>
     </div>
-
     <div class="card">
-      <h2><i class="fa-solid fa-list-check"></i> Estatísticas</h2>
-      <div class="stats">
-        Total de Questões Resolvidas: <span id="totalQuestoes">0</span><br />
-        Média Diária: <span id="mediaDiaria">0</span> questões
+      <h2><i class="icon">📝</i> Desempenho</h2>
+      <div class="bar-desempenho">
+        <div class="acertos"></div>
+        <div class="erros"></div>
+      </div>
+      <div class="percentagem">
+        <span class="acertos">0% Acertos</span>
+        <span class="erros">0% Erros</span>
       </div>
     </div>
   </div>
 
-  <div class="register-questions">
+  <div class="registro-questoes">
+    <h3>Registrar Questões</h3>
     <button onclick="registrarQuestoes()">Registrar Questões</button>
+    <div>
+      <span>Total de Questões: <span id="totalQuestoes">0</span></span><br>
+      <span>Média Diária: <span id="mediaDiaria">0</span> questões</span>
+    </div>
   </div>
 
   <script src="assets/js/script.js"></script>
