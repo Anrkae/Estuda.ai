@@ -7,10 +7,6 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  
-  <!-- Flatpickr CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
-
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
   
@@ -23,30 +19,39 @@
     <div class="titulo">Estuda.ai</div>
   </header>
 
-  <!-- Seletor de datas -->
+  <!-- Seletor de intervalo de datas -->
   <div class="date-selector">
     <div class="dropdown">
-      <button class="dropbtn"><i class="fa-solid fa-calendar"></i> Intervalo de Datas</button>
+      <button class="dropbtn">
+        <i class="fa-solid fa-calendar"></i> Intervalo de datas
+      </button>
       <div class="dropdown-content">
         <button onclick="setDateRange('24h')">Últimas 24h</button>
         <button onclick="setDateRange('7d')">Últimos 7 dias</button>
         <button onclick="setDateRange('30d')">Últimos 30 dias</button>
-        <button onclick="toggleCalendarInputs()">Intervalo Personalizado</button>
+        <button id="custom-date-option">Intervalo Personalizado</button>
+        <button class="reset-button" onclick="resetDates()">Redefinir</button>
       </div>
     </div>
-    <!-- Inputs de data para intervalo personalizado -->
-    <div id="custom-date" style="display: none;">
-      <input type="text" id="startDate" placeholder="Data Início" readonly />
-      <input type="text" id="endDate" placeholder="Data Fim" readonly />
+
+    <!-- Intervalo Personalizado -->
+    <div id="custom-date-option" style="display:none;">
+      <label for="startDate">Data de início:</label>
+      <input type="date" id="startDate" />
+      <label for="endDate">Data de fim:</label>
+      <input type="date" id="endDate" />
     </div>
   </div>
 
   <!-- Carrossel -->
   <div class="carousel">
+    <!-- Card 1 -->
     <div class="card">
       <h2><i class="fa-solid fa-clock"></i> Tempo de Estudo</h2>
       <div class="time-display" id="timer">00:00</div>
     </div>
+
+    <!-- Card 2 -->
     <div class="card">
       <h2><i class="fa-solid fa-chart-line"></i> Desempenho</h2>
       <div class="stats">
@@ -54,6 +59,8 @@
         Acertos: <span id="acertos">0</span>
       </div>
     </div>
+
+    <!-- Card 3 -->
     <div class="card">
       <h2><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h2>
       <div class="total-questoes" id="totalQuestoes">0</div>
@@ -61,7 +68,5 @@
   </div>
 
   <script src="assets/js/script.js"></script>
-  <!-- Flatpickr JS -->
-  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>
