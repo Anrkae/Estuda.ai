@@ -33,21 +33,25 @@ function atualizarTimer() {
 }
 
 // Funções de Questões
-function registrarQuestoes() {
-  let q = prompt('Quantas questões resolveu?');
-  let a = prompt('Quantas acertou?');
-  q = parseInt(q);
-  a = parseInt(a);
+function registrarQuestoes(event) {
+  event.preventDefault(); // Evita o comportamento padrão de envio do formulário
 
-  if (!isNaN(q) && q >= 0) {
-    questoesResolvidas += q;
+  // Pega os valores dos inputs
+  const totalQuestoes = parseInt(document.getElementById('total-questoes').value);
+  const acertosQuestoes = parseInt(document.getElementById('acertos-questoes').value);
+
+  if (!isNaN(totalQuestoes) && totalQuestoes >= 0) {
+    questoesResolvidas += totalQuestoes;
   }
-  if (!isNaN(a) && a >= 0) {
-    acertos += a;
+  if (!isNaN(acertosQuestoes) && acertosQuestoes >= 0) {
+    acertos += acertosQuestoes;
   }
 
+  // Atualiza as estatísticas na tela
   questoesEl.textContent = questoesResolvidas;
   acertosEl.textContent = acertos;
+
+  // Atualiza as barras de progresso
   atualizarBarras();
 }
 
@@ -63,3 +67,6 @@ function atualizarBarras() {
   acertosBar.style.width = `${percentualAcertos}%`;
   errosBar.style.width = `${percentualErros}%`;
 }
+
+// Adiciona o evento de envio do formulário
+document.getElementById('form-questoes').addEventListener('submit', registrarQuestoes);
