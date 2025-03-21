@@ -2,20 +2,21 @@
 body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
-  background: #141414;
-  color: #bdbdbd;
+  background: #f5f5f5; /* Cor de fundo clara */
+  color: #333333; /* Texto escuro para contraste */
 }
 
 header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #1d1d1d;
-  color: white;
+  background-color: #ffffff; /* Cabeçalho branco */
+  color: #333333;
   padding: 15px;
   font-size: 24px;
   font-weight: bold;
   position: relative;
+  border-bottom: 1px solid #e0e0e0; /* Linha sutil separando o cabeçalho */
 }
 
 .menu-icon {
@@ -31,7 +32,7 @@ header {
 /* Carrossel */
 .carousel {
   display: flex;
-  overflow-x: hidden; /* Mudança para ocultar os cards fora da área visível */
+  overflow-x: hidden;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   width: 100%;
@@ -41,36 +42,53 @@ header {
   box-sizing: border-box;
   gap: 25px;
   margin: auto;
-  scroll-behavior: smooth; /* Garantir uma transição suave ao passar de um card para o outro */
+  scroll-behavior: smooth;
 }
 
 .card {
   scroll-snap-align: start;
-  flex: 0 0 75%; /* Cada card ocupará 75% da largura visível */
-  background: #1d1d1d;
+  flex: 0 0 75%;
+  background: #ffffff; /* Fundo claro nos cards */
   padding: 20px;
   padding-top: 0;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
   box-sizing: border-box;
   min-height: 120px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Alinha o conteúdo do card para o final */
+  justify-content: flex-end;
   align-items: center;
   text-align: center;
 }
 
 .card h2 {
-  font-size: 20px; /* Tamanho do título reduzido para não quebrar linha */
+  font-size: 20px;
   margin-bottom: 10px;
-  margin-top: 15px; /* Ajuste para puxar o título mais para cima */
+  margin-top: 15px;
+  color: #333333; /* Título escuro */
 }
 
 .time-display,
 .stats,
 .total-questoes {
-  margin-top: auto; /* Faz com que o conteúdo fique na parte inferior do card */
+  margin-top: auto;
   font-size: 18px;
   font-weight: bold;
+  color: #555555; /* Texto principal com contraste suave */
+}
+
+/* PC: blocos lado a lado */
+@media (min-width: 700px) {
+  .carousel {
+    overflow-x: hidden;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 30px 0;
+    gap: 20px;
+  }
+
+  .card {
+    flex: 0 0 45%;
+  }
 }
