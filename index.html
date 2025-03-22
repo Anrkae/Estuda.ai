@@ -4,35 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estuda.ai</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <header>
+    <!-- Botão de menu -->
+    <button id="botao-sidebar" onclick="toggleSidebar()">☰</button>
     <h1>Estuda.ai</h1>
 </header>
 
+<!-- Sidebar -->
+<div id="sidebar">
+    <h1 class="sidebar-title">Estuda.ai</h1>
+    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
+</div>
+
+<!-- Overlay para fechar ao clicar fora -->
+<div id="overlay" onclick="toggleSidebar()"></div>
+
 <main>
     <section>
-        <h2>Resumo da Semana</h2>
+        <h2><i class="fas fa-calendar-week"></i> Resumo da Semana</h2>
         <div class="carousel-container">
             <div class="carousel-card">
-                <h3>Tempo Estudado</h3>
+                <h3><i class="fa-regular fa-clock"></i> Tempo Estudado</h3>
                 <p id="tempo-total">0h 0min</p>
             </div>
             <div class="carousel-card">
-                <h3>Questões Resolvidas</h3>
+                <h3><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h3>
                 <p id="questoes-semana">0</p>
             </div>
             <div class="carousel-card">
-                <h3>Taxa de Acertos</h3>
+                <h3><i class="fa-solid fa-check"></i> Taxa de Acertos</h3>
                 <p id="acertos-semana">0%</p>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>Estatisticas de estudo</h2>
+        <h2><i class="fas fa-chart-line"></i> Estatísticas de Estudo</h2>
         <div class="grafico-container">
             <canvas id="graficoEstudos"></canvas>
         </div>
@@ -44,11 +55,14 @@
         </select>
     </section>
 
+    <!--    Botoes de registro de questoes
     <button onclick="registrarEstudo()">Registrar Estudo</button>
-    <button onclick="registrarQuestoes()">Registrar Questões</button>
+    <button onclick="registrarQuestoes()">Registrar Questões</button> -->
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>
+<script src="popup-registrar-questao.js"></script>
+
 </body>
 </html>
