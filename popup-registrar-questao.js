@@ -57,11 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
                 .popup-container.level-2 {
                     opacity: 1;
-                    transform: translateY(0);
+                    transform: translateY(95%);
                 }
                 .popup-container.level-1 {
                     opacity: 1;
-                    transform: translateY(95%);
+                    transform: translateY(0);
                 }
                 .popup-inputs {
                     width: 100%;
