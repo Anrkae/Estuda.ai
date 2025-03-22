@@ -136,9 +136,9 @@ document.addEventListener("DOMContentLoaded", () => {
         atendimentoText.addEventListener("click", changePopupLevel);
 
         const closePopupOnClickOutside = (event) => {
-            if (!popupContainer.contains(event.target) && popupContainer.classList.contains('level-2')) {
-                popupContainer.classList.remove('level-2');
-                popupContainer.classList.add('level-1');
+            if (!popupContainer.contains(event.target) && popupContainer.classList.contains('level-1')) {
+                popupContainer.classList.remove('level-1');
+                popupContainer.classList.add('level-2');
             }
         };
         window.addEventListener('click', closePopupOnClickOutside);
