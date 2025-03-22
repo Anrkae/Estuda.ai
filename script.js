@@ -15,62 +15,6 @@ function ultimos7Dias(data) {
 }
 
 function atualizarResumo() {
-    const estudosSemana = estudos.filter(e => ultimos7Dias(e.data));
-    const questoesSemana = questoes.filter(q => ultimos7Dias(q.data));
-
-    const minutosTotais = estudosSemana.reduce((soma, e) => soma + e.minutos, 0);
-    const horas = Math.floor(minutosTotais / 60);
-    const minutos = minutosTotais % 60;
-    document.getElementById('tempo-total').innerText = `${horas}h ${minutos}min`;
-
-    const totalQuestoes = questoesSemana.reduce((soma, q) => soma + q.total, 0);
-    const totalAcertos = questoesSemana.reduce((soma, q) => soma + q.acertos, 0);
-
-    document.getElementById('questoes-semana').innerText = totalQuestoes;
-    const taxa = totalQuestoes > 0 ? Math.round((totalAcertos / totalQuestoes) * 100) : 0;
-    document.getElementById('acertos-semana').innerText = `${taxa}%`;
-
-    atualizarGrafico(estudosSemana, questoesSemana);
-}
-
-function registrarEstudo() {
-    const tempo = prompt("Quanto tempo estudou? (em minutos)");
-    const minutos = parseInt(tempo);
-    if (!isNaN(minutos) && minutos > 0) {
-        estudos.push({ minutos: minutos, data: new Date().toISOString() });
-        salvarDados();
-        atualizarResumo();
-    }
-}
-
-function registrarQuestoes() {
-    const total = prompt("Quantas questões resolveu?");
-    const acertos = prompt("Quantas acertou?");
-    const t = parseInt(total);
-    const a = parseInt(acertos);
-    if (!isNaN(t) && !isNaN(a) && t > 0 && a >= 0 && a <= t) {
-        questoes.push({ total: t, acertos: a, data: new Date().toISOString() });
-        salvarDados();
-        atualizarResumo();
-    }
-}
-
-let grafico = null;
-
-function obterIntervalo() {
-    const intervalo = document.getElementById('intervaloGrafico').value;
-    return parseInt(intervalo);
-}
-
-function ultimosDias(data, dias) {
-    const hoje = new Date();
-    const diasAtras = new Date();
-    diasAtras.setDate(hoje.getDate() - dias);
-    const d = new Date(data);
-    return d >= diasAtras && d <= hoje;
-}
-
-function atualizarResumo() {
     const intervalo = obterIntervalo();  // Pega o intervalo selecionado no dropdown
 
     const estudosSemana = estudos.filter(e => ultimosDias(e.data, intervalo));
@@ -111,6 +55,21 @@ function registrarQuestoes() {
         salvarDados();
         atualizarResumo();
     }
+}
+
+let grafico = null;
+
+function obterIntervalo() {
+    const intervalo = document.getElementById('intervaloGrafico').value;
+    return parseInt(intervalo);
+}
+
+function ultimosDias(data, dias) {
+    const hoje = new Date();
+    const diasAtras = new Date();
+    diasAtras.setDate(hoje.getDate() - dias);
+    const d = new Date(data);
+    return d >= diasAtras && d <= hoje;
 }
 
 function atualizarGrafico(estudosSemana, questoesSemana, intervalo) {
@@ -236,6 +195,11 @@ function atualizarGrafico(estudosSemana, questoesSemana, intervalo) {
             }
         }
     });
+}
+
+// Funcionalidade do Sidebar
+function toggleSidebar() {
+    document.body.classList.toggle('sidebar-ativa');
 }
 
 atualizarResumo();
