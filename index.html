@@ -10,18 +10,29 @@
 <body>
 <header>
     <!-- Botão de menu -->
-    <button id="botao-sidebar" onclick="toggleSidebar()">☰</button>
-    <h1>Estuda.ai</h1>
+    <button id="toggleSidebar"><i class="fas fa-bars"></i></button>
+    <h1 id="header">Estuda.ai</h1>
 </header>
 
-<!-- Sidebar -->
-<div id="sidebar">
-    <h1 class="sidebar-title">Estuda.ai</h1>
-    <a href="index.html"><i class="fas fa-home"></i> Inicio</a>
-</div>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        
+        <div class="top-bar">
+            <!-- Botão para abrir/fechar sidebar -->
+            <button id="toggleSidebarInside"><i class="fas fa-bars"></i></button>
+            <h1 id="header">Estuda.ai</h1>
+        </div>
+        
+        <div class="sidebarButtons">
+            <button onclick="window.location.href='index.html'" class="sidebarBtn"><i class="fa-solid fa-house"></i> Inicio</button>
+            <button onclick="window.location.href='disciplinas.html'" class="sidebarBtn" ><i class="fa-regular fa-pen-to-square"></i> Disciplinas</button>
+            <button onclick="window.location.href='cronograma.html'" class="sidebarBtn" ><i class="fa-regular fa-calendar"></i> Cronograma</button>
+        </div>
 
-<!-- Overlay para fechar ao clicar fora -->
-<div id="overlay" onclick="toggleSidebar()"></div>
+    </div>
+    
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
 
 <main>
     <section>
@@ -54,7 +65,7 @@
             <option value="365">Último ano</option>
         </select>
     </section>
-
+    
     <!--    Botoes de registro de questoes
     <button onclick="registrarEstudo()">Registrar Estudo</button>
     <button onclick="registrarQuestoes()">Registrar Questões</button> -->
