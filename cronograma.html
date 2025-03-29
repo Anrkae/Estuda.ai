@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cronograma de Estudos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f1f0ea;
+            padding: 20px;
+        }
+    
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: #f1f0ea;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.025);
+            z-index: 10;
+        }
+    
+        #header {
+            font-size: 22px;
+            color: #542aa3;
+            padding-top: 15px;
+            padding-left: 10px;
+        }
+    
+        #headerInside {
+            font-size: 22px;
+            color: #542aa3;
+            margin-top: 10px;
+            margin-bottom: 50px;
+        }
+    
+        .sidebar {
+              display: flex;
+              flex-direction: column; /* Organiza os itens verticalmente */
+              height: 100vh; /* Faz a sidebar ocupar toda a altura da tela */
+              position: fixed;
+              top: 0;
+              left: -290px; /* Oculta a sidebar inicialmente */
+              width: 250px;
+              height: 100%;
+              background-color: #f1f0ea;
+              color: #474c5f;
+              transition: left 0.3s ease;
+              padding: 1rem;
+              padding-top: 0px;
+              z-index: 12;
+        }
+    
+        .top-bar {
+            display: flex;
+            align-items: center; /* Alinha o botão e o h1 horizontalmente no centro verticalmente */
+            margin-bottom: 10px; /* Espaço entre a barra superior e o conteúdo abaixo */
+        }
+    
+        /* Classe para mostrar a sidebar */
+        .sidebar.active {
+            left: 0;
+        }
+
+        /* Sidebar aberta */
+        #toggleSidebar.active {
+            color: black;
+            transition: all 1s ease;
+        }
+    
+        .sidebarBtn {
+            background: none;
+            color: #474c5f;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 0px;
+            gap: 10px;
+            display: flex;
+        }
+    
+        .sidebarButtons {
+            margin-top: 20px;
+        }
+    
+        /* Estuda.ai */
+        #header.active {
+            color: black;
+            transition: all 1s ease;
+        }
+
+        /* Estilos do Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);  /* Cor do fundo do overlay */
+            z-index: 11;  /* Coloca o overlay acima de outros elementos */
+            opacity: 0;
+            pointer-events: none;  /* Não interage com o mouse até ser visível */
+            transition: opacity 0.3s ease-in-out;  /* Suaviza a transição */
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto;  /* Permite interação com o overlay quando visível */
+        }
+
+        h1 {
+            text-align: center;
+            color: #474c5f;
+        }
+
+        .config {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+        }
+    
+        .blocoCriar {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            padding: 20px;
+            cursor: pointer;
+            background: #f9f9f9; 
+        }
+    
+        .segBloco {
+            display: flex;
+        }
+
+        input, button {
+            font-family: 'Montserrat';
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin: 5px;
+        }
+
+        button {
+            background-color: #474c5f;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #542aa3;
+        }
+
+        .carousel {
+            margin-bottom: 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 20px;
+        }
+
+        table {
+            margin-top: 50px;
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            white-space: nowrap;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            width: 120px;
+            word-wrap: break-word;
+        }
+
+        th {
+            background: #542aa3;
+            color: white;
+        }
+
+        td {
+            cursor: pointer;
+        }
+
+        td select {
+            width: 100%;
+            border: none;
+            padding: 5px;
+            background: #fff;
+            font-family: 'Montserrat';
+        }
+        
+        .registro-link {
+            color: #542aa3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>    
+    <header>
+        <!-- Botão para abrir/fechar sidebar -->
+        <button id="toggleSidebar"><i class="fas fa-bars"></i></button>
+        <h1 id="header">Estuda.ai</h1>
+    </header>
+    
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar">
+        
+        <div class="top-bar">
+            <!-- Botão para abrir/fechar sidebar -->
+            <button id="toggleSidebarInside"><i class="fas fa-bars"></i></button>
+            <h1 id="header">Estuda.ai</h1>
+        </div>
+        
+        <div class="sidebarButtons">
+            <button onclick="window.location.href='index.html'" class="sidebarBtn"><i class="fa-solid fa-house"></i> Inicio</button>
+            <button onclick="window.location.href='disciplinas.html'" class="sidebarBtn" ><i class="fa-regular fa-pen-to-square"></i> Disciplinas</button>
+            <button onclick="window.location.href='cronograma.html'" class="sidebarBtn" ><i class="fa-regular fa-calendar"></i> Cronograma</button>
+        </div>
+
+    </div>
+    
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <div class="carousel">
+        <table id="cronograma">
+            <thead>
+                <tr>
+                    <th>Horário</th>
+                    <th>Segunda</th>
+                    <th>Terça</th>
+                    <th>Quarta</th>
+                    <th>Quinta</th>
+                    <th>Sexta</th>
+                    <th>Sábado</th>
+                    <th>Domingo</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>    
+
+    <section id="blocoCriar" class="blocoCriar">
+        
+        <div class="segBloco">
+            <h2>Criar Cronograma</h2>
+            <button onclick="alternarVisibilidade()" id="alternarVisibilidade">+</button>
+        </div>        
+        
+        <div class="config">
+            <label>Disciplinas por dia:</label>
+            <input type="number" id="disciplinasPorDia" value="3" min="1">
+            
+            <label>Tempo total por dia (min):</label>
+            <input type="number" id="tempoTotal" value="180" min="10">
+            
+            <label>Tempo de descanso (min):</label>
+            <input type="number" id="descanso" value="10" min="0">
+            
+            <button onclick="gerarCronograma()">Gerar Cronograma</button>
+        </div>
+    </section>
+
+    <script>
+                // Sidebar
+        const sidebar = document.getElementById('sidebar');          // Sidebar
+        const toggleBtn = document.getElementById('toggleSidebar');  // Botão no cabeçalho
+        const toggleBtnInside = document.getElementById('toggleSidebarInside');  // Botão dentro da sidebar
+        const toggleHeader = document.getElementById('header');  // Estuda.ai
+        const overlay = document.getElementById('overlay');  // Overlay
+    
+        // Alternar a sidebar e aplicar classe ativa ao botão
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita fechar ao clicar no botão
+            sidebar.classList.toggle('active');  // Abre/fecha a sidebar
+            toggleBtn.classList.toggle('active'); // Altera a aparência do botão
+            toggleHeader.classList.toggle('active'); // Altera a aparência do cabeçalho
+        
+            // Alterna a visibilidade do overlay
+            if (sidebar.classList.contains('active')) {
+                overlay.classList.add('active');  // Exibe o overlay quando a sidebar estiver aberta
+            } else {
+                overlay.classList.remove('active');  // Esconde o overlay quando a sidebar estiver fechada
+            }
+        });
+    
+        // Alternar a sidebar e aplicar classe ativa ao botão dentro da sidebar
+        toggleBtnInside.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita fechar ao clicar no botão
+            sidebar.classList.toggle('active');  // Abre/fecha a sidebar
+            toggleBtn.classList.toggle('active'); // Altera a aparência do botão
+            toggleHeader.classList.toggle('active'); // Altera a aparência do cabeçalho
+        
+            // Alterna a visibilidade do overlay
+            if (sidebar.classList.contains('active')) {
+                overlay.classList.add('active');  // Exibe o overlay quando a sidebar estiver aberta
+            } else {
+                overlay.classList.remove('active');  // Esconde o overlay quando a sidebar estiver fechada
+            }
+        });
+        
+        // Fechar a sidebar ao clicar no overlay
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            toggleBtn.classList.remove('active');
+            toggleHeader.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+    
+        // Minimizar o bloco
+        function alternarVisibilidade() {
+            const configSection = document.querySelector('.config');
+            if (configSection.style.display === 'none' || configSection.style.display === '') {
+                configSection.style.display = 'flex'; 
+                configSection.style.flexDirection = 'column'; 
+            } else {
+                configSection.style.display = 'none'; 
+            }
+            
+            const botao = document.getElementById('alternarVisibilidade');
+            if (botao.textContent === '+') {
+                botao.textContent = '-';
+            } else {
+                botao.textContent = '+';
+            }
+        }
+    
+        // Função para carregar as configurações salvas
+        function carregarConfiguracoes() {
+            let dados = JSON.parse(localStorage.getItem("cronograma")) || {};
+            
+            // Verificar se as configurações foram salvas
+            if (dados.configuracoes) {
+                document.getElementById('disciplinasPorDia').value = dados.configuracoes.disciplinasPorDia || 3; // Padrão 3 se não houver valor salvo
+                document.getElementById('tempoTotal').value = dados.configuracoes.tempoTotal || 180; // Padrão 180 se não houver valor salvo
+                document.getElementById('descanso').value = dados.configuracoes.tempoDescanso || 10; // Padrão 10 se não houver valor salvo
+            } else {
+                // Se não houver dados no localStorage, usar os valores padrão diretamente
+                document.getElementById('disciplinasPorDia').value = 3;
+                document.getElementById('tempoTotal').value = 180;
+                document.getElementById('descanso').value = 10;
+            }
+        }
+
+        // Função para gerar o cronograma
+        function gerarCronograma() {
+            const disciplinasPorDia = parseInt(document.getElementById('disciplinasPorDia').value);
+            const tempoTotal = parseInt(document.getElementById('tempoTotal').value);
+            const tempoDescanso = parseInt(document.getElementById('descanso').value);
+            const tempoPorDisciplina = Math.floor((tempoTotal - (disciplinasPorDia - 1) * tempoDescanso) / disciplinasPorDia);
+            
+            let tbody = document.querySelector("#cronograma tbody");
+            tbody.innerHTML = ""; 
+
+            let disciplinas = JSON.parse(localStorage.getItem('disciplinas')) || [];
+
+            if (disciplinas.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" style="text-align: center;">
+                            <a href="disciplinas.html" class="registro-link">Registrar disciplinas</a>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            for (let i = 0; i < disciplinasPorDia; i++) {
+                let row = document.createElement("tr");
+                let horarioCell = document.createElement("td");
+                horarioCell.textContent = `${tempoPorDisciplina} min`;
+                row.appendChild(horarioCell);
+
+                for (let j = 0; j < 7; j++) {
+                    let cell = document.createElement("td");
+                    let select = document.createElement("select");
+                    select.dataset.index = `${i}-${j}`;
+
+                    let optionDescanso = document.createElement("option");
+                    optionDescanso.value = "Descanso";
+                    optionDescanso.textContent = "Desc";
+                    select.appendChild(optionDescanso);
+
+                    disciplinas.forEach(disciplina => {
+                        let option = document.createElement("option");
+                        option.value = disciplina.nome;
+                        option.textContent = disciplina.nome.substring(0, 3).toUpperCase();
+                        select.appendChild(option);
+                    });
+
+                    select.addEventListener("change", salvarCronograma);
+                    cell.appendChild(select);
+                    row.appendChild(cell);
+                }
+
+                tbody.appendChild(row);
+
+                if (i < disciplinasPorDia - 1) {
+                    let rowDescanso = document.createElement("tr");
+                    let descansoCell = document.createElement("td");
+                    descansoCell.textContent = `${tempoDescanso} min`;
+                    rowDescanso.appendChild(descansoCell);
+
+                    for (let j = 0; j < 7; j++) {
+                        let cell = document.createElement("td");
+                        cell.textContent = "Descanso";
+                        rowDescanso.appendChild(cell);
+                    }
+                    
+                    tbody.appendChild(rowDescanso);
+                }
+            }
+
+            // Salvar as configurações e cronograma automaticamente após gerar
+            salvarCronograma();
+        }
+
+        // Função para salvar o cronograma
+        function salvarCronograma() {
+            const disciplinasPorDia = parseInt(document.getElementById('disciplinasPorDia').value);
+            const tempoTotal = parseInt(document.getElementById('tempoTotal').value);
+            const tempoDescanso = parseInt(document.getElementById('descanso').value);
+
+            let dados = {
+                configuracoes: {
+                    disciplinasPorDia: disciplinasPorDia,
+                    tempoTotal: tempoTotal,
+                    tempoDescanso: tempoDescanso
+                },
+                cronograma: {}
+            };
+
+            document.querySelectorAll("#cronograma tbody select").forEach(select => {
+                dados.cronograma[select.dataset.index] = select.value;
+            });
+
+            localStorage.setItem("cronograma", JSON.stringify(dados));
+        }
+
+        // Carregar as configurações ao carregar a página
+        window.onload = function() {
+            carregarConfiguracoes();
+            gerarCronograma(); // Gerar o cronograma com as configurações carregadas
+        };
+    </script>
+
+</body>
+</html>
