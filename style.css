@@ -8,7 +8,7 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
     background-color: #eceae2;  /* Cor de fundo da página */
     color: #333;
     padding: 0;
@@ -22,7 +22,7 @@ header {
     left: 0;
     right: 0;
     height: 60px;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 1);
     display: flex;
     align-items: center;
     padding: 0 1rem;
@@ -36,74 +36,107 @@ h1 {
     margin: 0;
 }
 
-/* Botão de menu dentro do cabeçalho */
-#botao-sidebar {
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    color: #6735bc;
-    cursor: pointer;
-}
+        .sidebar {
+              display: flex;
+              flex-direction: column; /* Organiza os itens verticalmente */
+              height: 100vh; /* Faz a sidebar ocupar toda a altura da tela */
+              position: fixed;
+              top: 0;
+              left: -290px; /* Oculta a sidebar inicialmente */
+              width: 250px;
+              height: 100%;
+              background-color: #f1f0ea;
+              color: #474c5f;
+              transition: left 0.3s ease;
+              padding: 1rem;
+              padding-top: 0px;
+              z-index: 12;
+        }
+    
+        .top-bar {
+            display: flex;
+            align-items: center; /* Alinha o botão e o h1 horizontalmente no centro verticalmente */
+            margin-bottom: 10px; /* Espaço entre a barra superior e o conteúdo abaixo */
+        }
+    
+        /* Classe para mostrar a sidebar */
+        .sidebar.active {
+            left: 0;
+        }
 
-/* Sidebar */
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: -220px;
-    width: 220px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    transition: left 0.3s ease;
-    padding-top: 4rem;
-    z-index: 11; /* Maior que o botão */
-}
+        /* Sidebar aberta */
+        #toggleSidebar.active {
+            color: black;
+            transition: all 1s ease;
+        }
+    
+        .sidebarBtn {
+            background: none;
+            color: #474c5f;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 0px;
+            gap: 10px;
+            padding-top: 0px;
+            display: flex;
+        }
+    
+        .sidebarButtons {
+            margin-top: 20px;
+        }
+    
+        /* Estuda.ai */
+        #header.active {
+            color: black;
+            transition: all 1s ease;
+        }
 
-.sidebar-title {
-    text-align: center;
-    font-size: 26px;
-    margin-bottom: 25px;
-    margin-top: 0px;
-}
+        /* Estilos do Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);  /* Cor do fundo do overlay */
+            z-index: 11;  /* Coloca o overlay acima de outros elementos */
+            opacity: 0;
+            pointer-events: none;  /* Não interage com o mouse até ser visível */
+            transition: opacity 0.3s ease-in-out;  /* Suaviza a transição */
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto;  /* Permite interação com o overlay quando visível */
+        }
 
-#sidebar a {
-    display: block;
-    padding: 1rem;
-    color: #6735bc;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s;
-}
-
-#sidebar a:hover {
-    background-color: rgba(103, 53, 188, 0.1);
-}
-
-/* Overlay */
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.3);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-}
-
-/* Sidebar ativa */
-.sidebar-ativa #sidebar {
-    left: 0;
-}
-
-.sidebar-ativa #overlay {
-    opacity: 1;
-    visibility: visible;
-}
-
-
+        .primeiro-bloco {
+            padding-top: 25px;
+        }
+    
+        section {
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+    
+        /* Botão de menu dentro do cabeçalho */
+        #toggleSidebar {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #6735bc;
+            cursor: pointer;
+            z-index: 15;
+        }
+    
+        #toggleSidebarInside {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: #6735bc;
+            cursor: pointer;
+            z-index: 15;
+        }
 main {
     margin-top: 60px; /* Espaço para o cabeçalho fixo */
     padding: 1rem;
@@ -137,6 +170,7 @@ p {
 }
 
 button {
+    font-family: 'Montserrat';
     background: #474c5f;  /* Cor do botão */
     border: none;
     color: white;
