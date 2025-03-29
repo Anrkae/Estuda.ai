@@ -1,3 +1,48 @@
+    // Sidebar
+    const sidebar = document.getElementById('sidebar');          // Sidebar
+    const toggleBtn = document.getElementById('toggleSidebar');  // Botão no cabeçalho
+    const toggleBtnInside = document.getElementById('toggleSidebarInside');  // Botão dentro da sidebar
+    const toggleHeader = document.getElementById('header');  // Estuda.ai
+    const overlay = document.getElementById('overlay');  // Overlay
+
+    // Alternar a sidebar e aplicar classe ativa ao botão
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita fechar ao clicar no botão
+        sidebar.classList.toggle('active');  // Abre/fecha a sidebar
+        toggleBtn.classList.toggle('active'); // Altera a aparência do botão
+        toggleHeader.classList.toggle('active'); // Altera a aparência do cabeçalho
+    
+        // Alterna a visibilidade do overlay
+        if (sidebar.classList.contains('active')) {
+            overlay.classList.add('active');  // Exibe o overlay quando a sidebar estiver aberta
+        } else {
+            overlay.classList.remove('active');  // Esconde o overlay quando a sidebar estiver fechada
+        }
+    });
+
+    // Alternar a sidebar e aplicar classe ativa ao botão dentro da sidebar
+    toggleBtnInside.addEventListener('click', (e) => {
+        e.stopPropagation(); // Evita fechar ao clicar no botão
+        sidebar.classList.toggle('active');  // Abre/fecha a sidebar
+        toggleBtn.classList.toggle('active'); // Altera a aparência do botão
+        toggleHeader.classList.toggle('active'); // Altera a aparência do cabeçalho
+    
+        // Alterna a visibilidade do overlay
+        if (sidebar.classList.contains('active')) {
+            overlay.classList.add('active');  // Exibe o overlay quando a sidebar estiver aberta
+        } else {
+            overlay.classList.remove('active');  // Esconde o overlay quando a sidebar estiver fechada
+        }
+    });
+    
+    // Fechar a sidebar ao clicar no overlay
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        toggleBtn.classList.remove('active');
+        toggleHeader.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
 let estudos = JSON.parse(localStorage.getItem('estudos')) || [];
 let questoes = JSON.parse(localStorage.getItem('questoes')) || [];
 
@@ -56,6 +101,13 @@ function registrarQuestoes() {
         atualizarResumo();
     }
 }
+
+let disciplinas = JSON.parse(localStorage.getItem('disciplinas')) || [];
+// Exemplo: mostrar num dropdown
+disciplinas.forEach(d => {
+    console.log("Disciplina:", d.nome);
+    console.log("Tópicos:", d.topicos);
+});
 
 let grafico = null;
 
@@ -151,22 +203,23 @@ function atualizarGrafico(estudosSemana, questoesSemana, intervalo) {
                     data: minutosPorDia,
                     fill: false,
                     borderColor: 'rgba(76, 175, 80, 0.6)',
-                    borderWidth: 2,
+                    borderWidth: 3,
                     tension: 0.1,
-                    pointRadius: 2,
-                    pointBackgroundColor: 'rgba(76, 175, 80, 0.8)',
+                    pointRadius: 3.5,
+                    pointBackgroundColor: 'rgba(76, 175, 80, 1)',
                     pointBorderColor: 'rgba(76, 175, 80, 1)',
                     lineTension: 0.4
                 },
                 {
+                    
                     label: 'Questões Resolvidas',
                     data: questoesPorDia,
                     fill: false,
                     borderColor: 'rgba(33, 150, 243, 0.6)',
-                    borderWidth: 2,
+                    borderWidth: 3,
                     tension: 0.1,
-                    pointRadius: 2,
-                    pointBackgroundColor: 'rgba(33, 150, 243, 0.8)',
+                    pointRadius: 3.5,
+                    pointBackgroundColor: 'rgba(33, 150, 243, 1)',
                     pointBorderColor: 'rgba(33, 150, 243, 1)',
                     lineTension: 0.4
                 }
@@ -185,7 +238,8 @@ function atualizarGrafico(estudosSemana, questoesSemana, intervalo) {
                 legend: {
                     position: 'bottom',
                     labels: {
-                        boxWidth: 12,
+                       
+ boxWidth: 12,
                         padding: 10,
                         font: {
                             size: 12
@@ -195,11 +249,6 @@ function atualizarGrafico(estudosSemana, questoesSemana, intervalo) {
             }
         }
     });
-}
-
-// Funcionalidade do Sidebar
-function toggleSidebar() {
-    document.body.classList.toggle('sidebar-ativa');
 }
 
 atualizarResumo();
