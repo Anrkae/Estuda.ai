@@ -1,0 +1,54 @@
+      body { /* Adicionado para visualização */
+        background-color: #eee;
+        padding: 20px;
+      }
+      .bloco {
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente */
+        color: black; /* Cor do texto padrão */
+        border-radius: 8px;
+        margin-bottom: 10px; /* Espaço entre blocos, se houver mais */
+        overflow: hidden; /* Necessário para a transição de altura funcionar bem */
+      }
+      .tituloBloco {
+        margin: 0 0 10px 0; /* Ajusta margem do título */
+        cursor: pointer; /* Indica que é clicável */
+        font-size: 1.2em;
+        font-weight: bold;
+        /* Opcional: Adiciona um indicador visual */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      /* Estilo do indicador (seta) */
+      .tituloBloco::after {
+        content: '▲'; /* Seta para cima (minimizado) */
+        font-size: 0.8em;
+        transition: transform 0.3s ease; /* Anima a rotação da seta */
+      }
+
+      .conteudo-bloco {
+        /* Estilos para a animação suave */
+        max-height: 500px; /* Altura máxima esperada para o conteúdo */
+        overflow: hidden;
+        transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.4s ease-out;
+        opacity: 1;
+        margin-top: 0; /* Garante que não haja margem superior quando visível */
+      }
+
+      /* Estilos quando o bloco está minimizado */
+      .bloco.minimizado .conteudo-bloco {
+        max-height: 0;
+        opacity: 0;
+        margin-top: -10px; /* Compensa o padding/margem se necessário */
+        /* Não é mais necessário definir display: none com max-height */
+      }
+       /* Gira a seta quando minimizado */
+      .bloco.minimizado .tituloBloco::after {
+         transform: rotate(180deg); /* Seta para baixo */
+      }
+
+      .conteudo-bloco p {
+        margin: 5px 0; /* Espaçamento interno dos itens */
+        color: #333; /* Cor diferente para o conteúdo, se desejar */
+      }
