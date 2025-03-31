@@ -1,0 +1,378 @@
+/* === Importação de Fonte === */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+/* === Estilos Gerais === */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f1f0ea;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: 70px; /* Espaço para o header fixo */
+}
+
+.minimizado .conteudo-bloco {
+    display: none;
+} /* Minimizar o bloco */
+
+.tituloBloco {
+    margin-top: 0px;
+    margin-bottom: -3px;
+    text-align: left;
+}
+
+h2, h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600; /* Um pouco mais de peso */
+}
+
+h2 {
+    font-size: 1.6rem; /* Tamanho maior */
+}
+
+h3 {
+    font-size: 1.3rem;
+}
+
+.subTitulo {
+    padding-left: 25px;
+    font-size: 1.3rem;
+    text-align: left;
+}
+
+/* === Container Principal === */
+.container-principal {
+    padding: 20px;
+    flex-grow: 1;
+    max-width: 1200px; /* Limita largura máxima em telas grandes */
+    margin: 0 auto; /* Centraliza */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* === Painel de Configuração === */
+.config-geracao {
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-bottom: 0px;
+    padding: 25px; /* Mais padding */
+    margin-bottom: 10px; /* Mais espaço */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra um pouco mais pronunciada */
+    border-radius: 12px; /* Bordas mais arredondadas */
+}
+
+.input-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 12px 15px; /* Ajuste no espaçamento */
+    align-items: center;
+    margin-bottom: 20px; /* Mais espaço */
+}
+
+.input-grid label {
+    font-size: 0.9rem; /* Tamanho relativo */
+    color: #444; /* Cor um pouco mais escura */
+    text-align: right;
+    font-weight: 500; /* Peso médio */
+}
+
+.input-grid input[type="number"] {
+    padding: 10px; /* Mais padding */
+    border: 1px solid #ccc;
+    border-radius: 6px; /* Bordas consistentes */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif; /* Garante a fonte */
+}
+
+#botao-gerar {
+    display: block;
+    width: auto; /* Largura automática */
+    min-width: 200px; /* Largura mínima */
+    margin: 25px auto 0; /* Centraliza com mais margem */
+    padding: 12px 25px; /* Mais padding */
+    background-color: #6735bc; /* Roxo do header */
+    color: white;
+    border: none;
+    border-radius: 25px; /* Botão "pill" */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#botao-gerar:hover {
+    background-color: #512a97; /* Roxo mais escuro */
+}
+#botao-gerar:active {
+    transform: scale(0.98); /* Efeito de clique */
+}
+
+#status-geracao {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #ff7043;
+    min-height: 18px;
+    margin-top: 15px; /* Mais espaço */
+    font-weight: 500;
+}
+
+/* === Lista de Disciplinas e Drag/Drop === */
+.disciplinas-selecao {
+    margin-bottom: 10px; /* Reduzido por causa do texto abaixo */
+    min-height: 60px;
+    max-height: 35vh; /* Limite flexível */
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 8px; /* Bordas consistentes */
+    }
+
+.disciplina-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px; /* Aumenta padding vertical */
+    margin-bottom: 6px; /* Espaçamento consistente */
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: grab;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
+    touch-action: none;
+}
+
+.disciplina-item:hover {
+    background-color: #f5f5f5;
+    border-color: #ccc;
+}
+
+.disciplina-item.dragging {
+    opacity: 0.8; /* Menos transparente */
+    background-color: #e8eaf6; /* Azul claro */
+    cursor: grabbing;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: #c5cae9; /* Azul mais forte */
+}
+
+.disciplina-item label {
+    margin-left: 10px; /* Mais espaço */
+    font-size: 0.9rem;
+    flex-grow: 1;
+    color: #333;
+}
+/* Estilo para o checkbox */
+.disciplina-item input[type="checkbox"] {
+    accent-color: #6735bc; /* Cor do check (navegadores modernos) */
+    width: 16px;
+    height: 16px;
+}
+
+
+.drop-placeholder {
+    height: 45px; /* Altura consistente com item + margem */
+    background-color: rgba(103, 53, 188, 0.08);
+    border: 1.5px dashed #a488d1; /* Roxo mais claro */
+    margin: 6px 0;
+    border-radius: 6px;
+}
+
+/* === Carrossel === */
+.carrossel-container {
+    position: relative;
+    margin: 30px 0; /* Mais margem */
+}
+
+#carrossel-wrapper {
+    background-color: rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    width: 100%;
+    border-radius: 12px; /* Bordas consistentes */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#cronograma-dias-container {
+    display: flex;
+    width: 700%;
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Animação mais suave */
+    flex-wrap: nowrap;
+}
+
+.dia-container {
+    width: calc(100% / 7);
+    box-sizing: border-box;
+    padding: 20px; /* Mais padding interno */
+    flex-shrink: 0;
+    border-right: 1px solid #f0f0f0; /* Linha divisória sutil */
+    min-height: 200px; /* Altura mínima para dias vazios */
+}
+
+.dia-container:last-child {
+    border-right: none;
+}
+
+.dia-container h4 {
+    margin-top: 0;
+    margin-bottom: 20px; /* Mais espaço */
+    text-align: center;
+    color: #6735bc;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 12px;
+    font-size: 1.1rem; /* Ajuste tamanho */
+    font-weight: 600;
+}
+
+.lista-eventos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.evento-item {
+    border-radius: 6px;
+    padding: 12px 15px; /* Mais padding */
+    margin-bottom: 12px; /* Mais espaço */
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border: 1px solid transparent; /* Borda base */
+}
+
+.evento-estudo {
+    background-color: #f3e5f5; /* Lilás mais claro */
+    border-left: 5px solid #ab47bc; /* Roxo mais vibrante */
+    border-color: #e1bee7; /* Borda geral sutil */
+}
+
+.evento-descanso {
+    background-color: #e0f2f1; /* Verde-água */
+    border-left: 5px solid #26a69a; /* Verde mais escuro */
+    text-align: center;
+    border-color: #b2dfdb; /* Borda geral sutil */
+    color: #004d40; /* Texto mais escuro */
+}
+.evento-descanso strong {
+    font-weight: 500; /* Menos peso para "Descanso" */
+}
+
+
+.evento-item strong {
+    display: block;
+    font-size: 1rem; /* Maior */
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: #333; /* Cor base */
+}
+.evento-estudo strong {
+     color: #7b1fa2; /* Cor roxa */
+}
+
+.evento-item span {
+    font-size: 0.8rem;
+    color: #555;
+    display: block;
+}
+
+/* Botões do Carrossel */
+.botao-carrossel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff; /* Fundo branco */
+    color: #6735bc; /* Roxo */
+    border: 1px solid #e0e0e0; /* Borda sutil */
+    border-radius: 50%;
+    width: 44px; /* Pouco maior */
+    height: 44px;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.botao-carrossel:hover {
+    background-color: #6735bc;
+    color: white;
+    border-color: #6735bc;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.botao-carrossel:disabled {
+    background-color: #f5f5f5;
+    color: #bdbdbd;
+    cursor: not-allowed;
+    box-shadow: none;
+    border-color: #e0e0e0;
+}
+
+#botao-anterior { left: -22px; } /* Metade da largura para fora */
+#botao-proximo { right: -22px; }
+
+/* === Botão Salvar === */
+.botao-salvar-container {
+    text-align: center;
+    margin-top: 30px; /* Mais espaço */
+    margin-bottom: 20px; /* Espaço inferior */
+}
+
+#botao-salvar {
+    padding: 12px 30px;
+    background-color: #4caf50; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 25px; /* "Pill" */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+#botao-salvar:hover {
+    background-color: #43a047; /* Verde mais escuro */
+}
+#botao-salvar:active {
+    transform: scale(0.98);
+}
+
+#status-salvar {
+    text-align: center;
+    margin-top: 15px;
+    color: #4caf50; /* Verde */
+    font-weight: 600; /* Bold */
+    min-height: 18px;
+    font-size: 0.9rem;
+}
+
+/* === Responsividade === */
+@media (max-width: 768px) {
+    body { padding-top: 60px; /* Ajuste para header menor se necessário */ }
+
+    .container-principal {
+        padding: 15px;
+    }
+
+    .input-grid { grid-template-columns: 1fr; gap: 8px; }
+    .input-grid label { text-align: left; margin-bottom: 2px; font-size: 0.85rem; }
+    #botao-gerar { width: 90%; padding: 10px 20px; font-size: 0.95rem; }
+
+    #botao-anterior { left: 5px; width: 38px; height: 38px; font-size: 18px;}
+    #botao-proximo { right: 5px; width: 38px; height: 38px; font-size: 18px;}
+
+    .dia-container h4 { font-size: 1rem; }
+    .evento-item { font-size: 0.85rem; padding: 10px; margin-bottom: 10px; }
+    .evento-item strong { font-size: 0.9rem; }
+    .evento-item span { font-size: 0.75rem; }
+
+     #botao-salvar { width: 80%; font-size: 0.95rem; padding: 10px 20px; }
+}
+
+@media (max-width: 480px) {
+    #botao-anterior { width: 35px; height: 35px; left: 2px;}
+    #botao-proximo { width: 35px; height: 35px; right: 2px;}
+  }
