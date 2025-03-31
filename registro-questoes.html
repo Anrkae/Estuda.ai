@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Questões e Estudo</title>
+    <link rel="stylesheet" href="style.css"> <!-- Caso tenha um arquivo externo para o CSS -->
+    <style>
+        /* Estilos Gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .box {
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 45%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #6735bc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5a2d9b;
+        }
+
+        #status {
+            margin-top: 20px;
+            font-size: 16px;
+            color: green;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .box {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Botão de menu -->
+        <button id="botao-sidebar" onclick="toggleSidebar()">☰</button>
+        <h1>Estuda.ai</h1>
+    </header>
+    
+    <div class="container">
+        <!-- Caixa de Registro de Tempo de Estudo -->
+        <div class="box">
+            <h1>Registrar Tempo de Estudo</h1>
+            <form id="form-estudo">
+                <div class="input-group">
+                    <label for="tempo-estudo">Tempo de Estudo (em minutos):</label>
+                    <input type="number" id="tempo-estudo" required min="1" placeholder="Digite o tempo de estudo">
+                </div>
+                <button type="submit">Registrar Estudo</button>
+            </form>
+            <p id="status-estudo"></p>
+        </div>
+
+        <!-- Caixa de Registro de Questões -->
+        <div class="box">
+            <h1>Registrar Questões Resolvidas</h1>
+            <form id="form-questoes">
+                <div class="input-group">
+                    <label for="total-questoes">Total de Questões Resolvidas:</label>
+                    <input type="number" id="total-questoes" required min="1" placeholder="Digite o total de questões">
+                </div>
+                <div class="input-group">
+                    <label for="acertos">Número de Acertos:</label>
+                    <input type="number" id="acertos" required min="0" placeholder="Digite o número de acertos">
+                </div>
+                <button type="submit">Registrar Questões</button>
+            </form>
+            <p id="status-questoes"></p>
+        </div>
+    </div>
+
+    <script>
+        // Registro de Estudo
+        let estudos = JSON.parse(localStorage.getItem('estudos')) || [];
+        let questoes = JSON.parse(localStorage.getItem('questoes')) || [];
+
+        document.getElementById('form-estudo').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const tempoEstudo = document.getElementById('tempo-estudo').value;
+            
+            // Validar o tempo de estudo
+            if (tempoEstudo <= 0) {
+                alert('Por favor, insira um valor válido para o tempo de estudo.');
+                return;
+            }
+
+            const dataAtual = new Date().toISOString();
+
+            // Registrar tempo de estudo
+            estudos.push({
+                minutos: parseInt(tempoEstudo),
+                data: dataAtual
+            });
+
+            // Salvar no localStorage
+            localStorage.setItem('estudos', JSON.stringify(estudos));
+
+            // Exibir status de sucesso
+            document.getElementById('status-estudo').innerText = 'Tempo de estudo registrado com sucesso!';
+            document.getElementById('form-estudo').reset();  // Limpar o campo de tempo
+        });
+
+        // Registro de Questões
+        document.getElementById('form-questoes').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const totalQuestoes = document.getElementById('total-questoes').value;
+            const acertos = document.getElementById('acertos').value;
+            
+            // Validar entradas
+            if (totalQuestoes <= 0 || acertos < 0 || acertos > totalQuestoes) {
+                alert('Por favor, insira valores válidos.');
+                return;
+            }
+
+            const dataAtual = new Date().toISOString();
+            
+            // Registrar as questões e acertos
+            questoes.push({
+                total: parseInt(totalQuestoes),
+                acertos: parseInt(acertos),
+                data: dataAtual
+            });
+            
+            // Salvar no localStorage
+            localStorage.setItem('questoes', JSON.stringify(questoes));
+
+            // Exibir status de sucesso
+            document.getElementById('status-questoes').innerText = 'Questões registradas com sucesso!';
+            document.getElementById('form-questoes').reset();  // Limpar os campos do formulário
+        });
+    </script>
+</body>
+</html>
