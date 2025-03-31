@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Bloco</title>
+    <style>
+        /* Mantenha seu CSS ou simplifique-o se quiser */
+        .bloco {
+          border: 1px solid black;
+          margin: 10px;
+          padding: 5px;
+          border-radius: 8px;
+          background: rgba(0, 0, 0, 0.1);
+        }
+        .tituloBloco {
+          background: #ccc;
+          cursor: pointer;
+          padding: 3px;
+          font-weight: bold;
+        }
+        .conteudo-bloco {
+          border-top: 1px solid #aaa;
+          padding-top: 5px;
+        }
+        .minimizado .conteudo-bloco {
+          display: none;
+        } /* Estilo simples para esconder */
+    </style>
+</head>
+<body>
+    <section class="bloco" id="meu-bloco-1">
+        <h1 class="tituloBloco">Clique Aqui</h1>
+        <div class="conteudo-bloco">
+            <p>Conteúdo visível/invisível.</p>
+        </div>
+    </section>
+
+    <script src="bloco.js"></script> 
+</body>
+</html>
