@@ -13,12 +13,13 @@ import {
 
 // === Configuração Firebase (USE A SUA!) ===
 const firebaseConfig = {
-    apiKey: "SUA_API_KEY",
-    authDomain: "SEU_PROJETO.firebaseapp.com",
-    projectId: "SEU_PROJECT_ID",
-    storageBucket: "SEU_PROJETO.appspot.com",
-    messagingSenderId: "SEU_SENDER_ID",
-    appId: "SEU_APP_ID"
+    apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc",
+    authDomain: "estudaai-ddb6a.firebaseapp.com",
+    projectId: "estudaai-ddb6a",
+    storageBucket: "estudaai-ddb6a.firebasestorage.app",
+    messagingSenderId: "974312409515",
+    appId: "1:974312409515:web:ef635d71abf934241d6aee",
+    measurementId: "G-9X8PNR6S6L"
 };
 
 // === Inicialização Firebase ===
