@@ -375,4 +375,5 @@ h3 {
 @media (max-width: 480px) {
     #botao-anterior { width: 35px; height: 35px; left: 2px;}
     #botao-proximo { width: 35px; height: 35px; right: 2px;}
-  }
+    }
+                  
