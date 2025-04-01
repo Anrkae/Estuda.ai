@@ -47,46 +47,30 @@
     </main>
 
     <script>
-      // Sua configuração do Firebase
+      // Sua configuração do Firebase - VERIFIQUE OS VALORES
       const firebaseConfig = {
-        apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc", // SUBSTITUA PELA SUA CHAVE REAL SE NECESSÁRIO
+        apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc",
         authDomain: "estudaai-ddb6a.firebaseapp.com",
         projectId: "estudaai-ddb6a",
-        storageBucket: "estudaai-ddb6a.firebasestorage.app", // Verifique o final: firebasestorage.app ou appspot.com
+        storageBucket: "estudaai-ddb6a.firebasestorage.app", // Confira o final
         messagingSenderId: "974312409515",
         appId: "1:974312409515:web:ef635d71abf934241d6aee",
-        measurementId: "G-9X8PNR6S6L" // Opcional, mas pode manter se usa Analytics
+        measurementId: "G-9X8PNR6S6L"
       };
-      console.log('firebaseConfig definida globalmente.');
+      console.log('HTML: firebaseConfig definida.');
     </script>
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-      import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-      // Disponibiliza globalmente para script.js (se ele não for module)
-      window.firebaseSDKLoaded = { initializeApp, getAuth, onAuthStateChanged, signOut };
-      console.log('SDKs Firebase App e Auth prontos.');
-    </script>
-    <script type="module">
-      import { getFirestore, collection, query, where, getDocs, Timestamp, orderBy } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-      // Disponibiliza globalmente para script.js
-      window.firestoreSDKLoaded = { getFirestore, collection, query, where, getDocs, Timestamp, orderBy };
-      console.log('SDK Firebase Firestore pronto.');
-    </script>
-    <script type="module">
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-        window.firebaseAnalyticsSDKLoaded = { getAnalytics }; // Disponibiliza
-        console.log('SDK Firebase Analytics pronto.');
-    </script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js"></script> <script type="module"> console.log('HTML: SDKs Firebase carregados/solicitados.'); </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="assets/js/script.js"></script>
+    <script type="module" src="assets/js/script.js"></script>
 
     <script src="assets/js/components/popup-registrar-questao.js"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init();</script>
-    
     </body>
 </html>
