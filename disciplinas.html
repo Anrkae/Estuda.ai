@@ -2,315 +2,251 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Disciplinas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        /* Fonte Montserrat */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+    <link rel="stylesheet" href="assets/css/pages/disciplinas.css"
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background: #f1f0ea;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            /* Adicionado padding-top para compensar header fixo que será injetado */
-            padding-top: 90px;
-        }
-
-        /* ESTILOS DE HEADER, SIDEBAR E OVERLAY REMOVIDOS DAQUI */
-        /* Mantidos apenas estilos específicos desta página */
-
-        .primeiro-bloco {
-             /* padding-top ajustado pois o geral do body já compensa */
-            padding-top: 0px;
-        }
-
-        section {
-            margin-bottom: 2rem;
-            border-radius: 8px;
-        }
-
-        h2 {
-            font-weight: bold;
-            padding-top: 0px; /* Ajustado */
-            margin-bottom: 15px; /* Adicionado espaço */
-            color: #474c5f;
-        }
-        h2.subtitulo { /* Estilo específico para o subtítulo da lista */
-             margin-top: 50px;
-             margin-bottom: 20px;
-        }
-
-        input[type="text"] { /* Específico para o input de disciplina */
-            padding: 10px;
-            font-size: 16px;
-            margin-top: 0px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            margin-right: 5px; /* Espaço antes do botão */
-            min-width: 250px; /* Largura mínima */
-        }
-
-        button { /* Estilo base para botões da página */
-            font-family: 'Montserrat';
-            background-color: #474c5f;
-            color: white;
-            cursor: pointer;
-            padding: 10px 15px; /* Ajustado padding */
-            font-size: 14px; /* Tamanho da fonte */
-            border: none;
-            border-radius: 6px; /* Consistente com input */
-            margin-top: 0px; /* Alinhado com input */
-            margin-right: 5px;
-            vertical-align: middle; /* Alinha com input */
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #542aa3;
-        }
-
-        #disciplinasContainer ul { /* Estilos para a lista dentro dos blocos */
-            margin-top: 10px; /* Ajustado */
-            padding-left: 20px;
-        }
-
-        #disciplinasContainer li {
-            margin-bottom: 12px;
-        }
-
-        .topicos {
-            margin-top: 10px; /* Ajustado */
-            padding-left: 15px;
-            color: #555; /* Cor mais suave */
-            font-size: 0.9em; /* Menor */
-        }
-
-        .disciplina-bloco {
-            border: 1px solid #e0e0e0; /* Borda mais suave */
-            border-radius: 8px;
-            margin-bottom: 15px; /* Mais espaço */
-            padding: 15px; /* Mais padding */
-            cursor: pointer;
-            background: #fff; /* Fundo branco */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .disciplina-bloco strong { /* Estilo para o nome da disciplina */
-             font-weight: 600;
-             color: #542aa3; /* Roxo */
-             font-size: 1.1em;
-        }
-
-        .disciplina-bloco.minimizado .topicos {
-            display: none;
-        }
-
-        .disciplina-bloco.maximizado .topicos {
-            display: block;
-        }
-
-        .confirmar-cancelar { display: none; margin-top: 10px;}
-        .confirmar-cancelar.show { display: block; }
-        .botao-adicionar-excluir { margin-top: 10px;}
-        .botao-adicionar-excluir.hide { display: none; }
-
-        .lixeira { display: none; cursor: pointer; margin-left: 10px; color: #e53935; /* Vermelho */}
-        .lixeira:hover { color: #c62828; }
-        .topico-lixeira.show, .disciplina-lixeira.show { display: inline; }
-
-        .rotate { transition: transform 0.4s ease; display: inline-block; /* Para a rotação funcionar bem */}
-        .rotate.open { transform: rotate(45deg); } /* Rotação 45 graus para virar 'x' */
-
-        .btn-excluir, .btn-add, .btn-minimizar { /* Estilos comuns para botões internos */
-             background: none;
-             border: none;
-             cursor: pointer;
-             padding: 5px;
-             margin: 0 5px 0 0; /* Ajuste margens */
-             vertical-align: middle;
-        }
-         .btn-add { color: #4caf50; /* Verde */}
-         .btn-excluir { color: #e53935; /* Vermelho */}
-         .btn-minimizar { color: #757575; /* Cinza */}
-         .btn-minimizar i { font-size: 1em; /* Ajuste tamanho ícone +/- */ }
-         .btn-add i, .btn-excluir i { font-size: 0.9em;}
-
-        #caixa-disciplinas {
-            padding-top: 0px;
-        }
-
-    </style>
 </head>
 <body>
+    
+    <div>
+        <script src="assets/js/components/header.js"></script>
+    </div>
+    
     <section class="primeiro-bloco">
-        <h2>Registrar Disciplinas</h2>
+        <h2><i class="fas fa-plus-circle"></i> Registrar Nova Disciplina</h2>
         <input type="text" id="nomeDisciplina" placeholder="Nome da disciplina">
-        <button onclick="adicionarDisciplina()">Adicionar Disciplina</button>
+        <button onclick="adicionarDisciplina()"><i class="fas fa-save"></i> Adicionar</button>
     </section>
 
-    <section id="caixa-disciplinas" >
-       <h2 class="subtitulo"><i class="fa-solid fa-list-check"></i> Minhas disciplinas</h2>
-       <div class="disciplinas-container" id="disciplinasContainer"></div>
+    <section id="caixa-disciplinas">
+       <h2 class="subtitulo"><i class="fas fa-list-check"></i> Minhas Disciplinas</h2>
+       <div class="disciplinas-container" id="disciplinasContainer">
+           </div>
     </section>
 
-    <script src="assets/js/components/header.js"></script>
+    <div id="modalConfirmacaoOverlay" class="modal-overlay">
+        <div id="modalConfirmacaoDialog" class="modal-dialog">
+            <h3 class="modal-title">Confirmar Exclusão</h3>
+            <p id="modalMensagem" class="modal-message">Texto da mensagem aqui...</p>
+            <div class="modal-buttons">
+                <button id="modalBotaoCancelar" class="modal-button modal-cancel">Cancelar</button>
+                <button id="modalBotaoConfirmar" class="modal-button modal-confirm">Confirmar Exclusão</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalInputOverlay" class="modal-overlay">
+        <div id="modalInputDialog" class="modal-dialog">
+            <h3 id="modalInputTitulo" class="modal-title">Adicionar Novo Tópico</h3>
+            <div class="modal-input-container">
+                <label for="modalInputTexto" class="modal-label">Nome do Tópico:</label>
+                <input type="text" id="modalInputTexto" class="modal-input" placeholder="Digite o tópico aqui...">
+                <p id="modalInputErro" class="modal-input-error"></p>
+            </div>
+            <div class="modal-buttons">
+                <button id="modalInputBotaoCancelar" class="modal-button modal-cancel">Cancelar</button>
+                <button id="modalInputBotaoAdicionar" class="modal-button modal-confirm">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
 
     <script>
-        // LÓGICA DA SIDEBAR REMOVIDA DAQUI
-
+        // Estado da aplicação (lista de disciplinas)
         let disciplinas = JSON.parse(localStorage.getItem('disciplinas')) || [];
 
-        function removerAcentuacao(str) {
-            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        // --- Referências dos Modais ---
+        const modalConfirmacaoOverlay = document.getElementById('modalConfirmacaoOverlay');
+        const modalMensagemEl = document.getElementById('modalMensagem');
+        const modalBotaoConfirmar = document.getElementById('modalBotaoConfirmar');
+        const modalBotaoCancelar = document.getElementById('modalBotaoCancelar');
+        let onConfirmCallback = null;
+
+        const modalInputOverlay = document.getElementById('modalInputOverlay');
+        const modalInputTituloEl = document.getElementById('modalInputTitulo');
+        const modalInputTexto = document.getElementById('modalInputTexto');
+        const modalInputErroEl = document.getElementById('modalInputErro');
+        const modalInputBotaoAdicionar = document.getElementById('modalInputBotaoAdicionar');
+        const modalInputBotaoCancelar = document.getElementById('modalInputBotaoCancelar');
+        let currentInputHandler = null;
+        let currentCancelHandler = null;
+        let currentAddHandler = null;
+
+        // --- Funções do Modal de Confirmação ---
+        function mostrarModalConfirmacao(mensagem, callbackConfirmacao) {
+            modalMensagemEl.innerHTML = mensagem;
+            onConfirmCallback = callbackConfirmacao;
+            modalConfirmacaoOverlay.classList.add('show');
         }
 
-        function adicionarDisciplina() {
-            const nomeInput = document.getElementById('nomeDisciplina');
-            const nome = nomeInput.value.trim();
-            if (nome === "") return;
-            const nomeSemAcento = removerAcentuacao(nome).toLowerCase();
-            const nomeExiste = disciplinas.some(d => removerAcentuacao(d.nome).toLowerCase() === nomeSemAcento);
-            if (nomeExiste) {
-                alert("Essa disciplina já está registrada.");
-                nomeInput.value = "";
-                return;
-            }
-            disciplinas.push({ nome: nome, topicos: [], maximizado: false, excluirAtivo: false });
+        function ocultarModalConfirmacao() {
+            modalConfirmacaoOverlay.classList.remove('show');
+            onConfirmCallback = null;
+        }
+
+        // --- Funções do Modal de Input de Tópico ---
+        function mostrarModalInputTopico(indexDisciplina) {
+            const disciplinaNome = disciplinas[indexDisciplina]?.nome || 'Disciplina';
+            if (!disciplinas[indexDisciplina]) return;
+
+            modalInputTituloEl.textContent = `Adicionar Tópico em "${disciplinaNome}"`;
+            modalInputTexto.value = '';
+            modalInputErroEl.textContent = '';
+            modalInputOverlay.classList.add('show');
+            modalInputTexto.focus();
+
+            // Limpa listeners antigos antes de adicionar novos
+            if (currentAddHandler) modalInputBotaoAdicionar.removeEventListener('click', currentAddHandler);
+            if (currentCancelHandler) modalInputBotaoCancelar.removeEventListener('click', currentCancelHandler);
+            if (currentInputHandler) modalInputTexto.removeEventListener('keydown', currentInputHandler);
+
+            // Define as novas ações
+            currentAddHandler = () => handleAdicionarTopico(indexDisciplina);
+            currentCancelHandler = ocultarModalInputTopico;
+            currentInputHandler = (event) => {
+                 if (event.key === 'Enter') { event.preventDefault(); handleAdicionarTopico(indexDisciplina); }
+                 else { modalInputErroEl.textContent = ''; }
+            };
+
+            // Adiciona novos listeners
+            modalInputBotaoAdicionar.addEventListener('click', currentAddHandler);
+            modalInputBotaoCancelar.addEventListener('click', currentCancelHandler);
+            modalInputTexto.addEventListener('keydown', currentInputHandler);
+        }
+
+        function ocultarModalInputTopico() {
+            modalInputOverlay.classList.remove('show');
+            // Remove listeners ao fechar
+             if (currentAddHandler) modalInputBotaoAdicionar.removeEventListener('click', currentAddHandler);
+             if (currentCancelHandler) modalInputBotaoCancelar.removeEventListener('click', currentCancelHandler);
+             if (currentInputHandler) modalInputTexto.removeEventListener('keydown', currentInputHandler);
+             currentAddHandler = null; currentCancelHandler = null; currentInputHandler = null;
+        }
+
+        function handleAdicionarTopico(indexDisciplina) {
+            const nomeTopico = modalInputTexto.value.trim();
+            if (nomeTopico === "") { modalInputErroEl.textContent = "Por favor, digite um nome para o tópico."; modalInputTexto.focus(); return; }
+            if (!disciplinas[indexDisciplina]) { console.error("Índice de disciplina inválido."); modalInputErroEl.textContent = "Erro interno."; return; }
+            if (!disciplinas[indexDisciplina].topicos) disciplinas[indexDisciplina].topicos = [];
+
+            disciplinas[indexDisciplina].topicos.unshift(nomeTopico);
+            disciplinas[indexDisciplina].maximizado = true;
+            disciplinas[indexDisciplina].excluirAtivo = false;
             localStorage.setItem('disciplinas', JSON.stringify(disciplinas));
-            nomeInput.value = "";
+            ocultarModalInputTopico();
             exibirDisciplinas();
+        }
+
+        // --- Listeners de Evento do Modal de Confirmação ---
+        modalBotaoConfirmar.addEventListener('click', () => { if (typeof onConfirmCallback === 'function') { try { onConfirmCallback(); } catch (e) { console.error(e);}} ocultarModalConfirmacao(); });
+        modalBotaoCancelar.addEventListener('click', () => { ocultarModalConfirmacao(); const idx = disciplinas.findIndex(d => d.excluirAtivo); if(idx !== -1) cancelarExclusao(idx); });
+        modalConfirmacaoOverlay.addEventListener('click', (event) => { if (event.target === modalConfirmacaoOverlay) { ocultarModalConfirmacao(); const idx = disciplinas.findIndex(d => d.excluirAtivo); if(idx !== -1) cancelarExclusao(idx); } });
+
+        // --- Funções Utilitárias e de Disciplina ---
+        function removerAcentuacao(str) { return str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+
+        function adicionarDisciplina() {
+             const nomeInput = document.getElementById('nomeDisciplina'); const nome = nomeInput.value.trim(); if (nome === "") return;
+             const nomeSemAcentoLower = removerAcentuacao(nome).toLowerCase();
+             const nomeExiste = disciplinas.some(d => removerAcentuacao(d.nome).toLowerCase() === nomeSemAcentoLower);
+             if (nomeExiste) { alert("Essa disciplina já está registrada."); nomeInput.value = ""; return; }
+             disciplinas.push({ nome: nome, topicos: [], maximizado: false, excluirAtivo: false });
+             localStorage.setItem('disciplinas', JSON.stringify(disciplinas)); nomeInput.value = ""; exibirDisciplinas();
         }
 
         function alternarVisibilidade(index) {
-            const disciplina = disciplinas[index];
-            disciplina.maximizado = !disciplina.maximizado;
-            // Não salva estado maximizado no localStorage, reseta ao recarregar
-            // localStorage.setItem('disciplinas', JSON.stringify(disciplinas));
-            exibirDisciplinas(); // Re-renderiza para aplicar classe e mostrar/ocultar botões
+             if (disciplinas[index]) { disciplinas[index].maximizado = !disciplinas[index].maximizado; if (!disciplinas[index].maximizado && disciplinas[index].excluirAtivo) { disciplinas[index].excluirAtivo = false; } exibirDisciplinas(); }
+             else { console.warn(`Índice inválido: ${index}`); }
         }
 
-
-        function adicionarTopico(index) {
-            const topico = prompt("Digite o tópico:");
-            if (topico && topico.trim() !== "") { // Verifica se não é nulo ou vazio
-                // Adiciona ao início da lista para aparecer primeiro
-                disciplinas[index].topicos.unshift(topico.trim());
-                localStorage.setItem('disciplinas', JSON.stringify(disciplinas));
-                // Força a re-exibição mantendo o bloco aberto
-                disciplinas[index].maximizado = true;
-                exibirDisciplinas();
-            }
+        function adicionarTopico(index) { // Agora apenas chama o modal
+             if (!disciplinas[index]) { console.warn(`Índice inválido: ${index}`); return; }
+             mostrarModalInputTopico(index);
         }
-
 
         function ativarExclusao(index) {
-            disciplinas.forEach((d, i) => { d.excluirAtivo = (i === index); }); // Ativa só neste, desativa outros
-            // Não salva estado de exclusão no localStorage
-            // localStorage.setItem('disciplinas', JSON.stringify(disciplinas));
-            exibirDisciplinas();
+             if (disciplinas[index]) { disciplinas.forEach((d, i) => { d.excluirAtivo = (i === index); }); disciplinas[index].maximizado = true; exibirDisciplinas(); }
+             else { console.warn(`Índice inválido: ${index}`); }
         }
 
         function cancelarExclusao(index) {
-            if(disciplinas[index]) { // Verifica se ainda existe
-                 disciplinas[index].excluirAtivo = false;
-                 // localStorage.setItem('disciplinas', JSON.stringify(disciplinas));
-                 exibirDisciplinas();
-            }
+             if (disciplinas[index] && disciplinas[index].excluirAtivo) { disciplinas[index].excluirAtivo = false; exibirDisciplinas(); }
         }
 
-        // Função única para pedir confirmação e excluir
         function pedirConfirmacaoExcluir(tipo, indexDisciplina, indexTopico = null) {
-            const mensagem = tipo === 'disciplina'
-                ? `Tem certeza de que deseja excluir a disciplina "${disciplinas[indexDisciplina]?.nome}" e todos os seus tópicos?`
-                : `Tem certeza de que deseja excluir o tópico "${disciplinas[indexDisciplina]?.topicos[indexTopico]}"?`;
+            let mensagem = ''; const disciplina = disciplinas[indexDisciplina];
+            if (!disciplina) { console.error(`Erro: Disciplina índice ${indexDisciplina} não encontrada.`); return; }
+            const disciplinaNome = disciplina.nome; let acaoConfirmada = () => {};
 
-            if (confirm(mensagem)) {
-                if (tipo === 'disciplina') {
+            if (tipo === 'disciplina') {
+                mensagem = `Você tem certeza que deseja excluir a disciplina "<strong>${disciplinaNome}</strong>"?<br><br><strong>ATENÇÃO:</strong> Todos os tópicos associados E TODOS OS REGISTROS DE ESTUDO (tempo, questões, acertos) para esta disciplina também serão <strong>PERMANENTEMENTE excluídos</strong>.<br><br>Esta ação não pode ser desfeita.`;
+                acaoConfirmada = () => {
+                    console.log(`Excluindo disciplina: ${disciplinaNome}`);
+                    try {
+                        let sessoesEstudo = JSON.parse(localStorage.getItem('sessoesEstudo')) || [];
+                        const sessoesAntes = sessoesEstudo.length;
+                        const sessoesMantidas = sessoesEstudo.filter(sessao => sessao.disciplina !== disciplinaNome);
+                        if (sessoesMantidas.length < sessoesAntes) { localStorage.setItem('sessoesEstudo', JSON.stringify(sessoesMantidas)); console.log(` -> ${sessoesAntes - sessoesMantidas.length} registro(s) de estudo excluído(s).`); }
+                    } catch (error) { console.error("Erro ao excluir registros de estudo:", error); }
                     disciplinas.splice(indexDisciplina, 1);
-                } else if (tipo === 'topico' && indexTopico !== null) {
-                    disciplinas[indexDisciplina].topicos.splice(indexTopico, 1);
-                }
-                localStorage.setItem('disciplinas', JSON.stringify(disciplinas));
-                exibirDisciplinas();
-            } else if (tipo === 'disciplina') {
-                 // Se cancelou a exclusão da disciplina, volta ao estado normal
-                 cancelarExclusao(indexDisciplina);
-            }
+                    localStorage.setItem('disciplinas', JSON.stringify(disciplinas)); exibirDisciplinas();
+                };
+            } else if (tipo === 'topico' && indexTopico !== null && disciplina.topicos && disciplina.topicos[indexTopico] !== undefined) {
+                 const topicoNome = disciplina.topicos[indexTopico];
+                 mensagem = `Tem certeza de que deseja excluir o tópico "<strong>${topicoNome}</strong>" da disciplina "<strong>${disciplinaNome}</strong>"?`;
+                 acaoConfirmada = () => {
+                     console.log(`Excluindo tópico "${topicoNome}" de ${disciplinaNome}`);
+                     disciplina.topicos.splice(indexTopico, 1); localStorage.setItem('disciplinas', JSON.stringify(disciplinas)); exibirDisciplinas();
+                 };
+            } else { console.error("Parâmetros inválidos:", tipo, indexDisciplina, indexTopico); return; }
+
+            mostrarModalConfirmacao(mensagem, acaoConfirmada);
         }
 
-
+        // Função Principal para Renderizar a Lista
         function exibirDisciplinas() {
-            const container = document.getElementById('disciplinasContainer');
+            const container = document.getElementById('disciplinasContainer'); if (!container) return;
             container.innerHTML = "";
-
-            if (disciplinas.length === 0) {
-                container.innerHTML = "<p style='text-align: center; color: #888;'>Nenhuma disciplina registrada.</p>";
-                return;
-            }
+            if (disciplinas.length === 0) { container.innerHTML = "<p style='text-align: center; color: #888;'>Nenhuma disciplina registrada ainda.</p>"; return; }
 
             disciplinas.forEach((disciplina, index) => {
                 const bloco = document.createElement('div');
-                 // Usa o estado atual (não salvo) para maximizado e excluirAtivo
-                const isMaximizado = disciplina.maximizado === true;
-                 const isExcluirAtivo = disciplina.excluirAtivo === true;
-                bloco.className = `disciplina-bloco ${isMaximizado ? 'maximizado' : 'minimizado'}`;
+                bloco.classList.add('disciplina-bloco');
+                bloco.classList.toggle('maximizado', !!disciplina.maximizado);
+                bloco.classList.toggle('minimizado', !disciplina.maximizado);
+                bloco.classList.toggle('excluindo', !!disciplina.excluirAtivo);
 
-                // Constrói o HTML dos tópicos
-                 let topicosHtml = '<p style="font-size: 0.8em; color: #999;">Nenhum tópico adicionado.</p>'; // Mensagem padrão
-                 if (disciplina.topicos.length > 0) {
-                     topicosHtml = disciplina.topicos.map((topico, topicoIndex) => `
-                         <li>
-                             ${topico}
-                             <span class="lixeira topico-lixeira ${isExcluirAtivo ? 'show' : ''}" onclick="pedirConfirmacaoExcluir('topico', ${index}, ${topicoIndex})">
-                                 <i class="fas fa-trash-alt"></i>
-                             </span>
-                         </li>
-                     `).join('');
-                     topicosHtml = `<ul>${topicosHtml}</ul>`; // Envolve em UL apenas se houver tópicos
-                 }
+                let topicosHtml = '<p style="font-size: 0.8em; color: #999;">Nenhum tópico adicionado.</p>';
+                if (disciplina.topicos && disciplina.topicos.length > 0) {
+                    topicosHtml = '<ul>' + disciplina.topicos.map((topico, topicoIndex) => `<li>${topico}<span class="lixeira topico-lixeira" onclick="event.stopPropagation(); pedirConfirmacaoExcluir('topico', ${index}, ${topicoIndex})"><i class="fas fa-trash-alt"></i></span></li>`).join('') + '</ul>';
+                }
 
-
-                // Constrói o HTML dos botões de ação (variam se está maximizado ou em modo de exclusão)
                 let acoesHtml = '';
-                if (isMaximizado) {
-                    if (isExcluirAtivo) {
-                        acoesHtml = `
-                            <div class="confirmar-cancelar show">
-                                <button title="Confirmar Exclusão da Disciplina" class="btn-excluir" onclick="pedirConfirmacaoExcluir('disciplina', ${index})"><i class="fas fa-check"></i> Confirmar Exclusão</button>
-                                <button title="Cancelar Exclusão" class="btn-excluir" onclick="cancelarExclusao(${index})"><i class="fas fa-times"></i> Cancelar</button>
-                            </div>`;
+                if (disciplina.maximizado) {
+                    if (disciplina.excluirAtivo) {
+                        acoesHtml = `<div class="confirmar-cancelar show"><button title="Confirmar Exclusão Definitiva" class="modal-button modal-confirm" onclick="event.stopPropagation(); pedirConfirmacaoExcluir('disciplina', ${index})"><i class="fas fa-check"></i> Excluir Disciplina e Dados</button><button title="Sair do Modo Exclusão" class="modal-button modal-cancel" onclick="event.stopPropagation(); cancelarExclusao(${index})"><i class="fas fa-times"></i> Concluir Edição</button></div>`;
                     } else {
-                        acoesHtml = `
-                            <div class="botao-adicionar-excluir">
-                                <button title="Adicionar Novo Tópico" class="btn-add" onclick="adicionarTopico(${index})"><i class="fas fa-plus"></i> Adicionar Tópico</button>
-                                <button title="Excluir Disciplina/Tópicos" class="btn-excluir" onclick="ativarExclusao(${index})"><i class="fas fa-trash"></i> Excluir</button>
-                            </div>`;
+                        acoesHtml = `<div class="botao-adicionar-excluir"><button title="Adicionar Tópico" class="btn-add" onclick="event.stopPropagation(); adicionarTopico(${index})"><i class="fas fa-plus"></i> Adicionar Tópico</button><button title="Ativar Exclusão" class="btn-excluir" onclick="event.stopPropagation(); ativarExclusao(${index})"><i class="fas fa-trash"></i> Excluir</button></div>`;
                     }
                 }
 
-                // Monta o bloco completo
                 bloco.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center;">
-                         <strong>${disciplina.nome}</strong>
-                         <button class="btn-minimizar" title="${isMaximizado ? 'Minimizar' : 'Maximizar'}" onclick="alternarVisibilidade(${index})">
-                             <i id="icone-${index}" class="fas fa-plus rotate ${isMaximizado ? 'open' : ''}"></i>
+                    <div class="disciplina-header" onclick="alternarVisibilidade(${index})">
+                         <strong>${disciplina.nome || 'Disciplina s/ Nome'}</strong>
+                         <button class="btn-minimizar" title="${disciplina.maximizado ? 'Minimizar' : 'Maximizar'}">
+                             <i class="fas fa-plus ${disciplina.maximizado ? 'open' : ''}"></i>
                          </button>
                     </div>
-                    <div class="topicos">
-                        ${topicosHtml}
-                    </div>
+                    <div class="topicos">${topicosHtml}</div>
                     ${acoesHtml}
                 `;
-
                 container.appendChild(bloco);
             });
         }
 
-
-        // Exibir disciplinas ao carregar a página
+        // --- Inicialização ---
         document.addEventListener('DOMContentLoaded', exibirDisciplinas);
 
     </script>
