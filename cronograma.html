@@ -12,7 +12,7 @@
 
         <div class="bloco minimizado" id="meu-bloco-1">
         <div class="config-geracao">
-            <h3 class="tituloBloco">Gerar Cronograma</h3>
+            <h3 class="tituloBloco"><i class="fa-solid fa-bars-staggered"></i> Gerar Cronograma</h3>
             <div class="conteudo-bloco">
                 <p style="padding-top: 25px; text-align: center; font-size: 14px; color: #555;">Selecione as disciplinas:</p>
                 <div class="disciplinas-selecao" id="disciplinas-para-selecao">
@@ -38,7 +38,7 @@
 
         <div class="carrossel-container">
             <div id="carrossel-wrapper">
-                <h2 class="subTitulo">Cronograma Semanal</h2>
+                <h2 class="subTitulo"> <i class="fa-regular fa-calendar"></i> Cronograma Semanal</h2>
                 <div id="cronograma-dias-container">
                     <p style="text-align: center; color: #888; width: 100%; padding: 20px;">Gere ou carregue um cronograma para visualizar os detalhes aqui.</p>
                 </div>
@@ -346,27 +346,3 @@
                          else { cronogramaSalvo = {}; }
                      } else { cronogramaSalvo = {}; }
                  } catch(error) { cronogramaSalvo = {}; }
-             } else { cronogramaSalvo = {}; }
-             currentSlideIndex = 0;
-             exibirCronogramaPorDias(cronogramaSalvo);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            carregarDisciplinas();
-            carregarCronogramaSalvo();
-            botaoGerarEl.addEventListener('click', gerarCronogramaAutomatico);
-            botaoSalvarEl.addEventListener('click', salvarCronograma);
-            botaoAnteriorEl.addEventListener('click', slideAnterior);
-            botaoProximoEl.addEventListener('click', slideProximo);
-            // Listener para o botão da sidebar (ainda sem funcionalidade)
-            if (botaoSidebarEl) {
-                botaoSidebarEl.addEventListener('click', () => {
-                    alert("Funcionalidade do Menu Lateral não implementada.");
-                });
-            }
-        });
-    </script>
-    
-    <script src="assets/js/components/bloco.js"></script>
-</body>
-</html>
