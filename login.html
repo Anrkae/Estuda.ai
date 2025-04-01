@@ -156,7 +156,7 @@
                if (user) {
                    logNaPagina("Verificação: Usuário JÁ está logado.");
                    const pathAtual = window.location.pathname;
-                   const ePaginaPrincipal = pathAtual === '/' || pathAtual.endsWith('../index.html'); // Ajuste
+                   const ePaginaPrincipal = pathAtual === '/' || pathAtual.endsWith('/index.html'); // Ajuste
                    if (!ePaginaPrincipal) {
                         logNaPagina("Redirecionando para a página principal...");
                         window.location.href = '/';
