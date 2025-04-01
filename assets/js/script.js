@@ -1,28 +1,4 @@
 // /assets/js/script.js
-
-// === Importações Firebase (Modular API) ===
-// Importe as funções que você precisa dos SDKs do Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-import {
-    getAuth,
-    onAuthStateChanged,
-    signOut
-} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-// Descomente e importe mais funções do Firestore quando for usar
-// import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-
-// === Configuração Firebase (USE A SUA!) ===
-const firebaseConfig = {
-    apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc",
-    authDomain: "estudaai-ddb6a.firebaseapp.com",
-    projectId: "estudaai-ddb6a",
-    storageBucket: "estudaai-ddb6a.firebasestorage.app",
-    messagingSenderId: "974312409515",
-    appId: "1:974312409515:web:ef635d71abf934241d6aee",
-    measurementId: "G-9X8PNR6S6L"
-};
-
-// === Inicialização Firebase ===
 let app;
 let auth;
 // let db; // Descomente quando for usar Firestore
