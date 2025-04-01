@@ -1,0 +1,250 @@
+/* === Conteúdo para disciplinas.css === */
+
+/* Fontes e Estilos Base */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f1f0ea;
+    padding: 20px;
+    padding-top: 90px; /* Ajuste conforme altura do seu header */
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.primeiro-bloco {
+     display: flex;
+     flex-wrap: wrap;
+     align-items: center;
+     gap: 10px;
+     margin-bottom: 2rem;
+     margin-top: 20px;
+}
+
+section {
+    padding: 1rem;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 25px; /* Mais padding */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra um pouco mais pronunciada */
+    border-radius: 12px; /* Bordas mais arredondadas */
+
+}
+
+h2 {
+    font-weight: bold;
+    padding-top: 0px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #474c5f;
+    width: 100%;
+}
+h2.subtitulo {
+     margin-top: 0px !important;
+     padding-top: 0px !important;
+     padding-bottom: 10px !important;
+     margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 200px;
+}
+ input[type="text"]:focus {
+    border-color: #542aa3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2);
+ }
+
+/* Estilo geral para botões */
+button {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #474c5f;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    vertical-align: middle;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+}
+button:hover {
+    background-color: #542aa3;
+}
+
+/* Lista de disciplinas */
+#disciplinasContainer ul {
+    margin-top: 10px;
+    padding-left: 20px;
+    list-style: none;
+}
+#disciplinasContainer li {
+    margin-bottom: 12px;
+    word-break: break-word;
+    position: relative;
+}
+
+.topicos {
+    margin-top: 15px;
+    padding-left: 5px;
+    color: #555;
+    font-size: 0.9em;
+    border-left: 2px solid #eee;
+}
+
+.disciplina-bloco {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease;
+}
+.disciplina-bloco:hover {
+     box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+.disciplina-header {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     cursor: pointer;
+}
+.disciplina-bloco strong {
+     font-weight: 600;
+     color: #542aa3;
+     font-size: 1.1em;
+     word-break: break-word;
+     padding-right: 10px;
+}
+
+/* Visibilidade dos tópicos/ações */
+.disciplina-bloco.minimizado .topicos,
+.disciplina-bloco.minimizado .botao-adicionar-excluir,
+.disciplina-bloco.minimizado .confirmar-cancelar {
+    display: none;
+}
+.disciplina-bloco.maximizado .topicos { display: block; }
+
+/* Botões de Ação */
+.botao-adicionar-excluir, .confirmar-cancelar {
+     margin-top: 15px;
+     padding-top: 10px;
+     border-top: 1px solid #f0f0f0;
+     display: flex;
+     flex-wrap: wrap;
+     gap: 10px;
+}
+.confirmar-cancelar.show { display: flex; }
+
+/* Botões específicos */
+.btn-add, .btn-excluir, .btn-minimizar {
+     background: none; border: none; cursor: pointer; padding: 5px;
+     vertical-align: middle; font-size: 0.9em; display: inline-flex;
+     align-items: center; gap: 5px; border-radius: 4px;
+     transition: background-color 0.2s ease;
+}
+ .btn-add { color: #4caf50; }
+ .btn-add:hover { background-color: rgba(76, 175, 80, 0.1); }
+ .btn-excluir { color: #e53935; }
+ .btn-excluir:hover { background-color: rgba(229, 57, 53, 0.1); }
+ .btn-minimizar { color: #757575; padding: 5px 8px; }
+ .btn-minimizar i { font-size: 1em; transition: transform 0.4s ease; }
+ .btn-minimizar i.open { transform: rotate(45deg); }
+
+ /* Lixeira */
+ .lixeira {
+    display: none; cursor: pointer; margin-left: 10px; color: #e53935;
+    font-size: 0.9em; vertical-align: middle; transition: color 0.2s ease;
+ }
+ .lixeira:hover { color: #c62828; }
+ .disciplina-bloco.maximizado.excluindo .topico-lixeira { display: inline; }
+
+ /* Classes de estado */
+ .disciplina-bloco.excluindo .confirmar-cancelar { display: flex; }
+ .disciplina-bloco.excluindo .botao-adicionar-excluir { display: none; }
+
+
+/* --- Estilos dos Modais (Confirmação e Input) --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); display: flex;
+    justify-content: center; align-items: center; z-index: 1100;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+.modal-overlay.show {
+    opacity: 1; visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+.modal-dialog {
+    background-color: #fff; padding: 25px 30px; border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); max-width: 450px;
+    width: 90%; text-align: center; transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.show .modal-dialog { transform: scale(1); }
+.modal-title {
+    font-weight: 600; color: #474c5f; margin-top: 0;
+    margin-bottom: 15px; font-size: 1.3em;
+}
+.modal-message {
+    font-size: 1em; color: #555; margin-bottom: 25px;
+    line-height: 1.5; white-space: pre-wrap;
+}
+.modal-message strong { color: #e53935; font-weight: 600; }
+.modal-buttons { display: flex; justify-content: center; gap: 15px; }
+.modal-button {
+    font-family: 'Montserrat', sans-serif; padding: 10px 20px; border: none;
+    border-radius: 6px; cursor: pointer; font-size: 0.95em; font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease; background-color: transparent;
+}
+.modal-cancel { background-color: #eee; color: #555; border: 1px solid #ccc; }
+.modal-cancel:hover { background-color: #e0e0e0; }
+.modal-confirm { background-color: #e53935; color: white; }
+.modal-confirm:hover { background-color: #c62828; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); }
+
+/* Estilos específicos Modal Input */
+.modal-input-container { margin-bottom: 20px; text-align: left; }
+.modal-label { display: block; margin-bottom: 8px; font-weight: 500; color: #444; font-size: 0.9em; }
+.modal-input {
+    width: 100%; padding: 10px 12px; font-size: 1rem; border-radius: 6px;
+    border: 1px solid #ccc; box-sizing: border-box;
+}
+.modal-input:focus { border-color: #542aa3; outline: none; box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2); }
+.modal-input-error { font-size: 0.85em; color: #e53935; min-height: 1.2em; margin-top: 5px; text-align: left; }
+#modalInputBotaoAdicionar { background-color: #4caf50; color: white;}
+#modalInputBotaoAdicionar:hover { background-color: #388e3c; }
+#modalInputOverlay .modal-dialog { transform: scale(0.95); transition: transform 0.3s ease; }
+#modalInputOverlay.show .modal-dialog { transform: scale(1); }
+/* --- Fim Estilos do Modal --- */
+
+
+/* --- Media Query para Telas Menores --- */
+@media (max-width: 600px) {
+    body { padding: 10px; padding-top: 70px; }
+    .primeiro-bloco { flex-direction: column; align-items: stretch; }
+    input[type="text"] { min-width: 0; width: 100%; margin-right: 0; margin-bottom: 10px; }
+    .primeiro-bloco button { width: 100%; margin-right: 0; margin-top: 0; }
+    h2 { font-size: 1.3em; }
+    h2.subtitulo { margin-top: 30px; margin-bottom: 15px; padding-top: 15px;}
+    .disciplina-bloco { padding: 12px; }
+    .disciplina-bloco strong { font-size: 1em; }
+    .botao-adicionar-excluir button, .confirmar-cancelar button { padding: 8px 10px; font-size: 0.9em; }
+    .btn-minimizar { padding: 5px; }
+     /* Modal Responsivo */
+    .modal-dialog { padding: 20px; }
+    .modal-title { font-size: 1.2em; }
+    .modal-message { font-size: 0.95em; }
+    .modal-buttons { flex-direction: column-reverse; gap: 10px; }
+    .modal-button { width: 100%; }
+     #modalInputBotaoAdicionar { order: -1; }
+}
