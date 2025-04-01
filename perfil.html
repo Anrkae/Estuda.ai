@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Estuda.ai</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+<body>
+    <script src="assets/js/components/header.js"></script>
+
+    <main class="profile-container">
+        <section class="profile-card">
+            <h1>Meu Perfil</h1>
+            <div class="profile-picture-container">
+                <img id="profile-pic" src="assets/images/placeholder-user.png" alt="Foto de Perfil">
+            </div>
+
+            <h2 id="profile-name">Carregando...</h2>
+
+            <p id="profile-email">Carregando...</p>
+
+            <button id="logout-button" class="btn-logout" aria-label="Sair da conta">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </button>
+        </section>
+
+    </main>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+      // Importe outros módulos do Firebase que PERFIL.JS precisará (Auth)
+      import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc", // SUA CHAVE DE API
+        authDomain: "estudaai-ddb6a.firebaseapp.com",
+        projectId: "estudaai-ddb6a",
+        storageBucket: "estudaai-ddb6a.appspot.com", // Verifique se o seu termina com appspot.com ou firebasestorage.app
+        messagingSenderId: "974312409515",
+        appId: "1:974312409515:web:ef635d71abf934241d6aee",
+        measurementId: "G-9X8PNR6S6L" // Opcional
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      // Exporta a instância do Auth para ser usada em perfil.js
+      export const auth = getAuth(app);
+    </script>
+
+    <script type="module" src="assets/js/perfil.js"></script>
+
+</body>
+</html>
