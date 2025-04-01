@@ -9,70 +9,74 @@
 </head>
 <body>
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-<script>eruda.init();</script>
+    <script>eruda.init();</script>
+
     <script src="assets/js/components/header.js"></script>
-<main>
-    <section>
-        <h2><i class="fa-solid fa-bars-staggered"></i> Resumo da Semana</h2>
-        <div class="carousel-container">
-            <div class="carousel-card"><h3><i class="fa-regular fa-clock"></i> Tempo Estudado</h3><p id="tempo-total">0h 0min</p></div>
-            <div class="carousel-card"><h3><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h3><p id="questoes-semana">0</p></div>
-            <div class="carousel-card"><h3><i class="fa-solid fa-check"></i> Taxa de Acertos</h3><p id="acertos-semana">0%</p></div>
-            <div class="carousel-card"><h3><i class="fa-solid fa-fire"></i> Constância</h3><p id="dias-constancia">0 dias</p></div>
-        </div>
-    </section>
 
-    <section>
-        <h2><i class="fas fa-chart-line"></i> Estatísticas de Estudo</h2>
+    <main>
+        <section>
+            <h2><i class="fa-solid fa-bars-staggered"></i> Resumo da Semana</h2>
+            <div class="carousel-container">
+                <div class="carousel-card"><h3><i class="fa-regular fa-clock"></i> Tempo Estudado</h3><p id="tempo-total">0h 0min</p></div>
+                <div class="carousel-card"><h3><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h3><p id="questoes-semana">0</p></div>
+                <div class="carousel-card"><h3><i class="fa-solid fa-check"></i> Taxa de Acertos</h3><p id="acertos-semana">0%</p></div>
+                <div class="carousel-card"><h3><i class="fa-solid fa-fire"></i> Constância</h3><p id="dias-constancia">0 dias</p></div>
+            </div>
+        </section>
 
-        <div class="grafico-container">
-            <canvas id="graficoEstudos"></canvas>
-        </div>
-        <select id="intervaloGrafico">
-            <option value="7">Últimos 7 dias</option>
-            <option value="30">Últimos 30 dias</option>
-            <option value="365">Último ano</option>
-        </select>
-    </section>
-    
-    <section class="grafico-disciplinas-container">
-        <h2><i class="fas fa-book"></i> Desempenho por Disciplina</h2>
-        <div class="grafico-container">
-            <canvas id="graficoDisciplinas"></canvas>
-        </div>
-        <select id="metricaGraficoDisciplinas">
-            <option value="questoes">Questões Resolvidas</option>
-            <option value="acertos">Taxa de Acertos</option>
-            <option value="tempo">Tempo Estudado</option>
-        </select>
-    </section>
-</main>
+        <section>
+            <h2><i class="fas fa-chart-line"></i> Estatísticas de Estudo</h2>
+            <div class="grafico-container">
+                <canvas id="graficoEstudos"></canvas>
+            </div>
+            <select id="intervaloGrafico">
+                <option value="7">Últimos 7 dias</option>
+                <option value="30">Últimos 30 dias</option>
+                <option value="365">Último ano</option>
+            </select>
+        </section>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="/assets/js/script.js"></script>
-<script src="/assets/js/components/popup-registrar-questao.js"></script> 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+        <section class="grafico-disciplinas-container">
+            <h2><i class="fas fa-book"></i> Desempenho por Disciplina</h2>
+            <div class="grafico-container">
+                <canvas id="graficoDisciplinas"></canvas>
+            </div>
+            <select id="metricaGraficoDisciplinas">
+                <option value="questoes">Questões Resolvidas</option>
+                <option value="acertos">Taxa de Acertos</option>
+                <option value="tempo">Tempo Estudado</option>
+            </select>
+        </section>
+    </main>
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc",
-    authDomain: "estudaai-ddb6a.firebaseapp.com",
-    projectId: "estudaai-ddb6a",
-    storageBucket: "estudaai-ddb6a.firebasestorage.app",
-    messagingSenderId: "974312409515",
-    appId: "1:974312409515:web:ef635d71abf934241d6aee",
-    measurementId: "G-9X8PNR6S6L"
-  };
+    <script>
+        // Cole sua configuração do Firebase aqui
+        const firebaseConfig = {
+            apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc", // SUA CHAVE
+            authDomain: "estudaai-ddb6a.firebaseapp.com",
+            projectId: "estudaai-ddb6a",
+            storageBucket: "estudaai-ddb6a.firebasestorage.app", // Ou appspot.com? Verifique no console Firebase
+            messagingSenderId: "974312409515",
+            appId: "1:974312409515:web:ef635d71abf934241d6aee",
+            measurementId: "G-9X8PNR6S6L" // Opcional
+        };
+        console.log('firebaseConfig definida globalmente.');
+    </script>
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
-</body>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+      import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+      window.firebaseSDKLoaded = { initializeApp, getAuth }; // Disponibiliza globalmente de forma segura
+      console.log('Módulos Firebase SDK App e Auth prontos.');
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="/assets/js/script.js"></script>
+
+    <script src="/assets/js/components/popup-registrar-questao.js"></script>
+
+    </body>
 </html>
