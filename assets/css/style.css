@@ -1,4 +1,3 @@
-/* Fonte Montserrat */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
 * {
@@ -9,25 +8,11 @@
 
 body {
     font-family: Montserrat, sans-serif;
-    background-color: #eceae2;  /* Cor de fundo da página */
+    background-color: #eceae2;
     color: #333;
     padding: 0;
     margin: 0;
-}
-
-/* Estilo para o cabeçalho */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background-color: rgba(255, 255, 255, 1);
-    display: flex;
-    align-items: center;
-    padding: 0 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    z-index: 10;
+    padding-top: 70px;
 }
 
 h1 {
@@ -36,132 +21,44 @@ h1 {
     margin: 0;
 }
 
-        .sidebar {
-              display: flex;
-              flex-direction: column; /* Organiza os itens verticalmente */
-              height: 100vh; /* Faz a sidebar ocupar toda a altura da tela */
-              position: fixed;
-              top: 0;
-              left: -290px; /* Oculta a sidebar inicialmente */
-              width: 250px;
-              height: 100%;
-              background-color: #f1f0ea;
-              color: #474c5f;
-              transition: left 0.3s ease;
-              padding: 1rem;
-              padding-top: 0px;
-              z-index: 12;
-        }
-    
-        .top-bar {
-            display: flex;
-            align-items: center; /* Alinha o botão e o h1 horizontalmente no centro verticalmente */
-            margin-bottom: 10px; /* Espaço entre a barra superior e o conteúdo abaixo */
-        }
-    
-        /* Classe para mostrar a sidebar */
-        .sidebar.active {
-            left: 0;
-        }
+.primeiro-bloco {
+    padding-top: 25px;
+}
 
-        /* Sidebar aberta */
-        #toggleSidebar.active {
-            color: black;
-            transition: all 1s ease;
-        }
-    
-        .sidebarBtn {
-            background: none;
-            color: #474c5f;
-            font-weight: bold;
-            font-size: 18px;
-            margin-top: 0px;
-            gap: 10px;
-            padding-top: 0px;
-            display: flex;
-        }
-    
-        .sidebarButtons {
-            margin-top: 20px;
-        }
-    
-        /* Estuda.ai */
-        #header.active {
-            color: black;
-            transition: all 1s ease;
-        }
+.container-principal {
+    margin-top: 10px;
+}
 
-        /* Estilos do Overlay */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);  /* Cor do fundo do overlay */
-            z-index: 11;  /* Coloca o overlay acima de outros elementos */
-            opacity: 0;
-            pointer-events: none;  /* Não interage com o mouse até ser visível */
-            transition: opacity 0.3s ease-in-out;  /* Suaviza a transição */
-        }
-        
-        .overlay.active {
-            opacity: 1;
-            pointer-events: auto;  /* Permite interação com o overlay quando visível */
-        }
-
-        .primeiro-bloco {
-            padding-top: 25px;
-        }
-    
-        section {
-            margin-bottom: 2rem;
-            border-radius: 8px;
-        }
-    
-        /* Botão de menu dentro do cabeçalho */
-        #toggleSidebar {
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: #6735bc;
-            cursor: pointer;
-            z-index: 15;
-        }
-    
-        #toggleSidebarInside {
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: #6735bc;
-            cursor: pointer;
-            z-index: 15;
-        }
 main {
-    margin-top: 60px; /* Espaço para o cabeçalho fixo */
     padding: 1rem;
     max-width: 1200px;
-    margin: 70px auto 0; /* Ajusta a margem inferior para evitar sobreposição */
+    margin: 70px auto 20px;
 }
 
 section {
-    padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.27);
-    margin-bottom: 2.5rem;
-    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+}
+
+section h2 {
+    font-size: 1.4rem;
 }
 
 h2 {
-    color: #474c5f;  /* Cor do subtítulo */
+    color: #474c5f;
     margin-bottom: 1.5rem;
+    font-weight: 600;
     display: flex;
-    align-items: center; /* Alinha o ícone e o texto verticalmente */
+    align-items: center;
 }
 
 h2 i {
-    margin-right: 10px; /* Espaçamento entre o ícone e o texto */
-    font-size: 1.4rem;
-    color: #474c5f;  /* Cor do ícone */
+    margin-right: 10px;
+    font-size: 1.3rem;
+    color: #474c5f;
 }
 
 p {
@@ -171,7 +68,7 @@ p {
 
 button {
     font-family: 'Montserrat';
-    background: #474c5f;  /* Cor do botão */
+    background: #474c5f;
     border: none;
     color: white;
     padding: 0.8rem 1.2rem;
@@ -182,57 +79,61 @@ button {
     transition: background 0.3s ease;
 }
 
-/* Carrossel */
 .carousel-container {
     display: flex;
     overflow-x: auto;
     gap: 1rem;
+    padding-bottom: 10px;
 }
 
 .carousel-card {
     flex-shrink: 0;
-    width: 100;
+    /* width: 100; */ /* Largura inválida, removida ou ajuste ex: 220px */
+    width: 220px; /* Exemplo */
     padding: 1rem;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 8px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
     text-align: center;
     transition: transform 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.06); /* Borda fininha e suave */
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .carousel-card h3 {
     font-size: 1.1rem;
-    color: #6735bc;  /* Cor do título no card */
+    color: #6735bc;
     margin-bottom: 1rem;
     display: flex;
-    align-items: center; /* Alinha o ícone e o texto verticalmente */
+    align-items: center;
+    justify-content: center; /* Centraliza H3 no card */
 }
 
 .carousel-card h3 i {
-    margin-right: 10px; /* Espaçamento entre o ícone e o título */
+    margin-right: 8px;
     font-size: 1rem;
-    color: #6735bc;  /* Cor do ícone */
+    color: #6735bc;
 }
 
 .carousel-card p {
     margin-bottom: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Aumentado */
+    font-weight: 500; /* Adicionado peso */
     color: #333;
 }
 
-/* Estilo do gráfico */
 .grafico-container {
     position: relative;
     width: 100%;
+    min-height: 250px;
+    margin-bottom: 15px;
 }
 
 canvas {
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important; /* Altura automática */
+    max-height: 350px; /* Altura máxima */
 }
 
-/* Estilo do gráfico */
 .chartjs-tooltip {
     background-color: rgba(0, 0, 0, 0.7) !important;
 }
@@ -242,83 +143,106 @@ canvas {
     font-weight: 400;
 }
 
-/* Gráfico */
-.chartjs-render-monitor {
-    background: rgba(0, 0, 0, 0.05);
-}
+/* .chartjs-render-monitor { background: rgba(0, 0, 0, 0.05); } */
 
-/* Estilo do gráfico */
-.chart-line {
-    background-color: rgba(76, 175, 80, 0.2);
-    border-color: rgba(76, 175, 80, 0.8);
-    border-width: 2px;
-}
+/* .chart-line { ... } */
+/* .chart-line-questoes { ... } */
 
-.chart-line-questoes {
-    background-color: rgba(33, 150, 243, 0.2);
-    border-color: rgba(33, 150, 243, 0.8);
-    border-width: 2px;
-}
-
-/* Estilo do Dropdown */
-#intervaloGrafico {
-    padding: 10px 15px;
-    font-size: 10px;
-    background-color: rgba(255, 255, 255, 0.25);
+select#intervaloGrafico, select#metricaGraficoDisciplinas {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.5);
     color: #6735bc;
-    border: 1px solid #eceae2;
+    border: 1px solid rgba(103, 53, 188, 0.3);
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    width: 100px;
-    appearance: none; /* Remove o estilo padrão do dropdown */
-    -webkit-appearance: none; /* Remover o estilo padrão no Safari */
-    -moz-appearance: none; /* Remover o estilo padrão no Firefox */
-    position: relative;
+    min-width: 120px; /* Largura mínima */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative; /* Para posicionar a seta customizada se tiver */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236735bc'%3e%3cpath d='M7 10l5 5 5-5H7z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+    padding-right: 30px;
+    display: block; /* Faz ocupar a linha */
+    margin: 10px auto 0 auto; /* Centraliza abaixo do gráfico */
 }
 
-/* Efeito de hover */
-#intervaloGrafico:hover {
-    background-color: #f1f1f1;
+/* Removidos estilos específicos duplicados para #metricaGraficoDisciplinas */
+
+select#intervaloGrafico:hover, select#metricaGraficoDisciplinas:hover {
+    background-color: #f5f5f5;
     border-color: rgba(102, 53, 188, 0.5);;
 }
 
-/* Efeito de foco (quando o campo estiver em foco) */
-#intervaloGrafico:focus {
+select#intervaloGrafico:focus, select#metricaGraficoDisciplinas:focus {
     outline: none;
-    background-color: #f1f1f1;
+    background-color: #f5f5f5;
     border-color: #6735bc;
     box-shadow: 0 0 5px rgba(102, 53, 188, 0.1);
 }
 
-/* Estilo para a borda e cor ao clicar */
-#intervaloGrafico:active {
-    background-color: #e6f9f3;
-    border-color: #6735bc;
+/* Removido: #intervaloGrafico:active e @keyframes fadeIn - simplificado */
+
+::-webkit-scrollbar { width: 0px; height: 0px; }
+html { scrollbar-width: none; -ms-overflow-style: none; }
+
+.sidebar .sidebarBtn {
+    background: none; border: none; color: #474c5f; font-weight: 500; font-size: 1rem;
+    padding: 3px 15px !important; display: flex; align-items: center; gap: 0px !important;
+    text-align: left; cursor: pointer; border-radius: 6px; transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Adicionando animação sutil no dropdown */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0.5;
-    }
+.grafico-disciplinas-container {
+    display: none; padding-top: 20px; border-top: 1px solid #eee;
 }
 
-#intervaloGrafico {
-    animation: fadeIn 0.5s ease-out;
+/* === NOVOS ESTILOS PARA CONSTÂNCIA === */
+
+#constancia-section h2 {
+    text-align: left;
+    margin-bottom: 15px;
+    padding-left: 0; /* Reset se necessário */
+    margin-left: 0; /* Reset se necessário */
 }
 
-/* Esconder a scrollbar */
-::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
+.constancia-container {
 }
 
-/* Para Firefox */
-html {
+.constancia-dias-wrapper {
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 10px 5px;
+    min-height: 35px;
+    width: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
-      }
+}
+.constancia-dias-wrapper::-webkit-scrollbar { display: none; }
+
+.dia-constancia {
+    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+    border: 1px solid transparent; cursor: default; position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Adicionada transição */
+}
+.dia-constancia:hover { transform: scale(1.1); box-shadow: 0 0 5px rgba(0,0,0,0.2); }
+.dia-constancia.estudou { background-color: #4CAF50; border-color: #388E3C; }
+.dia-constancia.nao-estudou { background-color: #ef9a9a; border-color: #e57373; }
+
+.foco-texto-display {
+    text-align: center; font-size: 1rem; font-weight: 500; color: #474c5f;
+    margin-top: 15px; margin-bottom: 15px; min-height: 1.2em;
+}
+.foco-texto-display i.fa-fire { color: #ff7043; margin-left: 5px; }
+
+/* Responsividade herdada de 'section' e 'h2', mas pode adicionar ajustes específicos se necessário */
+@media (max-width: 768px) {
+     #constancia-section h2 { font-size: 1.3rem; }
+     .foco-texto-display { font-size: 0.9rem; }
+     .constancia-dias-wrapper { gap: 6px; } /* Menor espaçamento */
+     .dia-constancia { width: 24px; height: 24px; } /* Menores círculos */
+}
