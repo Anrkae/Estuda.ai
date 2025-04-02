@@ -124,7 +124,7 @@ button {
 .grafico-container {
     position: relative;
     width: 100%;
-    min-height: 250px;
+    min-height: 100px;
     margin-bottom: 15px;
 }
 
@@ -200,24 +200,32 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
     display: none; padding-top: 20px; border-top: 1px solid #eee;
 }
 
-/* === NOVOS ESTILOS PARA CONSTÂNCIA === */
+/* === ESTILOS CONSTÂNCIA (v2: Verde/Laranja, Ícones, Cantos Arredondados) === */
 
-#constancia-section h2 {
-    text-align: left;
-    margin-bottom: 15px;
-    padding-left: 0; /* Reset se necessário */
-    margin-left: 0; /* Reset se necessário */
+#constancia-section h2, #constancia-section h2 i{
+    margin-bottom: 5px;
+    padding-left: 10px;
+    margin-left: 0;
+    color: #ff7043;
+}
+
+#constancia-section {
+    padding: 0px;
+    margin-bottom: 40px;
+    background: none;
+    box-shadow: none;
 }
 
 .constancia-container {
+    /* Sem estilos específicos aqui */
 }
 
 .constancia-dias-wrapper {
     display: flex;
     overflow-x: auto;
-    gap: 8px;
+    gap: 0px; /* Mantém os blocos colados */
     padding: 10px 5px;
-    min-height: 35px;
+    min-height: 40px; /* Pode precisar de um pouco mais de altura p/ ícone */
     width: 100%;
     scrollbar-width: none;
     -ms-overflow-style: none;
@@ -225,24 +233,108 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 .constancia-dias-wrapper::-webkit-scrollbar { display: none; }
 
 .dia-constancia {
-    width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
-    border: 1px solid transparent; cursor: default; position: relative;
-    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Adicionada transição */
-}
-.dia-constancia:hover { transform: scale(1.1); box-shadow: 0 0 5px rgba(0,0,0,0.2); }
-.dia-constancia.estudou { background-color: #4CAF50; border-color: #388E3C; }
-.dia-constancia.nao-estudou { background-color: #ef9a9a; border-color: #e57373; }
+    border-radius: 0; /* Sem arredondamento padrão */
+    /* Ajuste LARGURA e ALTURA para acomodar o ícone e manter a forma desejada */
+    /* Para ícones bem centralizados, idealmente width = height */
+    width: 45px;
+    height: 30px;
+    flex-shrink: 0;
+    border: 1px solid transparent;
+    cursor: default;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 
+    /* --- Adicionado para centralizar o ícone (via ::before) --- */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em; /* Tamanho base para o ícone - ajuste se necessário */
+    color: #fff; /* Cor padrão do ícone (branco fica bom nos fundos sugeridos) */
+}
+
+.dia-constancia:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.3); /* Sombra um pouco mais destacada */
+    z-index: 1;
+}
+
+/* --- Nova Paleta: Verde (Estudou) / Laranja (Não Estudou) --- */
+.dia-constancia.estudou {
+    background-color: #66BB6A; /* Verde Agradável (Material Design Green 400) */
+    border-color: #55A05A;     /* Verde um pouco mais escuro */
+}
+
+.dia-constancia.nao-estudou {
+    background-color: #ff6961; /* Laranja Agradável (Material Design Orange 300) */
+    border-color: #ff6161;     /* Laranja um pouco mais escuro */
+}
+
+/* --- Ícones (Usando Font Awesome via Pseudo-elemento ::before) --- */
+/* Garante que o navegador use a fonte correta para os ícones */
+.dia-constancia.estudou::before,
+.dia-constancia.nao-estudou::before {
+    font-family: "Font Awesome 6 Free"; /* Confira se 'Font Awesome 6 Free' é o nome correto da sua versão */
+    font-weight: 900; /* Para ícones sólidos (fa-solid) */
+    -webkit-font-smoothing: antialiased; /* Melhora renderização em alguns navegadores */
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1; /* Importante para alinhamento vertical */
+}
+
+/* Define qual ícone aparece em cada caso */
+.dia-constancia.estudou::before {
+    content: "\f00c"; /* Código unicode para fa-check (v) */
+}
+
+.dia-constancia.nao-estudou::before {
+    content: "\f00d"; /* Código unicode para fa-times (x) */
+}
+
+/* --- Arredondamento SÓ nas pontas (Mantido) --- */
+.constancia-dias-wrapper .dia-constancia:first-child {
+    border-top-left-radius: 8px;    /* Ajuste o valor do raio (8px) como desejar */
+    border-bottom-left-radius: 8px; /* Ajuste o valor do raio (8px) como desejar */
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.constancia-dias-wrapper .dia-constancia:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 8px;     /* Ajuste o valor do raio (8px) como desejar */
+    border-bottom-right-radius: 8px;  /* Ajuste o valor do raio (8px) como desejar */
+}
+
+
+/* --- Texto de Foco (sem mudanças) --- */
 .foco-texto-display {
     text-align: center; font-size: 1rem; font-weight: 500; color: #474c5f;
-    margin-top: 15px; margin-bottom: 15px; min-height: 1.2em;
+    margin-top: 5px; margin-bottom: 15px; min-height: 1.2em;
 }
 .foco-texto-display i.fa-fire { color: #ff7043; margin-left: 5px; }
 
-/* Responsividade herdada de 'section' e 'h2', mas pode adicionar ajustes específicos se necessário */
+
+/* --- Responsividade (Ajustar tamanhos se necessário) --- */
 @media (max-width: 768px) {
-     #constancia-section h2 { font-size: 1.3rem; }
+     #constancia-section h2 { font-size: 1rem; }
      .foco-texto-display { font-size: 0.9rem; }
-     .constancia-dias-wrapper { gap: 6px; } /* Menor espaçamento */
-     .dia-constancia { width: 24px; height: 24px; } /* Menores círculos */
+     .constancia-dias-wrapper { gap: 0px; }
+     /* Exemplo: Deixar os blocos e ícones um pouco menores em telas pequenas */
+     .dia-constancia {
+          width: 45px;
+          height: 30px;
+          font-size: 1em; /* Ícone um pouco menor */
+     }
+     /* Ajustar raio se o tamanho do dia mudou */
+     .constancia-dias-wrapper .dia-constancia:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+     }
+     .constancia-dias-wrapper .dia-constancia:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+     }
 }
+
