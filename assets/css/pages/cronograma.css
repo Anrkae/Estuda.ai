@@ -372,8 +372,20 @@ h3 {
      #botao-salvar { width: 80%; font-size: 0.95rem; padding: 10px 20px; }
 }
 
+.tituloBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; /* Opcional */
+}
+
+.botao-minimizar {
+    background: none;
+    font-size: 1.3rem;
+    border: none;
+}
+
 @media (max-width: 480px) {
     #botao-anterior { width: 35px; height: 35px; left: 2px;}
     #botao-proximo { width: 35px; height: 35px; right: 2px;}
-    }
-                  
+}
