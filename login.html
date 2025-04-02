@@ -3,170 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Estuda.ai</title>
+    <title>Configuração Inicial - Estuda.ai</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css"> <style>
-        /* Estilos da página de login (iguais aos anteriores) */
-        body.login-page { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f1f0ea; padding-top: 0; }
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Estilos (mantidos da versão anterior, mas verificando se aplicam bem a input[type="text"]) */
+        body.login-page { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f1f0ea; padding: 20px 0; font-family: 'Montserrat', sans-serif; }
         .login-container { background-color: #fff; padding: 40px 50px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); text-align: center; max-width: 400px; width: 90%; }
         .login-container h1 { color: #474c5f; margin-bottom: 15px; font-size: 1.8em; font-weight: 600; }
         .login-container p { color: #666; margin-bottom: 30px; font-size: 1em; }
-        .google-login-button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 25px; border: 1px solid #ccc; background-color: #fff; color: #444; border-radius: 6px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: background-color 0.3s ease, box-shadow 0.2s ease; font-family: 'Montserrat', sans-serif; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .google-login-button:hover { background-color: #f8f8f8; box-shadow: 0 3px 6px rgba(0,0,0,0.15); }
-        .google-login-button i { color: #DB4437; font-size: 1.2em; }
-        #login-status { margin-top: 20px; font-size: 0.9em; color: #e53935; min-height: 1.2em; }
-        /* Estilos para Log na Página (iguais aos anteriores) */
-        #log-output-container { margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px; }
-        #log-output { background-color: #f5f5f5; border: 1px solid #ddd; border-radius: 4px; padding: 10px; font-family: monospace; font-size: 0.8em; height: 150px; overflow-y: auto; text-align: left; white-space: pre-wrap; word-wrap: break-word; color: #333; }
-        #log-output .log-error { color: #e53935; font-weight: bold; }
+        #profile-form { text-align: left; margin-top: 20px; }
+        .form-grupo { margin-bottom: 20px; position: relative; }
+        .form-grupo label { display: block; margin-bottom: 8px; font-weight: 500; color: #444; font-size: 0.95em; }
+        .form-grupo label span.required { color: #e53935; margin-left: 2px; }
+
+        /* Estilo unificado para inputs de texto */
+        .form-grupo input[type="text"] {
+            width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px;
+            box-sizing: border-box; font-family: inherit; font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-grupo input[type="text"]:focus {
+            border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15);
+        }
+        #age-display { font-size: 0.85em; color: #555; margin-top: 5px; min-height: 1.1em; text-align: right; }
+        #age-display.invalid { color: #e53935; }
+
+        .submit-button {
+            display: block; width: 100%; padding: 14px; background-color: #6735bc; color: white;
+            border: none; border-radius: 6px; font-size: 1.1em; font-weight: 600; cursor: pointer;
+            transition: background-color 0.2s ease; text-align: center; font-family: inherit; margin-top: 20px;
+         }
+        .submit-button:hover { background-color: #562da4; }
+        .submit-button:active { background-color: #452482; }
+        .submit-button:disabled { background-color: #ccc; cursor: not-allowed; }
+
+        #login-status { margin-top: 20px; font-size: 0.9em; min-height: 1.2em; font-weight: 500; }
+        #login-status.sucesso { color: #2e7d32; }
+        #login-status.erro { color: #c62828; }
+
+        @media (max-width: 480px) {
+            .login-container { padding: 30px 25px; }
+            .login-container h1 { font-size: 1.6em; }
+        }
     </style>
 </head>
 <body class="login-page">
 
     <div class="login-container">
         <h1>Bem-vindo!</h1>
-        <p>Acesse sua conta para continuar.</p>
-        <button id="google-login-btn" class="google-login-button">
-            <i class="fab fa-google"></i> Entrar com Google
-        </button>
-        <div id="login-status"></div>
+        <p>Vamos configurar seu perfil.</p>
 
-        <div id="log-output-container">
-            <small>Logs de Depuração:</small>
-            <pre id="log-output"></pre>
-        </div>
+        <form id="profile-form">
+            <div class="form-grupo">
+                <label for="nome">Nome<span class="required">*</span></label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome">
+            </div>
+            <div class="form-grupo">
+                <label for="dob">Data de Nascimento<span class="required">*</span></label>
+                <input type="text" id="dob" name="dob" required placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric">
+                <div id="age-display"></div>
+            </div>
+            <button type="submit" id="submit-btn" class="submit-button">Salvar e Continuar</button>
+        </form>
+
+        <div id="login-status"></div>
     </div>
 
     <script type="module">
-      // 1. Importa as funções necessárias dos SDKs via CDN
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-      // Removido Analytics se não for usar, mas pode manter se quiser
-      // import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
-
-      // *** IMPORTANTE: Adiciona imports para Autenticação ***
-      import {
-          getAuth,
-          GoogleAuthProvider,
-          signInWithPopup,
-          onAuthStateChanged
-          // signOut // Importe se precisar de logout nesta página
-      } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-
-      // (Se for usar Firestore nesta página, importe aqui também)
-      // import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-
-
-      // 2. Sua configuração Firebase (use a sua real aqui)
-      const firebaseConfig = {
-        apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc",
-        authDomain: "estudaai-ddb6a.firebaseapp.com",
-        projectId: "estudaai-ddb6a",
-        storageBucket: "estudaai-ddb6a.appspot.com",
-        messagingSenderId: "974312409515",
-        appId: "1:974312409515:web:ef635d71abf934241d6aee",
-        measurementId: "G-9X8PNR6S6L" // Opcional
-      };
-
-      // --- Elementos do DOM e Variáveis Globais do Módulo ---
-      const logOutput = document.getElementById('log-output');
-      const loginButton = document.getElementById('google-login-btn');
+      // --- Elementos do DOM ---
+      const profileForm = document.getElementById('profile-form');
+      const nomeInput = document.getElementById('nome');
+      const dobInput = document.getElementById('dob');
+      const submitButton = document.getElementById('submit-btn');
       const loginStatus = document.getElementById('login-status');
-      let app;
-      let auth;
-      let googleProvider;
+      const ageDisplay = document.getElementById('age-display');
 
-      // --- Função de Log na Página (dentro do módulo) ---
-      function logNaPagina(mensagem, tipo = 'info') {
-        if (logOutput) {
-            const agora = new Date().toLocaleTimeString('pt-BR');
-            let textoMensagem = typeof mensagem === 'object' ? JSON.stringify(mensagem) : mensagem;
-            const novaLinha = document.createElement('div');
-            novaLinha.textContent = `[${agora}] ${textoMensagem}`;
-            if (tipo === 'error') novaLinha.classList.add('log-error');
-            logOutput.appendChild(novaLinha);
-            logOutput.scrollTop = logOutput.scrollHeight;
-        } else { if (tipo === 'error') console.error(mensagem); else console.log(mensagem); }
+      // --- Constante Regex para formato dd/mm/aaaa ---
+      const dateRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+
+      // --- Função para Validar e Parsear dd/mm/aaaa ---
+      function parseAndValidateDdMmYyyy(dateString) {
+          const match = dateString.match(dateRegex);
+          if (!match) return null; // Não corresponde ao formato
+
+          const day = parseInt(match[1], 10);
+          const month = parseInt(match[2], 10); // Mês é 1-12
+          const year = parseInt(match[3], 10);
+
+          // Checagens básicas de intervalo
+          if (year < 1900 || year > new Date().getFullYear()) return null; // Ano razoável
+          if (month < 1 || month > 12) return null;
+          if (day < 1 || day > 31) return null;
+
+          // Checa dias no mês (simplificado para anos bissextos)
+          if ((month === 4 || month === 6 || month === 9 || month === 11) && day > 30) return null;
+          if (month === 2) {
+            const isLeap = (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+            if (day > (isLeap ? 29 : 28)) return null;
+          }
+
+          // Tenta criar objeto Date (MAIS SEGURO: usando componentes ano, mes-1, dia)
+          const dateObj = new Date(year, month - 1, day);
+
+          // Garante que o objeto Date criado corresponde aos componentes (evita datas inválidas como 31/04/2023)
+          if (dateObj.getFullYear() !== year || dateObj.getMonth() !== month - 1 || dateObj.getDate() !== day) {
+              return null;
+          }
+
+          return dateObj; // Retorna o objeto Date se for válido
       }
 
-      // --- Inicialização e Lógica Principal (dentro do módulo) ---
+      // --- Função para Calcular Idade (recebe objeto Date) ---
+      function calculateAgeFromDate(birthDateObj) {
+         if (!birthDateObj || isNaN(birthDateObj.getTime())) return { age: null, error: "Data inválida" };
+
+         // Data e hora atual: 2 de abril de 2025 (Fuso Juazeiro do Norte)
+         const today = new Date();
+         // Compara apenas as datas, ignorando a hora
+         const todayMidnight = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()));
+         const birthDateMidnight = new Date(Date.UTC(birthDateObj.getFullYear(), birthDateObj.getMonth(), birthDateObj.getDate()));
+
+         if (birthDateMidnight > todayMidnight) return { age: null, error: "Data futura" };
+
+         let age = today.getFullYear() - birthDateObj.getFullYear();
+         const monthDiff = today.getMonth() - birthDateObj.getMonth();
+         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+           age--;
+         }
+         // Garante que a idade não seja negativa (caso raro, mas seguro)
+         return { age: Math.max(0, age), error: null };
+      }
+
+      // --- Função Simples de Máscara dd/mm/aaaa ---
+      function applyDateMask(inputElement) {
+          let value = inputElement.value.replace(/\D/g, ''); // Remove não-dígitos
+          let formattedValue = '';
+
+          if (value.length > 0) {
+            formattedValue += value.substring(0, 2);
+          }
+          if (value.length >= 3) {
+            formattedValue += '/' + value.substring(2, 4);
+          }
+          if (value.length >= 5) {
+            formattedValue += '/' + value.substring(4, 8);
+          }
+          // Limita ao tamanho máximo (10 chars: dd/mm/yyyy)
+          inputElement.value = formattedValue.substring(0, 10);
+      }
+
+      // --- Lógica Principal ---
+      console.log("Iniciando script da página de configuração.");
+
+      // 1. VERIFICA LOCALSTORAGE (igual antes)
       try {
-          // 3. Inicializa o Firebase App
-          app = initializeApp(firebaseConfig);
-          logNaPagina("Firebase App inicializado.");
-
-          // 4. Inicializa os serviços necessários (Auth)
-          auth = getAuth(app); // Passa a instância 'app'
-          googleProvider = new GoogleAuthProvider();
-          logNaPagina("Firebase Auth e Google Provider inicializados.");
-
-          // const analytics = getAnalytics(app); // Se for usar Analytics
-          // const db = getFirestore(app); // Se for usar Firestore nesta página
-
+          const userInfoSalvo = localStorage.getItem('userInfo');
+          if (userInfoSalvo) {
+              const userInfo = JSON.parse(userInfoSalvo);
+              if (userInfo && userInfo.nome && userInfo.dob) {
+                  // Tenta validar a data salva antes de redirecionar
+                  if(parseAndValidateDdMmYyyy(userInfo.dob)) {
+                      console.log(`Usuário "${userInfo.nome}" já configurado. Redirecionando...`);
+                      loginStatus.textContent = 'Perfil já configurado. Redirecionando...';
+                      loginStatus.className = 'sucesso';
+                      if(profileForm) profileForm.style.display = 'none';
+                       setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+                  } else {
+                      console.warn("Data salva no localStorage é inválida. Removendo.");
+                      localStorage.removeItem('userInfo');
+                  }
+              } else {
+                  console.warn("Dados no localStorage inválidos. Removendo.");
+                  localStorage.removeItem('userInfo');
+              }
+          } else {
+              console.log("Nenhum dado de usuário no localStorage.");
+          }
       } catch (e) {
-          logNaPagina("ERRO na inicialização do Firebase: " + (e.message || e), 'error');
-          if(loginButton) loginButton.disabled = true;
-          if(loginStatus) loginStatus.textContent = "Erro crítico na inicialização.";
+          console.error("Erro ao verificar localStorage:", e);
+          localStorage.removeItem('userInfo');
+          loginStatus.textContent = "Erro ao verificar perfil anterior.";
+          loginStatus.className = 'erro';
       }
 
+      // 2. LISTENER PARA MÁSCARA E CÁLCULO DE IDADE
+      if (dobInput && ageDisplay) {
+          dobInput.addEventListener('input', (e) => {
+              applyDateMask(e.target); // Aplica a máscara dd/mm/aaaa
 
-      // --- Lógica de Login (Adaptada para API Modular) ---
-      if (loginButton && auth && googleProvider) {
-          logNaPagina(`Botão de login encontrado: Sim`);
-          loginButton.addEventListener('click', () => {
-              logNaPagina("Botão de login CLICADO!");
-              loginStatus.textContent = 'Abrindo popup do Google...';
-              logNaPagina('Tentando signInWithPopup...');
+              const dobValue = e.target.value;
+              let displayMessage = '';
+              let displayClass = '';
 
-              // Chama signInWithPopup passando 'auth'
-              signInWithPopup(auth, googleProvider)
-                  .then((result) => {
-                      logNaPagina("signInWithPopup SUCESSO!");
-                      // Na API modular, não precisa mais de credentialFromResult para ter o user
-                      const user = result.user;
-                      logNaPagina(`Usuário: ${user.displayName} (${user.email})`);
-                      loginStatus.textContent = 'Login realizado! Redirecionando...';
-                      loginStatus.style.color = '#4caf50';
-                      window.location.href = '/'; // Ajuste se necessário
-                  }).catch((error) => {
-                      logNaPagina("signInWithPopup ERRO!", 'error');
-                      logNaPagina(`Código: ${error.code}`, 'error');
-                      logNaPagina(`Mensagem: ${error.message}`, 'error');
-                      // Tratamento de erros específico (igual ao anterior)
-                      let mensagemErro = 'Ocorreu um erro durante o login.';
-                      if (error.code === 'auth/popup-closed-by-user') mensagemErro = 'Janela de login fechada. Tente novamente.';
-                      else if (error.code === 'auth/cancelled-popup-request') mensagemErro = 'Múltiplas tentativas de login.';
-                      else if (error.code === 'auth/popup-blocked') mensagemErro = 'Popup bloqueado pelo navegador. Habilite popups.';
-                      loginStatus.textContent = mensagemErro;
-                      loginStatus.style.color = '#e53935';
-                  });
+              if (dobValue.length === 10) { // Só calcula se o formato estiver completo
+                  const birthDateObj = parseAndValidateDdMmYyyy(dobValue);
+                  if (birthDateObj) {
+                      const { age, error } = calculateAgeFromDate(birthDateObj);
+                      if (error) {
+                          displayMessage = 'Data inválida ou futura';
+                          displayClass = 'invalid';
+                      } else if (age !== null) {
+                          displayMessage = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`;
+                      }
+                  } else {
+                      displayMessage = 'Data inválida';
+                      displayClass = 'invalid';
+                  }
+              }
+              // Atualiza o display
+              ageDisplay.textContent = displayMessage;
+              ageDisplay.className = displayClass;
           });
-          logNaPagina("Listener adicionado ao botão de login.");
-      } else if (!loginButton) {
-           logNaPagina("ERRO: Botão com id 'google-login-btn' NÃO encontrado!", 'error');
-      } else {
-           logNaPagina("ERRO: Firebase Auth ou Provider não inicializado!", 'error');
-           if(loginButton) loginButton.disabled = true;
-           if(loginStatus) loginStatus.textContent = "Erro crítico na configuração.";
       }
 
-      // --- Verifica se já está logado (Adaptado para API Modular) ---
-      if (auth) {
-           // Chama onAuthStateChanged passando 'auth'
-           onAuthStateChanged(auth, (user) => {
-               if (user) {
-                   logNaPagina("Verificação: Usuário JÁ está logado.");
-                   const pathAtual = window.location.pathname;
-                   const ePaginaPrincipal = pathAtual === '/' || pathAtual.endsWith('/index.html'); // Ajuste
-                   if (!ePaginaPrincipal) {
-                        logNaPagina("Redirecionando para a página principal...");
-                        window.location.href = '/';
-                   } else { logNaPagina("Já está na página principal."); }
-               } else {
-                   logNaPagina("Verificação: Nenhum usuário logado.");
+      // 3. LISTENER PARA SUBMISSÃO DO FORMULÁRIO
+      if (profileForm && nomeInput && dobInput && submitButton) {
+          profileForm.addEventListener('submit', (event) => {
+              event.preventDefault();
+              console.log("Formulário enviado.");
+              loginStatus.textContent = '';
+              loginStatus.className = '';
+
+              const nomeValue = nomeInput.value.trim();
+              const dobValue = dobInput.value; // String "dd/mm/aaaa"
+
+              // Validação Nome
+              if (!nomeValue || nomeValue.length < 3) {
+                  console.error("Erro: Nome inválido.");
+                  loginStatus.textContent = 'Por favor, insira um nome válido (mínimo 3 caracteres).';
+                  loginStatus.className = 'erro';
+                  nomeInput.focus();
+                  return;
+              }
+
+              // Validação Data (formato e validade)
+              const birthDateObj = parseAndValidateDdMmYyyy(dobValue);
+              if (!birthDateObj) {
+                  console.error("Erro: Data de nascimento inválida ou formato incorreto.");
+                  loginStatus.textContent = 'Data de nascimento inválida (use dd/mm/aaaa).';
+                  loginStatus.className = 'erro';
+                  dobInput.focus();
+                  // Garante que msg de idade também mostre erro
+                  if(ageDisplay) {
+                      ageDisplay.textContent = 'Data inválida';
+                      ageDisplay.className = 'invalid';
+                  }
+                  return;
+              }
+              // Valida se é futura (calculateAgeFromDate faz isso, mas revalidar é seguro)
+              const { error: dateError } = calculateAgeFromDate(birthDateObj);
+               if (dateError) {
+                    console.error("Erro: Data de nascimento futura.");
+                    loginStatus.textContent = 'Data de nascimento não pode ser futura.';
+                    loginStatus.className = 'erro';
+                    dobInput.focus();
+                    if(ageDisplay) {
+                        ageDisplay.textContent = 'Data futura';
+                        ageDisplay.className = 'invalid';
+                    }
+                    return;
                }
-           });
+
+
+              // Salva a STRING dd/mm/aaaa no localStorage
+              const userInfo = {
+                  nome: nomeValue,
+                  dob: dobValue // Salva a string formatada
+              };
+
+              try {
+                  localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                  console.log("Dados salvos:", userInfo);
+
+                  loginStatus.textContent = `Bem-vindo(a), ${nomeValue}! Redirecionando...`;
+                  loginStatus.className = 'sucesso';
+                  submitButton.disabled = true;
+                  submitButton.textContent = 'Salvo!';
+
+                  setTimeout(() => {
+                      window.location.href = 'index.html';
+                  }, 1500);
+
+              } catch (error) {
+                  console.error("Erro ao salvar no localStorage:", error);
+                  loginStatus.textContent = 'Erro ao salvar. Tente novamente.';
+                  loginStatus.className = 'erro';
+                  submitButton.disabled = false;
+              }
+          });
+          console.log("Listener adicionado ao formulário.");
       } else {
-          logNaPagina("ERRO: Auth não disponível para verificar estado de login.", 'error');
+           console.error("ERRO: Elementos do formulário não encontrados!");
+           if(loginStatus) { loginStatus.textContent = "Erro ao carregar."; loginStatus.className = 'erro'; }
       }
 
     </script>

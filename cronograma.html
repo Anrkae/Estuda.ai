@@ -12,7 +12,13 @@
 
         <div class="bloco minimizado" id="meu-bloco-1">
         <div class="config-geracao">
-            <h3 class="tituloBloco"><i class="fa-solid fa-bars-staggered"></i> Gerar Cronograma</h3>
+            <div class="tituloBtn">
+                    <h3 class="tituloBloco"><i class="fa-solid fa-bars-staggered"></i> Gerar Cronograma</h3>
+                     <button class="btn-toggle-bloco botao-minimizar" aria-label="Expandir Geração">
+                         <i class="fas fa-plus"></i>
+                     </button>
+
+            </div>
             <div class="conteudo-bloco">
                 <p style="padding-top: 25px; text-align: center; font-size: 14px; color: #555;">Selecione as disciplinas:</p>
                 <div class="disciplinas-selecao" id="disciplinas-para-selecao">
@@ -346,3 +352,27 @@
                          else { cronogramaSalvo = {}; }
                      } else { cronogramaSalvo = {}; }
                  } catch(error) { cronogramaSalvo = {}; }
+             } else { cronogramaSalvo = {}; }
+             currentSlideIndex = 0;
+             exibirCronogramaPorDias(cronogramaSalvo);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            carregarDisciplinas();
+            carregarCronogramaSalvo();
+            botaoGerarEl.addEventListener('click', gerarCronogramaAutomatico);
+            botaoSalvarEl.addEventListener('click', salvarCronograma);
+            botaoAnteriorEl.addEventListener('click', slideAnterior);
+            botaoProximoEl.addEventListener('click', slideProximo);
+            // Listener para o botão da sidebar (ainda sem funcionalidade)
+            if (botaoSidebarEl) {
+                botaoSidebarEl.addEventListener('click', () => {
+                    alert("Funcionalidade do Menu Lateral não implementada.");
+                });
+            }
+        });
+    </script>
+    
+    <script src="assets/js/components/bloco.js"></script>
+</body>
+</html>
