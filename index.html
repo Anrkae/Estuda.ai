@@ -10,18 +10,28 @@
 <body>
     <script src="assets/js/components/header.js"></script>
 
-    <main>
-        <section>
+    <main class="container-principal">
+        <section class="resumo-semana-container">
             <h2><i class="fa-solid fa-bars-staggered"></i> Resumo da Semana</h2>
             <div class="carousel-container">
                 <div class="carousel-card"><h3><i class="fa-regular fa-clock"></i> Tempo Estudado</h3><p id="tempo-total">0h 0min</p></div>
                 <div class="carousel-card"><h3><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h3><p id="questoes-semana">0</p></div>
                 <div class="carousel-card"><h3><i class="fa-solid fa-check"></i> Taxa de Acertos</h3><p id="acertos-semana">0%</p></div>
-                <div class="carousel-card"><h3><i class="fa-solid fa-fire"></i> Constância</h3><p id="dias-constancia">0 dias</p></div>
+                <div class="carousel-card"><h3><i class="fa-solid fa-fire"></i> Constância Atual</h3><p id="dias-constancia">0 dias</p></div>
             </div>
         </section>
 
-        <section>
+        <section id="constancia-section">
+            <h2><i class="fa-solid fa-fire"></i> Constância</h2>
+            <div class="constancia-container">
+                <div id="constancia-dias" class="constancia-dias-wrapper">
+                    <p style="color: #888; font-size: 0.9em; width: 100%; text-align: center;">Carregando histórico...</p>
+                </div>
+                <p id="foco-texto" class="foco-texto-display"></p>
+            </div>
+        </section>
+
+        <section class="grafico-estatisticas-container">
             <h2><i class="fas fa-chart-line"></i> Estatísticas de Estudo</h2>
             <div class="grafico-container">
                 <canvas id="graficoEstudos"></canvas>
@@ -46,34 +56,9 @@
         </section>
     </main>
 
-    <script>
-      // Sua configuração do Firebase - VERIFIQUE OS VALORES
-      const firebaseConfig = {
-        apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc",
-        authDomain: "estudaai-ddb6a.firebaseapp.com",
-        projectId: "estudaai-ddb6a",
-        storageBucket: "estudaai-ddb6a.firebasestorage.app", // Confira o final
-        messagingSenderId: "974312409515",
-        appId: "1:974312409515:web:ef635d71abf934241d6aee",
-        measurementId: "G-9X8PNR6S6L"
-      };
-      console.log('HTML: firebaseConfig definida.');
-    </script>
-
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js"></script>
-    <script type="module" src="https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js"></script> <script type="module"> console.log('HTML: SDKs Firebase carregados/solicitados.'); </script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script type="module" src="assets/js/script.js"></script>
-
+    <script src="assets/js/script.js"></script>
     <script src="assets/js/components/popup-registrar-questao.js"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-    <script>eruda.init();</script>
-    
-    </body>
+</body>
 </html>
