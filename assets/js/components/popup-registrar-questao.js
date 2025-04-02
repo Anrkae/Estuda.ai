@@ -1,8 +1,34 @@
-document.addEventListener("DOMContentLoaded", () => {
+<script type="module">
+  // 1. Importar funções do Firebase SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js"; // Importar Auth
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js"; // Importar Firestore
+
+  // 2. Configuração do Firebase (fornecida por você)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDRRBT5cVklz8CIxD_VpsexaiErH09H8Hc", // ATENÇÃO: Considere usar variáveis de ambiente para chaves sensíveis
+    authDomain: "estudaai-ddb6a.firebaseapp.com",
+    projectId: "estudaai-ddb6a",
+    storageBucket: "estudaai-ddb6a.firebasestorage.app",
+    messagingSenderId: "974312409515",
+    appId: "1:974312409515:web:ef635d71abf934241d6aee",
+    measurementId: "G-9X8PNR6S6L"
+  };
+
+  // 3. Inicializar Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(app);        // Instância do Auth
+  const db = getFirestore(app);     // Instância do Firestore
+
+  // 4. Lógica do Popup quando o DOM estiver pronto
+  document.addEventListener("DOMContentLoaded", () => {
 
     // Contexto global (manter se necessário)
     /* ... */
 
+    // Você pode usar isso para carregar o popup apenas em certas páginas
     const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("/index.html");
     const initialState = 'level-2'; // Começa minimizado
 
@@ -21,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <label for="popupDisciplinaSelect">Disciplina:</label>
                             <select id="popupDisciplinaSelect" name="disciplina" required>
                                 <option value="">-- Selecione --</option>
-                            </select>
+                                </select>
                         </div>
                         <div class="popup-form-grupo">
                             <label for="popupTempoInput">Tempo Gasto (minutos):</label>
@@ -44,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>`;
         document.body.insertAdjacentHTML("beforeend", popupHTML);
 
-        // --- Injeção de CSS (com border-radius e ajuste) ---
+        // --- Injeção de CSS (com ajustes vh/vw) ---
         if (!document.getElementById("popupStyles")) {
             const style = document.createElement('style');
             style.id = 'popupStyles';
@@ -54,16 +80,19 @@ document.addEventListener("DOMContentLoaded", () => {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw; */ /* ALTERADO */
+    width: 100%;
+    /* height: 100vh; */ /* ALTERADO */
+    height: 100%;
+    max-height: 100%; /* Adicionado para segurança */
     z-index: 1000;
-    transition: transform 0.4s ease-in-out; /* Transição principal */
+    transition: transform 0.4s ease-in-out;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     font-family: 'Montserrat', sans-serif;
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden; /* Essencial para não vazar conteúdo antes da hora */
+    overflow: hidden;
     border-top-left-radius: 32px;
     border-top-right-radius: 32px;
 }
@@ -74,10 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
     box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 .popup-container.level-2 .popup-header {
-    /* Estilo do Puxador */
-    height: 50px; /* Mesma altura do translateY */
+    height: 50px;
     padding: 0 20px;
-    display: flex; /* Garante que está visível */
+    display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -85,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     border-top: 1px solid #e0e0e0;
     width: 100%;
     flex-shrink: 0;
-    border-radius: 0; /* Reseta radius local se necessário */
+    border-radius: 0;
 }
  .popup-container.level-2 .popup-header #popupTitle {
     font-weight: 600;
@@ -93,38 +121,36 @@ document.addEventListener("DOMContentLoaded", () => {
     font-size: 1rem;
  }
 .popup-container.level-2 .popup-content-wrapper {
-    display: none; /* SIMPLESMENTE ESCONDE o conteúdo */
-    flex-grow: 1; /* Ainda permite que o container pai calcule o espaço */
+    display: none;
+    flex-grow: 1;
 }
 
 /* --- Estado Aberto (level-1) --- */
 .popup-container.level-1 {
-    transform: translateY(0); /* Posição aberta */
+    transform: translateY(0);
     box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.15);
 }
  .popup-container.level-1 .popup-header {
-     display: none; /* Esconde o puxador quando aberto */
+     display: none;
  }
 .popup-container.level-1 .popup-content-wrapper {
-    display: flex; /* MOSTRA o conteúdo e usa flex para alinhamento interno */
-    flex-direction: column; /* Empilha botão fechar e form */
-    align-items: center; /* Centraliza o form horizontalmente */
-    flex-grow: 1; /* Ocupa o espaço vertical restante */
-    overflow-y: auto; /* Permite rolagem do conteúdo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    overflow-y: auto;
     padding: 20px 30px 30px 30px; /* Espaçamento interno */
-    position: relative; /* Para posicionar o botão fechar */
-    padding-top: 50px; /* Espaço acima do h2 */
+    position: relative;
+    padding-top: 50px; /* Espaço acima do h2 (verifique se ainda é necessário/ideal) */
 }
  .popup-container.level-1 #formRegistroPopup {
      width: 100%;
      max-width: 600px; /* Largura máxima do formulário */
  }
 
-/* --- Estilos do Formulário, Botões, Feedback, Alert (iguais) --- */
+/* --- Estilos Comuns (Formulário, Botões, Feedback, etc.) --- */
  .popup-close-btn {
-    position: absolute; /* Relativo ao .popup-content-wrapper */
-    top: 15px;
-    right: 20px;
+    position: absolute; top: 15px; right: 20px;
     background: none; border: none; font-size: 2.2rem; color: #aaa;
     cursor: pointer; line-height: 1; padding: 0; z-index: 10;
 }
@@ -136,20 +162,31 @@ document.addEventListener("DOMContentLoaded", () => {
 .popup-form-grupo input:focus, .popup-form-grupo select:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15); }
 .popup-form-grupo-inline { display: flex; gap: 15px; margin-bottom: 15px;}
 .popup-form-grupo-inline .popup-form-grupo { flex: 1; margin-bottom: 0;}
- .popup-btn { /* ... */ }
- .popup-btn:hover { /* ... */ }
- .popup-btn:active { /* ... */ }
- .popup-feedback { /* ... */ }
- .popup-feedback.sucesso { /* ... */ }
- .popup-feedback.erro { /* ... */ }
- .alert { /* ... */ }
- @media (max-width: 600px) { /* ... */ }
-
+ .popup-btn {
+    display: block; width: 100%; padding: 14px; background-color: #6735bc; color: white;
+    border: none; border-radius: 6px; font-size: 1.1em; font-weight: 600;
+    cursor: pointer; transition: background-color 0.2s ease; text-align: center;
+    font-family: inherit; margin-top: 10px;
+ }
+ .popup-btn:hover { background-color: #562da4; }
+ .popup-btn:active { background-color: #452482; }
+ .popup-feedback {
+    margin-top: 15px; padding: 10px; border-radius: 4px;
+    text-align: center; font-size: 0.95em; display: none;
+ }
+ .popup-feedback.sucesso { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+ .popup-feedback.erro { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+ /* .alert { ... }  (Se você tiver estilos globais para alert) */
+ @media (max-width: 600px) {
+    .popup-container.level-1 .popup-content-wrapper { padding: 15px 20px 20px 20px; padding-top: 45px; }
+    #formRegistroPopup h2 { font-size: 1.3em; }
+    .popup-form-grupo-inline { flex-direction: column; gap: 15px; }
+ }
             `;
             document.head.appendChild(style);
         }
 
-        // --- Lógica de Interação e Registro (JS - sem forçar transform inline no final) ---
+        // --- Referências aos Elementos do DOM ---
         const popupContainer = document.getElementById("popupContainer");
         const popupHeader = document.getElementById("popupHeader");
         const popupCloseBtn = document.getElementById("popupCloseBtn");
@@ -159,108 +196,197 @@ document.addEventListener("DOMContentLoaded", () => {
         const questoesInput = document.getElementById("popupQuestoesInput");
         const acertosInput = document.getElementById("popupAcertosInput");
         const feedbackDiv = document.getElementById("popupFeedback");
+        const registerBtn = document.getElementById("popupRegisterBtn"); // Referência ao botão
 
-        // --- Função carregarDisciplinasPopup (igual anterior) ---
+        // --- Funções Auxiliares ---
+
+        // Função para carregar disciplinas (AINDA USA LOCALSTORAGE)
         function carregarDisciplinasPopup() {
-            // (Mesmo código da função carregarDisciplinasPopup)
-            const disciplinasSalvas = JSON.parse(localStorage.getItem('disciplinas')) || [];
-            disciplinaSelect.options.length = 1;
-            if (disciplinasSalvas.length === 0) {
+            // !!! ATENÇÃO: Esta função ainda busca disciplinas do localStorage.
+            // Se você moveu as disciplinas para o Firebase, adapte esta função
+            // para buscar da coleção apropriada no Firestore.
+            console.log("Carregando disciplinas do localStorage..."); // Log para debug
+            try {
+                const disciplinasSalvas = JSON.parse(localStorage.getItem('disciplinas')) || [];
+                disciplinaSelect.options.length = 1; // Limpa opções mantendo a primeira ("-- Selecione --")
+                if (disciplinasSalvas.length === 0) {
+                    disciplinaSelect.disabled = true;
+                    // Adiciona opção indicando que não há disciplinas
+                    if (disciplinaSelect.options.length === 1) { // Evita duplicar
+                         const option = document.createElement('option');
+                         option.textContent = "Nenhuma disciplina cadastrada";
+                         option.disabled = true;
+                         disciplinaSelect.appendChild(option);
+                         disciplinaSelect.selectedIndex = 1; // Mostra a msg
+                    }
+                } else {
+                    disciplinaSelect.disabled = false;
+                    disciplinaSelect.selectedIndex = 0; // Seleciona "-- Selecione --"
+                    disciplinasSalvas.forEach(disciplina => {
+                        const option = document.createElement('option');
+                        option.value = disciplina.nome; // Use o nome como valor
+                        option.textContent = disciplina.nome;
+                        disciplinaSelect.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error("Erro ao carregar disciplinas do localStorage:", error);
+                mostrarFeedbackPopup("Erro ao carregar lista de disciplinas.", "erro");
                 disciplinaSelect.disabled = true;
-                const option = document.createElement('option');
-                option.textContent = "Nenhuma disciplina registrada";
-                option.disabled = true;
-                disciplinaSelect.appendChild(option);
-                disciplinaSelect.selectedIndex = 1;
-            } else {
-                disciplinaSelect.disabled = false;
-                disciplinaSelect.selectedIndex = 0;
-                disciplinasSalvas.forEach(disciplina => {
-                    const option = document.createElement('option');
-                    option.value = disciplina.nome;
-                    option.textContent = disciplina.nome;
-                    disciplinaSelect.appendChild(option);
-                });
             }
         }
 
-        // --- Função mostrarFeedbackPopup (igual anterior) ---
+        // Função para mostrar feedback (sucesso/erro)
         function mostrarFeedbackPopup(mensagem, tipo = 'sucesso') {
-           // (Mesmo código da função mostrarFeedbackPopup)
            feedbackDiv.textContent = mensagem;
-           feedbackDiv.className = `popup-feedback ${tipo}`;
-           feedbackDiv.style.display = 'block';
+           feedbackDiv.className = `popup-feedback ${tipo}`; // Aplica a classe correta
+           feedbackDiv.style.display = 'block'; // Torna visível
+           // Esconde após alguns segundos
            setTimeout(() => { feedbackDiv.style.display = 'none'; }, 4000);
         }
 
-        // --- Função registrarSessaoCompleta (igual anterior) ---
-        function registrarSessaoCompleta(event) {
-             // (Mesmo código da função registrarSessaoCompleta)
-             event.preventDefault();
-             feedbackDiv.style.display = 'none';
-             // ... (validações) ...
-             const nomeDisciplina = disciplinaSelect.value;
-             const tempo = parseInt(tempoInput.value);
-             const questoes = parseInt(questoesInput.value);
-             const acertos = parseInt(acertosInput.value);
-             if (!nomeDisciplina) { mostrarFeedbackPopup("Erro: Selecione uma disciplina.", 'erro'); return; }
-             if (isNaN(tempo) || tempo <= 0) { mostrarFeedbackPopup("Erro: Tempo inválido.", 'erro'); return; }
-             if (isNaN(questoes) || questoes < 0) { mostrarFeedbackPopup("Erro: Número de questões inválido.", 'erro'); return; }
-             if (isNaN(acertos) || acertos < 0) { mostrarFeedbackPopup("Erro: Número de acertos inválido.", 'erro'); return; }
-             if (acertos > questoes) { mostrarFeedbackPopup("Erro: Acertos não podem ser maior que questões.", 'erro'); return; }
+        // Função para registrar sessão (AGORA COM FIREBASE)
+        async function registrarSessaoCompleta(event) { // Adicionado 'async'
+             event.preventDefault(); // Impede o envio padrão do formulário
+             feedbackDiv.style.display = 'none'; // Esconde feedback anterior
+             registerBtn.disabled = true; // Desabilita botão durante o processo
+             registerBtn.textContent = 'Registrando...'; // Feedback visual no botão
 
-             const novaSessao = { /* ... */ disciplina: nomeDisciplina, tempo: tempo, questoes: questoes, acertos: acertos, data: new Date().toISOString() };
+             // --- Obter valores do formulário ---
+             const nomeDisciplina = disciplinaSelect.value;
+             const tempoStr = tempoInput.value.trim();
+             const questoesStr = questoesInput.value.trim();
+             const acertosStr = acertosInput.value.trim();
+
+             // --- Validações ---
+             if (!nomeDisciplina) {
+                 mostrarFeedbackPopup("Erro: Selecione uma disciplina.", 'erro');
+                 registerBtn.disabled = false; registerBtn.textContent = 'Registrar Sessão'; return;
+             }
+             // Validar se os campos numéricos não estão vazios e são números válidos
+             if (tempoStr === '' || isNaN(parseInt(tempoStr)) || parseInt(tempoStr) <= 0) {
+                 mostrarFeedbackPopup("Erro: Tempo gasto inválido.", 'erro');
+                 registerBtn.disabled = false; registerBtn.textContent = 'Registrar Sessão'; return;
+             }
+             if (questoesStr === '' || isNaN(parseInt(questoesStr)) || parseInt(questoesStr) < 0) {
+                 mostrarFeedbackPopup("Erro: Número de questões inválido.", 'erro');
+                 registerBtn.disabled = false; registerBtn.textContent = 'Registrar Sessão'; return;
+             }
+             if (acertosStr === '' || isNaN(parseInt(acertosStr)) || parseInt(acertosStr) < 0) {
+                 mostrarFeedbackPopup("Erro: Número de acertos inválido.", 'erro');
+                 registerBtn.disabled = false; registerBtn.textContent = 'Registrar Sessão'; return;
+             }
+
+             const tempo = parseInt(tempoStr);
+             const questoes = parseInt(questoesStr);
+             const acertos = parseInt(acertosStr);
+
+             if (acertos > questoes) {
+                 mostrarFeedbackPopup("Erro: Acertos não podem ser maior que questões.", 'erro');
+                 registerBtn.disabled = false; registerBtn.textContent = 'Registrar Sessão'; return;
+             }
+
+             // --- Obter Usuário Logado ---
+             const user = auth.currentUser;
+             if (!user) {
+                 mostrarFeedbackPopup("Erro: Você precisa estar logado para registrar.", 'erro');
+                 // Poderia redirecionar para login aqui, se necessário
+                 registerBtn.disabled = false; registerBtn.textContent = 'Registrar Sessão'; return;
+             }
+
+             // --- Preparar Dados para o Firestore ---
+             const novaSessao = {
+                 userId: user.uid, // Essencial para associar ao usuário
+                 disciplina: nomeDisciplina,
+                 tempo: tempo,
+                 questoes: questoes,
+                 acertos: acertos,
+                 dataRegistro: serverTimestamp() // Timestamp do servidor Firebase
+             };
+
+             // --- Salvar no Firestore ---
              try {
-                 const sessoesSalvas = JSON.parse(localStorage.getItem('sessoesEstudo')) || [];
-                 sessoesSalvas.push(novaSessao);
-                 localStorage.setItem('sessoesEstudo', JSON.stringify(sessoesSalvas));
-                 mostrarFeedbackPopup("Sessão registrada com sucesso!", 'sucesso');
-                 formRegistroPopup.reset();
-                 disciplinaSelect.selectedIndex = 0;
-                 // Opcional: Minimizar após sucesso
+                // *** IMPORTANTE: Configure as REGRAS DE SEGURANÇA no Firestore ***
+                // Vá ao Console do Firebase > Firestore Database > Regras
+                // Garanta que usuários só possam criar/ler seus próprios dados.
+                // Exemplo de regra para a coleção 'sessoesEstudo':
+                // match /sessoesEstudo/{sessionId} {
+                //   allow read: if request.auth != null && resource.data.userId == request.auth.uid;
+                //   allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
+                //   // allow update, delete: if ... (defina conforme necessário)
+                // }
+
+                 console.log("Tentando salvar no Firestore:", novaSessao); // Log
+                 const docRef = await addDoc(collection(db, "sessoesEstudo"), novaSessao);
+                 console.log("Sessão registrada no Firestore com ID: ", docRef.id);
+
+                 mostrarFeedbackPopup("Sessão registrada com sucesso online!", 'sucesso');
+                 formRegistroPopup.reset(); // Limpa o formulário
+                 disciplinaSelect.selectedIndex = 0; // Reseta o select
+
+                 // Opcional: Minimizar a gaveta após sucesso
                   setTimeout(() => {
                       if (popupContainer.classList.contains('level-1')) {
                         popupContainer.classList.remove('level-1');
                         popupContainer.classList.add('level-2');
-                        feedbackDiv.style.display = 'none';
+                        feedbackDiv.style.display = 'none'; // Garante que feedback suma ao fechar
                       }
-                  }, 1500);
-                 // if (atualizarResumoGlobal) atualizarResumoGlobal();
-             } catch (error) { /* ... */ }
+                  }, 1500); // Espera 1.5s antes de fechar
+
+                 // Chame aqui qualquer função que atualize a UI (ex: lista de sessões, resumo)
+                 // if (typeof atualizarResumoGlobal === 'function') {
+                 //    atualizarResumoGlobal();
+                 // }
+
+             } catch (error) {
+                 console.error("Erro ao registrar sessão no Firestore: ", error);
+                 mostrarFeedbackPopup(`Erro ao salvar online: ${error.message}`, 'erro');
+             } finally {
+                 // Reabilita o botão independente de sucesso ou erro
+                 registerBtn.disabled = false;
+                 registerBtn.textContent = 'Registrar Sessão';
+             }
         }
 
-        // --- Lógica de Abrir/Fechar Gaveta (igual anterior) ---
+        // --- Lógica de Interação da Gaveta (Abrir/Fechar) ---
         if (popupContainer && popupHeader && popupCloseBtn && formRegistroPopup) {
+
+            // Abrir a gaveta ao clicar no header (estado minimizado)
             popupHeader.addEventListener("click", () => {
                 if (popupContainer.classList.contains('level-2')) {
-                    carregarDisciplinasPopup();
+                    carregarDisciplinasPopup(); // Carrega disciplinas ao abrir
                     popupContainer.classList.remove('level-2');
                     popupContainer.classList.add('level-1');
+                    feedbackDiv.style.display = 'none'; // Esconde feedback residual
                 }
             });
+
+            // Fechar a gaveta ao clicar no botão X (estado aberto)
             popupCloseBtn.addEventListener("click", () => {
                  if (popupContainer.classList.contains('level-1')) {
                     popupContainer.classList.remove('level-1');
                     popupContainer.classList.add('level-2');
-                    feedbackDiv.style.display = 'none';
+                    feedbackDiv.style.display = 'none'; // Esconde feedback residual
                 }
             });
+
+            // Registrar a sessão ao submeter o formulário
             formRegistroPopup.addEventListener("submit", registrarSessaoCompleta);
-            // Restrição de Inputs Numéricos (igual anterior)
-            const restrictToNumbers = (event) => { event.target.value = event.target.value.replace(/[^0-9]/g, ''); };
+
+            // Restrição para aceitar apenas números nos inputs numéricos
+            const restrictToNumbers = (event) => {
+                // Permite apenas dígitos. Remove qualquer caractere não numérico.
+                event.target.value = event.target.value.replace(/[^0-9]/g, '');
+            };
             if(tempoInput) tempoInput.addEventListener("input", restrictToNumbers);
             if(questoesInput) questoesInput.addEventListener("input", restrictToNumbers);
             if(acertosInput) acertosInput.addEventListener("input", restrictToNumbers);
+
         } else {
-            console.error("Elementos essenciais do Popup (gaveta) não encontrados.");
+            console.error("Elementos essenciais do Popup (gaveta) não encontrados no DOM.");
         }
-
-         // --- Função Alert Global (mantida, se necessária) ---
-         // const showAlert = (message) => { /* ... */ };
-
-        // REMOVIDO: Não forçar transform inline aqui, deixar CSS cuidar disso com base na classe inicial
-        // if (initialState === 'level-1') { ... } else { ... }
 
     } // Fim do if (!document.getElementById("popupContainer"))
 
-}); // Fim do DOMContentLoaded
+  }); // Fim do DOMContentLoaded
+</script>
