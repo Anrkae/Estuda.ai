@@ -48,7 +48,7 @@ section h2 {
 }
 
 h2 {
-    color: #474c5f;
+    color: #2C2C2C;
     margin-bottom: 1.5rem;
     font-weight: 600;
     display: flex;
@@ -58,7 +58,7 @@ h2 {
 h2 i {
     margin-right: 10px;
     font-size: 1.3rem;
-    color: #474c5f;
+    color: #2C2C2C;
 }
 
 p {
@@ -89,7 +89,7 @@ button {
 .carousel-card {
     flex-shrink: 0;
     /* width: 100; */ /* Largura inválida, removida ou ajuste ex: 220px */
-    width: 220px; /* Exemplo */
+    width: 250px; /* Exemplo */
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 8px;
@@ -101,7 +101,7 @@ button {
 
 .carousel-card h3 {
     font-size: 1.1rem;
-    color: #6735bc;
+    color: #2C2C2C;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -111,14 +111,14 @@ button {
 .carousel-card h3 i {
     margin-right: 8px;
     font-size: 1rem;
-    color: #6735bc;
+    color: #2C2C2C;
 }
 
 .carousel-card p {
     margin-bottom: 0.5rem;
     font-size: 1.2rem; /* Aumentado */
     font-weight: 500; /* Adicionado peso */
-    color: #333;
+    color: #2C2C2C;
 }
 
 .grafico-container {
@@ -152,7 +152,7 @@ select#intervaloGrafico, select#metricaGraficoDisciplinas {
     padding: 8px 12px;
     font-size: 0.9rem;
     background-color: rgba(255, 255, 255, 0.5);
-    color: #6735bc;
+    color: #8A2BE2;
     border: 1px solid rgba(103, 53, 188, 0.3);
     border-radius: 6px;
     cursor: pointer;
@@ -181,7 +181,7 @@ select#intervaloGrafico:hover, select#metricaGraficoDisciplinas:hover {
 select#intervaloGrafico:focus, select#metricaGraficoDisciplinas:focus {
     outline: none;
     background-color: #f5f5f5;
-    border-color: #6735bc;
+    border-color: #8A2BE2;
     box-shadow: 0 0 5px rgba(102, 53, 188, 0.1);
 }
 
