@@ -36,7 +36,7 @@ h2 {
     padding-top: 0px;
     margin-top: 0;
     margin-bottom: 15px;
-    color: #474c5f;
+    color: #2C2C2C;
     width: 100%;
 }
 h2.subtitulo {
@@ -64,7 +64,7 @@ input[type="text"] {
 /* Estilo geral para botões */
 button {
     font-family: 'Montserrat', sans-serif;
-    background-color: #474c5f;
+    background-color: #2C2C2C;
     color: white;
     cursor: pointer;
     padding: 10px 15px;
@@ -96,17 +96,24 @@ button:hover {
     padding-left: 5px;
     color: #555;
     font-size: 0.9em;
-    border-left: 2px solid #eee;
+    border-left: 3px solid #ab47bc;
+    border-color: #e1bee7;
+    border-radius: 8px;
+    line-height: 1.5;
 }
 
 .disciplina-bloco {
-    border: 1px solid #e0e0e0;
+    border: 1px solid transparent; /* Borda base */
     border-radius: 8px;
     margin-bottom: 15px;
     padding: 15px;
-    background: #fff;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
     transition: box-shadow 0.2s ease;
+    line-height: 1.5;
+    background-color: #f3e5f5; /* Lilás mais claro */
+    border-left: 5px solid #ab47bc; /* Roxo mais vibrante */
+    border-color: #e1bee7; /* Borda geral sutil */
+    
 }
 .disciplina-bloco:hover {
      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
@@ -120,7 +127,7 @@ button:hover {
 }
 .disciplina-bloco strong {
      font-weight: 600;
-     color: #542aa3;
+     color: #7b1fa2;
      font-size: 1.1em;
      word-break: break-word;
      padding-right: 10px;
@@ -152,11 +159,11 @@ button:hover {
      align-items: center; gap: 5px; border-radius: 4px;
      transition: background-color 0.2s ease;
 }
- .btn-add { color: #4caf50; }
+ .btn-add { color: #32CD32; }
  .btn-add:hover { background-color: rgba(76, 175, 80, 0.1); }
  .btn-excluir { color: #e53935; }
  .btn-excluir:hover { background-color: rgba(229, 57, 53, 0.1); }
- .btn-minimizar { color: #757575; padding: 5px 8px; }
+ .btn-minimizar { color: #7b1fa2; padding: 5px 8px; }
  .btn-minimizar i { font-size: 1em; transition: transform 0.4s ease; }
  .btn-minimizar i.open { transform: rotate(45deg); }
 
@@ -221,7 +228,7 @@ button:hover {
 }
 .modal-input:focus { border-color: #542aa3; outline: none; box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2); }
 .modal-input-error { font-size: 0.85em; color: #e53935; min-height: 1.2em; margin-top: 5px; text-align: left; }
-#modalInputBotaoAdicionar { background-color: #4caf50; color: white;}
+#modalInputBotaoAdicionar { background-color: #32CD32; color: white;}
 #modalInputBotaoAdicionar:hover { background-color: #388e3c; }
 #modalInputOverlay .modal-dialog { transform: scale(0.95); transition: transform 0.3s ease; }
 #modalInputOverlay.show .modal-dialog { transform: scale(1); }

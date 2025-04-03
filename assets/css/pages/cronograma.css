@@ -94,7 +94,7 @@ h3 {
     min-width: 200px; /* Largura mínima */
     margin: 25px auto 0; /* Centraliza com mais margem */
     padding: 12px 25px; /* Mais padding */
-    background-color: #6735bc; /* Roxo do header */
+    background-color: #8A2BE2; /* Roxo do header */
     color: white;
     border: none;
     border-radius: 25px; /* Botão "pill" */
@@ -122,11 +122,12 @@ h3 {
 
 /* === Lista de Disciplinas e Drag/Drop === */
 .disciplinas-selecao {
-    margin-bottom: 10px; /* Reduzido por causa do texto abaixo */
+    margin-bottom: 0px; /* Reduzido por causa do texto abaixo */
     min-height: 60px;
-    max-height: 35vh; /* Limite flexível */
+    max-height: 90vh; /* Limite flexível */
     overflow-y: auto;
     padding: 10px;
+    padding-bottom: 0px;
     border-radius: 8px; /* Bordas consistentes */
     }
 
@@ -217,7 +218,7 @@ h3 {
     margin-top: 0;
     margin-bottom: 20px; /* Mais espaço */
     text-align: center;
-    color: #6735bc;
+    color: #2C2C2C;
     border-bottom: 1px solid #eee;
     padding-bottom: 12px;
     font-size: 1.1rem; /* Ajuste tamanho */
@@ -237,6 +238,10 @@ h3 {
     font-size: 0.9rem;
     line-height: 1.5;
     border: 1px solid transparent; /* Borda base */
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
 }
 
 .evento-estudo {
@@ -280,7 +285,7 @@ h3 {
     top: 50%;
     transform: translateY(-50%);
     background-color: #fff; /* Fundo branco */
-    color: #6735bc; /* Roxo */
+    color: #8A2BE2; /* Roxo */
     border: 1px solid #e0e0e0; /* Borda sutil */
     border-radius: 50%;
     width: 44px; /* Pouco maior */
@@ -297,7 +302,7 @@ h3 {
 }
 
 .botao-carrossel:hover {
-    background-color: #6735bc;
+    background-color: #8A2BE2;
     color: white;
     border-color: #6735bc;
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
@@ -323,7 +328,7 @@ h3 {
 
 #botao-salvar {
     padding: 12px 30px;
-    background-color: #4caf50; /* Verde */
+    background-color: #32CD32; /* Verde */
     color: white;
     border: none;
     border-radius: 25px; /* "Pill" */

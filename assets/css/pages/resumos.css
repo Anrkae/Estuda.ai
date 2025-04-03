@@ -1,0 +1,194 @@
+/* Fontes e Estilos Base */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #f1f0ea;
+    padding: 20px;
+    padding-top: 90px; /* Ajuste conforme altura do seu header */
+    box-sizing: border-box;
+    margin: 0;
+}
+
+h2 {
+    padding: 15px 15px;
+}
+
+.resumo-section {
+    /* Herda o estilo de 'section' que você já definiu */
+    max-width: 800px; /* Limita largura para melhor leitura */
+    margin: 30px auto; /* Centraliza a seção */
+}
+
+section {
+    margin: 20px;
+}
+
+/* Estilos para Textarea */
+textarea {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif; /* Garante a fonte */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    line-height: 1.5;
+    margin-bottom: 15px; /* Espaçamento inferior */
+}
+
+textarea:focus {
+    border-color: #542aa3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2);
+}
+
+textarea#summaryOutput {
+    background-color: #f8f8f8; /* Fundo levemente diferente para indicar readonly */
+    color: #333;
+}
+
+/* Área de Ação (Botão e Loading) */
+.action-area {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaço entre botão e loading */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+}
+
+#summarizeButton {
+     /* Herda o estilo base de 'button' */
+     display: inline-flex; /* Para alinhar ícone e texto */
+     align-items: center;
+     gap: 8px; /* Espaço entre ícone e texto */
+     padding: 12px 20px; /* Botão um pouco maior */
+     font-size: 1rem;
+     font-weight: 500;
+     /* Cor roxa para destaque */
+     background-color: #542aa3;
+}
+#summarizeButton:hover {
+    background-color: #472485; /* Roxo um pouco mais escuro no hover */
+}
+#summarizeButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+#summarizeButton i { /* Estilo para ícone dentro do botão */
+    font-size: 1.1em;
+}
+
+#detailLevelSelect {
+    
+}
+
+.loading {
+    color: #542aa3;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.loading i { /* Estilo para ícone de loading */
+    font-size: 1.2em;
+}
+
+
+/* Área de Output */
+.output-area {
+    margin-top: 20px;
+}
+
+/* Mensagem de Erro */
+.error-message {
+    color: #e53935; /* Vermelho para erros */
+    background-color: rgba(229, 57, 53, 0.1); /* Fundo vermelho claro */
+    border: 1px solid rgba(229, 57, 53, 0.3);
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-top: 15px;
+    font-size: 0.9em;
+    display: none; /* Começa escondido */
+}
+
+
+/* Adicionando um pouco de responsividade extra se necessário */
+@media (max-width: 600px) {
+    }
+    .resumo-section {
+        padding: 15px; /* Menos padding em telas pequenas */
+        margin: 30px;
+    }
+     .action-area {
+         flex-direction: column; /* Empilha botão e loading */
+         align-items: flex-start;
+     }
+     #summarizeButton {
+         width: 100%; /* Botão ocupa largura total */
+         justify-content: center; /* Centraliza texto/ícone no botão */
+     }
+     .loading {
+         margin-top: 10px;
+     }
+}
+
+/* === Adicione ou ajuste estes estilos no seu style.css === */
+
+/* Área das Opções (Dropdown) */
+.options-area {
+    margin-bottom: 20px; /* Espaçamento antes do botão */
+    display: flex;       /* Alinha label e select lado a lado */
+    align-items: center; /* Alinha verticalmente */
+    gap: 10px;           /* Espaço entre label e select */
+    flex-wrap: wrap;     /* Permite quebrar linha se não couber */
+}
+
+/* Estilo para o Label do Dropdown (reutiliza modal-label se gostar) */
+.options-area .modal-label {
+    margin-bottom: 0; /* Remove margem inferior padrão do label */
+    flex-shrink: 0;  /* Evita que o label encolha */
+}
+
+/* Estilo para o Dropdown (Select) */
+#detailLevelSelect, #summaryTypeSelect {
+    padding: 8px 12px; /* Padding interno */
+    font-size: 0.95rem; /* Tamanho da fonte */
+    font-family: 'Montserrat', sans-serif; /* Garante a fonte */
+    border-radius: 6px; /* Bordas arredondadas */
+    border: 1px solid #ccc; /* Borda padrão */
+    background-color: #fff; /* Fundo branco */
+    min-width: 100px; /* Largura mínima */
+    flex-grow: 1; /* Permite crescer se houver espaço */
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-bottom: 20px;
+    /* Aparência para parecer mais com input (opcional) */
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Seta do dropdown */
+     background-repeat: no-repeat;
+     background-position: right 12px center;
+     background-size: 10px auto;
+     padding-right: 35px; /* Espaço para a seta */
+}
+
+#detailLevelSelect:focus {
+    border-color: #542aa3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2);
+}
+
+/* Ajuste Responsivo se necessário */
+@media (max-width: 600px) {
+    .options-area {
+        flex-direction: column; /* Empilha label e select */
+        align-items: stretch; /* Fazem ocupar largura total */
+        gap: 5px;
+    }
+    #detailLevelSelect, #summaryTypeSelect {
+        width: 100%; /* Ocupa largura total */
+    }
+}
+
