@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Header Limpo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">     
+    <link rel="stylesheet" href="assets/css/pages/resumos.css"> 
+    <link rel="stylesheet" href="assets/css/style.css"> 
+</head>
+<body>
+    
+    
+    <section class="resumo-section">
+            <h2><i class="fa-regular fa-comments"></i>Gerar Resumo</h2>
+
+            <div class="input-area">
+                <label for="textInput" class="modal-label"></label>
+                <textarea id="textInput" rows="2" placeholder="Insira o texto ou o assunto (ex: 'Revolução Francesa')"></textarea>
+            </div>
+
+            <div class="options-area">
+                 <div>
+                     <label for="summaryTypeSelect" class="modal-label">Tipo de Resumo:</label>
+                     <select id="summaryTypeSelect">
+                         <option value="assunto" selected>Resumir Assunto</option>
+                         <option value="texto">Resumir Texto</option>
+                     </select>
+                 </div>
+                 <div>
+                     <label for="detailLevelSelect" class="modal-label">Nível de Resumo:</label>
+                     <select id="detailLevelSelect">
+                         <option value="conciso">Conciso</option>
+                         <option value="mediano">Mediano</option>
+                         <option value="detalhado" selected>Detalhado</option>
+                     </select>
+                 </div>
+            </div>
+            <div class="action-area">
+                <button id="summarizeButton">
+                    Gerar Resumo
+                </button>
+                <div id="loadingIndicator" class="loading" style="display: none;">
+                    <p>Gerando resumo...</p>
+                </div>
+            </div>
+
+            <div class="output-area">
+                <label for="summaryOutput" class="modal-label"></label>
+                <textarea id="summaryOutput" rows="4" readonly placeholder="O resumo..."></textarea>
+                 <div id="errorDisplay" class="error-message" style="display: none;"></div>
+            </div>
+        </section>        
+    
+     <div>
+        <script src="assets/js/components/header.js"></script> 
+     </div>
+
+     <script>
+        const textInput = document.getElementById('textInput');
+        const summarizeButton = document.getElementById('summarizeButton');
+        const summaryOutput = document.getElementById('summaryOutput');
+        const loadingIndicator = document.getElementById('loadingIndicator');
+        const errorDisplay = document.getElementById('errorDisplay');
+        const detailLevelSelect = document.getElementById('detailLevelSelect');
+        const summaryTypeSelect = document.getElementById('summaryTypeSelect'); // Pega o novo dropdown
+
+        const GEMINI_API_KEY = 'AIzaSyDfmegc9Aue6YlTphmcVV0p_I9rgsKVXKs'; // Chave inserida - RISCO DE SEGURANÇA!
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${GEMINI_API_KEY}`;
+
+        summarizeButton.addEventListener('click', handleSummarize);
+
+        async function handleSummarize() {
+            const inputText = textInput.value.trim();
+            const selectedLevel = detailLevelSelect.value;
+            const selectedType = summaryTypeSelect.value; // Pega o valor do novo dropdown
+
+            if (!inputText) {
+                showError("Por favor, insira um texto ou descreva um assunto.");
+                return;
+            }
+            if (!GEMINI_API_KEY || GEMINI_API_KEY === 'SUA_CHAVE_API_GEMINI_AQUI') {
+                 showError("Erro: Chave da API do Gemini não configurada ou inválida.");
+                 return;
+            }
+
+            showLoading(true);
+            clearOutput();
+
+            let prompt = '';
+
+            // Lógica para construir o prompt baseado nos dois dropdowns
+            if (selectedType === 'texto') {
+                // Prompts para resumir o texto colado
+                switch (selectedLevel) {
+                    case 'conciso':
+                        prompt = `Faça um resumo conciso e claro do seguinte texto:\n\n"${inputText}"`;
+                        break;
+                    case 'mediano':
+                        prompt = `Faça um resumo de tamanho mediano sobre o seguinte texto, destacando os aspectos mais importantes, mas sem excesso de detalhes:\n\n"${inputText}"`;
+                        break;
+                    case 'detalhado':
+                    default:
+                        prompt = `Faça um resumo detalhado do seguinte texto, abordando seus pontos principais:\n\n"${inputText}"`;
+                        break;
+                }
+            } else { // selectedType === 'assunto'
+                // Prompts para resumir o assunto/tópico mencionado no texto
+                 switch (selectedLevel) {
+                    case 'conciso':
+                        prompt = `Gere um resumo conciso sobre o seguinte tópico ou assunto descrito no texto abaixo. Use seu conhecimento geral se o texto for apenas o nome do assunto:\n\n"${inputText}"`;
+                        break;
+                    case 'mediano':
+                        prompt = `Gere um resumo de tamanho mediano sobre o seguinte tópico ou assunto descrito no texto abaixo, destacando os aspectos mais importantes. Use seu conhecimento geral se o texto for apenas o nome do assunto:\n\n"${inputText}"`;
+                        break;
+                    case 'detalhado':
+                    default:
+                        prompt = `Gere um resumo detalhado sobre o seguinte tópico ou assunto descrito no texto abaixo, abordando seus pontos principais. Use seu conhecimento geral se o texto for apenas o nome do assunto:\n\n"${inputText}"`;
+                        break;
+                }
+            }
+
+
+            try {
+                const requestBody = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                };
+
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', },
+                    body: JSON.stringify(requestBody),
+                });
+
+                if (!response.ok) {
+                    let errorBody = {};
+                    try { errorBody = await response.json(); } catch(e) {}
+                    console.error("Erro na API:", response.status, errorBody);
+                    const detailMessage = errorBody?.error?.message || '';
+                    throw new Error(`Erro na API Gemini: ${response.status} ${response.statusText}. ${detailMessage}`);
+                }
+
+                const data = await response.json();
+
+                if (data.candidates && data.candidates.length > 0 && data.candidates[0].content?.parts?.length > 0) {
+                    const summary = data.candidates[0].content.parts[0].text;
+                    summaryOutput.value = summary;
+                } else if (data.promptFeedback?.blockReason) {
+                    console.error("Conteúdo bloqueado pela API:", data.promptFeedback);
+                    throw new Error(`O conteúdo foi bloqueado pela política de segurança: ${data.promptFeedback.blockReason}`);
+                } else {
+                    console.error("Resposta inesperada da API:", data);
+                    throw new Error("Não foi possível extrair o resumo da resposta da API.");
+                }
+
+            } catch (error) {
+                console.error("Falha ao gerar resumo:", error);
+                showError(`Erro ao gerar resumo: ${error.message}`);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+         function showLoading(isLoading) {
+             if (isLoading) {
+                 loadingIndicator.style.display = 'inline-flex';
+                 summarizeButton.disabled = true;
+             } else {
+                 loadingIndicator.style.display = 'none';
+                 summarizeButton.disabled = false;
+             }
+         }
+
+         function clearOutput() {
+             summaryOutput.value = '';
+             errorDisplay.textContent = '';
+             errorDisplay.style.display = 'none';
+         }
+
+         function showError(message) {
+             summaryOutput.value = '';
+             errorDisplay.textContent = message;
+             errorDisplay.style.display = 'block';
+         }
+    </script>     
+    </body>
+</html>
