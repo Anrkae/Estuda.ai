@@ -4,8 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <header>
             <div class="header-left">
                 <button id="toggleSidebar"><i class="fas fa-bars"></i></button>
-                <h1 id="header">Estuda.ai</h1>
             </div>
+    
+            <div>
+                <img style="filter: grayscale(40%); width: 40px; height: 40px;" src="assets/images/brain.png">
+            </div>
+    
             <div class="header-right">
                 <button id="profileButton" class="header-action-btn" aria-label="Perfil">
                     <i class="fas fa-user-circle"></i>
@@ -17,12 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <div id="sidebar" class="sidebar">
             <div class="top-bar">
                 <button id="toggleSidebarInside"><i class="fas fa-bars"></i></button>
-                <h1 id="headerInside">Estuda.ai</h1>
+                <h1 id="headerInside">Estuda AI</h1>
             </div>
             <div class="sidebarButtons">
-                <button onclick="window.location.href='index.html'" class="sidebarBtn"><i class="fa-solid fa-house"></i> Inicio</button>
-                <button onclick="window.location.href='disciplinas.html'" class="sidebarBtn"><i class="fa-regular fa-pen-to-square"></i> Disciplinas</button>
-                <button onclick="window.location.href='cronograma.html'" class="sidebarBtn"><i class="fa-regular fa-calendar"></i> Cronograma</button>
+                <button onclick="window.location.href='index.html'" class="sidebarBtn"><i class="fa-solid fa-house"></i>&nbsp;&nbsp;Inicio</button>
+                <button onclick="window.location.href='resumos.html'" class="sidebarBtn"><i class="fa-regular fa-pen-to-square"></i>&nbsp;&nbsp;Resumos</button>
+                <button onclick="window.location.href='disciplinas.html'" class="sidebarBtn"><i class="fa-solid fa-square-root-variable"></i>&nbsp;&nbsp;Disciplinas</button>
+                <button onclick="window.location.href='cronograma.html'" class="sidebarBtn"><i class="fa-regular fa-calendar"></i>&nbsp;&nbsp;Cronograma</button>
             </div>
         </div>`;
 
@@ -53,14 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
             margin: 0;
             font-size: 1.4rem;
             margin-left: 15px;
-            color: #542aa3;
+            color: #2C2C2C;
             font-weight: 600;
         }
         header #toggleSidebar {
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: #6735bc;
+            color: #2C2C2C;
             cursor: pointer;
             z-index: 15;
             padding: 5px;
@@ -100,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         .sidebar h1#headerInside {
             font-size: 1.4rem;
-            color: #542aa3;
+            color: #2C2C2C;
             margin: 0;
             margin-left: 15px;
             font-weight: 600;
@@ -109,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: #6735bc;
+            color: #2C2C2C;
             cursor: pointer;
             z-index: 15;
             padding: 5px;
@@ -123,8 +128,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .sidebar .sidebarBtn {
             background: none;
             border: none;
-            color: #474c5f;
-            font-weight: 500;
+            color: #2c2c2c;
+            font-weight: 800;
             font-size: 1rem;
             padding: 10px 15px;
             display: flex;
@@ -173,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .header-action-btn {
             background: none;
             border: none;
-            color: #6735bc;
+            color: #2C2C2C;
             font-size: 1.9rem;
             cursor: pointer;
             padding: 5px;
@@ -181,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             line-height: 1;
         }
         .header-action-btn:hover {
-            color: #542aa3;
+            color: #2C2C2C;
         }
     `;
 
