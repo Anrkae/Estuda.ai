@@ -381,7 +381,7 @@
                 editProfilePicInput.value = '';
                 return;
             }
-            //const reader = new FileReader();
+            const reader = new FileReader();
             reader.onload = (e) => { newProfilePicBase64 = e.target.result; editProfilePicPreview.src = newProfilePicBase64; console.log("Nova imagem selecionada (Base64)."); } // <<< ESTA LINHA ESTÁ COMENTADA!
             reader.onerror = (e) => { console.error("Erro ao ler arquivo:", e); editProfileStatus.textContent = "Erro ao ler imagem."; newProfilePicBase64 = null; } // Falta ; (opcional mas bom)
             reader.readAsDataURL(file); // Falta ; (opcional mas bom)
