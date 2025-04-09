@@ -324,20 +324,23 @@
                   // ** Redireciona IMEDIATAMENTE após login **
                   window.location.href = 'index.html';
 
-              } catch (error) {
-                  console.error("Erro no login Firebase:", error);
-                  let message = "Erro durante o login. Tente novamente.";
-                   if (error.code === 'auth/popup-closed-by-user') {
-                       message = "Login cancelado.";
-                   } else if (error.code === 'auth/account-exists-with-different-credential') {
-                      message = "Já existe conta com este e-mail usando outro método.";
-                  } else if (error.code === 'auth/cancelled-popup-request') {
-                       message = "Login cancelado (pop-ups múltiplos).";
-                   } else if (error.code === 'auth/popup-blocked') {
-                       message = "Pop-up de login bloqueado pelo navegador.";
-                   }
-                  if (firebaseErrorMessage) firebaseErrorMessage.textContent = message;
+                        } catch (error) {
+              console.error("Erro no login Firebase (resumo):", error.code, error.message); // <-- Resumo
+              console.error("Erro DETALHADO do Firebase:", error); // <-- ADICIONE ESTA LINHA para ver tudo
+              let message = "Erro durante o login. Tente novamente.";
+              if (error.code === 'auth/popup-closed-by-user') {
+                  message = "Login cancelado.";
+              } else if (error.code === 'auth/account-exists-with-different-credential') {
+                 message = "Já existe conta com este e-mail usando outro método.";
+              } else if (error.code === 'auth/cancelled-popup-request') {
+                  message = "Login cancelado (pop-ups múltiplos).";
+              } else if (error.code === 'auth/popup-blocked') {
+                  message = "Pop-up de login bloqueado pelo navegador.";
               }
+              // Adicione mais tratamentos de erro específicos se necessário baseado no que aparecer no console
+              if (firebaseErrorMessage) firebaseErrorMessage.textContent = message;
+                       }
+
           };
 
           const signInWithGoogle = () => {
