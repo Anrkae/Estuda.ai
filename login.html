@@ -86,7 +86,7 @@
         #status-message.sucesso { color: #2e7d32; }
         #status-message.erro { color: #c62828; }
 
-        /* === ESTILOS PARA BOTÕES FIREBASE (ADICIONADO) === */
+        /* === ESTILOS PARA BOTÃO FIREBASE (Google Only) === */
         .firebase-login-section {
             margin-bottom: 25px;
             padding-top: 15px;
@@ -100,7 +100,7 @@
             margin-bottom: 15px;
         }
         .firebase-login-button {
-            background-color: #4285F4; /* Cor base Google */
+            background-color: #db4437; /* Google Red */
             color: white;
             padding: 10px 15px;
             border: none;
@@ -120,8 +120,6 @@
          .firebase-login-button:hover {
             opacity: 0.9;
         }
-        .google-btn { background-color: #db4437; }
-        .apple-btn { background-color: #000000; }
         #firebase-error-message {
             color: #c62828;
             font-size: 0.85em;
@@ -154,12 +152,9 @@
         <div class="step-indicator" id="step-indicator-display">Etapa 1 de 3</div>
 
         <div class="firebase-login-section">
-            <p>Ou entre diretamente com sua conta:</p>
-            <button id="google-signin-btn" type="button" class="firebase-login-button google-btn">
+            <p>Ou entre diretamente com sua conta Google:</p>
+            <button id="google-signin-btn" type="button" class="firebase-login-button">
                 <i class="fab fa-google"></i> Entrar com Google
-            </button>
-            <button id="apple-signin-btn" type="button" class="firebase-login-button apple-btn">
-                <i class="fab fa-apple"></i> Entrar com Apple
             </button>
             <p id="firebase-error-message"></p>
         </div>
@@ -181,8 +176,8 @@
 
         <div id="step-2" class="step-content">
             <h2>Disciplinas <small>(Opcional)</small></h2>
-            <p class="step-description">Adicione as matérias que vai estudar, ou pule esta etapa.</p>
-            <div class="add-disciplina-container">
+             <p class="step-description">Adicione as matérias que vai estudar, ou pule esta etapa.</p>
+             <div class="add-disciplina-container">
                 <input type="text" id="nomeDisciplinaInput" placeholder="Nome da disciplina">
                 <button type="button" onclick="adicionarDisciplina()"><i class="fas fa-plus"></i> Adicionar</button>
             </div>
@@ -197,27 +192,19 @@
         <div id="step-3" class="step-content">
             <h2>Gerar Cronograma <small>(Opcional)</small></h2>
             <p class="step-description">Configure e gere seu cronograma, ou pule esta etapa.</p>
-            <div class="config-geracao">
-                <h3 class="tituloBloco"><i class="fa-solid fa-sliders"></i> Configurações</h3>
-                <p style="padding-top: 5px; text-align: center; font-size: 0.9em; color: #555;">Selecione e priorize as disciplinas:</p>
-                <div class="disciplinas-selecao" id="disciplinas-para-selecao">
-                    <p>Carregando disciplinas...</p>
-                </div>
-                <p class="priority-hint">Arraste para definir a prioridade (mais alta no topo).</p>
-                <div class="input-grid">
-                    <label for="minutos-por-dia">Minutos/dia:</label>
-                    <input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10">
-                    <label for="subjects-per-day">Disciplinas/dia:</label>
-                    <input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1">
-                    <label for="break-time">Descanso (min):</label>
-                    <input type="number" id="break-time" placeholder="Ex: 10" min="0" step="5">
-                </div>
-                <button id="botao-gerar" type="button">Gerar Cronograma</button>
-                <p id="status-geracao"></p>
-            </div>
-            <p class="view-schedule-message">
-                <i class="fas fa-info-circle"></i> Para visualizar seu cronograma, acesse pelo menu lateral.
-            </p>
+             <div class="config-geracao">
+                 <h3 class="tituloBloco"><i class="fa-solid fa-sliders"></i> Configurações</h3>
+                 <p style="padding-top: 5px; text-align: center; font-size: 0.9em; color: #555;">Selecione e priorize as disciplinas:</p>
+                 <div class="disciplinas-selecao" id="disciplinas-para-selecao"><p>Carregando disciplinas...</p></div>
+                 <p class="priority-hint">Arraste para definir a prioridade (mais alta no topo).</p>
+                 <div class="input-grid">
+                     <label for="minutos-por-dia">Minutos/dia:</label><input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10">
+                     <label for="subjects-per-day">Disciplinas/dia:</label><input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1">
+                     <label for="break-time">Descanso (min):</label><input type="number" id="break-time" placeholder="Ex: 10" min="0" step="5">
+                 </div>
+                 <button id="botao-gerar" type="button">Gerar Cronograma</button><p id="status-geracao"></p>
+             </div>
+             <p class="view-schedule-message"><i class="fas fa-info-circle"></i> Para visualizar seu cronograma, acesse pelo menu lateral.</p>
         </div>
 
         <div id="status-message"></div>
@@ -228,9 +215,9 @@
         </div>
 
     </div> <script type="module">
-      // Importa os serviços e provedores necessários do seu módulo Firebase
-      // *** Ajuste o caminho se necessário ***
-      import { auth, GoogleAuthProvider, OAuthProvider } from '/FireBase.js';
+      // Importa apenas o necessário para Google Login do módulo Firebase
+      // *** Ajuste o caminho './assets/...' se a estrutura de pastas for diferente ***
+      import { auth, GoogleAuthProvider } from '/FireBase.js';
 
       document.addEventListener('DOMContentLoaded', () => {
           console.log("DOM carregado. Iniciando script de setup.");
@@ -242,22 +229,17 @@
           const nextButton = document.getElementById('next-btn');
           const skipButton = document.getElementById('skip-btn');
           const statusMessage = document.getElementById('status-message');
-          // Elementos Firebase Login (Adicionado)
+          // Elemento Firebase Login (Apenas Google)
           const googleSignInButton = document.getElementById('google-signin-btn');
-          const appleSignInButton = document.getElementById('apple-signin-btn');
           const firebaseErrorMessage = document.getElementById('firebase-error-message');
+          // Elemento do botão Apple removido
 
-
-          // === Elementos Etapa 1 ===
+          // === Elementos Etapa 1, 2, 3 ===
           const nomeInput = document.getElementById('nome');
           const dobInput = document.getElementById('dob');
           const ageDisplay = document.getElementById('age-display');
-
-          // === Elementos Etapa 2 ===
           const nomeDisciplinaInput = document.getElementById('nomeDisciplinaInput');
           const disciplinasList = document.getElementById('disciplinas-list');
-
-          // === Elementos Etapa 3 ===
           const disciplinasSelecaoEl = document.getElementById('disciplinas-para-selecao');
           const minutosPorDiaInput = document.getElementById('minutos-por-dia');
           const subjectsPerDayInput = document.getElementById('subjects-per-day');
@@ -279,14 +261,14 @@
           const MIN_STUDY_DURATION = 10;
           const TOTAL_DIAS = DIAS_SEMANA.length;
 
-          // === Funções Utilitárias ===
+          // === Funções Utilitárias (seu código original) ===
           const dateRegex=/^(\d{2})\/(\d{2})\/(\d{4})$/; function parseAndValidateDdMmYyyy(ds){const m=ds.match(dateRegex);if(!m)return null;const d=parseInt(m[1],10),mo=parseInt(m[2],10),y=parseInt(m[3],10);if(y<1900||y>new Date().getFullYear()||mo<1||mo>12||d<1||d>31)return null;if((mo===4||mo===6||mo===9||mo===11)&&d>30)return null;if(mo===2){const iL=(y%4===0&&y%100!==0)||(y%400===0);if(d>(iL?29:28))return null;}const dt=new Date(y,mo-1,d);if(dt.getFullYear()!==y||dt.getMonth()!==mo-1||dt.getDate()!==d)return null;return dt;}
           function calculateAgeFromDate(bdo){if(!bdo||isNaN(bdo.getTime()))return{age:null,error:"Data inválida"};const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const bm=new Date(bdo.getFullYear(),bdo.getMonth(),bdo.getDate());if(bm>tm)return{age:null,error:"Data futura"};let a=t.getFullYear()-bdo.getFullYear();const md=t.getMonth()-bdo.getMonth();if(md<0||(md===0&&t.getDate()<bdo.getDate())){a--;}return{age:Math.max(0,a),error:null};}
           function applyDateMask(inp){let v=inp.value.replace(/\D/g,''),fv='';if(v.length>0)fv+=v.substring(0,2);if(v.length>=3)fv+='/'+v.substring(2,4);if(v.length>=5)fv+='/'+v.substring(4,8);inp.value=fv.substring(0,10);}
           function removerAcentuacao(str){return str.normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
           function shuffleArray(array){for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]];}return array;}
 
-          // === Lógica de Disciplinas (Etapa 2) ===
+          // === Lógica de Disciplinas (Etapa 2 - seu código original) ===
           function loadDisciplinasFromStorage(){try{const sD=JSON.parse(localStorage.getItem('disciplinas'))||[];if(Array.isArray(sD)){disciplinas=sD.map(i=>(typeof i==='object'&&i!==null&&i.hasOwnProperty('nome'))?i:(typeof i==='string'&&i.trim()!=='')?{nome:i,topicos:[],maximizado:false,excluirAtivo:false}:null).filter(i=>i!==null);}else{disciplinas=[];}}catch(e){console.error("Erro load disc:",e);disciplinas=[];}console.log("Disc loaded:",disciplinas);}
           function saveDisciplinasToStorage(){try{localStorage.setItem('disciplinas',JSON.stringify(disciplinas));console.log("Disc saved:",disciplinas);}catch(e){console.error("Erro save disc:",e);statusMessage.textContent='Erro salvar disc.';statusMessage.className='erro';}}
           function exibirDisciplinas(){disciplinasList.innerHTML='';if(disciplinas.length===0){disciplinasList.innerHTML='<li class="empty-message">Nenhuma adicionada.</li>';return;}disciplinas.forEach((dO,idx)=>{if(typeof dO!=='object'||dO===null||!dO.hasOwnProperty('nome')){console.warn("Item inválido:",dO);return;}const li=document.createElement('li');li.textContent=dO.nome;const rmBtn=document.createElement('button');rmBtn.className='remove-disciplina-btn';rmBtn.innerHTML='<i class="fas fa-times"></i>';rmBtn.title=`Remover "${dO.nome}"`;rmBtn.setAttribute('aria-label',`Remover ${dO.nome}`);rmBtn.onclick=()=>removerDisciplina(idx);li.appendChild(rmBtn);disciplinasList.appendChild(li);});}
@@ -294,7 +276,8 @@
           window.removerDisciplina=function(idx){if(idx>=0&&idx<disciplinas.length){const rm=disciplinas.splice(idx,1);console.log("Disc removida:",rm[0].nome);saveDisciplinasToStorage();exibirDisciplinas();if(nomeDisciplinaInput)nomeDisciplinaInput.focus();}}
           if(nomeDisciplinaInput){nomeDisciplinaInput.addEventListener('keypress',(ev)=>{if(ev.key==='Enter'){ev.preventDefault();adicionarDisciplina();}});}
 
-          // === Lógica do Cronograma (Etapa 3) ===
+
+          // === Lógica do Cronograma (Etapa 3 - seu código original) ===
           function getDragAfterElement(cont,y){const dE=[...cont.querySelectorAll('.disciplina-item:not(.dragging)')];return dE.reduce((c,ch)=>{const b=ch.getBoundingClientRect();const o=y-b.top-b.height/2;if(o<0&&o>c.offset)return{offset:o,element:ch};else return c;},{offset:Number.NEGATIVE_INFINITY}).element;}
           function handlePointerDown(e){if(e.pointerType==='mouse'&&e.button!==0)return;const tI=e.currentTarget;if(e.target.type==='checkbox')return;draggingElement=tI;draggingElement.classList.add('dragging');placeholder=document.createElement('div');placeholder.classList.add('drop-placeholder');draggingElement.parentNode.insertBefore(placeholder,draggingElement.nextSibling);document.addEventListener('pointermove',handlePointerMove);document.addEventListener('pointerup',handlePointerUp);document.addEventListener('pointercancel',handlePointerUp);e.preventDefault();}
           function handlePointerMove(e){if(!draggingElement)return;e.preventDefault();const cont=disciplinasSelecaoEl;const y=e.clientY;const aE=getDragAfterElement(cont,y);if(placeholder){if(aE==null)cont.appendChild(placeholder);else cont.insertBefore(placeholder,aE);}}
@@ -303,9 +286,9 @@
           function gerarCronogramaAutomatico(){statusGeracaoEl.textContent='';statusGeracaoEl.className='';const dSN=[];const itO=disciplinasSelecaoEl.querySelectorAll('.disciplina-item');itO.forEach(it=>{const cb=it.querySelector('input[type="checkbox"]');if(cb&&cb.checked)dSN.push(cb.value);});const mTD=parseInt(minutosPorDiaInput.value);const dPD=parseInt(subjectsPerDayInput.value);const tD=parseInt(breakTimeInput.value);if(dSN.length===0){statusGeracaoEl.textContent='Selecione disc.';return;}if(isNaN(mTD)||mTD<=0){statusGeracaoEl.textContent='Informe min/dia.';return;}if(isNaN(dPD)||dPD<=0){statusGeracaoEl.textContent='Informe disc/dia.';return;}if(dPD>dSN.length){statusGeracaoEl.textContent=`Pediu ${dPD} disc/dia, só ${dSN.length} selecionadas.`;return;}if(isNaN(tD)||tD<0){statusGeracaoEl.textContent='Informe descanso >=0.';return;}const nD=(dPD>1?dPD-1:0);const tTD=nD*tD;const tDE=mTD-tTD;if(tDE<=0){statusGeracaoEl.textContent='Tempo insuficiente.';return;}let dEB=Math.floor(tDE/dPD);if(dEB<MIN_STUDY_DURATION){statusGeracaoEl.textContent=`Tempo por disc (${dEB} min) baixo (mín ${MIN_STUDY_DURATION}).`;return;}const wD=[];const nS=dSN.length;dSN.forEach((n,i)=>{const r=Math.max(1,nS-i);for(let k=0;k<r;k++)wD.push(n);});const wSD=shuffleArray([...wD]);let tC={};let dGI=0;for(let dI=0;dI<TOTAL_DIAS;dI++){tC[dI]=[];let hAM=HORA_INICIO_PADRAO*60;let dUH=new Set();let tR=0;for(let i=0;i<dPD;i++){if(hAM>=24*60)break;let dA;let iOL=dGI;do{dA=wSD[dGI%wSD.length];dGI++;if(dUH.size>=nS&&dGI%wSD.length===iOL%wSD.length)break;if(nS===1)break;}while(dUH.has(dA)&&tR++<wSD.length);dUH.add(dA);tR=0;const sST=hAM;const sD=Math.min(dEB,(24*60)-sST);if(sD<=0)break;tC[dI].push({type:'study',subject:dA,duration:sD,startTime:sST});hAM+=sD;if(i<dPD-1&&tD>0){if(hAM>=24*60)break;const bST=hAM;const bD=Math.min(tD,(24*60)-bST);if(bD<=0)break;tC[dI].push({type:'break',subject:'Descanso',duration:bD,startTime:bST});hAM+=bD;}}dUH.clear();}cronogramaGerado=tC;console.log("Crono gerado:",cronogramaGerado);statusGeracaoEl.textContent='Cronograma gerado!';statusGeracaoEl.className='success';}
 
 
-          // === FUNÇÕES DE LOGIN FIREBASE (ADICIONADO) ===
+          // === FUNÇÕES DE LOGIN FIREBASE (Google Only) ===
           const handleFirebaseLogin = async (provider) => {
-              // Verifica se o 'auth' foi importado e inicializado corretamente
+              // Verifica se 'auth' foi importado e inicializado corretamente
               if (!auth) {
                   console.error("Firebase Auth não está disponível (erro na inicialização?).");
                   if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Erro: Serviço de login indisponível.";
@@ -316,122 +299,85 @@
               try {
                   console.log("Tentando login com:", provider.providerId);
                   // Usando a API de compatibilidade signInWithPopup (assumindo firebase-auth-compat.js carregado)
+                  // Se você mudar para SDK modular puro, use: import { signInWithPopup } from '...'; e chame signInWithPopup(auth, provider);
                   const result = await firebase.auth().signInWithPopup(provider);
                   const user = result.user;
                   console.log("Login Firebase bem-sucedido:", user.uid, user.displayName);
 
                   if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Login bem-sucedido! Redirecionando...";
-                  // ** Redireciona IMEDIATAMENTE após login **
-                  window.location.href = 'index.html';
+                  // ** Redireciona IMEDIATAMENTE após login bem-sucedido **
+                  window.location.href = 'index.html'; // Ou sua página principal logada
 
-                        } catch (error) {
-              console.error("Erro no login Firebase (resumo):", error.code, error.message); // <-- Resumo
-              console.error("Erro DETALHADO do Firebase:", error); // <-- ADICIONE ESTA LINHA para ver tudo
-              let message = "Erro durante o login. Tente novamente.";
-              if (error.code === 'auth/popup-closed-by-user') {
-                  message = "Login cancelado.";
-              } else if (error.code === 'auth/account-exists-with-different-credential') {
-                 message = "Já existe conta com este e-mail usando outro método.";
-              } else if (error.code === 'auth/cancelled-popup-request') {
-                  message = "Login cancelado (pop-ups múltiplos).";
-              } else if (error.code === 'auth/popup-blocked') {
-                  message = "Pop-up de login bloqueado pelo navegador.";
+              } catch (error) {
+                  // Log detalhado do erro no console! ESSENCIAL PARA DEBUG!
+                  console.error("Erro no login Firebase (resumo):", error.code, error.message);
+                  console.error("Erro DETALHADO do Firebase:", error); // <--- VERIFIQUE ESTE LOG!
+
+                  let message = "Erro durante o login. Tente novamente."; // Mensagem padrão
+                  // Personaliza mensagens para erros comuns
+                  if (error.code === 'auth/popup-closed-by-user') { message = "Login cancelado."; }
+                  else if (error.code === 'auth/account-exists-with-different-credential') { message = "Já existe conta com este e-mail usando outro método."; }
+                  else if (error.code === 'auth/cancelled-popup-request') { message = "Login cancelado (pop-ups múltiplos)."; }
+                  else if (error.code === 'auth/popup-blocked') { message = "Pop-up de login bloqueado pelo navegador. Verifique a barra de endereço."; }
+                  else if (error.code === 'auth/operation-not-allowed') { message = "Método de login (Google) não habilitado no Firebase Console."; }
+                  else if (error.code === 'auth/network-request-failed') { message = "Erro de rede. Verifique sua conexão."; }
+
+                  if (firebaseErrorMessage) firebaseErrorMessage.textContent = message;
               }
-              // Adicione mais tratamentos de erro específicos se necessário baseado no que aparecer no console
-              if (firebaseErrorMessage) firebaseErrorMessage.textContent = message;
-                       }
-
           };
 
           const signInWithGoogle = () => {
-              // Usa o provedor importado
+              // Usa o provedor GoogleAuthProvider importado do módulo Firebase.js
               const provider = new GoogleAuthProvider();
               handleFirebaseLogin(provider);
           };
-
-          const signInWithApple = () => {
-              // Usa o provedor importado
-              const provider = new OAuthProvider('apple.com');
-               // Potencialmente adicionar escopos se precisar de mais dados do Apple ID
-              // provider.addScope('email');
-              // provider.addScope('name');
-              handleFirebaseLogin(provider);
-          };
+          // Função signInWithApple e seu listener foram removidos
           // === FIM FUNÇÕES LOGIN FIREBASE ===
 
 
-          // === Funções de Navegação e Validação (SEM ALTERAÇÕES) ===
-          function showStep(stepNumber) {
-              stepContents.forEach((stepEl, index)=>{stepEl.classList.toggle('active',index+1===stepNumber);});
-              stepIndicatorDisplay.textContent=`Etapa ${stepNumber} de ${totalSteps}`;
-              prevButton.disabled = stepNumber===1;
-              nextButton.textContent = stepNumber===totalSteps ? 'Finalizar Configuração' : 'Próximo';
-              skipButton.style.display = (stepNumber === 2 || stepNumber === 3) ? 'inline-block' : 'none';
-              statusMessage.textContent=''; statusMessage.className='';
-              if (stepNumber === 2) { loadDisciplinasFromStorage(); exibirDisciplinas(); if(nomeDisciplinaInput)nomeDisciplinaInput.focus(); }
-              if (stepNumber === 3) { carregarDisciplinasParaSelecao(); cronogramaGerado={}; statusGeracaoEl.textContent=''; statusGeracaoEl.className=''; }
-          }
+          // === Funções de Navegação e Validação (seu código original - sem alterações) ===
+          function showStep(stepNumber) { stepContents.forEach((stepEl, index)=>{stepEl.classList.toggle('active',index+1===stepNumber);}); stepIndicatorDisplay.textContent=`Etapa ${stepNumber} de ${totalSteps}`; prevButton.disabled = stepNumber===1; nextButton.textContent = stepNumber===totalSteps ? 'Finalizar Configuração' : 'Próximo'; skipButton.style.display = (stepNumber === 2 || stepNumber === 3) ? 'inline-block' : 'none'; statusMessage.textContent=''; statusMessage.className=''; if (stepNumber === 2) { loadDisciplinasFromStorage(); exibirDisciplinas(); if(nomeDisciplinaInput)nomeDisciplinaInput.focus(); } if (stepNumber === 3) { carregarDisciplinasParaSelecao(); cronogramaGerado={}; statusGeracaoEl.textContent=''; statusGeracaoEl.className=''; } }
           function validateStep1() { statusMessage.textContent='';statusMessage.className='';const n=nomeInput.value.trim(),d=dobInput.value;if(!n||n.length<3){statusMessage.textContent='Nome inválido.';statusMessage.className='erro';nomeInput.focus();return false;}const bdo=parseAndValidateDdMmYyyy(d);if(!bdo){statusMessage.textContent='Data inválida.';statusMessage.className='erro';dobInput.focus();if(ageDisplay){ageDisplay.textContent='Inválida';ageDisplay.className='invalid';}return false;}const {error:de}=calculateAgeFromDate(bdo);if(de){statusMessage.textContent='Data futura.';statusMessage.className='erro';dobInput.focus();if(ageDisplay){ageDisplay.textContent='Futura';ageDisplay.className='invalid';}return false;}userData.nome=n;userData.dob=d;console.log("Etapa 1 OK:",userData);return true;}
           function validateStep2() { statusMessage.textContent='';statusMessage.className='';loadDisciplinasFromStorage();if(disciplinas.length===0){statusMessage.textContent='Adicione disciplina ou pule.';statusMessage.className='erro';if(nomeDisciplinaInput)nomeDisciplinaInput.focus();return false;}console.log("Etapa 2 OK.");return true;}
           function validateStep3() { statusMessage.textContent='';statusMessage.className='';if(Object.keys(cronogramaGerado).length===0||!Object.values(cronogramaGerado).some(d=>d.length>0)){statusMessage.textContent='Gere cronograma ou pule.';statusMessage.className='erro';return false;}console.log("Etapa 3 OK.");return true;}
-          function finalizeSetup(skippedCronograma = false) {
-               console.log("Finalizando configuração...");
-               if (!userData.nome || !userData.dob) { console.error("Erro: Dados UserInfo ausentes."); statusMessage.textContent='Erro interno.'; statusMessage.className='erro'; return; }
-               const finalUserInfo={nome:userData.nome,dob:userData.dob};
-               let finalDisciplinas = [];
-               try { finalDisciplinas = JSON.parse(localStorage.getItem('disciplinas')) || []; if (!Array.isArray(finalDisciplinas)) finalDisciplinas = []; } catch { finalDisciplinas = []; }
-               const finalCronograma = skippedCronograma ? {} : cronogramaGerado;
-               try {
-                   localStorage.setItem('userInfo', JSON.stringify(finalUserInfo));
-                   localStorage.setItem('cronograma', JSON.stringify(finalCronograma));
-                   console.log("Salvo userInfo:", finalUserInfo); console.log("Salvo disciplinas (estado atual):", finalDisciplinas); console.log("Salvo cronograma:", finalCronograma);
-                   statusMessage.textContent=`Configuração Concluída! Redirecionando...`; statusMessage.className='sucesso';
-                   nextButton.disabled=true; prevButton.disabled=true; skipButton.disabled=true;
-                   nextButton.textContent='Salvo!';
-                   setTimeout(()=>{window.location.href='index.html';}, 1500);
-               } catch(error){ console.error("Erro save final:", error); statusMessage.textContent='Erro ao salvar final.'; statusMessage.className='erro'; }
-          }
+          function finalizeSetup(skippedCronograma = false) { console.log("Finalizando configuração (salvando no localStorage)..."); if (!userData.nome || !userData.dob) { console.error("Erro: Dados UserInfo ausentes."); statusMessage.textContent='Erro interno.'; statusMessage.className='erro'; return; } const finalUserInfo={nome:userData.nome,dob:userData.dob}; let finalDisciplinas = []; try { finalDisciplinas = JSON.parse(localStorage.getItem('disciplinas')) || []; if (!Array.isArray(finalDisciplinas)) finalDisciplinas = []; } catch { finalDisciplinas = []; } const finalCronograma = skippedCronograma ? {} : cronogramaGerado; try { localStorage.setItem('userInfo', JSON.stringify(finalUserInfo)); localStorage.setItem('cronograma', JSON.stringify(finalCronograma)); console.log("Salvo userInfo:", finalUserInfo); console.log("Salvo disciplinas (estado atual):", finalDisciplinas); console.log("Salvo cronograma:", finalCronograma); statusMessage.textContent=`Configuração Concluída! Redirecionando...`; statusMessage.className='sucesso'; nextButton.disabled=true; prevButton.disabled=true; skipButton.disabled=true; nextButton.textContent='Salvo!'; setTimeout(()=>{window.location.href='index.html';}, 1500); } catch(error){ console.error("Erro save final:", error); statusMessage.textContent='Erro ao salvar final.'; statusMessage.className='erro'; } }
           function handleNext() { let isValid=false;if(currentStep===1) isValid=validateStep1(); else if(currentStep===2) isValid=validateStep2(); else if(currentStep===3){ isValid=validateStep3(); if(isValid) { finalizeSetup(false); return; } } if(isValid && currentStep < totalSteps){ currentStep++; showStep(currentStep); } }
           function handlePrev() { if(currentStep > 1){ currentStep--; showStep(currentStep); } }
           function handleSkip() { console.log(`Pulando Etapa ${currentStep}`); if (currentStep === 2) { currentStep++; showStep(currentStep); } else if (currentStep === 3) { finalizeSetup(true); } }
 
-          // === Inicialização Geral ===
-          function checkInitialSetup() { /* ... sua função original sem alterações ... */ let isUserInfoValid = false; try { const userInfoStr = localStorage.getItem('userInfo'); if(userInfoStr){ const userInfo = JSON.parse(userInfoStr); if(userInfo && userInfo.nome && userInfo.dob && parseAndValidateDdMmYyyy(userInfo.dob)){ isUserInfoValid = true; } } if(isUserInfoValid){ console.log("UserInfo válido. Redirecionando para index.html..."); statusMessage.textContent = "Perfil já configurado. Redirecionando..."; statusMessage.className = 'sucesso'; setTimeout(() => { try { document.body.innerHTML='<div style="text-align:center;padding:40px;font-family:Montserrat,sans-serif;color:#333;">Perfil já configurado. Redirecionando...</div>'; } catch (bodyError) { console.warn("Não foi possível limpar o body, prosseguindo com redirecionamento."); } window.location.href='index.html'; }, 1000); return true; } else { console.log("UserInfo inválido ou ausente. Iniciando setup."); } } catch(e){ console.error("Erro ao verificar localStorage inicial (userInfo):", e); console.log("Assumindo que setup é necessário devido ao erro."); } return false; }
+
+          // === Inicialização Geral (seu código original) ===
+          function checkInitialSetup() { let isUserInfoValid = false; try { const userInfoStr = localStorage.getItem('userInfo'); if(userInfoStr){ const userInfo = JSON.parse(userInfoStr); if(userInfo && userInfo.nome && userInfo.dob && parseAndValidateDdMmYyyy(userInfo.dob)){ isUserInfoValid = true; } } if(isUserInfoValid){ console.log("UserInfo válido no localStorage. Redirecionando para index.html..."); statusMessage.textContent = "Perfil já configurado. Redirecionando..."; statusMessage.className = 'sucesso'; setTimeout(() => { try { document.body.innerHTML='<div style="text-align:center;padding:40px;font-family:Montserrat,sans-serif;color:#333;">Perfil já configurado. Redirecionando...</div>'; } catch (bodyError) { console.warn("Não foi possível limpar o body, prosseguindo com redirecionamento."); } window.location.href='index.html'; }, 1000); return true; } else { console.log("UserInfo inválido ou ausente no localStorage. Iniciando fluxo de setup."); } } catch(e){ console.error("Erro ao verificar localStorage inicial (userInfo):", e); console.log("Assumindo que setup é necessário devido ao erro no localStorage."); } return false; }
 
           // Função principal de inicialização da página
           function initializePage() {
-              // A função checkInitialSetup continua como está, priorizando o localStorage
+              // checkInitialSetup decide se continua ou redireciona baseado no localStorage
               if (!checkInitialSetup()) {
-                  // Só executa o resto se checkInitialSetup retornar false (não redirecionou)
+                  // Mostra a primeira etapa do setup
                   showStep(currentStep);
+
                   // Adiciona Listeners para navegação das etapas
                   prevButton.addEventListener('click', handlePrev);
                   nextButton.addEventListener('click', handleNext);
                   skipButton.addEventListener('click', handleSkip);
-                  if (dobInput) dobInput.addEventListener('input',(e)=>{applyDateMask(e.target); const v=e.target.value;let m='',c='';if(v.length===10){const b=parseAndValidateDdMmYyyy(v);if(b){const{age:a,error:er}=calculateAgeFromDate(b);if(er){m=er==="Data futura"?'Futura':'Inválida';c='invalid';}else if(a!==null){m=`Idade: ${a} ${a===1?'ano':'anos'}`;}}else{m='Inválida';c='invalid';}}ageDisplay.textContent=m;ageDisplay.className=c;});
+                  if (dobInput) dobInput.addEventListener('input',(e)=>{ applyDateMask(e.target); const v=e.target.value;let m='',c='';if(v.length===10){const b=parseAndValidateDdMmYyyy(v);if(b){const{age:a,error:er}=calculateAgeFromDate(b);if(er){m=er==="Data futura"?'Futura':'Inválida';c='invalid';}else if(a!==null){m=`Idade: ${a} ${a===1?'ano':'anos'}`;}}else{m='Inválida';c='invalid';}}ageDisplay.textContent=m;ageDisplay.className=c;});
                   if(botaoGerarEl) botaoGerarEl.addEventListener('click', gerarCronogramaAutomatico);
 
-                  // === ADICIONAR LISTENERS PARA BOTÕES FIREBASE ===
-                  // Verifica se 'auth' foi importado/inicializado antes de adicionar listener
+                  // Adiciona Listener para Botão Google (verificando se 'auth' está pronto)
                   if (googleSignInButton && auth) {
                       googleSignInButton.addEventListener('click', signInWithGoogle);
                   } else if (googleSignInButton) {
-                      googleSignInButton.disabled = true; // Desabilita se auth não carregou
+                      // Se o botão existe mas 'auth' falhou na inicialização
+                      googleSignInButton.disabled = true;
                       googleSignInButton.title = "Serviço de login indisponível";
                       console.warn("Botão Google desabilitado, Firebase Auth não disponível.");
+                      if(firebaseErrorMessage) firebaseErrorMessage.textContent = "Serviço de login indisponível."; // Informa usuário
                   }
-
-                  if (appleSignInButton && auth) {
-                      appleSignInButton.addEventListener('click', signInWithApple);
-                  } else if (appleSignInButton) {
-                      appleSignInButton.disabled = true; // Desabilita se auth não carregou
-                      appleSignInButton.title = "Serviço de login indisponível";
-                      console.warn("Botão Apple desabilitado, Firebase Auth não disponível.");
-                  }
-                  // ==========================================
+                  // Listener do botão Apple removido
 
                   console.log("Setup inicializado, aguardando interação (etapas ou login Firebase).");
               } else {
+                  // checkInitialSetup já iniciou o redirecionamento
                   console.log("Redirecionamento iniciado por checkInitialSetup (localStorage válido).");
               }
           }
