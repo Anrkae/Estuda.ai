@@ -17,9 +17,9 @@
             font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f4f6f8;
             padding-top: 70px; /* Ajuste conforme seu header fixo */
             color: #333;
-            background-color: #f1f0ea;
+            background-color: #f1f0ea; /* Cor de fundo igual login.html */
         }
-        .profile-container { display: flex; flex-direction: column; margin: 30px auto; max-width: 800px; padding: 20px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        .profile-container { display: flex; flex-direction: column; margin: 30px auto; /* Centraliza */ max-width: 800px; padding: 20px; background-color: #ffffff; /* Fundo branco para contraste */ border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
 
         /* --- Sistema de Abas --- */
         .tab-navigation { display: flex; border-bottom: 2px solid #eee; margin-bottom: 25px; }
@@ -129,6 +129,8 @@
     </style>
 </head>
 <body>
+    <script src="assets/js/components/header.js"></script>
+
     <main class="profile-container">
 
         <nav class="tab-navigation">
@@ -157,7 +159,7 @@
 
         <div id="tab-preferencias" class="tab-content">
             <h3>Preferências</h3><p>...</p><ul><li>...</li></ul>
-        </div>
+       </div>
 
         <div id="tab-armazenamento" class="tab-content">
              <h3>Gerenciamento de Dados</h3><p>...</p><ul><li>...</li></ul>
@@ -171,21 +173,20 @@
     </main>
 
     <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset">
-         <div id="modalConfirmacaoResetDialog" class="modal-dialog-reset">
+        <div id="modalConfirmacaoResetDialog" class="modal-dialog-reset">
              <h3 class="modal-title-reset">...</h3> <div class="modal-message-reset">...</div> <div class="modal-buttons-reset">...</div>
          </div>
     </div>
 
     <div id="modalEditProfileOverlay" class="modal-overlay-edit">
-         <div id="modalDialogEdit" class="modal-dialog-edit">
+        <div id="modalDialogEdit" class="modal-dialog-edit">
               <h3 class="modal-title-edit">...</h3> <form id="edit-profile-form">...</form>
          </div>
     </div>
 
 
     <script type="module">
-        // Importa funções necessárias do módulo Firebase
-        // Garanta que /Firebase.js existe na raiz e exporta estes itens
+        // Importa funções do módulo Firebase (localizado na raiz do site)
         import { auth, onAuthStateChanged, signOut } from '/Firebase.js';
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -198,18 +199,14 @@
             const logoutButton = document.getElementById('logout-button');
             const profileErrorMessageDiv = document.getElementById('profile-error-message');
             const editProfileBtn = document.getElementById('edit-profile-btn');
-            // Abas
             const tabButtons = document.querySelectorAll('.tab-button');
             const tabContents = document.querySelectorAll('.tab-content');
-            // Reset
             const resetDataBtn = document.getElementById('reset-data-btn');
             const resetStatusEl = document.getElementById('reset-status');
             const modalResetOverlay = document.getElementById('modalConfirmacaoResetOverlay');
             const modalConfirmarResetBtn = document.getElementById('modalBotaoConfirmarReset');
             const modalCancelarResetBtn = document.getElementById('modalBotaoCancelarReset');
-            // Edição Perfil Modal
             const modalEditOverlay = document.getElementById('modalEditProfileOverlay');
-            // const modalEditDialog = document.getElementById('modalDialogEdit'); // Não usado diretamente aqui
             const editProfileForm = document.getElementById('edit-profile-form');
             const editProfilePicPreview = document.getElementById('edit-profile-pic-preview');
             const editProfilePicInput = document.getElementById('edit-profile-pic-input');
@@ -218,12 +215,11 @@
             const editAgeDisplay = document.getElementById('edit-age-display');
             const editProfileStatus = document.getElementById('edit-profile-status');
             const cancelProfileEditBtn = document.getElementById('cancel-profile-edit-btn');
-            // const saveProfileChangesBtn = document.getElementById('save-profile-changes-btn'); // Não usado diretamente aqui
 
             const defaultAvatarURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-            let newProfilePicBase64 = null;
+            let newProfilePicBase64 = null; // Usado na edição
 
-             // === Funções Utilitárias (Originais) ===
+            // === Funções Utilitárias (Originais) ===
             const dateRegexForFormat=/^(\d{2})\/(\d{2})\/(\d{4})$/; function parseAndValidateDdMmYyyy(ds){const m=ds.match(dateRegexForFormat);if(!m)return null;const d=parseInt(m[1],10),mo=parseInt(m[2],10),y=parseInt(m[3],10);if(y<1900||y>new Date().getFullYear()+5||mo<1||mo>12||d<1||d>31)return null;if((mo===4||mo===6||mo===9||mo===11)&&d>30)return null;if(mo===2){const iL=(y%4===0&&y%100!==0)||(y%400===0);if(d>(iL?29:28))return null;}const dt=new Date(Date.UTC(y,mo-1,d));if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d)return null;return dt;}
             function formatDatePtBr(dObj){if(!dObj||isNaN(dObj.getTime()))return"";return dObj.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'UTC'});}
             function applyDateMask(inp){let v=inp.value.replace(/\D/g,''),fv='';if(v.length>0)fv+=v.substring(0,2);if(v.length>=3)fv+='/'+v.substring(2,4);if(v.length>=5)fv+='/'+v.substring(4,8);inp.value=fv.substring(0,10);}
@@ -234,25 +230,25 @@
             // === Lógica das Abas (Original) ===
             tabButtons.forEach(button => { button.addEventListener('click', () => { const targetTab = button.getAttribute('data-tab'); tabButtons.forEach(btn => btn.classList.remove('active')); tabContents.forEach(content => content.classList.remove('active')); button.classList.add('active'); const targetContent = document.getElementById(targetTab); if(targetContent) targetContent.classList.add('active'); }); });
 
-            // === FUNÇÃO PARA EXIBIR DADOS DO PERFIL (NOVA - Prioriza Firebase) ===
+            // === FUNÇÃO PARA EXIBIR DADOS DO PERFIL (Prioriza Firebase) ===
             function displayUserData(firebaseUser) {
-                const userInfoLocalStorage = getUserInfoFromStorage(); // Pega dados locais para DOB e fallback
+                const userInfoLocalStorage = getUserInfoFromStorage();
                 console.log("Displaying user data. Firebase user:", firebaseUser, "LocalStorage user:", userInfoLocalStorage);
-                profileErrorMessageDiv.style.display = 'none';
+                profileErrorMessageDiv.style.display = 'none'; // Esconde mensagens de erro
 
-                // Foto: Prioridade Firebase Auth > localStorage (editada) > Padrão
+                // Foto: Firebase > localStorage (editada) > Padrão
                 profilePicElement.src = firebaseUser?.photoURL || userInfoLocalStorage?.profilePicBase64 || defaultAvatarURL;
-                // Nome: Prioridade Firebase Auth > localStorage > Padrão
-                profileNameElement.textContent = firebaseUser?.displayName || userInfoLocalStorage?.nome || "Nome não definido";
+                // Nome: Firebase > localStorage > Padrão
+                profileNameElement.textContent = firebaseUser?.displayName || userInfoLocalStorage?.nome || "Nome não encontrado";
                 // DOB: Apenas localStorage (Firebase Auth não fornece DOB)
                 const dobFromStorage = userInfoLocalStorage?.dob;
                 const birthDateObj = dobFromStorage ? parseAndValidateDdMmYyyy(dobFromStorage) : null;
                 profileDobElement.textContent = birthDateObj ? formatDatePtBr(birthDateObj) : (dobFromStorage ? "Data inválida" : "Não definida");
 
-                if (editProfileBtn) editProfileBtn.disabled = false; // Habilita edição
+                if (editProfileBtn) editProfileBtn.disabled = false; // Habilita botão de edição
             }
 
-            // === FUNÇÃO PARA EXIBIR ESTADO DESLOGADO (NOVA) ===
+            // === FUNÇÃO PARA EXIBIR ESTADO DESLOGADO ===
             function displayLoggedOutView() {
                 console.log("Displaying logged out view.");
                 profileNameElement.textContent = "Não conectado";
@@ -261,34 +257,29 @@
                 profileErrorMessageDiv.textContent = "Você não está conectado. Faça o login.";
                 profileErrorMessageDiv.style.display = 'block';
                 if (editProfileBtn) editProfileBtn.disabled = true; // Desabilita edição
-                // Poderia redirecionar para login aqui se desejado:
+                // Considerar redirecionar para login após um tempo
                 // setTimeout(() => { window.location.href = 'login.html'; }, 3000);
             }
 
-             // === VERIFICAÇÃO DE AUTENTICAÇÃO FIREBASE (NOVO - SUBSTITUI loadProfileData original) ===
+            // === VERIFICAÇÃO DE AUTENTICAÇÃO FIREBASE (Controla a exibição inicial) ===
             console.log("Configurando listener onAuthStateChanged...");
             if (auth) {
                 onAuthStateChanged(auth, (user) => {
-                    console.log(">>> onAuthStateChanged disparado!");
+                    console.log(">>> onAuthStateChanged disparado!"); // LOG PARA VER SE EXECUTA
                     if (user) {
-                        // --- Usuário está logado via Firebase ---
                         console.log(">>> USUÁRIO DETECTADO (Firebase):", user.uid);
                          console.log(">>> user.displayName:", user.displayName);
                          console.log(">>> user.photoURL:", user.photoURL);
-                        displayUserData(user); // Chama função para exibir dados
+                        displayUserData(user); // Chama a função para exibir dados do usuário logado
                     } else {
-                        // --- Usuário NÃO está logado via Firebase ---
                         console.log(">>> NENHUM USUÁRIO DETECTADO (Firebase)");
-                        displayLoggedOutView(); // Mostra estado desconectado
+                        displayLoggedOutView(); // Chama a função para exibir estado deslogado
                     }
                 });
             } else {
-                 // Erro: auth não foi inicializado corretamente em /Firebase.js
-                 console.error("ERRO CRÍTICO: Instância 'auth' do Firebase não está disponível!");
-                 displayLoggedOutView();
+                 console.error("ERRO CRÍTICO: Instância 'auth' do Firebase não está disponível! Verifique /Firebase.js e o carregamento.");
+                 displayLoggedOutView(); // Mostra estado deslogado se auth falhou na inicialização
             }
-            // A chamada original loadProfileData() foi removida daqui, pois onAuthStateChanged cuida da exibição inicial
-
 
             // === Lógica do Botão Sair (ATUALIZADO com Firebase signOut) ===
             if (logoutButton) {
@@ -297,21 +288,18 @@
                          console.log("Saindo (Firebase + LocalStorage)...");
                          signOut(auth).then(() => {
                              console.log("Logout do Firebase bem-sucedido.");
-                             // Limpa localStorage APÓS sucesso do Firebase ou em caso de erro
-                             clearLocalDataAndRedirect();
+                             clearLocalDataAndRedirect(); // Limpa e redireciona
                          }).catch((error) => {
                              console.error("Erro ao fazer logout do Firebase:", error);
-                             // Mesmo com erro no Firebase, limpa local e redireciona
-                             clearLocalDataAndRedirect();
+                             clearLocalDataAndRedirect(); // Limpa e redireciona mesmo com erro no Firebase
                          });
                      } else {
-                        // Fallback se auth não existe
                         console.warn("Firebase Auth não disponível, limpando apenas localStorage.");
                         clearLocalDataAndRedirect();
                      }
                  });
             }
-            // Função auxiliar para limpar e redirecionar
+            // Função auxiliar para logout
             function clearLocalDataAndRedirect(){
                 const keysToRemove = ['userInfo', 'disciplinas', 'cronograma', 'sessoesEstudo'];
                 keysToRemove.forEach(key => localStorage.removeItem(key));
@@ -320,9 +308,9 @@
             }
 
 
-            // === Lógica do Modal de Edição (Original - salva SÓ no localStorage) ===
+            // === Lógica do Modal de Edição (Original - Salva SÓ no localStorage) ===
             // (Nenhuma mudança aqui, continua interagindo apenas com localStorage)
-            function openEditProfileModal() { const userInfo = getUserInfoFromStorage(); const firebaseUser = auth?.currentUser; if (!userInfo && !firebaseUser) { alert("Erro ao carregar dados. Faça login."); return; } editProfileNameInput.value = userInfo?.nome || firebaseUser?.displayName || ''; editProfileDobInput.value = userInfo?.dob || ''; editAgeDisplay.textContent = ''; if (userInfo?.dob) { const bDate = parseAndValidateDdMmYyyy(userInfo.dob); if (bDate) { const { age } = calculateAgeFromDate(bDate); if(age !== null) editAgeDisplay.textContent = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } } editProfilePicPreview.src = userInfo?.profilePicBase64 || firebaseUser?.photoURL || defaultAvatarURL; newProfilePicBase64 = null; editProfileStatus.textContent = ''; modalEditOverlay.classList.add('show'); }
+             function openEditProfileModal() { const userInfo = getUserInfoFromStorage(); const firebaseUser = auth?.currentUser; /* Ajuste para pegar nome/foto do Firebase se localStorage estiver vazio */ editProfileNameInput.value = userInfo?.nome || firebaseUser?.displayName || ''; editProfileDobInput.value = userInfo?.dob || ''; editAgeDisplay.textContent = ''; if (userInfo?.dob) { const bDate = parseAndValidateDdMmYyyy(userInfo.dob); if (bDate) { const { age } = calculateAgeFromDate(bDate); if(age !== null) editAgeDisplay.textContent = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } } /* Prioriza foto editada (localStorage) se houver, senão Firebase, senão padrão */ editProfilePicPreview.src = userInfo?.profilePicBase64 || firebaseUser?.photoURL || defaultAvatarURL; newProfilePicBase64 = null; editProfileStatus.textContent = ''; modalEditOverlay.classList.add('show'); }
             function closeEditProfileModal() { modalEditOverlay.classList.remove('show'); }
             if (editProfileBtn) { editProfileBtn.addEventListener('click', openEditProfileModal); }
             if (cancelProfileEditBtn) { cancelProfileEditBtn.addEventListener('click', closeEditProfileModal); }
@@ -342,13 +330,13 @@
             if(modalConfirmarResetBtn){modalConfirmarResetBtn.addEventListener('click',()=>{hideResetConfirmationModal();resetOptionalData();});}
             if(modalResetOverlay){modalResetOverlay.addEventListener('click',(event)=>{if(event.target===modalResetOverlay){hideResetConfirmationModal();}});}
 
-
             console.log("Script perfil.html: Listeners e lógica principal configurados.");
 
-            // Adiciona informação de contexto (Data/Local)
+             // Adiciona informação de contexto (Data/Local)
             const now = new Date();
             const dateFormatter = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle: 'medium', timeZone: 'America/Fortaleza' });
             console.log(`Script da página de perfil executado em ${dateFormatter.format(now)}, Juazeiro do Norte - CE.`);
+
 
         }); // Fim do DOMContentLoaded
     </script>
