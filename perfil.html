@@ -158,32 +158,85 @@
         </div>
 
         <div id="tab-preferencias" class="tab-content">
-            <h3>Preferências</h3><p>...</p><ul><li>...</li></ul>
-       </div>
+            <h3>Preferências</h3>
+            <p>Aqui você poderá ajustar configurações da ferramenta (funcionalidade futura).</p>
+            <p>Sugestões:</p>
+            <ul>
+                <li>Opção de Tema (Claro/Escuro)</li>
+                <li>Definir Duração Padrão de Estudo</li>
+                <li>Definir Tempo Padrão de Descanso</li>
+                <li>Configurar Notificações</li>
+                <li>Escolher Dia de Início da Semana</li>
+            </ul>
+        </div>
 
         <div id="tab-armazenamento" class="tab-content">
-             <h3>Gerenciamento de Dados</h3><p>...</p><ul><li>...</li></ul>
+            <h3>Gerenciamento de Dados</h3>
+            <p>Os seguintes dados são salvos:</p>
+            <ul>
+                <li><strong>Perfil:</strong> Seu nome e data de nascimento.</li>
+                <li><strong>Disciplinas:</strong> Lista de disciplinas e tópicos.</li>
+                <li><strong>Cronograma:</strong> Último cronograma salvo.</li>
+                <li><strong>Sessões:</strong> Histórico de estudos (se aplicável).</li>
+            </ul>
+
             <div class="reset-section">
-                <h4>Resetar Dados Opcionais</h4><p class="reset-warning">...</p>
-                <button id="reset-data-btn"><i class="fas fa-trash-alt"></i> Resetar Dados Locais</button>
-                <p id="reset-status"></p>
+                 <h4>Resetar Dados Opcionais</h4>
+                 <p class="reset-warning"><i class="fas fa-exclamation-triangle"></i> Atenção: Remove permanentemente seus dados de Disciplinas, Cronograma e Histórico de Estudos.</p>
+                <button id="reset-data-btn">
+                    <i class="fas fa-trash-alt"></i> Resetar Dados
+                </button>
+                 <p id="reset-status"></p>
             </div>
         </div>
 
-    </main>
-
-    <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset">
+    </main> <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset">
         <div id="modalConfirmacaoResetDialog" class="modal-dialog-reset">
-             <h3 class="modal-title-reset">...</h3> <div class="modal-message-reset">...</div> <div class="modal-buttons-reset">...</div>
-         </div>
+            <h3 class="modal-title-reset"><i class="fas fa-exclamation-triangle"></i> Confirmar Reset</h3>
+            <div class="modal-message-reset">
+                <p>Tem <strong>certeza</strong> que deseja resetar?</p>
+                <ul>
+                    <li>Lista de Disciplinas e Tópicos</li>
+                    <li>Cronograma Salvo</li>
+                    <li>Histórico de Sessões de Estudo</li>
+                 </ul>
+                 <p>Seu <strong>Nome</strong> e <strong>Data de Nascimento</strong> serão mantidos.</p>
+                 <p><strong>Ação irreversível.</strong></p>
+            </div>
+            <div class="modal-buttons-reset">
+                <button id="modalBotaoCancelarReset" class="modal-button-reset modal-cancel-reset" type="button">Cancelar</button>
+                <button id="modalBotaoConfirmarReset" class="modal-button-reset modal-confirm-reset" type="button">Sim, Resetar</button>
+            </div>
+        </div>
     </div>
 
     <div id="modalEditProfileOverlay" class="modal-overlay-edit">
         <div id="modalDialogEdit" class="modal-dialog-edit">
-              <h3 class="modal-title-edit">...</h3> <form id="edit-profile-form">...</form>
-         </div>
+             <h3 class="modal-title-edit">Editar Perfil</h3>
+             <form id="edit-profile-form" onsubmit="return false;">
+                 <div class="edit-profile-pic-area">
+                     <img id="edit-profile-pic-preview" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Preview Foto Perfil">
+                      <label for="edit-profile-pic-input" id="edit-profile-pic-label">
+                          <i class="fas fa-camera"></i> Alterar Foto
+                      </label>
+                     <input type="file" id="edit-profile-pic-input" accept="image/*" style="display: none;">
+                 </div>
+                 <div class="edit-form-grupo">
+                    <label for="edit-profile-name-input">Nome:</label>
+                    <input type="text" id="edit-profile-name-input" required>
+                 </div>
+                 <div class="edit-form-grupo">
+                    <label for="edit-profile-dob-input">Data de Nascimento:</label>
+                    <input type="text" id="edit-profile-dob-input" placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric" required>
+                    <div id="edit-age-display"></div>
+                 </div>
+                  <p id="edit-profile-status"></p> <div class="modal-buttons-edit">
+                    <button type="button" id="cancel-profile-edit-btn" class="modal-button-edit modal-cancel-edit">Cancelar</button>
+                    <button type="submit" id="save-profile-changes-btn" class="modal-button-edit modal-confirm-edit">Salvar Alterações</button>
+                 </div>
+             </form>
+        </div>
     </div>
-
 
     <script type="module">
         // Importa funções do módulo Firebase (localizado na raiz do site)
