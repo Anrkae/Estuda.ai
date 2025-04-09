@@ -3,128 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Perfil - Estuda.ai</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Meu Perfil e Configurações - Estuda.ai</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
-
-        /* Estilos gerais do body (mantidos) */
+        /* Estilos Gerais e Abas */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
         body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            background-color: #f9f9f9;
-             /* padding-top ajustado pelo header fixo (provavelmente definido no CSS global ou pelo header.js) */
-             /* Se header.js não cuidar disso, pode ser necessário manter ou ajustar */
-             padding-top: 70px;
+            font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f4f6f8;
+            padding-top: 70px; /* Ajuste conforme seu header fixo */
+            color: #333;
+            background-color: #f1f0ea;
+        }
+        .profile-container { display: flex; flex-direction: column; margin: 30px; max-width: 800px; padding: 20px; background-color: #f5f4f0; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+
+        /* --- Sistema de Abas --- */
+        .tab-navigation { display: flex; border-bottom: 2px solid #eee; margin-bottom: 25px; }
+        .tab-button {
+            padding: 12px 20px; background: none; border: none; border-bottom: 3px solid transparent;
+            cursor: pointer; font-size: 1.05em; font-weight: 500; color: #666; transition: color 0.2s ease, border-color 0.2s ease; margin-bottom: -2px;
+            font-family: inherit; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .tab-button:hover { color: #452482; }
+        .tab-button.active { color: #6735bc; border-bottom-color: #6735bc; font-weight: 600; }
+        .tab-content { display: none; animation: fadeInContent 0.4s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeInContent { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- Conteúdo da Aba "Perfil" --- */
+        #tab-perfil { margin: 0 auto; }
+        #tab-perfil .profile-card { padding: 20px; border: none; box-shadow: none; max-width: none; margin: 0; text-align: left; display: flex; align-items: center; gap: 30px; flex-wrap: wrap;}
+        #tab-perfil .profile-picture-container { flex-shrink: 0; text-align: center; }
+        #tab-perfil #profile-pic { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #eee; display: block; margin: 0 auto 10px auto; }
+        #tab-perfil .profile-details { flex-grow: 1; }
+        #tab-perfil #profile-name { margin: 0 0 5px 0; font-size: 1.7em; color: #444; font-weight: 600;}
+        #tab-perfil #profile-dob-label { font-weight: 500; color: #777; font-size: 0.9em; margin-bottom: 2px; display: block; }
+        #tab-perfil #profile-dob { color: #555; margin: 0 0 20px 0; font-size: 1.1em; }
+        #tab-perfil .profile-actions { margin-top: 15px; display: flex; gap: 15px; align-items: center; }
+        #tab-perfil .btn-edit-profile { background-color: #6735bc; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
+        #tab-perfil .btn-edit-profile:hover { background-color: #562da4; }
+        #tab-perfil .btn-logout { background-color: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
+        #tab-perfil .btn-logout:hover { background-color: #c0392b; }
+        #profile-error-message { color: #c62828; text-align: center; margin-top: 15px; font-weight: 500; display: none; }
+
+        /* --- Conteúdo da Aba "Preferências" --- */
+        #tab-preferencias { padding: 20px; }
+        #tab-preferencias h3 { margin-top: 0; color: #555; font-weight: 600; }
+        #tab-preferencias ul { list-style: disc; padding-left: 20px; color: #666; }
+        #tab-preferencias li { margin-bottom: 8px; }
+
+        /* --- Conteúdo da Aba "Armazenamento" --- */
+        #tab-armazenamento { padding: 20px; }
+        #tab-armazenamento h3 { margin-top: 0; color: #555; font-weight: 600; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;}
+        #tab-armazenamento p { line-height: 1.6; margin-bottom: 12px; font-size: 0.95em; color: #444; }
+        #tab-armazenamento strong { font-weight: 600; }
+        #tab-armazenamento code { background-color: #eef; padding: 2px 5px; border-radius: 4px; font-family: monospace; font-size: 0.9em;}
+        #tab-armazenamento .reset-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
+        #tab-armazenamento .reset-warning { color: #c62828; font-weight: 500; font-size: 0.9em; margin-bottom: 15px; }
+        #reset-data-btn { background-color: #ff7043; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1em; font-weight: 500; transition: background-color 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
+        #reset-data-btn:hover { background-color: #f4511e; }
+        #reset-status { margin-top: 15px; font-weight: 500; min-height: 1.2em;}
+        #reset-status.success { color: #2e7d32; }
+        #reset-status.error { color: #c62828; }
+
+        /* --- Modal de Confirmação Reset --- */
+        .modal-overlay-reset { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1050; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s 0.3s; }
+        .modal-overlay-reset.show { opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s 0s; }
+        .modal-dialog-reset { background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); width: 90%; max-width: 480px; transform: scale(0.9); transition: transform 0.3s ease; }
+        .modal-overlay-reset.show .modal-dialog-reset { transform: scale(1); }
+        .modal-title-reset { margin-top: 0; margin-bottom: 15px; font-size: 1.4em; color: #c62828; text-align: center; font-weight: 600; }
+        .modal-message-reset { margin-bottom: 20px; line-height: 1.6; color: #555; text-align: left; font-size: 1em; }
+        .modal-message-reset ul { list-style-type: disc; padding-left: 25px; margin-top: 10px; }
+        .modal-message-reset strong { color: #c62828; }
+        .modal-buttons-reset { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
+        .modal-button-reset { padding: 10px 18px; border-radius: 5px; border: none; cursor: pointer; font-weight: 500; font-size: 0.95em; transition: background-color 0.2s ease; }
+        .modal-cancel-reset { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
+        .modal-cancel-reset:hover { background-color: #e0e0e0; }
+        .modal-confirm-reset { background-color: #d9534f; color: white; border: 1px solid #d43f3a; }
+        .modal-confirm-reset:hover { background-color: #c9302c; }
+
+        /* --- Modal de Edição de Perfil --- */
+        .modal-overlay-edit { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1040; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s 0.3s; }
+        .modal-overlay-edit.show { opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s 0s; }
+        .modal-dialog-edit { background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); width: 90%; max-width: 500px; transform: scale(0.9); transition: transform 0.3s ease; }
+        .modal-overlay-edit.show .modal-dialog-edit { transform: scale(1); }
+        .modal-title-edit { margin-top: 0; margin-bottom: 20px; font-size: 1.4em; color: #333; text-align: center; font-weight: 600; }
+        .edit-profile-pic-area { text-align: center; margin-bottom: 20px; }
+        #edit-profile-pic-preview { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc; display: block; margin: 0 auto 10px auto; background-color: #f0f0f0; }
+        #edit-profile-pic-label { display: inline-block; background-color: #eee; color: #555; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: background-color 0.2s; }
+        #edit-profile-pic-label:hover { background-color: #ddd; }
+        #edit-profile-pic-input { display: none; }
+        .edit-form-grupo { margin-bottom: 15px; }
+        .edit-form-grupo label { display: block; margin-bottom: 5px; font-weight: 500; color: #444; font-size: 0.9em; }
+        .edit-form-grupo input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 1em; }
+        .edit-form-grupo input[type="text"]:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.1); }
+        #edit-age-display { font-size: 0.8em; color: #555; margin-top: 4px; min-height: 1em; text-align: right; }
+        #edit-age-display.invalid { color: #e53935; }
+        #edit-profile-status { margin-top: 15px; font-size: 0.9em; min-height: 1.1em; font-weight: 500; text-align: center; color: #c62828; }
+        .modal-buttons-edit { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
+        .modal-button-edit { padding: 10px 18px; border-radius: 5px; border: none; cursor: pointer; font-weight: 500; font-size: 0.95em; transition: background-color 0.2s ease; }
+        .modal-cancel-edit { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
+        .modal-cancel-edit:hover { background-color: #e0e0e0; }
+        .modal-confirm-edit { background-color: #6735bc; color: white; }
+        .modal-confirm-edit:hover { background-color: #562da4; }
+
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .profile-container { margin: 20px; padding: 15px; }
+            .tab-navigation { overflow-x: auto; white-space: nowrap; }
+            .tab-button { padding: 10px 15px; font-size: 1em; }
+            #tab-perfil .profile-card { flex-direction: column; text-align: center; gap: 15px;}
+            #tab-perfil #profile-name { font-size: 1.5em;}
+            #tab-perfil #profile-dob { font-size: 1em;}
+            #tab-perfil .profile-actions { justify-content: center; }
         }
 
-        /* Estilos do header/sidebar/overlay (REMOVIDOS DAQUI - Espera-se que estejam em CSS global ou injetados/gerenciados por header.js) */
-        /* ... */
-        /* Certifique-se que os estilos necessários para o header/sidebar ainda sejam carregados */
-
-        /* Estilos específicos da página de perfil (mantidos) */
-        .profile-container { max-width: 900px; margin: 20px auto; padding: 20px; }
-        .profile-container h1 { text-align: center; margin-bottom: 30px; color: #333; }
-        .profile-card { background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); max-width: 400px; margin: 0 auto; text-align: center; }
-        .profile-picture-container { margin-bottom: 20px; }
-        #profile-pic { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #eee; background-color: #f0f0f0; }
-        #profile-name { margin-top: 0; margin-bottom: 5px; font-size: 1.8em; color: #444; }
-        #profile-dob-label { font-weight: 500; color: #555; font-size: 0.9em; margin-bottom: 2px; display: block; }
-        #profile-dob { color: #666; margin-top: 0; margin-bottom: 25px; font-size: 1em; word-wrap: break-word; }
-        .btn-logout { background-color: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1em; font-weight: 500; transition: background-color 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
-        .btn-logout:hover { background-color: #c0392b; }
-        .btn-logout i { font-size: 1.1em; }
     </style>
 </head>
 <body>
+    
+    <script src="assets/js/components/header.js"></script>
 
     <main class="profile-container">
-        <h1>Meu Perfil</h1>
-        <section class="profile-card">
-            <div class="profile-picture-container">
-                <img id="profile-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Foto de Perfil Padrão">
-            </div>
-            <h2 id="profile-name">Carregando...</h2>
-            <span id="profile-dob-label">Data de Nascimento:</span>
-            <p id="profile-dob">Carregando...</p>
-            <button id="logout-button" class="btn-logout" aria-label="Sair">
-                <i class="fas fa-sign-out-alt"></i> Sair
-            </button>
-        </section>
-    </main>
 
-    <script src="assets/js/components/header.js" defer></script>
+        <nav class="tab-navigation">
+            <button class="tab-button active" data-tab="tab-perfil">
+                <i class="fas fa-user"></i> Perfil
+            </button>
+            <button class="tab-button" data-tab="tab-preferencias">
+                <i class="fas fa-sliders-h"></i> Preferências
+            </button>
+            <button class="tab-button" data-tab="tab-armazenamento">
+                <i class="fas fa-database"></i> Armazenamento
+            </button>
+        </nav>
+
+        <div id="tab-perfil" class="tab-content active">
+            <section class="profile-card">
+                <div class="profile-picture-container">
+                    <img id="profile-pic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Foto de Perfil">
+                </div>
+                <div class="profile-details">
+                    <h2 id="profile-name">Carregando...</h2>
+                    <span id="profile-dob-label">Data de Nascimento:</span>
+                    <p id="profile-dob">Carregando...</p>
+                    <div class="profile-actions">
+                         <button id="edit-profile-btn" class="btn-edit-profile"><i class="fas fa-pencil-alt"></i> Editar Perfil</button>
+                         <button id="logout-button" class="btn-logout" aria-label="Sair"><i class="fas fa-sign-out-alt"></i> Sair</button>
+                    </div>
+                </div>
+            </section>
+             <div id="profile-error-message" style="color: #c62828; text-align: center; margin-top: 15px; font-weight: 500; display: none;"></div>
+        </div>
+
+        <div id="tab-preferencias" class="tab-content">
+            <h3>Preferências</h3>
+            <p>Aqui você poderá ajustar configurações da ferramenta (funcionalidade futura).</p>
+            <p>Sugestões:</p>
+            <ul>
+                <li>Opção de Tema (Claro/Escuro)</li>
+                <li>Definir Duração Padrão de Estudo</li>
+                <li>Definir Tempo Padrão de Descanso</li>
+                <li>Configurar Notificações</li>
+                <li>Escolher Dia de Início da Semana</li>
+            </ul>
+        </div>
+
+        <div id="tab-armazenamento" class="tab-content">
+            <h3>Gerenciamento de Dados</h3>
+            <p>Os seguintes dados são salvos:</p>
+            <ul>
+                <li><strong>Perfil:</strong> Seu nome e data de nascimento.</li>
+                <li><strong>Disciplinas:</strong> Lista de disciplinas e tópicos.</li>
+                <li><strong>Cronograma:</strong> Último cronograma salvo.</li>
+                <li><strong>Sessões:</strong> Histórico de estudos (se aplicável).</li>
+            </ul>
+
+            <div class="reset-section">
+                 <h4>Resetar Dados Opcionais</h4>
+                 <p class="reset-warning"><i class="fas fa-exclamation-triangle"></i> Atenção: Remove permanentemente seus dados de Disciplinas, Cronograma e Histórico de Estudos.</p>
+                <button id="reset-data-btn">
+                    <i class="fas fa-trash-alt"></i> Resetar Dados
+                </button>
+                 <p id="reset-status"></p>
+            </div>
+        </div>
+
+    </main> <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset">
+        <div id="modalConfirmacaoResetDialog" class="modal-dialog-reset">
+            <h3 class="modal-title-reset"><i class="fas fa-exclamation-triangle"></i> Confirmar Reset</h3>
+            <div class="modal-message-reset">
+                <p>Tem <strong>certeza</strong> que deseja resetar?</p>
+                <ul>
+                    <li>Lista de Disciplinas e Tópicos</li>
+                    <li>Cronograma Salvo</li>
+                    <li>Histórico de Sessões de Estudo</li>
+                 </ul>
+                 <p>Seu <strong>Nome</strong> e <strong>Data de Nascimento</strong> serão mantidos.</p>
+                 <p><strong>Ação irreversível.</strong></p>
+            </div>
+            <div class="modal-buttons-reset">
+                <button id="modalBotaoCancelarReset" class="modal-button-reset modal-cancel-reset" type="button">Cancelar</button>
+                <button id="modalBotaoConfirmarReset" class="modal-button-reset modal-confirm-reset" type="button">Sim, Resetar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalEditProfileOverlay" class="modal-overlay-edit">
+        <div id="modalDialogEdit" class="modal-dialog-edit">
+             <h3 class="modal-title-edit">Editar Perfil</h3>
+             <form id="edit-profile-form" onsubmit="return false;">
+                 <div class="edit-profile-pic-area">
+                     <img id="edit-profile-pic-preview" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Preview Foto Perfil">
+                      <label for="edit-profile-pic-input" id="edit-profile-pic-label">
+                          <i class="fas fa-camera"></i> Alterar Foto
+                      </label>
+                     <input type="file" id="edit-profile-pic-input" accept="image/*" style="display: none;">
+                 </div>
+                 <div class="edit-form-grupo">
+                    <label for="edit-profile-name-input">Nome:</label>
+                    <input type="text" id="edit-profile-name-input" required>
+                 </div>
+                 <div class="edit-form-grupo">
+                    <label for="edit-profile-dob-input">Data de Nascimento:</label>
+                    <input type="text" id="edit-profile-dob-input" placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric" required>
+                    <div id="edit-age-display"></div>
+                 </div>
+                  <p id="edit-profile-status"></p> <div class="modal-buttons-edit">
+                    <button type="button" id="cancel-profile-edit-btn" class="modal-button-edit modal-cancel-edit">Cancelar</button>
+                    <button type="submit" id="save-profile-changes-btn" class="modal-button-edit modal-confirm-edit">Salvar Alterações</button>
+                 </div>
+             </form>
+        </div>
+    </div>
+
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            console.log("Script perfil.html: DOMContentLoaded");
 
-            // LÓGICA ESPECÍFICA DA PÁGINA DE PERFIL (Mantida)
+            // --- Elementos do DOM ---
             const profilePicElement = document.getElementById('profile-pic');
             const profileNameElement = document.getElementById('profile-name');
             const profileDobElement = document.getElementById('profile-dob');
             const logoutButton = document.getElementById('logout-button');
+            const profileErrorMessageDiv = document.getElementById('profile-error-message');
+            // Abas
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            // Reset
+            const resetDataBtn = document.getElementById('reset-data-btn');
+            const resetStatusEl = document.getElementById('reset-status');
+            const modalResetOverlay = document.getElementById('modalConfirmacaoResetOverlay');
+            const modalConfirmarResetBtn = document.getElementById('modalBotaoConfirmarReset');
+            const modalCancelarResetBtn = document.getElementById('modalBotaoCancelarReset');
+            // Edição Perfil
+            const editProfileBtn = document.getElementById('edit-profile-btn');
+            const modalEditOverlay = document.getElementById('modalEditProfileOverlay');
+            const modalEditDialog = document.getElementById('modalDialogEdit');
+            const editProfileForm = document.getElementById('edit-profile-form');
+            const editProfilePicPreview = document.getElementById('edit-profile-pic-preview');
+            const editProfilePicInput = document.getElementById('edit-profile-pic-input');
+            const editProfileNameInput = document.getElementById('edit-profile-name-input');
+            const editProfileDobInput = document.getElementById('edit-profile-dob-input');
+            const editAgeDisplay = document.getElementById('edit-age-display');
+            const editProfileStatus = document.getElementById('edit-profile-status');
+            const cancelProfileEditBtn = document.getElementById('cancel-profile-edit-btn');
+            const saveProfileChangesBtn = document.getElementById('save-profile-changes-btn');
 
-            console.log("Script perfil.html: DOMContentLoaded"); // Log para depuração
+            // --- Variável para armazenar nova foto (Base64) ---
+            let newProfilePicBase64 = null;
 
-            try {
-                const userInfoString = localStorage.getItem('userInfo');
-                let userInfo = null;
-                console.log("Script perfil.html: Verificando userInfo no localStorage.");
 
-                if (userInfoString) {
-                    try {
-                        userInfo = JSON.parse(userInfoString);
-                        console.log("Script perfil.html: userInfo parseado:", userInfo);
-                    } catch (parseError) {
-                        console.error("Erro ao parsear userInfo do localStorage:", parseError);
-                        localStorage.removeItem('userInfo');
-                    }
-                }
+            // === Funções Utilitárias ===
+            const dateRegexForFormat=/^(\d{2})\/(\d{2})\/(\d{4})$/; function parseAndValidateDdMmYyyy(ds){const m=ds.match(dateRegexForFormat);if(!m)return null;const d=parseInt(m[1],10),mo=parseInt(m[2],10),y=parseInt(m[3],10);if(y<1900||y>new Date().getFullYear()+5||mo<1||mo>12||d<1||d>31)return null;if((mo===4||mo===6||mo===9||mo===11)&&d>30)return null;if(mo===2){const iL=(y%4===0&&y%100!==0)||(y%400===0);if(d>(iL?29:28))return null;}const dt=new Date(Date.UTC(y,mo-1,d));if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d)return null;return dt;}
+            function formatDatePtBr(dObj){if(!dObj||isNaN(dObj.getTime()))return"";return dObj.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'UTC'});}
+            function applyDateMask(inp){let v=inp.value.replace(/\D/g,''),fv='';if(v.length>0)fv+=v.substring(0,2);if(v.length>=3)fv+='/'+v.substring(2,4);if(v.length>=5)fv+='/'+v.substring(4,8);inp.value=fv.substring(0,10);}
+            function calculateAgeFromDate(bdo){if(!bdo||isNaN(bdo.getTime()))return{age:null,error:"Data inválida"};const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const bm=new Date(bdo.getFullYear(),bdo.getMonth(),bdo.getDate());if(bm>tm)return{age:null,error:"Data futura"};let a=t.getFullYear()-bdo.getFullYear();const md=t.getMonth()-bdo.getMonth();if(md<0||(md===0&&t.getDate()<bdo.getDate())){a--;}return{age:Math.max(0,a),error:null};}
+            function getUserInfoFromStorage(){try{const uS=localStorage.getItem('userInfo');if(uS)return JSON.parse(uS);}catch(e){console.error("Erro ler userInfo:",e);}return null;}
+            function saveUserInfoToStorage(userInfo){try{localStorage.setItem('userInfo',JSON.stringify(userInfo));return true;}catch(e){console.error("Erro salvar userInfo:",e);return false;}}
 
-                if (userInfo && userInfo.nome && userInfo.dob) {
-                    console.log("Script perfil.html: userInfo válido encontrado. Atualizando DOM.");
-                    profileNameElement.textContent = userInfo.nome;
 
-                    try {
-                        const dataNasc = new Date(userInfo.dob + "T00:00:00");
-                         // Data e hora atual: 2 de abril de 2025 (fuso Juazeiro do Norte)
-                        profileDobElement.textContent = dataNasc.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', timeZone: 'America/Fortaleza' });
-                    } catch(dateError) {
-                         console.error("Erro ao formatar data de nascimento:", dateError);
-                         profileDobElement.textContent = "Data inválida";
-                    }
+            // === Lógica das Abas ===
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.getAttribute('data-tab');
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    button.classList.add('active');
+                    const targetContent = document.getElementById(targetTab);
+                    if(targetContent) targetContent.classList.add('active');
+                });
+            });
 
-                    if (logoutButton) {
-                         console.log("Script perfil.html: Adicionando listener ao botão de logout.");
-                        logoutButton.addEventListener('click', () => {
-                            console.log("Botão Sair clicado.");
-                            try {
-                                localStorage.removeItem('userInfo');
-                                console.log("userInfo removido do localStorage.");
-                                window.location.href = 'login.html'; // Redireciona para login
-                            } catch (removeError) {
-                                console.error("Erro ao remover userInfo do localStorage:", removeError);
-                                alert("Erro ao sair. Limpe os dados do site manualmente se o problema persistir.");
-                            }
-                        });
-                    } else {
-                        console.error("Script perfil.html: Botão de logout (#logout-button) não encontrado!");
-                    }
 
-                } else {
-                    // Redireciona se não houver dados válidos
-                    console.warn("Script perfil.html: Nenhum userInfo válido. Redirecionando para login.html");
-                    window.location.href = 'login.html';
-                }
-
-            } catch (error) {
-                console.error("Erro geral ao carregar dados do perfil:", error);
-                 alert("Ocorreu um erro ao carregar seu perfil. Você será redirecionado.");
-                 window.location.href = 'login.html';
+            // === Carregar Dados do Perfil ===
+            function loadProfileData() {
+                 const userInfo = getUserInfoFromStorage();
+                 const defaultPic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+                 if (userInfo && userInfo.nome && userInfo.dob) {
+                     profileNameElement.textContent = userInfo.nome;
+                     const birthDateObj = parseAndValidateDdMmYyyy(userInfo.dob);
+                     profileDobElement.textContent = birthDateObj ? formatDatePtBr(birthDateObj) : "Data inválida";
+                     profilePicElement.src = userInfo.profilePicBase64 || defaultPic;
+                     if(editProfileBtn) editProfileBtn.disabled = false; // Habilita edição se carregou
+                     profileErrorMessageDiv.style.display = 'none';
+                 } else {
+                      console.error("UserInfo não encontrado ou inválido.");
+                      profileNameElement.textContent = "Erro"; profileDobElement.textContent = "Erro";
+                      profilePicElement.src = defaultPic;
+                      profileErrorMessageDiv.textContent = "Não foi possível carregar os dados do perfil."; profileErrorMessageDiv.style.display = 'block';
+                      if(editProfileBtn) editProfileBtn.disabled = true; // Desabilita edição
+                 }
             }
+            loadProfileData();
+
+
+            // === Lógica do Botão Sair ===
+            if (logoutButton) {
+                 logoutButton.addEventListener('click', () => {
+                     console.log("Saindo...");
+                     const keysToRemove = ['userInfo', 'disciplinas', 'cronograma', 'sessoesEstudo']; // Adicione outras chaves se houver
+                     keysToRemove.forEach(key => localStorage.removeItem(key));
+                     console.log("Dados do usuário removidos.");
+                     window.location.href = 'login.html'; // Ou a página de setup que definimos
+                 });
+            }
+
+            // === Lógica do Modal de Edição ===
+            function openEditProfileModal() {
+                const userInfo = getUserInfoFromStorage();
+                if (!userInfo) { alert("Erro ao carregar dados para edição."); return; }
+                editProfileNameInput.value = userInfo.nome || '';
+                editProfileDobInput.value = userInfo.dob || '';
+                editAgeDisplay.textContent = '';
+                if (userInfo.dob) { const bDate = parseAndValidateDdMmYyyy(userInfo.dob); if (bDate) { const { age } = calculateAgeFromDate(bDate); if(age !== null) editAgeDisplay.textContent = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } }
+                editProfilePicPreview.src = userInfo.profilePicBase64 || "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+                newProfilePicBase64 = null;
+                editProfileStatus.textContent = '';
+                modalEditOverlay.classList.add('show');
+            }
+            function closeEditProfileModal() {
+                modalEditOverlay.classList.remove('show');
+            }
+
+            if (editProfileBtn) { editProfileBtn.addEventListener('click', openEditProfileModal); }
+            if (cancelProfileEditBtn) { cancelProfileEditBtn.addEventListener('click', closeEditProfileModal); }
+            if (modalEditOverlay) { modalEditOverlay.addEventListener('click', (event) => { if (event.target === modalEditOverlay) closeEditProfileModal(); }); }
+
+            if (editProfileDobInput && editAgeDisplay) {
+                 editProfileDobInput.addEventListener('input', (e) => {
+                     applyDateMask(e.target);
+                     const dobValue = e.target.value; let displayMessage = ''; let displayClass = '';
+                     if (dobValue.length === 10) { const birthDateObj = parseAndValidateDdMmYyyy(dobValue); if (birthDateObj) { const { age, error } = calculateAgeFromDate(birthDateObj); if (error) { displayMessage = error === "Data futura" ? 'Data futura' : 'Data inválida'; displayClass = 'invalid'; } else if (age !== null) { displayMessage = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } } else { displayMessage = 'Data inválida'; displayClass = 'invalid'; } }
+                     editAgeDisplay.textContent = displayMessage; editAgeDisplay.className = displayClass;
+                 });
+             }
+
+            if (editProfilePicInput && editProfilePicPreview) {
+                 editProfilePicInput.addEventListener('change', (event) => {
+                     const file = event.target.files[0];
+                     editProfileStatus.textContent = ''; // Limpa status
+                     if (file && file.type.startsWith('image/')) {
+                         // Limite de tamanho (ex: 2MB) - Opcional
+                         const maxSizeMB = 2;
+                         if (file.size > maxSizeMB * 1024 * 1024) {
+                             editProfileStatus.textContent = `Imagem muito grande (máx ${maxSizeMB}MB).`;
+                             newProfilePicBase64 = null;
+                             editProfilePicInput.value = '';
+                             return;
+                         }
+                         const reader = new FileReader();
+                         reader.onload = (e) => { newProfilePicBase64 = e.target.result; editProfilePicPreview.src = newProfilePicBase64; console.log("Nova imagem selecionada."); }
+                         reader.onerror = (e) => { console.error("Erro ao ler arquivo:", e); editProfileStatus.textContent = "Erro ao ler imagem."; newProfilePicBase64 = null; }
+                         reader.readAsDataURL(file);
+                     } else if (file) { editProfileStatus.textContent = "Selecione uma imagem válida."; newProfilePicBase64 = null; editProfilePicInput.value = ''; }
+                 });
+            }
+
+            if (editProfileForm) {
+                 editProfileForm.addEventListener('submit', (event) => {
+                     event.preventDefault();
+                     editProfileStatus.textContent = '';
+                     const newName = editProfileNameInput.value.trim(); const newDob = editProfileDobInput.value;
+                     if (!newName || newName.length < 3) { editProfileStatus.textContent = "Nome inválido."; return; }
+                     const birthDateObj = parseAndValidateDdMmYyyy(newDob); if (!birthDateObj) { editProfileStatus.textContent = "Data de nascimento inválida."; return; }
+                     const { error: dateError } = calculateAgeFromDate(birthDateObj); if (dateError) { editProfileStatus.textContent = "Data não pode ser futura."; return; }
+
+                     const currentUserInfo = getUserInfoFromStorage(); if (!currentUserInfo) { editProfileStatus.textContent = "Erro ao carregar perfil."; return; }
+                     const updatedUserInfo = { ...currentUserInfo, nome: newName, dob: newDob };
+                     if (newProfilePicBase64) { updatedUserInfo.profilePicBase64 = newProfilePicBase64; }
+
+                     if (saveUserInfoToStorage(updatedUserInfo)) {
+                         console.log("Perfil atualizado:", updatedUserInfo);
+                         loadProfileData(); closeEditProfileModal();
+                     } else { editProfileStatus.textContent = "Erro ao salvar."; }
+                 });
+            }
+
+
+            // === Lógica do Reset de Dados ===
+            function resetOptionalData() { console.warn("Resetando dados..."); resetStatusEl.textContent='Resetando...'; resetStatusEl.className=''; try { const keysToRemove=['disciplinas','cronograma','sessoesEstudo']; let removedCount=0; keysToRemove.forEach(key=>{if(localStorage.getItem(key)!==null){localStorage.removeItem(key);console.log(` - Chave '${key}' removida.`);removedCount++;}}); if(removedCount>0){resetStatusEl.textContent='Dados opcionais resetados!';resetStatusEl.className='success';}else{resetStatusEl.textContent='Nenhum dado opcional para resetar.';resetStatusEl.className='';} } catch (error){console.error("Erro reset:",error);resetStatusEl.textContent='Erro ao resetar.';resetStatusEl.className='error';} finally { setTimeout(()=>{resetStatusEl.textContent='';resetStatusEl.className='';},4000); }}
+            function showResetConfirmationModal() { modalResetOverlay.classList.add('show'); }
+            function hideResetConfirmationModal() { modalResetOverlay.classList.remove('show'); }
+            if(resetDataBtn){resetDataBtn.addEventListener('click',showResetConfirmationModal);}
+            if(modalCancelarResetBtn){modalCancelarResetBtn.addEventListener('click',hideResetConfirmationModal);}
+            if(modalConfirmarResetBtn){modalConfirmarResetBtn.addEventListener('click',()=>{hideResetConfirmationModal();resetOptionalData();});}
+            if(modalResetOverlay){modalResetOverlay.addEventListener('click',(event)=>{if(event.target===modalResetOverlay){hideResetConfirmationModal();}});}
+
+            console.log("Listeners adicionados.");
 
         }); // Fim do DOMContentLoaded
     </script>
+    
+    <scr
 
 </body>
 </html>

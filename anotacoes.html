@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Anotações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/pages/anotacoes.css">
+    <link rel="stylesheet" href="assets/css/components/components.css">
+</head>
+<body>
+    
+    <div>
+        <script src="assets/js/components/header.js"></script>
+    </div>
+    
+    <div class="page-wrapper">
+        <aside id="secoes">
+            <ul id="lista-secoes">
+                </ul>
+            </aside>
+
+        <main id="conteudo">
+            <h2 id="titulo-secao">Selecione uma Seção</h2>
+
+            <div>
+                <input type="search" id="campo-busca" placeholder="Pesquisar em todas as anotações...">
+            </div>
+            <div id="resultados-busca" style="display: none;">
+                 </div>
+
+            <hr>
+
+            <section class="bloco minimizado" id="meu-bloco-1">
+                <div class="tituloBtn">
+                    <h4 class="tituloBloco">Criar Nota</h4>
+                    <button class="btn-toggle-bloco botao-minimizar" aria-label="Expandir Geração">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                
+                <div class="conteudo-bloco">
+                    <div id="area-edicao">
+                         <div>
+                             <label for="secao-selecionada-edicao">Salvar na Seção:</label>
+                             <select id="secao-selecionada-edicao">
+                                 <option value="">-- Selecione a Seção --</option>
+                                 </select>
+                         </div>
+        
+                         <div>
+                             <label for="titulo-anotacao">Título:</label>
+                             <input type="text" id="titulo-anotacao" placeholder="Digite o título da anotação">
+                         </div>
+        
+                         <div>
+                              <label for="texto-anotacao">Anotação:</label>
+                              <textarea id="texto-anotacao" placeholder="Digite sua anotação aqui..."></textarea>
+                         </div>
+        
+                         <input type="hidden" id="id-anotacao-editando">
+                             <div class="btns">
+                                 <button id="btn-salvar">Salvar Anotação</button>
+                                 <button id="btn-cancelar-edicao" style="display: none;">Cancelar Edição</button>
+                             </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <div class="notes">
+                <h3>Anotações Salvas</h3>
+                <div id="lista-anotacoes">
+                    <p>Selecione uma seção ou adicione uma nova anotação.</p>
+                </div>
+            </div>
+        </main>
+    <script src="assets/js/components/bloco.js"></script>
+    <script src="assets/js/pages/anotacoes.js"></script>
+</body>
+</html>
