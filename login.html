@@ -90,45 +90,11 @@
         #status-message.erro { color: #c62828; }
 
         /* === ESTILOS PARA BOTÃO FIREBASE (Google Only) === */
-        .firebase-login-section {
-            margin-bottom: 25px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-            margin-top: 15px;
-            text-align: center; /* Centraliza o conteúdo */
-        }
-        .firebase-login-section p {
-            font-size: 0.95em;
-            color: #555;
-            margin-bottom: 15px;
-        }
-        .firebase-login-button {
-            background-color: #db4437; /* Google Red */
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 6px;
-            font-size: 1em;
-            cursor: pointer;
-            width: 80%; /* Ou ajuste conforme necessário */
-            max-width: 300px; /* Limite máximo */
-            margin: 0 auto 10px auto; /* Centraliza e adiciona espaço */
-            font-family: inherit;
-            display: flex; /* Para alinhar ícone e texto */
-            align-items: center;
-            justify-content: center; /* Centraliza conteúdo do botão */
-            gap: 8px; /* Espaço entre ícone e texto */
-            transition: background-color 0.2s;
-        }
-         .firebase-login-button:hover {
-            opacity: 0.9;
-        }
-        #firebase-error-message {
-            color: #c62828;
-            font-size: 0.85em;
-            margin-top: 10px;
-            min-height: 1em;
-        }
+        .firebase-login-section { margin-bottom: 25px; padding-top: 15px; border-top: 1px solid #eee; margin-top: 15px; text-align: center; }
+        .firebase-login-section p { font-size: 0.95em; color: #555; margin-bottom: 15px; }
+        .firebase-login-button { background-color: #db4437; /* Google Red */ color: white; padding: 10px 15px; border: none; border-radius: 6px; font-size: 1em; cursor: pointer; width: 80%; max-width: 300px; margin: 0 auto 10px auto; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background-color 0.2s; }
+        .firebase-login-button:hover { opacity: 0.9; }
+        #firebase-error-message { color: #c62828; font-size: 0.85em; margin-top: 10px; min-height: 1em; }
         /* =============================================== */
 
         /* Responsividade */
@@ -144,7 +110,7 @@
             #skip-btn { order: 1; margin-bottom: 10px; text-align: center; margin-right: 0; }
             #next-btn { order: 3; margin-left: 0; }
             .nav-button { width: 100%; margin: 5px 0;}
-            .firebase-login-button { width: 95%; } /* Ajuste para mobile */
+            .firebase-login-button { width: 95%; }
         }
     </style>
 </head>
@@ -218,9 +184,9 @@
         </div>
 
     </div> <script type="module">
-      // Importa apenas o necessário para Google Login do módulo Firebase
-      // *** Ajuste o caminho './assets/...' se a estrutura de pastas for diferente ***
-      import { auth, GoogleAuthProvider } from '/FireBase.js';
+      // Importa APENAS o necessário do seu MÓDULO Firebase
+      // *** USA O CAMINHO ABSOLUTO CORRIGIDO ***
+      import { auth, GoogleAuthProvider, signInWithPopup } from '/Firebase.js';
 
       document.addEventListener('DOMContentLoaded', () => {
           console.log("DOM carregado. Iniciando script de setup.");
@@ -232,10 +198,8 @@
           const nextButton = document.getElementById('next-btn');
           const skipButton = document.getElementById('skip-btn');
           const statusMessage = document.getElementById('status-message');
-          // Elemento Firebase Login (Apenas Google)
           const googleSignInButton = document.getElementById('google-signin-btn');
           const firebaseErrorMessage = document.getElementById('firebase-error-message');
-          // Elemento do botão Apple removido
 
           // === Elementos Etapa 1, 2, 3 ===
           const nomeInput = document.getElementById('nome');
@@ -289,72 +253,67 @@
           function gerarCronogramaAutomatico(){statusGeracaoEl.textContent='';statusGeracaoEl.className='';const dSN=[];const itO=disciplinasSelecaoEl.querySelectorAll('.disciplina-item');itO.forEach(it=>{const cb=it.querySelector('input[type="checkbox"]');if(cb&&cb.checked)dSN.push(cb.value);});const mTD=parseInt(minutosPorDiaInput.value);const dPD=parseInt(subjectsPerDayInput.value);const tD=parseInt(breakTimeInput.value);if(dSN.length===0){statusGeracaoEl.textContent='Selecione disc.';return;}if(isNaN(mTD)||mTD<=0){statusGeracaoEl.textContent='Informe min/dia.';return;}if(isNaN(dPD)||dPD<=0){statusGeracaoEl.textContent='Informe disc/dia.';return;}if(dPD>dSN.length){statusGeracaoEl.textContent=`Pediu ${dPD} disc/dia, só ${dSN.length} selecionadas.`;return;}if(isNaN(tD)||tD<0){statusGeracaoEl.textContent='Informe descanso >=0.';return;}const nD=(dPD>1?dPD-1:0);const tTD=nD*tD;const tDE=mTD-tTD;if(tDE<=0){statusGeracaoEl.textContent='Tempo insuficiente.';return;}let dEB=Math.floor(tDE/dPD);if(dEB<MIN_STUDY_DURATION){statusGeracaoEl.textContent=`Tempo por disc (${dEB} min) baixo (mín ${MIN_STUDY_DURATION}).`;return;}const wD=[];const nS=dSN.length;dSN.forEach((n,i)=>{const r=Math.max(1,nS-i);for(let k=0;k<r;k++)wD.push(n);});const wSD=shuffleArray([...wD]);let tC={};let dGI=0;for(let dI=0;dI<TOTAL_DIAS;dI++){tC[dI]=[];let hAM=HORA_INICIO_PADRAO*60;let dUH=new Set();let tR=0;for(let i=0;i<dPD;i++){if(hAM>=24*60)break;let dA;let iOL=dGI;do{dA=wSD[dGI%wSD.length];dGI++;if(dUH.size>=nS&&dGI%wSD.length===iOL%wSD.length)break;if(nS===1)break;}while(dUH.has(dA)&&tR++<wSD.length);dUH.add(dA);tR=0;const sST=hAM;const sD=Math.min(dEB,(24*60)-sST);if(sD<=0)break;tC[dI].push({type:'study',subject:dA,duration:sD,startTime:sST});hAM+=sD;if(i<dPD-1&&tD>0){if(hAM>=24*60)break;const bST=hAM;const bD=Math.min(tD,(24*60)-bST);if(bD<=0)break;tC[dI].push({type:'break',subject:'Descanso',duration:bD,startTime:bST});hAM+=bD;}}dUH.clear();}cronogramaGerado=tC;console.log("Crono gerado:",cronogramaGerado);statusGeracaoEl.textContent='Cronograma gerado!';statusGeracaoEl.className='success';}
 
 
-          // === FUNÇÕES DE LOGIN FIREBASE (Google Only) ===
+          // === FUNÇÕES DE LOGIN FIREBASE (Google Only - Usando Modular API) ===
           const handleFirebaseLogin = async (provider) => {
-              // Verifica se 'auth' foi importado e inicializado corretamente
               if (!auth) {
                   console.error("Firebase Auth não está disponível (erro na inicialização?).");
                   if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Erro: Serviço de login indisponível.";
                   return;
               }
-              if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Aguarde..."; // Feedback visual
+              if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Aguarde...";
 
               try {
                   console.log("Tentando login com:", provider.providerId);
-                  // Usando a API de compatibilidade signInWithPopup (assumindo firebase-auth-compat.js carregado)
-                  // Se você mudar para SDK modular puro, use: import { signInWithPopup } from '...'; e chame signInWithPopup(auth, provider);
-                  const result = await firebase.auth().signInWithPopup(provider);
+                  // Usa a função signInWithPopup importada e a instância auth
+                  const result = await signInWithPopup(auth, provider);
                   const user = result.user;
                   console.log("Login Firebase bem-sucedido:", user.uid, user.displayName);
-
                   if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Login bem-sucedido! Redirecionando...";
-                  // ** Redireciona IMEDIATAMENTE após login bem-sucedido **
-                  window.location.href = 'index.html'; // Ou sua página principal logada
-
+                  window.location.href = 'index.html'; // Redireciona para página principal
               } catch (error) {
-                  // Log detalhado do erro no console! ESSENCIAL PARA DEBUG!
+                  // Log detalhado do erro no console
                   console.error("Erro no login Firebase (resumo):", error.code, error.message);
-                  console.error("Erro DETALHADO do Firebase:", error); // <--- VERIFIQUE ESTE LOG!
+                  console.error("Erro DETALHADO do Firebase:", error); // VERIFIQUE ESTE LOG!
 
-                  let message = "Erro durante o login. Tente novamente."; // Mensagem padrão
-                  // Personaliza mensagens para erros comuns
+                  let message = "Erro durante o login. Tente novamente.";
                   if (error.code === 'auth/popup-closed-by-user') { message = "Login cancelado."; }
                   else if (error.code === 'auth/account-exists-with-different-credential') { message = "Já existe conta com este e-mail usando outro método."; }
                   else if (error.code === 'auth/cancelled-popup-request') { message = "Login cancelado (pop-ups múltiplos)."; }
-                  else if (error.code === 'auth/popup-blocked') { message = "Pop-up de login bloqueado pelo navegador. Verifique a barra de endereço."; }
+                  else if (error.code === 'auth/popup-blocked') { message = "Pop-up de login bloqueado pelo navegador."; }
                   else if (error.code === 'auth/operation-not-allowed') { message = "Método de login (Google) não habilitado no Firebase Console."; }
                   else if (error.code === 'auth/network-request-failed') { message = "Erro de rede. Verifique sua conexão."; }
-
+                  // Adicione mais tratamentos se necessário
                   if (firebaseErrorMessage) firebaseErrorMessage.textContent = message;
               }
           };
 
           const signInWithGoogle = () => {
-              // Usa o provedor GoogleAuthProvider importado do módulo Firebase.js
+              // Usa o provedor GoogleAuthProvider importado
               const provider = new GoogleAuthProvider();
               handleFirebaseLogin(provider);
           };
-          // Função signInWithApple e seu listener foram removidos
+          // Função signInWithApple removida
           // === FIM FUNÇÕES LOGIN FIREBASE ===
 
 
-          // === Funções de Navegação e Validação (seu código original - sem alterações) ===
-          function showStep(stepNumber) { stepContents.forEach((stepEl, index)=>{stepEl.classList.toggle('active',index+1===stepNumber);}); stepIndicatorDisplay.textContent=`Etapa ${stepNumber} de ${totalSteps}`; prevButton.disabled = stepNumber===1; nextButton.textContent = stepNumber===totalSteps ? 'Finalizar Configuração' : 'Próximo'; skipButton.style.display = (stepNumber === 2 || stepNumber === 3) ? 'inline-block' : 'none'; statusMessage.textContent=''; statusMessage.className=''; if (stepNumber === 2) { loadDisciplinasFromStorage(); exibirDisciplinas(); if(nomeDisciplinaInput)nomeDisciplinaInput.focus(); } if (stepNumber === 3) { carregarDisciplinasParaSelecao(); cronogramaGerado={}; statusGeracaoEl.textContent=''; statusGeracaoEl.className=''; } }
-          function validateStep1() { statusMessage.textContent='';statusMessage.className='';const n=nomeInput.value.trim(),d=dobInput.value;if(!n||n.length<3){statusMessage.textContent='Nome inválido.';statusMessage.className='erro';nomeInput.focus();return false;}const bdo=parseAndValidateDdMmYyyy(d);if(!bdo){statusMessage.textContent='Data inválida.';statusMessage.className='erro';dobInput.focus();if(ageDisplay){ageDisplay.textContent='Inválida';ageDisplay.className='invalid';}return false;}const {error:de}=calculateAgeFromDate(bdo);if(de){statusMessage.textContent='Data futura.';statusMessage.className='erro';dobInput.focus();if(ageDisplay){ageDisplay.textContent='Futura';ageDisplay.className='invalid';}return false;}userData.nome=n;userData.dob=d;console.log("Etapa 1 OK:",userData);return true;}
-          function validateStep2() { statusMessage.textContent='';statusMessage.className='';loadDisciplinasFromStorage();if(disciplinas.length===0){statusMessage.textContent='Adicione disciplina ou pule.';statusMessage.className='erro';if(nomeDisciplinaInput)nomeDisciplinaInput.focus();return false;}console.log("Etapa 2 OK.");return true;}
-          function validateStep3() { statusMessage.textContent='';statusMessage.className='';if(Object.keys(cronogramaGerado).length===0||!Object.values(cronogramaGerado).some(d=>d.length>0)){statusMessage.textContent='Gere cronograma ou pule.';statusMessage.className='erro';return false;}console.log("Etapa 3 OK.");return true;}
-          function finalizeSetup(skippedCronograma = false) { console.log("Finalizando configuração (salvando no localStorage)..."); if (!userData.nome || !userData.dob) { console.error("Erro: Dados UserInfo ausentes."); statusMessage.textContent='Erro interno.'; statusMessage.className='erro'; return; } const finalUserInfo={nome:userData.nome,dob:userData.dob}; let finalDisciplinas = []; try { finalDisciplinas = JSON.parse(localStorage.getItem('disciplinas')) || []; if (!Array.isArray(finalDisciplinas)) finalDisciplinas = []; } catch { finalDisciplinas = []; } const finalCronograma = skippedCronograma ? {} : cronogramaGerado; try { localStorage.setItem('userInfo', JSON.stringify(finalUserInfo)); localStorage.setItem('cronograma', JSON.stringify(finalCronograma)); console.log("Salvo userInfo:", finalUserInfo); console.log("Salvo disciplinas (estado atual):", finalDisciplinas); console.log("Salvo cronograma:", finalCronograma); statusMessage.textContent=`Configuração Concluída! Redirecionando...`; statusMessage.className='sucesso'; nextButton.disabled=true; prevButton.disabled=true; skipButton.disabled=true; nextButton.textContent='Salvo!'; setTimeout(()=>{window.location.href='index.html';}, 1500); } catch(error){ console.error("Erro save final:", error); statusMessage.textContent='Erro ao salvar final.'; statusMessage.className='erro'; } }
-          function handleNext() { let isValid=false;if(currentStep===1) isValid=validateStep1(); else if(currentStep===2) isValid=validateStep2(); else if(currentStep===3){ isValid=validateStep3(); if(isValid) { finalizeSetup(false); return; } } if(isValid && currentStep < totalSteps){ currentStep++; showStep(currentStep); } }
-          function handlePrev() { if(currentStep > 1){ currentStep--; showStep(currentStep); } }
-          function handleSkip() { console.log(`Pulando Etapa ${currentStep}`); if (currentStep === 2) { currentStep++; showStep(currentStep); } else if (currentStep === 3) { finalizeSetup(true); } }
+          // === Funções de Navegação e Validação (seu código original) ===
+          function showStep(stepNumber) { /* ... sua função ... */ stepContents.forEach((stepEl, index)=>{stepEl.classList.toggle('active',index+1===stepNumber);}); stepIndicatorDisplay.textContent=`Etapa ${stepNumber} de ${totalSteps}`; prevButton.disabled = stepNumber===1; nextButton.textContent = stepNumber===totalSteps ? 'Finalizar Configuração' : 'Próximo'; skipButton.style.display = (stepNumber === 2 || stepNumber === 3) ? 'inline-block' : 'none'; statusMessage.textContent=''; statusMessage.className=''; if (stepNumber === 2) { loadDisciplinasFromStorage(); exibirDisciplinas(); if(nomeDisciplinaInput)nomeDisciplinaInput.focus(); } if (stepNumber === 3) { carregarDisciplinasParaSelecao(); cronogramaGerado={}; statusGeracaoEl.textContent=''; statusGeracaoEl.className=''; } }
+          function validateStep1() { /* ... sua função ... */ statusMessage.textContent='';statusMessage.className='';const n=nomeInput.value.trim(),d=dobInput.value;if(!n||n.length<3){statusMessage.textContent='Nome inválido.';statusMessage.className='erro';nomeInput.focus();return false;}const bdo=parseAndValidateDdMmYyyy(d);if(!bdo){statusMessage.textContent='Data inválida.';statusMessage.className='erro';dobInput.focus();if(ageDisplay){ageDisplay.textContent='Inválida';ageDisplay.className='invalid';}return false;}const {error:de}=calculateAgeFromDate(bdo);if(de){statusMessage.textContent='Data futura.';statusMessage.className='erro';dobInput.focus();if(ageDisplay){ageDisplay.textContent='Futura';ageDisplay.className='invalid';}return false;}userData.nome=n;userData.dob=d;console.log("Etapa 1 OK:",userData);return true;}
+          function validateStep2() { /* ... sua função ... */ statusMessage.textContent='';statusMessage.className='';loadDisciplinasFromStorage();if(disciplinas.length===0){statusMessage.textContent='Adicione disciplina ou pule.';statusMessage.className='erro';if(nomeDisciplinaInput)nomeDisciplinaInput.focus();return false;}console.log("Etapa 2 OK.");return true;}
+          function validateStep3() { /* ... sua função ... */ statusMessage.textContent='';statusMessage.className='';if(Object.keys(cronogramaGerado).length===0||!Object.values(cronogramaGerado).some(d=>d.length>0)){statusMessage.textContent='Gere cronograma ou pule.';statusMessage.className='erro';return false;}console.log("Etapa 3 OK.");return true;}
+          function finalizeSetup(skippedCronograma = false) { /* ... sua função ... */ console.log("Finalizando configuração (salvando no localStorage)..."); if (!userData.nome || !userData.dob) { console.error("Erro: Dados UserInfo ausentes."); statusMessage.textContent='Erro interno.'; statusMessage.className='erro'; return; } const finalUserInfo={nome:userData.nome,dob:userData.dob}; let finalDisciplinas = []; try { finalDisciplinas = JSON.parse(localStorage.getItem('disciplinas')) || []; if (!Array.isArray(finalDisciplinas)) finalDisciplinas = []; } catch { finalDisciplinas = []; } const finalCronograma = skippedCronograma ? {} : cronogramaGerado; try { localStorage.setItem('userInfo', JSON.stringify(finalUserInfo)); localStorage.setItem('cronograma', JSON.stringify(finalCronograma)); console.log("Salvo userInfo:", finalUserInfo); console.log("Salvo disciplinas (estado atual):", finalDisciplinas); console.log("Salvo cronograma:", finalCronograma); statusMessage.textContent=`Configuração Concluída! Redirecionando...`; statusMessage.className='sucesso'; nextButton.disabled=true; prevButton.disabled=true; skipButton.disabled=true; nextButton.textContent='Salvo!'; setTimeout(()=>{window.location.href='index.html';}, 1500); } catch(error){ console.error("Erro save final:", error); statusMessage.textContent='Erro ao salvar final.'; statusMessage.className='erro'; } }
+          function handleNext() { /* ... sua função ... */ let isValid=false;if(currentStep===1) isValid=validateStep1(); else if(currentStep===2) isValid=validateStep2(); else if(currentStep===3){ isValid=validateStep3(); if(isValid) { finalizeSetup(false); return; } } if(isValid && currentStep < totalSteps){ currentStep++; showStep(currentStep); } }
+          function handlePrev() { /* ... sua função ... */ if(currentStep > 1){ currentStep--; showStep(currentStep); } }
+          function handleSkip() { /* ... sua função ... */ console.log(`Pulando Etapa ${currentStep}`); if (currentStep === 2) { currentStep++; showStep(currentStep); } else if (currentStep === 3) { finalizeSetup(true); } }
 
 
           // === Inicialização Geral (seu código original) ===
-          function checkInitialSetup() { let isUserInfoValid = false; try { const userInfoStr = localStorage.getItem('userInfo'); if(userInfoStr){ const userInfo = JSON.parse(userInfoStr); if(userInfo && userInfo.nome && userInfo.dob && parseAndValidateDdMmYyyy(userInfo.dob)){ isUserInfoValid = true; } } if(isUserInfoValid){ console.log("UserInfo válido no localStorage. Redirecionando para index.html..."); statusMessage.textContent = "Perfil já configurado. Redirecionando..."; statusMessage.className = 'sucesso'; setTimeout(() => { try { document.body.innerHTML='<div style="text-align:center;padding:40px;font-family:Montserrat,sans-serif;color:#333;">Perfil já configurado. Redirecionando...</div>'; } catch (bodyError) { console.warn("Não foi possível limpar o body, prosseguindo com redirecionamento."); } window.location.href='index.html'; }, 1000); return true; } else { console.log("UserInfo inválido ou ausente no localStorage. Iniciando fluxo de setup."); } } catch(e){ console.error("Erro ao verificar localStorage inicial (userInfo):", e); console.log("Assumindo que setup é necessário devido ao erro no localStorage."); } return false; }
+          function checkInitialSetup() { /* ... sua função ... */ let isUserInfoValid = false; try { const userInfoStr = localStorage.getItem('userInfo'); if(userInfoStr){ const userInfo = JSON.parse(userInfoStr); if(userInfo && userInfo.nome && userInfo.dob && parseAndValidateDdMmYyyy(userInfo.dob)){ isUserInfoValid = true; } } if(isUserInfoValid){ console.log("UserInfo válido no localStorage. Redirecionando para index.html..."); statusMessage.textContent = "Perfil já configurado. Redirecionando..."; statusMessage.className = 'sucesso'; setTimeout(() => { try { document.body.innerHTML='<div style="text-align:center;padding:40px;font-family:Montserrat,sans-serif;color:#333;">Perfil já configurado. Redirecionando...</div>'; } catch (bodyError) { console.warn("Não foi possível limpar o body, prosseguindo com redirecionamento."); } window.location.href='index.html'; }, 1000); return true; } else { console.log("UserInfo inválido ou ausente no localStorage. Iniciando fluxo de setup."); } } catch(e){ console.error("Erro ao verificar localStorage inicial (userInfo):", e); console.log("Assumindo que setup é necessário devido ao erro no localStorage."); } return false; }
+
 
           // Função principal de inicialização da página
           function initializePage() {
-              // checkInitialSetup decide se continua ou redireciona baseado no localStorage
+              // checkInitialSetup decide se continua ou redireciona
               if (!checkInitialSetup()) {
                   // Mostra a primeira etapa do setup
                   showStep(currentStep);
@@ -370,23 +329,25 @@
                   if (googleSignInButton && auth) {
                       googleSignInButton.addEventListener('click', signInWithGoogle);
                   } else if (googleSignInButton) {
-                      // Se o botão existe mas 'auth' falhou na inicialização
                       googleSignInButton.disabled = true;
                       googleSignInButton.title = "Serviço de login indisponível";
                       console.warn("Botão Google desabilitado, Firebase Auth não disponível.");
-                      if(firebaseErrorMessage) firebaseErrorMessage.textContent = "Serviço de login indisponível."; // Informa usuário
+                      if(firebaseErrorMessage) firebaseErrorMessage.textContent = "Serviço de login indisponível.";
                   }
                   // Listener do botão Apple removido
 
                   console.log("Setup inicializado, aguardando interação (etapas ou login Firebase).");
               } else {
-                  // checkInitialSetup já iniciou o redirecionamento
-                  console.log("Redirecionamento iniciado por checkInitialSetup (localStorage válido).");
+                   console.log("Redirecionamento iniciado por checkInitialSetup.");
               }
           }
 
           // Chama a inicialização da página
           initializePage();
+
+          // Adiciona informação de contexto (Data/Local)
+          console.log("Script executado em 9 de abril de 2025, Juazeiro do Norte - CE.");
+
 
       }); // Fim DOMContentLoaded
     </script>
