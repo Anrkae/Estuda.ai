@@ -1,0 +1,37 @@
+section {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    padding-bottom: 0px !important;
+    padding: 15px 25px !important; /* Mais padding */
+    margin-bottom: 10px !important; /* Mais espaço */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important; /* Sombra um pouco mais pronunciada */
+    border-radius: 12px !important; /* Bordas mais arredondadas */
+}
+
+.minimizado .conteudo-bloco {
+    display: none;
+} /* Minimizar o bloco */
+
+h2, h3 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600 !important; /* Um pouco mais de peso */
+}
+
+button {
+    display: block;
+    width: auto; /* Largura automática */
+    padding: 12px 25px; /* Mais padding */
+    background-color: #2C2C2C; /* Roxo do header */
+    color: white;
+    border: none;
+    border-radius: 25px; /* Botão "pill" */
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #2C2C2C;
+}
