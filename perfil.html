@@ -280,8 +280,6 @@
             }
             // Função auxiliar para logout - NÃO apaga mais 'userInfo'
             function clearLocalDataAndRedirect(){
-                const keysToRemove = ['disciplinas', 'cronograma', 'sessoesEstudo']; // 'userInfo' PRESERVADO
-                keysToRemove.forEach(key => localStorage.removeItem(key));
                 console.log("Dados locais (exceto userInfo) removidos.");
                 window.location.href = 'login.html';
             }
