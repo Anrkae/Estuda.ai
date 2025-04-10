@@ -81,21 +81,60 @@
         </div>
 
         <div id="tab-preferencias" class="tab-content">
-            <h3>Preferências</h3> <p>Configurações futuras...</p> <ul><li>...</li></ul>
-       </div>
+            <h3>Preferências</h3>
+            <p>Aqui você poderá ajustar configurações da ferramenta (funcionalidade futura).</p>
+            <p>Sugestões:</p>
+            <ul>
+                <li>Opção de Tema (Claro/Escuro)</li>
+                <li>Definir Duração Padrão de Estudo</li>
+                <li>Definir Tempo Padrão de Descanso</li>
+                <li>Configurar Notificações</li>
+                <li>Escolher Dia de Início da Semana</li>
+            </ul>
+        </div>
 
         <div id="tab-armazenamento" class="tab-content">
-             <h3>Gerenciamento de Dados</h3> <p>Dados salvos localmente...</p> <ul><li>...</li></ul>
+            <h3>Gerenciamento de Dados</h3>
+            <p>Os seguintes dados são salvos atualmente:</p>
+            <ul>
+                <li><strong>Perfil:</strong> Seu nome e data de nascimento (salvos online no Firestore e localmente). Foto vem da sua conta Google.</li>
+                <li><strong>Disciplinas:</strong> Lista de disciplinas e tópicos (salvos localmente).</li>
+                <li><strong>Cronograma:</strong> Último cronograma salvo (salvo localmente).</li>
+                <li><strong>Sessões:</strong> Histórico de estudos (se aplicável, salvo localmente).</li>
+            </ul>
+             <p>O login com Google é usado para autenticação e obter nome/foto.</p>
+
             <div class="reset-section">
-                <h4>Resetar Dados Opcionais</h4> <p class="reset-warning">...</p>
-                <button id="reset-data-btn"> <i class="fas fa-trash-alt"></i> Resetar Dados Locais </button>
-                <p id="reset-status"></p>
+                 <h4>Resetar Dados Opcionais Locais</h4>
+                 <p class="reset-warning"><i class="fas fa-exclamation-triangle"></i> Atenção: Remove permanentemente seus dados de Disciplinas, Cronograma e Histórico de Estudos do armazenamento local do seu navegador.</p>
+                <button id="reset-data-btn">
+                    <i class="fas fa-trash-alt"></i> Resetar Dados Locais
+                </button>
+                 <p id="reset-status"></p>
             </div>
         </div>
 
     </main>
 
-    <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset"> </div>
+    <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset">
+         <div id="modalConfirmacaoResetDialog" class="modal-dialog-reset">
+             <h3 class="modal-title-reset"><i class="fas fa-exclamation-triangle"></i> Confirmar Reset Local</h3>
+             <div class="modal-message-reset">
+                 <p>Tem <strong>certeza</strong> que deseja resetar os dados locais?</p>
+                 <ul>
+                     <li>Lista de Disciplinas e Tópicos</li>
+                     <li>Cronograma Salvo</li>
+                     <li>Histórico de Sessões de Estudo</li>
+                  </ul>
+                  <p>Seu <strong>Nome</strong> e <strong>Data de Nascimento</strong> (salvos localmente e online) serão mantidos.</p>
+                  <p><strong>Ação irreversível para os dados removidos.</strong></p>
+             </div>
+             <div class="modal-buttons-reset">
+                 <button id="modalBotaoCancelarReset" class="modal-button-reset modal-cancel-reset" type="button">Cancelar</button>
+                 <button id="modalBotaoConfirmarReset" class="modal-button-reset modal-confirm-reset" type="button">Sim, Resetar Dados Locais</button>
+             </div>
+         </div>
+    </div>
 
     <div id="modalEditProfileOverlay" class="modal-overlay-edit">
         <div id="modalDialogEdit" class="modal-dialog-edit">
@@ -104,18 +143,28 @@
                  <div class="edit-profile-pic-area">
                      <img id="edit-profile-pic-preview" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Preview Foto Perfil">
                      </div>
-                 <div class="edit-form-grupo"> <label for="edit-profile-name-input">Nome:</label> <input type="text" id="edit-profile-name-input" required> </div>
-                 <div class="edit-form-grupo"> <label for="edit-profile-dob-input">Data de Nascimento:</label> <input type="text" id="edit-profile-dob-input" placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric" required> <div id="edit-age-display"></div> </div>
+                 <div class="edit-form-grupo">
+                    <label for="edit-profile-name-input">Nome:</label>
+                    <input type="text" id="edit-profile-name-input" required>
+                 </div>
+                 <div class="edit-form-grupo">
+                    <label for="edit-profile-dob-input">Data de Nascimento:</label>
+                    <input type="text" id="edit-profile-dob-input" placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric" required>
+                    <div id="edit-age-display"></div>
+                 </div>
                   <p id="edit-profile-status"></p>
-                  <div class="modal-buttons-edit"> <button type="button" id="cancel-profile-edit-btn" class="modal-button-edit modal-cancel-edit">Cancelar</button> <button type="submit" id="save-profile-changes-btn" class="modal-button-edit modal-confirm-edit">Salvar Alterações</button> </div>
+                  <div class="modal-buttons-edit">
+                    <button type="button" id="cancel-profile-edit-btn" class="modal-button-edit modal-cancel-edit">Cancelar</button>
+                    <button type="submit" id="save-profile-changes-btn" class="modal-button-edit modal-confirm-edit">Salvar Alterações</button>
+                 </div>
              </form>
         </div>
     </div>
 
 
     <script type="module">
-        // Importa funções necessárias do módulo Firebase (incluindo getDoc)
-        import { auth, onAuthStateChanged, signOut, db, doc, setDoc, getDoc } from '/Firebase.js'; // Import completo
+        // Importa funções necessárias do módulo Firebase
+        import { auth, onAuthStateChanged, signOut, db, doc, setDoc, getDoc } from '/Firebase.js';
 
         document.addEventListener('DOMContentLoaded', () => {
             console.log("Script perfil.html: DOMContentLoaded");
@@ -147,92 +196,71 @@
             const defaultAvatarURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
             // let newProfilePicBase64 = null; // Removido
 
-             // === Funções Utilitárias ===
-            const dateRegexForFormat=/^(\d{2})\/(\d{2})\/(\d{4})$/; function parseAndValidateDdMmYyyy(ds){ /* Sua função */ const m=ds.match(dateRegexForFormat);if(!m)return null;const d=parseInt(m[1],10),mo=parseInt(m[2],10),y=parseInt(m[3],10);if(y<1900||y>new Date().getFullYear()+5||mo<1||mo>12||d<1||d>31)return null;if((mo===4||mo===6||mo===9||mo===11)&&d>30)return null;if(mo===2){const iL=(y%4===0&&y%100!==0)||(y%400===0);if(d>(iL?29:28))return null;}const dt=new Date(Date.UTC(y,mo-1,d));if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d)return null;return dt; }
+             // === Funções Utilitárias (Restauradas do Original) ===
+            const dateRegexForFormat=/^(\d{2})\/(\d{2})\/(\d{4})$/; function parseAndValidateDdMmYyyy(ds){ if(!ds) return null; const m=ds.match(dateRegexForFormat);if(!m)return null;const d=parseInt(m[1],10),mo=parseInt(m[2],10),y=parseInt(m[3],10);if(y<1900||y>new Date().getFullYear()+5||mo<1||mo>12||d<1||d>31)return null;if((mo===4||mo===6||mo===9||mo===11)&&d>30)return null;if(mo===2){const iL=(y%4===0&&y%100!==0)||(y%400===0);if(d>(iL?29:28))return null;}const dt=new Date(Date.UTC(y,mo-1,d));if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d)return null;return dt; }
             function formatDatePtBr(dObj){ if(!dObj||isNaN(dObj.getTime()))return""; return dObj.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'UTC'}); }
             function applyDateMask(inp){ inp.value=inp.value.replace(/\D/g,'').replace(/(\d{2})(\d)/,'$1/$2').replace(/(\d{2})(\d)/,'$1/$2').replace(/(\d{4})\d+/,'$1'); }
-            function calculateAgeFromDate(bdo){ /* Sua função */ if(!bdo||isNaN(bdo.getTime()))return{age:null,error:"Data inválida"};const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const bm=new Date(bdo.getFullYear(),bdo.getMonth(),bdo.getDate());if(bm>tm)return{age:null,error:"Data futura"};let a=t.getFullYear()-bdo.getFullYear();const md=t.getMonth()-bdo.getMonth();if(md<0||(md===0&&t.getDate()<bdo.getDate())){a--;}return{age:Math.max(0,a),error:null}; }
+            function calculateAgeFromDate(bdo){ if(!bdo||isNaN(bdo.getTime()))return{age:null,error:"Data inválida"};const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const bm=new Date(bdo.getFullYear(),bdo.getMonth(),bdo.getDate());if(bm>tm)return{age:null,error:"Data futura"};let a=t.getFullYear()-bdo.getFullYear();const md=t.getMonth()-bdo.getMonth();if(md<0||(md===0&&t.getDate()<bdo.getDate())){a--;}return{age:Math.max(0,a),error:null}; }
             function getUserInfoFromStorage(){ try{const uS=localStorage.getItem('userInfo'); if(uS)return JSON.parse(uS);}catch(e){console.error("Erro ler userInfo localStorage:",e);} return null; }
             function saveUserInfoToStorage(userInfo){ try{localStorage.setItem('userInfo',JSON.stringify(userInfo)); return true;}catch(e){console.error("Erro salvar userInfo localStorage:",e);} return false; }
 
-            // === Lógica das Abas ===
-            tabButtons.forEach(button => { button.addEventListener('click', () => { const targetTab = button.getAttribute('data-tab'); tabButtons.forEach(btn => btn.classList.remove('active')); tabContents.forEach(content => content.classList.remove('active')); button.classList.add('active'); const targetContent = document.getElementById(targetTab); if(targetContent) targetContent.classList.add('active'); }); });
+            // === Lógica das Abas (Original) ===
+            tabButtons.forEach(button => { button.addEventListener('click', () => { const targetTab = button.getAttribute('data-tab'); tabButtons.forEach(btn => btn.classList.remove('active')); tabContents.forEach(content => content.classList.remove('active')); button.classList.add('active'); const targetContent = document.getElementById(targetTab); if(targetContent) targetContent.classList.add('active'); console.log(`>>> Aba ${targetTab} ativada.`); }); });
 
             // === FUNÇÃO PARA EXIBIR DADOS DO PERFIL (Prioriza Firestore > Firebase Auth > LocalStorage) ===
-            // Recebe o usuário do Firebase Auth e os dados lidos do Firestore
             function displayFinalProfileData(firebaseUser, firestoreData, localStorageData) {
                 console.log("Displaying final data. Firebase User:", firebaseUser, "Firestore Data:", firestoreData, "LocalStorage Data:", localStorageData);
                 profileErrorMessageDiv.style.display = 'none';
 
-                // Foto: Prioridade Firebase Auth > localStorage (editada - se ainda existir) > Padrão
                 profilePicElement.src = firebaseUser?.photoURL || localStorageData?.profilePicBase64 || defaultAvatarURL;
-                // Nome: Prioridade Firestore > Firebase Auth > localStorage > Padrão
                 profileNameElement.textContent = firestoreData?.nome || firebaseUser?.displayName || localStorageData?.nome || "Nome não definido";
-                // DOB: Prioridade Firestore > localStorage > Padrão
                 const dobToFormat = firestoreData?.dob || localStorageData?.dob;
                 const birthDateObj = dobToFormat ? parseAndValidateDdMmYyyy(dobToFormat) : null;
-                profileDobElement.textContent = birthDateObj ? formatDatePtBr(birthDateObj) : (dobToFormat ? "Data inválida" : "Não definida");
+                profileDobElement.textContent = birthDateObj ? formatDatePtBr(birthDateObj) : "Não definida";
 
-                if (editProfileBtn) editProfileBtn.disabled = false; // Habilita edição
+                if (editProfileBtn) editProfileBtn.disabled = false;
             }
 
-             // === FUNÇÃO PARA CARREGAR DADOS DO FIRESTORE E EXIBIR (NOVA) ===
+            // === FUNÇÃO PARA CARREGAR DADOS DO FIRESTORE E EXIBIR ===
              async function loadAndDisplayProfileData(firebaseUser) {
-                if (!firebaseUser || !db) {
-                     console.log("Usuário Firebase ou DB não disponível para carregar dados.");
-                     displayLoggedOutView(); // Ou talvez mostrar dados locais se existirem?
-                     return;
-                }
+                if (!firebaseUser || !db) { console.log("Usuário Firebase ou DB não disponível."); displayLoggedOutView(); return; }
                 console.log(`Tentando carregar dados do Firestore para UID: ${firebaseUser.uid}`);
                 const userDocRef = doc(db, "usuarios", firebaseUser.uid);
-                const localStorageData = getUserInfoFromStorage(); // Pega dados locais para fallback
+                const localStorageData = getUserInfoFromStorage(); // Pega local para fallback e talvez foto antiga
 
                 try {
                     const docSnap = await getDoc(userDocRef);
-
                     if (docSnap.exists()) {
-                        // Documento encontrado no Firestore
                         const firestoreData = docSnap.data();
                         console.log("Dados encontrados no Firestore:", firestoreData);
                         displayFinalProfileData(firebaseUser, firestoreData, localStorageData);
                     } else {
-                        // Documento NÃO encontrado no Firestore
                         console.warn("Documento do usuário não encontrado no Firestore. Exibindo com fallback.");
-                        // Usa null para firestoreData, a função displayFinal vai usar Firebase Auth/localStorage
                         displayFinalProfileData(firebaseUser, null, localStorageData);
-                         // Opcional: Se o documento não existe, talvez salvar os dados atuais do Auth/LocalStorage lá?
-                         // const initialData = { nome: firebaseUser?.displayName || localStorageData?.nome, dob: localStorageData?.dob, email: firebaseUser?.email, photoURL: firebaseUser?.photoURL };
-                         // if(initialData.nome && initialData.dob) { // Só salva se tiver dados mínimos
-                         //     setDoc(userDocRef, initialData, { merge: true }).then(() => console.log("Documento inicial criado no Firestore.")).catch(e => console.error("Erro ao criar doc inicial", e));
-                         // }
                     }
                 } catch (error) {
                     console.error("Erro ao buscar dados do Firestore:", error);
-                    profileErrorMessageDiv.textContent = "Erro ao carregar dados do perfil online.";
+                    profileErrorMessageDiv.textContent = "Erro ao carregar dados online.";
                     profileErrorMessageDiv.style.display = 'block';
-                    // Fallback para exibir o que for possível do Auth/localStorage em caso de erro
                     displayFinalProfileData(firebaseUser, null, localStorageData);
-                     if (editProfileBtn) editProfileBtn.disabled = true; // Desabilita edição se deu erro grave
+                    if (editProfileBtn) editProfileBtn.disabled = true;
                 }
             }
 
-
             // === FUNÇÃO PARA EXIBIR ESTADO DESLOGADO ===
-            function displayLoggedOutView() { /* ... sua função ... */ console.log("Displaying logged out view."); profileNameElement.textContent = "Não conectado"; profileDobElement.textContent = "-"; profilePicElement.src = defaultAvatarURL; profileErrorMessageDiv.textContent = "Você não está conectado."; profileErrorMessageDiv.style.display = 'block'; if (editProfileBtn) editProfileBtn.disabled = true; }
+            function displayLoggedOutView() { console.log("Displaying logged out view."); profileNameElement.textContent = "Não conectado"; profileDobElement.textContent = "-"; profilePicElement.src = defaultAvatarURL; profileErrorMessageDiv.textContent = "Você não está conectado."; profileErrorMessageDiv.style.display = 'block'; if (editProfileBtn) editProfileBtn.disabled = true; }
 
-            // === VERIFICAÇÃO DE AUTENTICAÇÃO FIREBASE (Chama loadAndDisplayProfileData) ===
+            // === VERIFICAÇÃO DE AUTENTICAÇÃO FIREBASE (Controla a exibição inicial) ===
             console.log("Configurando listener onAuthStateChanged...");
             if (auth) {
                 onAuthStateChanged(auth, (user) => {
                     console.log(">>> onAuthStateChanged disparado!");
                     if (user) {
                         console.log(">>> USUÁRIO DETECTADO (Firebase):", user.uid);
-                         console.log(">>> user.displayName:", user.displayName);
-                         console.log(">>> user.photoURL:", user.photoURL);
                         loadAndDisplayProfileData(user); // Chama a função que LÊ do Firestore e exibe
                     } else {
                         console.log(">>> NENHUM USUÁRIO DETECTADO (Firebase)");
-                        displayLoggedOutView(); // Chama a função para exibir estado deslogado
+                        displayLoggedOutView();
                     }
                 });
             } else {
@@ -240,41 +268,33 @@
                  displayLoggedOutView();
             }
 
-            // === Lógica do Botão Sair (ATUALIZADO com Firebase signOut e preservando userInfo) ===
+            // === Lógica do Botão Sair (ATUALIZADO - NÃO apaga userInfo) ===
             if (logoutButton) {
                  logoutButton.addEventListener('click', () => {
                      if (auth) {
                          console.log("Saindo (Firebase + LocalStorage)...");
-                         signOut(auth).then(() => {
-                             console.log("Logout do Firebase bem-sucedido.");
-                             clearLocalDataAndRedirect();
-                         }).catch((error) => {
-                             console.error("Erro ao fazer logout do Firebase:", error);
-                             clearLocalDataAndRedirect();
-                         });
-                     } else {
-                        console.warn("Firebase Auth não disponível, limpando apenas localStorage.");
-                        clearLocalDataAndRedirect();
-                     }
+                         signOut(auth).then(() => { console.log("Logout do Firebase OK."); clearLocalDataAndRedirect(); })
+                           .catch((error) => { console.error("Erro logout Firebase:", error); clearLocalDataAndRedirect(); });
+                     } else { console.warn("Auth indisponível, limpando local."); clearLocalDataAndRedirect(); }
                  });
             }
             // Função auxiliar para logout - NÃO apaga mais 'userInfo'
             function clearLocalDataAndRedirect(){
-                const keysToRemove = ['disciplinas', 'cronograma', 'sessoesEstudo']; // Removido 'userInfo'
+                const keysToRemove = ['disciplinas', 'cronograma', 'sessoesEstudo']; // 'userInfo' PRESERVADO
                 keysToRemove.forEach(key => localStorage.removeItem(key));
                 console.log("Dados locais (exceto userInfo) removidos.");
                 window.location.href = 'login.html';
             }
 
 
-             // === Lógica do Modal de Edição (ATUALIZADO para salvar no FIRESTORE e localStorage, sem foto local) ===
+            // === Lógica do Modal de Edição (Original com save no Firestore) ===
             function openEditProfileModal() {
-                 const userInfoLocalStorage = getUserInfoFromStorage(); // Pega dados locais
-                 const firebaseUser = auth?.currentUser; // Pega usuário firebase
+                 const userInfoLocalStorage = getUserInfoFromStorage();
+                 const firebaseUser = auth?.currentUser;
+                 if (!firebaseUser) { alert("Você precisa estar logado para editar."); return; }
 
-                 // Busca dados do Firestore para preencher o modal como fonte primária, se disponíveis
-                 let nameToEdit = firebaseUser?.displayName || userInfoLocalStorage?.nome || '';
-                 let dobToEdit = userInfoLocalStorage?.dob || ''; // DOB ainda vem primariamente do local ou precisa ler do Firestore aqui tbm? Vamos ler
+                 let nameToEdit = firebaseUser?.displayName || '';
+                 let dobToEdit = '';
 
                  const docRef = doc(db, "usuarios", firebaseUser.uid);
                  getDoc(docRef).then(docSnap => {
@@ -282,20 +302,22 @@
                         const firestoreData = docSnap.data();
                         console.log("Preenchendo modal com dados Firestore:", firestoreData);
                         nameToEdit = firestoreData.nome || nameToEdit; // Prioriza Firestore
-                        dobToEdit = firestoreData.dob || dobToEdit;   // Prioriza Firestore
+                        dobToEdit = firestoreData.dob || dobToEdit;
                     } else {
                         console.log("Documento Firestore não encontrado ao abrir modal, usando Auth/LocalStorage.");
+                        nameToEdit = nameToEdit || userInfoLocalStorage?.nome || '';
+                        dobToEdit = dobToEdit || userInfoLocalStorage?.dob || '';
                     }
                  }).catch(error => {
                     console.error("Erro ao buscar dados Firestore para modal:", error);
+                     nameToEdit = nameToEdit || userInfoLocalStorage?.nome || '';
+                     dobToEdit = dobToEdit || userInfoLocalStorage?.dob || '';
                  }).finally(() => {
-                    // Preenche os campos do formulário DEPOIS de tentar ler do Firestore
                     editProfileNameInput.value = nameToEdit;
                     editProfileDobInput.value = dobToEdit;
                     editAgeDisplay.textContent = '';
                     if (dobToEdit) { const bDate = parseAndValidateDdMmYyyy(dobToEdit); if (bDate) { const { age } = calculateAgeFromDate(bDate); if(age !== null) editAgeDisplay.textContent = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } }
-                    // Mostra foto atual (Firebase ou padrão) - Sem opção de editar
-                    editProfilePicPreview.src = firebaseUser?.photoURL || defaultAvatarURL;
+                    editProfilePicPreview.src = firebaseUser?.photoURL || defaultAvatarURL; // Mostra foto Firebase/Padrão
                     editProfileStatus.textContent = '';
                     modalEditOverlay.classList.add('show');
                  });
@@ -306,18 +328,22 @@
             if (cancelProfileEditBtn) { cancelProfileEditBtn.addEventListener('click', closeEditProfileModal); }
             if (modalEditOverlay) { modalEditOverlay.addEventListener('click', (event) => { if (event.target === modalEditOverlay) closeEditProfileModal(); }); }
 
-            // Listener para máscara e idade no input DOB do modal
-            if (editProfileDobInput && editAgeDisplay) { editProfileDobInput.addEventListener('input', (e) => { applyDateMask(e.target); /* Sua lógica de idade */ }); }
-            // Listener para input de foto removido
+            if (editProfileDobInput && editAgeDisplay) {
+                 editProfileDobInput.addEventListener('input', (e) => {
+                     applyDateMask(e.target);
+                     const dobValue = e.target.value; let displayMessage = ''; let displayClass = '';
+                     if (dobValue.length === 10) { const birthDateObj = parseAndValidateDdMmYyyy(dobValue); if (birthDateObj) { const { age, error } = calculateAgeFromDate(birthDateObj); if (error) { displayMessage = error === "Data futura" ? 'Data futura' : 'Data inválida'; displayClass = 'invalid'; } else if (age !== null) { displayMessage = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } } else { displayMessage = 'Data inválida'; displayClass = 'invalid'; } }
+                     editAgeDisplay.textContent = displayMessage; editAgeDisplay.className = displayClass;
+                 });
+             }
+            // Listener e lógica para input/preview de foto foram removidos, pois não salvamos mais foto local
 
             // Listener para SALVAR alterações (async e com Firestore/localStorage)
             if (editProfileForm) {
                  editProfileForm.addEventListener('submit', async (event) => {
                      event.preventDefault();
                      editProfileStatus.textContent = 'Salvando...'; editProfileStatus.className = '';
-
                      const newName = editProfileNameInput.value.trim(); const newDob = editProfileDobInput.value;
-                     // Validações
                      if (!newName || newName.length < 3) { editProfileStatus.textContent = "Nome inválido."; editProfileStatus.className = 'erro'; return; }
                      const birthDateObj = parseAndValidateDdMmYyyy(newDob); if (!birthDateObj) { editProfileStatus.textContent = "Data nascimento inválida."; editProfileStatus.className = 'erro'; return; }
                      const { error: dateError } = calculateAgeFromDate(birthDateObj); if (dateError) { editProfileStatus.textContent = "Data não pode ser futura."; editProfileStatus.className = 'erro'; return; }
@@ -332,8 +358,8 @@
                          await setDoc(userDocRef, dataToSaveFirestore, { merge: true }); // Salva no Firestore
                          console.log("Dados do perfil salvos no Firestore!");
 
-                         // Atualiza também o localStorage para consistência imediata
-                         const updatedUserInfo = { nome: newName, dob: newDob }; // Cria/sobrescreve só com nome e dob
+                         // Atualiza também o localStorage SÓ com nome e dob
+                         const updatedUserInfo = { nome: newName, dob: newDob };
                          saveUserInfoToStorage(updatedUserInfo);
                          console.log("Perfil atualizado também no localStorage:", updatedUserInfo);
 
@@ -351,7 +377,7 @@
 
 
             // === Lógica do Reset de Dados (Original - Afeta SÓ localStorage) ===
-            function resetOptionalData() { /* ... sua função original ... */ }
+            function resetOptionalData() { console.warn("Resetando dados locais opcionais..."); resetStatusEl.textContent='Resetando...'; resetStatusEl.className=''; try { const keysToRemove=['disciplinas','cronograma','sessoesEstudo']; let removedCount=0; keysToRemove.forEach(key=>{if(localStorage.getItem(key)!==null){localStorage.removeItem(key);console.log(` - Chave local '${key}' removida.`);removedCount++;}}); if(removedCount>0){resetStatusEl.textContent='Dados opcionais locais resetados!';resetStatusEl.className='success';}else{resetStatusEl.textContent='Nenhum dado opcional local para resetar.';resetStatusEl.className='';} } catch (error){console.error("Erro reset local:",error);resetStatusEl.textContent='Erro ao resetar dados locais.';resetStatusEl.className='error';} finally { setTimeout(()=>{resetStatusEl.textContent='';resetStatusEl.className='';},4000); } }
             function showResetConfirmationModal() { modalResetOverlay.classList.add('show'); }
             function hideResetConfirmationModal() { modalResetOverlay.classList.remove('show'); }
             if(resetDataBtn){resetDataBtn.addEventListener('click',showResetConfirmationModal);}
@@ -361,7 +387,7 @@
 
             console.log("Script perfil.html: Listeners e lógica principal configurados.");
 
-             // Adiciona informação de contexto (Data/Local)
+            // Adiciona informação de contexto (Data/Local)
             const now = new Date();
             const dateFormatter = new Intl.DateTimeFormat('pt-BR', { dateStyle: 'long', timeStyle: 'medium', timeZone: 'America/Fortaleza' });
             console.log(`Script da página de perfil executado em ${dateFormatter.format(now)}, Juazeiro do Norte - CE.`);
