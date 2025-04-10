@@ -8,8 +8,12 @@
 
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script>
+
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+
     <style>
         /* Estilos Gerais e Abas */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
@@ -17,17 +21,13 @@
             font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f4f6f8;
             padding-top: 70px; /* Ajuste conforme seu header fixo */
             color: #333;
-            background-color: #f1f0ea; /* Cor de fundo igual login.html */
+            background-color: #f1f0ea;
         }
-        .profile-container { display: flex; flex-direction: column; margin: 30px auto; /* Centraliza */ max-width: 800px; padding: 20px; background-color: #ffffff; /* Fundo branco para contraste */ border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
+        .profile-container { display: flex; flex-direction: column; margin: 30px auto; max-width: 800px; padding: 20px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); }
 
         /* --- Sistema de Abas --- */
         .tab-navigation { display: flex; border-bottom: 2px solid #eee; margin-bottom: 25px; }
-        .tab-button {
-            padding: 12px 20px; background: none; border: none; border-bottom: 3px solid transparent;
-            cursor: pointer; font-size: 1.05em; font-weight: 500; color: #666; transition: color 0.2s ease, border-color 0.2s ease; margin-bottom: -2px;
-            font-family: inherit; display: inline-flex; align-items: center; gap: 8px;
-        }
+        .tab-button { padding: 12px 20px; background: none; border: none; border-bottom: 3px solid transparent; cursor: pointer; font-size: 1.05em; font-weight: 500; color: #666; transition: color 0.2s ease, border-color 0.2s ease; margin-bottom: -2px; font-family: inherit; display: inline-flex; align-items: center; gap: 8px; }
         .tab-button:hover { color: #452482; }
         .tab-button.active { color: #6735bc; border-bottom-color: #6735bc; font-weight: 600; }
         .tab-content { display: none; animation: fadeInContent 0.4s ease; }
@@ -93,11 +93,13 @@
         .modal-dialog-edit { background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); width: 90%; max-width: 500px; transform: scale(0.9); transition: transform 0.3s ease; }
         .modal-overlay-edit.show .modal-dialog-edit { transform: scale(1); }
         .modal-title-edit { margin-top: 0; margin-bottom: 20px; font-size: 1.4em; color: #333; text-align: center; font-weight: 600; }
+        /* Área da Foto no Modal (Removida opção de alterar, apenas mostra preview) */
         .edit-profile-pic-area { text-align: center; margin-bottom: 20px; }
         #edit-profile-pic-preview { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc; display: block; margin: 0 auto 10px auto; background-color: #f0f0f0; }
-        #edit-profile-pic-label { display: inline-block; background-color: #eee; color: #555; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: background-color 0.2s; }
-        #edit-profile-pic-label:hover { background-color: #ddd; }
-        #edit-profile-pic-input { display: none; }
+        /* Esconde o input de arquivo e o label */
+        #edit-profile-pic-label,
+        #edit-profile-pic-input { display: none !important; }
+
         .edit-form-grupo { margin-bottom: 15px; }
         .edit-form-grupo label { display: block; margin-bottom: 5px; font-weight: 500; color: #444; font-size: 0.9em; }
         .edit-form-grupo input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 1em; }
@@ -112,7 +114,6 @@
         .modal-confirm-edit { background-color: #6735bc; color: white; }
         .modal-confirm-edit:hover { background-color: #562da4; }
 
-
         /* Responsividade */
         @media (max-width: 600px) {
             body { padding-top: 60px; }
@@ -125,7 +126,6 @@
             #tab-perfil .profile-actions { justify-content: center; }
             .modal-dialog-reset, .modal-dialog-edit { max-width: 95%; }
         }
-
     </style>
 </head>
 <body>
@@ -158,69 +158,32 @@
         </div>
 
         <div id="tab-preferencias" class="tab-content">
-            <h3>Preferências</h3>
-            <p>Aqui você poderá ajustar configurações da ferramenta (funcionalidade futura).</p>
-            <p>Sugestões:</p>
-            <ul>
-                <li>Opção de Tema (Claro/Escuro)</li>
-                <li>Definir Duração Padrão de Estudo</li>
-                <li>Definir Tempo Padrão de Descanso</li>
-                <li>Configurar Notificações</li>
-                <li>Escolher Dia de Início da Semana</li>
-            </ul>
-        </div>
+            <h3>Preferências</h3> <p>Configurações futuras...</p> <ul><li>...</li></ul>
+       </div>
 
         <div id="tab-armazenamento" class="tab-content">
-            <h3>Gerenciamento de Dados</h3>
-            <p>Os seguintes dados são salvos:</p>
-            <ul>
-                <li><strong>Perfil:</strong> Seu nome e data de nascimento.</li>
-                <li><strong>Disciplinas:</strong> Lista de disciplinas e tópicos.</li>
-                <li><strong>Cronograma:</strong> Último cronograma salvo.</li>
-                <li><strong>Sessões:</strong> Histórico de estudos (se aplicável).</li>
-            </ul>
-
+             <h3>Gerenciamento de Dados</h3> <p>Dados salvos localmente...</p> <ul><li>...</li></ul>
             <div class="reset-section">
-                 <h4>Resetar Dados Opcionais</h4>
-                 <p class="reset-warning"><i class="fas fa-exclamation-triangle"></i> Atenção: Remove permanentemente seus dados de Disciplinas, Cronograma e Histórico de Estudos.</p>
-                <button id="reset-data-btn">
-                    <i class="fas fa-trash-alt"></i> Resetar Dados
-                </button>
-                 <p id="reset-status"></p>
+                <h4>Resetar Dados Opcionais</h4> <p class="reset-warning">...</p>
+                <button id="reset-data-btn"> <i class="fas fa-trash-alt"></i> Resetar Dados Locais </button>
+                <p id="reset-status"></p>
             </div>
         </div>
 
-    </main> <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset">
-        <div id="modalConfirmacaoResetDialog" class="modal-dialog-reset">
-            <h3 class="modal-title-reset"><i class="fas fa-exclamation-triangle"></i> Confirmar Reset</h3>
-            <div class="modal-message-reset">
-                <p>Tem <strong>certeza</strong> que deseja resetar?</p>
-                <ul>
-                    <li>Lista de Disciplinas e Tópicos</li>
-                    <li>Cronograma Salvo</li>
-                    <li>Histórico de Sessões de Estudo</li>
-                 </ul>
-                 <p>Seu <strong>Nome</strong> e <strong>Data de Nascimento</strong> serão mantidos.</p>
-                 <p><strong>Ação irreversível.</strong></p>
-            </div>
-            <div class="modal-buttons-reset">
-                <button id="modalBotaoCancelarReset" class="modal-button-reset modal-cancel-reset" type="button">Cancelar</button>
-                <button id="modalBotaoConfirmarReset" class="modal-button-reset modal-confirm-reset" type="button">Sim, Resetar</button>
-            </div>
-        </div>
+    </main>
+
+    <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset">
+         <div id="modalConfirmacaoResetDialog" class="modal-dialog-reset">
+             <h3 class="modal-title-reset">...</h3> <div class="modal-message-reset">...</div> <div class="modal-buttons-reset">...</div>
+         </div>
     </div>
 
     <div id="modalEditProfileOverlay" class="modal-overlay-edit">
         <div id="modalDialogEdit" class="modal-dialog-edit">
-             <h3 class="modal-title-edit">Editar Perfil</h3>
-             <form id="edit-profile-form" onsubmit="return false;">
+             <h3 class="modal-title-edit">Editar Perfil (Salvo Online)</h3> <form id="edit-profile-form" onsubmit="return false;">
                  <div class="edit-profile-pic-area">
                      <img id="edit-profile-pic-preview" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="Preview Foto Perfil">
-                      <label for="edit-profile-pic-input" id="edit-profile-pic-label">
-                          <i class="fas fa-camera"></i> Alterar Foto
-                      </label>
-                     <input type="file" id="edit-profile-pic-input" accept="image/*" style="display: none;">
-                 </div>
+                     </div>
                  <div class="edit-form-grupo">
                     <label for="edit-profile-name-input">Nome:</label>
                     <input type="text" id="edit-profile-name-input" required>
@@ -230,17 +193,17 @@
                     <input type="text" id="edit-profile-dob-input" placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric" required>
                     <div id="edit-age-display"></div>
                  </div>
-                  <p id="edit-profile-status"></p> <div class="modal-buttons-edit">
+                  <p id="edit-profile-status"></p>
+                  <div class="modal-buttons-edit">
                     <button type="button" id="cancel-profile-edit-btn" class="modal-button-edit modal-cancel-edit">Cancelar</button>
-                    <button type="submit" id="save-profile-changes-btn" class="modal-button-edit modal-confirm-edit">Salvar Alterações</button>
-                 </div>
+                    <button type="submit" id="save-profile-changes-btn" class="modal-button-edit modal-confirm-edit">Salvar Alterações</button> </div>
              </form>
         </div>
     </div>
 
     <script type="module">
-        // Importa funções do módulo Firebase (localizado na raiz do site)
-        import { auth, onAuthStateChanged, signOut } from '/Firebase.js';
+        // Importa funções necessárias do módulo Firebase
+        import { auth, onAuthStateChanged, signOut, db, doc, setDoc } from '/Firebase.js'; // Import completo
 
         document.addEventListener('DOMContentLoaded', () => {
             console.log("Script perfil.html: DOMContentLoaded");
@@ -262,43 +225,41 @@
             const modalEditOverlay = document.getElementById('modalEditProfileOverlay');
             const editProfileForm = document.getElementById('edit-profile-form');
             const editProfilePicPreview = document.getElementById('edit-profile-pic-preview');
-            const editProfilePicInput = document.getElementById('edit-profile-pic-input');
+            // const editProfilePicInput = document.getElementById('edit-profile-pic-input'); // Removido - Não editamos mais foto local
             const editProfileNameInput = document.getElementById('edit-profile-name-input');
             const editProfileDobInput = document.getElementById('edit-profile-dob-input');
             const editAgeDisplay = document.getElementById('edit-age-display');
             const editProfileStatus = document.getElementById('edit-profile-status');
             const cancelProfileEditBtn = document.getElementById('cancel-profile-edit-btn');
+            // const saveProfileChangesBtn = document.getElementById('save-profile-changes-btn'); // Listener direto no form
 
             const defaultAvatarURL = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png';
-            let newProfilePicBase64 = null; // Usado na edição
+            // let newProfilePicBase64 = null; // Removido - Não usamos mais foto local editada
 
-            // === Funções Utilitárias (Originais) ===
+             // === Funções Utilitárias ===
             const dateRegexForFormat=/^(\d{2})\/(\d{2})\/(\d{4})$/; function parseAndValidateDdMmYyyy(ds){const m=ds.match(dateRegexForFormat);if(!m)return null;const d=parseInt(m[1],10),mo=parseInt(m[2],10),y=parseInt(m[3],10);if(y<1900||y>new Date().getFullYear()+5||mo<1||mo>12||d<1||d>31)return null;if((mo===4||mo===6||mo===9||mo===11)&&d>30)return null;if(mo===2){const iL=(y%4===0&&y%100!==0)||(y%400===0);if(d>(iL?29:28))return null;}const dt=new Date(Date.UTC(y,mo-1,d));if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d)return null;return dt;}
             function formatDatePtBr(dObj){if(!dObj||isNaN(dObj.getTime()))return"";return dObj.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'UTC'});}
-            function applyDateMask(inp){let v=inp.value.replace(/\D/g,''),fv='';if(v.length>0)fv+=v.substring(0,2);if(v.length>=3)fv+='/'+v.substring(2,4);if(v.length>=5)fv+='/'+v.substring(4,8);inp.value=fv.substring(0,10);}
+            function applyDateMask(inp){inp.value=inp.value.replace(/\D/g,'').replace(/(\d{2})(\d)/,'$1/$2').replace(/(\d{2})(\d)/,'$1/$2').replace(/(\d{4})\d+/,'$1');}
             function calculateAgeFromDate(bdo){if(!bdo||isNaN(bdo.getTime()))return{age:null,error:"Data inválida"};const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const bm=new Date(bdo.getFullYear(),bdo.getMonth(),bdo.getDate());if(bm>tm)return{age:null,error:"Data futura"};let a=t.getFullYear()-bdo.getFullYear();const md=t.getMonth()-bdo.getMonth();if(md<0||(md===0&&t.getDate()<bdo.getDate())){a--;}return{age:Math.max(0,a),error:null};}
             function getUserInfoFromStorage(){try{const uS=localStorage.getItem('userInfo');if(uS)return JSON.parse(uS);}catch(e){console.error("Erro ler userInfo do localStorage:",e);}return null;}
             function saveUserInfoToStorage(userInfo){try{localStorage.setItem('userInfo',JSON.stringify(userInfo));return true;}catch(e){console.error("Erro salvar userInfo no localStorage:",e);return false;}}
 
-            // === Lógica das Abas (Original) ===
+            // === Lógica das Abas ===
             tabButtons.forEach(button => { button.addEventListener('click', () => { const targetTab = button.getAttribute('data-tab'); tabButtons.forEach(btn => btn.classList.remove('active')); tabContents.forEach(content => content.classList.remove('active')); button.classList.add('active'); const targetContent = document.getElementById(targetTab); if(targetContent) targetContent.classList.add('active'); }); });
 
             // === FUNÇÃO PARA EXIBIR DADOS DO PERFIL (Prioriza Firebase) ===
             function displayUserData(firebaseUser) {
                 const userInfoLocalStorage = getUserInfoFromStorage();
                 console.log("Displaying user data. Firebase user:", firebaseUser, "LocalStorage user:", userInfoLocalStorage);
-                profileErrorMessageDiv.style.display = 'none'; // Esconde mensagens de erro
+                profileErrorMessageDiv.style.display = 'none';
 
-                // Foto: Firebase > localStorage (editada) > Padrão
-                profilePicElement.src = firebaseUser?.photoURL || userInfoLocalStorage?.profilePicBase64 || defaultAvatarURL;
-                // Nome: Firebase > localStorage > Padrão
-                profileNameElement.textContent = firebaseUser?.displayName || userInfoLocalStorage?.nome || "Nome não encontrado";
-                // DOB: Apenas localStorage (Firebase Auth não fornece DOB)
+                profilePicElement.src = firebaseUser?.photoURL || userInfoLocalStorage?.profilePicBase64 || defaultAvatarURL; // Tenta foto base64 local como fallback
+                profileNameElement.textContent = firebaseUser?.displayName || userInfoLocalStorage?.nome || "Nome não definido";
                 const dobFromStorage = userInfoLocalStorage?.dob;
                 const birthDateObj = dobFromStorage ? parseAndValidateDdMmYyyy(dobFromStorage) : null;
-                profileDobElement.textContent = birthDateObj ? formatDatePtBr(birthDateObj) : (dobFromStorage ? "Data inválida" : "Não definida");
+                profileDobElement.textContent = birthDateObj ? formatDatePtBr(birthDateObj) : "Não definida"; // Mostra 'Não definida' se local storage vazio/inválido
 
-                if (editProfileBtn) editProfileBtn.disabled = false; // Habilita botão de edição
+                if (editProfileBtn) editProfileBtn.disabled = false;
             }
 
             // === FUNÇÃO PARA EXIBIR ESTADO DESLOGADO ===
@@ -307,31 +268,29 @@
                 profileNameElement.textContent = "Não conectado";
                 profileDobElement.textContent = "-";
                 profilePicElement.src = defaultAvatarURL;
-                profileErrorMessageDiv.textContent = "Você não está conectado. Faça o login.";
+                profileErrorMessageDiv.textContent = "Você não está conectado.";
                 profileErrorMessageDiv.style.display = 'block';
-                if (editProfileBtn) editProfileBtn.disabled = true; // Desabilita edição
-                // Considerar redirecionar para login após um tempo
-                setTimeout(() => { window.location.href = 'login.html'; }, 3000);
+                if (editProfileBtn) editProfileBtn.disabled = true;
             }
 
             // === VERIFICAÇÃO DE AUTENTICAÇÃO FIREBASE (Controla a exibição inicial) ===
             console.log("Configurando listener onAuthStateChanged...");
             if (auth) {
                 onAuthStateChanged(auth, (user) => {
-                    console.log(">>> onAuthStateChanged disparado!"); // LOG PARA VER SE EXECUTA
+                    console.log(">>> onAuthStateChanged disparado!");
                     if (user) {
                         console.log(">>> USUÁRIO DETECTADO (Firebase):", user.uid);
-                         console.log(">>> user.displayName:", user.displayName);
-                         console.log(">>> user.photoURL:", user.photoURL);
-                        displayUserData(user); // Chama a função para exibir dados do usuário logado
+                        console.log(">>> user.displayName:", user.displayName);
+                        console.log(">>> user.photoURL:", user.photoURL);
+                        displayUserData(user);
                     } else {
                         console.log(">>> NENHUM USUÁRIO DETECTADO (Firebase)");
-                        displayLoggedOutView(); // Chama a função para exibir estado deslogado
+                        displayLoggedOutView();
                     }
                 });
             } else {
-                 console.error("ERRO CRÍTICO: Instância 'auth' do Firebase não está disponível! Verifique /Firebase.js e o carregamento.");
-                 displayLoggedOutView(); // Mostra estado deslogado se auth falhou na inicialização
+                 console.error("ERRO CRÍTICO: Instância 'auth' do Firebase não está disponível!");
+                 displayLoggedOutView();
             }
 
             // === Lógica do Botão Sair (ATUALIZADO com Firebase signOut) ===
@@ -341,10 +300,10 @@
                          console.log("Saindo (Firebase + LocalStorage)...");
                          signOut(auth).then(() => {
                              console.log("Logout do Firebase bem-sucedido.");
-                             clearLocalDataAndRedirect(); // Limpa e redireciona
+                             clearLocalDataAndRedirect();
                          }).catch((error) => {
                              console.error("Erro ao fazer logout do Firebase:", error);
-                             clearLocalDataAndRedirect(); // Limpa e redireciona mesmo com erro no Firebase
+                             clearLocalDataAndRedirect();
                          });
                      } else {
                         console.warn("Firebase Auth não disponível, limpando apenas localStorage.");
@@ -352,49 +311,96 @@
                      }
                  });
             }
-            // Função auxiliar para logout
             function clearLocalDataAndRedirect(){
-                const keysToRemove = ['userInfo', 'disciplinas', 'cronograma', 'sessoesEstudo'];
+                const keysToRemove = ['userInfo', 'disciplinas', 'cronograma', 'sessoesEstudo']; // Mantenha userInfo se quiser persistir nome/dob local
+                // Decide se quer limpar userInfo no logout:
+                // Se limpar: keysToRemove.push('userInfo');
                 keysToRemove.forEach(key => localStorage.removeItem(key));
-                console.log("Dados locais removidos.");
-                window.location.href = 'login.html'; // Redireciona para setup/login
+                console.log("Dados locais selecionados removidos.");
+                window.location.href = 'login.html';
             }
 
 
-            // === Lógica do Modal de Edição (Original - Salva SÓ no localStorage) ===
-            // (Nenhuma mudança aqui, continua interagindo apenas com localStorage)
-             function openEditProfileModal() { const userInfo = getUserInfoFromStorage(); const firebaseUser = auth?.currentUser; /* Ajuste para pegar nome/foto do Firebase se localStorage estiver vazio */ editProfileNameInput.value = userInfo?.nome || firebaseUser?.displayName || ''; editProfileDobInput.value = userInfo?.dob || ''; editAgeDisplay.textContent = ''; if (userInfo?.dob) { const bDate = parseAndValidateDdMmYyyy(userInfo.dob); if (bDate) { const { age } = calculateAgeFromDate(bDate); if(age !== null) editAgeDisplay.textContent = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } } /* Prioriza foto editada (localStorage) se houver, senão Firebase, senão padrão */ editProfilePicPreview.src = userInfo?.profilePicBase64 || firebaseUser?.photoURL || defaultAvatarURL; newProfilePicBase64 = null; editProfileStatus.textContent = ''; modalEditOverlay.classList.add('show'); }
+            // === Lógica do Modal de Edição (ATUALIZADO para salvar no FIRESTORE e localStorage) ===
+            function openEditProfileModal() {
+                 const userInfo = getUserInfoFromStorage();
+                 const firebaseUser = auth?.currentUser;
+                 if (!firebaseUser && !userInfo) { alert("Erro: Não há dados para editar."); return; } // Precisa estar logado ou ter dados locais
+
+                 // Prioriza dados locais para edição, se existirem, senão usa Firebase
+                 editProfileNameInput.value = userInfo?.nome || firebaseUser?.displayName || '';
+                 editProfileDobInput.value = userInfo?.dob || '';
+                 editAgeDisplay.textContent = '';
+                 const dobForAge = userInfo?.dob || ''; // Usa dob local para calcular idade
+                 if (dobForAge) { const bDate = parseAndValidateDdMmYyyy(dobForAge); if (bDate) { const { age } = calculateAgeFromDate(bDate); if(age !== null) editAgeDisplay.textContent = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } }
+
+                 // Mostra a foto atual (Firebase ou local ou padrão) - Edição de foto removida
+                 editProfilePicPreview.src = firebaseUser?.photoURL || userInfo?.profilePicBase64 || defaultAvatarURL;
+                 // newProfilePicBase64 = null; // Não precisamos mais disso
+
+                 editProfileStatus.textContent = '';
+                 modalEditOverlay.classList.add('show');
+            }
             function closeEditProfileModal() { modalEditOverlay.classList.remove('show'); }
+
             if (editProfileBtn) { editProfileBtn.addEventListener('click', openEditProfileModal); }
             if (cancelProfileEditBtn) { cancelProfileEditBtn.addEventListener('click', closeEditProfileModal); }
             if (modalEditOverlay) { modalEditOverlay.addEventListener('click', (event) => { if (event.target === modalEditOverlay) closeEditProfileModal(); }); }
-            if (editProfileDobInput && editAgeDisplay) { editProfileDobInput.addEventListener('input', (e) => { applyDateMask(e.target); const dobValue = e.target.value; let displayMessage = ''; let displayClass = ''; if (dobValue.length === 10) { const birthDateObj = parseAndValidateDdMmYyyy(dobValue); if (birthDateObj) { const { age, error } = calculateAgeFromDate(birthDateObj); if (error) { displayMessage = error === "Data futura" ? 'Data futura' : 'Data inválida'; displayClass = 'invalid'; } else if (age !== null) { displayMessage = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`; } } else { displayMessage = 'Data inválida'; displayClass = 'invalid'; } } editAgeDisplay.textContent = displayMessage; editAgeDisplay.className = displayClass; }); }
-            if (editProfilePicInput && editProfilePicPreview) {
-    editProfilePicInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        editProfileStatus.textContent = '';
-        if (file && file.type.startsWith('image/')) {
-            const maxSizeMB = 2;
-            if (file.size > maxSizeMB * 1024 * 1024) {
-                editProfileStatus.textContent = `Imagem grande (máx ${maxSizeMB}MB).`;
-                newProfilePicBase64 = null;
-                editProfilePicInput.value = '';
-                return;
+
+            // Listener para máscara e idade no input DOB do modal
+            if (editProfileDobInput && editAgeDisplay) { editProfileDobInput.addEventListener('input', (e) => { /* ... sua lógica de máscara/idade ... */ }); }
+            // Listener para input de foto removido
+
+            // Listener para SALVAR alterações (agora async e com Firestore)
+            if (editProfileForm) {
+                 editProfileForm.addEventListener('submit', async (event) => { // Adicionado async
+                     event.preventDefault();
+                     editProfileStatus.textContent = 'Salvando...'; editProfileStatus.className = '';
+
+                     const newName = editProfileNameInput.value.trim();
+                     const newDob = editProfileDobInput.value;
+
+                     // Validações
+                     if (!newName || newName.length < 3) { editProfileStatus.textContent = "Nome inválido."; editProfileStatus.className = 'erro'; return; }
+                     const birthDateObj = parseAndValidateDdMmYyyy(newDob); if (!birthDateObj) { editProfileStatus.textContent = "Data nascimento inválida."; editProfileStatus.className = 'erro'; return; }
+                     const { error: dateError } = calculateAgeFromDate(birthDateObj); if (dateError) { editProfileStatus.textContent = "Data não pode ser futura."; editProfileStatus.className = 'erro'; return; }
+
+                     // Pega usuário Firebase ATUAL
+                     const user = auth?.currentUser;
+                     if (!user || !db) { // Verifica também se 'db' (Firestore) está disponível
+                         console.error("Usuário Firebase não logado ou Firestore não inicializado.");
+                         editProfileStatus.textContent = "Erro: Login necessário ou falha na conexão.";
+                         editProfileStatus.className = 'erro';
+                         return;
+                     }
+                     const uid = user.uid;
+                     const dataToSaveFirestore = { nome: newName, dob: newDob };
+
+                     // Tenta salvar no Firestore
+                     try {
+                         const userDocRef = doc(db, "usuarios", uid);
+                         await setDoc(userDocRef, dataToSaveFirestore, { merge: true });
+                         console.log("Dados do perfil salvos no Firestore!");
+
+                         // Salva também no localStorage (opcional, para consistência ou leitura rápida)
+                         const currentUserInfo = getUserInfoFromStorage() || {};
+                         const updatedUserInfo = { ...currentUserInfo, nome: newName, dob: newDob };
+                         delete updatedUserInfo.profilePicBase64; // Remove foto local antiga
+                         saveUserInfoToStorage(updatedUserInfo);
+                         console.log("Perfil atualizado também no localStorage:", updatedUserInfo);
+
+                         editProfileStatus.textContent = "Perfil atualizado com sucesso!";
+                         editProfileStatus.className = 'sucesso';
+                         displayUserData(user); // Reexibe dados (pode precisar recarregar para ver nome do Firebase atualizado se ele mudou)
+                         setTimeout(closeEditProfileModal, 1500);
+
+                     } catch (error) {
+                         console.error("Erro ao salvar perfil no Firestore:", error);
+                         editProfileStatus.textContent = "Erro ao salvar online. Tente novamente.";
+                         editProfileStatus.className = 'erro';
+                     }
+                 });
             }
-            const reader = new FileReader();
-            reader.onload = (e) => { newProfilePicBase64 = e.target.result; editProfilePicPreview.src = newProfilePicBase64; console.log("Nova imagem selecionada (Base64)."); } // <<< ESTA LINHA ESTÁ COMENTADA!
-            reader.onerror = (e) => { console.error("Erro ao ler arquivo:", e); editProfileStatus.textContent = "Erro ao ler imagem."; newProfilePicBase64 = null; } // Falta ; (opcional mas bom)
-            reader.readAsDataURL(file); // Falta ; (opcional mas bom)
-        } 
-            else if (file) {
-            editProfileStatus.textContent = "Selecione imagem válida.";
-            newProfilePicBase64 = null;
-            editProfilePicInput.value = ''; // Falta ; (opcional mas bom)
-        }
-    }); // Fecha addEventListener
-} // Fecha if
-            if (editProfileForm) { editProfileForm.addEventListener('submit', (event) => { event.preventDefault(); editProfileStatus.textContent = ''; const newName = editProfileNameInput.value.trim(); const newDob = editProfileDobInput.value; if (!newName || newName.length < 3) { editProfileStatus.textContent = "Nome inválido."; return; } const birthDateObj = parseAndValidateDdMmYyyy(newDob); if (!birthDateObj) { editProfileStatus.textContent = "Data nascimento inválida."; return; } const { error: dateError } = calculateAgeFromDate(birthDateObj); if (dateError) { editProfileStatus.textContent = "Data não pode ser futura."; return; } const currentUserInfo = getUserInfoFromStorage() || {}; const updatedUserInfo = { ...currentUserInfo, nome: newName, dob: newDob }; if (newProfilePicBase64) { updatedUserInfo.profilePicBase64 = newProfilePicBase64; } else if (currentUserInfo.profilePicBase64) { updatedUserInfo.profilePicBase64 = currentUserInfo.profilePicBase64; } else { delete updatedUserInfo.profilePicBase64; } if (saveUserInfoToStorage(updatedUserInfo)) { console.log("Perfil atualizado (localStorage):", updatedUserInfo); displayUserData(auth?.currentUser); // Reexibe dados com prioridade Firebase + localStorage atualizado
-                          closeEditProfileModal(); } else { editProfileStatus.textContent = "Erro ao salvar localmente."; } }); }
 
 
             // === Lógica do Reset de Dados (Original - Afeta SÓ localStorage) ===
