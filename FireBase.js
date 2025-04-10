@@ -1,12 +1,26 @@
 // /Firebase.js
 
+// Importa as funções necessárias do SDK do Firebase (v9+ modular)
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+// Funções de Autenticação
 import {
     getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
-// Importe getDoc do Firestore
+
+// Funções do Firestore Database
 import {
-    getFirestore, doc, setDoc, getDoc // <<< ADICIONE getDoc AQUI
+    getFirestore,           // Para obter a instância do Firestore
+    doc,                    // Para referenciar um documento específico
+    setDoc,                 // Para escrever/atualizar um documento (usado em perfil)
+    getDoc,                 // Para ler um documento específico (usado em perfil)
+    collection,             // Para referenciar uma coleção
+    getDocs,                // Para ler múltiplos documentos (lista de disciplinas)
+    addDoc,                 // Para adicionar um novo documento com ID automático
+    deleteDoc,              // Para deletar um documento
+    updateDoc,              // Para atualizar campos específicos de um documento
+    arrayUnion,             // Para adicionar item a um array no Firestore
+    arrayRemove             // Para remover item de um array no Firestore
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
 // Sua configuração do Firebase
@@ -32,13 +46,16 @@ try {
     console.log("Firebase inicializado com sucesso via módulo /Firebase.js (com Auth e Firestore)");
     // ... log de data ...
 } catch (error) {
-    console.error("Erro fatal ao inicializar o Firebase:", error);
+    console.error("Erro fatal ao inicializar o Firebase no módulo /Firebase.js:", error);
     app = null; auth = null; db = null;
 }
 
 // Exporta as instâncias e funções/classes necessárias
 export {
+    // Instâncias
     app, auth, db,
+    // Auth
     GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut,
-    doc, setDoc, getDoc // <<< ADICIONE getDoc AQUI
+    // Firestore
+    doc, setDoc, getDoc, collection, getDocs, addDoc, deleteDoc, updateDoc, arrayUnion, arrayRemove
 };
