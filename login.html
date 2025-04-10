@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configuração Inicial / Login - Estuda.ai</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Configuração Inicial / Login - Estuda.ai</title> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <script src="//cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script>
-
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
 
     <style>
-        /* Seus estilos CSS completos aqui... */
-        /* (O mesmo CSS da versão anterior) */
+        /* Estilos Gerais */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
         body.login-page { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f1f0ea; padding: 20px 0; font-family: 'Montserrat', sans-serif; }
         .login-container { margin: 20px; background-color: #fff; padding: 30px 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); text-align: center; max-width: 600px; width: 90%; }
+
+        /* Indicador e Conteúdo das Etapas */
         .step-indicator { font-size: 0.9em; color: #888; margin-bottom: 15px; font-weight: 500; }
         #user-info-display { text-align: center; font-size: 0.9em; color: green; margin-bottom: 15px; display: none; font-weight: 500; }
         .step-content { display: none; text-align: left; animation: fadeIn 0.5s ease-in-out; }
@@ -27,6 +26,8 @@
         .step-content h2 { color: #575c6f; margin-bottom: 20px; font-size: 1.4em; font-weight: 500; text-align: center; }
         .step-content h2 small { font-size: 0.7em; color: #999; font-weight: 400; }
         .step-content p.step-description { color: #666; margin-bottom: 25px; font-size: 1em; line-height: 1.5; text-align: center;}
+
+        /* Estilos Etapa 1 (Dados Pessoais) */
         #profile-form { text-align: left; margin-top: 15px; }
         .form-grupo { margin-bottom: 18px; position: relative; }
         .form-grupo label { display: block; margin-bottom: 7px; font-weight: 500; color: #444; font-size: 0.95em; }
@@ -35,6 +36,8 @@
         .form-grupo input[type="text"]:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15); }
         #age-display { font-size: 0.85em; color: #555; margin-top: 5px; min-height: 1.1em; text-align: right; }
         #age-display.invalid { color: #e53935; }
+
+        /* Estilos Etapa 2 (Disciplinas Simplificada) */
         .div2 { padding-top: 30px; }
         #step-2 .add-disciplina-container { display: flex; gap: 10px; margin-bottom: 20px; }
         #step-2 .add-disciplina-container input[type="text"] { flex-grow: 1; padding: 10px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; }
@@ -48,6 +51,8 @@
         #step-2 .remove-disciplina-btn:hover { color: #e53935; }
         #step-2 #disciplinas-list .empty-message { text-align: center; color: #999; padding: 20px; font-style: italic; font-size: 0.95em; }
         #step-2 .list-title { text-align: left; font-size: 1.1em; color: #444; margin-bottom: 10px; font-weight: 500; padding-bottom: 5px; border-bottom: 1px solid #eee; }
+
+        /* Estilos Etapa 3 (Cronograma - Configuração) */
         #step-3 .config-geracao { border: 1px solid #eee; border-radius: 8px; padding: 20px; background-color: #fafafa; margin-bottom: 25px;}
         #step-3 .config-geracao .tituloBloco { font-size: 1.2em; margin-bottom: 15px; color: #444; text-align: left; font-weight: 600;}
         #step-3 .disciplinas-selecao { border: 1px dashed #ccc; padding: 10px; min-height: 100px; max-height: 180px; overflow-y: auto; background-color: #fff; margin-bottom: 10px; }
@@ -66,29 +71,48 @@
         #step-3 #status-geracao { margin-top: 10px; font-size: 0.9em; font-weight: 500; text-align: center; min-height: 1.1em; color: #ff7043; }
         #step-3 #status-geracao.success { color: green; }
         #step-3 .view-schedule-message { text-align: center; padding: 20px 10px; margin-top: 25px; background-color: #e9e3f5; border-radius: 6px; color: #452482; font-weight: 500; font-size: 0.95em; border: 1px solid #d1c4e9; }
+
+        /* Navegação Geral e Status */
         .navigation-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; flex-wrap: wrap; }
         .nav-button { padding: 10px 20px; border: none; border-radius: 6px; font-size: 1em; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; font-family: inherit; min-width: 100px; text-align: center; margin: 5px; }
         #prev-btn { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
         #prev-btn:hover { background-color: #e0e0e0; }
         #prev-btn:disabled { background-color: #f8f8f8; color: #bbb; cursor: not-allowed; border-color: #eee; }
-        #next-btn { background-color: #6735bc; color: white; margin-left: auto; }
+        #next-btn { background-color: #6735bc; color: white; margin-left: auto; /* Empurra para direita */ }
         #next-btn:hover { background-color: #562da4; }
         #next-btn:active { background-color: #452482; }
         #next-btn:disabled { background-color: #ccc; cursor: not-allowed; }
-        #skip-btn { background: none; border: none; color: #757575; font-size: 0.9em; cursor: pointer; text-decoration: underline; padding: 10px 5px; margin-right: auto; display: none; }
+        #skip-btn { background: none; border: none; color: #757575; font-size: 0.9em; cursor: pointer; text-decoration: underline; padding: 10px 5px; margin-right: auto; /* Empurra para esquerda */ display: none; }
         #skip-btn:hover { color: #452482; }
         #skip-btn:disabled { color: #bbb; text-decoration: none; cursor: not-allowed; }
         #status-message { margin-top: 15px; font-size: 0.9em; min-height: 1.2em; font-weight: 500; text-align: center; width: 100%; }
         #status-message.sucesso { color: #2e7d32; }
         #status-message.erro { color: #c62828; }
+
+        /* === ESTILOS PARA BOTÃO FIREBASE (Google Only) === */
         .firebase-login-section { margin-bottom: 25px; padding-top: 15px; border-top: 1px solid #eee; margin-top: 15px; text-align: center; }
         .firebase-login-section p { font-size: 0.95em; color: #555; margin-bottom: 15px; }
-        .firebase-login-button { background-color: #db4437; color: white; padding: 10px 15px; border: none; border-radius: 6px; font-size: 1em; cursor: pointer; width: 80%; max-width: 300px; margin: 0 auto 10px auto; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background-color 0.2s; }
+        .firebase-login-button { background-color: #db4437; /* Google Red */ color: white; padding: 10px 15px; border: none; border-radius: 6px; font-size: 1em; cursor: pointer; width: 80%; max-width: 300px; margin: 0 auto 10px auto; font-family: inherit; display: flex; align-items: center; justify-content: center; gap: 8px; transition: background-color 0.2s; }
         .firebase-login-button:hover { opacity: 0.9; }
-        .firebase-login-button:disabled { background-color: #ccc; cursor: not-allowed; }
+        .firebase-login-button:disabled { background-color: #ccc; cursor: not-allowed; } /* Estilo desabilitado */
         #firebase-error-message { color: #c62828; font-size: 0.85em; margin-top: 10px; min-height: 1em; }
-        @media (max-width: 700px) { .login-container { max-width: 95%; padding: 20px; } #step-3 .input-grid { grid-template-columns: 1fr; gap: 10px; } #step-3 .input-grid label { text-align: left; margin-bottom: -5px; } }
-        @media (max-width: 600px) { #step-2 .add-disciplina-container { flex-direction: column; } .navigation-buttons { flex-direction: column; align-items: stretch; } #prev-btn { order: 2; } #skip-btn { order: 1; margin-bottom: 10px; text-align: center; margin-right: 0; } #next-btn { order: 3; margin-left: 0; } .nav-button { width: 100%; margin: 5px 0;} .firebase-login-button { width: 95%; } }
+        /* =============================================== */
+
+        /* Responsividade */
+        @media (max-width: 700px) {
+             .login-container { max-width: 95%; padding: 20px; }
+             #step-3 .input-grid { grid-template-columns: 1fr; gap: 10px; }
+             #step-3 .input-grid label { text-align: left; margin-bottom: -5px; }
+        }
+        @media (max-width: 600px) {
+            #step-2 .add-disciplina-container { flex-direction: column; }
+            .navigation-buttons { flex-direction: column; align-items: stretch; }
+            #prev-btn { order: 2; }
+            #skip-btn { order: 1; margin-bottom: 10px; text-align: center; margin-right: 0; }
+            #next-btn { order: 3; margin-left: 0; }
+            .nav-button { width: 100%; margin: 5px 0;}
+            .firebase-login-button { width: 95%; }
+        }
     </style>
 </head>
 <body class="login-page">
@@ -108,28 +132,55 @@
         </div>
 
         <div id="step-1" class="step-content">
-            <h1>Dados Pessoais</h1> <p class="step-description">Suas informações básicas.</p>
+            <h1>Dados Pessoais</h1>
+            <p class="step-description">Suas informações básicas.</p>
             <form id="profile-form" onsubmit="return false;">
-                <div class="form-grupo"> <label for="nome">Nome<span class="required">*</span></label> <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo"> </div>
-                <div class="form-grupo"> <label for="dob">Data de Nascimento<span class="required">*</span></label> <input type="text" id="dob" name="dob" required placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric"> <div id="age-display"></div> </div>
+                <div class="form-grupo">
+                    <label for="nome">Nome<span class="required">*</span></label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+                <div class="form-grupo">
+                    <label for="dob">Data de Nascimento<span class="required">*</span></label>
+                    <input type="text" id="dob" name="dob" required placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric">
+                    <div id="age-display"></div>
+                </div>
             </form>
         </div>
 
         <div id="step-2" class="step-content">
-            <h2>Disciplinas <small>(Opcional)</small></h2> <p class="step-description">Adicione as matérias que vai estudar, ou pule esta etapa.</p>
-            <div class="add-disciplina-container"> <input type="text" id="nomeDisciplinaInput" placeholder="Nome da disciplina"> <button type="button" onclick="adicionarDisciplina()"><i class="fas fa-plus"></i> Adicionar</button> </div>
-            <div class="div2"> <h3 class="list-title">Disciplinas Adicionadas:</h3> <ul id="disciplinas-list"> <li class="empty-message">Nenhuma disciplina adicionada ainda.</li> </ul> </div>
+            <h2>Disciplinas <small>(Opcional)</small></h2>
+             <p class="step-description">Adicione as matérias que vai estudar, ou pule esta etapa.</p>
+             <div class="add-disciplina-container">
+                <input type="text" id="nomeDisciplinaInput" placeholder="Nome da disciplina">
+                <button type="button" onclick="adicionarDisciplina()"><i class="fas fa-plus"></i> Adicionar</button>
+            </div>
+            <div class="div2">
+                <h3 class="list-title">Disciplinas Adicionadas:</h3>
+                <ul id="disciplinas-list">
+                    <li class="empty-message">Nenhuma disciplina adicionada ainda.</li>
+                </ul>
+            </div>
         </div>
 
         <div id="step-3" class="step-content">
-            <h2>Gerar Cronograma <small>(Opcional)</small></h2> <p class="step-description">Configure e gere seu cronograma, ou pule esta etapa.</p>
-            <div class="config-geracao">
-                <h3 class="tituloBloco"><i class="fa-solid fa-sliders"></i> Configurações</h3> <p style="padding-top: 5px; text-align: center; font-size: 0.9em; color: #555;">Selecione e priorize as disciplinas:</p> <div class="disciplinas-selecao" id="disciplinas-para-selecao"><p>Carregando disciplinas...</p></div> <p class="priority-hint">Arraste para definir a prioridade (mais alta no topo).</p> <div class="input-grid"> <label for="minutos-por-dia">Minutos/dia:</label><input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10"> <label for="subjects-per-day">Disciplinas/dia:</label><input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1"> <label for="break-time">Descanso (min):</label><input type="number" id="break-time" placeholder="Ex: 10" min="0" step="5"> </div> <button id="botao-gerar" type="button">Gerar Cronograma</button><p id="status-geracao"></p>
-            </div> <p class="view-schedule-message"><i class="fas fa-info-circle"></i> Para visualizar seu cronograma, acesse pelo menu lateral.</p>
+            <h2>Gerar Cronograma <small>(Opcional)</small></h2>
+            <p class="step-description">Configure e gere seu cronograma, ou pule esta etapa.</p>
+             <div class="config-geracao">
+                 <h3 class="tituloBloco"><i class="fa-solid fa-sliders"></i> Configurações</h3>
+                 <p style="padding-top: 5px; text-align: center; font-size: 0.9em; color: #555;">Selecione e priorize as disciplinas:</p>
+                 <div class="disciplinas-selecao" id="disciplinas-para-selecao"><p>Carregando disciplinas...</p></div>
+                 <p class="priority-hint">Arraste para definir a prioridade (mais alta no topo).</p>
+                 <div class="input-grid">
+                     <label for="minutos-por-dia">Minutos/dia:</label><input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10">
+                     <label for="subjects-per-day">Disciplinas/dia:</label><input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1">
+                     <label for="break-time">Descanso (min):</label><input type="number" id="break-time" placeholder="Ex: 10" min="0" step="5">
+                 </div>
+                 <button id="botao-gerar" type="button">Gerar Cronograma</button><p id="status-geracao"></p>
+             </div>
+             <p class="view-schedule-message"><i class="fas fa-info-circle"></i> Para visualizar seu cronograma, acesse pelo menu lateral.</p>
         </div>
 
-        <div id="setup-navigation-area" style="display: none;">
-             <div id="status-message"></div>
+        <div id="setup-navigation-area" style="display: none;"> <div id="status-message"></div>
              <div class="navigation-buttons">
                  <button id="skip-btn" type="button">Pular etapa</button>
                  <button id="prev-btn" class="nav-button" type="button" disabled>Anterior</button>
@@ -138,7 +189,7 @@
         </div>
 
     </div> <script type="module">
-      // Importa do MÓDULO Firebase
+      // Importa do MÓDULO Firebase (precisa exportar onAuthStateChanged)
       import { auth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged } from '/Firebase.js';
 
       document.addEventListener('DOMContentLoaded', () => {
@@ -155,7 +206,7 @@
           const firebaseErrorMessage = document.getElementById('firebase-error-message');
           const loginSection = document.querySelector('.firebase-login-section');
           const userInfoDisplay = document.getElementById('user-info-display');
-          const setupNavigationArea = document.getElementById('setup-navigation-area');
+          const setupNavigationArea = document.getElementById('setup-navigation-area'); // Div com botões prox/ant
 
           // === Elementos Etapa 1, 2, 3 ===
           const nomeInput = document.getElementById('nome');
@@ -171,136 +222,246 @@
           const statusGeracaoEl = document.getElementById('status-geracao');
 
           // === Variáveis de Estado ===
-          let currentStep = 1; const totalSteps = 3; let userData = { nome: null, dob: null }; let disciplinas = []; let cronogramaGerado = {}; let firebaseUser = null; let todasDisciplinas = []; let draggingElement = null; let placeholder = null; const DIAS_SEMANA = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo']; const HORA_INICIO_PADRAO = 7; const MIN_STUDY_DURATION = 10; const TOTAL_DIAS = DIAS_SEMANA.length;
+          let currentStep = 1;
+          const totalSteps = 3;
+          let userData = { nome: null, dob: null };
+          let disciplinas = [];
+          let cronogramaGerado = {};
+          let firebaseUser = null; // Guarda usuário Firebase
+          let todasDisciplinas = []; let draggingElement = null; let placeholder = null;
+          const DIAS_SEMANA = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+          const HORA_INICIO_PADRAO = 7; const MIN_STUDY_DURATION = 10; const TOTAL_DIAS = DIAS_SEMANA.length;
 
           // === Funções Utilitárias ===
           const dateRegex=/^(\d{2})\/(\d{2})\/(\d{4})$/; function parseAndValidateDdMmYyyy(ds){const m=ds.match(dateRegex);if(!m)return null;const d=parseInt(m[1],10),mo=parseInt(m[2],10),y=parseInt(m[3],10);if(y<1900||y>new Date().getFullYear()||mo<1||mo>12||d<1||d>31)return null;if((mo===4||mo===6||mo===9||mo===11)&&d>30)return null;if(mo===2){const iL=(y%4===0&&y%100!==0)||(y%400===0);if(d>(iL?29:28))return null;}const dt=new Date(y,mo-1,d);if(dt.getFullYear()!==y||dt.getMonth()!==mo-1||dt.getDate()!==d)return null;return dt;}
-          function calculateAgeFromDate(bdo){if(!bdo||isNaN(bdo.getTime()))return{age:null,error:"Data inválida"};const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const bm=new Date(bdo.getFullYear(),bdo.getMonth(),bdo.getDate());if(bm>tm)return{age:null,error:"Data futura"};let a=t.getFullYear()-bdo.getFullYear();const md=t.getMonth()-bdo.getMonth();if(md<0||(md===0&&t.getDate()<bdo.getDate())){a--;}return{age:Math.max(0,a),error:null};}
-          function applyDateMask(inp){inp.value=inp.value.replace(/\D/g,'').replace(/(\d{2})(\d)/,'$1/$2').replace(/(\d{2})(\d)/,'$1/$2').replace(/(\d{4})\d+/,'$1');}
+          function calculateAgeFromDate(bdo){/*...*/ return {age:0, error:null};} // Sua função
+          function applyDateMask(inp){/*...*/ inp.value=inp.value.replace(/\D/g,'').replace(/(\d{2})(\d)/,'$1/$2').replace(/(\d{2})(\d)/,'$1/$2').replace(/(\d{4})\d+/,'$1');} // Sua função adaptada
           function removerAcentuacao(str){return str.normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
-          function shuffleArray(array){for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]];}return array;}
+          function shuffleArray(array){/*...*/ return array;} // Sua função
           function getUserInfoFromStorage(){try{const uS=localStorage.getItem('userInfo');if(uS)return JSON.parse(uS);}catch(e){}return null;}
           function saveUserInfoToStorage(userInfo){try{localStorage.setItem('userInfo',JSON.stringify(userInfo));return true;}catch(e){}return false;}
 
-          // === Lógica de Disciplinas (Etapa 2) ===
-          function loadDisciplinasFromStorage(){/*...*/disciplinas=[];/*...*/ }
-          function saveDisciplinasToStorage(){/*...*/localStorage.setItem('disciplinas',JSON.stringify(disciplinas));}
-          function exibirDisciplinas(){/*...*/disciplinasList.innerHTML='<li class="empty-message">Nenhuma adicionada.</li>';/*...*/}
-          window.adicionarDisciplina=function(){/*...*/loadDisciplinasFromStorage(); const n=nomeDisciplinaInput.value.trim(); if(!n) return; const existe=disciplinas.some(d=>d.nome.toLowerCase()===n.toLowerCase()); if(existe) return; disciplinas.push({nome:n}); saveDisciplinasToStorage(); exibirDisciplinas(); nomeDisciplinaInput.value='';}
-          window.removerDisciplina=function(idx){/*...*/loadDisciplinasFromStorage(); if(idx>=0&&idx<disciplinas.length){disciplinas.splice(idx,1);saveDisciplinasToStorage();exibirDisciplinas();}}
+
+          // === Lógica de Disciplinas (Etapa 2 - Original) ===
+          function loadDisciplinasFromStorage(){/*...*/ disciplinas=[]; /*Sua função*/}
+          function saveDisciplinasToStorage(){/*...*/ localStorage.setItem('disciplinas', JSON.stringify(disciplinas));}
+          function exibirDisciplinas(){/*...*/ disciplinasList.innerHTML='<li class="empty-message">Nenhuma adicionada.</li>'; /*Sua função adaptada*/}
+          window.adicionarDisciplina=function(){/*...*/ loadDisciplinasFromStorage(); const n=nomeDisciplinaInput.value.trim(); if(!n) return; const existe=disciplinas.some(d=>d.nome.toLowerCase()===n.toLowerCase()); if(existe) return; disciplinas.push({nome:n}); saveDisciplinasToStorage(); exibirDisciplinas(); nomeDisciplinaInput.value='';}
+          window.removerDisciplina=function(idx){/*...*/ loadDisciplinasFromStorage(); if(idx>=0&&idx<disciplinas.length){disciplinas.splice(idx,1);saveDisciplinasToStorage();exibirDisciplinas();} }
           if(nomeDisciplinaInput){nomeDisciplinaInput.addEventListener('keypress',(ev)=>{if(ev.key==='Enter'){ev.preventDefault();adicionarDisciplina();}});}
 
-          // === Lógica do Cronograma (Etapa 3) ===
-          function getDragAfterElement(cont,y){/*...*/return null;}
-          function handlePointerDown(e){/*...*/}
-          function handlePointerMove(e){/*...*/}
-          function handlePointerUp(e){/*...*/}
-          function carregarDisciplinasParaSelecao(){/*...*/loadDisciplinasFromStorage(); todasDisciplinas=disciplinas; disciplinasSelecaoEl.innerHTML = ''; todasDisciplinas.forEach((d,i)=>{/*...*/});}
-          function gerarCronogramaAutomatico(){/*...*/cronogramaGerado={}; statusGeracaoEl.textContent='Gerado!'; statusGeracaoEl.className='success';}
 
-          // === FUNÇÕES DE LOGIN FIREBASE ===
+          // === Lógica do Cronograma (Etapa 3 - Original) ===
+          function getDragAfterElement(cont,y){/*...*/ return null;} // Sua função
+          function handlePointerDown(e){/*...*/ } // Sua função
+          function handlePointerMove(e){/*...*/ } // Sua função
+          function handlePointerUp(e){/*...*/ } // Sua função
+          function carregarDisciplinasParaSelecao(){/*...*/ loadDisciplinasFromStorage(); todasDisciplinas=disciplinas; disciplinasSelecaoEl.innerHTML = ''; todasDisciplinas.forEach((d,i)=>{/* Seu código para criar item */}); } // Sua função adaptada
+          function gerarCronogramaAutomatico(){/*...*/ cronogramaGerado={}; statusGeracaoEl.textContent='Gerado!'; statusGeracaoEl.className='success';} // Sua função adaptada
+
+
+          // === FUNÇÕES DE LOGIN FIREBASE (Google Only - Continua Setup) ===
           const handleFirebaseLogin = async (provider) => {
-                console.log(">>> handleFirebaseLogin FOI CHAMADA com provider:", provider?.providerId); // LOG ADICIONADO
-                if (!auth) { console.error("Auth não inicializado"); if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Erro: Login indisponível."; return; }
-                if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Aguarde...";
+              if (!auth) { console.error("Auth não inicializado"); if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Erro: Login indisponível."; return; }
+              if (firebaseErrorMessage) firebaseErrorMessage.textContent = "Aguarde...";
+
+              try {
+                  const result = await signInWithPopup(auth, provider);
+                  firebaseUser = result.user; // Guarda o usuário
+                  console.log("Login Firebase OK:", firebaseUser.uid);
+
+                  if (firebaseErrorMessage) firebaseErrorMessage.textContent = ""; // Limpa erro
+
+                  // Verifica se o setup local (userInfo) já existe e é válido
+                  const userInfoLocalStorage = getUserInfoFromStorage();
+                  const isUserInfoValid = userInfoLocalStorage && userInfoLocalStorage.nome && userInfoLocalStorage.dob && parseAndValidateDdMmYyyy(userInfoLocalStorage.dob);
+
+                  if (isUserInfoValid) {
+                       console.log("Login Firebase OK + Setup Local OK -> Redirecionando para index.html");
+                       window.location.href = 'index.html'; // Usuário logado E configurado, vai para app principal
+                  } else {
+                      // Usuário logou com Firebase, mas não tem setup local válido.
+                      // Inicia o fluxo de setup a partir da Etapa 1.
+                      console.log("Login Firebase OK, mas Setup Local incompleto -> Iniciando fluxo de setup.");
+                      hideLoginButtonsAndShowUserInfo(firebaseUser); // Esconde botão de login, mostra info user
+                      currentStep = 1; // Garante que começa/mostra etapa 1
+                      initializeSetupSteps(); // Mostra a etapa 1 e configura botões de navegação
+                      // Pré-preenche nome se possível
+                      if (nomeInput && firebaseUser.displayName) {
+                          nomeInput.value = firebaseUser.displayName;
+                      }
+                      if (dobInput) dobInput.focus(); // Foca na data de nascimento
+                  }
+              } catch (error) {
+                  firebaseUser = null;
+                  console.error("Erro no login Firebase (detalhado):", error);
+                  let message = "Erro durante o login. Tente novamente.";
+                  if (error.code === 'auth/popup-closed-by-user') { message = "Login cancelado."; }
+                  // ... outros tratamentos de erro ...
+                  if (firebaseErrorMessage) firebaseErrorMessage.textContent = message;
+              }
+          };
+
+          const signInWithGoogle = () => {
+              if (!auth) { console.error("Tentou login, mas Auth não está pronto."); return; }
+              const provider = new GoogleAuthProvider();
+              handleFirebaseLogin(provider);
+          };
+
+          // Função para esconder botões e mostrar usuário (Chamada após login ou se já estava logado sem setup)
+          function hideLoginButtonsAndShowUserInfo(user) {
+              if (loginSection) loginSection.style.display = 'none'; // Esconde botão Google
+              if (userInfoDisplay && user) {
+                  userInfoDisplay.textContent = `Logado como: ${user.email || user.displayName}`;
+                  userInfoDisplay.style.display = 'block'; // Mostra info
+              }
+          }
+           // === FIM FUNÇÕES LOGIN FIREBASE ===
+
+
+          // === Funções de Navegação e Validação das Etapas (Originais, adaptadas) ===
+          function showStep(stepNumber) {
+              stepContents.forEach((stepEl, index)=>{stepEl.classList.toggle('active',index+1===stepNumber);});
+              stepIndicatorDisplay.textContent=`Etapa ${stepNumber} de ${totalSteps}`;
+              prevButton.disabled = stepNumber===1;
+              nextButton.textContent = stepNumber===totalSteps ? 'Finalizar Configuração' : 'Próximo';
+              skipButton.style.display = (stepNumber === 2 || stepNumber === 3) ? 'inline-block' : 'none';
+              statusMessage.textContent=''; statusMessage.className='';
+              if (stepNumber === 2) { loadDisciplinasFromStorage(); exibirDisciplinas(); if(nomeDisciplinaInput)nomeDisciplinaInput.focus(); }
+              if (stepNumber === 3) { carregarDisciplinasParaSelecao(); cronogramaGerado={}; statusGeracaoEl.textContent=''; statusGeracaoEl.className=''; }
+              // Garante que a navegação das etapas esteja visível
+              if (setupNavigationArea) setupNavigationArea.style.display = 'block';
+          }
+          function validateStep1() { /* Sua função original, salva em userData */ statusMessage.textContent='';statusMessage.className='';const n=nomeInput.value.trim(),d=dobInput.value;if(!n||n.length<3){/*...*/return false;}const bdo=parseAndValidateDdMmYyyy(d);if(!bdo){/*...*/return false;}const {error:de}=calculateAgeFromDate(bdo);if(de){/*...*/return false;}userData.nome=n;userData.dob=d;return true; }
+          function validateStep2() { /* Sua função original */ return true; }
+          function validateStep3() { /* Sua função original */ return true; }
+          function finalizeSetup(skippedCronograma = false) {
+                console.log("Finalizando configuração (salvando no localStorage)...");
+                // Usa userData preenchido na Etapa 1
+                if (!userData.nome || !userData.dob) { console.error("Erro: Dados (Nome/DOB da Etapa 1) ausentes."); statusMessage.textContent='Complete a Etapa 1 primeiro.'; statusMessage.className='erro'; return; }
+                const finalUserInfo = { nome: userData.nome, dob: userData.dob };
+                // Pega foto Base64 se foi editada (ainda salva localmente) - Opcional
+                const editedPic = localStorage.getItem('editedProfilePicBase64'); // Exemplo, ajuste chave
+                if(editedPic) finalUserInfo.profilePicBase64 = editedPic;
+
+                let finalDisciplinas = []; try { finalDisciplinas = JSON.parse(localStorage.getItem('disciplinas')) || []; if (!Array.isArray(finalDisciplinas)) finalDisciplinas = []; } catch { finalDisciplinas = []; }
+                const finalCronograma = skippedCronograma ? {} : cronogramaGerado;
                 try {
-                    const result = await signInWithPopup(auth, provider);
-                    firebaseUser = result.user;
-                    console.log("Login Firebase OK:", firebaseUser.uid);
-                    if (firebaseErrorMessage) firebaseErrorMessage.textContent = "";
-                    const userInfoLocalStorage = getUserInfoFromStorage();
-                    const isUserInfoValid = userInfoLocalStorage && userInfoLocalStorage.nome && userInfoLocalStorage.dob && parseAndValidateDdMmYyyy(userInfoLocalStorage.dob);
-                    if (isUserInfoValid) {
-                        console.log("Login Firebase OK + Setup Local OK -> Redirecionando para index.html");
-                        window.location.href = 'index.html';
-                    } else {
-                        console.log("Login Firebase OK, mas Setup Local incompleto -> Iniciando fluxo de setup.");
-                        hideLoginButtonsAndShowUserInfo(firebaseUser);
-                        currentStep = 1;
-                        initializePageLogic(true); // Re-inicializa a lógica da página, forçando etapa 1
-                        if (nomeInput && firebaseUser.displayName) { nomeInput.value = firebaseUser.displayName; }
-                        if (dobInput) dobInput.focus();
-                    }
-                } catch (error) {
-                    firebaseUser = null;
-                    console.error("Erro no login Firebase (detalhado):", error);
-                    let message = "Erro durante o login. Tente novamente.";
-                    if (error.code === 'auth/popup-closed-by-user') { message = "Login cancelado."; }
-                    // ...
-                    if (firebaseErrorMessage) firebaseErrorMessage.textContent = message;
-                }
-            };
-
-           const signInWithGoogle = () => {
-               console.log(">>> signInWithGoogle FOI CHAMADA!"); // LOG ADICIONADO
-               if (!auth) { console.error("Tentou login, mas Auth não está pronto."); return; }
-               const provider = new GoogleAuthProvider();
-               handleFirebaseLogin(provider);
-           };
-
-          function hideLoginButtonsAndShowUserInfo(user) { /* ... sua função ... */ if (loginSection) loginSection.style.display = 'none'; if (userInfoDisplay && user) { userInfoDisplay.textContent = `Logado como: ${user.email || user.displayName}`; userInfoDisplay.style.display = 'block'; } }
-          // === FIM FUNÇÕES LOGIN FIREBASE ===
-
-
-          // === Funções de Navegação e Validação das Etapas ===
-          function showStep(stepNumber) { stepContents.forEach((stepEl, index)=>{stepEl.classList.toggle('active',index+1===stepNumber);}); stepIndicatorDisplay.textContent=`Etapa ${stepNumber} de ${totalSteps}`; prevButton.disabled = stepNumber===1; nextButton.textContent = stepNumber===totalSteps ? 'Finalizar Configuração' : 'Próximo'; skipButton.style.display = (stepNumber === 2 || stepNumber === 3) ? 'inline-block' : 'none'; statusMessage.textContent=''; statusMessage.className=''; if (stepNumber === 2) { loadDisciplinasFromStorage(); exibirDisciplinas(); if(nomeDisciplinaInput)nomeDisciplinaInput.focus(); } if (stepNumber === 3) { carregarDisciplinasParaSelecao(); cronogramaGerado={}; statusGeracaoEl.textContent=''; statusGeracaoEl.className=''; } if (setupNavigationArea) setupNavigationArea.style.display = 'block'; } // Mostra navegação
-          function validateStep1() { /*...*/userData.nome=nomeInput.value.trim(); userData.dob=dobInput.value; return true;} // Sua validação simplificada
-          function validateStep2() { /*...*/return true;}
-          function validateStep3() { /*...*/return true;}
-          function finalizeSetup(skippedCronograma = false) { /*...*/ if (!userData.nome || !userData.dob) { /*...*/ return; } const finalUserInfo={nome:userData.nome,dob:userData.dob}; /*...*/ try { saveUserInfoToStorage(finalUserInfo); localStorage.setItem('cronograma', JSON.stringify(finalCronograma)); /*...*/ setTimeout(()=>{window.location.href='index.html';}, 1500); } catch(error){ /*...*/ } }
+                    saveUserInfoToStorage(finalUserInfo); // Salva userInfo no localStorage
+                    // Não precisa salvar disciplinas/cronograma aqui se saveDisciplinasToStorage e gerarCronograma já salvam
+                    console.log("Salvo userInfo local:", finalUserInfo);
+                    statusMessage.textContent=`Configuração Concluída! Redirecionando...`; statusMessage.className='sucesso';
+                    // Desabilita botões de navegação
+                    nextButton.disabled=true; prevButton.disabled=true; skipButton.disabled=true;
+                    nextButton.textContent='Salvo!';
+                    setTimeout(()=>{window.location.href='index.html';}, 1500);
+                } catch(error){ console.error("Erro save final:", error); statusMessage.textContent='Erro ao salvar final.'; statusMessage.className='erro'; }
+           }
           function handleNext() { let isValid=false;if(currentStep===1) isValid=validateStep1(); else if(currentStep===2) isValid=validateStep2(); else if(currentStep===3){ finalizeSetup(Object.keys(cronogramaGerado).length === 0); return; } if(isValid && currentStep < totalSteps){ currentStep++; showStep(currentStep); } }
           function handlePrev() { if(currentStep > 1){ currentStep--; showStep(currentStep); } }
-          function handleSkip() { if (currentStep === 2) { currentStep++; showStep(currentStep); } else if (currentStep === 3) { finalizeSetup(true); } }
+          function handleSkip() { console.log(`Pulando Etapa ${currentStep}`); if (currentStep === 2) { currentStep++; showStep(currentStep); } else if (currentStep === 3) { finalizeSetup(true); } }
 
 
-          // === FUNÇÃO PARA INICIALIZAR LÓGICA DA PÁGINA (ETAPAS, LISTENERS) ===
+          // === FUNÇÃO PARA INICIALIZAR APENAS A LÓGICA DAS ETAPAS E LISTENERS ===
+          // Chamada quando sabemos que o usuário precisa ver o setup/login
           function initializePageLogic(forceStep1 = false) {
                 console.log("Inicializando lógica da página (etapas/listeners)...");
-                showStep(forceStep1 ? 1 : currentStep); // Mostra etapa correta
 
-                // Configura listeners UMA VEZ usando dataset para controle
-                if (prevButton && !prevButton.dataset.listenerAttached) { prevButton.addEventListener('click', handlePrev); prevButton.dataset.listenerAttached = 'true'; }
-                if (nextButton && !nextButton.dataset.listenerAttached) { nextButton.addEventListener('click', handleNext); nextButton.dataset.listenerAttached = 'true'; }
-                if (skipButton && !skipButton.dataset.listenerAttached) { skipButton.addEventListener('click', handleSkip); skipButton.dataset.listenerAttached = 'true'; }
-                if (dobInput && !dobInput.dataset.listenerAttached) { dobInput.addEventListener('input',(e)=>{ applyDateMask(e.target); /*...*/ }); dobInput.dataset.listenerAttached = 'true'; }
-                if (botaoGerarEl && !botaoGerarEl.dataset.listenerAttached) { botaoGerarEl.addEventListener('click', gerarCronogramaAutomatico); botaoGerarEl.dataset.listenerAttached = 'true'; }
+                // Mostra a etapa correta (força 1 se necessário, ex: após login sem setup)
+                showStep(forceStep1 ? 1 : currentStep);
 
-                // Configura listener do botão Google (se seção de login visível)
+                // Configura listeners das etapas (só se não estiverem já configurados)
+                // É importante evitar adicionar listeners múltiplos vezes
+                if (!prevButton.dataset.listenerAttached) {
+                    prevButton.addEventListener('click', handlePrev);
+                    prevButton.dataset.listenerAttached = 'true';
+                }
+                 if (!nextButton.dataset.listenerAttached) {
+                    nextButton.addEventListener('click', handleNext);
+                    nextButton.dataset.listenerAttached = 'true';
+                }
+                 if (!skipButton.dataset.listenerAttached) {
+                    skipButton.addEventListener('click', handleSkip);
+                    skipButton.dataset.listenerAttached = 'true';
+                }
+                if (dobInput && !dobInput.dataset.listenerAttached) {
+                     dobInput.addEventListener('input',(e)=>{ applyDateMask(e.target); /*...*/ });
+                     dobInput.dataset.listenerAttached = 'true';
+                }
+                if (botaoGerarEl && !botaoGerarEl.dataset.listenerAttached) {
+                    botaoGerarEl.addEventListener('click', gerarCronogramaAutomatico);
+                    botaoGerarEl.dataset.listenerAttached = 'true';
+                }
+
+                // Configura listener do botão Google (só se a seção de login estiver visível)
                 if(loginSection && loginSection.style.display !== 'none') {
                      if (googleSignInButton && auth && !googleSignInButton.dataset.listenerAttached) {
                          googleSignInButton.addEventListener('click', signInWithGoogle);
                          googleSignInButton.dataset.listenerAttached = 'true';
-                         googleSignInButton.disabled = false; // Garante que está habilitado
-                         if(firebaseErrorMessage) firebaseErrorMessage.textContent = ""; // Limpa erro inicial
-                     } else if (googleSignInButton) {
-                         googleSignInButton.disabled = !auth; // Desabilita se auth falhou
-                         if(!auth && firebaseErrorMessage) firebaseErrorMessage.textContent = "Serviço de login indisponível.";
-                         googleSignInButton.title = auth ? "" : "Serviço de login indisponível";
+                     } else if (googleSignInButton && !auth) {
+                         googleSignInButton.disabled = true; // Desabilita se auth falhou
+                         if(firebaseErrorMessage) firebaseErrorMessage.textContent = "Serviço de login indisponível.";
                      }
                  } else if (googleSignInButton) {
-                     googleSignInButton.disabled = true; // Desabilita se seção escondida
+                    // Garante que o botão esteja escondido ou desabilitado se a seção não está visível
+                     googleSignInButton.disabled = true;
                  }
+
                 console.log("Lógica da página inicializada.");
           }
 
 
-           // === VERIFICAÇÃO INICIAL GERAL (MODIFICADA PARA TESTE - PULA onAuthStateChanged) ===
-           // Esta versão apenas chama initializePageLogic diretamente, pulando a checagem
-           // inicial de autenticação para evitar a interferência suspeita.
-          function checkAuthAndLocalSetup_TestVersion() {
-              console.warn("checkAuthAndLocalSetup_TestVersion: PULANDO onAuthStateChanged inicial, apenas inicializando a página.");
+          // === VERIFICAÇÃO INICIAL GERAL (NOVA - USA onAuthStateChanged) ===
+          function checkAuthAndLocalSetup() {
+              console.log("Verificando estado de autenticação e setup local...");
               if (!auth) {
-                  console.error("Auth não inicializado! Tentando inicializar o básico sem auth.");
-              }
-              // CHAMA DIRETAMENTE a função que configura os listeners e etapas
-              initializePageLogic();
+                  console.error("Auth não inicializado! Exibindo página normalmente.");
+                   initializePageLogic(); // Tenta inicializar o básico sem auth
+                   return;
+               }
+
+              // Usa onAuthStateChanged para esperar o estado do Firebase ser definido
+              const unsubscribe = onAuthStateChanged(auth, (user) => {
+                  // Desregistra o listener após a primeira verificação para evitar chamadas múltiplas
+                  // Cuidado: Se precisar monitorar continuamente, remova esta linha.
+                  unsubscribe();
+
+                  firebaseUser = user; // Atualiza variável global
+                  const userInfoLocalStorage = getUserInfoFromStorage();
+                  const isUserInfoValid = userInfoLocalStorage && userInfoLocalStorage.nome && userInfoLocalStorage.dob && parseAndValidateDdMmYyyy(userInfoLocalStorage.dob);
+
+                  if (user && isUserInfoValid) {
+                      // CASO 1: Logado no Firebase + Setup Local OK -> Vai pro App
+                      console.log("Usuário logado no Firebase e setup local completo. Redirecionando para index.html...");
+                      const container = document.querySelector('.login-container');
+                      if(container) container.innerHTML = '<p style="padding: 20px; font-weight: 500; text-align: center;">Logado e configurado. Redirecionando...</p>';
+                      window.location.href = 'index.html';
+
+                  } else if (user && !isUserInfoValid) {
+                      // CASO 2: Logado no Firebase, mas falta Setup Local -> Inicia Setup
+                      console.log("Usuário logado no Firebase, mas setup local incompleto. Iniciando fluxo de setup.");
+                      hideLoginButtonsAndShowUserInfo(user);
+                      initializePageLogic(true); // Força Etapa 1
+                      if (nomeInput && user.displayName) { nomeInput.value = user.displayName; } // Pré-preenche nome
+                      if (dobInput) dobInput.focus();
+
+                  } else {
+                       // CASO 3 e 4: Não logado no Firebase (com ou sem setup local) -> Mostra Página Login/Setup
+                       console.log("Usuário NÃO logado no Firebase. Exibindo opções de login/setup.");
+                       initializePageLogic(); // Inicializa a página normalmente
+                  }
+              }, (error) => {
+                    // Erro ao observar o estado de autenticação
+                    console.error("Erro no onAuthStateChanged:", error);
+                    // Falha segura: permite que a página carregue para login manual
+                    initializePageLogic();
+              });
           }
-          // --- FIM VERIFICAÇÃO INICIAL (MODIFICADA PARA TESTE) ---
+          // --- FIM VERIFICAÇÃO INICIAL ---
 
 
           // --- PONTO DE ENTRADA PRINCIPAL ---
-          // Chama a versão de teste da verificação inicial
-          checkAuthAndLocalSetup_TestVersion();
+          checkAuthAndLocalSetup(); // Chama a verificação que decide o que fazer
 
           // Adiciona informação de contexto
           const now = new Date();
