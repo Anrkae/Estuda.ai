@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
             style.innerHTML = `
 /* Estilos base do container e header */
 #${popupId} {
-    position: fixed; bottom: 0; left: 0; width: 100vw; height: 100vh; z-index: 100;
+    position: fixed; bottom: 0; left: 0; width: 100vw; height: 100vh; z-index: 1000;
     /* A transição padrão é definida aqui */
     transition: transform 0.4s ease-in-out;
     background-color: #ffffff; display: flex; flex-direction: column;

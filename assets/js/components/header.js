@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <nav class="sidebar-navigation">
                 <button onclick="window.location.href='index.html'" class="sidebarBtn" data-target="index.html">Inicio</button>
-                <button onclick="window.location.href='Simulados.html'" class="sidebarBtn" data-target="Simulados.html">Questões</button>
+                <button onclick="window.location.href='simulados.html'" class="sidebarBtn" data-target="simulados.html">Questões</button>
                 <button onclick="window.location.href='anotacoes.html'" class="sidebarBtn" data-target="anotacoes.html">Anotações</button>
                 <button onclick="window.location.href='resumos.html'" class="sidebarBtn" data-target="resumos.html">Resumos</button>
                 <button onclick="window.location.href='disciplinas.html'" class="sidebarBtn" data-target="disciplinas.html">Disciplinas</button>
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             text-align: left;
             cursor: pointer;
             border-radius: 8px; /* Cantos arredondados essenciais para a pílula */
-            width: 100%;
+            width: 100% !important;
             box-sizing: border-box;
             transition: color 0.2s ease, background-color 0.2s ease;
             /* **** REMOVIDO: border-top **** */
