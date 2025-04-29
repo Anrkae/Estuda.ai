@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* === Importação de Fonte === */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+        /* === Estilos Gerais === */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex; /* Usado para centralizar o container */
+            justify-content: center;
+            align-items: center;
+            background-color: #f1f0ea; /* Ou a cor de fundo que preferir */
+            font-family: 'Montserrat', sans-serif; /* Opcional, para consistência */
+            overflow: hidden; /* Garante que não haja barras de rolagem */
+        }
+
+        .intro-container {
+            text-align: center;
+        }
+
+        .intro-icon {
+            font-size: 7rem; /* Tamanho do ícone (ajuste conforme necessário) */
+            color: #6735bc; /* Cor do ícone (roxo usado anteriormente) */
+            opacity: 0; /* Começa invisível */
+            /* Aplica a animação */
+            animation: fadeInOut 4s ease-in-out forwards;
+            /* 'forwards' mantém o estado final da animação (opacity: 0) */
+        }
+
+        /* Definição da Animação */
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); /* Efeito extra: começa um pouco menor */
+            }
+            25% {
+                opacity: 1;
+                transform: scale(1); /* Cresce ao tamanho normal */
+            }
+            /* Fica visível entre 25% e 75% (metade da duração = 2s) */
+            75% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.9); /* Efeito extra: diminui um pouco ao sumir */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="intro-container">
+        <i class="fa-solid fa-graduation-cap intro-icon"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Define o tempo total da animação em milissegundos (4 segundos)
+            const animationDuration = 4000;
+
+            // Define para onde redirecionar
+            // ATENÇÃO: Ajuste este caminho se necessário!
+            const redirectUrl = 'pages/index.html';
+
+            // Configura um temporizador para redirecionar após a duração da animação
+            const redirectTimer = setTimeout(() => {
+                console.log(`Intro finalizada. Redirecionando para ${redirectUrl}...`);
+                window.location.href = redirectUrl;
+            }, animationDuration);
+
+            // Opcional: Log para indicar que a intro iniciou
+            console.log("Intro iniciada...");
+
+             // Opcional: Limpa o timeout se o usuário sair da página antes
+             window.addEventListener('beforeunload', () => {
+                 clearTimeout(redirectTimer);
+             });
+        });
+    </script>
+  
+        // Inicializa o Eruda apenas se não estiver em um ambiente de produção
+        // (Você pode ajustar essa lógica conforme necessário)
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') {
+             console.log("Inicializando Eruda...");
+             try {
+                  eruda.init();
+                  console.log("Eruda inicializado com sucesso.");
+             } catch(e) {
+                  console.error("Erro ao inicializar Eruda:", e);
+             }
+        } else {
+             console.log("Eruda não inicializado (ambiente de produção detectado).");
+        }
+    </script>
+    </body>
+</html>
