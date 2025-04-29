@@ -1,255 +1,431 @@
-/* === Estilos para anotacoes.css === */
-
-/* Fontes e Estilos Base (MANTIDO IGUAL) */
+/* === Importação de Fonte === */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
-:root {
-    /* Cores (MANTIDO IGUAL) */
-    --cor-fundo: #f1f0ea;
-    --cor-texto-principal: #2C2C2C;
-    --cor-texto-secundario: #555;
-    --cor-primaria-escura: #542aa3;
-    --cor-primaria-media: #ab47bc;
-    --cor-primaria-clara: #e1bee7;
-    --cor-fundo-card: #f3e5f5;
-    --cor-destaque-erro: #e53935;
-    --cor-fundo-hover: #e1bee7;
-    --cor-fundo-ativo: #542aa3;
-    --cor-texto-ativo: white;
-    --cor-borda: #ccc;
-    --cor-borda-sutil: #eee;
-    --cor-sombra: rgba(0, 0, 0, 0.08);
-}
-
-body { /* (MANTIDO IGUAL) */
+/* === Estilos Gerais === */
+body {
     font-family: 'Montserrat', sans-serif;
-    background: var(--cor-fundo);
+    background-color: #f1f0ea; /* Cor de fundo baseada no exemplo */
+    color: #333;
     margin: 0;
-    color: var(--cor-texto-principal);
-    min-height: 100vh;
+    padding-top: 70px; /* Espaço para o header fixo */
+    min-height: 100vh; /* Garante que o body ocupe a altura toda */
 }
 
-.page-wrapper { /* (MANTIDO IGUAL) */
-    margin-top: 70px;
-    display: flex;
+/* === Container Principal e Abas === */
+.container-principal.tab-page-container {
     padding: 20px;
-}
-
-/* --- Layout Principal (Sidebar + Conteúdo) (MANTIDO IGUAL) --- */
-#secoes {
-    min-width: 180px;
-    max-width: 250px;
-    flex-shrink: 0;
-    border-right: 1px solid var(--cor-borda-sutil);
-    padding-right: 25px;
-    height: fit-content;
-}
-#conteudo { flex-grow: 1; min-width: 0; }
-
-/* --- Cabeçalhos (MANTIDO IGUAL) --- */
-h2, h3 { font-weight: bold; margin-top: 0; margin-bottom: 15px; color: var(--cor-texto-principal); }
-h3 { font-size: 1.2em; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 1px solid var(--cor-borda-sutil); }
-#titulo-secao { margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid var(--cor-primaria-escura); display: inline-block; font-size: 1.5em; }
-
-/* --- Sidebar de Seções (MANTIDO IGUAL) --- */
-#lista-secoes { list-style: none; padding: 0; margin: 0; }
-#lista-secoes li { margin-bottom: 8px; }
-#lista-secoes a { display: block; padding: 8px 12px; text-decoration: none; color: var(--cor-texto-secundario); border-radius: 6px; transition: background-color 0.2s ease, color 0.2s ease; font-weight: 500; word-break: break-word; }
-#lista-secoes a:hover { background-color: var(--cor-fundo-hover); color: var(--cor-primaria-escura); }
-#lista-secoes a.ativo { background-color: var(--cor-fundo-ativo); color: var(--cor-texto-ativo); font-weight: 600; }
-
-/* --- Barra de Pesquisa e Resultados (MANTIDO IGUAL) --- */
-#campo-busca { padding: 10px 12px; font-size: 1rem; border-radius: 6px; border: 1px solid var(--cor-borda); box-sizing: border-box; width: 100%; font-family: 'Montserrat', sans-serif; }
-#campo-busca:focus { border-color: var(--cor-primaria-escura); outline: none; box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2); }
-#resultados-busca { margin-top: 15px; border-top: 1px dashed var(--cor-borda); padding-top: 15px; display: none; /* Começa escondido */ }
-.resultado-busca { background-color: white; padding: 12px 15px; margin-bottom: 10px; border-radius: 8px; border: 1px solid var(--cor-borda-sutil); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-.resultado-busca small { display: block; margin-bottom: 5px; color: #777; font-size: 0.85em; }
-.resultado-busca h4 { margin: 0 0 5px 0; font-size: 1.1em; color: var(--cor-primaria-escura); }
-.resultado-busca p { margin: 0; line-height: 1.5; white-space: pre-wrap; }
-.resultado-busca mark { background-color: #fff3cd; padding: 0.1em 0.2em; border-radius: 3px; color: #664d03; }
-.resultado-busca hr { border-style: dashed; margin: 10px 0; border-color: var(--cor-borda-sutil);}
-
-/* --- Área de Edição (Bloco genérico) (MANTIDO IGUAL) --- */
-.bloco { margin-top: 25px; padding: 10px; background-color: rgba(255, 255, 255, 0.5); border-radius: 8px; box-shadow: 0 2px 8px var(--cor-sombra); margin-bottom: 30px; }
-.bloco > div { margin-bottom: 0px; } /* Ajuste fino se necessário */
-/* Estilos para campos dentro da área de edição */
-#area-edicao label { display: block; margin: 15px 0px 5px; font-weight: 500; color: #444; font-size: 0.9em; }
-#area-edicao select, #area-edicao input[type="text"]#titulo-anotacao, #area-edicao textarea { width: 100%; font-size: 1rem; font-family: 'Montserrat', sans-serif; border-radius: 6px; border: 1px solid var(--cor-borda); box-sizing: border-box; background-color: white; padding: 10px 12px; /* Padding consistente */ }
-#area-edicao textarea { margin-bottom: 20px; min-height: 120px; line-height: 1.5; }
-#area-edicao select:focus, #area-edicao input[type="text"]#titulo-anotacao:focus, #area-edicao textarea:focus { border-color: var(--cor-primaria-escura); outline: none; box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2); }
-#area-edicao select { cursor: pointer; appearance: none; -webkit-appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.6-3.6%205.4-7.9%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 10px center; background-size: 10px auto; padding-right: 30px; }
-
-
-/* --- Botões Gerais (MANTIDO IGUAL, exceto last-child se usar gap) --- */
-button { font-family: 'Montserrat', sans-serif; background-color: var(--cor-texto-principal); color: white; cursor: pointer; padding: 10px 15px; font-size: 0.9rem; border: none; border-radius: 6px; vertical-align: middle; transition: background-color 0.3s ease; white-space: nowrap; /* margin-right: 8px; */ /* Removido se usar flex gap */ }
-button:hover { background-color: var(--cor-primaria-escura); }
-/* button:last-child { margin-right: 0; } */ /* Removido se usar flex gap */
-#btn-cancelar-edicao { background-color: var(--cor-borda-sutil); color: var(--cor-texto-secundario); border: 1px solid var(--cor-borda); }
-#btn-cancelar-edicao:hover { background-color: #e0e0e0; }
-
-/* --- Lista de Anotações (AJUSTADO) --- */
-#lista-anotacoes .anotacao { /* Classe .bloco já aplicada no JS */
-    border: 1px solid transparent;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    padding: 15px 20px; /* Ajuste se necessário */
-    box-shadow: 0 1px 4px var(--cor-sombra);
-    transition: box-shadow 0.2s ease;
-    line-height: 1.6;
-    background-color: var(--cor-fundo-card);
-    border-left: 5px solid var(--cor-primaria-media);
-    /* position: relative; */ /* Não mais necessário para o botão delete */
-    word-wrap: break-word;
-    overflow: hidden; /* Para conter elementos internos se necessário */
-}
-#lista-anotacoes .anotacao:hover { box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-
-/* Título e Texto da Anotação (Padding Removido) */
-#lista-anotacoes .anotacao-titulo {
-    font-size: 1.1em;
-    font-weight: 600;
-    color: var(--cor-primaria-escura);
-    margin: 0 0 8px 0;
-    padding-right: 0; /* <<< REMOVIDO PADDING */
-}
-#lista-anotacoes .anotacao-texto {
-    margin: 0 0 15px 0;
-    padding-right: 0; /* <<< REMOVIDO PADDING */
-    color: var(--cor-texto-principal);
-    white-space: pre-wrap; /* Preserva quebras de linha do textarea */
-}
-
-/* Wrapper dos botões de ação (Editar, Deletar) */
-#lista-anotacoes .anotacao-botoes {
-    margin-top: 10px;
-    display: flex;     /* <<< Usa Flexbox para alinhar botões */
-    flex-wrap: wrap;   /* Permite quebrar linha se não couber */
-    gap: 8px;          /* <<< Espaçamento entre os botões */
-    justify-content: flex-start; /* Alinha botões à esquerda (padrão), ou use flex-end para direita */
-}
-
-/* Estilo para TODOS os botões dentro de .anotacao-botoes */
-.anotacao .anotacao-botoes button {
-    font-size: 0.85rem;  /* Tamanho menor para botões de ação */
-    padding: 6px 10px;   /* Padding menor */
-    margin: 0; /* Resetar margens se houver (gap cuida do espaço) */
-    /* Herda outros estilos do 'button' geral */
-}
-
-/* Botão Deletar específico (AGORA INLINE) */
-.anotacao button.delete {
-    /* REMOVER/IGNORAR: position, top, right, width, height, border-radius: 50%, etc. */
-
-    /* Estilo visual distinto */
-    background-color: transparent; /* Fundo transparente */
-    color: var(--cor-destaque-erro); /* Cor do texto/ícone vermelha */
-    border: 1px solid var(--cor-destaque-erro); /* Borda vermelha sutil */
-    padding: 5px 8px; /* Ajuste fino de padding se necessário, senão herda */
-    line-height: 1; /* Para alinhar o 'X' verticalmente se necessário */
-}
-.anotacao button.delete:hover {
-    background-color: var(--cor-destaque-erro); /* Fundo vermelho no hover */
-    color: white; /* Texto branco no hover */
-    border-color: var(--cor-destaque-erro); /* Mantém borda */
-}
-
-/* Mensagem de lista vazia */
-#lista-anotacoes > p:first-child:last-child {
-    color: var(--cor-texto-secundario);
-    font-style: italic;
-    text-align: center;
-    padding: 20px;
-}
-
-/* --- Estilos para Título + Botão Minimizar --- */
-.tituloBtn {
+    max-width: 1200px;
+    margin: 20px auto; /* Margem superior/inferior e centralizado */
+    width: calc(100% - 40px); /* Considera padding */
+    box-sizing: border-box;
+    background-color: #ffffff; /* Fundo branco para a área de conteúdo */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    flex-grow: 1; /* Ocupa espaço disponível */
     display: flex;
-    justify-content: space-between; /* Título na esquerda, botão na direita */
+    flex-direction: column;
+}
+
+.tab-nav {
+    display: flex;
+    border-bottom: 2px solid #eee;
+    margin-bottom: 25px;
+}
+
+.tab-link {
+    font-family: 'Montserrat', sans-serif;
+    padding: 12px 25px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: -2px; /* Alinha com a borda inferior */
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+    display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Espaço abaixo do título/botão */
-    cursor: pointer; /* Cursor no wrapper para indicar clicabilidade */
+    gap: 8px;
 }
 
-.tituloBloco { /* Estilo para o título clicável */
-    flex-grow: 1; /* Faz o título ocupar o espaço disponível */
-    margin: 0; /* Remove margens padrão de h4 se houver */
-    /* Herdará estilos de .anotacao-titulo */
+.tab-link:hover {
+    color: #6735bc; /* Roxo do exemplo */
 }
 
-.botao-minimizar {
-    padding: 5px 8px; /* Padding pequeno */
-    font-size: 0.8rem; /* Tamanho pequeno */
-    line-height: 1;
-    margin-left: 10px; /* Espaço entre título e botão */
-    flex-shrink: 0; /* Impede que o botão encolha */
-    background-color: var(--cor-borda-sutil); /* Cor diferente */
-    color: var(--cor-texto-secundario);
-    border: 1px solid var(--cor-borda);
-}
-.botao-minimizar:hover {
-    background-color: #2C2C2C;
-}
-.botao-minimizar i { /* Estilo para o ícone +/- */
-    font-size: 1em; /* Tamanho do ícone relativo ao botão */
+.tab-link.active {
+    color: #6735bc;
+    font-weight: 600;
+    border-bottom-color: #6735bc;
 }
 
-
-/* --- Estilos para Estado Minimizado --- */
-.anotacao.minimizado .conteudo-bloco {
-    display: none; /* Esconde o texto e os botões de ação */
+.tab-content-area {
+    flex-grow: 1;
 }
 
+.tab-content {
+    display: none; /* Oculta por padrão */
+    animation: fadeIn 0.5s ease; /* Animação suave */
+}
 
-/* --- Linhas Divisórias (MANTIDO IGUAL) --- */
-hr { border: none; border-top: 1px solid var(--cor-borda-sutil); margin: 25px 0; }
+.tab-content.active {
+    display: block; /* Mostra aba ativa */
+}
 
-/* --- Media Query para Telas Menores (AJUSTADO) --- */
-@media (max-width: 768px) {
-    .page-wrapper { flex-direction: column; padding: 15px; gap: 20px; }
-    #secoes { border-right: none; border-bottom: 1px solid var(--cor-borda-sutil); padding-right: 0; padding-bottom: 15px; min-width: auto; width: 100%; max-width: none; height: auto; }
-    #lista-secoes { display: flex; flex-wrap: wrap; gap: 8px; }
-    #lista-secoes li { margin-bottom: 0; }
-    #lista-secoes a { padding: 6px 10px; font-size: 0.9em; }
-    #conteudo { width: 100%; }
-    #titulo-secao { font-size: 1.3em; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    /* Área de edição em telas menores */
-    #area-edicao { padding: 15px; }
-    #area-edicao label { font-size: 0.85em; }
-    #area-edicao select, #area-edicao input[type="text"]#titulo-anotacao, #area-edicao textarea { padding: 8px 10px; font-size: 0.95rem; }
-    #area-edicao select { padding-right: 25px; background-size: 8px auto; }
+/* === Cabeçalho Dentro das Abas === */
+.content-header-tab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+}
 
-    /* Anotações em telas menores */
-    #lista-anotacoes .anotacao { padding: 12px 15px; }
-    #lista-anotacoes .anotacao-titulo { font-size: 1em; padding-right: 0; /* <<< GARANTIR PADDING REMOVIDO */ }
-    #lista-anotacoes .anotacao-texto { font-size: 0.95em; padding-right: 0; /* <<< GARANTIR PADDING REMOVIDO */ }
+.content-header-tab h3 {
+    margin: 0;
+    text-align: left;
+    font-size: 1.4rem;
+    color: #444;
+}
 
-    /* Botões dentro da anotação em telas menores */
-    .anotacao .anotacao-botoes button { font-size: 0.8rem; padding: 5px 8px; }
-    .anotacao button.delete {
-        /* Estilos específicos do delete se necessário, senão herda o de cima */
-        padding: 4px 7px; /* Exemplo: ajuste fino */
-    }
-    /* CERTIFIQUE-SE DE REMOVER a regra antiga de position:absolute do .delete na media query */
-
-    .botao-minimizar {
-    display: block;
-    width: auto; /* Largura automática */
-    padding: 12px 25px; /* Mais padding */
-    background-color: #2C2C2C; /* Roxo do header */
+/* Botão Principal (Nova Anotação, Salvar Modal) - Estilo "Pill" */
+.btn-principal {
+    padding: 10px 20px;
+    background-color: #6735bc; /* Roxo principal */
     color: white;
     border: none;
-    border-radius: 25px; /* Botão "pill" */
+    border-radius: 25px; /* "Pill" */
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.1s ease;}
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-principal:hover {
+    background-color: #512da8; /* Roxo mais escuro */
+}
+.btn-principal:active {
+    transform: scale(0.98);
+}
+
+/* Botão Secundário (Cancelar Modal) */
+.btn-secundario {
+     padding: 10px 20px;
+     background-color: #f5f5f5;
+     color: #555;
+     border: 1px solid #ddd;
+     border-radius: 25px;
+     cursor: pointer;
+     font-size: 0.95rem;
+     font-weight: 500;
+     transition: background-color 0.2s ease, color 0.2s ease;
+}
+.btn-secundario:hover {
+    background-color: #eee;
+    color: #333;
+}
+
+/* Busca (Aba Notas) */
+.search-container {
+    margin-bottom: 20px;
+}
+#busca-notas {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+#busca-notas:focus {
+     border-color: #6735bc;
+     outline: none;
+     box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.1);
 }
 
 
-/* Estilo final para centralizar botões da área de edição (MANTIDO IGUAL) */
-.btns {
-    padding-bottom: 20px;
+/* === Lista de Itens (Notas e Resumos) === */
+.lista-itens-tab {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Grid responsivo */
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.item-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    padding: 18px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Empurra ações para baixo */
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    cursor: pointer; /* Indica clicável (para editar nota) */
+    min-height: 150px; /* Altura mínima */
+}
+.item-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.card-content {
+    margin-bottom: 15px; /* Espaço antes das ações */
+    flex-grow: 1; /* Ocupa espaço */
+}
+
+.item-card h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #6735bc; /* Título com cor de destaque */
+    word-break: break-word; /* Quebra títulos longos */
+}
+
+.card-preview { /* Preview da nota */
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    word-break: break-word; /* Quebra texto */
+    /* Limita número de linhas (opcional, requer JS ou mais CSS) */
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* Mostra aprox. 4 linhas */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-date {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 5px;
+    display: block; /* Garante que fique abaixo */
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end; /* Alinha botões à direita */
+    gap: 10px;
+    margin-top: auto; /* Empurra para o final do card */
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0; /* Linha sutil acima das ações */
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s ease;
+}
+.btn-icon:hover {
+    color: #6735bc; /* Roxo no hover */
+}
+.btn-delete:hover {
+    color: #e53935; /* Vermelho para excluir */
+}
+
+/* Estilos Específicos Resumo Card */
+.resumo-card h4 .card-date {
+    font-size: 0.9em; /* Data menor no título do resumo */
+    font-weight: 400;
+    color: #777;
+    margin-left: 5px;
+}
+.resumo-stats {
+    display: flex;
+    flex-wrap: wrap; /* Quebra linha se necessário */
+    gap: 15px; /* Espaço entre stats */
+    font-size: 0.85rem;
+    color: #555;
+    margin: 10px 0;
+    align-items: center;
+}
+.resumo-stats span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.resumo-percentual {
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+.resumo-percentual.bom { background-color: #e8f5e9; color: #2e7d32; }
+.resumo-percentual.medio { background-color: #fff3e0; color: #e65100; }
+.resumo-percentual.ruim { background-color: #ffebee; color: #c62828; }
+
+/* Placeholder (quando lista vazia) */
+.placeholder-tab {
+    text-align: center;
+    color: #888;
+    font-size: 1rem;
+    padding: 40px 20px;
+    grid-column: 1 / -1; /* Ocupa todas as colunas do grid */
+}
+
+/* === Estilos do Modal === */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1050; /* Acima do overlay da sidebar */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
     justify-content: center;
+    align-items: center;
+    animation: modalFadeIn 0.3s ease;
+}
+@keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-content {
+    background-color: #fff;
+    margin: auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px; /* Largura máxima */
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+}
+@keyframes modalSlideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 2rem;
+    font-weight: bold;
+    border: none;
+    background: none;
+    cursor: pointer;
+    line-height: 1;
+}
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #444;
+}
+
+.form-grupo {
+    margin-bottom: 20px;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.form-grupo input[type="text"],
+.form-grupo select,
+.form-grupo textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+}
+.form-grupo textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 120px;
+}
+
+.form-grupo input[type="text"]:focus,
+.form-grupo select:focus,
+.form-grupo textarea:focus {
+    border-color: #6735bc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15);
+}
+.form-grupo select { /* Estilo select */
+     appearance: none; /* Remove seta padrão */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.6-3.5%205.4-7.8%205.4-12.8%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px auto;
+    padding-right: 35px; /* Espaço para a seta */
+}
+
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.modal-feedback {
+    margin-top: 15px;
+    padding: 8px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9em;
+    display: none; /* Mostra via JS */
+}
+.modal-feedback.sucesso { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+.modal-feedback.erro { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
+
+
+/* === Responsividade Adicional === */
+@media (max-width: 768px) {
+    .container-principal.tab-page-container {
+        width: calc(100% - 30px);
+        padding: 15px;
+        margin-top: 15px;
+    }
+    .tab-link {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+    .content-header-tab {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+     .content-header-tab h3 { font-size: 1.3rem; }
+    .lista-itens-tab {
+        grid-template-columns: 1fr; /* Uma coluna no mobile */
+        gap: 15px;
+    }
+     .item-card { padding: 15px; }
+     .modal-content { width: 95%; padding: 20px; }
+     .modal-actions { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+     .tab-nav { justify-content: space-around; } /* Ou scroll */
+     .tab-link { padding: 10px 8px; font-size: 0.85rem; gap: 4px; }
+     .btn-principal, .btn-secundario { width: 100%; margin-bottom: 10px; }
+     .modal-actions { flex-direction: column-reverse; } /* Empilha botões */
 }
