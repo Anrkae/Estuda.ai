@@ -190,12 +190,6 @@ select#intervaloGrafico:focus, select#metricaGraficoDisciplinas:focus {
 ::-webkit-scrollbar { width: 0px; height: 0px; }
 html { scrollbar-width: none; -ms-overflow-style: none; }
 
-.sidebar .sidebarBtn {
-    background: none; border: none; color: #474c5f; font-weight: 500; font-size: 1rem;
-    padding: 3px 15px !important; display: flex; align-items: center; gap: 0px !important;
-    text-align: left; cursor: pointer; border-radius: 6px; transition: background-color 0.2s ease, color 0.2s ease;
-}
-
 .grafico-disciplinas-container {
     display: none; padding-top: 20px; border-top: 1px solid #eee;
 }
