@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Disciplinas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/pages/disciplinas.css">
+
+</head>
+<body>
+    
+    <div>
+        <script src="../assets/js/components/header.js"></script>
+    </div>
+    
+    <section class="primeiro-bloco">
+        <h2><i class="fas fa-plus-circle"></i> Registrar Nova Disciplina</h2>
+        <input type="text" id="nomeDisciplina" placeholder="Nome da disciplina">
+        <button onclick="adicionarDisciplina()"><i class="fas fa-save"></i> Adicionar</button>
+    </section>
+
+    <section id="caixa-disciplinas">
+       <h2 class="subtitulo"><i class="fas fa-list-check"></i> Minhas Disciplinas</h2>
+       <div class="disciplinas-container" id="disciplinasContainer">
+           </div>
+    </section>
+
+    <div id="modalConfirmacaoOverlay" class="modal-overlay">
+        <div id="modalConfirmacaoDialog" class="modal-dialog">
+            <h3 class="modal-title">Confirmar Exclusão</h3>
+            <p id="modalMensagem" class="modal-message">Texto da mensagem aqui...</p>
+            <div class="modal-buttons">
+                <button id="modalBotaoCancelar" class="modal-button modal-cancel">Cancelar</button>
+                <button id="modalBotaoConfirmar" class="modal-button modal-confirm">Confirmar Exclusão</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalInputOverlay" class="modal-overlay">
+        <div id="modalInputDialog" class="modal-dialog">
+            <h3 id="modalInputTitulo" class="modal-title">Adicionar Novo Tópico</h3>
+            <div class="modal-input-container">
+                <label for="modalInputTexto" class="modal-label">Nome do Tópico:</label>
+                <input type="text" id="modalInputTexto" class="modal-input" placeholder="Digite o tópico aqui...">
+                <p id="modalInputErro" class="modal-input-error"></p>
+            </div>
+            <div class="modal-buttons">
+                <button id="modalInputBotaoCancelar" class="modal-button modal-cancel">Cancelar</button>
+                <button id="modalInputBotaoAdicionar" class="modal-button modal-confirm">Adicionar</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../assets/js/pages/disciplinas.js"></script>
+
+</body>
+</html>

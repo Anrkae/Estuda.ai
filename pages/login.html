@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuração Inicial - Estuda.ai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilos Gerais */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+        body.login-page { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f1f0ea; padding: 20px 0; font-family: 'Montserrat', sans-serif; }
+        .login-container { margin: 20px; background-color: #fff; padding: 30px 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); text-align: center; max-width: 600px; width: 90%; }
+
+        /* Indicador e Conteúdo das Etapas */
+        .step-indicator { font-size: 0.9em; color: #888; margin-bottom: 15px; font-weight: 500; }
+        .step-content { display: none; text-align: left; animation: fadeIn 0.5s ease-in-out; }
+        .step-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .step-content h1 { color: #474c5f; margin-bottom: 10px; font-size: 1.6em; font-weight: 600; text-align: center; }
+        .step-content h2 { color: #575c6f; margin-bottom: 20px; font-size: 1.4em; font-weight: 500; text-align: center; }
+        .step-content h2 small { font-size: 0.7em; color: #999; font-weight: 400; }
+        .step-content p.step-description { color: #666; margin-bottom: 25px; font-size: 1em; line-height: 1.5; text-align: center;}
+
+        /* Estilos Etapa 1 (Dados Pessoais) */
+        #profile-form { text-align: left; margin-top: 15px; }
+        .form-grupo { margin-bottom: 18px; position: relative; }
+        .form-grupo label { display: block; margin-bottom: 7px; font-weight: 500; color: #444; font-size: 0.95em; }
+        .form-grupo label span.required { color: #e53935; margin-left: 2px; }
+        .form-grupo input[type="text"] { width: 100%; padding: 11px 14px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-family: inherit; font-size: 1em; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .form-grupo input[type="text"]:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15); }
+        #age-display { font-size: 0.85em; color: #555; margin-top: 5px; min-height: 1.1em; text-align: right; }
+        #age-display.invalid { color: #e53935; }
+
+        /* Estilos Etapa 2 (Disciplinas Simplificada) */
+        .div2 { padding-top: 30px; }
+        #step-2 .add-disciplina-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        #step-2 .add-disciplina-container input[type="text"] { flex-grow: 1; padding: 10px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; }
+        #step-2 .add-disciplina-container input[type="text"]:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.1); }
+        #step-2 .add-disciplina-container button { padding: 10px 15px; background-color: #6735bc; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; font-weight: 500; transition: background-color 0.2s ease; flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; }
+        #step-2 .add-disciplina-container button:hover { background-color: #562da4; }
+        #step-2 #disciplinas-list { list-style: none; padding: 0; margin-top: 15px; max-height: 250px; overflow-y: auto; border: 1px solid #eee; border-radius: 6px; background-color: #fff; }
+        #step-2 #disciplinas-list li { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid #f0f0f0; font-size: 1em; color: #444; }
+        #step-2 #disciplinas-list li:last-child { border-bottom: none; }
+        #step-2 .remove-disciplina-btn { background: none; border: none; color: #aaa; cursor: pointer; font-size: 1.2em; padding: 0 5px; transition: color 0.2s ease; }
+        #step-2 .remove-disciplina-btn:hover { color: #e53935; }
+        #step-2 #disciplinas-list .empty-message { text-align: center; color: #999; padding: 20px; font-style: italic; font-size: 0.95em; }
+        #step-2 .list-title { text-align: left; font-size: 1.1em; color: #444; margin-bottom: 10px; font-weight: 500; padding-bottom: 5px; border-bottom: 1px solid #eee; }
+
+        /* Estilos Etapa 3 (Cronograma - Configuração) */
+        #step-3 .config-geracao { border: 1px solid #eee; border-radius: 8px; padding: 20px; background-color: #fafafa; margin-bottom: 25px;}
+        #step-3 .config-geracao .tituloBloco { font-size: 1.2em; margin-bottom: 15px; color: #444; text-align: left; font-weight: 600;}
+        #step-3 .disciplinas-selecao { border: 1px dashed #ccc; padding: 10px; min-height: 100px; max-height: 180px; overflow-y: auto; background-color: #fff; margin-bottom: 10px; }
+        #step-3 .disciplina-item { display: flex; align-items: center; padding: 8px; background-color: #f9f9f9; border: 1px solid #eee; border-radius: 4px; margin-bottom: 5px; cursor: grab; user-select: none; touch-action: none; }
+        #step-3 .disciplina-item:active { cursor: grabbing; }
+        #step-3 .disciplina-item input[type="checkbox"] { margin-right: 10px; transform: scale(1.1); }
+        #step-3 .disciplina-item label { flex-grow: 1; cursor: inherit; }
+        #step-3 .disciplina-item.dragging { opacity: 0.5; background: #e0e0e0; }
+        #step-3 .drop-placeholder { height: 30px; background-color: rgba(103, 53, 188, 0.1); border: 1px dashed #6735bc; border-radius: 4px; margin: 5px 0; }
+        #step-3 .priority-hint { font-size: 0.8em; color: #e53935; text-align: center; margin-bottom: 20px; }
+        #step-3 .input-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px 20px; margin-bottom: 20px; align-items: center;}
+        #step-3 .input-grid label { font-weight: 500; font-size: 0.9em; color: #555; text-align: right;}
+        #step-3 .input-grid input[type="number"] { padding: 8px 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1em; width: 100%; box-sizing: border-box; }
+        #step-3 #botao-gerar { display: block; width: 100%; padding: 12px; background-color: #5cb85c; color: white; border: none; border-radius: 6px; font-size: 1.1em; font-weight: 600; cursor: pointer; transition: background-color 0.2s ease; margin-top: 10px; }
+        #step-3 #botao-gerar:hover { background-color: #4cae4c; }
+        #step-3 #status-geracao { margin-top: 10px; font-size: 0.9em; font-weight: 500; text-align: center; min-height: 1.1em; color: #ff7043; }
+        #step-3 #status-geracao.success { color: green; }
+        #step-3 .view-schedule-message { text-align: center; padding: 20px 10px; margin-top: 25px; background-color: #e9e3f5; border-radius: 6px; color: #452482; font-weight: 500; font-size: 0.95em; border: 1px solid #d1c4e9; }
+
+        /* Navegação Geral e Status */
+        .navigation-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; flex-wrap: wrap; }
+        .nav-button { padding: 10px 20px; border: none; border-radius: 6px; font-size: 1em; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; font-family: inherit; min-width: 100px; text-align: center; margin: 5px; }
+        #prev-btn { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
+        #prev-btn:hover { background-color: #e0e0e0; }
+        #prev-btn:disabled { background-color: #f8f8f8; color: #bbb; cursor: not-allowed; border-color: #eee; }
+        #next-btn { background-color: #6735bc; color: white; margin-left: auto; /* Empurra para direita */ }
+        #next-btn:hover { background-color: #562da4; }
+        #next-btn:active { background-color: #452482; }
+        #next-btn:disabled { background-color: #ccc; cursor: not-allowed; }
+        #skip-btn { background: none; border: none; color: #757575; font-size: 0.9em; cursor: pointer; text-decoration: underline; padding: 10px 5px; margin-right: auto; /* Empurra para esquerda */ display: none; }
+        #skip-btn:hover { color: #452482; }
+        #skip-btn:disabled { color: #bbb; text-decoration: none; cursor: not-allowed; }
+        #status-message { margin-top: 15px; font-size: 0.9em; min-height: 1.2em; font-weight: 500; text-align: center; width: 100%; }
+        #status-message.sucesso { color: #2e7d32; }
+        #status-message.erro { color: #c62828; }
+
+        /* Responsividade */
+        @media (max-width: 700px) {
+             .login-container { max-width: 95%; padding: 20px; }
+             #step-3 .input-grid { grid-template-columns: 1fr; gap: 10px; }
+             #step-3 .input-grid label { text-align: left; margin-bottom: -5px; }
+        }
+        @media (max-width: 600px) {
+            #step-2 .add-disciplina-container { flex-direction: column; }
+            .navigation-buttons { flex-direction: column; align-items: stretch; }
+            #prev-btn { order: 2; }
+            #skip-btn { order: 1; margin-bottom: 10px; text-align: center; margin-right: 0; }
+            #next-btn { order: 3; margin-left: 0; }
+            .nav-button { width: 100%; margin: 5px 0;}
+        }
+
+    </style>
+</head>
+<body class="login-page">
+
+    <div class="login-container">
+
+        <div class="step-indicator" id="step-indicator-display">Etapa 1 de 3</div>
+
+        <div id="step-1" class="step-content">
+            <h1>Dados Pessoais</h1>
+            <p class="step-description">Suas informações básicas.</p>
+            <form id="profile-form" onsubmit="return false;">
+                <div class="form-grupo">
+                    <label for="nome">Nome<span class="required">*</span></label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+                <div class="form-grupo">
+                    <label for="dob">Data de Nascimento<span class="required">*</span></label>
+                    <input type="text" id="dob" name="dob" required placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric">
+                    <div id="age-display"></div>
+                </div>
+            </form>
+        </div>
+
+        <div id="step-2" class="step-content">
+            <h2>Disciplinas <small>(Opcional)</small></h2>
+            <p class="step-description">Adicione as matérias que vai estudar, ou pule esta etapa.</p>
+            <div class="add-disciplina-container">
+                <input type="text" id="nomeDisciplinaInput" placeholder="Nome da disciplina">
+                <button type="button" onclick="adicionarDisciplina()"><i class="fas fa-plus"></i> Adicionar</button>
+            </div>
+            <div class="div2">
+                <h3 class="list-title">Disciplinas Adicionadas:</h3>
+                <ul id="disciplinas-list">
+                    <li class="empty-message">Nenhuma disciplina adicionada ainda.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="step-3" class="step-content">
+            <h2>Gerar Cronograma <small>(Opcional)</small></h2>
+            <p class="step-description">Configure e gere seu cronograma, ou pule esta etapa.</p>
+            <div class="config-geracao">
+                <h3 class="tituloBloco"><i class="fa-solid fa-sliders"></i> Configurações</h3>
+                <p style="padding-top: 5px; text-align: center; font-size: 0.9em; color: #555;">Selecione e priorize as disciplinas:</p>
+                <div class="disciplinas-selecao" id="disciplinas-para-selecao">
+                    <p>Carregando disciplinas...</p>
+                </div>
+                <p class="priority-hint">Arraste para definir a prioridade (mais alta no topo).</p>
+                <div class="input-grid">
+                    <label for="minutos-por-dia">Minutos/dia:</label>
+                    <input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10">
+                    <label for="subjects-per-day">Disciplinas/dia:</label>
+                    <input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1">
+                    <label for="break-time">Descanso (min):</label>
+                    <input type="number" id="break-time" placeholder="Ex: 10" min="0" step="5">
+                </div>
+                <button id="botao-gerar" type="button">Gerar Cronograma</button>
+                <p id="status-geracao"></p>
+            </div>
+            <p class="view-schedule-message">
+                <i class="fas fa-info-circle"></i> Para visualizar seu cronograma, acesse pelo menu lateral.
+            </p>
+        </div>
+
+        <div id="status-message"></div> <div class="navigation-buttons">
+            <button id="skip-btn" type="button">Pular etapa</button>
+            <button id="prev-btn" class="nav-button" type="button" disabled>Anterior</button>
+            <button id="next-btn" class="nav-button" type="button">Próximo</button>
+        </div>
+
+    </div> <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          console.log("DOM carregado. Iniciando script de setup.");
+
+          // === Elementos Globais ===
+          const stepIndicatorDisplay = document.getElementById('step-indicator-display');
+          const stepContents = document.querySelectorAll('.step-content');
+          const prevButton = document.getElementById('prev-btn');
+          const nextButton = document.getElementById('next-btn');
+          const skipButton = document.getElementById('skip-btn');
+          const statusMessage = document.getElementById('status-message');
+
+          // === Elementos Etapa 1 ===
+          const nomeInput = document.getElementById('nome');
+          const dobInput = document.getElementById('dob');
+          const ageDisplay = document.getElementById('age-display');
+
+          // === Elementos Etapa 2 ===
+          const nomeDisciplinaInput = document.getElementById('nomeDisciplinaInput');
+          const disciplinasList = document.getElementById('disciplinas-list');
+
+          // === Elementos Etapa 3 ===
+          const disciplinasSelecaoEl = document.getElementById('disciplinas-para-selecao');
+          const minutosPorDiaInput = document.getElementById('minutos-por-dia');
+          const subjectsPerDayInput = document.getElementById('subjects-per-day');
+          const breakTimeInput = document.getElementById('break-time');
+          const botaoGerarEl = document.getElementById('botao-gerar');
+          const statusGeracaoEl = document.getElementById('status-geracao');
+
+          // === Variáveis de Estado ===
+          let currentStep = 1;
+          const totalSteps = 3;
+          let userData = { nome: null, dob: null };
+          let disciplinas = []; // Sempre representa o estado atual da Etapa 2 (lido do LS)
+          let cronogramaGerado = {}; // Armazena o cronograma *gerado* nesta sessão
+          let todasDisciplinas = []; // Usado na Etapa 3 para seleção
+          let draggingElement = null;
+          let placeholder = null;
+          const DIAS_SEMANA = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
+          const HORA_INICIO_PADRAO = 7;
+          const MIN_STUDY_DURATION = 10;
+          const TOTAL_DIAS = DIAS_SEMANA.length;
+
+          // === Funções Utilitárias ===
+          const dateRegex=/^(\d{2})\/(\d{2})\/(\d{4})$/; function parseAndValidateDdMmYyyy(ds){const m=ds.match(dateRegex);if(!m)return null;const d=parseInt(m[1],10),mo=parseInt(m[2],10),y=parseInt(m[3],10);if(y<1900||y>new Date().getFullYear()||mo<1||mo>12||d<1||d>31)return null;if((mo===4||mo===6||mo===9||mo===11)&&d>30)return null;if(mo===2){const iL=(y%4===0&&y%100!==0)||(y%400===0);if(d>(iL?29:28))return null;}const dt=new Date(y,mo-1,d);if(dt.getFullYear()!==y||dt.getMonth()!==mo-1||dt.getDate()!==d)return null;return dt;}
+          function calculateAgeFromDate(bdo){if(!bdo||isNaN(bdo.getTime()))return{age:null,error:"Data inválida"};const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const bm=new Date(bdo.getFullYear(),bdo.getMonth(),bdo.getDate());if(bm>tm)return{age:null,error:"Data futura"};let a=t.getFullYear()-bdo.getFullYear();const md=t.getMonth()-bdo.getMonth();if(md<0||(md===0&&t.getDate()<bdo.getDate())){a--;}return{age:Math.max(0,a),error:null};}
+          function applyDateMask(inp){let v=inp.value.replace(/\D/g,''),fv='';if(v.length>0)fv+=v.substring(0,2);if(v.length>=3)fv+='/'+v.substring(2,4);if(v.length>=5)fv+='/'+v.substring(4,8);inp.value=fv.substring(0,10);}
+          function removerAcentuacao(str){return str.normalize("NFD").replace(/[\u0300-\u036f]/g,"");}
+          function shuffleArray(array){for(let i=array.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[array[i],array[j]]=[array[j],array[i]];}return array;}
+
+          // === Lógica de Disciplinas (Etapa 2) ===
+          // Carrega do LS para a variável 'disciplinas'
+          function loadDisciplinasFromStorage(){try{const sD=JSON.parse(localStorage.getItem('disciplinas'))||[];if(Array.isArray(sD)){disciplinas=sD.map(i=>(typeof i==='object'&&i!==null&&i.hasOwnProperty('nome'))?i:(typeof i==='string'&&i.trim()!=='')?{nome:i,topicos:[],maximizado:false,excluirAtivo:false}:null).filter(i=>i!==null);}else{disciplinas=[];}}catch(e){console.error("Erro load disc:",e);disciplinas=[];}console.log("Disc loaded:",disciplinas);}
+          // Salva a variável 'disciplinas' no LS
+          function saveDisciplinasToStorage(){try{localStorage.setItem('disciplinas',JSON.stringify(disciplinas));console.log("Disc saved:",disciplinas);}catch(e){console.error("Erro save disc:",e);statusMessage.textContent='Erro salvar disc.';statusMessage.className='erro';}}
+          // Exibe a lista com base na variável 'disciplinas'
+          function exibirDisciplinas(){disciplinasList.innerHTML='';if(disciplinas.length===0){disciplinasList.innerHTML='<li class="empty-message">Nenhuma adicionada.</li>';return;}disciplinas.forEach((dO,idx)=>{if(typeof dO!=='object'||dO===null||!dO.hasOwnProperty('nome')){console.warn("Item inválido:",dO);return;}const li=document.createElement('li');li.textContent=dO.nome;const rmBtn=document.createElement('button');rmBtn.className='remove-disciplina-btn';rmBtn.innerHTML='<i class="fas fa-times"></i>';rmBtn.title=`Remover "${dO.nome}"`;rmBtn.setAttribute('aria-label',`Remover ${dO.nome}`);rmBtn.onclick=()=>removerDisciplina(idx);li.appendChild(rmBtn);disciplinasList.appendChild(li);});}
+          // Adiciona à variável 'disciplinas' e salva no LS
+          window.adicionarDisciplina=function(){const n=nomeDisciplinaInput.value.trim();statusMessage.textContent='';statusMessage.className='';if(n===""){statusMessage.textContent='Digite nome.';statusMessage.className='erro';nomeDisciplinaInput.focus();return;}const nSA=removerAcentuacao(n).toLowerCase();const existe=disciplinas.some(d=>removerAcentuacao(d.nome).toLowerCase()===nSA);if(existe){statusMessage.textContent='Disciplina já adicionada.';statusMessage.className='erro';nomeDisciplinaInput.focus();return;}const nD={nome:n,topicos:[],maximizado:false,excluirAtivo:false};disciplinas.push(nD);saveDisciplinasToStorage();exibirDisciplinas();nomeDisciplinaInput.value='';nomeDisciplinaInput.focus();}
+          // Remove da variável 'disciplinas' e salva no LS
+          window.removerDisciplina=function(idx){if(idx>=0&&idx<disciplinas.length){const rm=disciplinas.splice(idx,1);console.log("Disc removida:",rm[0].nome);saveDisciplinasToStorage();exibirDisciplinas();if(nomeDisciplinaInput)nomeDisciplinaInput.focus();}}
+          if(nomeDisciplinaInput){nomeDisciplinaInput.addEventListener('keypress',(ev)=>{if(ev.key==='Enter'){ev.preventDefault();adicionarDisciplina();}});}
+
+          // === Lógica do Cronograma (Etapa 3) ===
+          function getDragAfterElement(cont,y){const dE=[...cont.querySelectorAll('.disciplina-item:not(.dragging)')];return dE.reduce((c,ch)=>{const b=ch.getBoundingClientRect();const o=y-b.top-b.height/2;if(o<0&&o>c.offset)return{offset:o,element:ch};else return c;},{offset:Number.NEGATIVE_INFINITY}).element;}
+          function handlePointerDown(e){if(e.pointerType==='mouse'&&e.button!==0)return;const tI=e.currentTarget;if(e.target.type==='checkbox')return;draggingElement=tI;draggingElement.classList.add('dragging');placeholder=document.createElement('div');placeholder.classList.add('drop-placeholder');draggingElement.parentNode.insertBefore(placeholder,draggingElement.nextSibling);document.addEventListener('pointermove',handlePointerMove);document.addEventListener('pointerup',handlePointerUp);document.addEventListener('pointercancel',handlePointerUp);e.preventDefault();}
+          function handlePointerMove(e){if(!draggingElement)return;e.preventDefault();const cont=disciplinasSelecaoEl;const y=e.clientY;const aE=getDragAfterElement(cont,y);if(placeholder){if(aE==null)cont.appendChild(placeholder);else cont.insertBefore(placeholder,aE);}}
+          function handlePointerUp(e){if(!draggingElement)return;if(placeholder&&placeholder.parentNode)placeholder.parentNode.removeChild(placeholder);placeholder=null;const cont=disciplinasSelecaoEl;const aE=getDragAfterElement(cont,e.clientY);if(aE==null)cont.appendChild(draggingElement);else cont.insertBefore(draggingElement,aE);draggingElement.classList.remove('dragging');draggingElement=null;document.removeEventListener('pointermove',handlePointerMove);document.removeEventListener('pointerup',handlePointerUp);document.removeEventListener('pointercancel',handlePointerUp);}
+          function carregarDisciplinasParaSelecao(){try{loadDisciplinasFromStorage();todasDisciplinas=disciplinas;disciplinasSelecaoEl.innerHTML='';if(todasDisciplinas.length===0){disciplinasSelecaoEl.innerHTML='<p>Nenhuma disciplina na Etapa 2.</p>';return;}todasDisciplinas.forEach((d,idx)=>{const div=document.createElement('div');div.classList.add('disciplina-item');div.dataset.id=`disciplina-${idx}`;div.draggable=true;const cb=document.createElement('input');cb.type='checkbox';cb.id=`check-disciplina-${idx}`;cb.value=d.nome;cb.name='disciplinasSelecionadas';cb.checked=true;const lbl=document.createElement('label');lbl.htmlFor=`check-disciplina-${idx}`;lbl.textContent=d.nome;div.appendChild(cb);div.appendChild(lbl);disciplinasSelecaoEl.appendChild(div);div.addEventListener('pointerdown',handlePointerDown);});}catch(e){console.error("Erro load disc seleção:",e);disciplinasSelecaoEl.innerHTML='<p style="color:red;">Erro load.</p>';todasDisciplinas=[];}}
+          function gerarCronogramaAutomatico(){statusGeracaoEl.textContent='';statusGeracaoEl.className='';const dSN=[];const itO=disciplinasSelecaoEl.querySelectorAll('.disciplina-item');itO.forEach(it=>{const cb=it.querySelector('input[type="checkbox"]');if(cb&&cb.checked)dSN.push(cb.value);});const mTD=parseInt(minutosPorDiaInput.value);const dPD=parseInt(subjectsPerDayInput.value);const tD=parseInt(breakTimeInput.value);if(dSN.length===0){statusGeracaoEl.textContent='Selecione disc.';return;}if(isNaN(mTD)||mTD<=0){statusGeracaoEl.textContent='Informe min/dia.';return;}if(isNaN(dPD)||dPD<=0){statusGeracaoEl.textContent='Informe disc/dia.';return;}if(dPD>dSN.length){statusGeracaoEl.textContent=`Pediu ${dPD} disc/dia, só ${dSN.length} selecionadas.`;return;}if(isNaN(tD)||tD<0){statusGeracaoEl.textContent='Informe descanso >=0.';return;}const nD=(dPD>1?dPD-1:0);const tTD=nD*tD;const tDE=mTD-tTD;if(tDE<=0){statusGeracaoEl.textContent='Tempo insuficiente.';return;}let dEB=Math.floor(tDE/dPD);if(dEB<MIN_STUDY_DURATION){statusGeracaoEl.textContent=`Tempo por disc (${dEB} min) baixo (mín ${MIN_STUDY_DURATION}).`;return;}const wD=[];const nS=dSN.length;dSN.forEach((n,i)=>{const r=Math.max(1,nS-i);for(let k=0;k<r;k++)wD.push(n);});const wSD=shuffleArray([...wD]);let tC={};let dGI=0;for(let dI=0;dI<TOTAL_DIAS;dI++){tC[dI]=[];let hAM=HORA_INICIO_PADRAO*60;let dUH=new Set();let tR=0;for(let i=0;i<dPD;i++){if(hAM>=24*60)break;let dA;let iOL=dGI;do{dA=wSD[dGI%wSD.length];dGI++;if(dUH.size>=nS&&dGI%wSD.length===iOL%wSD.length)break;if(nS===1)break;}while(dUH.has(dA)&&tR++<wSD.length);dUH.add(dA);tR=0;const sST=hAM;const sD=Math.min(dEB,(24*60)-sST);if(sD<=0)break;tC[dI].push({type:'study',subject:dA,duration:sD,startTime:sST});hAM+=sD;if(i<dPD-1&&tD>0){if(hAM>=24*60)break;const bST=hAM;const bD=Math.min(tD,(24*60)-bST);if(bD<=0)break;tC[dI].push({type:'break',subject:'Descanso',duration:bD,startTime:bST});hAM+=bD;}}dUH.clear();}cronogramaGerado=tC;console.log("Crono gerado:",cronogramaGerado);statusGeracaoEl.textContent='Cronograma gerado!';statusGeracaoEl.className='success';}
+
+
+          // === Funções de Navegação e Validação ===
+          function showStep(stepNumber) {
+              stepContents.forEach((stepEl, index)=>{stepEl.classList.toggle('active',index+1===stepNumber);});
+              stepIndicatorDisplay.textContent=`Etapa ${stepNumber} de ${totalSteps}`;
+              prevButton.disabled = stepNumber===1;
+              nextButton.textContent = stepNumber===totalSteps ? 'Finalizar Configuração' : 'Próximo';
+              skipButton.style.display = (stepNumber === 2 || stepNumber === 3) ? 'inline-block' : 'none'; // Mostra/esconde Pular
+              statusMessage.textContent=''; statusMessage.className='';
+              if (stepNumber === 2) { loadDisciplinasFromStorage(); exibirDisciplinas(); if(nomeDisciplinaInput)nomeDisciplinaInput.focus(); }
+              if (stepNumber === 3) { carregarDisciplinasParaSelecao(); cronogramaGerado={}; statusGeracaoEl.textContent=''; statusGeracaoEl.className=''; }
+          }
+          function validateStep1() { statusMessage.textContent='';statusMessage.className='';const n=nomeInput.value.trim(),d=dobInput.value;if(!n||n.length<3){statusMessage.textContent='Nome inválido.';statusMessage.className='erro';nomeInput.focus();return false;}const bdo=parseAndValidateDdMmYyyy(d);if(!bdo){statusMessage.textContent='Data inválida.';statusMessage.className='erro';dobInput.focus();if(ageDisplay){ageDisplay.textContent='Inválida';ageDisplay.className='invalid';}return false;}const {error:de}=calculateAgeFromDate(bdo);if(de){statusMessage.textContent='Data futura.';statusMessage.className='erro';dobInput.focus();if(ageDisplay){ageDisplay.textContent='Futura';ageDisplay.className='invalid';}return false;}userData.nome=n;userData.dob=d;console.log("Etapa 1 OK:",userData);return true;}
+          function validateStep2() { statusMessage.textContent='';statusMessage.className='';loadDisciplinasFromStorage();if(disciplinas.length===0){statusMessage.textContent='Adicione disciplina ou pule.';statusMessage.className='erro';if(nomeDisciplinaInput)nomeDisciplinaInput.focus();return false;}console.log("Etapa 2 OK.");return true;}
+          function validateStep3() { statusMessage.textContent='';statusMessage.className='';if(Object.keys(cronogramaGerado).length===0||!Object.values(cronogramaGerado).some(d=>d.length>0)){statusMessage.textContent='Gere cronograma ou pule.';statusMessage.className='erro';return false;}console.log("Etapa 3 OK.");return true;}
+
+          // Função unificada para finalizar
+          function finalizeSetup(skippedCronograma = false) {
+               console.log("Finalizando configuração...");
+               if (!userData.nome || !userData.dob) { console.error("Erro: Dados UserInfo ausentes."); statusMessage.textContent='Erro interno.'; statusMessage.className='erro'; return; }
+               const finalUserInfo={nome:userData.nome,dob:userData.dob};
+               // Sempre lê o estado mais recente das disciplinas do storage antes de salvar
+               // Assim, se o usuário pulou a etapa 2, os dados anteriores (se existirem) são mantidos.
+               let finalDisciplinas = [];
+               try {
+                    finalDisciplinas = JSON.parse(localStorage.getItem('disciplinas')) || [];
+                    if (!Array.isArray(finalDisciplinas)) finalDisciplinas = []; // Garante que é array
+               } catch {
+                    finalDisciplinas = []; // Em caso de erro no parse, salva vazio
+               }
+               const finalCronograma = skippedCronograma ? {} : cronogramaGerado;
+
+               try {
+                   localStorage.setItem('userInfo', JSON.stringify(finalUserInfo));
+                   // Não precisa salvar disciplinas aqui se não foram modificadas ou se foram puladas
+                   // saveDisciplinasToStorage(); // A Etapa 2 já salva ao adicionar/remover
+                   localStorage.setItem('cronograma', JSON.stringify(finalCronograma));
+                   console.log("Salvo userInfo:", finalUserInfo); console.log("Salvo disciplinas (estado atual):", finalDisciplinas); console.log("Salvo cronograma:", finalCronograma);
+                   statusMessage.textContent=`Configuração Concluída! Redirecionando...`; statusMessage.className='sucesso';
+                   nextButton.disabled=true; prevButton.disabled=true; skipButton.disabled=true;
+                   nextButton.textContent='Salvo!';
+                   setTimeout(()=>{window.location.href='index.html';}, 1500);
+               } catch(error){ console.error("Erro save final:", error); statusMessage.textContent='Erro ao salvar final.'; statusMessage.className='erro'; }
+          }
+
+          function handleNext() {
+               let isValid=false;
+               if(currentStep===1) isValid=validateStep1();
+               else if(currentStep===2) isValid=validateStep2();
+               else if(currentStep===3){
+                   isValid=validateStep3();
+                   if(isValid) { finalizeSetup(false); return; } // Finaliza sem pular cronograma
+               }
+               if(isValid && currentStep < totalSteps){ currentStep++; showStep(currentStep); }
+           }
+          function handlePrev() { if(currentStep > 1){ currentStep--; showStep(currentStep); } }
+          function handleSkip() {
+              console.log(`Pulando Etapa ${currentStep}`);
+              if (currentStep === 2) {
+                  // Não salva mais array vazio, apenas avança
+                  currentStep++; showStep(currentStep);
+              } else if (currentStep === 3) {
+                  // Finaliza indicando que cronograma foi pulado
+                  finalizeSetup(true); // Passa flag indicando pulo do cronograma
+              }
+          }
+
+          // === Inicialização Geral ===
+          // Função checkInitialSetup corrigida para NUNCA DELETAR dados
+          function checkInitialSetup() {
+              let isUserInfoValid = false;
+              try {
+                  const userInfoStr = localStorage.getItem('userInfo');
+                  if(userInfoStr){
+                      const userInfo = JSON.parse(userInfoStr); // Pode dar erro se LS estiver corrompido
+                      // Verifica validade SÓ do userInfo
+                      if(userInfo && userInfo.nome && userInfo.dob && parseAndValidateDdMmYyyy(userInfo.dob)){
+                           isUserInfoValid = true;
+                      }
+                  }
+
+                  if(isUserInfoValid){
+                      // Se userInfo é válido, redireciona INDEPENDENTE das outras chaves
+                      console.log("UserInfo válido. Redirecionando para index.html...");
+                      // Mostra mensagem antes de mudar o body
+                      statusMessage.textContent = "Perfil já configurado. Redirecionando...";
+                      statusMessage.className = 'sucesso';
+                      // Aguarda um pouco para usuário ver msg, depois muda body e redireciona
+                      setTimeout(() => {
+                           try { // Tenta mudar o body, mas foca no redirecionamento
+                               document.body.innerHTML='<div style="text-align:center;padding:40px;font-family:Montserrat,sans-serif;color:#333;">Perfil já configurado. Redirecionando...</div>';
+                           } catch (bodyError) {
+                               console.warn("Não foi possível limpar o body, prosseguindo com redirecionamento.");
+                           }
+                           window.location.href='index.html';
+                      }, 1000);
+                      return true; // Indica que o redirecionamento foi iniciado
+                  } else {
+                      // Se userInfo é inválido ou ausente, prossegue com o setup
+                      console.log("UserInfo inválido ou ausente. Iniciando setup.");
+                  }
+              } catch(e){
+                  // Erro ao ler/parsear userInfo (pode estar corrompido)
+                  // Prossegue com o setup, mas não limpa nada
+                  console.error("Erro ao verificar localStorage inicial (userInfo):", e);
+                  console.log("Assumindo que setup é necessário devido ao erro.");
+              }
+              // Se chegou aqui, não redirecionou
+              return false;
+          }
+
+
+          if (!checkInitialSetup()) {
+              // Só executa o resto se checkInitialSetup retornar false
+              showStep(currentStep);
+              // Adiciona Listeners
+              prevButton.addEventListener('click', handlePrev);
+              nextButton.addEventListener('click', handleNext);
+              skipButton.addEventListener('click', handleSkip);
+              if (dobInput) dobInput.addEventListener('input',(e)=>{applyDateMask(e.target); const v=e.target.value;let m='',c='';if(v.length===10){const b=parseAndValidateDdMmYyyy(v);if(b){const{age:a,error:er}=calculateAgeFromDate(b);if(er){m=er==="Data futura"?'Futura':'Inválida';c='invalid';}else if(a!==null){m=`Idade: ${a} ${a===1?'ano':'anos'}`;}}else{m='Inválida';c='invalid';}}ageDisplay.textContent=m;ageDisplay.className=c;});
+              if(botaoGerarEl) botaoGerarEl.addEventListener('click', gerarCronogramaAutomatico);
+              console.log("Setup inicializado.");
+          } else {
+              console.log("Redirecionamento iniciado por checkInitialSetup.");
+          }
+
+      }); // Fim DOMContentLoaded
+    </script>
+</body>
+</html>

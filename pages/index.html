@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estuda.ai</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+    <script src="../assets/js/components/header.js"></script>
+
+    <main class="container-principal">
+        <section class="resumo-semana-container">
+            <h2><i class="fa-solid fa-bars-staggered"></i> Resumo da Semana</h2>
+            <div class="carousel-container">
+                <div class="carousel-card"><h3><i class="fa-regular fa-clock"></i> Tempo Estudado</h3><p id="tempo-total">0h 0min</p></div>
+                <div class="carousel-card"><h3><i class="fa-solid fa-list-check"></i> Questões Resolvidas</h3><p id="questoes-semana">0</p></div>
+                <div class="carousel-card"><h3><i class="fa-solid fa-check"></i> Taxa de Acertos</h3><p id="acertos-semana">0%</p></div>
+            </div>
+        </section>
+
+        <section class="grafico-estatisticas-container">
+            <h2><i class="fas fa-chart-line"></i> Estatísticas de Estudo</h2>
+            <div class="grafico-container">
+                <canvas id="graficoEstudos"></canvas>
+            </div>
+            <select id="intervaloGrafico">
+                <option value="7">Últimos 7 dias</option>
+                <option value="30">Últimos 30 dias</option>
+                <option value="365">Último ano</option>
+            </select>
+        </section>
+
+        <section class="grafico-disciplinas-container">
+            <h2><i class="fas fa-book"></i> Desempenho por Disciplina</h2>
+            <div class="grafico-container">
+                <canvas id="graficoDisciplinas"></canvas>
+            </div>
+            <select id="metricaGraficoDisciplinas">
+                <option value="questoes">Questões Resolvidas</option>
+                <option value="acertos">Taxa de Acertos</option>
+                <option value="tempo">Tempo Estudado</option>
+            </select>
+        </section>
+        
+        <section id="constancia-section">
+            <h2><i class="fa-solid fa-fire"></i> Constância</h2>
+            <div class="constancia-container">
+                <div id="constancia-dias" class="constancia-dias-wrapper">
+                    <p style="color: #888; font-size: 0.9em; width: 100%; text-align: center;">Carregando histórico...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/components/popup-registrar-questao.js"></script>
+
+</body>
+</html>

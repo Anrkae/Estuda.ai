@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulados - Estuda.ai</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/pages/simulados.css">
+</head>
+
+<body>
+
+    <div>
+        <script src="../assets/js/components/header.js"></script>
+    </div>
+
+    <main>
+        <section class="question-generator-section">
+            <h2><i class="fa-solid fa-graduation-cap"></i> Gerar Questões</h2>
+
+            <div class="input-area">
+                <label for="assuntoInput">Assunto Principal:</label>
+                <textarea id="assuntoInput" rows="3" placeholder="Ex: Teorema de Pitágoras, Revolução Francesa, Concordância Verbal..."></textarea>
+            </div>
+
+            <div class="options-area">
+                 <div>
+                    <label for="disciplinaSelect">Disciplina:</label>
+                    <select id="disciplinaSelect">
+                        <option value="">-- Selecione a Disciplina --</option>
+                        </select>
+                 </div>
+                 <div>
+                     <label for="numQuestoesInput">Número de Questões:</label>
+                     <input type="number" id="numQuestoesInput" value="5" min="1" max="20">
+                 </div>
+                 <div>
+                     <label for="tipoQuestaoSelect">Tipo de Questão:</label>
+                     <select id="tipoQuestaoSelect">
+                         <option value="multipla_escolha" selected>Múltipla Escolha (A, B, C, D)</option>
+                         <option value="verdadeiro_falso">Verdadeiro / Falso</option> <option value="dissertativa_curta">Dissertativa Curta</option>
+                     </select>
+                 </div>
+            </div>
+
+            <div class="action-area">
+                <button id="generateButton">
+                    <i class="fas fa-cogs"></i> Gerar Questões
+                </button>
+                <div id="loadingIndicator" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Gerando questões...</p>
+                </div>
+            </div>
+
+            <div id="statusMessage" class="status-message" style="display: none;">
+                </div>
+        </section>
+
+        <div class="output-area">
+            <label for="questoesOutput">Questões Geradas:</label>
+            <div id="questoesOutput" class="questoes-output-container" aria-live="polite">
+                </div>
+             <div id="errorDisplay" class="error-message" style="display: none;">
+                </div>
+        </div>
+
+    </main>
+
+    <footer>
+        </footer>
+
+    <script src="../assets/js/pages/Simulados.js"></script>
+    <script src="../assets/js/components/timerPopup.js"></script>
+
+</body>
+</html>
