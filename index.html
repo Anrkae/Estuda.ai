@@ -89,20 +89,5 @@
              });
         });
     </script>
-  
-        // Inicializa o Eruda apenas se não estiver em um ambiente de produção
-        // (Você pode ajustar essa lógica conforme necessário)
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.protocol === 'file:') {
-             console.log("Inicializando Eruda...");
-             try {
-                  eruda.init();
-                  console.log("Eruda inicializado com sucesso.");
-             } catch(e) {
-                  console.error("Erro ao inicializar Eruda:", e);
-             }
-        } else {
-             console.log("Eruda não inicializado (ambiente de produção detectado).");
-        }
-    </script>
     </body>
 </html>
