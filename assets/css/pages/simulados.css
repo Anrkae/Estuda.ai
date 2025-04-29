@@ -4,6 +4,7 @@
 
 body {
     padding-top: 0 !important;
+    margin: 0 !important;
 }
 
 /* --- Estilos gerais da seção (Ajuste conforme seu style.css global) --- */
@@ -16,15 +17,16 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.question-generator-section h2 {
+.tituloBtn h2 {
     text-align: center;
+    margin-top: 25px;
     color: #2C2C2C; /* Cor escura para título */
     margin-bottom: 30px; /* Mais espaço abaixo do título */
-    font-size: 1.6em; /* Tamanho do título */
+    font-size: 1.3em; /* Tamanho do título */
     font-weight: 600; /* Peso da fonte */
 }
 
-.question-generator-section h2 i {
+.tituloBtn h2 i {
     margin-right: 10px; /* Espaço ícone-texto */
     color: #2C2C2C; /* Cor roxa (exemplo) */
 }
@@ -371,3 +373,34 @@ body {
          text-align: left; /* Feedback à esquerda em telas pequenas */
      }
 }
+
+.tituloBtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; /* Opcional */
+}
+
+#primeiroInput {
+    margin-top: 30px;
+}
+
+.botao-minimizar {
+    background: none;
+    font-size: 1.3rem;
+    border: none;
+    color: #2C2C2C;
+}
+
+.botao-minimizar:hover {
+    background: none;
+}
+
+.minimizado .conteudo-bloco {
+    display: none;
+} /* Minimizar o bloco */
+
+button {
+    font-family: 'Montserrat', sans-serif;
+}
+

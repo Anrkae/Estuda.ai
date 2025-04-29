@@ -18,7 +18,7 @@ body {
     margin: 20px auto; /* Margem superior/inferior e centralizado */
     width: calc(100% - 40px); /* Considera padding */
     box-sizing: border-box;
-    background-color: #ffffff; /* Fundo branco para a área de conteúdo */
+    background-color: #f5f4f0; /* Fundo branco para a área de conteúdo */
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
     flex-grow: 1; /* Ocupa espaço disponível */
@@ -28,7 +28,6 @@ body {
 
 .tab-nav {
     display: flex;
-    border-bottom: 2px solid #eee;
     margin-bottom: 25px;
 }
 

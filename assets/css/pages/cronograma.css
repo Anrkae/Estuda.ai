@@ -377,6 +377,11 @@ button {
      #botao-salvar { width: 80%; font-size: 0.95rem; padding: 10px 20px; }
 }
 
+@media (max-width: 480px) {
+    #botao-anterior { width: 35px; height: 35px; left: 2px;}
+    #botao-proximo { width: 35px; height: 35px; right: 2px;}
+}
+
 .tituloBtn {
     display: flex;
     justify-content: space-between;
@@ -388,9 +393,4 @@ button {
     background: none;
     font-size: 1.3rem;
     border: none;
-}
-
-@media (max-width: 480px) {
-    #botao-anterior { width: 35px; height: 35px; left: 2px;}
-    #botao-proximo { width: 35px; height: 35px; right: 2px;}
 }
