@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gerador de Cronograma</title>
+
+    <link rel="stylesheet" href="../assets/css/essentials.css">
+    <link rel="stylesheet" href="../assets/css/pages/cronograma.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div style="padding-top: 40px;" class="container-principal">
+
+        <div class="bloco minimizado" id="meu-bloco-1">
+            <div class="config-geracao">
+                <div class="tituloBtn">
+                    <h3 class="tituloBloco"><i class="fa-solid fa-bars-staggered"></i> Gerar Cronograma</h3>
+                    <button class="btn-toggle-bloco botao-minimizar" aria-label="Expandir Geração">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="conteudo-bloco">
+                    <p style="padding-top: 25px; text-align: center; font-size: 14px; color: #555;">Selecione as disciplinas:</p>
+                    <div class="disciplinas-selecao" id="disciplinas-para-selecao">
+                        <p>Carregando disciplinas...</p>
+                    </div>
+                    <p style="font-size: 11px; color: red; text-align: center; margin-bottom: 25px;">
+                        Arraste as disciplinas para cima ou para baixo para definir a prioridade (mais alta no topo).
+                    </p>
+
+                    <div class="input-grid">
+                        <label for="minutos-por-dia">Minutos totais de estudo por dia:</label>
+                        <input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10">
+
+                        <label for="subjects-per-day">Disciplinas diferentes por dia:</label>
+                        <input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1">
+
+                        <label for="break-time">Descanso entre disciplinas (min):</label>
+                        <input type="number" id="break-time" placeholder="Ex: 15" min="0" step="5">
+
+                        <label for="question-time">Tempo para questões (min):</label>
+                        <input type="number" id="question-time" placeholder="Ex: 20" min="0" step="5">
+                        </div>
+                    <button id="botao-gerar">Gerar Cronograma</button>
+                    <p id="status-geracao"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="carrossel-container">
+            <div id="carrossel-wrapper">
+                <h2 class="subTitulo"> <i class="fa-regular fa-calendar"></i> Cronograma Semanal</h2>
+                <div id="cronograma-dias-container">
+                    <p style="text-align: center; color: #888; width: 100%; padding: 20px;">Gere ou carregue um cronograma para visualizar os detalhes aqui.</p>
+                </div>
+            </div>
+            <button id="botao-anterior" class="botao-carrossel" aria-label="Dia anterior">&lt;</button>
+            <button id="botao-proximo" class="botao-carrossel" aria-label="Próximo dia">&gt;</button>
+        </div>
+
+         <div class="botao-salvar-container">
+             <button id="botao-salvar">Salvar Cronograma</button>
+             <p id="status-salvar"></p>
+        </div>
+
+    </div>
+
+    <script src="../assets/js/components/header.js"></script>
+    <script src="../assets/js/components/bloco.js"></script>
+    <script src="../assets/js/pages/cronograma.js"></script>
+    
+</body>
+</html>
