@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anotações e Resumos</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/pages/anotacoes.css">
-    <link rel="stylesheet" href="../assets/css/components/components.css">
     
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <link rel="stylesheet" href="../assets/css/pages/anotacoes.css"> <link rel="stylesheet" href="../assets/css/components/components.css"> </head>
+
+    <link rel="stylesheet" href="../assets/css/essentials.css">
+
 <body>
 
     <div>
@@ -39,27 +39,27 @@
                      <input type="search" id="busca-notas" placeholder="Buscar em minhas notas...">
                 </div>
                 <div id="lista-anotacoes" class="lista-itens-tab">
-                    <p class="placeholder-tab">Crie sua primeira anotação!</p>
+                    <p class="placeholder-tab">Nenhuma anotação criada ainda.</p>
                 </div>
             </div>
 
             <div id="tab-resumos" class="tab-content">
                  <div class="content-header-tab">
-                    <h3>Resumos de Sessões de Estudo</h3>
+                    <h3>Resumos Salvos</h3>
                     </div>
+                 <div class="search-container">
+                     <input type="search" id="busca-resumos" placeholder="Buscar em resumos salvos...">
+                 </div>
                  <div id="lista-resumos" class="lista-itens-tab">
-                    <p class="placeholder-tab">Nenhum resumo de sessão encontrado.</p>
+                    <p class="placeholder-tab">Nenhum resumo salvo ainda.</p>
                  </div>
             </div>
 
-        </div>
-
-    </div> <div id="modal-anotacao" class="modal" style="display: none;">
+        </div></div> <div id="modal-anotacao" class="modal" style="display: none;">
         <div class="modal-content">
             <button class="modal-close-btn" id="modal-close-btn">&times;</button>
             <h3 id="modal-titulo">Nova Anotação</h3>
-            <form id="form-anotacao-modal">
-                <input type="hidden" id="id-anotacao-editando">
+            <form id="form-anotacao-modal" novalidate> <input type="hidden" id="id-anotacao-editando">
 
                 <div class="form-grupo">
                     <label for="titulo-anotacao-modal">Título:</label>
@@ -75,11 +75,10 @@
                     <button type="button" id="btn-cancelar-modal" class="btn-secundario">Cancelar</button>
                     <button type="submit" id="btn-salvar-modal" class="btn-principal">Salvar Anotação</button>
                  </div>
-                 <div id="modal-feedback" class="modal-feedback"></div>
+                 <div id="modal-feedback" class="modal-feedback" style="display: none;"></div>
             </form>
         </div>
-    </div>
-    <script src="../assets/js/pages/anotacoes.js"></script>
+    </div><script src="../assets/js/pages/anotacoes.js"></script>
 
 </body>
 </html>
