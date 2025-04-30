@@ -39,7 +39,7 @@ body {
     background-color: transparent;
     font-size: 1.05rem;
     font-weight: 500;
-    color: #555;
+    color: #2C2C2C;
     margin-bottom: -2px; /* Alinha com a borda inferior */
     border-bottom: 2px solid transparent;
     transition: color 0.3s ease, border-bottom-color 0.3s ease;
@@ -49,7 +49,7 @@ body {
 }
 
 .tab-link:hover {
-    color: #6735bc; /* Roxo do exemplo */
+    color: #fff !important; /* Roxo do exemplo */
 }
 
 .tab-link.active {
@@ -136,7 +136,7 @@ body {
 .search-container {
     margin-bottom: 20px;
 }
-#busca-notas {
+#busca-notas, #busca-resumos{
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ccc;
@@ -161,7 +161,7 @@ body {
 }
 
 .item-card {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     padding: 18px;
@@ -427,4 +427,16 @@ body {
      .tab-link { padding: 10px 8px; font-size: 0.85rem; gap: 4px; }
      .btn-principal, .btn-secundario { width: 100%; margin-bottom: 10px; }
      .modal-actions { flex-direction: column-reverse; } /* Empilha botões */
+}
+
+
+/* === Correção para Expandir Resumo === */
+
+.resumo-texto.expanded {
+    display: block; /* Ou inline, dependendo do fluxo desejado. 'block' é comum para <p> */
+    -webkit-line-clamp: unset; /* Remove o limite de linhas */
+    -webkit-box-orient: initial; /* Reseta a orientação */
+    overflow: visible; /* Permite que o conteúdo excedente seja visível */
+    text-overflow: clip; /* Ou initial - remove o ellipsis */
+    max-height: none; /* Remove qualquer limite de altura que possa existir */
 }
