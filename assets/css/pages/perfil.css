@@ -1,6 +1,12 @@
         /* Estilos Gerais e Abas */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
         body {
+            -webkit-tap-highlight-color: transparent;
+              outline: none; /* Adicionado por segurança para garantir que nenhum outline relacionado ao toque apareça */
+              -webkit-user-select: none; /* Safari */
+              -moz-user-select: none;    /* Firefox */
+              -ms-user-select: none;     /* Internet Explorer/Edge */
+              user-select: none;         /* Padrão */
             font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f4f6f8;
             padding-top: 70px; /* Ajuste conforme seu header fixo */
             color: #333;
