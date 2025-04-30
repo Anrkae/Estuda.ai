@@ -4,42 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gerador de Cronograma</title>
-    <link rel="stylesheet" href="../assets/css/pages/cronograma.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../assets/css/essentials.css">
+    <link rel="stylesheet" href="../assets/css/pages/cronograma.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div style="padding-top: 40px;" class="container-principal">
 
         <div class="bloco minimizado" id="meu-bloco-1">
-        <div class="config-geracao">
-            <div class="tituloBtn">
+            <div class="config-geracao">
+                <div class="tituloBtn">
                     <h3 class="tituloBloco"><i class="fa-solid fa-bars-staggered"></i> Gerar Cronograma</h3>
-                     <button class="btn-toggle-bloco botao-minimizar" aria-label="Expandir Geração">
-                         <i class="fas fa-plus"></i>
-                     </button>
-
-            </div>
-            <div class="conteudo-bloco">
-                <p style="padding-top: 25px; text-align: center; font-size: 14px; color: #555;">Selecione as disciplinas:</p>
-                <div class="disciplinas-selecao" id="disciplinas-para-selecao">
-                    <p>Carregando disciplinas...</p>
+                    <button class="btn-toggle-bloco botao-minimizar" aria-label="Expandir Geração">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
-                 <p style="font-size: 11px; color: red; text-align: center; margin-bottom: 25px;">
-                     Arraste as disciplinas para cima ou para baixo para definir a prioridade (mais alta no topo).
-                 </p>
-         
-            <div class="input-grid">
-                 <label for="minutos-por-dia">Minutos totais de estudo por dia:</label>
-                 <input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10">
-                 <label for="subjects-per-day">Disciplinas diferentes por dia:</label>
-                 <input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1">
-                 <label for="break-time">Descanso entre disciplinas (min):</label>
-                 <input type="number" id="break-time" placeholder="Ex: 15" min="0" step="5">
+                <div class="conteudo-bloco">
+                    <p style="padding-top: 25px; text-align: center; font-size: 14px; color: #555;">Selecione as disciplinas:</p>
+                    <div class="disciplinas-selecao" id="disciplinas-para-selecao">
+                        <p>Carregando disciplinas...</p>
+                    </div>
+                    <p style="font-size: 11px; color: red; text-align: center; margin-bottom: 25px;">
+                        Arraste as disciplinas para cima ou para baixo para definir a prioridade (mais alta no topo).
+                    </p>
+
+                    <div class="input-grid">
+                        <label for="minutos-por-dia">Minutos totais de estudo por dia:</label>
+                        <input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10">
+
+                        <label for="subjects-per-day">Disciplinas diferentes por dia:</label>
+                        <input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1">
+
+                        <label for="break-time">Descanso entre disciplinas (min):</label>
+                        <input type="number" id="break-time" placeholder="Ex: 15" min="0" step="5">
+
+                        <label for="question-time">Tempo para questões (min):</label>
+                        <input type="number" id="question-time" placeholder="Ex: 20" min="0" step="5">
+                        </div>
+                    <button id="botao-gerar">Gerar Cronograma</button>
+                    <p id="status-geracao"></p>
+                </div>
             </div>
-            <button id="botao-gerar">Gerar Cronograma</button>
-            <p id="status-geracao"></p>
-        </div>
-        </div>
         </div>
 
         <div class="carrossel-container">
@@ -59,320 +64,10 @@
         </div>
 
     </div>
-    
-    <div>
-        <script src="../assets/js/components/header.js"></script>
-        
-    </div>
 
-    <script>
-        let cronogramaSalvo = {};
-        let todasDisciplinas = [];
-        let currentSlideIndex = 0;
-        let draggingElement = null;
-        let placeholder = null;
-
-        const disciplinasSelecaoEl = document.getElementById('disciplinas-para-selecao');
-        const minutosPorDiaInput = document.getElementById('minutos-por-dia');
-        const subjectsPerDayInput = document.getElementById('subjects-per-day');
-        const breakTimeInput = document.getElementById('break-time');
-        const botaoGerarEl = document.getElementById('botao-gerar');
-        const statusGeracaoEl = document.getElementById('status-geracao');
-        const cronogramaDiasContainerEl = document.getElementById('cronograma-dias-container');
-        const botaoAnteriorEl = document.getElementById('botao-anterior');
-        const botaoProximoEl = document.getElementById('botao-proximo');
-        const botaoSalvarEl = document.getElementById('botao-salvar');
-        const statusSalvarEl = document.getElementById('status-salvar');
-        // Adicione a referência ao botão da sidebar se for usá-lo
-        const botaoSidebarEl = document.getElementById('botao-sidebar');
-
-        const DIAS_SEMANA = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
-        const HORA_INICIO_PADRAO = 7;
-        const MIN_STUDY_DURATION = 10;
-        const TOTAL_DIAS = DIAS_SEMANA.length;
-
-        function getDragAfterElement(container, y) {
-            const draggableElements = [...container.querySelectorAll('.disciplina-item:not(.dragging)')];
-            return draggableElements.reduce((closest, child) => {
-                const box = child.getBoundingClientRect();
-                const offset = y - box.top - box.height / 2;
-                if (offset < 0 && offset > closest.offset) {
-                    return { offset: offset, element: child };
-                } else {
-                    return closest;
-                }
-            }, { offset: Number.NEGATIVE_INFINITY }).element;
-        }
-
-         function shuffleArray(array) {
-             for (let i = array.length - 1; i > 0; i--) {
-                 const j = Math.floor(Math.random() * (i + 1));
-                 [array[i], array[j]] = [array[j], array[i]];
-             }
-             return array;
-         }
-
-         function atualizarBotoesCarrossel() {
-             botaoAnteriorEl.disabled = currentSlideIndex === 0;
-             botaoProximoEl.disabled = currentSlideIndex === TOTAL_DIAS - 1;
-             const hasContent = Object.keys(cronogramaSalvo).length > 0 && Object.values(cronogramaSalvo).some(day => day.length > 0);
-             botaoAnteriorEl.style.display = hasContent ? 'flex' : 'none';
-             botaoProximoEl.style.display = hasContent ? 'flex' : 'none';
-         }
-
-         function mostrarSlide(index) {
-            if (!cronogramaDiasContainerEl) return;
-             const slideWidthPercent = 100 / TOTAL_DIAS;
-             const offset = index * slideWidthPercent;
-             cronogramaDiasContainerEl.style.transform = `translateX(-${offset}%)`;
-             currentSlideIndex = index;
-             atualizarBotoesCarrossel();
-         }
-
-         function slideAnterior() { if (currentSlideIndex > 0) { mostrarSlide(currentSlideIndex - 1); } }
-         function slideProximo() { if (currentSlideIndex < TOTAL_DIAS - 1) { mostrarSlide(currentSlideIndex + 1); } }
-
-         function handlePointerDown(e) {
-            if (e.pointerType === 'mouse' && e.button !== 0) return;
-            const targetItem = e.currentTarget;
-             if (e.target.type === 'checkbox') return;
-
-            draggingElement = targetItem;
-            draggingElement.classList.add('dragging');
-
-            placeholder = document.createElement('div');
-            placeholder.classList.add('drop-placeholder');
-            draggingElement.parentNode.insertBefore(placeholder, draggingElement.nextSibling);
-
-            document.addEventListener('pointermove', handlePointerMove);
-            document.addEventListener('pointerup', handlePointerUp);
-            document.addEventListener('pointercancel', handlePointerUp);
-             e.preventDefault();
-        }
-
-        function handlePointerMove(e) {
-            if (!draggingElement) return;
-            e.preventDefault();
-            const container = disciplinasSelecaoEl;
-            const y = e.clientY;
-            const afterElement = getDragAfterElement(container, y);
-             if (placeholder) {
-                 if (afterElement == null) { container.appendChild(placeholder); }
-                 else { container.insertBefore(placeholder, afterElement); }
-             }
-        }
-
-        function handlePointerUp(e) {
-            if (!draggingElement) return;
-             if (placeholder && placeholder.parentNode) { placeholder.parentNode.removeChild(placeholder); }
-             placeholder = null;
-            const container = disciplinasSelecaoEl;
-            const afterElement = getDragAfterElement(container, e.clientY);
-             if (afterElement == null) { container.appendChild(draggingElement); }
-             else { container.insertBefore(draggingElement, afterElement); }
-            draggingElement.classList.remove('dragging');
-            draggingElement = null;
-            document.removeEventListener('pointermove', handlePointerMove);
-            document.removeEventListener('pointerup', handlePointerUp);
-            document.removeEventListener('pointercancel', handlePointerUp);
-        }
-
-        function carregarDisciplinas() {
-            try {
-                const disciplinasStorage = JSON.parse(localStorage.getItem('disciplinas')) || [];
-                if (disciplinasStorage.length > 0 && typeof disciplinasStorage[0]?.nome === 'undefined') {
-                    disciplinasSelecaoEl.innerHTML = '<p style="color: red;">Erro: Formato das disciplinas inválido.</p>';
-                    todasDisciplinas = []; return;
-                }
-                todasDisciplinas = disciplinasStorage;
-                disciplinasSelecaoEl.innerHTML = '';
-                if (todasDisciplinas.length === 0) {
-                    disciplinasSelecaoEl.innerHTML = '<p>Nenhuma disciplina cadastrada. Cadastre primeiro.</p>'; return;
-                }
-                todasDisciplinas.forEach((disciplina, index) => {
-                    const div = document.createElement('div');
-                    div.classList.add('disciplina-item');
-                    div.dataset.id = `disciplina-${index}`;
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.id = `check-disciplina-${index}`;
-                    checkbox.value = disciplina.nome;
-                    checkbox.name = 'disciplinasSelecionadas';
-                    const label = document.createElement('label');
-                    label.htmlFor = `check-disciplina-${index}`;
-                    label.textContent = disciplina.nome;
-                    div.appendChild(checkbox);
-                    div.appendChild(label);
-                    disciplinasSelecaoEl.appendChild(div);
-                    div.addEventListener('pointerdown', handlePointerDown);
-                });
-            } catch (error) {
-                console.error("Erro ao carregar disciplinas:", error);
-                disciplinasSelecaoEl.innerHTML = '<p style="color: red;">Erro ao carregar disciplinas.</p>';
-                todasDisciplinas = [];
-            }
-         }
-
-        function exibirCronogramaPorDias(scheduleData) {
-             cronogramaDiasContainerEl.innerHTML = '';
-             const hasSchedule = Object.keys(scheduleData).length > 0 && Object.values(scheduleData).some(day => day.length > 0);
-             if (!hasSchedule) {
-                 cronogramaDiasContainerEl.innerHTML = '<div class="dia-container" style="width: 100%; text-align: center; color: #888; padding: 30px 15px;"><p>Nenhum cronograma para exibir.<br>Gere um novo ou verifique se há um salvo.</p></div>';
-                 cronogramaDiasContainerEl.style.width = '100%';
-                 atualizarBotoesCarrossel(); return;
-             }
-             cronogramaDiasContainerEl.style.width = `${TOTAL_DIAS * 100}%`;
-             DIAS_SEMANA.forEach((nomeDia, diaIdx) => {
-                 const diaContainer = document.createElement('div'); diaContainer.classList.add('dia-container');
-                 const tituloDia = document.createElement('h4'); tituloDia.textContent = nomeDia; diaContainer.appendChild(tituloDia);
-                 const listaEventos = document.createElement('ul'); listaEventos.classList.add('lista-eventos');
-                 const eventosDoDia = scheduleData[diaIdx] || [];
-                 if (eventosDoDia.length > 0) {
-                     eventosDoDia.sort((a, b) => a.startTime - b.startTime);
-                     eventosDoDia.forEach(evento => {
-                         const itemEvento = document.createElement('li'); itemEvento.classList.add('evento-item');
-                         if (evento.type === 'study') {
-                             itemEvento.classList.add('evento-estudo');
-                             itemEvento.innerHTML = `<strong>${evento.subject}</strong><span>Tempo: ${evento.duration} min</span>`;
-                         } else if (evento.type === 'break') {
-                             itemEvento.classList.add('evento-descanso');
-                             itemEvento.innerHTML = `<strong>Descanso</strong><span>Tempo: ${evento.duration} min</span>`;
-                         }
-                         listaEventos.appendChild(itemEvento);
-                     });
-                 } else {
-                     const semEventos = document.createElement('p'); semEventos.textContent = 'Nenhuma atividade programada.'; semEventos.style.textAlign = 'center'; semEventos.style.fontSize = '12px'; semEventos.style.color = '#999';
-                     listaEventos.appendChild(semEventos);
-                 }
-                 diaContainer.appendChild(listaEventos);
-                 cronogramaDiasContainerEl.appendChild(diaContainer);
-             });
-             mostrarSlide(currentSlideIndex);
-         }
-
-        function gerarCronogramaAutomatico() {
-            statusGeracaoEl.textContent = ''; statusGeracaoEl.style.color = '#ff7043';
-            const disciplinasSelecionadasNomes = [];
-            const itensDisciplinasOrdenados = disciplinasSelecaoEl.querySelectorAll('.disciplina-item');
-            itensDisciplinasOrdenados.forEach(item => {
-                const checkbox = item.querySelector('input[type="checkbox"]');
-                if (checkbox && checkbox.checked) { disciplinasSelecionadasNomes.push(checkbox.value); }
-            });
-            const minutosTotaisDia = parseInt(minutosPorDiaInput.value);
-            const disciplinasPorDia = parseInt(subjectsPerDayInput.value);
-            const tempoDescanso = parseInt(breakTimeInput.value);
-
-            if (disciplinasSelecionadasNomes.length === 0) { statusGeracaoEl.textContent = 'Selecione pelo menos uma disciplina.'; return; }
-             if (isNaN(minutosTotaisDia) || minutosTotaisDia <= 0) { statusGeracaoEl.textContent = 'Informe os minutos totais de estudo por dia.'; return; }
-             if (isNaN(disciplinasPorDia) || disciplinasPorDia <= 0) { statusGeracaoEl.textContent = 'Informe quantas disciplinas estudar por dia.'; return; }
-             if (disciplinasPorDia > disciplinasSelecionadasNomes.length) { statusGeracaoEl.textContent = `Você quer estudar ${disciplinasPorDia} disciplina(s) por dia, mas só selecionou ${disciplinasSelecionadasNomes.length} na lista ordenada. Ajuste a seleção ou o número.`; return; }
-             if (isNaN(tempoDescanso) || tempoDescanso < 0) { statusGeracaoEl.textContent = 'Informe um tempo de descanso válido (0 ou mais minutos).'; return; }
-
-             const numeroDescansos = disciplinasPorDia > 1 ? disciplinasPorDia - 1 : 0;
-             const tempoTotalDescanso = numeroDescansos * tempoDescanso;
-             const tempoDisponivelEstudo = minutosTotaisDia - tempoTotalDescanso;
-             if (tempoDisponivelEstudo <= 0) { statusGeracaoEl.textContent = 'Tempo total insuficiente para os descansos.'; return; }
-             let duracaoEstudoPorBloco = Math.floor(tempoDisponivelEstudo / disciplinasPorDia);
-             if (duracaoEstudoPorBloco < MIN_STUDY_DURATION) { statusGeracaoEl.textContent = `Tempo de estudo por disciplina (${duracaoEstudoPorBloco} min) é muito baixo (mínimo ${MIN_STUDY_DURATION} min).`; return; }
-
-            const weightedDisciplinas = [];
-            const numSelecionadas = disciplinasSelecionadasNomes.length;
-            disciplinasSelecionadasNomes.forEach((nome, index) => {
-                const repetitions = Math.max(1, numSelecionadas - index);
-                for (let i = 0; i < repetitions; i++) { weightedDisciplinas.push(nome); }
-            });
-            const weightedShuffledDisciplinas = shuffleArray([...weightedDisciplinas]);
-
-            cronogramaSalvo = {};
-            let disciplinaGlobalIndex = 0;
-            for (let diaIdx = 0; diaIdx < TOTAL_DIAS; diaIdx++) {
-                cronogramaSalvo[diaIdx] = [];
-                let horaAtualMinutos = HORA_INICIO_PADRAO * 60;
-                 let disciplinasUsadasHoje = new Set();
-                 let tentativasRepeticao = 0;
-                for (let i = 0; i < disciplinasPorDia; i++) {
-                     if (horaAtualMinutos >= 24 * 60) break;
-                     let disciplinaAtual;
-                     let indiceOriginalLoop = disciplinaGlobalIndex;
-                     do {
-                         disciplinaAtual = weightedShuffledDisciplinas[disciplinaGlobalIndex % weightedShuffledDisciplinas.length];
-                         disciplinaGlobalIndex++;
-                          if (disciplinasUsadasHoje.size >= numSelecionadas && disciplinaGlobalIndex % weightedShuffledDisciplinas.length === indiceOriginalLoop % weightedShuffledDisciplinas.length) { break; }
-                          if (numSelecionadas === 1) break;
-                     } while (disciplinasUsadasHoje.has(disciplinaAtual) && tentativasRepeticao++ < weightedShuffledDisciplinas.length);
-                     disciplinasUsadasHoje.add(disciplinaAtual);
-                     tentativasRepeticao = 0;
-
-                    const studyStartTime = horaAtualMinutos;
-                    const studyDuration = Math.min(duracaoEstudoPorBloco, (24 * 60) - studyStartTime);
-                    if (studyDuration <= 0) break;
-                    cronogramaSalvo[diaIdx].push({ type: 'study', subject: disciplinaAtual, duration: studyDuration, startTime: studyStartTime });
-                    horaAtualMinutos += studyDuration;
-
-                    if (i < disciplinasPorDia - 1 && tempoDescanso > 0) {
-                        if (horaAtualMinutos >= 24 * 60) break;
-                        const breakStartTime = horaAtualMinutos;
-                        const breakDuration = Math.min(tempoDescanso, (24 * 60) - breakStartTime);
-                        if (breakDuration <= 0) break;
-                        cronogramaSalvo[diaIdx].push({ type: 'break', subject: 'Descanso', duration: breakDuration, startTime: breakStartTime });
-                        horaAtualMinutos += breakDuration;
-                    }
-                }
-                 disciplinasUsadasHoje.clear();
-            }
-
-            currentSlideIndex = 0;
-            exibirCronogramaPorDias(cronogramaSalvo);
-            statusGeracaoEl.textContent = 'Cronograma gerado com prioridade! Verifique e clique em Salvar.';
-            statusGeracaoEl.style.color = 'green';
-        }
-
-        function salvarCronograma() {
-             try {
-                 localStorage.setItem('cronograma', JSON.stringify(cronogramaSalvo));
-                 statusSalvarEl.textContent = 'Cronograma salvo com sucesso!';
-                 statusSalvarEl.style.color = 'green';
-                 setTimeout(() => { statusSalvarEl.textContent = ''; }, 3000);
-             } catch (error) {
-                 console.error("Erro ao salvar o cronograma:", error);
-                 statusSalvarEl.textContent = 'Erro ao salvar o cronograma.';
-                 statusSalvarEl.style.color = 'red';
-             }
-         }
-
-        function carregarCronogramaSalvo() {
-             const salvo = localStorage.getItem('cronograma');
-             if (salvo) {
-                 try {
-                    const parsedData = JSON.parse(salvo);
-                     if (typeof parsedData === 'object' && parsedData !== null && !Array.isArray(parsedData)) {
-                         const keysAreValid = Object.keys(parsedData).every(key => !isNaN(parseInt(key)));
-                         const valuesAreValid = Object.values(parsedData).every(value => Array.isArray(value));
-                         if(keysAreValid && valuesAreValid) { cronogramaSalvo = parsedData; }
-                         else { cronogramaSalvo = {}; }
-                     } else { cronogramaSalvo = {}; }
-                 } catch(error) { cronogramaSalvo = {}; }
-             } else { cronogramaSalvo = {}; }
-             currentSlideIndex = 0;
-             exibirCronogramaPorDias(cronogramaSalvo);
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            carregarDisciplinas();
-            carregarCronogramaSalvo();
-            botaoGerarEl.addEventListener('click', gerarCronogramaAutomatico);
-            botaoSalvarEl.addEventListener('click', salvarCronograma);
-            botaoAnteriorEl.addEventListener('click', slideAnterior);
-            botaoProximoEl.addEventListener('click', slideProximo);
-            // Listener para o botão da sidebar (ainda sem funcionalidade)
-            if (botaoSidebarEl) {
-                botaoSidebarEl.addEventListener('click', () => {
-                    alert("Funcionalidade do Menu Lateral não implementada.");
-                });
-            }
-        });
-    </script>
-    
+    <script src="../assets/js/components/header.js"></script>
     <script src="../assets/js/components/bloco.js"></script>
+    <script src="../assets/js/pages/cronograma.js"></script>
+    
 </body>
 </html>
