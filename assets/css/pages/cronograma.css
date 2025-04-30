@@ -142,9 +142,9 @@ h3 {
     align-items: center;
     padding: 10px 8px; /* Aumenta padding vertical */
     margin-bottom: 6px; /* Espaçamento consistente */
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: 1.6px solid #eceae2;
+    border-radius: 10px;
     cursor: grab;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
     user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none;
@@ -254,6 +254,16 @@ button {
     background-color: #f3e5f5; /* Lilás mais claro */
     border-left: 5px solid #ab47bc; /* Roxo mais vibrante */
     border-color: #e1bee7; /* Borda geral sutil */
+}
+
+.evento-questoes {
+    background-color: #e3f2fd; /* Azul claro */
+    border-left: 5px solid #2196f3; /* Azul principal */
+    border-color: #bbdefb; /* Borda geral sutil azul */
+}
+
+.evento-questoes strong {
+     color: #1e88e5 !important; /* Azul escuro para título de questões */
 }
 
 .evento-descanso {
