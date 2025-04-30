@@ -32,17 +32,20 @@
         /* --- Conteúdo da Aba "Perfil" --- */
         #tab-perfil { margin: 0 auto; }
         #tab-perfil .profile-card { padding: 20px; border: none; box-shadow: none; max-width: none; margin: 0; text-align: left; display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
-        #tab-perfil .profile-picture-container { flex-shrink: 0; text-align: center; }
+        #tab-perfil .profile-picture-container {
+            flex-shrink: 0;
+            text-align: center;
+            border-radius: 50%;
+            outline: 3px solid #2C2C2C; /* Adiciona o contorno: espessura, estilo, cor */
+            outline-offset: 1px; /* Opcional: Afasta o contorno da imagem */
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
+ }
         #tab-perfil #profile-pic {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            
             display: block;
-            margin: 0 auto 10px auto;
-            outline: 3px outset #6735bc; /* Adiciona o contorno: espessura, estilo, cor */
-            outline-offset: 5px; /* Opcional: Afasta o contorno da imagem */
         }
         #tab-perfil .profile-details { flex-grow: 1; }
         #tab-perfil #profile-name { margin: 0 0 5px 0; font-size: 1.7em; color: #444; font-weight: 600;}
