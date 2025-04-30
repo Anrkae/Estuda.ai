@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas'; // Chave para buscar disciplinas
 
     // --- Variáveis Globais ---
-    // Variáveis para rastrear o estado da sessão ATUAL de questões
     let currentSessionStats = {
         totalQuestions: 0,
         answeredCount: 0,
@@ -50,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log(`Dropdown de disciplinas populado com ${disciplinas.length} itens.`);
                 } else {
                     console.warn(`Dados em localStorage['${DISCIPLINAS_STORAGE_KEY}'] não são um array de objetos com a propriedade 'nome' string.`);
-                    console.warn(`Dados encontrados:`, disciplinas);
                 }
             } catch (error) {
                 console.error(`Erro ao parsear ou processar disciplinas do localStorage ('${DISCIPLINAS_STORAGE_KEY}'):`, error);
@@ -62,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Event Listeners ===
     generateButton.addEventListener('click', handleGenerateQuestions);
-    questoesOutput.addEventListener('click', handleOptionClick); // Delegação de evento
+    questoesOutput.addEventListener('click', handleOptionClick);
 
     // === Chamar a função para popular o dropdown ===
     populateDisciplinaDropdown();
@@ -78,70 +76,60 @@ document.addEventListener('DOMContentLoaded', () => {
         errorDisplay.textContent = '';
         errorDisplay.style.display = 'none';
         statusMessage.style.display = 'none';
-        // Resetar stats da sessão anterior ao limpar
         currentSessionStats = { totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null };
-        // Tentar fechar ou resetar o timer popup se ele estiver aberto e sua API existir
         if (window.timerPopupAPI && typeof window.timerPopupAPI.resetAndClose === 'function') {
              window.timerPopupAPI.resetAndClose();
         }
     }
 
     function showError(message) {
-        questoesOutput.innerHTML = ''; // Limpa questões
+        questoesOutput.innerHTML = '';
         errorDisplay.textContent = message;
         errorDisplay.style.display = 'block';
         statusMessage.style.display = 'none';
-        // Reseta stats da sessão no erro
         currentSessionStats = { totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null };
-         // Tentar fechar ou resetar o timer popup se ele estiver aberto
          if (window.timerPopupAPI && typeof window.timerPopupAPI.resetAndClose === 'function') {
              window.timerPopupAPI.resetAndClose();
          }
-        showLoading(false); // Garante que o loading pare
+        showLoading(false);
     }
 
      function showStatus(message, type = 'info') {
-         errorDisplay.style.display = 'none'; // Esconde erro se houver status
+         errorDisplay.style.display = 'none';
          statusMessage.textContent = message;
-         statusMessage.className = `status-message ${type}`; // Aplica classe para cor (success, error, warning, info)
+         statusMessage.className = `status-message ${type}`;
          statusMessage.style.display = 'block';
-
-         // Esconde a mensagem após alguns segundos
          setTimeout(() => {
-            // Verifica se a mensagem ainda é a mesma antes de esconder
             if (statusMessage.textContent === message) {
                 statusMessage.style.display = 'none';
             }
-         }, 4000); // 4 segundos
+         }, 4000);
      }
 
     // === Função: Parsear o Texto da API ===
     function parseGeneratedText(text, expectedType) {
         const questions = [];
-        // Divide por [SEP] ignorando case e espaços
         const questionBlocks = text.trim().split(/\s*\[SEP\]\s*/i).filter(block => block.trim() !== '');
 
         questionBlocks.forEach((block, index) => {
             try {
                 const questionData = {
                     id: `q-${Date.now()}-${index}`, text: '', options: {}, correctAnswer: null,
-                    type: expectedType, answered: false // 'answered' controla UI da questão individual
+                    type: expectedType, answered: false
                 };
 
-                 // Extrai enunciado [Q]
                  const qMatch = block.match(/\[Q\]([\s\S]*?)(?:\[A\]|\[B\]|\[C\]|\[D\]|\[V\]|\[F\]|\[G\]|\[R\]|$)/i);
                  if (qMatch && qMatch[1]) {
                      questionData.text = qMatch[1].trim();
-                 } else { // Fallback se não achar [Q]
+                 } else {
                      const linesBeforeOption = block.split(/\[A\]|\[B\]|\[C\]|\[D\]|\[V\]|\[F\]|\[G\]|\[R\]/i)[0];
                      questionData.text = linesBeforeOption.replace(/^\[Q\]/i, '').trim();
                      if (!questionData.text) {
                          console.warn(`Bloco ${index+1}: Não encontrou [Q] nem texto antes das opções/resposta.`);
-                         questionData.text = "Erro: Enunciado não encontrado"; // Marca como erro
+                         questionData.text = "Erro: Enunciado não encontrado";
                      }
                  }
 
-                // Processa linhas para opções e resposta
                 const lines = block.trim().split('\n');
                 lines.forEach(line => {
                     line = line.trim();
@@ -152,24 +140,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     else if (/^\[V\]/i.test(line)) { questionData.options['V'] = line.substring(3).trim() || 'Verdadeiro'; }
                     else if (/^\[F\]/i.test(line)) { questionData.options['F'] = line.substring(3).trim() || 'Falso'; }
                     else if (/^\[R\]/i.test(line)) { questionData.correctAnswer = line.substring(3).trim(); }
-                    // [G] ignorado para interatividade
                 });
 
-                // Validação de dados mínimos para questões interativas
                 if (expectedType === 'multipla_escolha' || expectedType === 'verdadeiro_falso') {
                      if (!questionData.correctAnswer || Object.keys(questionData.options).length === 0) {
                          throw new Error(`Dados incompletos (faltando opções ou [R]) para questão interativa ${index + 1}.`);
                      }
-                     // Validação Múltipla Escolha
                      if (expectedType === 'multipla_escolha') {
                          const upperCaseCorrect = questionData.correctAnswer.toUpperCase();
                          if (!['A', 'B', 'C', 'D'].includes(upperCaseCorrect) || !questionData.options[upperCaseCorrect]) {
                               throw new Error(`Resposta [R] "${questionData.correctAnswer}" inválida ou não corresponde a uma opção [A,B,C,D] na questão ${index + 1}.`);
                          }
-                         questionData.correctAnswer = upperCaseCorrect; // Garante maiúscula
-                     }
-                     // Validação V/F
-                     else { // verdadeiro_falso
+                         questionData.correctAnswer = upperCaseCorrect;
+                     } else { // verdadeiro_falso
                          const upperCaseCorrect = questionData.correctAnswer.toUpperCase();
                          if (upperCaseCorrect === 'VERDADEIRO' || upperCaseCorrect === 'V') {
                              questionData.correctAnswer = 'V';
@@ -178,21 +161,17 @@ document.addEventListener('DOMContentLoaded', () => {
                          } else {
                               throw new Error(`Resposta [R] "${questionData.correctAnswer}" inválida para V/F na questão ${index + 1}. Use V ou F.`);
                          }
-                         // Garante que as opções V/F existam no objeto
                          if (questionData.options['V'] === undefined) questionData.options['V'] = 'Verdadeiro';
                          if (questionData.options['F'] === undefined) questionData.options['F'] = 'Falso';
                      }
                 }
 
-                // Verifica se o enunciado é válido
                 if (!questionData.text || questionData.text.startsWith("Erro:")) {
                      throw new Error(`Enunciado inválido ou não encontrado na questão ${index + 1}.`);
                 }
-
-                questions.push(questionData); // Adiciona questão válida
+                questions.push(questionData);
             } catch (error) {
                 console.error(`Erro ao processar bloco ${index + 1}:`, error, "\nBloco:", block);
-                // Adiciona um item de erro para informar o usuário na UI
                 questions.push({
                     id: `q-error-${Date.now()}-${index}`, text: `Erro ao carregar esta questão (${error.message}).`,
                     type: 'error', options: {}, correctAnswer: null
@@ -204,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Função: Exibir Questões Parseadas ===
     function displayParsedQuestions(questionsArray) {
-        questoesOutput.innerHTML = ''; // Limpa saída
+        questoesOutput.innerHTML = '';
         if (!questionsArray || questionsArray.length === 0) {
             questoesOutput.innerHTML = '<p class="empty-state">Nenhuma questão foi gerada ou processada.</p>';
             return;
@@ -214,51 +193,45 @@ document.addEventListener('DOMContentLoaded', () => {
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question-item';
             questionDiv.id = qData.id;
-            questionDiv.dataset.correctAnswer = qData.correctAnswer || ''; // Guarda resposta correta
+            questionDiv.dataset.correctAnswer = qData.correctAnswer || '';
             questionDiv.dataset.questionType = qData.type;
-            questionDiv.dataset.answered = 'false'; // Marca UI como não respondida
+            questionDiv.dataset.answered = 'false';
 
-            // Texto da questão
             const questionText = document.createElement('p');
             questionText.className = 'question-text';
-            const sanitizedText = qData.text.replace(/</g, "&lt;").replace(/>/g, "&gt;"); // Sanitiza
-            questionText.innerHTML = `<strong>${index + 1}.</strong> ${sanitizedText.replace(/\n/g, '<br>')}`; // Numeração + <br>
+            const sanitizedText = qData.text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            questionText.innerHTML = `<strong>${index + 1}.</strong> ${sanitizedText.replace(/\n/g, '<br>')}`;
             questionDiv.appendChild(questionText);
 
-            // Se for erro, estiliza e para
             if (qData.type === 'error') {
                 questionDiv.classList.add('question-error');
                 questoesOutput.appendChild(questionDiv);
-                return; // Próxima questão
+                return;
             }
 
-            // Contêiner das opções
             const optionsContainer = document.createElement('div');
             optionsContainer.className = 'options-container';
 
-            // Cria botões/elementos de resposta
             if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
                 const optionKeys = (qData.type === 'multipla_escolha')
-                                    ? Object.keys(qData.options).filter(k => ['A','B','C','D'].includes(k)).sort() // Garante ordem A,B,C,D
-                                    : ['V', 'F']; // Ordem V, F
+                                    ? Object.keys(qData.options).filter(k => ['A','B','C','D'].includes(k)).sort()
+                                    : ['V', 'F'];
 
                 optionKeys.forEach(key => {
-                    if (qData.options[key] !== undefined) { // Verifica se opção existe
+                    if (qData.options[key] !== undefined) {
                         const optionButton = document.createElement('button');
                         optionButton.className = 'option-btn';
-                        optionButton.dataset.value = key; // Valor (A, B, C, D, V, F)
+                        optionButton.dataset.value = key;
 
-                        // Sanitiza texto da opção
                         const sanitizedOptionText = (qData.options[key] || '').replace(/</g, "&lt;").replace(/>/g, "&gt;");
                         let buttonText = '';
 
                         if (qData.type === 'verdadeiro_falso') {
                             buttonText = (key === 'V') ? 'Verdadeiro' : 'Falso';
-                             // Adiciona texto específico da API se não for padrão
                              if(sanitizedOptionText && sanitizedOptionText !== 'Verdadeiro' && sanitizedOptionText !== 'Falso') {
                                  buttonText += `: ${sanitizedOptionText}`;
                              }
-                        } else { // Múltipla Escolha
+                        } else {
                             buttonText = `${key}) ${sanitizedOptionText}`;
                         }
                         optionButton.textContent = buttonText;
@@ -266,7 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             } else if (qData.type === 'dissertativa_curta') {
-                // Mensagem para dissertativas
                 const answerP = document.createElement('p');
                 answerP.className = 'dissertative-info';
                 answerP.innerHTML = `<i>Questão dissertativa. Resposta não interativa.</i>`;
@@ -275,62 +247,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
             questionDiv.appendChild(optionsContainer);
 
-            // Área de feedback (Correto/Incorreto)
             const feedbackDiv = document.createElement('div');
             feedbackDiv.className = 'feedback-message';
-            feedbackDiv.style.display = 'none'; // Escondido
+            feedbackDiv.style.display = 'none';
             questionDiv.appendChild(feedbackDiv);
 
-            questoesOutput.appendChild(questionDiv); // Adiciona questão completa
+            questoesOutput.appendChild(questionDiv);
         });
     }
 
     // === Função: Lidar com Clique na Opção (Resposta do Usuário) ===
-    // *** NÃO SALVA MAIS NO LOCALSTORAGE AQUI ***
-    // *** ATUALIZA UI E CHAMA UPDATE DO TIMER POPUP ***
     function handleOptionClick(event) {
-        // Garante que o clique foi em um botão de opção
         if (!event.target.matches('.option-btn')) return;
 
         const clickedButton = event.target;
-        const questionDiv = clickedButton.closest('.question-item'); // Encontra o elemento pai
+        const questionDiv = clickedButton.closest('.question-item');
 
-        // Impede múltiplas respostas na MESMA questão UI ou responder sem sessão
         if (!questionDiv || questionDiv.dataset.answered === 'true') {
              return;
         }
-        // Verifica se há uma sessão ativa (pela disciplina em currentSessionStats)
         if (!currentSessionStats.disciplina) {
              console.warn("Tentativa de responder sem sessão ativa.");
-             // Poderia mostrar um erro discreto ao usuário aqui
-             // showStatus("Gere novas questões para iniciar uma sessão.", "warning");
              return;
         }
 
         // --- MARCA COMO RESPONDIDO (UI) E DÁ FEEDBACK VISUAL ---
-        questionDiv.dataset.answered = 'true'; // Marca UI
+        questionDiv.dataset.answered = 'true';
         questionDiv.classList.add('answered');
-
         const userAnswer = clickedButton.dataset.value;
         const correctAnswer = questionDiv.dataset.correctAnswer;
         const feedbackDiv = questionDiv.querySelector('.feedback-message');
         const isCorrect = userAnswer === correctAnswer;
-
-        // Adiciona classes para feedback visual
         questionDiv.classList.add(isCorrect ? 'correct' : 'incorrect');
-        clickedButton.classList.add('selected'); // Marca o botão clicado
-
-        // Exibe a mensagem de feedback
+        clickedButton.classList.add('selected');
         if (feedbackDiv) {
             feedbackDiv.textContent = isCorrect ? 'Resposta Correta!' : `Incorreto. A resposta correta é: ${correctAnswer}`;
             feedbackDiv.style.display = 'block';
         }
-
-        // Desabilita todos os botões da questão e destaca a correta
         const allOptionButtons = questionDiv.querySelectorAll('.option-btn');
         allOptionButtons.forEach(btn => {
             btn.disabled = true;
-            // Destaca a opção que era a correta
             if (btn.dataset.value === correctAnswer) {
                 btn.classList.add('correct-answer-highlight');
             }
@@ -341,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isCorrect) {
             currentSessionStats.correctCount++;
         }
-        console.log('Sessão atual:', currentSessionStats); // Log para depuração
+        console.log('Sessão atual:', currentSessionStats);
 
         // --- CHAMA A API DO TIMER POPUP PARA ATUALIZAR OS DADOS NA GAVETA ---
         if (window.timerPopupAPI && typeof window.timerPopupAPI.updateStats === 'function') {
@@ -352,7 +308,34 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.warn('API do Timer Popup (window.timerPopupAPI.updateStats) não encontrada.');
         }
-        // --- FIM DO BLOCO DE ATUALIZAÇÃO ---
+
+        // --- INÍCIO DA ALTERAÇÃO 1: Verificar se todas as questões foram respondidas ---
+        if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
+            console.log("Todas as questões foram respondidas!");
+            showStatus("Todas as questões respondidas! Verifique o painel de tempo.", "success");
+
+            // Tentar parar o timer e abrir/mostrar o painel usando a API exposta
+            if (window.timerPopupAPI) {
+                // Chama a função para PARAR o tempo (exposta pelo timerPopup.js)
+                if (typeof window.timerPopupAPI.stopTimer === 'function') {
+                    console.log("Chamando timerPopupAPI.stopTimer()");
+                    window.timerPopupAPI.stopTimer(); // <-- USA A FUNÇÃO REAL DA API
+                } else {
+                    console.warn('Função timerPopupAPI.stopTimer() não encontrada na API.');
+                }
+
+                // Chama a função para ABRIR/MOSTRAR o painel (exposta pelo timerPopup.js)
+                if (typeof window.timerPopupAPI.openPanel === 'function') {
+                    console.log("Chamando timerPopupAPI.openPanel()");
+                    window.timerPopupAPI.openPanel(); // <-- USA A FUNÇÃO REAL DA API
+                } else {
+                    console.warn('Função timerPopupAPI.openPanel() não encontrada na API.');
+                }
+            } else {
+                console.warn('API do Timer Popup (window.timerPopupAPI) não encontrada para parar o timer/abrir painel.');
+            }
+        }
+        // --- FIM DA ALTERAÇÃO 1 ---
 
     } // Fim de handleOptionClick
 
@@ -363,20 +346,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const numQuestoes = parseInt(numQuestoesInput.value, 10);
         const tipoQuestao = tipoQuestaoSelect.value;
 
-        // Validações
-         if (!assunto) return showError("Por favor, informe o Assunto Principal.");
-         if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) return showError("Número de questões inválido (1-20).");
-         if (!GEMINI_API_KEY || !GEMINI_API_KEY.startsWith('AIza') || GEMINI_API_KEY.length < 30) return showError("Erro: Chave da API Gemini inválida.");
+        if (!assunto) return showError("Por favor, informe o Assunto Principal.");
+        if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) return showError("Número de questões inválido (1-20).");
+        if (!GEMINI_API_KEY || !GEMINI_API_KEY.startsWith('AIza') || GEMINI_API_KEY.length < 30) return showError("Erro: Chave da API Gemini inválida.");
 
-        // Define a disciplina para a sessão
-        const disciplinaParaSessao = disciplinaSelecionada || "Diversas"; // Fallback
+        const disciplinaParaSessao = disciplinaSelecionada || "Diversas";
 
         console.log(`Iniciando geração. Assunto: "${assunto}". Disciplina: "${disciplinaParaSessao}". Tipo: ${tipoQuestao}. Número: ${numQuestoes}`);
 
         showLoading(true);
-        clearOutput(); // Limpa resultados e reseta stats/timer da sessão anterior
+        clearOutput();
 
-        // Montagem do Prompt
         let prompt = `Gere ${numQuestoes} questão(ões) sobre o Assunto Principal "${assunto}".\n`;
         if (disciplinaSelecionada) prompt += `Considere o contexto da Disciplina: "${disciplinaSelecionada}".\n`;
         prompt += `Formato de saída OBRIGATÓRIO:\n`;
@@ -402,15 +382,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         prompt += `IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores. NÃO adicione NENHUMA outra formatação ou numeração. Gere APENAS o texto das questões.`;
 
-        // Chamada da API
         try {
             const requestBody = {
                 contents: [{ parts: [{ text: prompt }] }],
                  generationConfig: {
-                     "temperature": 0.7, // Controla a criatividade
-                     "maxOutputTokens": 300 * numQuestoes + 200 // Aumentado para respostas mais longas se necessário
+                     "temperature": 0.7,
+                     "maxOutputTokens": 300 * numQuestoes + 200
                  },
-                 safetySettings: [ // Configurações de segurança
+                 safetySettings: [
                     {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
                     {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
                     {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
@@ -424,26 +403,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(requestBody)
             });
 
-             if (!response.ok) { // Tratamento de erro HTTP
+             if (!response.ok) {
                  let errorBodyText = await response.text();
                  console.error("Raw API Error Response:", errorBodyText);
                  let errorBody = {};
-                 try { errorBody = JSON.parse(errorBodyText); } catch (e) { /* Ignora erro de parse */ }
+                 try { errorBody = JSON.parse(errorBodyText); } catch (e) { /* Ignora */ }
                  const detailMessage = errorBody?.error?.message || `Erro HTTP ${response.status}`;
                  throw new Error(`Falha na comunicação com a API Gemini: ${detailMessage}`);
              }
 
             const data = await response.json();
 
-            // Processamento da Resposta
-            if (data.promptFeedback?.blockReason) { // Conteúdo bloqueado
+            if (data.promptFeedback?.blockReason) {
                   console.error("Conteúdo bloqueado pela API:", data.promptFeedback);
                   let blockDetails = `Motivo: ${data.promptFeedback.blockReason}`;
                   if(data.promptFeedback.safetyRatings?.length > 0) {
                       blockDetails += ` - Categoria: ${data.promptFeedback.safetyRatings[0].category}`;
                   }
                   showError(`A solicitação foi bloqueada por filtros de segurança. ${blockDetails}. Tente reformular.`);
-                  return; // Interrompe se bloqueado
+                  return;
              }
 
             if (data.candidates && data.candidates.length > 0 && data.candidates[0].content?.parts?.length > 0) {
@@ -451,63 +429,56 @@ document.addEventListener('DOMContentLoaded', () => {
                  const questionsArray = parseGeneratedText(rawTextFromAPI, tipoQuestao);
                  displayParsedQuestions(questionsArray);
 
-                 // Filtra questões válidas (não erro)
                  const validQuestions = questionsArray.filter(q => q.type !== 'error');
                  const totalValidQuestions = validQuestions.length;
 
                  if (totalValidQuestions > 0) {
-                    // --- INICIA A SESSÃO NO TIMER POPUP ---
-                    currentSessionStats = { // Define stats para a NOVA sessão
-                        totalQuestions: totalValidQuestions, // Usa o número de questões válidas geradas
+                    currentSessionStats = {
+                        totalQuestions: totalValidQuestions,
                         answeredCount: 0,
                         correctCount: 0,
                         disciplina: disciplinaParaSessao
                     };
 
-                    // Verifica se a API do Timer existe antes de chamar
                     if (window.timerPopupAPI && typeof window.timerPopupAPI.startSession === 'function') {
                         console.log(`Iniciando sessão no Timer Popup. Disciplina: ${currentSessionStats.disciplina}, Total Questões Válidas: ${currentSessionStats.totalQuestions}`);
                         window.timerPopupAPI.startSession(
                             currentSessionStats.totalQuestions,
                             currentSessionStats.disciplina
                         );
-                         // Mensagem de sucesso após iniciar o timer
                          const successMsg = totalValidQuestions === numQuestoes
                             ? `Geradas ${totalValidQuestions} questões! Sessão iniciada.`
                             : `Geradas ${totalValidQuestions} de ${numQuestoes} solicitadas. Sessão iniciada.`;
                          showStatus(successMsg, 'success');
                     } else {
                         console.warn('API do Timer Popup (window.timerPopupAPI.startSession) não encontrada.');
-                        showStatus('Questões geradas, mas o timer não pôde ser iniciado.', 'warning'); // Informa usuário
+                        showStatus('Questões geradas, mas o timer não pôde ser iniciado.', 'warning');
                     }
-                     // --- FIM DA INTEGRAÇÃO ---
 
-                 } else { // Nenhuma questão válida foi parseada
-                      if (questionsArray.length > 0) { // Havia questões, mas todas com erro de parse
+                 } else {
+                      if (questionsArray.length > 0) {
                            showError("Erro: Nenhuma questão pôde ser processada corretamente. Verifique o console.");
-                      } else { // API não retornou nada reconhecível
+                      } else {
                            showError("Erro: Nenhuma questão foi retornada pela API ou o formato estava irreconhecível.");
                       }
                  }
 
-                  // Avisa se a geração foi interrompida
                   if (data.candidates[0].finishReason && data.candidates[0].finishReason !== 'STOP') {
                       console.warn("Geração da API pode ter sido interrompida:", data.candidates[0].finishReason, data.candidates[0].safetyRatings);
                       showStatus(`Atenção: A geração das questões pode ter sido interrompida (${data.candidates[0].finishReason}).`, 'warning');
                   }
 
-             } else { // Resposta inesperada da API
+             } else {
                 console.error("Resposta inesperada da API (sem candidatos/conteúdo):", data);
                 showError("Erro: A API retornou uma resposta inesperada ou vazia.");
              }
 
-        } catch (error) { // Erro na chamada fetch ou processamento
+        } catch (error) {
             console.error("Falha na requisição ou processamento:", error);
             showError(`Erro durante a geração: ${error.message || 'Falha desconhecida.'}`);
         } finally {
-            showLoading(false); // Garante que loading pare
+            showLoading(false);
         }
     } // Fim de handleGenerateQuestions
 
 }); // Fim do DOMContentLoaded
-
