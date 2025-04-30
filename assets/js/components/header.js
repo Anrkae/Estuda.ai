@@ -69,9 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
             border-bottom: 1px solid #eee;
         }
         .header-left, .header-right { display: flex; align-items: center; }
-        .header-center-link { line-height: 0; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; font-size: 1.7rem; color: #444; }
+        .header-center-link { line-height: 0; text-decoration: none; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease; font-size: 1.7rem; color: #2C2C2C; }
         .header-center-link:hover { transform: scale(1.05); }
-        header #toggleSidebar { background: none; border: none; font-size: 1.7rem; color: #555; cursor: pointer; z-index: 15; padding: 5px; margin-right: 5px; line-height: 1; transition: color 0.2s; }
+        header #toggleSidebar { background: none; border: none; font-size: 1.7rem; color: #2C2C2C; cursor: pointer; z-index: 15; padding: 5px; margin-right: 5px; line-height: 1; transition: color 0.2s; }
         header #toggleSidebar:hover { color: #111; }
 
 
@@ -112,7 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /* Navegação da Sidebar */
         .sidebar-navigation {
-            padding: 15px 10px; /* Padding para dar espaço às pílulas */
+            padding: 15px 0px; /* Padding para dar espaço às pílulas */
+            padding-right: 10px;
             display: flex;
             flex-direction: column;
             /* **** MODIFICAÇÃO: Reintroduz gap para espaçamento **** */
@@ -129,12 +130,13 @@ document.addEventListener('DOMContentLoaded', () => {
             font-weight: 500;
             font-size: 1rem;
             /* **** MODIFICAÇÃO: Padding pode ser ajustado para estética da pílula **** */
-            padding: 12px 20px;
+            padding: 12px 20px !important;
+            margin: 0px !important;
             display: flex;
             align-items: center;
             text-align: left;
             cursor: pointer;
-            border-radius: 8px; /* Cantos arredondados essenciais para a pílula */
+            border-radius: 0 10px 10px 0; /* Cantos arredondados essenciais para a pílula */
             width: 100% !important;
             box-sizing: border-box;
             transition: color 0.2s ease, background-color 0.2s ease;
@@ -156,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             /* **** MODIFICAÇÃO: Texto branco **** */
             color: #ffffff;
             font-weight: 600;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
         }
         /* Hover do link ativo (opcional, pode manter igual ao ativo) */
          .sidebar .sidebarBtn.active-link:hover {
@@ -172,7 +175,11 @@ document.addEventListener('DOMContentLoaded', () => {
         /* Estilos Botão de Ação (Perfil) */
         .header-action-btn { background: none; border: none; color: #444; font-size: 1.8rem; cursor: pointer; padding: 0; margin-left: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; position: relative; overflow: hidden; transition: background-color 0.2s; }
         .header-action-btn:hover { background-color: rgba(0, 0, 0, 0.04); }
-        #profileButton #profileImage { display: none; width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+        #profileButton #profileImage { display: none; width: 38px; height: 38px; border-radius: 50%; object-fit: cover;
+        outline: 12px outset #6735bc; /* Adiciona o contorno: espessura, estilo, cor */
+        outline-offset: 1px; /* Opcional: Afasta o contorno da imagem */
+
+    }
         #profileButton #profileIconFallback { display: block; }
     `;
 
