@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Anotações e Resumos</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/pages/anotacoes.css"> <link rel="stylesheet" href="../assets/css/components/components.css">
+    <link rel="stylesheet" href="../assets/css/essentials.css">
+
+</head>
+<body>
+
+    <div>
+        <script src="../assets/js/components/header.js"></script>
+    </div>
+
+    <div class="container-principal tab-page-container">
+
+        <nav class="tab-nav">
+            <button class="tab-link active" data-tab="notas">
+                <i class="fas fa-pencil-alt"></i> Minhas Notas
+            </button>
+            <button class="tab-link" data-tab="resumos">
+                <i class="fas fa-list-check"></i> Resumos Salvos
+            </button>
+        </nav>
+
+        <div class="tab-content-area">
+
+            <div id="tab-notas" class="tab-content active">
+                <div class="content-header-tab">
+                    <h3>Suas Anotações Pessoais</h3>
+                    <button id="btn-nova-anotacao" class="btn-principal btn-pill">
+                        <i class="fas fa-plus"></i> Nova Anotação
+                    </button>
+                </div>
+                <div class="search-container">
+                     <input type="search" id="busca-notas" placeholder="Buscar em minhas notas...">
+                </div>
+                <div id="lista-anotacoes" class="lista-itens-tab">
+                    <p class="placeholder-tab">Nenhuma anotação criada ainda.</p>
+                </div>
+            </div>
+
+            <div id="tab-resumos" class="tab-content">
+                 <div class="content-header-tab">
+                    <h3>Resumos Salvos</h3>
+                    </div>
+                 <div class="search-container">
+                     <input type="search" id="busca-resumos" placeholder="Buscar em resumos salvos...">
+                 </div>
+                 <div id="lista-resumos" class="lista-itens-tab">
+                    <p class="placeholder-tab">Nenhum resumo salvo ainda.</p>
+                 </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modal-anotacao" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+            <h3 id="modal-titulo">Nova Anotação</h3>
+            <form id="form-anotacao-modal" novalidate>
+                <input type="hidden" id="id-anotacao-editando">
+
+                <div class="form-grupo">
+                    <label for="titulo-anotacao-modal">Título:</label>
+                    <input type="text" id="titulo-anotacao-modal" placeholder="Digite o título (opcional)">
+                </div>
+
+                <div class="form-grupo">
+                    <label for="texto-anotacao-modal">Anotação:*</label>
+                    <textarea id="texto-anotacao-modal" placeholder="Digite sua anotação..." rows="10" required></textarea>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" id="btn-cancelar-modal" class="btn-secundario">Cancelar</button>
+                    <button type="submit" id="btn-salvar-modal" class="btn-principal">Salvar Anotação</button>
+                 </div>
+                 <div id="modal-feedback" class="modal-feedback" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/pages/anotacoes.js"></script> </body>
+</html>
