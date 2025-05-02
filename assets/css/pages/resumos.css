@@ -1,9 +1,9 @@
-/* Fontes e Estilos Base */
+/* Fontes e Estilos Base (Seu código original) */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
 body {
     -webkit-tap-highlight-color: transparent;
-    outline: none; /* Adicionado por segurança para garantir que nenhum outline relacionado ao toque apareça */
+    outline: none;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* Internet Explorer/Edge */
@@ -16,29 +16,37 @@ body {
 
 .textoH2 {
     padding: 15px 15px;
+    /* Estilos adicionais para h2 podem vir de essentials.css ou style.css */
+    color: #333; /* Exemplo */
+    border-bottom: 1px solid #ddd; /* Exemplo */
+    margin-bottom: 20px; /* Exemplo */
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .resumo-section {
-    /* Herda o estilo de 'section' que você já definiu */
-    max-width: 800px; /* Limita largura para melhor leitura */
-    margin: 30px auto; /* Centraliza a seção */
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #fff; /* Adicionando um fundo branco para a seção */
+    padding: 20px 30px; /* Padding interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Sombra sutil */
+    box-sizing: border-box;
 }
 
-section {
-    margin: 20px;
-}
-
-/* Estilos para Textarea */
+/* Estilos para Textarea (Seu código original) */
 textarea {
     width: 100%;
     padding: 10px 12px;
     font-size: 1rem;
-    font-family: 'Montserrat', sans-serif; /* Garante a fonte */
+    font-family: 'Montserrat', sans-serif;
     border-radius: 6px;
     border: 1px solid #ccc;
     box-sizing: border-box;
     line-height: 1.5;
-    margin-bottom: 15px; /* Espaçamento inferior */
+    margin-bottom: 15px;
 }
 
 textarea:focus {
@@ -48,45 +56,101 @@ textarea:focus {
 }
 
 textarea#summaryOutput {
-    background-color: #f8f8f8; /* Fundo levemente diferente para indicar readonly */
+    background-color: #f8f8f8;
     color: #333;
+    min-height: 120px; /* Altura mínima */
 }
 
-/* Área de Ação (Botão e Loading) */
+/* Área das Opções (Dropdown) (Seu código original) */
+.options-area {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px; /* Aumentando um pouco o espaço */
+    flex-wrap: wrap;
+    align-items: center; /* Alinha itens verticalmente */
+}
+.options-area > div { /* Estilo para cada grupo label+select */
+    display: flex;
+    flex-direction: column; /* Label acima do select */
+    gap: 5px;
+    flex: 1; /* Ocupa espaço disponível igualmente */
+    min-width: 150px; /* Largura mínima para cada opção */
+}
+
+/* Estilo para o Label (Seu código original + ajustes) */
+.options-area .modal-label { /* Assumindo que modal-label é usado */
+    font-weight: 500;
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 0; /* Removido no wrapper div */
+}
+
+/* Estilo para o Dropdown (Select) (Seu código original + ajustes) */
+#detailLevelSelect, #summaryTypeSelect {
+    padding: 10px 12px; /* Ajuste no padding */
+    font-size: 0.95rem;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-sizing: border-box;
+    cursor: pointer;
+    width: 100%; /* Ocupa toda a largura do div pai */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23542aa3%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Seta roxa */
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 10px auto;
+    padding-right: 35px;
+}
+
+#detailLevelSelect:focus, #summaryTypeSelect:focus { /* Aplicado a ambos */
+    border-color: #542aa3;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2);
+}
+
+
+/* Área de Ação (Botão e Loading) (Seu código original) */
 .action-area {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espaço entre botão e loading */
+    gap: 15px;
     margin-bottom: 20px;
-    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+    flex-wrap: wrap;
 }
 
+/* Botão Gerar Resumo (Seu código original) */
 #summarizeButton {
-     /* Herda o estilo base de 'button' */
-     display: inline-flex; /* Para alinhar ícone e texto */
+     display: inline-flex;
      align-items: center;
-     gap: 8px; /* Espaço entre ícone e texto */
-     padding: 12px 20px; /* Botão um pouco maior */
+     gap: 8px;
+     padding: 12px 20px;
      font-size: 1rem;
      font-weight: 500;
-     /* Cor roxa para destaque */
-     background-color: #542aa3;
+     background-color: #542aa3; /* Cor roxa */
+     color: white; /* Garante texto branco */
+     border: none; /* Garante sem borda */
+     border-radius: 6px; /* Bordas arredondadas */
+     cursor: pointer; /* Cursor de ponteiro */
+     transition: background-color 0.3s; /* Transição suave */
+     margin-top: 0; /* Remove margem superior se herdar do .action-button */
 }
 #summarizeButton:hover {
-    background-color: #472485; /* Roxo um pouco mais escuro no hover */
+    background-color: #472485;
 }
 #summarizeButton:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
-#summarizeButton i { /* Estilo para ícone dentro do botão */
+#summarizeButton i {
     font-size: 1.1em;
 }
 
-#detailLevelSelect {
-    
-}
 
+/* Loading Indicator (Seu código original) */
 .loading {
     color: #542aa3;
     font-weight: 500;
@@ -94,105 +158,206 @@ textarea#summaryOutput {
     align-items: center;
     gap: 8px;
 }
-.loading i { /* Estilo para ícone de loading */
+.loading i {
     font-size: 1.2em;
 }
 
 
-/* Área de Output */
+/* Área de Output (Seu código original) */
 .output-area {
     margin-top: 20px;
+    border-top: 1px solid #eee; /* Linha separadora */
+    padding-top: 20px; /* Espaço após a linha */
+}
+.output-area > div { /* Estilo para o container dos botões Salvar/Expandir */
+     margin-top: 5px; /* Pequeno espaço acima dos botões */
+     display: flex;
+     gap: 10px; /* Espaço entre os botões */
+     flex-wrap: wrap;
 }
 
-/* Mensagem de Erro */
+/* Estilos base para .action-button já no <head> ou style.css */
+/* Estilos específicos para Salvar (se necessário sobrescrever a base) */
+#saveSummaryButton {
+    background-color: #007bff; /* Azul padrão */
+}
+#saveSummaryButton:hover {
+    background-color: #0056b3;
+}
+
+/* Botão Expandir (Estilo Adicionado) */
+#expandSummaryButton {
+    padding: 8px 15px;
+    background-color: #6c757d; /* Cinza escuro */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-flex; /* Já herdado de action-button */
+    align-items: center; /* Já herdado */
+    gap: 5px; /* Já herdado */
+    vertical-align: middle;
+    margin-top: 10px; /* Herdado */
+}
+#expandSummaryButton:hover {
+    background-color: #5a6268;
+}
+
+
+/* Mensagem de Erro (Seu código original) */
 .error-message {
-    color: #e53935; /* Vermelho para erros */
-    background-color: rgba(229, 57, 53, 0.1); /* Fundo vermelho claro */
+    color: #e53935;
+    background-color: rgba(229, 57, 53, 0.1);
     border: 1px solid rgba(229, 57, 53, 0.3);
     border-radius: 6px;
     padding: 10px 15px;
     margin-top: 15px;
     font-size: 0.9em;
-    display: none; /* Começa escondido */
+    display: none;
+}
+
+/* Mensagem de Confirmação (Estilo Base no <head>) */
+.confirmation-message {
+     color: #28a745; /* Verde */
+     font-weight: bold;
+     margin-top: 10px;
+     font-size: 0.9em;
+     /* display: none; controlado por JS */
+ }
+
+
+/* ---- ESTILOS DO MODAL (ADICIONADOS) ---- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo mais escuro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0; /* Começa invisível para transição */
+    visibility: hidden; /* Começa escondido */
+    transition: opacity 0.3s ease, visibility 0s linear 0.3s; /* Transição suave */
+}
+/* Classe para mostrar o modal */
+.modal-overlay.visible {
+     opacity: 1;
+     visibility: visible;
+     transition: opacity 0.3s ease;
 }
 
 
-/* Adicionando um pouco de responsividade extra se necessário */
+.modal-content {
+    background-color: #fff;
+    padding: 30px; /* Mais padding */
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: hidden; /* Overflow controlado pelo conteúdo interno */
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    width: 800px; /* Largura fixa (ou use max-width) */
+    display: flex; /* Para organizar h2 e pre */
+    flex-direction: column; /* Empilha h2 sobre pre */
+}
+
+.modal-content h2 {
+    margin: 0 0 15px 0; /* Margem abaixo do título */
+    padding-bottom: 10px; /* Espaço extra */
+    border-bottom: 1px solid #eee; /* Linha abaixo do título */
+    color: #333;
+    font-weight: 500;
+}
+
+
+.modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.2rem; /* Maior */
+    color: #aaa; /* Cinza claro */
+    cursor: pointer;
+    line-height: 1;
+    padding: 5px; /* Área de clique maior */
+    transition: color 0.2s ease;
+}
+.modal-close-button:hover {
+    color: #555; /* Mais escuro no hover */
+}
+
+#modalSummaryContent {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fdfdfd; /* Quase branco */
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow-y: auto; /* Scroll APENAS aqui se necessário */
+    flex-grow: 1; /* Ocupa espaço restante */
+    min-height: 100px; /* Altura mínima */
+}
+/* ---- FIM ESTILOS DO MODAL ---- */
+
+
+
+/* Responsividade (Seu código original + ajustes) */
 @media (max-width: 600px) {
-    }
     .resumo-section {
-        padding: 15px; /* Menos padding em telas pequenas */
-        margin: 30px;
+        padding: 15px;
+        margin: 20px; /* Menos margem lateral */
+        box-shadow: none; /* Remove sombra em telas pequenas */
+    }
+    .options-area {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px; /* Espaço entre as opções empilhadas */
+    }
+    .options-area > div {
+        min-width: auto; /* Remove largura mínima */
     }
      .action-area {
-         flex-direction: column; /* Empilha botão e loading */
-         align-items: flex-start;
+         flex-direction: column;
+         align-items: stretch; /* Botão ocupa largura */
      }
      #summarizeButton {
-         width: 100%; /* Botão ocupa largura total */
-         justify-content: center; /* Centraliza texto/ícone no botão */
+         width: 100%;
+         justify-content: center;
      }
      .loading {
          margin-top: 10px;
+         justify-content: center; /* Centraliza texto do loading */
+     }
+     .output-area > div { /* Container dos botões Salvar/Expandir */
+         flex-direction: column; /* Empilha os botões */
+         align-items: stretch; /* Fazem ocupar a largura */
+     }
+     #saveSummaryButton, #expandSummaryButton {
+         width: 100%; /* Botões ocupam largura total */
+         justify-content: center; /* Centraliza conteúdo */
+         margin-left: 0; /* Remove margem esquerda do expandir */
+     }
+     /* Ajuste Modal em telas pequenas */
+     .modal-content {
+         width: 95%;
+         padding: 20px;
+     }
+     .modal-content h2 {
+         font-size: 1.2rem;
+     }
+     #modalSummaryContent {
+         font-size: 0.95rem;
      }
 }
-
-/* === Adicione ou ajuste estes estilos no seu style.css === */
-
-/* Área das Opções (Dropdown) */
-.options-area {
-    margin-bottom: 20px; /* Espaçamento antes do botão */
-    display: flex;       /* Alinha label e select lado a lado */
-    align-items: center; /* Alinha verticalmente */
-    gap: 10px;           /* Espaço entre label e select */
-    flex-wrap: wrap;     /* Permite quebrar linha se não couber */
-}
-
-/* Estilo para o Label do Dropdown (reutiliza modal-label se gostar) */
-.options-area .modal-label {
-    margin-bottom: 0; /* Remove margem inferior padrão do label */
-    flex-shrink: 0;  /* Evita que o label encolha */
-}
-
-/* Estilo para o Dropdown (Select) */
-#detailLevelSelect, #summaryTypeSelect {
-    padding: 8px 12px; /* Padding interno */
-    font-size: 0.95rem; /* Tamanho da fonte */
-    font-family: 'Montserrat', sans-serif; /* Garante a fonte */
-    border-radius: 6px; /* Bordas arredondadas */
-    border: 1px solid #ccc; /* Borda padrão */
-    background-color: #fff; /* Fundo branco */
-    min-width: 100px; /* Largura mínima */
-    flex-grow: 1; /* Permite crescer se houver espaço */
-    box-sizing: border-box;
-    cursor: pointer;
-    margin-bottom: 20px;
-    /* Aparência para parecer mais com input (opcional) */
-     -webkit-appearance: none;
-     -moz-appearance: none;
-     appearance: none;
-     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); /* Seta do dropdown */
-     background-repeat: no-repeat;
-     background-position: right 12px center;
-     background-size: 10px auto;
-     padding-right: 35px; /* Espaço para a seta */
-}
-
-#detailLevelSelect:focus {
-    border-color: #542aa3;
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(84, 42, 163, 0.2);
-}
-
-/* Ajuste Responsivo se necessário */
-@media (max-width: 600px) {
-    .options-area {
-        flex-direction: column; /* Empilha label e select */
-        align-items: stretch; /* Fazem ocupar largura total */
-        gap: 5px;
-    }
-    #detailLevelSelect, #summaryTypeSelect {
-        width: 100%; /* Ocupa largura total */
-    }
-}
-
