@@ -42,7 +42,7 @@ body {
 
 /* --- Áreas de Input, Opções, Ação e Saída --- */
 .input-area, .options-area, .action-area, .output-area {
-    margin-bottom: 25px; /* Espaçamento entre seções */
+    margin-bottom: 10px; /* Espaçamento entre seções */
 }
 
 .input-area label, .options-area label, .output-area label {
@@ -236,6 +236,10 @@ body {
 /* --- Área de Saída e Questões Interativas --- */
 .output-area {
     margin-top: 30px; /* Mais espaço antes das questões */
+}
+
+.questoesOutput {
+    margin-top: 20px !important;
 }
 
 .output-area label {
