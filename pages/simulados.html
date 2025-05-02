@@ -33,12 +33,12 @@
 
             <div class="conteudo-bloco">
             <div class="input-area" id="primeiroInput">
-                <label for="assuntoInput">Assunto Principal:</label>
+                <label for="assuntoInput">Assunto:</label>
                 <textarea id="assuntoInput" rows="1" placeholder="Ex: Revolução Francesa, Concordância Verbal..." required></textarea> </div>
 
             <div class="input-area">
                 <label for="bibliografiaInput">Bibliografia (Opcional):</label>
-                <textarea id="bibliografiaInput" rows="1" placeholder="Ex: Livro 'História Moderna' cap. 5, Artigo 'Verbos no Português'..."></textarea>
+                <textarea id="bibliografiaInput" rows="1" placeholder="Ex: Livro 'História Moderna'..."></textarea>
             </div>
             <div class="options-area">
                  <div>
@@ -71,15 +71,15 @@
                 </div>
             </div>
 
-            <div id="statusMessage" class="status-message" style="display: none;">
-            </div>
-
-            <div id="errorDisplay" class="error-message" style="display: none;">
-            </div>
         </div>
         </div>
         </div>
 
+        <div id="statusMessage" class="status-message" style="display: none;">
+        </div>
+        <div id="errorDisplay" class="error-message" style="display: none; margin-bottom: 15px !important;">
+        </div>
+        
         <div class="output-area">
             <label for="questoesOutput">Questões Geradas:</label>
             <div id="questoesOutput" class="questoes-output-container" aria-live="polite">
@@ -99,11 +99,6 @@
     <script src="../assets/js/components/timerPopup.js"></script>
     <script src="../assets/js/components/bloco.js"></script>
     <script src="../assets/js/components/select.js"></script>
-
-    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
-<script>
-  eruda.init();
-</script>
 
 </body>
 </html>
