@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Simulados - Estuda.ai</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <link rel="stylesheet" href="../assets/css/essentials.css">
@@ -21,7 +21,7 @@
     </div>
 
     <main>
-        
+
         <div class="bloco minimizado">
         <div class="question-generator-section">
             <div class="tituloBtn">
@@ -33,10 +33,13 @@
 
             <div class="conteudo-bloco">
             <div class="input-area" id="primeiroInput">
-                <label for="assuntoInput">Assunto:</label>
-                <textarea id="assuntoInput" rows="1" placeholder="Ex: Revolução Francesa, Concordância Verbal..."></textarea>
-            </div>
+                <label for="assuntoInput">Assunto Principal:</label>
+                <textarea id="assuntoInput" rows="1" placeholder="Ex: Revolução Francesa, Concordância Verbal..." required></textarea> </div>
 
+            <div class="input-area">
+                <label for="bibliografiaInput">Bibliografia (Opcional):</label>
+                <textarea id="bibliografiaInput" rows="1" placeholder="Ex: Livro 'História Moderna' cap. 5, Artigo 'Verbos no Português'..."></textarea>
+            </div>
             <div class="options-area">
                  <div>
                     <label for="disciplinaSelect">Disciplina:</label>
@@ -52,7 +55,8 @@
                      <label for="tipoQuestaoSelect">Tipo de Questão:</label>
                      <select id="tipoQuestaoSelect">
                          <option value="multipla_escolha" selected>Múltipla Escolha (A, B, C, D)</option>
-                         <option value="verdadeiro_falso">Verdadeiro / Falso</option> <option value="dissertativa_curta">Dissertativa Curta</option>
+                         <option value="verdadeiro_falso">Verdadeiro / Falso</option>
+                         <option value="dissertativa_curta">Dissertativa Curta</option>
                      </select>
                  </div>
             </div>
@@ -69,7 +73,7 @@
 
             <div id="statusMessage" class="status-message" style="display: none;">
             </div>
-                
+
             <div id="errorDisplay" class="error-message" style="display: none;">
             </div>
         </div>
@@ -82,7 +86,11 @@
                 </div>
         </div>
 
-    </main>
+        <div class="global-action-area">
+            <button id="finalizeButton" style="display: none;"> <i class="fas fa-stop-circle"></i> Finalizar Simulado Atual
+            </button>
+        </div>
+        </main>
 
     <footer>
         </footer>
