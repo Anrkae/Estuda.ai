@@ -297,7 +297,7 @@ body {
     -webkit-line-clamp: unset; /* Remove limite de linhas */
     overflow: visible; /* Mostra todo o conteúdo */
     text-overflow: clip;
-    max-height: 1000px; /* Permite altura grande, ajuste se necessário */
+    max-height: 10000px; /* Permite altura grande, ajuste se necessário */
 }
 
 /* Estilo para o botão "Ver Completo" / "Minimizar" */
