@@ -4,30 +4,30 @@
 /* === Estilos Gerais === */
 body {
     -webkit-tap-highlight-color: transparent;
-    outline: none; /* Adicionado por segurança para garantir que nenhum outline relacionado ao toque apareça */
+    outline: none;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* Internet Explorer/Edge */
     user-select: none;         /* Padrão */
     font-family: 'Montserrat', sans-serif;
-    background-color: #f1f0ea; /* Cor de fundo baseada no exemplo */
+    background-color: #f1f0ea;
     color: #333;
     margin: 0;
-    padding-top: 70px; /* Espaço para o header fixo */
-    min-height: 100vh; /* Garante que o body ocupe a altura toda */
+    padding-top: 70px;
+    min-height: 100vh;
 }
 
 /* === Container Principal e Abas === */
 .container-principal.tab-page-container {
     padding: 20px;
     max-width: 1200px;
-    margin: 20px auto; /* Margem superior/inferior e centralizado */
-    width: calc(100% - 40px); /* Considera padding */
+    margin: 20px auto;
+    width: calc(100% - 40px);
     box-sizing: border-box;
-    background-color: #f5f4f0; /* Fundo branco para a área de conteúdo */
+    background-color: #f5f4f0;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
-    flex-grow: 1; /* Ocupa espaço disponível */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
@@ -46,7 +46,7 @@ body {
     font-size: 1.05rem;
     font-weight: 500;
     color: #2C2C2C;
-    margin-bottom: -2px; /* Alinha com a borda inferior */
+    margin-bottom: -2px;
     border-bottom: 2px solid transparent;
     transition: color 0.3s ease, border-bottom-color 0.3s ease;
     display: flex;
@@ -55,11 +55,12 @@ body {
 }
 
 .tab-link:hover {
-    color: #fff !important; /* Roxo do exemplo */
+    color: #fff !important; /* Mantido conforme seu CSS - verificar se é intencional */
 }
 
 .tab-link.active {
-    color: #6735bc;
+    color: #fff;
+    background-color: #2C2C2C;
     font-weight: 600;
     border-bottom-color: #6735bc;
 }
@@ -69,12 +70,12 @@ body {
 }
 
 .tab-content {
-    display: none; /* Oculta por padrão */
-    animation: fadeIn 0.5s ease; /* Animação suave */
+    display: none;
+    animation: fadeIn 0.5s ease;
 }
 
 .tab-content.active {
-    display: block; /* Mostra aba ativa */
+    display: block;
 }
 
 @keyframes fadeIn {
@@ -99,13 +100,13 @@ body {
     color: #444;
 }
 
-/* Botão Principal (Nova Anotação, Salvar Modal) - Estilo "Pill" */
+/* Botão Principal */
 .btn-principal {
     padding: 10px 20px;
-    background-color: #6735bc; /* Roxo principal */
+    background-color: #6735bc;
     color: white;
     border: none;
-    border-radius: 25px; /* "Pill" */
+    border-radius: 25px;
     cursor: pointer;
     font-size: 0.95rem;
     font-weight: 600;
@@ -115,13 +116,13 @@ body {
     gap: 6px;
 }
 .btn-principal:hover {
-    background-color: #512da8; /* Roxo mais escuro */
+    background-color: #512da8;
 }
 .btn-principal:active {
     transform: scale(0.98);
 }
 
-/* Botão Secundário (Cancelar Modal) */
+/* Botão Secundário */
 .btn-secundario {
      padding: 10px 20px;
      background-color: #f5f5f5;
@@ -138,7 +139,7 @@ body {
     color: #333;
 }
 
-/* Busca (Aba Notas) */
+/* Busca */
 .search-container {
     margin-bottom: 20px;
 }
@@ -151,41 +152,53 @@ body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
-#busca-notas:focus {
+#busca-notas:focus, #busca-resumos:focus { /* Aplica a ambos */
      border-color: #6735bc;
      outline: none;
      box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.1);
 }
 
-
 /* === Lista de Itens (Notas e Resumos) === */
 .lista-itens-tab {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Grid responsivo */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
     padding-top: 10px;
 }
 
 .item-card {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2); /* Mantido do seu CSS */
     border-radius: 10px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
     padding: 18px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Empurra ações para baixo */
+    justify-content: space-between;
     transition: box-shadow 0.3s ease, transform 0.2s ease;
-    cursor: pointer; /* Indica clicável (para editar nota) */
-    min-height: 150px; /* Altura mínima */
+    cursor: pointer;
+    min-height: 150px;
+    /* Adicionado para garantir que o conteúdo interno respeite o padding */
+    box-sizing: border-box;
+    /* Adicionado para evitar quebras estranhas com flex */
+    overflow: hidden;
 }
 .item-card:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transform: translateY(-3px);
 }
+/* Cursor padrão para resumo, clicável apenas na anotação */
+.resumo-card {
+    cursor: default;
+}
+.anotacao-card .card-content {
+    cursor: pointer;
+}
 
 .card-content {
-    margin-bottom: 15px; /* Espaço antes das ações */
-    flex-grow: 1; /* Ocupa espaço */
+    margin-bottom: 15px;
+    flex-grow: 1;
+    /* Adicionado para garantir que o conteúdo interno quebre corretamente */
+    overflow: hidden; /* Evita que conteúdo interno estoure sem quebrar */
 }
 
 .item-card h4 {
@@ -193,38 +206,46 @@ body {
     margin-bottom: 8px;
     font-size: 1.15rem;
     font-weight: 600;
-    color: #6735bc; /* Título com cor de destaque */
-    word-break: break-word; /* Quebra títulos longos */
+    color: #6735bc;
+    word-break: break-word;
+}
+/* Título sem título */
+.item-card h4.sem-titulo {
+    font-style: italic;
+    color: #777;
+    font-weight: 500; /* Um pouco menos forte */
 }
 
-.card-preview { /* Preview da nota */
+.card-preview { /* Preview da ANOTAÇÃO */
     font-size: 0.9rem;
     color: #555;
     line-height: 1.5;
     margin-bottom: 10px;
-    word-break: break-word; /* Quebra texto */
-    /* Limita número de linhas (opcional, requer JS ou mais CSS) */
+    word-break: break-word;
     display: -webkit-box;
-    -webkit-line-clamp: 4; /* Mostra aprox. 4 linhas */
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    /* Adicionado para garantir quebras de linha no preview da NOTA também */
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
 }
 
 .card-date {
     font-size: 0.75rem;
     color: #888;
     margin-top: 5px;
-    display: block; /* Garante que fique abaixo */
+    display: block;
 }
 
 .card-actions {
     display: flex;
-    justify-content: flex-end; /* Alinha botões à direita */
+    justify-content: flex-end;
     gap: 10px;
-    margin-top: auto; /* Empurra para o final do card */
+    margin-top: auto;
     padding-top: 10px;
-    border-top: 1px solid #f0f0f0; /* Linha sutil acima das ações */
+    border-top: 1px solid #f0f0f0;
 }
 
 .btn-icon {
@@ -237,39 +258,70 @@ body {
     transition: color 0.2s ease;
 }
 .btn-icon:hover {
-    color: #6735bc; /* Roxo no hover */
+    color: #6735bc;
 }
 .btn-delete:hover {
-    color: #e53935; /* Vermelho para excluir */
+    color: #e53935;
 }
 
-/* Estilos Específicos Resumo Card */
-.resumo-card h4 .card-date {
-    font-size: 0.9em; /* Data menor no título do resumo */
-    font-weight: 400;
-    color: #777;
-    margin-left: 5px;
+/* === Estilos Específicos Resumo Card === */
+.resumo-card .resumo-texto { /* Aplicado ao <p> que contém o resumo */
+    font-family: inherit; /* Herda a fonte do card */
+    font-size: 0.9rem;  /* Mesmo tamanho do preview da nota */
+    color: #555;       /* Mesma cor */
+    line-height: 1.5;   /* Mesma altura de linha */
+    margin-bottom: 10px;/* Mesma margem */
+    word-break: break-word; /* Mantém quebra de palavra */
+    white-space: pre-wrap;   /* ESSENCIAL para quebras de linha */
+    overflow-wrap: break-word; /* ESSENCIAL para palavras longas */
+
+    /* Truncamento inicial (igual ao .card-preview) */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: calc(1.5em * 4); /* Altura aproximada para 4 linhas */
+    transition: max-height 0.3s ease-out; /* Suaviza a expansão */
+
+    /* Permite seleção de texto no resumo */
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
 }
-.resumo-stats {
-    display: flex;
-    flex-wrap: wrap; /* Quebra linha se necessário */
-    gap: 15px; /* Espaço entre stats */
+
+/* Estado expandido do resumo */
+.resumo-card .resumo-texto.expanded {
+    display: block; /* Muda para block para remover o clamp */
+    -webkit-line-clamp: unset; /* Remove limite de linhas */
+    overflow: visible; /* Mostra todo o conteúdo */
+    text-overflow: clip;
+    max-height: 1000px; /* Permite altura grande, ajuste se necessário */
+}
+
+/* Estilo para o botão "Ver Completo" / "Minimizar" */
+.btn-toggle-resumo {
+    display: block; /* Fica em linha própria */
+    margin-top: 8px; /* Espaço acima do botão */
+    margin-bottom: 5px; /* Espaço abaixo */
     font-size: 0.85rem;
-    color: #555;
-    margin: 10px 0;
-    align-items: center;
+    font-weight: 500;
+    color: #6735bc;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }
-.resumo-stats span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+.btn-toggle-resumo:hover {
+    background-color: transparent;
 }
-.resumo-percentual {
-    font-weight: 600;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 0.8rem;
-}
+
+
+/* Estilos de stats não utilizados no JS atual, mantidos */
+.resumo-stats { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; color: #555; margin: 10px 0; align-items: center; }
+.resumo-stats span { display: flex; align-items: center; gap: 5px; }
+.resumo-percentual { font-weight: 600; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
 .resumo-percentual.bom { background-color: #e8f5e9; color: #2e7d32; }
 .resumo-percentual.medio { background-color: #fff3e0; color: #e65100; }
 .resumo-percentual.ruim { background-color: #ffebee; color: #c62828; }
@@ -280,23 +332,29 @@ body {
     color: #888;
     font-size: 1rem;
     padding: 40px 20px;
-    grid-column: 1 / -1; /* Ocupa todas as colunas do grid */
+    grid-column: 1 / -1;
+}
+.placeholder-tab.erro {
+     color: #c62828;
+     font-weight: 500;
 }
 
 /* === Estilos do Modal === */
 .modal {
-    display: none; /* Oculto por padrão */
+    display: none;
     position: fixed;
-    z-index: 1050; /* Acima do overlay da sidebar */
+    z-index: 1050;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo escuro semi-transparente */
+    background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
     animation: modalFadeIn 0.3s ease;
+    padding: 15px; /* Adicionado para evitar que toque as bordas */
+    box-sizing: border-box; /* Adicionado */
 }
 @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
@@ -307,9 +365,10 @@ body {
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 600px; /* Largura máxima */
+    max-width: 600px;
     position: relative;
     animation: modalSlideIn 0.3s ease-out;
+    box-sizing: border-box; /* Adicionado */
 }
 @keyframes modalSlideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
@@ -362,7 +421,7 @@ body {
     font-size: 1rem;
 }
 .form-grupo textarea {
-    resize: vertical; /* Permite redimensionar verticalmente */
+    resize: vertical;
     min-height: 120px;
 }
 
@@ -373,15 +432,14 @@ body {
     outline: none;
     box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15);
 }
-.form-grupo select { /* Estilo select */
-     appearance: none; /* Remove seta padrão */
+.form-grupo select {
+     appearance: none;
     background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.6-3.5%205.4-7.8%205.4-12.8%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
     background-repeat: no-repeat;
     background-position: right 12px center;
     background-size: 10px auto;
-    padding-right: 35px; /* Espaço para a seta */
+    padding-right: 35px;
 }
-
 
 .modal-actions {
     display: flex;
@@ -396,53 +454,36 @@ body {
     border-radius: 4px;
     text-align: center;
     font-size: 0.9em;
-    display: none; /* Mostra via JS */
+    display: none;
 }
 .modal-feedback.sucesso { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
 .modal-feedback.erro { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
 
-
 /* === Responsividade Adicional === */
 @media (max-width: 768px) {
+    body { padding-top: 60px; } /* Ajusta se header for menor */
     .container-principal.tab-page-container {
         width: calc(100% - 30px);
         padding: 15px;
-        margin-top: 15px;
+        margin: 15px auto; /* Ajuste */
     }
-    .tab-link {
-        padding: 10px 15px;
-        font-size: 0.95rem;
-    }
-    .content-header-tab {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-     .content-header-tab h3 { font-size: 1.3rem; }
-    .lista-itens-tab {
-        grid-template-columns: 1fr; /* Uma coluna no mobile */
-        gap: 15px;
-    }
-     .item-card { padding: 15px; }
-     .modal-content { width: 95%; padding: 20px; }
-     .modal-actions { justify-content: center; }
+    .tab-link { padding: 10px 15px; font-size: 0.95rem; }
+    .content-header-tab { flex-direction: column; align-items: flex-start; gap: 15px; }
+    .content-header-tab h3 { font-size: 1.3rem; }
+    .lista-itens-tab { grid-template-columns: 1fr; gap: 15px; }
+    .item-card { padding: 15px; }
+    .modal-content { width: 95%; padding: 20px; }
+    .modal-actions { justify-content: center; }
 }
 
 @media (max-width: 480px) {
-     .tab-nav { justify-content: space-around; } /* Ou scroll */
-     .tab-link { padding: 10px 8px; font-size: 0.85rem; gap: 4px; }
-     .btn-principal, .btn-secundario { width: 100%; margin-bottom: 10px; }
-     .modal-actions { flex-direction: column-reverse; } /* Empilha botões */
+    body { padding-top: 55px; } /* Ajusta se header for menor */
+    .tab-nav { justify-content: space-around; }
+    .tab-link { padding: 10px 8px; font-size: 0.85rem; gap: 4px; }
+    .btn-principal, .btn-secundario { width: 100%; margin-bottom: 10px; justify-content: center;} /* Centraliza texto/ícone */
+    .modal-actions { flex-direction: column-reverse; gap: 10px;} /* Empilha botões, mantém gap */
+    .modal-actions .btn-principal, .modal-actions .btn-secundario { margin-bottom: 0; } /* Remove margem dupla */
 }
 
+/* Regra .resumo-texto.expanded removida pois foi incorporada em .resumo-card .resumo-texto.expanded */
 
-/* === Correção para Expandir Resumo === */
-
-.resumo-texto.expanded {
-    display: block; /* Ou inline, dependendo do fluxo desejado. 'block' é comum para <p> */
-    -webkit-line-clamp: unset; /* Remove o limite de linhas */
-    -webkit-box-orient: initial; /* Reseta a orientação */
-    overflow: visible; /* Permite que o conteúdo excedente seja visível */
-    text-overflow: clip; /* Ou initial - remove o ellipsis */
-    max-height: none; /* Remove qualquer limite de altura que possa existir */
-}
