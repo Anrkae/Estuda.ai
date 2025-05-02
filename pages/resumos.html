@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Resumos - Estuda.ai</title>
-    
+
     <link rel="stylesheet" href="../assets/css/essentials.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/pages/resumos.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/pages/resumos.css"> <link rel="stylesheet" href="../assets/css/style.css">
 
     <style>
+        /* Estilos que estavam no <head> original - Mantidos */
         .confirmation-message {
             color: green;
             font-weight: bold;
             margin-top: 10px;
         }
-        .action-button { /* Estilo exemplo para o botão Salvar */
+        .action-button { /* Estilo exemplo para o botão Salvar (e usado como base para outros) */
             padding: 8px 15px;
-            background-color: #007bff;
+            background-color: #007bff; /* Cor base - será sobrescrita por IDs específicos */
             color: white;
             border: none;
             border-radius: 4px;
@@ -27,9 +27,11 @@
             display: inline-flex;
             align-items: center;
             gap: 5px; /* Espaço entre ícone e texto */
+            vertical-align: middle; /* Ajuda no alinhamento */
+            margin-top: 10px; /* Margem padrão para botões de ação */
         }
         .action-button:hover {
-            background-color: #0056b3;
+            /* O hover específico será definido por ID ou classe mais específica no CSS */
         }
         .action-button:disabled {
             background-color: #cccccc;
@@ -38,12 +40,13 @@
         .loading {
             display: inline-flex; /* Para alinhar com o botão */
             align-items: center;
-            margin-left: 10px; /* Espaço do botão */
+            margin-left: 10px; /* Espaço do botão - pode ser ajustado pelo CSS principal */
         }
         .error-message {
-            color: #dc3545; /* Cor vermelha para erro */
+            color: #dc3545; /* Cor vermelha para erro - pode ser sobrescrita */
             margin-top: 10px;
             font-weight: bold;
+            /* Estilos mais detalhados no CSS */
         }
     </style>
 </head>
@@ -80,8 +83,7 @@
             </div>
 
             <div class="action-area">
-                <button id="summarizeButton" class="action-button">
-                    <i class="fa-solid fa-bolt"></i> Gerar Resumo
+                <button id="summarizeButton" class="action-button"> <i class="fa-solid fa-bolt"></i> Gerar Resumo
                 </button>
                 <div id="loadingIndicator" class="loading" style="display: none;">
                     <i class="fas fa-spinner fa-spin"></i>
@@ -94,14 +96,24 @@
                 <textarea id="summaryOutput" rows="6" readonly placeholder="Seu resumo aparecerá aqui..."></textarea>
                 <div id="errorDisplay" class="error-message" style="display: none;"></div>
 
-                <button id="saveSummaryButton" class="action-button" style="display: none; margin-top: 10px;">
-                    <i class="fa-regular fa-floppy-disk"></i> Salvar resumo
-                </button>
+                <div> <button id="saveSummaryButton" class="action-button" style="display: none;"> <i class="fa-regular fa-floppy-disk"></i> Salvar resumo
+                    </button>
+                    <button id="expandSummaryButton" class="action-button" style="display: none; background-color: #6c757d;"> <i class="fa-solid fa-expand"></i> Expandir
+                    </button>
+                </div>
+
                 <p id="saveConfirmation" class="confirmation-message" style="display: none;">
                     Resumo salvo! Acesse na aba de anotações.
                 </p>
-                 </div>
-        </section>
+            </div>
+    </section>
+
+    <div id="summaryModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <button id="closeModalButton" class="modal-close-button">&times;</button>
+            <h2>Resumo Expandido</h2>
+            <pre id="modalSummaryContent"></pre> </div>
+    </div>
 
      <script src="../assets/js/pages/resumos.js" defer></script>
 </body>
