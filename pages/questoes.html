@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Questoes - Estuda.ai</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link rel="stylesheet" href="../assets/css/essentials.css">
+    <link rel="stylesheet" href="../assets/css/pages/questoes.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components/components.css">
+
+</head>
+
+<body>
+
+    <div>
+        <script src="../assets/js/components/header.js"></script>
+    </div>
+
+    <main>
+
+        <div class="bloco minimizado">
+            <div class="question-generator-section">
+                <div class="tituloBtn">
+                    <h2><i class="fa-solid fa-graduation-cap"></i> Gerar Questões</h2>
+                    <button class="btn-toggle-bloco botao-minimizar" aria-label="Expandir Geração">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+
+                <div class="conteudo-bloco">
+                    <div class="input-area" id="primeiroInput">
+                        <label for="assuntoInput">Assunto:</label>
+                        <textarea id="assuntoInput" rows="1" placeholder="Ex: Revolução Francesa, Concordância Verbal..." required></textarea>
+                    </div>
+
+                    <div class="input-area">
+                        <label for="bibliografiaInput">Bibliografia (Opcional):</label>
+                        <textarea id="bibliografiaInput" rows="1" placeholder="Ex: Livro 'História Moderna'..."></textarea>
+                    </div>
+                    <div class="options-area">
+                        <div>
+                            <label for="disciplinaSelect">Disciplina:</label>
+                            <select id="disciplinaSelect">
+                                <option value="">-- Selecione a Disciplina --</option>
+                                </select>
+                        </div>
+                        <div>
+                            <label for="numQuestoesInput">Número de Questões:</label>
+                            <input type="number" id="numQuestoesInput" value="5" min="1" max="20">
+                        </div>
+                        <div>
+                            <label for="tipoQuestaoSelect">Tipo de Questão:</label>
+                            <select id="tipoQuestaoSelect">
+                                <option value="multipla_escolha" selected>Múltipla Escolha (A, B, C, D)</option>
+                                <option value="verdadeiro_falso">Verdadeiro / Falso</option>
+                                <option value="dissertativa_curta">Dissertativa Curta</option>
+                            </select>
+                        </div>
+                        <div>
+                             <label for="nivelQuestaoSelect">Nível:</label>
+                             <select id="nivelQuestaoSelect">
+                                 <option value="Médio" selected>Médio</option>
+                                 <option value="Fácil">Fácil</option>
+                                 <option value="Difícil">Difícil</option>
+                                 <option value="Muito Difícil">Muito Difícil</option>
+                             </select>
+                        </div>
+                        </div>
+
+                    <div class="action-area">
+                        <button id="generateButton">
+                            <i class="fas fa-cogs"></i> Gerar Questões
+                        </button>
+                        <div id="loadingIndicator" class="loading" style="display: none;">
+                            <div class="spinner"></div>
+                            <p>Gerando questões...</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="output-area">
+            <label for="questoesOutput">Questões Geradas:</label>
+            <div id="questoesOutput" class="questoes-output-container" aria-live="polite">
+                </div>
+        </div>
+
+        <div class="global-action-area">
+            <button id="finalizeButton" style="display: none;"> <i class="fas fa-stop-circle"></i> Finalizar Simulado Atual
+            </button>
+        </div>
+    </main>
+
+    <div id="popupOverlay" class="popup-overlay" style="display: none;">
+        <div id="popupMessageBox" class="popup-message-box"> <button id="popupCloseButton" class="popup-close-button" aria-label="Fechar">&times;</button>
+            <div id="popupContent" class="popup-content">
+                </div>
+        </div>
+    </div>
+    <footer>
+        </footer>
+
+    <script src="../assets/js/pages/questoes.js"></script> <script src="../assets/js/components/timerPopup.js"></script>
+    <script src="../assets/js/components/bloco.js"></script>
+    <script src="../assets/js/components/select.js"></script>
+
+</body>
+</html>
