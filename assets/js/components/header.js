@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <nav class="sidebar-navigation">
                 <button onclick="window.location.href='index.html'" class="sidebarBtn" data-target="index.html">Inicio</button>
-                <button onclick="window.location.href='simulados.html'" class="sidebarBtn" data-target="simulados.html">Questões</button>
+                <button onclick="window.location.href='questoes.html'" class="sidebarBtn" data-target="questoes.html">Questões</button>
                 <button onclick="window.location.href='anotacoes.html'" class="sidebarBtn" data-target="anotacoes.html">Anotações</button>
                 <button onclick="window.location.href='resumos.html'" class="sidebarBtn" data-target="resumos.html">Resumos</button>
                 <button onclick="window.location.href='disciplinas.html'" class="sidebarBtn" data-target="disciplinas.html">Disciplinas</button>
@@ -175,11 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
         /* Estilos Botão de Ação (Perfil) */
         .header-action-btn { background: none; border: none; color: #444; font-size: 1.8rem; cursor: pointer; padding: 0; margin-left: 15px; line-height: 1; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; position: relative; overflow: hidden; transition: background-color 0.2s; }
         .header-action-btn:hover { background-color: rgba(0, 0, 0, 0.04); }
-        #profileButton #profileImage { display: none; width: 38px; height: 38px; border-radius: 50%; object-fit: cover;
-        outline: 12px outset #6735bc; /* Adiciona o contorno: espessura, estilo, cor */
-        outline-offset: 1px; /* Opcional: Afasta o contorno da imagem */
-
-    }
+        #profileButton #profileImage {
+            display: none;
+            width: 38px; height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            outline: 3px inset #6735bc; /* Adiciona o contorno: espessura, estilo, cor */
+            outline-offset: 1px; /* Opcional: Afasta o contorno da imagem */
+    
+        }
         #profileButton #profileIconFallback { display: block; }
     `;
 
