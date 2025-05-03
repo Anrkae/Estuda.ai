@@ -20,11 +20,9 @@
     </div>
 
     <main class="simulado-generator-container">
-
-        <h1><i class="fas fa-tasks"></i> Criar Novo Simulado</h1>
+        <h1><i class="fa-solid fa-bolt"></i> Gerar Simulado</h1>
 
         <div id="step-1" class="step active-step">
-            <h2>Etapa 1: Configurações Gerais</h2>
             <div class="form-grid">
                 <div>
                     <label for="totalQuestoesInput">Número Total de Questões:</label>
@@ -44,9 +42,7 @@
             </div>
 
             <div class="disciplinas-selection-area">
-                 <label>Selecione as Disciplinas (Arraste para ordenar):</label>
-                 <p class="helper-text">Marque as disciplinas desejadas e arraste-as para a ordem que você quer que apareçam no simulado.</p>
-                 <div id="disciplinasCheckboxContainer" class="checkbox-container">
+                 <label>Selecione as Disciplinas (Arraste para ordenar):</label>                 <div id="disciplinasCheckboxContainer" class="checkbox-container">
                      <p>Carregando disciplinas...</p>
                      </div>
                  <label style="margin-top: 15px;">Ordem das Disciplinas no Simulado:</label>
@@ -61,15 +57,14 @@
         </div>
 
         <div id="step-2" class="step">
-            <h2>Etapa 2: Detalhes por Disciplina</h2>
-             <p class="helper-text">Defina a quantidade de questões e os assuntos específicos para cada disciplina selecionada.</p>
+            <p class="helper-text">Defina a quantidade de questões e os assuntos específicos para cada disciplina selecionada.</p>
+            <div class="checkbox-item distribute-checkbox-item">
+                     <input type="checkbox" id="distributeCheckbox">
+                     <label for="distributeCheckbox">Distribuir Questões Igualmente</label>
+            </div>
             <div id="disciplinaDetailContainer">
                 </div>
             <div class="distribute-options">
-                 <div class="checkbox-item distribute-checkbox-item">
-                     <input type="checkbox" id="distributeCheckbox">
-                     <label for="distributeCheckbox">Distribuir Questões Igualmente</label>
-                 </div>
                  <p id="distributeHelperText" class="helper-text"></p>
                  <p id="totalAllocatedText" class="helper-text error-text"></p> </div>
             <div class="form-grid single-column">
@@ -103,9 +98,8 @@
         <div id="simuladoView" class="simulado-view" style="display: none;">
             <div class="simulado-header">
                 <div id="simuladoInfo" class="simulado-info">
-                    <span>Simulado Iniciado</span> </div>
                 <div id="timerDisplay" class="timer-display">
-                     <i class="fas fa-stopwatch"></i> </div>
+                </div>
             </div>
             <div id="questoesOutput" class="questoes-output-container" aria-live="polite">
                 </div>
