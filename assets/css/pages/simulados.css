@@ -1,521 +1,335 @@
 /* =============================================== */
-/* CSS Específico para /pages/simulados.css      */
+/* Conteúdo Combinado para /pages/simulados.css    */
+/* (Regras Originais + Novas Regras)               */
 /* =============================================== */
 
+/* === Regras Gerais e Base === */
 body {
     -webkit-tap-highlight-color: transparent;
-    outline: none; /* Adicionado por segurança para garantir que nenhum outline relacionado ao toque apareça */
-    /* Considerar remover/reavaliar user-select: none; se copiar texto for útil */
-    /* -webkit-user-select: none; */ /* Safari */
-    /* -moz-user-select: none;    */ /* Firefox */
-    /* -ms-user-select: none;     */ /* Internet Explorer/Edge */
-    /* user-select: none;         */ /* Padrão */
+    outline: none;
     padding-top: 0 !important;
     margin: 0 !important;
+    background-color: #f8f9fa;
+    padding-bottom: 80px; /* Espaço para footer fixo */
 }
 
-/* --- Estilos gerais da seção (Ajuste conforme seu style.css global) --- */
-.question-generator-section {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 25px 30px;
-    background-color: #f5f4f0; /* Fundo branco */
-    border-radius: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.tituloBtn h2 {
-    padding: 5px !important;
-    margin: 5px !important;
-    text-align: center;
-    margin-top: 25px;
-    color: #2C2C2C; /* Cor escura para título */
-    margin-bottom: 30px; /* Mais espaço abaixo do título */
-    font-size: 1.3em; /* Tamanho do título */
-    font-weight: 600; /* Peso da fonte */
-}
-
-.tituloBtn h2 i {
-    margin-right: 10px; /* Espaço ícone-texto */
-    color: #2C2C2C; /* Cor roxa (exemplo) */
-}
-
-/* --- Áreas de Input, Opções, Ação e Saída --- */
-.input-area, .options-area, .action-area, .output-area {
-    margin-bottom: 10px; /* Espaçamento entre seções */
-}
-
-.input-area label, .options-area label, .output-area label {
-    display: block;
-    margin-bottom: 8px; /* Espaço label-input */
-    font-weight: 500; /* Peso da label */
-    color: #444; /* Cor da label */
-    font-size: 0.95em;
-}
-
-/* Inputs e Selects */
-.input-area textarea,
-.options-area input[type="text"], /* Incluindo o novo input de bibliografia se for text */
-.options-area input[type="number"],
-.options-area select {
-    width: 100%;
-    padding: 12px 15px; /* Mais padding interno */
-    border: 1px solid #ccc; /* Borda padrão */
-    border-radius: 4px; /* Borda arredondada */
-    box-sizing: border-box; /* Inclui padding/border na largura total */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fff; /* Fundo branco */
-    font-family: inherit; /* Herda a fonte */
-    font-size: 1em; /* Tamanho da fonte */
-    color: #333; /* Cor do texto */
-}
-.input-area textarea {
-    resize: vertical; /* Permite redimensionar só verticalmente */
-    min-height: 40px; /* Altura mínima para textareas de 1 linha */
-}
-
-/* Efeito de Foco */
-.input-area textarea:focus,
-.options-area input:focus,
-.options-area select:focus {
-    border-color: #673ab7; /* Cor roxa no foco */
-    outline: none; /* Remove outline padrão */
-    box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.2); /* Sombra roxa suave no foco */
-}
-
-/* Grid para Opções */
-.options-area {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Layout responsivo */
-    gap: 20px; /* Espaço entre colunas/linhas */
-    align-items: end; /* Alinha na base */
-}
-
-/* --- Área de Ação (Botões, Loading) --- */
-.action-area {
-    display: flex;
-    flex-wrap: wrap; /* Quebra linha se não couber */
-    gap: 15px; /* Espaço entre botões/loading */
-    align-items: center;
-    border-top: 1px solid #eee; /* Linha separadora */
-    padding-top: 20px;
-    margin-top: 20px;
-}
-
-.action-area button,
-.confirm-answer-btn, /* NOVO: Estilo base para botão Responder */
-#finalizeButton /* NOVO: Estilo base para botão Finalizar */
-{
-    padding: 10px 18px; /* Padding ajustado */
-    border: none;
-    border-radius: 6px;
-    font-size: 0.95em; /* Tamanho ajustado */
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease; /* Adiciona transform e opacity */
-    font-family: inherit;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center; /* Centraliza conteúdo */
-    gap: 8px;
-    line-height: 1.2; /* Ajuste linha */
-}
-.action-area button:active,
-.confirm-answer-btn:active:not(:disabled), /* NOVO */
-#finalizeButton:active:not(:disabled) /* NOVO */
- {
-    transform: scale(0.98); /* Efeito de clique */
-}
-
-#generateButton {
-    background-color: #673ab7; /* Roxo */
-    color: white;
-    padding: 12px 22px; /* Mantém padding maior para o botão principal */
-    font-size: 1em;
-}
-#generateButton:hover:not(:disabled) {
-    background-color: #5e35b1; /* Roxo mais escuro */
-}
-#generateButton:disabled {
-     background-color: #bdbdbd; /* Cinza para desabilitado */
-     cursor: not-allowed;
-     color: #757575;
-     opacity: 0.7;
-}
-
-/* Estilo Botão Finalizar Global */
-#finalizeButton {
-    background-color: #f44336; /* Vermelho */
-    color: white;
-}
-#finalizeButton:hover:not(:disabled) {
-    background-color: #d32f2f; /* Vermelho mais escuro */
-}
-#finalizeButton:disabled {
-    background-color: #e0e0e0; /* Cinza mais claro */
-    cursor: not-allowed;
-    color: #9e9e9e; /* Cinza texto */
-    opacity: 0.7;
-}
-
-/* Estilo Botão Responder (dentro da questão) */
-.confirm-answer-btn {
-    background-color: #2196F3; /* Azul */
-    color: white;
-    margin-top: 10px; /* Espaço acima */
-    width: auto; /* Largura automática */
-    min-width: 100px; /* Largura mínima */
-    align-self: flex-end; /* Alinha à direita no container flex */
-}
-.confirm-answer-btn:hover:not(:disabled) {
-    background-color: #1976D2; /* Azul mais escuro */
-}
-.confirm-answer-btn:disabled {
-    background-color: #bdbdbd;
-    cursor: not-allowed;
-    color: #757575;
-    opacity: 0.6;
-}
-
-
-/* Indicador de Loading */
-.loading {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px; /* Mais espaço */
-    font-size: 0.95em; /* Pouco maior */
-    color: #555;
-    margin-left: 10px; /* Espaço à esquerda */
-}
-
-.spinner {
-    border: 4px solid #f3f3f3; /* Cinza claro */
-    border-top: 4px solid #673ab7; /* Roxo */
-    border-radius: 50%;
-    width: 20px; /* Maior */
-    height: 20px; /* Maior */
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-/* --- Mensagens de Status e Erro --- */
-.status-message, .error-message {
-    margin-top: 15px;
-    padding: 12px 15px; /* Mais padding */
-    border-radius: 5px;
-    font-size: 0.95em;
-    text-align: center;
-    border: 1px solid transparent; /* Borda base */
-}
-
-.error-message {
-    background-color: #ffebee; /* Fundo vermelho claro */
-    color: #c62828; /* Texto vermelho escuro */
-    border-color: #e57373; /* Borda vermelha */
-}
-
-.status-message.success {
-     background-color: #e8f5e9; /* Fundo verde claro */
-     color: #2e7d32; /* Texto verde escuro */
-     border-color: #81c784; /* Borda verde */
-}
-
-.status-message.info {
-     background-color: #e3f2fd; /* Fundo azul claro */
-     color: #1565c0; /* Texto azul escuro */
-     border-color: #64b5f6; /* Borda azul */
-}
-.status-message.warning { /* Adicionado estado warning */
-     background-color: #fff8e1; /* Amarelo claro */
-     color: #b75d00; /* Texto laranja/marrom */
-     border-color: #ffcc80; /* Borda laranja claro */
-}
-
-
-/* --- Área de Saída e Questões Interativas --- */
-.output-area {
-    margin-top: 30px; /* Mais espaço antes das questões */
-}
-
-.questoesOutput {
-    margin-top: 20px !important;
-}
-
-.output-area label {
-    font-size: 1.1em; /* Label "Questões Geradas" maior */
-    font-weight: 600;
-    color: #333;
-}
-
-.questoes-output-container {
-    background-color: #eceae2; /* Fundo levemente cinza */
-    padding: 10px; /* Padding interno reduzido, o padding vai para os items */
-    margin-top: 10px;
-    min-height: 150px; /* Altura mínima */
-    overflow-y: auto;  /* Scroll se necessário */
-    border-radius: 8px; /* Borda container */
-}
-
-/* --- Estilos para Cada Item de Questão --- */
-.question-item {
+.simulado-generator-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
     background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-left-width: 5px; /* Borda inicial à esquerda */
-    border-left-color: #bdbdbd; /* Cinza neutro inicial */
-    border-radius: 5px;
-    padding: 18px 22px; /* Padding interno */
-    margin-bottom: 15px;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Sombra sutil por questão */
-}
-.question-item:last-child {
-    margin-bottom: 5px; /* Menos margem no último */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-.question-item.answered {
-    /* Não precisa de estilo específico aqui, cores de correct/incorrect são suficientes */
-}
-
-/* Cores de Feedback (Correto/Incorreto) */
-.question-item.correct {
-    border-left-color: #4CAF50; /* Verde */
-    background-color: #f1f8e9; /* Verde bem claro */
-}
-.question-item.incorrect {
-    border-left-color: #f44336; /* Vermelho */
-    background-color: #ffebee; /* Vermelho bem claro */
-}
-.question-item.question-error { /* Para erro no parse */
-     border-left-color: #ff9800; /* Laranja */
-     background-color: #fff3e0;
-}
-
-/* Texto da Questão */
-.question-text {
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 18px; /* Espaço antes das opções */
-    line-height: 1.6; /* Espaçamento entre linhas */
-    font-size: 1.05em; /* Tamanho um pouco maior */
-}
-.question-text strong { /* Numeração */
-    margin-right: 8px;
-    color: #555;
+h1 {
+    text-align: center;
+    color: #343a40;
+    margin-bottom: 30px;
+    font-size: 1.8em;
     font-weight: 600;
 }
+h1 i { margin-right: 10px; color: #673ab7; }
 
-/* Container das Opções */
-.options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px; /* Espaçamento entre botões de opção */
-    margin-bottom: 12px;
-}
-
-/* Botões de Opção */
-.option-btn {
-    display: block;
-    width: 100%;
-    padding: 12px 18px; /* Padding */
-    text-align: left;
-    background-color: #f5f5f5; /* Cinza claro */
-    border: 1px solid #dcdcdc; /* Borda cinza */
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    color: #333;
-    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; /* Add box-shadow transition */
-    line-height: 1.4; /* Espaçamento interno do texto */
-}
-.option-btn:hover:not(:disabled):not(.selected-preview) { /* Evita hover se já selecionado para preview */
-    background-color: #e8e8e8; /* Cinza mais escuro no hover */
-    border-color: #c0c0c0;
-}
-.option-btn:active:not(:disabled) {
-    transform: scale(0.99); /* Efeito de clique */
-}
-
-/* --- Estilos Pós-Seleção (ANTES de Confirmar) --- */
-/* NOVO: Estilo para opção selecionada ANTES de confirmar */
-.option-btn.selected-preview {
-    background-color: #e3f2fd; /* Azul bem claro */
-    border-color: #2196F3; /* Azul */
-    color: #1565c0; /* Azul escuro */
+h2 {
+    color: #495057;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    font-size: 1.4em;
     font-weight: 500;
-    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2); /* Sombra azul suave */
 }
 
+/* --- Estilos das Etapas --- */
+.step {
+    display: none;
+    padding: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    background-color: #fdfdff;
+    animation: fadeIn 0.5s ease;
+}
+.step.active-step { display: block; }
 
-/* --- Estilos Pós-Resposta (DEPOIS de Confirmar) --- */
-.question-item.answered .option-btn {
-    cursor: default; /* Cursor padrão quando respondido */
-}
-/* Esmaecer opções não selecionadas/não corretas DEPOIS de confirmar */
-.question-item.answered .option-btn:not(.selected):not(.correct-answer-highlight) {
-   opacity: 0.65;
-}
-
-/* Botão Selecionado pelo Usuário (DEPOIS de confirmar) */
-.option-btn.selected {
-    border-width: 2px;
-    font-weight: bold;
-    padding: 11px 17px; /* Ajusta padding pela borda maior */
-}
-/* Cor da borda/fundo baseado se acertou ou errou */
-.question-item.correct .option-btn.selected {
-    border-color: #4CAF50; /* Verde */
-    background-color: #dcedc8;
-    color: #1b5e20; /* Verde escuro texto */
-    opacity: 1 !important; /* Garante visibilidade */
-}
-.question-item.incorrect .option-btn.selected {
-     border-color: #f44336; /* Vermelho */
-     background-color: #ffcdd2;
-     color: #c62828; /* Vermelho escuro texto */
-     opacity: 1 !important; /* Garante visibilidade */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Destaque da Resposta Correta (sempre visível após responder) */
-.option-btn.correct-answer-highlight {
-     border-color: #4CAF50; /* Verde */
-     background-color: #c8e6c9; /* Verde um pouco mais forte */
-     font-weight: bold;
-     color: #1b5e20; /* Texto verde escuro */
-     opacity: 1 !important; /* Garante visibilidade máxima */
-     border-width: 1px; /* Garante borda consistente */
+/* --- Layout do Formulário --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 25px;
 }
-/* Se errou, a correta é destacada em verde (já coberto pelo seletor acima) */
-/*.question-item.incorrect .option-btn.correct-answer-highlight { ... } */
-
-/* Botões desabilitados (após confirmação) */
-.option-btn:disabled {
-    cursor: default;
-    background-color: #ededed; /* Mantém alguma cor */
-    border-color: #e0e0e0;
-    color: #757575;
-     /* opacity: 0.6; */ /* Opacidade já tratada pelo seletor .answered */
-}
-/* Remove o estado de preview se o botão for desabilitado */
-.option-btn.selected-preview:disabled {
-    box-shadow: none;
+.form-grid.single-column {
+    grid-template-columns: 1fr;
+    max-width: 400px;
 }
 
-/* NOVO: Container para feedback e botão responder */
-.feedback-area {
-    display: flex;
-    justify-content: space-between; /* Coloca feedback à esquerda, botão à direita */
-    align-items: center; /* Alinha verticalmente */
-    margin-top: 15px;
-    flex-wrap: wrap; /* Quebra linha se necessário */
-    gap: 10px;
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.95em;
 }
 
-/* Mensagem de Feedback dentro da questão */
-.feedback-message {
-    /* margin-top: 15px; -> Movido para feedback-area */
-    font-size: 0.9em;
-    font-weight: bold;
-    padding: 5px 0; /* Espaçamento vertical ajustado */
-    text-align: left; /* Alinha à esquerda */
-    flex-grow: 1; /* Permite que o texto ocupe espaço */
+input[type="number"],
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    font-family: inherit;
+    font-size: 1em;
+    color: #495057;
 }
-.question-item.correct .feedback-message {
-    color: #388e3c; /* Verde escuro */
-}
-.question-item.incorrect .feedback-message {
-    color: #d32f2f; /* Vermelho escuro */
-}
-
-
-/* NOVO: Área de Ação Global (Botão Finalizar) */
-.global-action-area {
-    max-width: 800px; /* Mesma largura do container principal */
-    margin: 0 auto 80px auto; /* Centraliza e adiciona margem inferior */
-    padding: 0 15px; /* Padding lateral para não colar nas bordas */
-    text-align: right; /* Alinha o botão à direita */
+input:focus, select:focus {
+    border-color: #8a63d2;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.15);
 }
 
+.time-input-group { display: flex; align-items: center; gap: 5px; }
+.time-input-group input[type="number"] { width: 60px; text-align: center; }
+
+/* --- Etapa 1: Seleção e Ordenação de Disciplinas --- */
+.disciplinas-selection-area { margin-top: 25px; margin-bottom: 25px; }
+.disciplinas-selection-area .helper-text { font-size: 0.85em; color: #6c757d; margin-bottom: 10px; }
+
+.checkbox-container {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ced4da;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    margin-bottom: 15px;
+}
+.checkbox-item { display: block; margin-bottom: 10px; }
+.checkbox-item input[type="checkbox"] { margin-right: 10px; width: auto; accent-color: #673ab7; vertical-align: middle; }
+.checkbox-item label { display: inline; font-weight: normal; cursor: pointer; vertical-align: middle; }
+
+/* Lista Ordenável */
+.sortable-list {
+    list-style: none; padding: 10px; margin: 0;
+    border: 1px dashed #ced4da; border-radius: 4px;
+    min-height: 50px; background-color: #f8f9fa;
+}
+.sortable-list li {
+    background-color: #fff; padding: 8px 12px; margin-bottom: 5px;
+    border: 1px solid #dee2e6; border-radius: 4px;
+    cursor: grab; display: flex; justify-content: space-between;
+    align-items: center; transition: background-color 0.2s ease;
+}
+.sortable-list li:last-child { margin-bottom: 0; }
+.sortable-list li:hover { background-color: #f1f3f5; }
+.sortable-placeholder {
+    color: #6c757d; font-style: italic; text-align: center; padding: 15px;
+    background-color: transparent !important; border: none !important; cursor: default !important;
+}
+/* Classes SortableJS */
+.sortable-ghost { opacity: 0.4; background: #c8ebfb; }
+.sortable-chosen { cursor: grabbing; background-color: #e3f2fd; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+/* --- Etapa 2: Detalhes por Disciplina --- */
+#disciplinaDetailContainer {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px; margin-bottom: 20px;
+}
+.disciplina-detail-item { background-color: #fdfdff; padding: 15px; border: 1px solid #e9ecef; border-radius: 5px; }
+.disciplina-detail-item label { font-size: 0.9em; margin-bottom: 5px; }
+.disciplina-detail-item label strong { color: #673ab7; font-weight: 600; }
+.disciplina-detail-item input[type="number"] { padding: 8px 10px; margin-bottom: 10px; }
+.disciplina-detail-item input[type="text"] { font-size: 0.95em; padding: 8px 10px; }
+.disciplina-detail-item label[for^="disciplina-assuntos"] { margin-top: 10px; }
+
+.distribute-options { margin-bottom: 25px; padding-top: 15px; border-top: 1px solid #e9ecef; }
+.distribute-checkbox-item { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+#distributeCheckbox { width: auto; margin: 0; accent-color: #673ab7; }
+.distribute-checkbox-item label { display: inline; margin-bottom: 0; font-weight: normal; cursor: pointer; }
+
+.helper-text { font-size: 0.85em; color: #6c757d; margin-top: 5px; }
+.error-text { color: #dc3545; font-weight: bold; }
+.success-text { color: #28a745; font-weight: bold; }
+
+/* --- Botões de Navegação --- */
+.navigation-buttons { display: flex; justify-content: space-between; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e9ecef; }
+button {
+    padding: 10px 20px; border: none; border-radius: 5px; font-size: 1em; font-weight: 500;
+    cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease;
+    display: inline-flex; align-items: center; gap: 8px;
+}
+button:active { transform: scale(0.98); }
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-next { background-color: #673ab7; color: white; }
+.btn-next:hover:not(:disabled) { background-color: #5e35b1; }
+.btn-secondary { background-color: #6c757d; color: white; }
+.btn-secondary:hover:not(:disabled) { background-color: #5a6268; }
+.btn-finalizar { background-color: #28a745; color: white; margin: 20px auto 0 auto; display: block; }
+.btn-finalizar:hover:not(:disabled) { background-color: #218838; }
+
+/* --- Etapa 3: Geração --- */
+#step-3 { text-align: center; padding: 40px 20px; }
+#step-3 h2 { margin-bottom: 20px; }
+#step-3 h2 .loading-icon { margin-right: 10px; font-size: 0.9em; color: #673ab7; } /* Estilo Ícone */
+
+.motivational-quote { font-style: italic; color: #495057; text-align: center; margin-bottom: 30px; min-height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.1em; }
+.progress-bar-container { width: 100%; max-width: 400px; margin: 0 auto 10px auto; background-color: #e9ecef; border-radius: 5px; overflow: hidden; }
+.progress-bar {
+    width: 0%; height: 22px; background-color: #673ab7; border-radius: 5px;
+    transition: width 0.5s ease-out; text-align: center; line-height: 22px; color: white; font-size: 0.9em;
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px; animation: progress-bar-stripes 2s linear infinite;
+}
+@keyframes progress-bar-stripes { from { background-position: 40px 0; } to { background-position: 0 0; } }
+.progress-text { text-align: center; font-weight: bold; color: #495057; margin-bottom: 25px; font-size: 1.1em; }
+.generation-status {
+    font-size: 0.9em; color: #333; max-height: 150px; overflow-y: auto; padding: 10px;
+    border: 1px solid #e0e0e0; border-radius: 4px; background-color: #f8f9fa;
+    max-width: 600px; margin: 0 auto; text-align: left; line-height: 1.5;
+}
+.generation-status p { margin: 5px 0; display: flex; align-items: center; }
+.generation-status p i { margin-right: 8px; /* Espaço para ícones de log */ }
+/* Cores são definidas inline no JS para ícones */
+
+/* --- Visualização do Simulado --- */
+.simulado-view { margin-top: 30px; border: 1px solid #dee2e6; border-radius: 6px; background-color: #fff; }
+.simulado-header {
+    display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;
+    background-color: #f8f9fa; border-bottom: 1px solid #dee2e6; border-radius: 6px 6px 0 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.simulado-info, .timer-display { font-size: 1.1em; font-weight: 500; color: #495057; }
+.timer-display i { color: #dc3545; } /* Ícone do relógio ainda pode estar no header */
+
+.questoes-output-container { background-color: #fdfdff; padding: 20px; min-height: 300px; border-radius: 0 0 6px 6px; overflow-y: visible; }
+.disciplina-heading {
+    margin-top: 30px; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid #673ab7;
+    color: #495057; font-size: 1.3em; font-weight: 600;
+}
+.questoes-output-container .disciplina-heading:first-child { margin-top: 10px; }
+
+.question-item {
+    background-color: #fff; border: 1px solid #e0e0e0; border-left-width: 5px;
+    border-left-color: #bdbdbd; border-radius: 5px; padding: 18px 22px; margin-bottom: 15px;
+    transition: border-color 0.3s ease, background-color 0.3s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.question-item:last-child { margin-bottom: 5px; }
+.question-item.answered-pending-review { border-left-color: #2196F3; background-color: #e3f2fd; } /* Azul respondido */
+.question-item.correct { border-left-color: #4CAF50; background-color: #f1f8e9; } /* Verde correto */
+.question-item.incorrect { border-left-color: #f44336; background-color: #ffebee; } /* Vermelho incorreto */
+.question-item.question-error { border-left-color: #ff9800; background-color: #fff3e0; } /* Erro de questão */
+
+.question-text { font-weight: 500; color: #333; margin-bottom: 18px; line-height: 1.6; font-size: 1.05em; }
+.question-text strong { margin-right: 8px; color: #555; font-weight: 600; }
+.options-container { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.option-btn {
+    display: block; width: 100%; padding: 12px 18px; text-align: left; background-color: #f5f5f5;
+    border: 1px solid #dcdcdc; border-radius: 5px; cursor: pointer; font-size: 1em; color: #333;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; line-height: 1.4;
+}
+.option-btn:hover:not(:disabled) { background-color: #e8e8e8; border-color: #c0c0c0; }
+.option-btn:active:not(:disabled) { transform: scale(0.99); }
+.option-btn:disabled { cursor: default; background-color: #ededed; border-color: #e0e0e0; color: #757575; opacity: 0.7; }
+
+.option-btn.selected { /* Estilo botão selecionado (antes da finalização) */
+    border-width: 2px; font-weight: bold; padding: 11px 17px;
+    border-color: #90caf9; background-color: #e3f2fd; color: #1565c0;
+}
+.option-btn.selected:hover:not(:disabled) { background-color: #bbdefb; }
+
+/* Estilos finais */
+.question-item.correct .option-btn.selected { border-color: #4CAF50 !important; background-color: #dcedc8 !important; color: #1b5e20 !important; }
+.question-item.incorrect .option-btn.selected { border-color: #f44336 !important; background-color: #ffcdd2 !important; color: #c62828 !important; }
+.option-btn.correct-answer-highlight { border-color: #4CAF50 !important; background-color: #c8e6c9 !important; font-weight: bold !important; color: #1b5e20 !important; border-width: 1px !important; }
+
+.feedback-area { display: flex; justify-content: space-between; align-items: center; margin-top: 15px; flex-wrap: wrap; gap: 10px; min-height: 30px; }
+.confirm-answer-btn { display: none; } /* Escondido */
+
+/* --- Footer Fixo --- */
+.simulado-fixed-footer {
+    position: fixed; bottom: 0; left: 0; width: 100%; background-color: #fff;
+    padding: 10px 20px; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); z-index: 999;
+    display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;
+}
+.simulado-info-fixed, .timer-display-fixed { font-size: 1.1em; font-weight: 500; color: #495057; }
+.timer-display-fixed { color: #dc3545; }
+.simulado-info-fixed i, .timer-display-fixed i { margin-right: 8px; color: #673ab7; }
+.timer-display-fixed i { color: #dc3545; }
+
+/* --- Popup Overlay e Mensagem --- */
+.popup-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6);
+    display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 20px; box-sizing: border-box;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.popup-overlay.visible { opacity: 1; visibility: visible; }
+.popup-message-box {
+    background-color: #fff; padding: 30px 35px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 500px; width: 90%; position: relative; transform: scale(0.9); transition: transform 0.3s ease; text-align: center;
+}
+.popup-overlay.visible .popup-message-box { transform: scale(1); }
+.popup-close-button {
+    position: absolute; top: 10px; right: 12px; background: none; border: none; font-size: 1.8em;
+    line-height: 1; color: #888; cursor: pointer; padding: 0; transition: color 0.2s ease; z-index: 1001;
+}
+.popup-close-button:hover { color: #333; }
+
+#popupTextMessage { font-size: 1.05em; line-height: 1.6; color: #333; word-wrap: break-word; }
+/* Classes de tipo de popup */
+.popup-message-box.error { border-left: 5px solid #f44336; }
+.popup-message-box.success { border-left: 5px solid #4CAF50; }
+.popup-message-box.info { border-left: 5px solid #2196F3; }
+.popup-message-box.warning { border-left: 5px solid #ff9800; }
+/* Cores de texto e botão X são ajustadas no JS para maior contraste, se necessário */
+
+/* Popup de Resultados */
+.popup-message-box.results-popup { max-width: 600px; text-align: left; border-left: none; }
+.popup-message-box.results-popup #popupCloseButton { display: none; } /* Esconde X */
+#resultsContainer { /* Estilos container se necessário */ }
+#resultsTitle { text-align: center; color: #343a40; margin-bottom: 15px; font-size: 1.5em; }
+.results-message { font-size: 1.1em; margin-bottom: 20px; padding: 10px; border-radius: 4px; text-align: center; }
+.results-message.success { background-color: #e8f5e9; color: #2e7d32; }
+.results-message.info { background-color: #e3f2fd; color: #1565c0; }
+.results-message.warning { background-color: #fff8e1; color: #b75d00; }
+.results-stats { margin-bottom: 25px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 15px 0; }
+.results-stats p { margin: 8px 0; font-size: 1em; display: flex; justify-content: space-between; }
+.results-stats p strong { color: #495057; }
+.results-stats p span { font-weight: bold; color: #343a40; }
+#statPercentage { color: #673ab7; }
+.results-buttons { margin-top: 20px; display: flex; justify-content: space-between; gap: 15px; }
+.results-buttons button { flex-grow: 1; justify-content: center; }
 
 /* --- Responsividade --- */
 @media (max-width: 768px) {
-    .question-generator-section {
-        padding: 20px 20px;
-    }
-    .options-area {
-        grid-template-columns: 1fr; /* Uma coluna */
-    }
-     .global-action-area {
-         padding: 0 20px; /* Ajusta padding */
-     }
+    body { padding-bottom: 100px; }
+    .simulado-generator-container { padding: 15px; }
+    h1 { font-size: 1.6em; }
+    h2 { font-size: 1.3em; }
+    .form-grid { grid-template-columns: 1fr; }
+    .simulado-header { padding: 8px 15px; }
+    .simulado-fixed-footer { padding: 8px 15px; flex-direction: column; align-items: flex-start; gap: 5px; }
+    .timer-display-fixed { align-self: flex-end; }
+    .results-popup { max-width: 95%; }
+    .results-buttons { flex-direction: column; }
+    .questoes-output-container { padding: 15px; }
 }
-
 @media (max-width: 600px) {
-    .question-generator-section {
-        padding: 20px 15px;
-    }
-    .action-area { /* Botão Gerar Questões */
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .action-area button {
-        width: 100%;
-        justify-content: center;
-    }
-     /* .feedback-message {
-         text-align: left; -> Já é padrão agora
-     } */
-     .feedback-area {
-         flex-direction: column; /* Empilha feedback e botão */
-         align-items: stretch; /* Alinha à largura total */
-     }
-     .confirm-answer-btn {
-         align-self: stretch; /* Ocupa largura total */
-         margin-top: 10px;
-     }
-     .global-action-area {
-         text-align: center; /* Centraliza botão finalizar */
-         padding: 0 15px;
-     }
-     #finalizeButton {
-         width: 100%; /* Botão ocupa largura total */
-     }
-}
-
-/* --- Estilos Bloco Colapsável --- */
-.tituloBtn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer; /* Opcional */
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-#primeiroInput {
-    margin-top: 25px;
-}
-
-.botao-minimizar {
-    padding: 5px !important;
-    margin: 5px !important;
-    background: none;
-    font-size: 1.3rem;
-    border: none;
-    color: #2C2C2C;
-    cursor: pointer; /* Adiciona cursor pointer */
-}
-
-.botao-minimizar:hover {
-    background: none;
-    opacity: 0.8; /* Leve feedback no hover */
-}
-
-.minimizado .conteudo-bloco {
-    display: none;
-} /* Minimizar o bloco */
-
-/* --- Font Family (Exemplo) --- */
-button, input, select, textarea {
-    font-family: 'Montserrat', sans-serif; /* Aplicar a mais elementos */
+    .navigation-buttons { flex-direction: column; gap: 10px; }
+    .navigation-buttons button { width: 100%; justify-content: center; }
+    .navigation-buttons button.btn-secondary { order: 2; }
+    .navigation-buttons button.btn-next { order: 1; }
+    .simulado-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .popup-message-box { padding: 25px 20px; }
+    .popup-message-box.results-popup { padding: 25px 20px; }
+    .simulado-info-fixed, .timer-display-fixed { font-size: 1em; }
+    #disciplinaDetailContainer { grid-template-columns: 1fr; }
 }
