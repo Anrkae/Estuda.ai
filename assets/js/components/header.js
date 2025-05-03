@@ -42,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button onclick="window.location.href='questoes.html'" class="sidebarBtn" data-target="questoes.html">Questões</button>
                 <button onclick="window.location.href='anotacoes.html'" class="sidebarBtn" data-target="anotacoes.html">Anotações</button>
                 <button onclick="window.location.href='resumos.html'" class="sidebarBtn" data-target="resumos.html">Resumos</button>
+                <button onclick="window.location.href='simulados.html'" class="sidebarBtn" data-target="simulados.html">Simulados</button>
                 <button onclick="window.location.href='disciplinas.html'" class="sidebarBtn" data-target="disciplinas.html">Disciplinas</button>
                 <button onclick="window.location.href='cronograma.html'" class="sidebarBtn" data-target="cronograma.html">Cronograma</button>
                 <button onclick="window.location.href='perfil.html'" class="sidebarBtn" data-target="perfil.html">Perfil e Config.</button>
