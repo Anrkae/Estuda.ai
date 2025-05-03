@@ -381,7 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         generatedQuestions = []; const promises = [];
         let generatedCount = 0; const totalDisciplinas = simuladoConfig.disciplinasSelecionadas.length;
 
-        addGenerationLog(`Iniciando busca por ${simuladoConfig.totalQuestoes} questões...`);
+        addGenerationLog(`Elaborando ${simuladoConfig.totalQuestoes} questões...`);
 
         simuladoConfig.disciplinasSelecionadas.forEach(disciplina => {
             const nome = disciplina.nome;
