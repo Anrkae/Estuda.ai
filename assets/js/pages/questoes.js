@@ -21,10 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupContent = document.getElementById('popupContent');
     const popupCloseButton = document.getElementById('popupCloseButton');
 
-    // === Configuração da API ===
+    // === Configuração da API OpenRouter ===
     // !!! ATENÇÃO: Mova a chave para um backend em produção !!!
-    const GEMINI_API_KEY = 'AIzaSyDfmegc9Aue6YlTphmcVV0p_I9rgsKVXKs'; // Sua chave Gemini
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${GEMINI_API_KEY}`;
+    const OPENROUTER_API_KEY = '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'; // Sua chave OpenRouter
+    const OPENROUTER_API_URL = `https://openrouter.ai/api/v1/chat/completions`;
+    // Escolha um modelo compatível com chat completions no OpenRouter.
+    // 'openai/gpt-3.5-turbo' é um bom ponto de partida, mas você pode testar outros.
+    // Veja a lista de modelos compatíveis em https://openrouter.ai/docs#models
+    const OPENROUTER_MODEL = 'openai/gpt-3.5-turbo';
+
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas';
 
@@ -35,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     let popupTimeoutId = null; // Para controlar o fechamento automático do popup
     let questionsDataStore = {}; // Armazena dados completos das questões (incluindo resolução)
+
 
     // === Função: Popular Dropdown de Disciplinas ===
     function populateDisciplinaDropdown() {
@@ -71,9 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     questoesOutput.addEventListener('click', (event) => {
         const target = event.target;
-        if (target.matches('.option-btn')) { if (!target.disabled) { handleOptionClick(target); } }
+        // Verifica se o clique foi no botão de opção, confirmar resposta ou ver resolução
+        if (target.matches('.option-btn, .option-btn *')) { // Permite clique no span interno da opção
+             const optionBtn = target.closest('.option-btn'); // Encontra o botão pai
+             if (optionBtn && !optionBtn.disabled) { handleOptionClick(optionBtn); }
+        }
         else if (target.matches('.confirm-answer-btn')) { if (!target.disabled) { handleConfirmAnswer(target); } }
-        else if (target.matches('.view-resolution-btn')) { if (!target.disabled) { handleViewResolution(target); } } // NOVO: Listener para botão de resolução
+        else if (target.matches('.view-resolution-btn')) { if (!target.disabled) { handleViewResolution(target); } }
     });
 
     window.addEventListener('beforeunload', handleBeforeUnload);
@@ -92,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Chamar a função para popular o dropdown ===
     populateDisciplinaDropdown();
+
 
     // === Funções Auxiliares de UI ===
     function showLoading(isLoading) {
@@ -180,15 +191,22 @@ document.addEventListener('DOMContentLoaded', () => {
      function handleBeforeUnload(event) { if (currentSessionStats.id && currentSessionStats.totalQuestions > 0) { console.log("beforeunload: Finalizando sessão ativa..."); finalizeSession(false); } }
 
     // === Função: Parsear o Texto da API ===
+    // Modificada para extrair metadados ([META_SOURCE], [META_YEAR])
     function parseGeneratedText(text, expectedType) {
         const questions = [];
+         // Inclui os novos marcadores na busca pelo início do conteúdo relevante
         const startIndex = Math.min(
             text.indexOf("[Q]") !== -1 ? text.indexOf("[Q]") : Infinity,
-            text.indexOf("[SEP]") !== -1 ? text.indexOf("[SEP]") : Infinity
+            text.indexOf("[SEP]") !== -1 ? text.indexOf("[SEP]") : Infinity,
+            text.indexOf("[META_SOURCE]") !== -1 ? text.indexOf("[META_SOURCE]") : Infinity, // NOVO
+            text.indexOf("[META_YEAR]") !== -1 ? text.indexOf("[META_YEAR]") : Infinity // NOVO
         );
         const relevantText = startIndex !== Infinity ? text.substring(startIndex) : text;
 
+
+        // Inclui os novos marcadores na regex de split por SEP
         const questionBlocks = relevantText.trim().split(/\s*\[SEP\]\s*/i).filter(block => block.trim() !== '' && block.trim().toUpperCase().startsWith('[Q]'));
+
 
         if (questionBlocks.length === 0 && relevantText.trim() !== '') {
              console.warn("Nenhum bloco [SEP] encontrado ou nenhum bloco começa com [Q]. Tentando tratar como questão única se começar com [Q].");
@@ -209,31 +227,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     correctAnswer: null,
                     type: expectedType,
                     answered: false,
-                    resolution: null, // NOVO: Campo para resolução
-                    image: null       // NOVO: Campo para imagem (URL ou descrição)
+                    resolution: null,
+                    image: null,
+                    metaSource: null, // NOVO: Campo para metadado Fonte/Assunto
+                    metaYear: null    // NOVO: Campo para metadado Ano
                 };
 
                 // Extrai o enunciado [Q]
-                const qMatch = block.match(/\[Q\]([\s\S]*?)(?:\[A\]|\[B\]|\[C\]|\[D\]|\[V\]|\[F\]|\[G\]|\[R\]|\[IMG\]|\[RES\]|$)/i);
+                // Inclui os novos marcadores na regex de parada para o enunciado
+                const qMatch = block.match(/\[Q\]([\s\S]*?)(?:\[META_SOURCE\]|\[META_YEAR\]|\[A\]|\[B\]|\[C\]|\[D\]|\[V\]|\[F\]|\[G\]|\[R\]|\[IMG\]|\[RES\]|$)/i);
                 if (qMatch && qMatch[1]) {
                     questionData.text = qMatch[1].trim();
                 } else {
-                     const linesBeforeOption = block.split(/\[A\]|\[B\]|\[C\]|\[D\]|\[V\]|\[F\]|\[G\]|\[R\]|\[IMG\]|\[RES\]/i)[0];
+                     // Fallback se os novos marcadores ou opções/etc não forem encontrados imediatamente após [Q]
+                     const linesBeforeOption = block.split(/\[META_SOURCE\]|\[META_YEAR\]|\[A\]|\[B\]|\[C\]|\[D\]|\[V\]|\[F\]|\[G\]|\[R\]|\[IMG\]|\[RES\]/i)[0];
                      questionData.text = linesBeforeOption.replace(/^\[Q\]/i, '').trim();
                      if (!questionData.text) {
-                         console.warn(`Bloco ${index+1}: Não encontrou [Q] nem texto antes das opções/resposta/imagem/resolução.`);
-                         throw new Error("Enunciado [Q] não encontrado ou vazio.");
+                         console.warn(`Bloco ${index+1}: Não encontrou [Q] nem texto antes dos marcadores.`);
+                         // Pode não ser um erro crítico se o [Q] estiver lá, mas o texto estiver vazio
                      }
                  }
 
-                // Extrai opções, resposta, imagem e resolução
+                // Extrai opções, resposta, imagem, resolução E METADADOS
                 const lines = block.trim().split('\n');
                 let foundCorrectAnswerMarker = false;
-                let foundResolutionMarker = false; // NOVO
+                let foundResolutionMarker = false;
 
                 lines.forEach(line => {
                     line = line.trim();
-                    if (/^\[A\]/i.test(line)) questionData.options['A'] = line.substring(3).trim();
+                    if (/^\[META_SOURCE\]/i.test(line)) { questionData.metaSource = line.substring(13).trim(); } // NOVO
+                    else if (/^\[META_YEAR\]/i.test(line)) { questionData.metaYear = line.substring(11).trim(); }   // NOVO
+                    else if (/^\[A\]/i.test(line)) questionData.options['A'] = line.substring(3).trim();
                     else if (/^\[B\]/i.test(line)) questionData.options['B'] = line.substring(3).trim();
                     else if (/^\[C\]/i.test(line)) questionData.options['C'] = line.substring(3).trim();
                     else if (/^\[D\]/i.test(line)) questionData.options['D'] = line.substring(3).trim();
@@ -245,51 +269,64 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (/^\[G\]/i.test(line)) {
                         questionData.suggestedAnswer = line.substring(3).trim(); // Mantido para dissertativa
                         foundCorrectAnswerMarker = true;
-                    } else if (/^\[IMG\]/i.test(line)) { // NOVO: Extrai Imagem
+                    } else if (/^\[IMG\]/i.test(line)) {
                         questionData.image = line.substring(5).trim();
-                    } else if (/^\[RES\]/i.test(line)) { // NOVO: Extrai Resolução
+                    } else if (/^\[RES\]/i.test(line)) {
                         questionData.resolution = line.substring(5).trim();
                         foundResolutionMarker = true;
                     }
                 });
 
-                // Validação específica do tipo
-                if (expectedType === 'multipla_escolha' || expectedType === 'verdadeiro_falso') {
-                    if (!foundCorrectAnswerMarker) throw new Error(`Marcador de resposta [R] não encontrado.`);
-                    if (!questionData.correctAnswer) throw new Error(`Valor da resposta [R] está vazio.`);
-                    if (Object.keys(questionData.options).length === 0) throw new Error(`Nenhuma opção ([A],[B]... ou [V],[F]) encontrada.`);
-                    if (!foundResolutionMarker) throw new Error(`Resolução [RES] não encontrada.`); // NOVO: Exige resolução
-                    if (!questionData.resolution) throw new Error(`Valor da resolução [RES] está vazio.`); // NOVO: Exige resolução
+                // Validação específica do tipo (mantida)
+                 if (expectedType === 'multipla_escolha' || expectedType === 'verdadeiro_falso') {
+                     if (!foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Marcador de resposta [R] não encontrado.`);
+                     if (!questionData.correctAnswer && foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Valor da resposta [R] está vazio.`);
+                     if (Object.keys(questionData.options).length === 0) console.warn(`Bloco ${index+1}: Nenhuma opção ([A],[B]... ou [V],[F]) encontrada.`);
+                     if (!foundResolutionMarker) console.warn(`Bloco ${index+1}: Resolução [RES] não encontrada.`);
+                     if (!questionData.resolution && foundResolutionMarker) console.warn(`Bloco ${index+1}: Valor da resolução [RES] está vazio.`);
 
                     if (expectedType === 'multipla_escolha') {
-                        const upperCaseCorrect = questionData.correctAnswer.toUpperCase();
-                        if (!['A', 'B', 'C', 'D'].includes(upperCaseCorrect)) throw new Error(`Resposta [R] "${questionData.correctAnswer}" inválida. Use A, B, C ou D.`);
-                        if (!questionData.options[upperCaseCorrect]) throw new Error(`Resposta [R] "${upperCaseCorrect}" não corresponde a nenhuma opção [${Object.keys(questionData.options).join(', ')}] fornecida.`);
-                        questionData.correctAnswer = upperCaseCorrect;
+                        const upperCaseCorrect = (questionData.correctAnswer || '').toUpperCase();
+                        if (foundCorrectAnswerMarker && !['A', 'B', 'C', 'D'].includes(upperCaseCorrect)) console.warn(`Bloco ${index+1}: Resposta [R] "${questionData.correctAnswer}" inválida. Use A, B, C ou D.`);
+                         if (foundCorrectAnswerMarker && questionData.options[upperCaseCorrect] === undefined) console.warn(`Bloco ${index+1}: Resposta [R] "${upperCaseCorrect}" não corresponde a nenhuma opção fornecida.`);
+                        if (foundCorrectAnswerMarker) questionData.correctAnswer = upperCaseCorrect; // Padroniza para maiúscula se encontrado
                     } else { // verdadeiro_falso
-                        const upperCaseCorrect = questionData.correctAnswer.toUpperCase();
+                        const upperCaseCorrect = (questionData.correctAnswer || '').toUpperCase();
                         if (upperCaseCorrect === 'VERDADEIRO' || upperCaseCorrect === 'V') questionData.correctAnswer = 'V';
                         else if (upperCaseCorrect === 'FALSO' || upperCaseCorrect === 'F') questionData.correctAnswer = 'F';
-                        else throw new Error(`Resposta [R] "${questionData.correctAnswer}" inválida para V/F. Use V ou F.`);
-                        if (questionData.options['V'] === undefined) questionData.options['V'] = 'Verdadeiro';
-                        if (questionData.options['F'] === undefined) questionData.options['F'] = 'Falso';
+                         else if (foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Resposta [R] "${questionData.correctAnswer}" inválida para V/F. Use V ou F.`);
+                        // Garante que as opções V/F existem se não vieram no prompt
+                         if (questionData.options['V'] === undefined) questionData.options['V'] = 'Verdadeiro';
+                         if (questionData.options['F'] === undefined) questionData.options['F'] = 'Falso';
                     }
                 } else if (expectedType === 'dissertativa_curta') {
-                    if (!foundCorrectAnswerMarker) throw new Error(`Gabarito [G] não encontrado.`);
-                    if (!questionData.suggestedAnswer) throw new Error(`Valor do gabarito [G] está vazio.`);
+                    if (!foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Gabarito [G] não encontrado.`);
+                    if (!questionData.suggestedAnswer && foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Valor do gabarito [G] está vazio.`);
                     // Resolução [RES] é opcional para dissertativa, mas se [RES] existir, o valor não pode ser vazio
-                    if (foundResolutionMarker && !questionData.resolution) throw new Error(`Valor da resolução [RES] está vazio.`);
+                    if (foundResolutionMarker && !questionData.resolution) console.warn(`Bloco ${index+1}: Valor da resolução [RES] está vazio.`);
                 }
 
-                questions.push(questionData);
+                 // Se o enunciado estiver vazio, marca como erro para não exibir uma questão sem texto
+                 if (!questionData.text) {
+                      console.error(`Erro ao processar bloco ${index + 1}: Enunciado [Q] vazio.`);
+                       questions.push({
+                           id: `q-error-${Date.now()}-${index}`,
+                           text: `Erro ao carregar esta questão: Enunciado vazio.`,
+                           type: 'error',
+                           options: {}, correctAnswer: null, resolution: null, image: null, metaSource: null, metaYear: null
+                       });
+                 } else if (questionData.type !== 'error') { // Só adiciona se não for já um erro e tiver enunciado
+                     questions.push(questionData);
+                 }
+
 
             } catch (error) {
                 console.error(`Erro ao processar bloco ${index + 1}:`, error, "\nBloco Original:\n---\n", block, "\n---");
                 questions.push({
                     id: `q-error-${Date.now()}-${index}`,
-                    text: `Erro ao carregar esta questão (${error.message}). Verifique o console para detalhes. Bloco: ${block.substring(0, 100)}...`,
+                    text: `Erro ao carregar esta questão (${error.message}). Verifique o console para detalhes. Bloco: ${block.substring(0, Math.min(block.length, 100))}...`,
                     type: 'error',
-                    options: {}, correctAnswer: null, resolution: null, image: null
+                    options: {}, correctAnswer: null, resolution: null, image: null, metaSource: null, metaYear: null
                 });
             }
         });
@@ -298,6 +335,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // === Função: Exibir Questões Parseadas ===
+    // Modificada para incluir a div de metadados.
     function displayParsedQuestions(questionsArray) {
          questoesOutput.innerHTML = '';
          questionsDataStore = {}; // Limpa antes de adicionar novas
@@ -319,24 +357,53 @@ document.addEventListener('DOMContentLoaded', () => {
                  questionDiv.dataset.selectedOption = '';
              }
 
+             // === NOVO: Adiciona a div de metadados se existirem ===
+             if (qData.metaSource || qData.metaYear) {
+                 const metaDiv = document.createElement('div');
+                 metaDiv.className = 'question-meta'; // Classe para estilizar a div container
+
+                 if (qData.metaSource) {
+                     const sourceSpan = document.createElement('span');
+                     sourceSpan.className = 'meta-source'; // Classe para estilizar a fonte
+                     sourceSpan.textContent = qData.metaSource;
+                     metaDiv.appendChild(sourceSpan);
+                 }
+
+                 if (qData.metaSource && qData.metaYear) {
+                      // Adiciona um separador se ambos existirem
+                      const separatorSpan = document.createElement('span');
+                      separatorSpan.className = 'meta-separator'; // Classe para estilizar o separador
+                      separatorSpan.textContent = ' - ';
+                      metaDiv.appendChild(separatorSpan);
+                 }
+
+                 if (qData.metaYear) {
+                     const yearSpan = document.createElement('span');
+                     yearSpan.className = 'meta-year'; // Classe para estilizar o ano
+                     yearSpan.textContent = qData.metaYear;
+                     metaDiv.appendChild(yearSpan);
+                 }
+
+                 questionDiv.appendChild(metaDiv); // Adiciona a div de meta antes do texto da questão
+             }
+             // === FIM: Adiciona a div de metadados ===
+
+
              const questionText = document.createElement('p');
              questionText.className = 'question-text';
              const sanitizedText = qData.text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
              questionText.innerHTML = `<strong>${index + 1}.</strong> ${sanitizedText.replace(/\n/g, '<br>')}`;
              questionDiv.appendChild(questionText);
 
-             // NOVO: Adiciona imagem se existir
+             // Adiciona imagem se existir
              if (qData.image) {
                  const imgElement = document.createElement('img');
                  imgElement.src = qData.image; // Assume que é uma URL válida
                  imgElement.alt = `Imagem para a questão ${index + 1}`;
                  imgElement.className = 'question-image';
-                 // Adiciona tratamento de erro básico para a imagem
                  imgElement.onerror = () => {
                      console.warn(`Erro ao carregar imagem: ${qData.image} para questão ${qData.id}`);
                      imgElement.alt = `Erro ao carregar imagem para a questão ${index + 1}`;
-                     // Opcional: Esconder a imagem ou mostrar um placeholder
-                     // imgElement.style.display = 'none';
                  };
                  questionDiv.appendChild(imgElement);
              }
@@ -357,16 +424,22 @@ document.addEventListener('DOMContentLoaded', () => {
                          optionButton.className = 'option-btn';
                          optionButton.dataset.value = key;
                          const sanitizedOptionText = (qData.options[key] || '').replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                         let buttonText = '';
+
+                         const letterHTML = `<span class="option-letter">${key})</span>`;
+                         let contentText = '';
+
                          if (qData.type === 'verdadeiro_falso') {
-                             buttonText = (key === 'V') ? 'Verdadeiro' : 'Falso';
-                             if(sanitizedOptionText && sanitizedOptionText !== 'Verdadeiro' && sanitizedOptionText !== 'Falso') {
-                                 buttonText += `: ${sanitizedOptionText}`;
-                             }
-                         } else {
-                             buttonText = `${key}) ${sanitizedOptionText}`;
+                             const label = (key === 'V') ? 'Verdadeiro' : 'Falso';
+                             const text = sanitizedOptionText && sanitizedOptionText !== 'Verdadeiro' && sanitizedOptionText !== 'Falso' ? `: ${sanitizedOptionText}` : '';
+                             contentText = `${label}${text}`;
+                         } else { // Multipla Escolha
+                             contentText = sanitizedOptionText;
                          }
-                         optionButton.textContent = buttonText;
+
+                         const contentHTML = `<span class="option-content">${contentText.replace(/\n/g, '<br>')}</span>`;
+
+                         optionButton.innerHTML = letterHTML + contentHTML;
+
                          optionsContainer.appendChild(optionButton);
                      }
                  });
@@ -386,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
              }
              questionDiv.appendChild(optionsContainer);
 
-             // Feedback Area (agora contém feedback, botão responder E botão resolução)
+             // Feedback Area
              const feedbackArea = document.createElement('div');
              feedbackArea.className = 'feedback-area';
 
@@ -395,7 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
              feedbackDiv.style.display = 'none';
              feedbackArea.appendChild(feedbackDiv);
 
-             // Botão Responder (apenas para múltipla escolha e V/F)
+             // Botão Responder
              if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
                  const confirmButton = document.createElement('button');
                  confirmButton.className = 'confirm-answer-btn';
@@ -404,30 +477,30 @@ document.addEventListener('DOMContentLoaded', () => {
                  feedbackArea.appendChild(confirmButton);
              }
 
-             // NOVO: Botão Ver Resolução (para todos os tipos, exceto erro)
-             if (qData.resolution) { // Só adiciona se houver resolução
+             // Botão Ver Resolução
+             if (qData.resolution) {
                  const resolutionButton = document.createElement('button');
                  resolutionButton.className = 'view-resolution-btn';
                  resolutionButton.textContent = 'Ver Resolução';
-                 resolutionButton.dataset.questionId = qData.id; // Liga botão à questão
-                 resolutionButton.style.display = 'none'; // Começa escondido
+                 resolutionButton.dataset.questionId = qData.id;
+                 resolutionButton.style.display = 'none';
                  feedbackArea.appendChild(resolutionButton);
              }
 
              questionDiv.appendChild(feedbackArea);
 
-             // NOVO: Área para exibir a resolução (começa vazia e escondida)
+             // Área para exibir a resolução
              if (qData.resolution) {
                  const resolutionDiv = document.createElement('div');
                  resolutionDiv.className = 'resolution-area';
                  resolutionDiv.style.display = 'none';
-                 // O conteúdo será adicionado ao clicar no botão
                  questionDiv.appendChild(resolutionDiv);
              }
 
              questoesOutput.appendChild(questionDiv);
          });
     }
+
 
     // === Função: Lidar com Clique na OPÇÃO (Seleciona, não confirma) ===
     function handleOptionClick(clickedButton) {
@@ -437,11 +510,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // === Função: Lidar com Clique no Botão RESPONDER (Confirma a resposta) ===
     function handleConfirmAnswer(confirmButton) {
          console.log("handleConfirmAnswer triggered for button:", confirmButton); const questionDiv = confirmButton.closest('.question-item'); console.log("Associated questionDiv:", questionDiv); if (!questionDiv) { console.error("Não foi possível encontrar o .question-item pai do botão."); return; } const userAnswer = questionDiv.dataset.selectedOption; const isAnswered = questionDiv.dataset.answered === 'true'; console.log("Checking conditions: ", { userAnswer: userAnswer, isAnswered: isAnswered, sessionId: currentSessionStats.id }); if (!userAnswer || isAnswered) { console.warn("Tentativa de confirmar resposta inválida: Nenhuma opção selecionada ou questão já respondida.", { selectedOption: userAnswer, isAnswered: isAnswered }); confirmButton.style.opacity = '0.5'; setTimeout(() => { confirmButton.style.opacity = '1'; }, 300); return; } if (!currentSessionStats.id) { console.warn("Tentativa de responder sem sessão ativa."); showStatus("Erro: Sessão não iniciada.", "error"); return; } console.log("Passed initial checks. Proceeding with answer evaluation..."); const correctAnswer = questionDiv.dataset.correctAnswer; const isCorrect = userAnswer === correctAnswer; const feedbackDiv = questionDiv.querySelector('.feedback-message'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const originallySelectedButton = Array.from(allOptionButtons).find(btn => btn.dataset.value === userAnswer);
-         const resolutionButton = questionDiv.querySelector('.view-resolution-btn'); // NOVO: Pega o botão de resolução
+         const resolutionButton = questionDiv.querySelector('.view-resolution-btn');
 
          console.log(`Confirmando resposta para ${questionDiv.id}: User=${userAnswer}, Correct=${correctAnswer}, IsCorrect=${isCorrect}`); questionDiv.dataset.answered = 'true'; questionDiv.classList.add('answered'); questionDiv.classList.add(isCorrect ? 'correct' : 'incorrect'); allOptionButtons.forEach(btn => { btn.disabled = true; btn.classList.remove('selected-preview'); if (btn === originallySelectedButton) { btn.classList.add('selected'); } if (btn.dataset.value === correctAnswer) { btn.classList.add('correct-answer-highlight'); } }); confirmButton.disabled = true; if (feedbackDiv) { feedbackDiv.textContent = isCorrect ? 'Resposta Correta!' : `Incorreto. A resposta correta é: ${correctAnswer}`; feedbackDiv.style.display = 'block'; } else { console.warn("Elemento .feedback-message não encontrado para", questionDiv.id); }
 
-         // NOVO: Mostra o botão 'Ver Resolução' após responder
          if (resolutionButton) {
              resolutionButton.style.display = 'inline-flex';
              console.log(`Botão 'Ver Resolução' exibido para ${questionDiv.id}`);
@@ -450,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
          currentSessionStats.answeredCount++; if (isCorrect) { currentSessionStats.correctCount++; } console.log('Sessão atual:', currentSessionStats); if (window.timerPopupAPI && typeof window.timerPopupAPI.updateStats === 'function') { try { window.timerPopupAPI.updateStats( currentSessionStats.answeredCount, currentSessionStats.correctCount ); } catch(e) { console.error("Erro ao chamar updateStats:", e); } } else { console.warn('API do Timer Popup (updateStats) não encontrada.'); } if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) { console.log("Todas as questões foram respondidas!"); showStatus("Simulado concluído! Verifique o painel de tempo.", "success"); finalizeSession(true); }
      }
 
-    // === NOVO: Função para Lidar com Clique no Botão VER RESOLUÇÃO ===
+    // === Função para Lidar com Clique no Botão VER RESOLUÇÃO ===
     function handleViewResolution(resolutionButton) {
         const questionId = resolutionButton.dataset.questionId;
         const questionDiv = document.getElementById(questionId);
@@ -463,20 +535,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Preenche e mostra a área de resolução
-        // Sanitiza a resolução antes de inserir como HTML
         const sanitizedResolution = questionData.resolution.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         resolutionArea.innerHTML = `<strong>Resolução:</strong><br>${sanitizedResolution.replace(/\n/g, '<br>')}`;
         resolutionArea.style.display = 'block';
 
-        // Opcional: Desabilitar ou esconder o botão após clique
         resolutionButton.disabled = true;
-        // resolutionButton.style.display = 'none';
 
         console.log(`Resolução exibida para ${questionId}`);
     }
 
     // === Função Principal: Gerar Questões ===
+    // Modificada para incluir instrução para metadados no prompt.
     async function handleGenerateQuestions() {
         hidePopup();
         if (currentSessionStats.id) {
@@ -489,38 +558,55 @@ document.addEventListener('DOMContentLoaded', () => {
         const disciplinaSelecionada = disciplinaSelect.value;
         const numQuestoes = parseInt(numQuestoesInput.value, 10);
         const tipoQuestao = tipoQuestaoSelect.value;
-        const nivelQuestao = nivelQuestaoSelect.value;
+        const nivelQuestao = nivelQuestaoSelect.value; // Valor selecionado no dropdown de dificuldade
 
         if (!assunto) { assuntoInput.focus(); return showError("Por favor, informe o Assunto Principal."); }
         if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) { numQuestoesInput.focus(); return showError("Número de questões inválido (1-20)."); }
         if (!nivelQuestao) { nivelQuestaoSelect.focus(); return showError("Por favor, selecione o Nível das questões."); }
-        if (!GEMINI_API_KEY || !GEMINI_API_KEY.startsWith('AIza') || GEMINI_API_KEY.length < 30) { return showError("Erro Crítico: Chave da API Gemini inválida ou ausente."); }
+        // Validação da chave OpenRouter
+        if (!OPENROUTER_API_KEY || !OPENROUTER_API_KEY.startsWith('sk-or-v1-')) { return showError("Erro Crítico: Chave da API OpenRouter inválida ou ausente."); }
+        if (!OPENROUTER_MODEL) { return showError("Erro Crítico: Modelo da API OpenRouter não configurado."); }
 
         const disciplinaParaSessao = disciplinaSelecionada || "Geral";
 
-        console.log(`Iniciando geração... Assunto: ${assunto}, Nível: ${nivelQuestao}`);
+        console.log(`Iniciando geração... Assunto: ${assunto}, Nível: ${nivelQuestao}, Modelo: ${OPENROUTER_MODEL}`);
         showLoading(true);
         clearOutput();
 
-        // 4. Construir Prompt (Atualizado para Imagem e Resolução)
+        // === Construir Prompt (Atualizado para incluir instrução para metadados) ===
         let prompt = `Gere ${numQuestoes} questão(ões) EXCLUSIVAMENTE sobre o Assunto Principal "${assunto}".\n`;
         if (disciplinaSelecionada) prompt += `Considere o contexto da Disciplina: "${disciplinaSelecionada}".\n`;
-        prompt += `Nível de dificuldade desejado: ${nivelQuestao}.\n`;
+        prompt += `GENERE AS QUESTÕES COM NÍVEL DE DIFICULDADE ESTRITAMENTE: ${nivelQuestao.toUpperCase()}.\n`;
+        prompt += `A complexidade, vocabulário e conceitos abordados devem ser consistentes com o nível ${nivelQuestao.toUpperCase()}.\n`;
         if (bibliografia) prompt += `Use a seguinte Bibliografia como inspiração/referência (se aplicável ao assunto): "${bibliografia}".\n`;
         prompt += `Tipo de questão desejada: ${tipoQuestao === 'multipla_escolha' ? 'Múltipla Escolha (A, B, C, D)' : tipoQuestao === 'verdadeiro_falso' ? 'Verdadeiro/Falso (V/F)' : 'Dissertativa Curta'}.\n`;
+
+        // --- INSTRUÇÃO PARA METADADOS ---
+        prompt += `Para cada questão, inclua os seguintes metadados IMEDIATAMENTE APÓS o marcador [Q] e ANTES de quaisquer outros marcadores ([A], [B], [V], [F], [G], [R], [IMG], [RES]).\n`;
+        prompt += `- Fonte/Assunto: Use EXATAMENTE o formato "[META_SOURCE] Texto da fonte ou assunto". Use algo relevante como "Disciplina: ${disciplinaParaSessao}", "Assunto: ${assunto}", ou "Simulado ENEM", "Prova OAB", etc., se aplicável e se o modelo puder inferir do contexto/assunto.\n`;
+        prompt += `- Ano de Geração/Referência: Use EXATAMENTE o formato "[META_YEAR] Ano". Sugira o ano atual ou um ano de referência relevante, se aplicável.\n`;
+         const currentYear = new Date().getFullYear();
+        prompt += `Utilize o ano atual (${currentYear}) como padrão, a menos que o assunto ou contexto sugira fortemente um ano específico.\n`;
+        // ----------------------------------
+
         prompt += `Formato de saída OBRIGATÓRIO:\n`;
-        prompt += `- Separe CADA questão completa (enunciado, imagem?, opções/gabarito, resposta, resolução) usando APENAS "[SEP]" como separador.\n`;
+        prompt += `- Separe CADA questão completa (enunciado, metadados, imagem?, opções/gabarito, resposta, resolução) usando APENAS "[SEP]" como separador.\n`;
         prompt += `- Dentro de cada bloco de questão:\n`;
         prompt += `  - Inicie o enunciado OBRIGATORIAMENTE com "[Q] ".\n`;
-        prompt += `  - (Opcional) Se a questão NECESSITAR de uma imagem para ser compreendida (ex: gráfico, mapa, figura geométrica), adicione uma URL pública da imagem (preferencialmente) ou uma descrição detalhada da imagem que você geraria, usando EXATAMENTE o formato "[IMG] URL_ou_descrição_detalhada". Use isso RARAMENTE, apenas quando essencial.\n`;
+        // Metadados vêm AQUI no formato [META_SOURCE]... e [META_YEAR]...
+        prompt += `  - (Opcional) Se a questão NECESSITAR de uma imagem... use EXATAMENTE o formato "[IMG] URL_ou_descrição_detalhada". Use isso RARAMENTE...\n`;
         switch (tipoQuestao) {
-            case 'multipla_escolha': prompt += `  - Para CADA alternativa, use EXATAMENTE o formato "[A] texto da alternativa A", "[B] texto da B", etc. (Use A, B, C, D).\n  - Indique a resposta correta usando "[R] " seguido APENAS pela LETRA maiúscula correta (A, B, C ou D). Ex: "[R] C".\n`; break;
-            case 'verdadeiro_falso': prompt += `  - Forneça a afirmação no enunciado [Q].\n  - Use "[V]" (pode adicionar justificativa curta após) ou deixe vazio.\n  - Use "[F]" (pode adicionar justificativa curta após) ou deixe vazio.\n  - Indique a resposta correta usando "[R] " seguido APENAS por "V" ou "F". Ex: "[R] V".\n`; break;
-            case 'dissertativa_curta': prompt += `  - Forneça uma resposta/gabarito curto e direto usando "[G] ". Ex: "[G] Pedro Álvares Cabral.".\n`; break;
+            case 'multipla_escolha': prompt += `  - Para CADA alternativa, use EXATAMENTE o formato "[A] texto...".\n  - Indique a resposta correta usando "[R] " seguido APENAS pela LETRA maiúscula (A, B, C ou D).\n`; break;
+            case 'verdadeiro_falso': prompt += `  - Forneça a afirmação no enunciado [Q].\n  - Use "[V]" ou deixe vazio.\n  - Use "[F]" ou deixe vazio.\n  - Indique a resposta correta usando "[R] " seguido APENAS por "V" ou "F".\n`; break;
+            case 'dissertativa_curta': prompt += `  - Forneça uma resposta/gabarito curto e direto usando "[G] ".\n`; break;
         }
-        prompt += `  - Forneça uma resolução/explicação DETALHADA para a questão (mesmo para dissertativas), usando OBRIGATORIAMENTE o formato "[RES] Texto da explicação detalhada...". A explicação deve justificar a resposta correta e, se aplicável, por que as outras estão incorretas.\n`;
-        prompt += `Exemplo Múltipla Escolha com Resolução:
+        prompt += `  - Forneça uma resolução/explicação DETALHADA... usando OBRIGATORIAMENTE o formato "[RES] Texto...".\n`;
+
+        // --- Exemplos atualizados para incluir metadados ---
+        prompt += `Exemplo Múltipla Escolha com Metadados e Resolução (nível fácil):
 [Q] Qual a capital da França?
+[META_SOURCE] Geografia - Capitais
+[META_YEAR] ${currentYear}
 [A] Londres
 [B] Berlim
 [C] Paris
@@ -529,27 +615,90 @@ document.addEventListener('DOMContentLoaded', () => {
 [RES] Paris é a capital e maior cidade da França, localizada no norte do país, às margens do rio Sena. Londres é a capital da Inglaterra, Berlim da Alemanha e Madri da Espanha.
 [SEP]
 `;
-        prompt += `Exemplo V/F com Imagem e Resolução:
+        prompt += `Exemplo V/F com Metadados, Imagem e Resolução (nível médio):
 [Q] A imagem abaixo mostra um triângulo equilátero?
+[META_SOURCE] Matemática - Geometria Plana
+[META_YEAR] ${currentYear}
 [IMG] https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Regular_triangle.svg/200px-Regular_triangle.svg.png
 [V]
 [F]
 [R] V
-[RES] Sim, a imagem mostra um triângulo equilátero, que possui todos os três lados de igual comprimento e todos os três ângulos internos iguais a 60 graus.
+[RES] Sim, a imagem mostra um triângulo equilátero, que possui todos os três lados de igual comprimento e todos os três ângulos internos iguais a 60 graus. Um triângulo isósceles tem apenas dois lados iguais, e um escaleno tem todos os lados diferentes.
 [SEP]
 `;
+        // -----------------------------------------------------
+
         prompt += `
-IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [IMG], [A], [B], [C], [D], [V], [F], [R], [G], [RES], [SEP]). NÃO adicione NENHUMA outra formatação, numeração automática, texto introdutório ou comentários fora do formato especificado. Gere APENAS o texto das questões conforme solicitado. Certifique-se de que TODAS as questões de múltipla escolha e V/F tenham o marcador [RES] com uma explicação.`;
+IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_SOURCE], [META_YEAR], [IMG], [A], [B], [C], [D], [V], [F], [R], [G], [RES], [SEP]). NÃO adicione NENHUMA outra formatação, numeração automática, texto introdutório ou comentários fora do formato especificado. Gere APENAS o texto das questões conforme solicitado. Certifique-se de que TODAS as questões de múltipla escolha e V/F tenham o marcador [RES] com uma explicação.`;
+
 
         try {
-            const requestBody = { contents: [{ parts: [{ text: prompt }] }], generationConfig: { "temperature": 0.7, "maxOutputTokens": 450 * numQuestoes + 300 }, safetySettings: [ {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"}, {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"}, {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"}, {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"} ]};
-            const response = await fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(requestBody) });
-             if (!response.ok) { let errorBodyText = await response.text(); console.error("Raw API Error Response:", errorBodyText); let errorBody = {}; try { errorBody = JSON.parse(errorBodyText); } catch (e) {} const detailMessage = errorBody?.error?.message || `Erro HTTP ${response.status}`; if (detailMessage.includes("API key not valid")) { throw new Error("Falha na API Gemini: A Chave da API configurada não é válida."); } else { throw new Error(`Falha na comunicação com a API Gemini: ${detailMessage}`); } }
-            const data = await response.json();
-            if (data.promptFeedback?.blockReason) { console.error("Conteúdo bloqueado pela API:", data.promptFeedback); let blockDetails = `Motivo: ${data.promptFeedback.blockReason}`; if(data.promptFeedback.safetyRatings?.length > 0) { const blockedCategory = data.promptFeedback.safetyRatings.find(r => r.blocked)?.category; if (blockedCategory) blockDetails += ` - Categoria: ${blockedCategory}`; } showError(`A solicitação foi bloqueada por filtros de segurança (${blockDetails}). Tente reformular.`); return; }
-            if (!data.candidates || data.candidates.length === 0 || !data.candidates[0].content?.parts?.length > 0 || !data.candidates[0].content.parts[0].text) { console.error("Resposta inesperada da API (sem candidatos/conteúdo válido):", data); showError("Erro: A API retornou uma resposta vazia ou em formato inesperado."); return; }
+            // === Corpo da requisição para OpenRouter (formato OpenAI Chat Completions) ===
+            const requestBody = {
+                model: OPENROUTER_MODEL,
+                messages: [
+                    {
+                        role: "user",
+                        content: prompt
+                    }
+                ],
+                temperature: 0.7,
+                max_tokens: 450 * numQuestoes + 300,
+            };
 
-            const rawTextFromAPI = data.candidates[0].content.parts[0].text;
+            // === Requisição Fetch para OpenRouter ===
+            const response = await fetch(OPENROUTER_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+                    'HTTP-Referer': window.location.href,
+                    'X-Title': 'Meu App de Questões'
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+             if (!response.ok) {
+                 let errorBodyText = await response.text();
+                 console.error("Raw OpenRouter API Error Response:", errorBodyText);
+                 let errorBody = {};
+                 try { errorBody = JSON.parse(errorBodyText); } catch (e) { console.error("Erro ao parsear erro JSON:", e); }
+
+                 const detailMessage = errorBody?.error?.message || `Erro HTTP ${response.status}`;
+
+                 if (response.status === 401 || response.status === 403) {
+                      throw new Error("Falha na API OpenRouter: A Chave da API configurada não é válida ou não tem permissão.");
+                 } else if (response.status === 429) {
+                      throw new Error(`Falha na API OpenRouter: Limite de requisições atingido. Tente novamente mais tarde. ${detailMessage}`);
+                 }
+                 else {
+                      throw new Error(`Falha na comunicação com a API OpenRouter: ${detailMessage}`);
+                 }
+             }
+
+            const data = await response.json();
+            console.log("Resposta completa da API OpenRouter:", data);
+
+             if (data.error) {
+                  console.error("Erro retornado pela API OpenRouter:", data.error);
+                  const errorMessage = data.error.message || data.error.type || 'Erro desconhecido retornado pela API.';
+                  showError(`Erro da API OpenRouter: ${errorMessage}`);
+                  resetSessionState();
+                  showLoading(false);
+                  return;
+             }
+
+            if (!data.choices || data.choices.length === 0 || !data.choices[0].message?.content) {
+                console.error("Resposta inesperada da API OpenRouter (sem choices ou conteúdo válido):", data);
+                showError("Erro: A API OpenRouter retornou uma resposta vazia ou em formato inesperado.");
+                resetSessionState();
+                showLoading(false);
+                return;
+            }
+
+            const rawTextFromAPI = data.choices[0].message.content;
+            console.log("Texto cru extraído da API:", rawTextFromAPI);
+
             const questionsArray = parseGeneratedText(rawTextFromAPI, tipoQuestao);
             displayParsedQuestions(questionsArray);
 
@@ -579,20 +728,27 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [IMG],
 
                 if (generatorBlock && !generatorBlock.classList.contains('minimizado')) {
                     console.log("Minimizando bloco do gerador...");
-                    generatorBlock.classList.add('minimizado');
-                    const toggleBtn = generatorBlock.querySelector('.botao-minimizar');
-                    const toggleIcon = toggleBtn ? toggleBtn.querySelector('i') : null;
-                    if (toggleIcon) {
-                        toggleIcon.classList.remove('fa-minus');
-                        toggleIcon.classList.add('fa-plus');
-                        if (toggleBtn) toggleBtn.setAttribute('aria-label', 'Expandir');
-                    }
+                    const minimizeButton = generatorBlock.querySelector('.botao-minimizar');
+                     if (minimizeButton) {
+                         minimizeButton.click();
+                     } else {
+                         generatorBlock.classList.add('minimizado');
+                         const toggleIcon = generatorBlock.querySelector('.botao-minimizar i');
+                         if (toggleIcon) {
+                             toggleIcon.classList.remove('fa-minus');
+                             toggleIcon.classList.add('fa-plus');
+                             if (generatorBlock.querySelector('.botao-minimizar')) {
+                                 generatorBlock.querySelector('.botao-minimizar').setAttribute('aria-label', 'Expandir');
+                             }
+                         }
+                     }
                 }
 
                 setTimeout(() => {
-                    window.scroll({ top: 0, behavior: 'smooth' });
-                    console.log("Rolando para o topo da página...");
+                     questoesOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                     console.log("Rolando para o topo da área de questões...");
                 }, 100);
+
 
             } else {
                  if (questionsArray.length > 0 && questionsArray.every(q => q.type === 'error')) {
@@ -605,9 +761,15 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [IMG],
                  resetSessionState();
              }
 
-            const finishReason = data.candidates[0].finishReason;
-             if (finishReason && finishReason !== 'STOP' && finishReason !== 'MAX_TOKENS') { console.warn("Geração da API pode ter sido interrompida:", finishReason); showStatus(`Atenção: Geração pode ter sido interrompida (${finishReason}).`, 'warning'); }
-             else if (finishReason === 'MAX_TOKENS' && totalValidQuestions < numQuestoes) { console.warn("Geração interrompida por MAX_TOKENS."); showStatus(`Atenção: Limite de texto atingido. ${totalValidQuestions} de ${numQuestoes} questões geradas.`, 'warning'); }
+            const finishReason = data.choices[0].finish_reason;
+             if (finishReason && finishReason !== 'stop' && finishReason !== 'length') {
+                 console.warn("Geração da API pode ter sido interrompida:", finishReason);
+                 showStatus(`Atenção: Geração pode ter sido interrompida (${finishReason}).`, 'warning');
+             } else if (finishReason === 'length' && totalValidQuestions < numQuestoes) {
+                 console.warn("Geração interrompida por MAX_TOKENS (length).");
+                 showStatus(`Atenção: Limite de texto atingido. ${totalValidQuestions} de ${numQuestoes} questões geradas.`, 'warning');
+             }
+
 
         } catch (error) {
             console.error("Falha na requisição ou processamento:", error);
