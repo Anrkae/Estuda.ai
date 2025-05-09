@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Configuração da API OpenRouter ===
     // !!! ATENÇÃO: Mova a chave para um backend em produção !!!
-    const OPENROUTER_API_KEY = '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'; // Sua chave OpenRouter
+    const OPENROUTER_API_KEY = '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'; // Sua chave OpenRouter
     const OPENROUTER_API_URL = `https://openrouter.ai/api/v1/chat/completions`;
     // Escolha um modelo compatível com chat completions no OpenRouter.
     // 'openai/gpt-3.5-turbo' é um bom ponto de partida, mas você pode testar outros.
