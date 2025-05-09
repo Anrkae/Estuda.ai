@@ -23,12 +23,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Configuração da API OpenRouter ===
     // !!! ATENÇÃO: Mova a chave para um backend em produção !!!
-    const OPENROUTER_API_KEY = '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'; // Sua chave OpenRouter
+    const OPENROUTER_API_KEY = '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'; // Sua chave OpenRouter
     const OPENROUTER_API_URL = `https://openrouter.ai/api/v1/chat/completions`;
     // Escolha um modelo compatível com chat completions no OpenRouter.
     // 'openai/gpt-3.5-turbo' é um bom ponto de partida, mas você pode testar outros.
     // Veja a lista de modelos compatíveis em https://openrouter.ai/docs#models
-    const OPENROUTER_MODEL = 'openai/gpt-3.5-turbo';
+    const OPENROUTER_MODEL = 'deepseek/deepseek-prover-v2:free';
 
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas';
