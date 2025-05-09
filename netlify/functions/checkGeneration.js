@@ -1,19 +1,11 @@
 // netlify/functions/checkGeneration.js
+const { Redis } = require('@upstash/redis');
 
-// --- Placeholder para Armazenamento de Estado (NÃO USE ISSO EM PRODUÇÃO) ---
-// Precisa ser o MESMO mecanismo de armazenamento que startGeneration.js acessa.
-// Em produção, use um banco de dados real, K/V store (como Upstash Redis, FaunaDB, etc.)
-// IMPORTANTE: Este objeto será limpo a cada nova instância da função!
-const taskStorage = {}; // <<< ISSO NÃO FUNCIONA ENTRE INSTÂNCIAS DIFERENTES DA FUNÇÃO! USE SERVIÇO EXTERNO REAL! >>>
-
-async function getTaskState(taskId) {
-     console.log(`[STORAGE] Getting state for ${taskId}`);
-     // >>> SUBSTITUIR POR LÓGICA DE BANCO DE DADOS/ARMAZENAMENTO EXTERNO REAL <<<
-     // Ex: return await yourDatabaseService.get(taskId);
-     return taskStorage[taskId]; // Simulação - LEMBRE: NÃO FUNCIONA ENTRE INSTÂNCIAS REAIS
-     // <<< FIM SUBSTITUIÇÃO >>>
-}
-// --- Fim Placeholder de Armazenamento ---
+// --- Configuração Upstash Redis ---
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_URL,
+  token: process.env.UPSTASH_REDIS_TOKEN,
+});
 
 // === Handler da Função Check Generation ===
 exports.handler = async function(event, context) {
@@ -21,7 +13,13 @@ exports.handler = async function(event, context) {
         return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
     }
 
-    // Obtém o ID da tarefa dos parâmetros da URL
+     // Verifica se as credenciais do Redis estão configuradas
+     if (!process.env.UPSTASH_REDIS_URL || !process.env.UPSTASH_REDIS_TOKEN) {
+         console.error("Credenciais Upstash Redis não configuradas!");
+         return { statusCode: 500, body: JSON.stringify({ error: 'Erro de configuração do servidor: Credenciais de armazenamento não encontradas.' }) };
+     }
+
+
     const taskId = event.queryStringParameters.taskId;
 
     if (!taskId) {
@@ -29,21 +27,23 @@ exports.handler = async function(event, context) {
     }
 
     try {
-        // === Consulta o estado da tarefa ===
-        const task = await getTaskState(taskId);
+        // === Consulta o estado da tarefa no Redis ===
+        // Lê a chave task:taskId
+        const taskString = await redis.get(`task:${taskId}`);
 
-        if (!task) {
-            // Tarefa não encontrada (ID inválido ou expirou no armazenamento)
-            console.warn(`Task ID ${taskId} not found in storage.`);
+        if (!taskString) {
+            // Tarefa não encontrada no Redis (ID inválido, expirou ou worker falhou ao salvar)
+            console.warn(`Task ID task:${taskId} not found in Redis.`);
             return {
-                statusCode: 404, // Not Found
+                statusCode: 404,
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ status: 'NOT_FOUND', message: 'Task not found or expired.' })
             };
         }
 
+        const task = JSON.parse(taskString);
+
         // === Retorna o estado atual da tarefa ===
-        // Inclui os dados se a tarefa estiver completa ou a mensagem de erro se falhou
         return {
             statusCode: 200,
             headers: { 'Content-Type': 'application/json' },
@@ -55,10 +55,11 @@ exports.handler = async function(event, context) {
         };
 
     } catch (error) {
-        console.error(`Erro interno do servidor ao verificar status da tarefa ${taskId}:`, error);
+        console.error(`Erro interno do servidor ao verificar status da tarefa ${taskId} no Redis:`, error);
          return {
              statusCode: 500,
              body: JSON.stringify({ status: 'ERROR', message: 'Erro interno ao verificar status da tarefa.' })
          };
     }
 };
+
