@@ -1,14 +1,15 @@
 {
-  "name": "estuda-ai-backend",
+  "name": "sua-ferramenta-de-estudo-backend",
   "version": "1.0.0",
-  "description": "Backend functions for study tool",
-  "main": "netlify/functions/generateQuestions.js",
+  "description": "Backend functions for study tool with async polling",
+  "main": "netlify/functions/startGeneration.js", // Pode apontar para a função principal, ou não ser necessário
   "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1"},
+    "test": "echo \"Error: no test specified\" && exit 1"},
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "uuid": "^9.0.0"
   }
 }
