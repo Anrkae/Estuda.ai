@@ -21,8 +21,8 @@ body {
 }
 
 .tituloBtn h2 {
-    padding: 5px !important;
-    margin: 5px !important;
+    padding: 5px;
+    margin: 5px;
     text-align: center;
     margin-top: 25px;
     color: #2C2C2C;
@@ -37,11 +37,16 @@ body {
 }
 
 /* --- Áreas de Input, Opções, Ação e Saída --- */
-.input-area, .options-area, .action-area, .output-area {
+.input-area,
+.options-area,
+.action-area,
+.output-area {
     margin-bottom: 10px;
 }
 
-.input-area label, .options-area label, .output-area label {
+.input-area label,
+.options-area label,
+.output-area label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
@@ -49,11 +54,11 @@ body {
     font-size: 0.95em;
 }
 
-/* Inputs e Selects */
+/* Inputs e Selects Base */
 .input-area textarea,
 .options-area input[type="text"],
 .options-area input[type="number"],
-.options-area select { /* Aplica a TODOS os selects na área de opções */
+.options-area select {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ccc;
@@ -65,14 +70,16 @@ body {
     font-size: 1em;
     color: #333;
 }
+
 .input-area textarea {
     resize: vertical;
     min-height: 40px;
 }
 
-/* Efeito de Foco */
+/* Efeito de Foco para Inputs, Textareas e Selects */
 .input-area textarea:focus,
-.options-area input:focus,
+.options-area input[type="text"]:focus,
+.options-area input[type="number"]:focus,
 .options-area select:focus {
     border-color: #673ab7;
     outline: none;
@@ -82,9 +89,7 @@ body {
 /* Grid para Opções */
 .options-area {
     display: grid;
-    /* Ajustado para acomodar potencialmente 4 itens (Disciplina, Numero, Tipo, Nivel) */
-    /* Mantém responsivo, mas pode preferir 2 colunas em telas médias */
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Minmax um pouco menor */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
     align-items: end;
 }
@@ -100,11 +105,11 @@ body {
     margin-top: 20px;
 }
 
+/* Estilo Base para Botões de Ação e Controle */
 .action-area button,
 .confirm-answer-btn,
 #finalizeButton,
-.view-resolution-btn /* NOVO: Estilo base para botão de resolução */
-{
+.view-resolution-btn {
     padding: 10px 18px;
     border: none;
     border-radius: 6px;
@@ -119,46 +124,38 @@ body {
     gap: 8px;
     line-height: 1.2;
 }
+
+/* Estilo Base para Botões de Ação e Controle (Estado Ativo) */
 .action-area button:active,
 .confirm-answer-btn:active:not(:disabled),
 #finalizeButton:active:not(:disabled),
-.view-resolution-btn:active:not(:disabled) /* NOVO */
- {
+.view-resolution-btn:active:not(:disabled) {
     transform: scale(0.98);
 }
 
+/* Estilo Específico Botão Gerar */
 #generateButton {
     background-color: #673ab7;
     color: white;
     padding: 12px 22px;
     font-size: 1em;
 }
+
 #generateButton:hover:not(:disabled) {
     background-color: #5e35b1;
 }
-#generateButton:disabled {
-     background-color: #bdbdbd;
-     cursor: not-allowed;
-     color: #757575;
-     opacity: 0.7;
-}
 
-/* Estilo Botão Finalizar Global */
+/* Estilo Específico Botão Finalizar Global */
 #finalizeButton {
     background-color: #f44336;
     color: white;
 }
+
 #finalizeButton:hover:not(:disabled) {
     background-color: #d32f2f;
 }
-#finalizeButton:disabled {
-    background-color: #e0e0e0;
-    cursor: not-allowed;
-    color: #9e9e9e;
-    opacity: 0.7;
-}
 
-/* Estilo Botão Responder (dentro da questão) */
+/* Estilo Específico Botão Responder (dentro da questão) */
 .confirm-answer-btn {
     background-color: #2196F3;
     color: white;
@@ -167,34 +164,41 @@ body {
     min-width: 100px;
     align-self: flex-end;
 }
+
 .confirm-answer-btn:hover:not(:disabled) {
     background-color: #1976D2;
 }
-.confirm-answer-btn:disabled {
-    background-color: #bdbdbd;
-    cursor: not-allowed;
-    color: #757575;
-    opacity: 0.6;
-}
 
-/* NOVO: Estilo Botão Ver Resolução */
+/* Estilo Específico Botão Ver Resolução */
 .view-resolution-btn {
-    background-color: #ff9800; /* Laranja */
+    background-color: #ff9800;
     color: white;
     margin-top: 10px;
     width: auto;
     min-width: 100px;
     align-self: flex-end;
-    display: none; /* Começa escondido */
+    display: none;
 }
+
 .view-resolution-btn:hover:not(:disabled) {
     background-color: #f57c00;
 }
-.view-resolution-btn:disabled {
-    background-color: #e0e0e0;
-    cursor: not-allowed;
-    color: #9e9e9e;
-    opacity: 0.7;
+
+/* Estilo Base para Botões Desabilitados */
+#generateButton:disabled,
+#finalizeButton:disabled,
+.confirm-answer-btn:disabled,
+.view-resolution-btn:disabled,
+.option-btn:disabled {
+     background-color: #bdbdbd;
+     cursor: not-allowed;
+     color: #757575;
+     opacity: 0.7;
+}
+
+/* Exceção para o opacity de botões de opção desabilitados já respondidos */
+.question-item.answered .option-btn:disabled {
+     opacity: 0.65; /* Pode ser ajustado ou removido se o opacity base já for suficiente */
 }
 
 /* Indicador de Loading */
@@ -216,18 +220,14 @@ body {
     animation: spin 1s linear infinite;
 }
 
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-/* --- Mensagens de Status e Erro (ESTILOS REMOVIDOS DAQUI) --- */
-/* Os estilos agora estão na seção Popup Overlay abaixo */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
 /* --- Área de Saída e Questões Interativas --- */
 .output-area {
     margin-top: 30px;
-}
-
-.questoesOutput {
-    margin-top: 20px !important;
 }
 
 .output-area label {
@@ -247,60 +247,63 @@ body {
 
 /* --- Estilos para Cada Item de Questão --- */
 .question-item {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
+    background-color: #2C2C2C;
+    border: 0 solid #fff;
     border-left-width: 5px;
-    border-left-color: #bdbdbd;
-    border-radius: 5px;
+    border-radius: 12px;
     padding: 18px 22px;
     margin-bottom: 15px;
     transition: border-color 0.3s ease, background-color 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.2);
 }
+
 .question-item:last-child {
     margin-bottom: 5px;
 }
 
-.question-item.answered {
-    /* Estilos específicos já aplicados por .correct/.incorrect */
+/* Cores de Feedback (Correto/Incorreto/Erro) */
+.question-item.correct {
+    border-left-color: #4CAF50;
 }
 
-/* Cores de Feedback (Correto/Incorreto) */
-.question-item.correct {
-    border-left-color: #4CAF50; /* Verde */
-    background-color: #f1f8e9;
-}
 .question-item.incorrect {
-    border-left-color: #f44336; /* Vermelho */
-    background-color: #ffebee;
+    border-left-color: #f44336;
 }
+
 .question-item.question-error {
-     border-left-color: #ff9800; /* Laranja */
-     background-color: #fff3e0;
+     border-left-color: #ff9800;
 }
 
 /* Texto da Questão */
 .question-text {
     font-weight: 500;
-    color: #333;
+    color: #fff; /* Cor base do texto da questão no fundo escuro */
     margin-bottom: 18px;
     line-height: 1.6;
     font-size: 1.05em;
 }
+
+/* Cor do texto da questão nos fundos claros (correto/incorreto/erro) */
+.question-item.correct .question-text,
+.question-item.incorrect .question-text,
+.question-item.question-error .question-text {
+     color: #fff; /* Cor mais escura para contraste nos fundos claros */
+}
+
 .question-text strong {
     margin-right: 8px;
-    color: #555;
+    color: inherit; /* Herda a cor do texto da questão */
     font-weight: 600;
 }
 
-/* NOVO: Estilo para Imagem na Questão */
+/* Estilo para Imagem na Questão */
 .question-image {
-    max-width: 100%; /* Garante que a imagem não ultrapasse o container */
-    height: auto; /* Mantém a proporção */
-    margin-top: 10px; /* Espaço acima da imagem */
-    margin-bottom: 15px; /* Espaço abaixo da imagem */
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
     border-radius: 4px;
-    display: block; /* Para centralizar com margin auto se necessário */
+    display: block;
     margin-left: auto;
     margin-right: auto;
 }
@@ -309,91 +312,220 @@ body {
 .options-container {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: 1px;
+    margin-bottom: 5px;
 }
 
-/* Botões de Opção */
+/* Botões de Opção Base */
 .option-btn {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 100%;
-    padding: 12px 18px;
+    padding: 0; /* Padding controlado pelos spans internos */
     text-align: left;
-    background-color: #f5f5f5;
-    border: 1px solid #dcdcdc;
-    border-radius: 5px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo translúcido no estado padrão */
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+    border: 0px solid #fff; /* Borda translúcida no estado padrão */
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 1em;
-    color: #333;
+    font-size: 0.85em;
+    color: #fff; /* Cor base do texto da opção no fundo escuro */
     transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-    line-height: 1.4;
+    min-height: 44px; /* Altura mínima para botões vazios ou com pouco texto */
 }
-.option-btn:hover:not(:disabled):not(.selected-preview) {
-    background-color: #e8e8e8;
-    border-color: #c0c0c0;
+
+
+.option-btn .option-letter {
+    font-size: 1.2em;
+    background-color: #fff;
+    color: #2C2C2C;
+    border-radius: 10px 18px 18px 10px;
+    padding: 8px 20px;
+    font-weight: bold;
+    flex-shrink: 0;
+    min-width: 30px;
+    margin-right: 10px;
+    text-align: center;
+
+    align-self: stretch; /* Faz este item flex esticar verticalmente */
+    display: flex; /* Torna .option-letter um container flex */
+    align-items: center; /* Centraliza o conteúdo (A)) verticalmente dentro de .option-letter */
+    justify-content: center; /* Centraliza o conteúdo (A)) horizontalmente dentro de .option-letter */
 }
-.option-btn:active:not(:disabled) {
-    transform: scale(0.99);
+
+.option-btn .option-content {
+    flex-grow: 1;
+    word-break: break-word;
+    padding: 10px 0; /* Ajuste o padding vertical conforme necessário */
+    /* padding-right: 10px; /* Opcional: Adicionar padding à direita do conteúdo */
+    color: inherit; /* Herda a cor do texto do botão pai */
 }
+
+.question-meta {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+.question-meta .meta-source {
+    margin-left: 0 !important;
+    padding: 5px 8px;
+    background-color: #ffc107;
+    border-radius: 7px 16px 16px 7px;
+    color: #333;
+}
+
+.question-meta .meta-year {
+    padding: 5px 8px;
+    border-radius: 16px 7px 7px 16px;
+    background-color: #28a745;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.question-meta .meta-separator {
+    /* Estilos para o separador */
+}
+
 
 /* Estilo para opção selecionada ANTES de confirmar */
 .option-btn.selected-preview {
-    background-color: #e3f2fd;
+    background-color: rgba(33, 150, 243, 0.15);
     border-color: #2196F3;
-    color: #1565c0;
-    font-weight: 500;
+    color: #fff; /* Cor do texto para o estado de preview */
+    font-weight: 800;
     box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+    padding: 0; /* Padding controlado pelos spans */
 }
+/* Ajuste a cor da letra no estado de preview */
+.option-btn.selected-preview .option-letter {
+    color: #2c2c2c; /* Cor de texto mais escura no fundo claro */
+}
+.option-btn.selected-preview .option-content {
+     color: #fff; /* Cor do texto do conteúdo no estado de preview */
+}
+
 
 /* Estilos Pós-Resposta */
 .question-item.answered .option-btn {
     cursor: default;
+    border-color: #e0e0e0; /* Borda padrão desabilitada */
+    background-color: #ededed; /* Fundo padrão desabilitado */
+    color: #757575; /* Cor do texto padrão desabilitado */
+    padding: 0; /* Padding controlado pelos spans */
 }
 .question-item.answered .option-btn:not(.selected):not(.correct-answer-highlight) {
-   opacity: 0.65;
+   opacity: 0.65; /* Opacidade para opções não selecionadas/incorretas */
+}
+.question-item.answered .option-btn .option-letter {
+    background-color: #dcdcdc; /* Fundo da letra no estado respondido genérico */
+    color: #555;
+}
+.question-item.answered .option-btn .option-content {
+    color: #757575; /* Cor do texto no estado respondido genérico */
 }
 
-/* Botão Selecionado pelo Usuário */
+
+/* Botão Selecionado pelo Usuário (Aplicação de cor e borda no botão pai) */
 .option-btn.selected {
     border-width: 2px;
     font-weight: bold;
-    padding: 11px 17px;
+    /* padding: 11px 17px; /* Removido, padding agora é nos spans */
+    padding: 0; /* Padding controlado pelos spans */
 }
+
+/* Cores para o botão selecionado CORRETO */
 .question-item.correct .option-btn.selected {
-    border-color: #4CAF50;
-    background-color: #dcedc8;
-    color: #1b5e20;
-    opacity: 1 !important;
+    border: none;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.25);
+    background-color: rgba(76, 175, 80, 0.1); /* Fundo verde claro */
+    color: #1b5e20; /* Texto verde escuro */
+    opacity: 1 !important; /* Garante visibilidade */
 }
+/* Cores para a letra e conteúdo no botão selecionado CORRETO */
+.question-item.correct .option-btn.selected .option-letter {
+     background-color: #388e3c; /* Fundo verde um pouco mais escuro */
+     color: #fff;
+}
+.question-item.correct .option-btn.selected .option-content {
+    color: #fff;
+}
+
+
+/* Cores para o botão selecionado INCORRETO */
 .question-item.incorrect .option-btn.selected {
-     border-color: #f44336;
-     background-color: #ffcdd2;
-     color: #c62828;
+     border: none; /* Vermelho */
+     background-color: rgba(244, 67, 54, 0.1); /* Fundo vermelho claro */
+     box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.25);
+     color: #c62828; /* Texto vermelho escuro */
      opacity: 1 !important;
 }
+/* Cores para a letra e conteúdo no botão selecionado INCORRETO */
+.question-item.incorrect .option-btn.selected .option-letter {
+     background-color: #ef9a9a; /* Fundo vermelho um pouco mais escuro */
+     color: #fff;
+}
+.question-item.incorrect .option-btn.selected .option-content {
+    color: #c62828;
+}
 
-/* Destaque da Resposta Correta */
+
+/* Destaque da Resposta Correta (para opções corretas não selecionadas pelo usuário) */
 .option-btn.correct-answer-highlight {
-     border-color: #4CAF50;
-     background-color: #c8e6c9;
+     border-color: #4CAF50; /* Verde */
+     background-color: #c8e6c9; /* Fundo verde um pouco mais escuro */
      font-weight: bold;
-     color: #1b5e20;
+     color: #1b5e20 !important; /* Texto verde escuro */
      opacity: 1 !important;
-     border-width: 1px;
+     border-width: 1px; /* Pode ajustar a borda se selected tiver 2px */
+     padding: 0; /* Padding controlado pelos spans */
+}
+/* Cores para a letra e conteúdo na opção correta destacada (quando não selecionada) */
+.option-btn.correct-answer-highlight .option-letter {
+    background-color: #a5d6a7; /* Fundo verde */
+    color: #1b5e20;
+}
+.option-btn.correct-answer-highlight .option-content {
+    color: #1b5e20;
 }
 
-/* Botões desabilitados */
-.option-btn:disabled {
-    cursor: default;
-    background-color: #ededed;
-    border-color: #e0e0e0;
-    color: #757575;
-}
-.option-btn.selected-preview:disabled {
-    box-shadow: none;
+
+/* Hover/Active (apenas para estados interativos) */
+.option-btn:hover:not(:disabled):not(.selected-preview):not(.answered .option-btn) {
+    background-color: rgba(255, 255, 255, 0.15); /* Fundo sutil no hover */
+    border-color: rgba(255, 255, 255, 0.3); /* Borda sutil no hover */
 }
 
-/* Container para feedback e botão responder */
+.option-btn:active:not(:disabled):not(.answered .option-btn) {
+    transform: scale(0.99);
+}
+
+
+/* Dissertative Info */
+.dissertative-info {
+    font-size: 0.9em;
+    color: #fff; /* Cor para o fundo escuro */
+    margin-bottom: 0;
+    padding: 5px 10px; /* Padding interno */
+}
+
+/* Cor da info dissertativa nos fundos claros */
+.question-item.correct .dissertative-info,
+.question-item.incorrect .dissertative-info,
+.question-item.question-error .dissertative-info {
+     color: #555; /* Cor mais escura */
+}
+
+
+/* Container para feedback e botão responder/resolução */
 .feedback-area {
     display: flex;
     justify-content: space-between;
@@ -409,8 +541,10 @@ body {
     font-weight: bold;
     padding: 5px 0;
     text-align: left;
-    flex-grow: 1;
+    flex-grow: 1; /* Permite que ocupe espaço */
 }
+
+/* Cores da Mensagem de Feedback */
 .question-item.correct .feedback-message {
     color: #388e3c;
 }
@@ -418,52 +552,52 @@ body {
     color: #d32f2f;
 }
 
-/* NOVO: Área para exibir a resolução */
+/* Área para exibir a resolução */
 .resolution-area {
-    background-color: #f0f0f0; /* Fundo sutilmente diferente */
+    background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 10px;
     padding: 12px 15px;
-    margin-top: 15px;
+    margin-top: 5px;
     font-size: 0.95em;
     line-height: 1.5;
-    color: #444;
-    display: none; /* Começa escondida */
+    color: #fff;
+    display: none;
 }
 .resolution-area strong {
     display: block;
-    margin-bottom: 5px;
-    color: #333;
+    margin-bottom: 2px;
+    color: #fff;
     font-weight: 600;
 }
 
-/* Área de Ação Global */
+/* Área de Ação Global (Finalizar Simulado) */
 .global-action-area {
     max-width: 800px;
-    margin: 0 auto 80px auto;
+    margin: 20px auto 80px auto; /* Ajuste o margin-top para dar espaço */
     padding: 0 15px;
     text-align: right;
 }
 
+
 /* ========================================= */
-/* --- NOVOS ESTILOS: Popup Overlay --- */
+/* --- Popup Overlay e Mensagens --- */
 /* ========================================= */
 
 .popup-overlay {
-    position: fixed; /* Fica sobre todo o conteúdo */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* Fundo semi-transparente */
-    display: flex; /* Usado para centralizar a caixa de mensagem */
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000; /* Garante que fique na frente */
-    padding: 20px; /* Espaçamento nas bordas */
+    z-index: 1000;
+    padding: 20px;
     box-sizing: border-box;
-    /* display: none; /* Controlado pelo JS */
-    opacity: 0; /* Começa invisível para transição */
+    opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
@@ -475,14 +609,14 @@ body {
 
 .popup-message-box {
     background-color: #fff;
-    padding: 30px 35px; /* Padding interno maior */
+    padding: 30px 35px;
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    max-width: 500px; /* Largura máxima da caixa */
-    width: 90%; /* Largura relativa */
-    position: relative; /* Para posicionar o botão de fechar */
-    border-left: 5px solid #ccc; /* Borda padrão */
-    transform: scale(0.9); /* Efeito de entrada */
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    border-left: 5px solid #ccc;
+    transform: scale(0.9);
     transition: transform 0.3s ease;
 }
 
@@ -490,14 +624,13 @@ body {
     transform: scale(1);
 }
 
-
 .popup-close-button {
     position: absolute;
     top: 10px;
     right: 12px;
     background: none;
     border: none;
-    font-size: 1.8em; /* Tamanho maior */
+    font-size: 1.8em;
     line-height: 1;
     color: #888;
     cursor: pointer;
@@ -511,61 +644,76 @@ body {
 .popup-content {
     font-size: 1.05em;
     line-height: 1.6;
-    color: #333; /* Cor base do texto */
-    text-align: center; /* Centraliza texto */
-    word-wrap: break-word; /* Quebra palavras longas */
+    color: #333;
+    text-align: center;
+    word-wrap: break-word;
 }
 
 /* Estilos por tipo de Popup */
 .popup-message-box.error {
     background-color: #ffebee;
-    color: #c62828;
-    border-left-color: #f44336; /* Vermelho */
+    border-left-color: #f44336;
 }
-.popup-message-box.error .popup-content { color: #c62828; }
-.popup-message-box.error .popup-close-button { color: #c62828; }
-.popup-message-box.error .popup-close-button:hover { color: #b71c1c; }
+.popup-message-box.error .popup-content,
+.popup-message-box.error .popup-close-button {
+    color: #c62828;
+}
+.popup-message-box.error .popup-close-button:hover {
+     color: #b71c1c;
+}
 
 .popup-message-box.success {
      background-color: #e8f5e9;
-     color: #2e7d32;
-     border-left-color: #4CAF50; /* Verde */
+     border-left-color: #4CAF50;
 }
-.popup-message-box.success .popup-content { color: #2e7d32; }
-.popup-message-box.success .popup-close-button { color: #2e7d32; }
-.popup-message-box.success .popup-close-button:hover { color: #1b5e20; }
+.popup-message-box.success .popup-content,
+.popup-message-box.success .popup-close-button {
+    color: #2e7d32;
+}
+.popup-message-box.success .popup-close-button:hover {
+     color: #1b5e20;
+}
+
 
 .popup-message-box.info {
      background-color: #e3f2fd;
-     color: #1565c0;
-     border-left-color: #2196F3; /* Azul */
+     border-left-color: #2196F3;
 }
-.popup-message-box.info .popup-content { color: #1565c0; }
-.popup-message-box.info .popup-close-button { color: #1565c0; }
-.popup-message-box.info .popup-close-button:hover { color: #0d47a1; }
+.popup-message-box.info .popup-content,
+.popup-message-box.info .popup-close-button {
+     color: #1565c0;
+}
+.popup-message-box.info .popup-close-button:hover {
+     color: #0d47a1;
+}
+
 
 .popup-message-box.warning {
      background-color: #fff8e1;
-     color: #b75d00;
-     border-left-color: #ff9800; /* Laranja */
+     border-left-color: #ff9800;
 }
-.popup-message-box.warning .popup-content { color: #b75d00; }
-.popup-message-box.warning .popup-close-button { color: #b75d00; }
-.popup-message-box.warning .popup-close-button:hover { color: #e65100; }
+.popup-message-box.warning .popup-content,
+.popup-message-box.warning .popup-close-button {
+     color: #b75d00;
+}
+.popup-message-box.warning .popup-close-button:hover {
+     color: #e65100;
+}
+
 
 /* --- Responsividade --- */
 @media (max-width: 768px) {
     .question-generator-section {
-        padding: 20px 20px;
+        padding: 20px;
     }
     .options-area {
-         /* Volta para 2 colunas em telas médias se preferir */
-         /* grid-template-columns: repeat(2, 1fr); */
-         /* Ou mantém o auto-fit */
-         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); /* Ajuste minmax */
+         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     }
      .global-action-area {
          padding: 0 20px;
+     }
+     .popup-message-box {
+        max-width: 95%;
      }
 }
 
@@ -574,7 +722,7 @@ body {
         padding: 20px 15px;
     }
      .options-area {
-        grid-template-columns: 1fr; /* Uma coluna */
+        grid-template-columns: 1fr;
     }
     .action-area {
         flex-direction: column;
@@ -589,8 +737,7 @@ body {
          align-items: stretch;
      }
      .confirm-answer-btn,
-     .view-resolution-btn /* NOVO */
-      {
+     .view-resolution-btn {
          align-self: stretch;
          margin-top: 10px;
      }
@@ -621,8 +768,8 @@ body {
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    padding: 0 !important;
-    margin: 0 !important;
+    padding: 0;
+    margin: 0;
 }
 
 #primeiroInput {
@@ -630,8 +777,8 @@ body {
 }
 
 .botao-minimizar {
-    padding: 5px !important;
-    margin: 5px !important;
+    padding: 5px;
+    margin: 5px;
     background: none;
     font-size: 1.3rem;
     border: none;
