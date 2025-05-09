@@ -1,0 +1,20 @@
+{
+  "name": "estuda-ai-backend",
+  "version": "1.0.0",
+  "description": "Backend functions for study tool",
+  "main": "netlify/functions/generateQuestions.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    // Você pode adicionar scripts para testar funções localmente se usar o Netlify CLI
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+    // Use ^3.0.0 ou superior se seu ambiente Node.js no Netlify for compatível (Node 18+)
+    // Para Node.js 14/16, node-fetch ^2.6.1 é mais seguro.
+    // Netlify Functions por padrão usam Node.js 18+, então ^3.0.0+ pode ser usado.
+    // Vamos manter 2.6.1 por segurança caso haja configs antigas.
+  }
+}
