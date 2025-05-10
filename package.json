@@ -1,17 +1,11 @@
 {
-  "name": "sua-ferramenta-de-estudo-backend",
+  "name": "estuda-ai",
   "version": "1.0.0",
-  "description": "Backend functions for study tool with async polling and Redis state storage",
-  "main": "netlify/functions/startGeneration.js",
+  "description": "Ferramenta privada de geração de questões com OpenRouter",
+  "main": "inject-keys.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "inject": "node inject-keys.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "node-fetch": "^2.6.1",
-    "uuid": "^9.0.0",
-    "@upstash/redis": "^1.28.2"
-  }
+  "author": "Seu Nome",
+  "license": "MIT"
 }
