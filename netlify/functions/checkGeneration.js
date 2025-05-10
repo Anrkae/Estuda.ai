@@ -1,12 +1,13 @@
 // netlify/functions/checkGeneration.js
-
 const { Redis } = require('@upstash/redis');
 
+// --- Configuração Upstash Redis ---
 const redis = new Redis({
   url: process.env.UPSTASH_REDIS_URL,
   token: process.env.UPSTASH_REDIS_TOKEN,
 });
 
+// === Handler da Função Check Generation ===
 exports.handler = async function(event, context) {
     if (event.httpMethod !== 'GET') {
         return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
@@ -24,9 +25,11 @@ exports.handler = async function(event, context) {
     }
 
     try {
-        const taskString = await redis.get(`task:${taskId}`);
+        // === Consulta o estado da tarefa no Redis ===
+        // O log mostrou que isso retorna um OBJETO direto, não uma string JSON
+        const task = await redis.get(`task:${taskId}`); // Agora esperamos receber o objeto aqui
 
-        if (!taskString) {
+        if (!task) { // Redis retorna null se key not found
             console.warn(`Task ID task:${taskId} not found in Redis.`);
             return {
                 statusCode: 404,
@@ -35,22 +38,29 @@ exports.handler = async function(event, context) {
             };
         }
 
-        // === ADICIONE ESTE LOG AQUI ===
-        console.log(`[DEBUG] Task ${taskId}: Valor Lido do Redis (taskString):`, taskString);
-        console.log(`[DEBUG] Task ${taskId}: Tipo do Valor Lido do Redis:`, typeof taskString);
-        // ==============================
+        // === REMOVA ESTA LINHA QUE ESTÁ CAUSANDO O ERRO ===
+        // const task = JSON.parse(taskString); // <-- REMOVER ESTA LINHA
+
+        // O log mostrou que a variável que antes se chamava taskString
+        // (e que agora chamamos apenas task) JÁ É o objeto JavaScript:
+        // { status: 'PENDING', timestamp: '...', parameters: {...} }
+        // Use 'task' diretamente.
 
 
-        const task = JSON.parse(taskString); // Linha que está dando erro
+        // === Remova os logs de debug que adicionamos ===
+        // console.log(`[DEBUG] Task ${taskId}: Valor Lido do Redis (taskString):`, task); // Remova
+        // console.log(`[DEBUG] Task ${taskId}: Tipo do Valor Lido do Redis:`, typeof task); // Remova
+        // =============================================
 
-        // ... restante do código ...
+
+        // === Retorna o estado atual da tarefa ===
         return {
             statusCode: 200,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 status: task.status, // PENDING, COMPLETED, ERROR
-                message: task.message, // Mensagem de erro se houver
-                data: task.data // Dados da questão se status for COMPLETED
+                message: task.message, // Mensagem de erro se houver (lido do objeto task)
+                data: task.data // Dados da questão se status for COMPLETED (lido do objeto task)
             })
         };
 
