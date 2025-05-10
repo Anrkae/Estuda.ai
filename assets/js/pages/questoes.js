@@ -21,19 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupContent = document.getElementById('popupContent');
     const popupCloseButton = document.getElementById('popupCloseButton');
 
-    // === Configuração da API OpenRouter (Chave e URL removidas do Frontend!) ===
-    // !!! A CHAVE DA API AGORA ESTÁ NAS VARIÁVEIS DE AMBIENTE DO NETLIFY !!!
-    // !!! A CHAMADA DA API É FEITA PELA NETLIFY FUNCTION !!!
-    // Removido: const OPENROUTER_API_KEY = 'sua_chave_aqui';
-    // Removido: const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-
-    // Endpoint da sua Netlify Function que chamará a API do OpenRouter
-    const NETLIFY_FUNCTION_URL = '/.netlify/functions/chat-completion';
-
+    // === Configuração da API OpenRouter ===
+    // !!! ATENÇÃO: Mova a chave para um backend em produção !!!
+    const OPENROUTER_API_KEY = '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'; // Sua chave OpenRouter
+    const OPENROUTER_API_URL = `https://openrouter.ai/api/v1/chat/completions`;
     // Escolha um modelo compatível com chat completions no OpenRouter.
-    // Este valor será enviado para a Netlify Function.
+    // 'openai/gpt-3.5-turbo' é um bom ponto de partida, mas você pode testar outros.
+    // Veja a lista de modelos compatíveis em https://openrouter.ai/docs#models
     const OPENROUTER_MODEL = 'deepseek/deepseek-prover-v2:free';
-
 
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas';
@@ -550,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // === Função Principal: Gerar Questões ===
-    // Modificada para chamar a Netlify Function
+    // Modificada para incluir instrução para metadados no prompt.
     async function handleGenerateQuestions() {
         hidePopup();
         if (currentSessionStats.id) {
@@ -568,9 +563,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!assunto) { assuntoInput.focus(); return showError("Por favor, informe o Assunto Principal."); }
         if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) { numQuestoesInput.focus(); return showError("Número de questões inválido (1-20)."); }
         if (!nivelQuestao) { nivelQuestaoSelect.focus(); return showError("Por favor, selecione o Nível das questões."); }
-        // Validação do modelo (a chave da API agora é verificada na função)
-        if (!OPENROUTER_MODEL) { return showError("Erro Crítico: Modelo da API OpenRouter não configurado no frontend."); }
-
+        // Validação da chave OpenRouter
+        if (!OPENROUTER_API_KEY || !OPENROUTER_API_KEY.startsWith('sk-or-v1-')) { return showError("Erro Crítico: Chave da API OpenRouter inválida ou ausente."); }
+        if (!OPENROUTER_MODEL) { return showError("Erro Crítico: Modelo da API OpenRouter não configurado."); }
 
         const disciplinaParaSessao = disciplinaSelecionada || "Geral";
 
@@ -638,66 +633,54 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
 
 
         try {
-            // === Corpo da requisição para a SUA Netlify Function ===
-            // Este corpo contém os dados que a função precisa para chamar o OpenRouter
+            // === Corpo da requisição para OpenRouter (formato OpenAI Chat Completions) ===
             const requestBody = {
-                model: OPENROUTER_MODEL, // Usa o modelo definido no frontend
+                model: OPENROUTER_MODEL,
                 messages: [
                     {
                         role: "user",
                         content: prompt
                     }
                 ],
-                temperature: 0.7, // Mantém os parâmetros
-                max_tokens: 450 * numQuestoes + 300, // Mantém os parâmetros
-                // Adicione aqui quaisquer outros parâmetros que a API do OpenRouter espera
-                // e que você queira controlar do frontend.
+                temperature: 0.7,
+                max_tokens: 450 * numQuestoes + 300,
             };
 
-            // === Requisição Fetch para a SUA NETLIFY FUNCTION ===
-            // Altere a URL para o endpoint da função. Removidos headers sensíveis.
-            const response = await fetch(NETLIFY_FUNCTION_URL, { // <<<< CHAMADA PARA A FUNÇÃO
+            // === Requisição Fetch para OpenRouter ===
+            const response = await fetch(OPENROUTER_API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Headers de API Key e Referer/Title foram movidos para a Função Netlify
+                    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+                    'HTTP-Referer': window.location.href,
+                    'X-Title': 'Meu App de Questões'
                 },
-                body: JSON.stringify(requestBody) // Envia o corpo para a função
+                body: JSON.stringify(requestBody)
             });
 
-             // === Lida com respostas de ERRO, agora vindas da sua função ===
-             // A função foi configurada para retornar status HTTP apropriados ou JSON de erro
              if (!response.ok) {
                  let errorBodyText = await response.text();
-                 console.error("Raw Function Error Response:", errorBodyText);
+                 console.error("Raw OpenRouter API Error Response:", errorBodyText);
                  let errorBody = {};
-                 let errorMessageForUser = `Erro na Função Netlify (${response.status})`;
-                 try {
-                     errorBody = JSON.parse(errorBodyText);
-                     // Tenta pegar uma mensagem de erro mais amigável que a função pode ter retornado
-                     // Isso inclui erros repassados do OpenRouter pela função
-                     errorMessageForUser = errorBody.error || errorBody.message || errorMessageForUser;
-                 } catch (e) {
-                     console.error("Erro ao parsear erro JSON da função:", e);
-                     errorMessageForUser += `: ${errorBodyText.substring(0, Math.min(errorBodyText.length, 100))}...`; // Usa parte do texto se não for JSON
-                 }
+                 try { errorBody = JSON.parse(errorBodyText); } catch (e) { console.error("Erro ao parsear erro JSON:", e); }
 
-                 // Mostra a mensagem de erro amigável para o usuário
-                 showError(errorMessageForUser);
-                 resetSessionState();
-                 showLoading(false);
-                 return; // Sai da função handleGenerateQuestions
+                 const detailMessage = errorBody?.error?.message || `Erro HTTP ${response.status}`;
+
+                 if (response.status === 401 || response.status === 403) {
+                      throw new Error("Falha na API OpenRouter: A Chave da API configurada não é válida ou não tem permissão.");
+                 } else if (response.status === 429) {
+                      throw new Error(`Falha na API OpenRouter: Limite de requisições atingido. Tente novamente mais tarde. ${detailMessage}`);
+                 }
+                 else {
+                      throw new Error(`Falha na comunicação com a API OpenRouter: ${detailMessage}`);
+                 }
              }
 
-            // Lida com a resposta de SUCESSO, que virá da sua função
-            // A função repassa a resposta do OpenRouter
             const data = await response.json();
+            console.log("Resposta completa da API OpenRouter:", data);
 
-            console.log("Resposta completa recebida da Netlify Function:", data);
-
-             // Verifica se a API OpenRouter retornou erro, mesmo que a função tenha retornado 200
              if (data.error) {
-                  console.error("Erro retornado pela API OpenRouter (via função):", data.error);
+                  console.error("Erro retornado pela API OpenRouter:", data.error);
                   const errorMessage = data.error.message || data.error.type || 'Erro desconhecido retornado pela API.';
                   showError(`Erro da API OpenRouter: ${errorMessage}`);
                   resetSessionState();
@@ -706,15 +689,15 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
              }
 
             if (!data.choices || data.choices.length === 0 || !data.choices[0].message?.content) {
-                console.error("Resposta inesperada da Netlify Function (sem choices ou conteúdo válido):", data);
-                showError("Erro: A Função Netlify retornou uma resposta vazia ou em formato inesperado.");
+                console.error("Resposta inesperada da API OpenRouter (sem choices ou conteúdo válido):", data);
+                showError("Erro: A API OpenRouter retornou uma resposta vazia ou em formato inesperado.");
                 resetSessionState();
                 showLoading(false);
                 return;
             }
 
             const rawTextFromAPI = data.choices[0].message.content;
-            console.log("Texto cru extraído da Função:", rawTextFromAPI);
+            console.log("Texto cru extraído da API:", rawTextFromAPI);
 
             const questionsArray = parseGeneratedText(rawTextFromAPI, tipoQuestao);
             displayParsedQuestions(questionsArray);
@@ -778,8 +761,7 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
                  resetSessionState();
              }
 
-            // Verifica finish_reason na resposta original da API, que a função repassou
-            const finishReason = data.choices && data.choices[0] && data.choices[0].finish_reason;
+            const finishReason = data.choices[0].finish_reason;
              if (finishReason && finishReason !== 'stop' && finishReason !== 'length') {
                  console.warn("Geração da API pode ter sido interrompida:", finishReason);
                  showStatus(`Atenção: Geração pode ter sido interrompida (${finishReason}).`, 'warning');
@@ -790,9 +772,8 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
 
 
         } catch (error) {
-            console.error("Falha na requisição para a Função Netlify ou processamento da resposta:", error);
-            // Este catch pega erros de rede ou erros lançados explicitamente ANTES da resposta da função
-            showError(`Erro durante a comunicação com o servidor: ${error.message || 'Falha desconhecida.'}`);
+            console.error("Falha na requisição ou processamento:", error);
+            showError(`Erro durante a geração: ${error.message || 'Falha desconhecida.'}`);
             resetSessionState();
         } finally {
             showLoading(false);
