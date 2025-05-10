@@ -14,9 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingIndicator = document.getElementById('loadingIndicator');
     const finalizeButton = document.getElementById('finalizeButton');
     const generatorBlock = generateButton ? generateButton.closest('.bloco') : null;
-    // Adicionado elemento para mostrar o status da geração (assumindo que você adicionou um <p id="generationStatus"></p> no seu HTML)
-    const generationStatusElement = document.getElementById('generationStatus');
-
 
     // === Elementos do Popup ===
     const popupOverlay = document.getElementById('popupOverlay');
@@ -24,9 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupContent = document.getElementById('popupContent');
     const popupCloseButton = document.getElementById('popupCloseButton');
 
-    // === Endpoints das Funções Netlify Assíncronas ===
-    const START_GENERATION_URL = '/.netlify/functions/startGeneration'; // Endpoint da sua função Start
-    const CHECK_GENERATION_URL = '/.netlify/functions/checkGeneration'; // Endpoint da sua função Check
+    // === Configuração da API OpenRouter (Chave e URL removidas do Frontend!) ===
+    // !!! A CHAVE DA API AGORA ESTÁ NAS VARIÁVEIS DE AMBIENTE DO NETLIFY !!!
+    // !!! A CHAMADA DA API É FEITA PELA NETLIFY FUNCTION !!!
+    // Removido: const OPENROUTER_API_KEY = 'sua_chave_aqui';
+    // Removido: const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+
+    // Endpoint da sua Netlify Function que chamará a API do OpenRouter
+    const NETLIFY_FUNCTION_URL = '/.netlify/functions/chat-completion';
+
+    // Escolha um modelo compatível com chat completions no OpenRouter.
+    // Este valor será enviado para a Netlify Function.
+    const OPENROUTER_MODEL = 'deepseek/deepseek-prover-v2:free';
+
 
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas';
@@ -36,10 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         id: null, totalQuestions: 0, answeredCount: 0,
         correctCount: 0, disciplina: null, startTime: null
     };
-    let popupTimeoutId = null;
-    let questionsDataStore = {};
-    let pollingIntervalId = null; // Para controlar o intervalo de polling
-    let currentTaskId = null; // Para armazenar o ID da tarefa atual
+    let popupTimeoutId = null; // Para controlar o fechamento automático do popup
+    let questionsDataStore = {}; // Armazena dados completos das questões (incluindo resolução)
+
 
     // === Função: Popular Dropdown de Disciplinas ===
     function populateDisciplinaDropdown() {
@@ -76,28 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     questoesOutput.addEventListener('click', (event) => {
         const target = event.target;
-        if (target.matches('.option-btn, .option-btn *')) {
-             const optionBtn = target.closest('.option-btn');
+        // Verifica se o clique foi no botão de opção, confirmar resposta ou ver resolução
+        if (target.matches('.option-btn, .option-btn *')) { // Permite clique no span interno da opção
+             const optionBtn = target.closest('.option-btn'); // Encontra o botão pai
              if (optionBtn && !optionBtn.disabled) { handleOptionClick(optionBtn); }
         }
         else if (target.matches('.confirm-answer-btn')) { if (!target.disabled) { handleConfirmAnswer(target); } }
         else if (target.matches('.view-resolution-btn')) { if (!target.disabled) { handleViewResolution(target); } }
     });
 
-    // Limpa o intervalo de polling ao sair ou recarregar a página
-    window.addEventListener('beforeunload', () => {
-        if (pollingIntervalId) {
-            clearInterval(pollingIntervalId);
-            pollingIntervalId = null;
-            console.log("Polling interval cleared on beforeunload.");
-        }
-         // Chama finalizeSession, que já verifica se há sessão ativa
-         handleBeforeUnload(); // Reusa a lógica existente
-    });
-
-     // Reusa a lógica de finalização de sessão
-     function handleBeforeUnload() { if (currentSessionStats.id && currentSessionStats.totalQuestions > 0 && currentSessionStats.answeredCount < currentSessionStats.totalQuestions) { console.log("beforeunload: Finalizando sessão ativa incompleta..."); finalizeSession(false); } else { console.log("beforeunload: Nenhuma sessão ativa para finalizar ou já completa."); } }
-
+    window.addEventListener('beforeunload', handleBeforeUnload);
 
     // === Event Listeners do Popup ===
     if (popupCloseButton) {
@@ -116,36 +110,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // === Funções Auxiliares de UI ===
-    function showLoading(isLoading, message = 'Gerando...') {
+    function showLoading(isLoading) {
         hidePopup();
         loadingIndicator.style.display = isLoading ? 'inline-flex' : 'none';
         generateButton.disabled = isLoading;
-        assuntoInput.disabled = isLoading;
-        bibliografiaInput.disabled = isLoading;
-        disciplinaSelect.disabled = isLoading;
-        numQuestoesInput.disabled = isLoading;
-        tipoQuestaoSelect.disabled = isLoading;
-        nivelQuestaoSelect.disabled = isLoading;
-
-        // Atualiza elemento de status de geração
-        if(generationStatusElement) {
-             generationStatusElement.textContent = isLoading ? message : '';
-             generationStatusElement.style.display = isLoading ? 'block' : 'none';
-        }
     }
-
 
     function resetSessionState() {
         currentSessionStats = { id: null, totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null, startTime: null };
         finalizeButton.style.display = 'none';
-        questionsDataStore = {};
-        currentTaskId = null; // Limpa o ID da tarefa
-        if (pollingIntervalId) { // Garante que o polling é parado
-            clearInterval(pollingIntervalId);
-            pollingIntervalId = null;
-             console.log("Polling interval cleared during state reset.");
-        }
-         showLoading(false, ''); // Esconde loading e status message
+        questionsDataStore = {}; // Limpa o armazenamento de dados das questões
         console.log("Estado da sessão e armazenamento de questões resetados.");
     }
 
@@ -157,24 +131,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Funções do Popup ===
     function showPopup(message, type = 'info', autoCloseDelay = null) {
-         if (!popupOverlay || !popupMessageBox || !popupContent) { console.error("Elementos do Popup não encontrados no DOM."); alert(message); return; }
-         if (popupTimeoutId) { clearTimeout(popupTimeoutId); popupTimeoutId = null; }
-         popupContent.textContent = message;
-         popupMessageBox.className = `popup-message-box ${type}`;
-         popupOverlay.classList.add('visible');
-         if (autoCloseDelay && typeof autoCloseDelay === 'number' && autoCloseDelay > 0) { popupTimeoutId = setTimeout(hidePopup, autoCloseDelay); }
-     }
+        if (!popupOverlay || !popupMessageBox || !popupContent) {
+            console.error("Elementos do Popup não encontrados no DOM.");
+            alert(message); // Fallback
+            return;
+        }
+        if (popupTimeoutId) {
+            clearTimeout(popupTimeoutId);
+            popupTimeoutId = null;
+        }
+        popupContent.textContent = message;
+        popupMessageBox.className = `popup-message-box ${type}`;
+        popupOverlay.classList.add('visible');
+        if (autoCloseDelay && typeof autoCloseDelay === 'number' && autoCloseDelay > 0) {
+            popupTimeoutId = setTimeout(hidePopup, autoCloseDelay);
+        }
+    }
 
     function hidePopup() {
-        if (popupTimeoutId) { clearTimeout(popupTimeoutId); popupTimeoutId = null; }
-        if (popupOverlay) { popupOverlay.classList.remove('visible'); }
+        if (popupTimeoutId) {
+            clearTimeout(popupTimeoutId);
+            popupTimeoutId = null;
+        }
+        if (popupOverlay) {
+            popupOverlay.classList.remove('visible');
+        }
     }
 
     function showError(message) {
-        questoesOutput.innerHTML = ''; // Limpa output em caso de erro final
+        questoesOutput.innerHTML = '';
         showPopup(message, 'error');
-        resetSessionState(); // Reseta TUDO em caso de erro na geração ou polling final
-        showLoading(false); // Garante que loading/status suma
+        resetSessionState();
+        showLoading(false);
     }
 
     function showStatus(message, type = 'info') {
@@ -182,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showPopup(message, type, autoClose ? 5000 : null);
     }
 
-     // === Função: Salvar Resumo da Sessão === (Não muda)
+     // === Função: Salvar Resumo da Sessão ===
      function saveSessionSummary() {
         if (!currentSessionStats.id || currentSessionStats.totalQuestions === 0) return;
         console.log("Tentando salvar resumo da sessão ID:", currentSessionStats.id);
@@ -195,30 +183,173 @@ document.addEventListener('DOMContentLoaded', () => {
         try { const existingSummaries = JSON.parse(localStorage.getItem(RESULTS_STORAGE_KEY) || '[]'); if (!Array.isArray(existingSummaries)) throw new Error("Formato inválido no localStorage"); const index = existingSummaries.findIndex(s => s.id === summary.id); if (index === -1) { existingSummaries.push(summary); } else { existingSummaries[index] = summary; } localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(existingSummaries)); console.log(`Resumo da sessão ${summary.id} salvo com sucesso.`); } catch (error) { console.error("Erro ao salvar resumo da sessão no localStorage:", error); showStatus("Erro ao salvar o resumo da sessão.", "error"); }
     }
 
-    // === Função: Finalizar Sessão de Estudo === (Não muda na lógica, mas chamada diferente)
+    // === Função: Finalizar Sessão de Estudo ===
     function finalizeSession(openPanel = false) {
-        if (!currentSessionStats.id || currentSessionStats.totalQuestions === 0) return;
-        const sessionId = currentSessionStats.id;
-        console.log(`Finalizando sessão ID: ${sessionId}. Flag openPanel=${openPanel}`);
+        if (currentSessionStats.totalQuestions === 0 || !currentSessionStats.id) return;
+        const sessionId = currentSessionStats.id; console.log(`Finalizando sessão ID: ${sessionId}. Flag openPanel=${openPanel}`);
         if (window.timerPopupAPI && typeof window.timerPopupAPI.stopTimer === 'function') { try { console.log("Chamando timerPopupAPI.stopTimer()"); window.timerPopupAPI.stopTimer(); } catch (e) { console.error("Erro ao chamar stopTimer:", e); } } else { console.warn('Função timerPopupAPI.stopTimer() não encontrada.'); }
-        saveSessionSummary();
-        const wasActive = currentSessionStats.id !== null;
-        resetSessionState(); // <-- Reset já limpa o pollingIntervalId
+        saveSessionSummary(); const wasActive = currentSessionStats.id; resetSessionState();
+        if (openPanel && wasActive) { console.log("finalizeSession: Condition openPanel=true met. Attempting to open panel."); if (window.timerPopupAPI && typeof window.timerPopupAPI.openPanel === 'function') { try { console.log("Chamando timerPopupAPI.openPanel()"); window.timerPopupAPI.openPanel(); } catch (e) { console.error("Erro ao chamar openPanel:", e); } } else { console.warn('Função timerPopupAPI.openPanel() não encontrada.'); showStatus("Sessão finalizada e salva. Painel não disponível.", "info"); } } else if (wasActive) { console.log("finalizeSession: Condition openPanel=false met. NOT opening panel."); showStatus("Sessão finalizada e salva.", "success"); } console.log(`Sessão ${sessionId} finalizada.`);
+    }
 
-        if (openPanel && wasActive) { console.log("finalizeSession: Attempting to open panel."); if (window.timerPopupAPI && typeof window.timerPopupAPI.openPanel === 'function') { try { console.log("Chamando timerPopupAPI.openPanel()"); window.timerPopupAPI.openPanel(); } catch (e) { console.error("Erro ao chamar openPanel:", e); showStatus("Sessão finalizada e salva. Painel não disponível.", "info"); } } else { console.warn('Função timerPopupAPI.openPanel() não encontrada.'); showStatus("Sessão finalizada e salva. Painel não disponível.", "info"); } } else if (wasActive) { console.log("finalizeSession: Not opening panel."); showStatus("Sessão finalizada e salva.", "success"); } else { console.log("finalizeSession: No active session to finalize."); }
-        console.log(`Sessão ${sessionId} finalizada.`);
+     // === Função: Lidar com Saída da Página ===
+     function handleBeforeUnload(event) { if (currentSessionStats.id && currentSessionStats.totalQuestions > 0) { console.log("beforeunload: Finalizando sessão ativa..."); finalizeSession(false); } }
+
+    // === Função: Parsear o Texto da API ===
+    // Modificada para extrair metadados ([META_SOURCE], [META_YEAR])
+    function parseGeneratedText(text, expectedType) {
+        const questions = [];
+         // Inclui os novos marcadores na busca pelo início do conteúdo relevante
+        const startIndex = Math.min(
+            text.indexOf("[Q]") !== -1 ? text.indexOf("[Q]") : Infinity,
+            text.indexOf("[SEP]") !== -1 ? text.indexOf("[SEP]") : Infinity,
+            text.indexOf("[META_SOURCE]") !== -1 ? text.indexOf("[META_SOURCE]") : Infinity, // NOVO
+            text.indexOf("[META_YEAR]") !== -1 ? text.indexOf("[META_YEAR]") : Infinity // NOVO
+        );
+        const relevantText = startIndex !== Infinity ? text.substring(startIndex) : text;
+
+
+        // Inclui os novos marcadores na regex de split por SEP
+        const questionBlocks = relevantText.trim().split(/\s*\[SEP\]\s*/i).filter(block => block.trim() !== '' && block.trim().toUpperCase().startsWith('[Q]'));
+
+
+        if (questionBlocks.length === 0 && relevantText.trim() !== '') {
+             console.warn("Nenhum bloco [SEP] encontrado ou nenhum bloco começa com [Q]. Tentando tratar como questão única se começar com [Q].");
+             if (relevantText.trim().toUpperCase().startsWith('[Q]')) {
+                 questionBlocks.push(relevantText.trim());
+             } else {
+                 console.error("Texto da API não reconhecido. Não começa com [Q] e não tem [SEP]s válidos:", relevantText);
+                 return [{ id: `q-error-parse-${Date.now()}-global`, text: `Erro Crítico: Formato da resposta da API irreconhecível. Nenhum bloco [Q]...[SEP] detectado.`, type: 'error', options: {}, correctAnswer: null, resolution: null, image: null }];
+             }
+        }
+
+        questionBlocks.forEach((block, index) => {
+            try {
+                const questionData = {
+                    id: `q-${Date.now()}-${index}`,
+                    text: '',
+                    options: {},
+                    correctAnswer: null,
+                    type: expectedType,
+                    answered: false,
+                    resolution: null,
+                    image: null,
+                    metaSource: null, // NOVO: Campo para metadado Fonte/Assunto
+                    metaYear: null    // NOVO: Campo para metadado Ano
+                };
+
+                // Extrai o enunciado [Q]
+                // Inclui os novos marcadores na regex de parada para o enunciado
+                const qMatch = block.match(/\[Q\]([\s\S]*?)(?:\[META_SOURCE\]|\[META_YEAR\]|\[A\]|\[B\]|\[C\]|\[D\]|\[V\]|\[F\]|\[G\]|\[R\]|\[IMG\]|\[RES\]|$)/i);
+                if (qMatch && qMatch[1]) {
+                    questionData.text = qMatch[1].trim();
+                } else {
+                     // Fallback se os novos marcadores ou opções/etc não forem encontrados imediatamente após [Q]
+                     const linesBeforeOption = block.split(/\[META_SOURCE\]|\[META_YEAR\]|\[A\]|\[B\]|\[C\]|\[D\]|\[V\]|\[F\]|\[G\]|\[R\]|\[IMG\]|\[RES\]/i)[0];
+                     questionData.text = linesBeforeOption.replace(/^\[Q\]/i, '').trim();
+                     if (!questionData.text) {
+                         console.warn(`Bloco ${index+1}: Não encontrou [Q] nem texto antes dos marcadores.`);
+                         // Pode não ser um erro crítico se o [Q] estiver lá, mas o texto estiver vazio
+                     }
+                 }
+
+                // Extrai opções, resposta, imagem, resolução E METADADOS
+                const lines = block.trim().split('\n');
+                let foundCorrectAnswerMarker = false;
+                let foundResolutionMarker = false;
+
+                lines.forEach(line => {
+                    line = line.trim();
+                    if (/^\[META_SOURCE\]/i.test(line)) { questionData.metaSource = line.substring(13).trim(); } // NOVO
+                    else if (/^\[META_YEAR\]/i.test(line)) { questionData.metaYear = line.substring(11).trim(); }   // NOVO
+                    else if (/^\[A\]/i.test(line)) questionData.options['A'] = line.substring(3).trim();
+                    else if (/^\[B\]/i.test(line)) questionData.options['B'] = line.substring(3).trim();
+                    else if (/^\[C\]/i.test(line)) questionData.options['C'] = line.substring(3).trim();
+                    else if (/^\[D\]/i.test(line)) questionData.options['D'] = line.substring(3).trim();
+                    else if (/^\[V\]/i.test(line)) questionData.options['V'] = line.substring(3).trim() || 'Verdadeiro';
+                    else if (/^\[F\]/i.test(line)) questionData.options['F'] = line.substring(3).trim() || 'Falso';
+                    else if (/^\[R\]/i.test(line)) {
+                        questionData.correctAnswer = line.substring(3).trim();
+                        foundCorrectAnswerMarker = true;
+                    } else if (/^\[G\]/i.test(line)) {
+                        questionData.suggestedAnswer = line.substring(3).trim(); // Mantido para dissertativa
+                        foundCorrectAnswerMarker = true;
+                    } else if (/^\[IMG\]/i.test(line)) {
+                        questionData.image = line.substring(5).trim();
+                    } else if (/^\[RES\]/i.test(line)) {
+                        questionData.resolution = line.substring(5).trim();
+                        foundResolutionMarker = true;
+                    }
+                });
+
+                // Validação específica do tipo (mantida)
+                 if (expectedType === 'multipla_escolha' || expectedType === 'verdadeiro_falso') {
+                     if (!foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Marcador de resposta [R] não encontrado.`);
+                     if (!questionData.correctAnswer && foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Valor da resposta [R] está vazio.`);
+                     if (Object.keys(questionData.options).length === 0) console.warn(`Bloco ${index+1}: Nenhuma opção ([A],[B]... ou [V],[F]) encontrada.`);
+                     if (!foundResolutionMarker) console.warn(`Bloco ${index+1}: Resolução [RES] não encontrada.`);
+                     if (!questionData.resolution && foundResolutionMarker) console.warn(`Bloco ${index+1}: Valor da resolução [RES] está vazio.`);
+
+                    if (expectedType === 'multipla_escolha') {
+                        const upperCaseCorrect = (questionData.correctAnswer || '').toUpperCase();
+                        if (foundCorrectAnswerMarker && !['A', 'B', 'C', 'D'].includes(upperCaseCorrect)) console.warn(`Bloco ${index+1}: Resposta [R] "${questionData.correctAnswer}" inválida. Use A, B, C ou D.`);
+                         if (foundCorrectAnswerMarker && questionData.options[upperCaseCorrect] === undefined) console.warn(`Bloco ${index+1}: Resposta [R] "${upperCaseCorrect}" não corresponde a nenhuma opção fornecida.`);
+                        if (foundCorrectAnswerMarker) questionData.correctAnswer = upperCaseCorrect; // Padroniza para maiúscula se encontrado
+                    } else { // verdadeiro_falso
+                        const upperCaseCorrect = (questionData.correctAnswer || '').toUpperCase();
+                        if (upperCaseCorrect === 'VERDADEIRO' || upperCaseCorrect === 'V') questionData.correctAnswer = 'V';
+                        else if (upperCaseCorrect === 'FALSO' || upperCaseCorrect === 'F') questionData.correctAnswer = 'F';
+                         else if (foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Resposta [R] "${questionData.correctAnswer}" inválida para V/F. Use V ou F.`);
+                        // Garante que as opções V/F existem se não vieram no prompt
+                         if (questionData.options['V'] === undefined) questionData.options['V'] = 'Verdadeiro';
+                         if (questionData.options['F'] === undefined) questionData.options['F'] = 'Falso';
+                    }
+                } else if (expectedType === 'dissertativa_curta') {
+                    if (!foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Gabarito [G] não encontrado.`);
+                    if (!questionData.suggestedAnswer && foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Valor do gabarito [G] está vazio.`);
+                    // Resolução [RES] é opcional para dissertativa, mas se [RES] existir, o valor não pode ser vazio
+                    if (foundResolutionMarker && !questionData.resolution) console.warn(`Bloco ${index+1}: Valor da resolução [RES] está vazio.`);
+                }
+
+                 // Se o enunciado estiver vazio, marca como erro para não exibir uma questão sem texto
+                 if (!questionData.text) {
+                      console.error(`Erro ao processar bloco ${index + 1}: Enunciado [Q] vazio.`);
+                       questions.push({
+                           id: `q-error-${Date.now()}-${index}`,
+                           text: `Erro ao carregar esta questão: Enunciado vazio.`,
+                           type: 'error',
+                           options: {}, correctAnswer: null, resolution: null, image: null, metaSource: null, metaYear: null
+                       });
+                 } else if (questionData.type !== 'error') { // Só adiciona se não for já um erro e tiver enunciado
+                     questions.push(questionData);
+                 }
+
+
+            } catch (error) {
+                console.error(`Erro ao processar bloco ${index + 1}:`, error, "\nBloco Original:\n---\n", block, "\n---");
+                questions.push({
+                    id: `q-error-${Date.now()}-${index}`,
+                    text: `Erro ao carregar esta questão (${error.message}). Verifique o console para detalhes. Bloco: ${block.substring(0, Math.min(block.length, 100))}...`,
+                    type: 'error',
+                    options: {}, correctAnswer: null, resolution: null, image: null, metaSource: null, metaYear: null
+                });
+            }
+        });
+        return questions;
     }
 
 
-     // === Função: Exibir Questões Parseadas (Recebe dados já parseados do backend) === (Não muda)
+    // === Função: Exibir Questões Parseadas ===
+    // Modificada para incluir a div de metadados.
     function displayParsedQuestions(questionsArray) {
          questoesOutput.innerHTML = '';
-         questionsDataStore = {};
+         questionsDataStore = {}; // Limpa antes de adicionar novas
          if (!questionsArray || questionsArray.length === 0) {
-             questoesOutput.innerHTML = '<p class="empty-state">Nenhuma questão foi gerada ou processada pelo servidor.</p>';
+             questoesOutput.innerHTML = '<p class="empty-state">Nenhuma questão foi gerada ou processada.</p>';
              return;
          }
          questionsArray.forEach((qData, index) => {
+             // Armazena dados completos para uso posterior (resolução)
              questionsDataStore[qData.id] = qData;
 
              const questionDiv = document.createElement('div');
@@ -231,108 +362,180 @@ document.addEventListener('DOMContentLoaded', () => {
                  questionDiv.dataset.selectedOption = '';
              }
 
-             if (qData.metaSource || qData.metaYear) { /* ... meta div code ... */
-                 const metaDiv = document.createElement('div'); metaDiv.className = 'question-meta';
-                 if (qData.metaSource) { const sourceSpan = document.createElement('span'); sourceSpan.className = 'meta-source'; sourceSpan.textContent = qData.metaSource; metaDiv.appendChild(sourceSpan); }
-                 if (qData.metaSource && qData.metaYear) { const separatorSpan = document.createElement('span'); separatorSpan.className = 'meta-separator'; separatorSpan.textContent = ' - '; metaDiv.appendChild(separatorSpan); }
-                 if (qData.metaYear) { const yearSpan = document.createElement('span'); yearSpan.className = 'meta-year'; yearSpan.textContent = qData.metaYear; metaDiv.appendChild(yearSpan); }
-                 questionDiv.appendChild(metaDiv);
-             }
+             // === NOVO: Adiciona a div de metadados se existirem ===
+             if (qData.metaSource || qData.metaYear) {
+                 const metaDiv = document.createElement('div');
+                 metaDiv.className = 'question-meta'; // Classe para estilizar a div container
 
-             const questionText = document.createElement('p'); questionText.className = 'question-text';
+                 if (qData.metaSource) {
+                     const sourceSpan = document.createElement('span');
+                     sourceSpan.className = 'meta-source'; // Classe para estilizar a fonte
+                     sourceSpan.textContent = qData.metaSource;
+                     metaDiv.appendChild(sourceSpan);
+                 }
+
+                 if (qData.metaSource && qData.metaYear) {
+                      // Adiciona um separador se ambos existirem
+                      const separatorSpan = document.createElement('span');
+                      separatorSpan.className = 'meta-separator'; // Classe para estilizar o separador
+                      separatorSpan.textContent = ' - ';
+                      metaDiv.appendChild(separatorSpan);
+                 }
+
+                 if (qData.metaYear) {
+                     const yearSpan = document.createElement('span');
+                     yearSpan.className = 'meta-year'; // Classe para estilizar o ano
+                     yearSpan.textContent = qData.metaYear;
+                     metaDiv.appendChild(yearSpan);
+                 }
+
+                 questionDiv.appendChild(metaDiv); // Adiciona a div de meta antes do texto da questão
+             }
+             // === FIM: Adiciona a div de metadados ===
+
+
+             const questionText = document.createElement('p');
+             questionText.className = 'question-text';
              const sanitizedText = qData.text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
              questionText.innerHTML = `<strong>${index + 1}.</strong> ${sanitizedText.replace(/\n/g, '<br>')}`;
              questionDiv.appendChild(questionText);
 
-             if (qData.image) { /* ... image code ... */
-                 const imgElement = document.createElement('img'); imgElement.src = qData.image; imgElement.alt = `Imagem para a questão ${index + 1}`; imgElement.className = 'question-image';
-                 imgElement.onerror = () => { console.warn(`Erro ao carregar imagem: ${qData.image} para questão ${qData.id}`); imgElement.alt = `Erro ao carregar imagem para a questão ${index + 1}`; imgElement.style.display = 'none'; const errorMsg = document.createElement('p'); errorMsg.className = 'image-load-error'; errorMsg.textContent = `[Erro ao carregar imagem: ${qData.image}]`; imgElement.parentNode.insertBefore(errorMsg, imgElement.nextSibling); };
+             // Adiciona imagem se existir
+             if (qData.image) {
+                 const imgElement = document.createElement('img');
+                 imgElement.src = qData.image; // Assume que é uma URL válida
+                 imgElement.alt = `Imagem para a questão ${index + 1}`;
+                 imgElement.className = 'question-image';
+                 imgElement.onerror = () => {
+                     console.warn(`Erro ao carregar imagem: ${qData.image} para questão ${qData.id}`);
+                     imgElement.alt = `Erro ao carregar imagem para a questão ${index + 1}`;
+                 };
                  questionDiv.appendChild(imgElement);
              }
 
-             if (qData.type === 'error') { questionDiv.classList.add('question-error'); questoesOutput.appendChild(questionDiv); return; }
+             if (qData.type === 'error') {
+                 questionDiv.classList.add('question-error');
+                 questoesOutput.appendChild(questionDiv);
+                 return; // Pula o resto para questões com erro
+             }
 
-             const optionsContainer = document.createElement('div'); optionsContainer.className = 'options-container';
-             if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') { /* ... options code ... */
+             const optionsContainer = document.createElement('div');
+             optionsContainer.className = 'options-container';
+             if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
                  const optionKeys = (qData.type === 'multipla_escolha') ? Object.keys(qData.options).filter(k => ['A','B','C','D'].includes(k)).sort() : ['V', 'F'];
-                 optionKeys.forEach(key => { if (qData.options[key] !== undefined) { const optionButton = document.createElement('button'); optionButton.className = 'option-btn'; optionButton.dataset.value = key; const sanitizedOptionText = (qData.options[key] || '').replace(/</g, "&lt;").replace(/>/g, "&gt;"); const letterHTML = `<span class="option-letter">${key})</span>`; let contentText = ''; if (qData.type === 'verdadeiro_falso') { const label = (key === 'V') ? 'Verdadeiro' : 'Falso'; const text = (sanitizedOptionText && sanitizedOptionText.toLowerCase() !== 'verdadeiro' && sanitizedOptionText.toLowerCase() !== 'falso') ? `: ${sanitizedOptionText}` : ''; contentText = `${label}${text}`; } else { contentText = sanitizedOptionText; } const contentHTML = `<span class="option-content">${contentText.replace(/\n/g, '<br>')}</span>`; optionButton.innerHTML = letterHTML + contentHTML; optionsContainer.appendChild(optionButton); } });
-             } else if (qData.type === 'dissertativa_curta') { /* ... dissertative info code ... */
-                 const answerP = document.createElement('p'); answerP.className = 'dissertative-info'; let dissertativeText = `<i>Questão dissertativa.`; if(qData.suggestedAnswer) { const sanitizedAnswer = qData.suggestedAnswer.replace(/</g, "&lt;").replace(/>/g, "&gt;"); dissertativeText += ` Resposta Sugerida: ${sanitizedAnswer}`; } else { dissertativeText += ` Resposta não interativa.`; } dissertativeText += `</i>`; answerP.innerHTML = dissertativeText; optionsContainer.appendChild(answerP);
+                 optionKeys.forEach(key => {
+                     if (qData.options[key] !== undefined) {
+                         const optionButton = document.createElement('button');
+                         optionButton.className = 'option-btn';
+                         optionButton.dataset.value = key;
+                         const sanitizedOptionText = (qData.options[key] || '').replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+                         const letterHTML = `<span class="option-letter">${key})</span>`;
+                         let contentText = '';
+
+                         if (qData.type === 'verdadeiro_falso') {
+                             const label = (key === 'V') ? 'Verdadeiro' : 'Falso';
+                             const text = sanitizedOptionText && sanitizedOptionText !== 'Verdadeiro' && sanitizedOptionText !== 'Falso' ? `: ${sanitizedOptionText}` : '';
+                             contentText = `${label}${text}`;
+                         } else { // Multipla Escolha
+                             contentText = sanitizedOptionText;
+                         }
+
+                         const contentHTML = `<span class="option-content">${contentText.replace(/\n/g, '<br>')}</span>`;
+
+                         optionButton.innerHTML = letterHTML + contentHTML;
+
+                         optionsContainer.appendChild(optionButton);
+                     }
+                 });
+             } else if (qData.type === 'dissertativa_curta') {
+                 const answerP = document.createElement('p');
+                 answerP.className = 'dissertative-info';
+                 let dissertativeText = `<i>Questão dissertativa.`;
+                 if(qData.suggestedAnswer) {
+                     const sanitizedAnswer = qData.suggestedAnswer.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                     dissertativeText += ` Resposta Sugerida: ${sanitizedAnswer}`;
+                 } else {
+                     dissertativeText += ` Resposta não interativa.`;
+                 }
+                 dissertativeText += `</i>`;
+                 answerP.innerHTML = dissertativeText;
+                 optionsContainer.appendChild(answerP);
              }
              questionDiv.appendChild(optionsContainer);
 
-             const feedbackArea = document.createElement('div'); feedbackArea.className = 'feedback-area';
-             const feedbackDiv = document.createElement('div'); feedbackDiv.className = 'feedback-message'; feedbackDiv.style.display = 'none'; feedbackArea.appendChild(feedbackDiv);
+             // Feedback Area
+             const feedbackArea = document.createElement('div');
+             feedbackArea.className = 'feedback-area';
 
-             if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') { /* ... confirm button code ... */
-                 const confirmButton = document.createElement('button'); confirmButton.className = 'confirm-answer-btn'; confirmButton.textContent = 'Responder'; confirmButton.disabled = true; feedbackArea.appendChild(confirmButton);
+             const feedbackDiv = document.createElement('div');
+             feedbackDiv.className = 'feedback-message';
+             feedbackDiv.style.display = 'none';
+             feedbackArea.appendChild(feedbackDiv);
+
+             // Botão Responder
+             if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
+                 const confirmButton = document.createElement('button');
+                 confirmButton.className = 'confirm-answer-btn';
+                 confirmButton.textContent = 'Responder';
+                 confirmButton.disabled = true;
+                 feedbackArea.appendChild(confirmButton);
              }
 
-             if (qData.resolution) { /* ... view resolution button code ... */
-                 const resolutionButton = document.createElement('button'); resolutionButton.className = 'view-resolution-btn'; resolutionButton.textContent = 'Ver Resolução'; resolutionButton.dataset.questionId = qData.id; resolutionButton.style.display = 'none'; feedbackArea.appendChild(resolutionButton);
+             // Botão Ver Resolução
+             if (qData.resolution) {
+                 const resolutionButton = document.createElement('button');
+                 resolutionButton.className = 'view-resolution-btn';
+                 resolutionButton.textContent = 'Ver Resolução';
+                 resolutionButton.dataset.questionId = qData.id;
+                 resolutionButton.style.display = 'none';
+                 feedbackArea.appendChild(resolutionButton);
              }
 
              questionDiv.appendChild(feedbackArea);
 
-             if (qData.resolution) { /* ... resolution area code ... */
-                 const resolutionDiv = document.createElement('div'); resolutionDiv.className = 'resolution-area'; resolutionDiv.style.display = 'none'; questionDiv.appendChild(resolutionDiv);
+             // Área para exibir a resolução
+             if (qData.resolution) {
+                 const resolutionDiv = document.createElement('div');
+                 resolutionDiv.className = 'resolution-area';
+                 resolutionDiv.style.display = 'none';
+                 questionDiv.appendChild(resolutionDiv);
              }
 
              questoesOutput.appendChild(questionDiv);
          });
     }
 
-    // === Funções de Interação com Questões (Não mudam) ===
-    function handleOptionClick(clickedButton) { /* ... */
-        const questionDiv = clickedButton.closest('.question-item'); if (!questionDiv || questionDiv.dataset.answered === 'true') { return; } const confirmAnswerBtn = questionDiv.querySelector('.confirm-answer-btn'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const selectedValue = clickedButton.dataset.value; allOptionButtons.forEach(btn => btn.classList.remove('selected-preview')); clickedButton.classList.add('selected-preview'); questionDiv.dataset.selectedOption = selectedValue; console.log(`Set selectedOption=${selectedValue} on ${questionDiv.id}`); if (confirmAnswerBtn) { confirmButton.disabled = false; console.log(`Enabled confirm button for ${questionDiv.id}`); } else { console.error("Botão .confirm-answer-btn não encontrado para", questionDiv.id); }
+
+    // === Função: Lidar com Clique na OPÇÃO (Seleciona, não confirma) ===
+    function handleOptionClick(clickedButton) {
+        const questionDiv = clickedButton.closest('.question-item'); if (!questionDiv || questionDiv.dataset.answered === 'true') { return; } const confirmAnswerBtn = questionDiv.querySelector('.confirm-answer-btn'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const selectedValue = clickedButton.dataset.value; allOptionButtons.forEach(btn => btn.classList.remove('selected-preview')); clickedButton.classList.add('selected-preview'); questionDiv.dataset.selectedOption = selectedValue; console.log(`Set selectedOption=${selectedValue} on ${questionDiv.id}`); if (confirmAnswerBtn) { confirmAnswerBtn.disabled = false; console.log(`Enabled confirm button for ${questionDiv.id}`); } else { console.error("Botão .confirm-answer-btn não encontrado para", questionDiv.id); }
      }
 
-    function handleConfirmAnswer(confirmButton) { /* ... */
-         console.log("handleConfirmAnswer triggered for button:", confirmButton); const questionDiv = confirmButton.closest('.question-item'); console.log("Associated questionDiv:", questionDiv); if (!questionDiv) { console.error("Não foi possível encontrar o .question-item pai do botão."); return; } const userAnswer = questionDiv.dataset.selectedOption; const isAnswered = questionDiv.dataset.answered === 'true'; console.log("Checking conditions: ", { userAnswer: userAnswer, isAnswered: isAnswered, sessionId: currentSessionStats.id }); if (!userAnswer || isAnswered) { console.warn("Tentativa de confirmar resposta inválida: Nenhuma opção selecionada ou questão já respondida.", { selectedOption: userAnswer, isAnswered: isAnswered }); confirmButton.style.opacity = '0.5'; setTimeout(() => { confirmButton.style.opacity = '1'; }, 300); return; } if (!currentSessionStats.id) { console.warn("Tentativa de responder sem sessão ativa."); showStatus("Erro: Sessão não iniciada.", "error"); return; } console.log("Passed initial checks. Proceeding with answer evaluation...");
-         const correctAnswer = questionDiv.dataset.correctAnswer;
-         const isCorrect = userAnswer === correctAnswer;
-         const feedbackDiv = questionDiv.querySelector('.feedback-message');
-         const allOptionButtons = questionDiv.querySelectorAll('.option-btn');
-         const originallySelectedButton = Array.from(allOptionButtons).find(btn => btn.dataset.value === userAnswer);
+    // === Função: Lidar com Clique no Botão RESPONDER (Confirma a resposta) ===
+    function handleConfirmAnswer(confirmButton) {
+         console.log("handleConfirmAnswer triggered for button:", confirmButton); const questionDiv = confirmButton.closest('.question-item'); console.log("Associated questionDiv:", questionDiv); if (!questionDiv) { console.error("Não foi possível encontrar o .question-item pai do botão."); return; } const userAnswer = questionDiv.dataset.selectedOption; const isAnswered = questionDiv.dataset.answered === 'true'; console.log("Checking conditions: ", { userAnswer: userAnswer, isAnswered: isAnswered, sessionId: currentSessionStats.id }); if (!userAnswer || isAnswered) { console.warn("Tentativa de confirmar resposta inválida: Nenhuma opção selecionada ou questão já respondida.", { selectedOption: userAnswer, isAnswered: isAnswered }); confirmButton.style.opacity = '0.5'; setTimeout(() => { confirmButton.style.opacity = '1'; }, 300); return; } if (!currentSessionStats.id) { console.warn("Tentativa de responder sem sessão ativa."); showStatus("Erro: Sessão não iniciada.", "error"); return; } console.log("Passed initial checks. Proceeding with answer evaluation..."); const correctAnswer = questionDiv.dataset.correctAnswer; const isCorrect = userAnswer === correctAnswer; const feedbackDiv = questionDiv.querySelector('.feedback-message'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const originallySelectedButton = Array.from(allOptionButtons).find(btn => btn.dataset.value === userAnswer);
          const resolutionButton = questionDiv.querySelector('.view-resolution-btn');
 
-         console.log(`Confirmando resposta para ${questionDiv.id}: User=${userAnswer}, Correct=${correctAnswer}, IsCorrect=${isCorrect}`);
-         questionDiv.dataset.answered = 'true';
-         questionDiv.classList.add('answered');
-         questionDiv.classList.add(isCorrect ? 'correct' : 'incorrect');
+         console.log(`Confirmando resposta para ${questionDiv.id}: User=${userAnswer}, Correct=${correctAnswer}, IsCorrect=${isCorrect}`); questionDiv.dataset.answered = 'true'; questionDiv.classList.add('answered'); questionDiv.classList.add(isCorrect ? 'correct' : 'incorrect'); allOptionButtons.forEach(btn => { btn.disabled = true; btn.classList.remove('selected-preview'); if (btn === originallySelectedButton) { btn.classList.add('selected'); } if (btn.dataset.value === correctAnswer) { btn.classList.add('correct-answer-highlight'); } }); confirmButton.disabled = true; if (feedbackDiv) { feedbackDiv.textContent = isCorrect ? 'Resposta Correta!' : `Incorreto. A resposta correta é: ${correctAnswer}`; feedbackDiv.style.display = 'block'; } else { console.warn("Elemento .feedback-message não encontrado para", questionDiv.id); }
 
-         allOptionButtons.forEach(btn => {
-             btn.disabled = true;
-             btn.classList.remove('selected-preview');
-             if (btn.dataset.value === userAnswer) { btn.classList.add('selected-user-answer'); }
-             if (btn.dataset.value === correctAnswer) { btn.classList.add('correct-answer-highlight'); }
-         });
-
-         confirmButton.disabled = true;
-
-         if (feedbackDiv) { feedbackDiv.textContent = isCorrect ? 'Resposta Correta!' : `Incorreto. A resposta correta é: ${correctAnswer}`; feedbackDiv.className = `feedback-message ${isCorrect ? 'correct' : 'incorrect'}`; feedbackDiv.style.display = 'block'; } else { console.warn("Elemento .feedback-message não encontrado para", questionDiv.id); }
-
-         if (resolutionButton) { resolutionButton.style.display = 'inline-flex'; console.log(`Botão 'Ver Resolução' exibido para ${questionDiv.id}`); }
-
-         currentSessionStats.answeredCount++; if (isCorrect) { currentSessionStats.correctCount++; } console.log('Sessão atual:', currentSessionStats);
-
-         if (window.timerPopupAPI && typeof window.timerPopupAPI.updateStats === 'function') { try { window.timerPopupAPI.updateStats( currentSessionStats.answeredCount, currentSessionStats.correctCount ); } catch(e) { console.error("Erro ao chamar updateStats:", e); } } else { console.warn('API do Timer Popup (updateStats) não encontrada.'); }
-
-         if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions && currentSessionStats.totalQuestions > 0) {
-             console.log("Todas as questões foram respondidas!");
-             showStatus("Simulado concluído! Verifique o painel de tempo.", "success");
-             finalizeSession(true);
+         if (resolutionButton) {
+             resolutionButton.style.display = 'inline-flex';
+             console.log(`Botão 'Ver Resolução' exibido para ${questionDiv.id}`);
          }
+
+         currentSessionStats.answeredCount++; if (isCorrect) { currentSessionStats.correctCount++; } console.log('Sessão atual:', currentSessionStats); if (window.timerPopupAPI && typeof window.timerPopupAPI.updateStats === 'function') { try { window.timerPopupAPI.updateStats( currentSessionStats.answeredCount, currentSessionStats.correctCount ); } catch(e) { console.error("Erro ao chamar updateStats:", e); } } else { console.warn('API do Timer Popup (updateStats) não encontrada.'); } if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) { console.log("Todas as questões foram respondidas!"); showStatus("Simulado concluído! Verifique o painel de tempo.", "success"); finalizeSession(true); }
      }
 
-    function handleViewResolution(resolutionButton) { /* ... */
+    // === Função para Lidar com Clique no Botão VER RESOLUÇÃO ===
+    function handleViewResolution(resolutionButton) {
         const questionId = resolutionButton.dataset.questionId;
         const questionDiv = document.getElementById(questionId);
         const resolutionArea = questionDiv ? questionDiv.querySelector('.resolution-area') : null;
         const questionData = questionsDataStore[questionId];
 
         if (!questionDiv || !resolutionArea || !questionData || !questionData.resolution) {
-            console.error(`Erro ao tentar mostrar resolução para questão ${questionId}. Elementos ou dados não encontrados.`, { questionDivExists: !!questionDiv, resolutionAreaExists: !!resolutionArea, questionDataExists: !!questionData, hasResolution: questionData?.resolution });
+            console.error(`Erro ao tentar mostrar resolução para questão ${questionId}. Elementos ou dados não encontrados.`);
             showStatus("Erro ao carregar a resolução.", "error");
             return;
         }
@@ -346,8 +549,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`Resolução exibida para ${questionId}`);
     }
 
-
-    // === Função Principal: Gerar Questões (INICIA A TAREFA E COMEÇA O POLLING) ===
+    // === Função Principal: Gerar Questões ===
+    // Modificada para chamar a Netlify Function
     async function handleGenerateQuestions() {
         hidePopup();
         if (currentSessionStats.id) {
@@ -355,194 +558,244 @@ document.addEventListener('DOMContentLoaded', () => {
              finalizeSession(false);
         }
 
-        if (pollingIntervalId) { clearInterval(pollingIntervalId); pollingIntervalId = null; console.log("Cleared previous polling interval."); }
-        currentTaskId = null;
-
         const assunto = assuntoInput.value.trim();
         const bibliografia = bibliografiaInput.value.trim();
         const disciplinaSelecionada = disciplinaSelect.value;
         const numQuestoes = parseInt(numQuestoesInput.value, 10);
         const tipoQuestao = tipoQuestaoSelect.value;
-        const nivelQuestao = nivelQuestaoSelect.value;
+        const nivelQuestao = nivelQuestaoSelect.value; // Valor selecionado no dropdown de dificuldade
 
         if (!assunto) { assuntoInput.focus(); return showError("Por favor, informe o Assunto Principal."); }
         if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) { numQuestoesInput.focus(); return showError("Número de questões inválido (1-20)."); }
         if (!nivelQuestao) { nivelQuestaoSelect.focus(); return showError("Por favor, selecione o Nível das questões."); }
-        if (!tipoQuestao) { tipoQuestaoSelect.focus(); return showError("Por favor, selecione o Tipo de Questão."); }
+        // Validação do modelo (a chave da API agora é verificada na função)
+        if (!OPENROUTER_MODEL) { return showError("Erro Crítico: Modelo da API OpenRouter não configurado no frontend."); }
+
 
         const disciplinaParaSessao = disciplinaSelecionada || "Geral";
 
-        console.log(`Iniciando geração assíncrona (Opção 3) via Netlify Function...`);
-        showLoading(true, 'Iniciando tarefa de geração...');
-        clearOutput(); // Limpa a área de questões
+        console.log(`Iniciando geração... Assunto: ${assunto}, Nível: ${nivelQuestao}, Modelo: ${OPENROUTER_MODEL}`);
+        showLoading(true);
+        clearOutput();
 
-        // === Dados para enviar para a função START ===
-        const requestBodyToStartFunction = {
-            assunto: assunto,
-            bibliografia: bibliografia,
-            disciplinaSelecionada: disciplinaSelecionada,
-            numQuestoes: numQuestoes,
-            tipoQuestao: tipoQuestao,
-            nivelQuestao: nivelQuestao
-        };
+        // === Construir Prompt (Atualizado para incluir instrução para metadados) ===
+        let prompt = `Gere ${numQuestoes} questão(ões) EXCLUSIVAMENTE sobre o Assunto Principal "${assunto}".\n`;
+        if (disciplinaSelecionada) prompt += `Considere o contexto da Disciplina: "${disciplinaSelecionada}".\n`;
+        prompt += `GENERE AS QUESTÕES COM NÍVEL DE DIFICULDADE ESTRITAMENTE: ${nivelQuestao.toUpperCase()}.\n`;
+        prompt += `A complexidade, vocabulário e conceitos abordados devem ser consistentes com o nível ${nivelQuestao.toUpperCase()}.\n`;
+        if (bibliografia) prompt += `Use a seguinte Bibliografia como inspiração/referência (se aplicável ao assunto): "${bibliografia}".\n`;
+        prompt += `Tipo de questão desejada: ${tipoQuestao === 'multipla_escolha' ? 'Múltipla Escolha (A, B, C, D)' : tipoQuestao === 'verdadeiro_falso' ? 'Verdadeiro/Falso (V/F)' : 'Dissertativa Curta'}.\n`;
+
+        // --- INSTRUÇÃO PARA METADADOS ---
+        prompt += `Para cada questão, inclua os seguintes metadados IMEDIATAMENTE APÓS o marcador [Q] e ANTES de quaisquer outros marcadores ([A], [B], [V], [F], [G], [R], [IMG], [RES]).\n`;
+        prompt += `- Fonte/Assunto: Use EXATAMENTE o formato "[META_SOURCE] Texto da fonte ou assunto". Use algo relevante como "Disciplina: ${disciplinaParaSessao}", "Assunto: ${assunto}", ou "Simulado ENEM", "Prova OAB", etc., se aplicável e se o modelo puder inferir do contexto/assunto.\n`;
+        prompt += `- Ano de Geração/Referência: Use EXATAMENTE o formato "[META_YEAR] Ano". Sugira o ano atual ou um ano de referência relevante, se aplicável.\n`;
+         const currentYear = new Date().getFullYear();
+        prompt += `Utilize o ano atual (${currentYear}) como padrão, a menos que o assunto ou contexto sugira fortemente um ano específico.\n`;
+        // ----------------------------------
+
+        prompt += `Formato de saída OBRIGATÓRIO:\n`;
+        prompt += `- Separe CADA questão completa (enunciado, metadados, imagem?, opções/gabarito, resposta, resolução) usando APENAS "[SEP]" como separador.\n`;
+        prompt += `- Dentro de cada bloco de questão:\n`;
+        prompt += `  - Inicie o enunciado OBRIGATORIAMENTE com "[Q] ".\n`;
+        // Metadados vêm AQUI no formato [META_SOURCE]... e [META_YEAR]...
+        prompt += `  - (Opcional) Se a questão NECESSITAR de uma imagem... use EXATAMENTE o formato "[IMG] URL_ou_descrição_detalhada". Use isso RARAMENTE...\n`;
+        switch (tipoQuestao) {
+            case 'multipla_escolha': prompt += `  - Para CADA alternativa, use EXATAMENTE o formato "[A] texto...".\n  - Indique a resposta correta usando "[R] " seguido APENAS pela LETRA maiúscula (A, B, C ou D).\n`; break;
+            case 'verdadeiro_falso': prompt += `  - Forneça a afirmação no enunciado [Q].\n  - Use "[V]" ou deixe vazio.\n  - Use "[F]" ou deixe vazio.\n  - Indique a resposta correta usando "[R] " seguido APENAS por "V" ou "F".\n`; break;
+            case 'dissertativa_curta': prompt += `  - Forneça uma resposta/gabarito curto e direto usando "[G] ".\n`; break;
+        }
+        prompt += `  - Forneça uma resolução/explicação DETALHADA... usando OBRIGATORIAMENTE o formato "[RES] Texto...".\n`;
+
+        // --- Exemplos atualizados para incluir metadados ---
+        prompt += `Exemplo Múltipla Escolha com Metadados e Resolução (nível fácil):
+[Q] Qual a capital da França?
+[META_SOURCE] Geografia - Capitais
+[META_YEAR] ${currentYear}
+[A] Londres
+[B] Berlim
+[C] Paris
+[D] Madri
+[R] C
+[RES] Paris é a capital e maior cidade da França, localizada no norte do país, às margens do rio Sena. Londres é a capital da Inglaterra, Berlim da Alemanha e Madri da Espanha.
+[SEP]
+`;
+        prompt += `Exemplo V/F com Metadados, Imagem e Resolução (nível médio):
+[Q] A imagem abaixo mostra um triângulo equilátero?
+[META_SOURCE] Matemática - Geometria Plana
+[META_YEAR] ${currentYear}
+[IMG] https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Regular_triangle.svg/200px-Regular_triangle.svg.png
+[V]
+[F]
+[R] V
+[RES] Sim, a imagem mostra um triângulo equilátero, que possui todos os três lados de igual comprimento e todos os três ângulos internos iguais a 60 graus. Um triângulo isósceles tem apenas dois lados iguais, e um escaleno tem todos os lados diferentes.
+[SEP]
+`;
+        // -----------------------------------------------------
+
+        prompt += `
+IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_SOURCE], [META_YEAR], [IMG], [A], [B], [C], [D], [V], [F], [R], [G], [RES], [SEP]). NÃO adicione NENHUMA outra formatação, numeração automática, texto introdutório ou comentários fora do formato especificado. Gere APENAS o texto das questões conforme solicitado. Certifique-se de que TODAS as questões de múltipla escolha e V/F tenham o marcador [RES] com uma explicação.`;
+
 
         try {
-            // === Chama a função Netlify para INICIAR a tarefa ===
-            const startResponse = await fetch(START_GENERATION_URL, {
+            // === Corpo da requisição para a SUA Netlify Function ===
+            // Este corpo contém os dados que a função precisa para chamar o OpenRouter
+            const requestBody = {
+                model: OPENROUTER_MODEL, // Usa o modelo definido no frontend
+                messages: [
+                    {
+                        role: "user",
+                        content: prompt
+                    }
+                ],
+                temperature: 0.7, // Mantém os parâmetros
+                max_tokens: 450 * numQuestoes + 300, // Mantém os parâmetros
+                // Adicione aqui quaisquer outros parâmetros que a API do OpenRouter espera
+                // e que você queira controlar do frontend.
+            };
+
+            // === Requisição Fetch para a SUA NETLIFY FUNCTION ===
+            // Altere a URL para o endpoint da função. Removidos headers sensíveis.
+            const response = await fetch(NETLIFY_FUNCTION_URL, { // <<<< CHAMADA PARA A FUNÇÃO
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestBodyToStartFunction)
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Headers de API Key e Referer/Title foram movidos para a Função Netlify
+                },
+                body: JSON.stringify(requestBody) // Envia o corpo para a função
             });
 
-             const startResponseData = await startResponse.json();
-             console.log("Resposta da função Start Generation:", startResponseData);
+             // === Lida com respostas de ERRO, agora vindas da sua função ===
+             // A função foi configurada para retornar status HTTP apropriados ou JSON de erro
+             if (!response.ok) {
+                 let errorBodyText = await response.text();
+                 console.error("Raw Function Error Response:", errorBodyText);
+                 let errorBody = {};
+                 let errorMessageForUser = `Erro na Função Netlify (${response.status})`;
+                 try {
+                     errorBody = JSON.parse(errorBodyText);
+                     // Tenta pegar uma mensagem de erro mais amigável que a função pode ter retornado
+                     // Isso inclui erros repassados do OpenRouter pela função
+                     errorMessageForUser = errorBody.error || errorBody.message || errorMessageForUser;
+                 } catch (e) {
+                     console.error("Erro ao parsear erro JSON da função:", e);
+                     errorMessageForUser += `: ${errorBodyText.substring(0, Math.min(errorBodyText.length, 100))}...`; // Usa parte do texto se não for JSON
+                 }
 
-             if (!startResponse.ok) {
-                 const errorMessage = startResponseData.error || `Erro ao iniciar a tarefa de geração (Status: ${startResponse.status})`;
-                 console.error(`Erro retornado pela função Start Generation (Status ${startResponse.status}):`, startResponseData);
-                 showError(`Erro ao iniciar a geração: ${errorMessage}`);
+                 // Mostra a mensagem de erro amigável para o usuário
+                 showError(errorMessageForUser);
                  resetSessionState();
-                 return;
+                 showLoading(false);
+                 return; // Sai da função handleGenerateQuestions
              }
 
-             // Tarefa iniciada com sucesso, obtemos o ID
-             currentTaskId = startResponseData.taskId;
-             if (!currentTaskId) {
-                  console.error("Função Start Generation não retornou um Task ID.");
-                  showError("Erro interno do servidor: ID da tarefa não recebido.");
+            // Lida com a resposta de SUCESSO, que virá da sua função
+            // A função repassa a resposta do OpenRouter
+            const data = await response.json();
+
+            console.log("Resposta completa recebida da Netlify Function:", data);
+
+             // Verifica se a API OpenRouter retornou erro, mesmo que a função tenha retornado 200
+             if (data.error) {
+                  console.error("Erro retornado pela API OpenRouter (via função):", data.error);
+                  const errorMessage = data.error.message || data.error.type || 'Erro desconhecido retornado pela API.';
+                  showError(`Erro da API OpenRouter: ${errorMessage}`);
                   resetSessionState();
+                  showLoading(false);
                   return;
              }
 
-             console.log(`Tarefa iniciada com ID: ${currentTaskId}. Iniciando polling...`);
-             showLoading(true, 'Gerando questões...'); // Atualiza a mensagem de status
+            if (!data.choices || data.choices.length === 0 || !data.choices[0].message?.content) {
+                console.error("Resposta inesperada da Netlify Function (sem choices ou conteúdo válido):", data);
+                showError("Erro: A Função Netlify retornou uma resposta vazia ou em formato inesperado.");
+                resetSessionState();
+                showLoading(false);
+                return;
+            }
 
-             // === Inicia o Polling ===
-             const POLLING_INTERVAL = 3000; // Polla a cada 3 segundos (ajuste conforme necessário)
+            const rawTextFromAPI = data.choices[0].message.content;
+            console.log("Texto cru extraído da Função:", rawTextFromAPI);
 
-             pollingIntervalId = setInterval(async () => {
-                 console.log(`Polling status para Task ID: ${currentTaskId}...`);
-                 try {
-                     const checkResponse = await fetch(`${CHECK_GENERATION_URL}?taskId=${currentTaskId}`, {
-                         method: 'GET',
-                         headers: { 'Content-Type': 'application/json' }
-                     });
+            const questionsArray = parseGeneratedText(rawTextFromAPI, tipoQuestao);
+            displayParsedQuestions(questionsArray);
 
-                     // Nota: checkResponse.ok === false pode ser 404 (NOT_FOUND) ou 500 (Erro interno no Check Function)
-                     // Se checkResponse.ok for false, checkResponseData será a resposta de erro do backend
-                     const checkResponseData = await checkResponse.json();
-                     console.log(`Resposta do Polling (${currentTaskId}):`, checkResponseData);
+            const validQuestions = questionsArray.filter(q => q.type !== 'error');
+            const totalValidQuestions = validQuestions.length;
+            const errorQuestionsCount = questionsArray.length - totalValidQuestions;
 
-                     if (!checkResponse.ok) {
-                          const errorMessage = checkResponseData.message || `Erro ao verificar status da tarefa (Status: ${checkResponse.status})`;
-                          console.error(`Erro retornado pela função Check Generation (Status ${checkResponse.status}):`, checkResponseData);
-                          // Se for 404 Not Found, pode ser que a tarefa expirou no Redis
-                          showError(`Erro durante a espera pela geração: ${errorMessage}`);
-                          // resetSessionState já é chamado por showError
-                          return; // Sai do callback do intervalo
+            if (totalValidQuestions > 0) {
+                currentSessionStats = { id: `sess-${Date.now()}`, totalQuestions: totalValidQuestions, answeredCount: 0, correctCount: 0, disciplina: disciplinaParaSessao, startTime: Date.now() };
+                console.log("Nova sessão iniciada:", currentSessionStats);
+
+                if (window.timerPopupAPI && typeof window.timerPopupAPI.startSession === 'function') {
+                     try { console.log(`Iniciando sessão no Timer Popup ID: ${currentSessionStats.id}`); window.timerPopupAPI.startSession( currentSessionStats.totalQuestions, currentSessionStats.disciplina ); console.log("handleGenerateQuestions SUCCESS: Called startSession."); } catch (e) { console.error("Erro ao chamar startSession:", e); }
+                     finalizeButton.style.display = 'inline-flex';
+                     let successMsg = `Geradas ${totalValidQuestions} questões! Acompanhe a sessão no painel abaixo.`;
+                     if (totalValidQuestions < numQuestoes) {
+                         successMsg = `Geradas ${totalValidQuestions} de ${numQuestoes} solicitadas. Acompanhe a sessão no painel abaixo!`;
                      }
-
-                     // Verifica o status retornado pela função Check
-                     const status = checkResponseData.status;
-
-                     if (status === 'COMPLETED') {
-                         // === Tarefa Concluída com Sucesso ===
-                         clearInterval(pollingIntervalId); // Para o polling
-                         pollingIntervalId = null;
-                         console.log(`Tarefa ${currentTaskId} COMPLETED. Exibindo resultados.`);
-
-                         const { questionsArray, totalValidQuestions, errorQuestionsCount, finishReason } = checkResponseData.data;
-
-                         displayParsedQuestions(questionsArray); // Exibe as questões recebidas
-
-                         if (totalValidQuestions > 0) {
-                             // Inicia a nova sessão
-                             currentSessionStats = {
-                                 id: `sess-${Date.now()}`, // Novo ID de sessão para o frontend
-                                 totalQuestions: totalValidQuestions,
-                                 answeredCount: 0,
-                                 correctCount: 0,
-                                 disciplina: disciplinaParaSessao,
-                                 startTime: Date.now()
-                             };
-                             console.log("Nova sessão iniciada após geração assíncrona:", currentSessionStats);
-
-                             if (window.timerPopupAPI && typeof window.timerPopupAPI.startSession === 'function') { try { console.log(`Iniciando sessão no Timer Popup ID: ${currentSessionStats.id}`); window.timerPopupAPI.startSession( currentSessionStats.totalQuestions, currentSessionStats.disciplina ); console.log("Polling SUCCESS: Called startSession."); } catch (e) { console.error("Erro ao chamar startSession:", e); } finalizeButton.style.display = 'inline-flex'; } else { console.warn('API do Timer Popup (startSession) não encontrada.'); finalizeButton.style.display = 'inline-flex'; }
-
-                             let successMsg = `Geradas ${totalValidQuestions} questões válidas! Acompanhe a sessão no painel abaixo.`;
-                             if (questionsArray.length !== totalValidQuestions) {
-                                 successMsg += ` (${errorQuestionsCount} questão(ões) com erro de formatação.)`;
-                                 showStatus(successMsg, 'warning');
-                             } else {
-                                  showStatus(successMsg, 'success');
-                             }
-
-                             // Minimizando e rolando
-                             if (generatorBlock && !generatorBlock.classList.contains('minimizado')) { console.log("Minimizando bloco do gerador..."); const minimizeButton = generatorBlock.querySelector('.botao-minimizar'); if (minimizeButton) { minimizeButton.click(); } else { generatorBlock.classList.add('minimizado'); const toggleIcon = generatorBlock.querySelector('.botao-minimizar i'); if (toggleIcon) { toggleIcon.classList.remove('fa-minus'); toggleIcon.classList.add('fa-plus'); if (generatorBlock.querySelector('.botao-minimizar')) { generatorBlock.querySelector('.botao-minimizar').setAttribute('aria-label', 'Expandir'); } } } }
-                             setTimeout(() => { questoesOutput.scrollIntoView({ behavior: 'smooth', block: 'start' }); console.log("Rolando para o topo da área de questões..."); }, 100);
-
-                         } else {
-                             // Nenhuma questão válida na resposta final
-                              if (questionsArray.length > 0 && questionsArray.every(q => q.type === 'error')) {
-                                   showError("Nenhuma questão válida gerada pela API. Verifique os logs do servidor/Netlify Function Logs para detalhes.");
-                               } else {
-                                    showError("Erro: Nenhuma questão válida foi retornada pelo servidor após a geração.");
-                               }
-                              resetSessionState(); // Garante reset completo
-                         }
-
-                         // Avisos sobre o motivo de término
-                          if (finishReason && finishReason !== 'stop' && finishReason !== 'length') {
-                              console.warn("Geração da API pode ter sido interrompida pelo motivo:", finishReason);
-                          } else if (finishReason === 'length' && totalValidQuestions < numQuestoes) {
-                              console.warn("Geração interrompida por MAX_TOKENS (length) no backend.");
-                          }
-
-                         showLoading(false, ''); // Esconde loading e status
-
-                     } else if (status === 'ERROR') {
-                         // === Tarefa Concluída com Erro ===
-                         clearInterval(pollingIntervalId); // Para o polling
-                         pollingIntervalId = null;
-                         console.error(`Tarefa ${currentTaskId} terminou com ERRO:`, checkResponseData.message);
-                         // Mostra o erro retornado pela função CHECK
-                         showError(`Falha na geração de questões: ${checkResponseData.message || 'Erro desconhecido.'}`);
-
-                     } else if (status === 'PENDING' || status === 'STARTED') { // STARTED é o status inicial retornado pela função start
-                         console.log(`Tarefa ${currentTaskId} ainda pendente... Continuando polling.`);
-                         showLoading(true, 'Gerando questões...'); // Mantém loading e status
-
-                     } else if (status === 'NOT_FOUND') {
-                          // === Tarefa não encontrada (provavelmente erro ou expirou) ===
-                          clearInterval(pollingIntervalId); // Para o polling
-                          pollingIntervalId = null;
-                          console.error(`Tarefa ${currentTaskId} não encontrada durante polling.`);
-                          showError("A tarefa de geração não foi encontrada. Pode ter expirado ou encontrado um erro inesperado no servidor.");
-
+                     if (errorQuestionsCount > 0) {
+                         successMsg += ` (${errorQuestionsCount} questão(ões) tiveram erro no processamento.)`;
+                         showStatus(successMsg, 'warning');
                      } else {
-                         // === Status Desconhecido ===
-                          clearInterval(pollingIntervalId); // Para o polling
-                          pollingIntervalId = null;
-                          console.error(`Polling retornou status desconhecido para ${currentTaskId}:`, status);
-                          showError(`Erro inesperado: Status da tarefa desconhecido (${status}).`);
+                         showStatus(successMsg, 'success');
                      }
 
-                 } catch (pollingError) {
-                     // Erro na requisição de polling (rede, etc.)
-                     console.error(`Erro durante a requisição de polling para ${currentTaskId}:`, pollingError);
-                     clearInterval(pollingIntervalId);
-                     pollingIntervalId = null;
-                     showError(`Erro de comunicação durante a espera pela geração: ${pollingError.message || 'Falha desconhecida.'}`);
+                } else { console.warn('API do Timer Popup (startSession) não encontrada.'); finalizeButton.style.display = 'inline-flex'; showStatus('Questões geradas, mas o timer externo não pôde ser iniciado.', 'warning'); }
+
+                if (generatorBlock && !generatorBlock.classList.contains('minimizado')) {
+                    console.log("Minimizando bloco do gerador...");
+                    const minimizeButton = generatorBlock.querySelector('.botao-minimizar');
+                     if (minimizeButton) {
+                         minimizeButton.click();
+                     } else {
+                         generatorBlock.classList.add('minimizado');
+                         const toggleIcon = generatorBlock.querySelector('.botao-minimizar i');
+                         if (toggleIcon) {
+                             toggleIcon.classList.remove('fa-minus');
+                             toggleIcon.classList.add('fa-plus');
+                             if (generatorBlock.querySelector('.botao-minimizar')) {
+                                 generatorBlock.querySelector('.botao-minimizar').setAttribute('aria-label', 'Expandir');
+                             }
+                         }
+                     }
+                }
+
+                setTimeout(() => {
+                     questoesOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                     console.log("Rolando para o topo da área de questões...");
+                }, 100);
+
+
+            } else {
+                 if (questionsArray.length > 0 && questionsArray.every(q => q.type === 'error')) {
+                     showError(questionsArray[0].text);
+                 } else if (errorQuestionsCount > 0) {
+                     showError(`Erro: ${errorQuestionsCount} questão(ões) retornada(s) pela API tiveram erro no processamento e nenhuma foi válida. Verifique o console.`);
+                 } else {
+                     showError("Erro: Nenhuma questão foi retornada pela API ou o formato estava totalmente irreconhecível.");
                  }
-             }, POLLING_INTERVAL); // Fim do setInterval
+                 resetSessionState();
+             }
+
+            // Verifica finish_reason na resposta original da API, que a função repassou
+            const finishReason = data.choices && data.choices[0] && data.choices[0].finish_reason;
+             if (finishReason && finishReason !== 'stop' && finishReason !== 'length') {
+                 console.warn("Geração da API pode ter sido interrompida:", finishReason);
+                 showStatus(`Atenção: Geração pode ter sido interrompida (${finishReason}).`, 'warning');
+             } else if (finishReason === 'length' && totalValidQuestions < numQuestoes) {
+                 console.warn("Geração interrompida por MAX_TOKENS (length).");
+                 showStatus(`Atenção: Limite de texto atingido. ${totalValidQuestions} de ${numQuestoes} questões geradas.`, 'warning');
+             }
+
 
         } catch (error) {
-            // Erro na requisição INICIAL para a função START
-            console.error("Falha na requisição para a função Start Generation:", error);
-            showError(`Erro ao solicitar a geração: ${error.message || 'Falha desconhecida.'}`);
+            console.error("Falha na requisição para a Função Netlify ou processamento da resposta:", error);
+            // Este catch pega erros de rede ou erros lançados explicitamente ANTES da resposta da função
+            showError(`Erro durante a comunicação com o servidor: ${error.message || 'Falha desconhecida.'}`);
             resetSessionState();
         } finally {
-            // O showLoading(false) final agora é chamado APENAS quando o polling terminar (sucesso ou erro)
+            showLoading(false);
         }
     } // Fim de handleGenerateQuestions
 
