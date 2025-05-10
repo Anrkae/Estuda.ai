@@ -1,6 +1,5 @@
-// inject-keys.js
 const fs = require('fs');
-const path = 'pages/questoes.html'; // Ajuste esse caminho se o HTML estiver em outra pasta
+const path = '/pages/questoes.html'; // Ajuste esse caminho se o HTML estiver em outra pasta
 
 const apiKey = process.env.OPENROUTER_API_KEY;
 
