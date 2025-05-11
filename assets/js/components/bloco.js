@@ -4,7 +4,7 @@
 const style = document.createElement('style');
 style.textContent = `
 /* CSS injetado pelo JavaScript para animação do ícone */
-.bloco .botao-minimizar i {
+.bloco .btn-toggle-bloco i {
   /* Adiciona uma transição suave para transform (rotação) */
   transition: transform 0.3s ease-in-out;
   /* Define a rotação inicial (estado expandido) - + horizontal */

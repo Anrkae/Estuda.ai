@@ -54,16 +54,16 @@ document.addEventListener("DOMContentLoaded", () => {
 #${popupId}.level-1 #timerPopupHeader { display: none; }
 #${popupId}.level-1 .popup-content-wrapper { display: flex; flex-direction: column; align-items: center; flex-grow: 1; overflow-y: auto; padding: 20px 30px 30px 30px; position: relative; padding-top: 35px; }
 #${popupId}.level-1 #timerContent { width: 100%; max-width: 450px; text-align: center; }
-#${popupId} .popup-drag-handle { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); background: none; border: none; font-size: 0.8rem; color: red; opacity: 0.5; cursor: ns-resize; padding: 8px 15px; z-index: 10; transition: opacity 0.2s ease, color 0.2s ease; white-space: nowrap; font-family: 'Montserrat', sans-serif; font-weight: 400; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; touch-action: none; }
+#${popupId} .popup-drag-handle { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); background: none; border: none; font-size: 0.8rem; color: red; opacity: 0.5; cursor: ns-resize; padding: 8px 15px; z-index: 10; transition: opacity 0.2s ease, color 0.2s ease; white-space: nowrap; font-family: 'Montserrat', sans-serif; font-weight: 500; user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; touch-action: none; }
 #${popupId} .popup-drag-handle:hover { color: #444; opacity: 1; }
 /* Estilos Timer e Conteúdo */
  h2 { top: 10px; margin-top: 0; margin-bottom: 25px; font-size: 1.3em; color: #444; font-weight: 600; padding-bottom: 0; display: flex; align-items: center; }
 #timerContent h2 i { margin-right: 8px; color: #555; }
-#timerDisplay { font-size: 3em; color: #333; margin-bottom: 15px; font-weight: 500; font-family: 'Courier New', Courier, monospace; background-color: #f0f0f0; padding: 8px 15px; border-radius: 8px; display: inline-block; min-width: 180px; }
-#Cronometro { margin-top: 30px; margin-bottom: 25px; padding: 15px 20px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #eee; text-align: center; }
+#timerDisplay { font-size: 3em; color: #333; margin-bottom: 15px; font-weight: 500; background-color: none; padding: 10px 17px; border-radius: 8px; display: inline-block; min-width: 180px; }
+#Cronometro { margin-top: 30px; margin-bottom: 25px; padding: 15px 20px; background-color: rgba(0, 0, 0, 0.05); border-radius: 8px; box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15); text-align: center; }
 #timerControls { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
-#timerSessionStats { margin-bottom: 25px; padding: 15px 20px; background-color: #f9f9f9; border-radius: 8px; border: 1px solid #eee; text-align: left; }
-h3 { margin-top: 0; margin-bottom: 15px; font-size: 1.1em; color: #444; font-weight: 600; border-bottom: 1px solid #e0e0e0; padding-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+#timerSessionStats { margin-bottom: 25px; padding: 15px 20px; background-color: rgba(0, 0, 0, 0.05); border-radius: 8px; box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15); text-align: left; }
+h3 { margin-top: 0; margin-bottom: 15px; font-size: 1.1em; color: #444; font-weight: 600; padding-bottom: 8px; display: flex; align-items: center; gap: 8px; }
 h3 i { color: #666; }
 #timerSessionStats p { margin: 10px 0; font-size: 1em; color: #555; }
 #timerSessionStats span { font-weight: 600; color: #222; margin-left: 5px; }
