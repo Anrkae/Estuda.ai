@@ -414,13 +414,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!questoesOutput) return;
             if (qData.type === 'error') {
                 const errorDiv = document.createElement('div');
-                errorDiv.className = 'questao-item error-item';
-                errorDiv.innerHTML = `<p class="questao-texto"><strong>QuestÃ£o ${index + 1}:</strong> ${qData.text}</p>`;
+                errorDiv.className = 'question-item error-item';
+                errorDiv.innerHTML = `<p class="question-text"><strong>QuestÃ£o ${index + 1}:</strong> ${qData.text}</p>`;
                 questoesOutput.appendChild(errorDiv);
                 return;
             }
             const questionDiv = document.createElement('div');
-            questionDiv.className = 'questao-item';
+            questionDiv.className = 'question-item';
             questionDiv.id = qData.id;
             let questionHTML = `<p class="questao-texto"><strong>QuestÃ£o ${index + 1}:</strong> ${qData.text}</p>`;
             if (qData.metaSource || qData.metaYear) {
@@ -433,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 questionHTML += `<img src="${qData.image}" alt="Imagem da questÃ£o ${index + 1}" class="questao-imagem">`;
             }
             if (qData.type === 'ME' || qData.type === 'VF') {
-                questionHTML += '<div class="opcoes-container">';
+                questionHTML += '<div class="options-container">';
                 for (const key in qData.options) {
                     questionHTML += `
                         <button class="option-btn" data-questao-id="${qData.id}" data-opcao="${key}">
