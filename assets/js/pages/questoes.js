@@ -401,18 +401,8 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSessionStats.startTime = Date.now();
         currentSessionStats.disciplina = disciplinaSelect ? disciplinaSelect.value : 'N/A';
         
-        if (window.timerPopupAPI && typeof window.timerPopupAPI.startTimer === 'function') {
-            try {
-                window.timerPopupAPI.startTimer({
-                    sessionId: currentSessionStats.id,
-                    disciplina: currentSessionStats.disciplina,
-                    totalQuestoes: currentSessionStats.totalQuestions
-                });
-            } catch (e) {
-                console.error("Erro ao chamar startTimer:", e);
-            }
-        } else {
-            console.warn('FunÃ§Ã£o timerPopupAPI.startTimer() nÃ£o encontrada.');
+        if (window.timerPopupAPI && typeof window.timerPopupAPI.startSession === 'function') {
+            window.timerPopupAPI.startSession(currentSessionStats.totalQuestions, currentSessionStats.disciplina);
         }
 
         if (!questions || questions.length === 0) {
