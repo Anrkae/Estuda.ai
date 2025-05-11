@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const questoesOutput = document.getElementById('questoesOutput');
     const loadingIndicator = document.getElementById('loadingIndicator');
     const finalizeButton = document.getElementById('finalizeButton');
-    // Usa a classe 'bloco' conforme a referência do segundo código
     const generatorBlock = generateButton ? generateButton.closest('.bloco') : null;
 
     // === Elementos do Popup ===
@@ -23,54 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupCloseButton = document.getElementById('popupCloseButton');
 
     // === Configuração da API OpenRouter ===
-    // A CHAVE DA API SERÁ BUSCADA DA NETLIFY FUNCTION (Mantido conforme o primeiro código)
+    // !!! ATENÇÃO: Mova a chave para um backend em produção !!!
+    const OPENROUTER_API_KEY = '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'; // Sua chave OpenRouter
     const OPENROUTER_API_URL = `https://openrouter.ai/api/v1/chat/completions`;
-    // Usa o modelo do segundo código como referência, mas pode ser ajustado
-    const OPENROUTER_MODEL = 'deepseek/deepseek-prover-v2:free';
+    // Escolha um modelo compatível com chat completions no OpenRouter.
+    // 'openai/gpt-3.5-turbo' é um bom ponto de partida, mas você pode testar outros.
+    // Veja a lista de modelos compatíveis em https://openrouter.ai/docs#models
+    const OPENROUTER_MODEL = 'openai/gpt-3.5-turbo';
 
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas';
-
-    // === Função para buscar a API Key da Netlify Function ===
-    async function getOpenRouterApiKeyFromNetlify() {
-        // Cache simples na window para evitar múltiplas chamadas na mesma sessão de página
-        if (window.openRouterApiKey) {
-            return window.openRouterApiKey;
-        }
-        try {
-            const response = await fetch("/.netlify/functions/getApiKey"); // Endpoint da Netlify Function
-            if (!response.ok) {
-                let errorMsg = `Erro HTTP ${response.status} ao buscar chave da API.`;
-                try {
-                    const errorData = await response.json();
-                    errorMsg = errorData.error || errorMsg;
-                } catch (e) { /* ignora se não conseguir parsear json do erro */ }
-                throw new Error(errorMsg);
-            }
-            const data = await response.json();
-            if (data.error) {
-                throw new Error(data.error);
-            }
-            if (!data.apiKey) {
-                throw new Error("Chave da API não recebida da função Netlify.");
-            }
-            window.openRouterApiKey = data.apiKey; // Armazena em cache
-            return data.apiKey;
-        } catch (error) {
-            console.error("Erro crítico ao buscar a API Key da Netlify Function:", error);
-            // Usa a função showError global, corrigindo acentos e fraseado conforme o segundo código
-            if (typeof showError === 'function') {
-                showError(`Falha crítica ao obter configuração da API: ${error.message}. A geração de questões não pode continuar. Por favor, recarregue a página ou contate o suporte.`);
-            } else if (questoesOutput) {
-                 // Fallback, corrigindo acentos e fraseado
-                questoesOutput.innerHTML = `<p style="color: red; font-weight: bold;">Falha crítica ao obter configuração da API: ${error.message}. A geração de questões não pode continuar. Por favor, recarregue a página ou contate o suporte.</p>`;
-            }
-            // Garante que o loading seja desativado
-            if (loadingIndicator) loadingIndicator.style.display = 'none';
-            if (generateButton) generateButton.disabled = false;
-            return null; // Retorna null para indicar falha na obtenção da chave
-        }
-    }
 
     // --- Variáveis Globais ---
     let currentSessionStats = {
@@ -83,17 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Função: Popular Dropdown de Disciplinas ===
     function populateDisciplinaDropdown() {
-        // Verifica se o elemento existe, mantido do primeiro código, mas aprimorado
-        if (!disciplinaSelect) {
-            console.warn("Elemento disciplinaSelect não encontrado.");
-            return;
-        }
         const storedData = localStorage.getItem(DISCIPLINAS_STORAGE_KEY);
         disciplinaSelect.innerHTML = '<option value="">-- Selecione a Disciplina --</option>';
         if (storedData) {
             try {
                 const disciplinas = JSON.parse(storedData);
-                // Mantida a validação mais robusta do primeiro código
                 if (Array.isArray(disciplinas) && disciplinas.every(item => typeof item === 'object' && item !== null && typeof item.nome === 'string')) {
                     disciplinas.sort((a, b) => (a.nome || '').localeCompare(b.nome || ''));
                     disciplinas.forEach(disciplinaObj => {
@@ -106,36 +61,30 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
                 } else {
-                     // Corrigindo acentos
                     console.warn(`Dados em localStorage['${DISCIPLINAS_STORAGE_KEY}'] não são um array de objetos com a propriedade 'nome' string.`);
                 }
             } catch (error) {
-                 // Corrigindo acentos
                 console.error(`Erro ao parsear ou processar disciplinas do localStorage ('${DISCIPLINAS_STORAGE_KEY}'):`, error);
             }
         } else {
-             // Corrigindo acentos
             console.log(`Nenhuma disciplina encontrada em localStorage['${DISCIPLINAS_STORAGE_KEY}'].`);
         }
     }
 
     // === Event Listeners ===
-    // Adiciona verificações de existência antes de adicionar listeners, como no primeiro código
-    if (generateButton) generateButton.addEventListener('click', handleGenerateQuestions);
-    if (finalizeButton) finalizeButton.addEventListener('click', () => finalizeSession(true));
+    generateButton.addEventListener('click', handleGenerateQuestions);
+    finalizeButton.addEventListener('click', () => finalizeSession(true));
 
-    if (questoesOutput) {
-        questoesOutput.addEventListener('click', (event) => {
-            const target = event.target;
-            // Usa as classes do segundo código como referência
-            if (target.matches('.option-btn, .option-btn *')) {
-                 const optionBtn = target.closest('.option-btn');
-                 if (optionBtn && !optionBtn.disabled) { handleOptionClick(optionBtn); }
-            }
-            else if (target.matches('.confirm-answer-btn')) { if (!target.disabled) { handleConfirmAnswer(target); } }
-            else if (target.matches('.view-resolution-btn')) { if (!target.disabled) { handleViewResolution(target); } }
-        });
-    }
+    questoesOutput.addEventListener('click', (event) => {
+        const target = event.target;
+        // Verifica se o clique foi no botão de opção, confirmar resposta ou ver resolução
+        if (target.matches('.option-btn, .option-btn *')) { // Permite clique no span interno da opção
+             const optionBtn = target.closest('.option-btn'); // Encontra o botão pai
+             if (optionBtn && !optionBtn.disabled) { handleOptionClick(optionBtn); }
+        }
+        else if (target.matches('.confirm-answer-btn')) { if (!target.disabled) { handleConfirmAnswer(target); } }
+        else if (target.matches('.view-resolution-btn')) { if (!target.disabled) { handleViewResolution(target); } }
+    });
 
     window.addEventListener('beforeunload', handleBeforeUnload);
 
@@ -157,24 +106,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Funções Auxiliares de UI ===
     function showLoading(isLoading) {
-         // Adiciona verificações de existência dos elementos, como no primeiro código
-        if (loadingIndicator) loadingIndicator.style.display = isLoading ? 'inline-flex' : 'none';
-        if (generateButton) generateButton.disabled = isLoading;
-        if (isLoading) hidePopup(); // Esconde popups quando o loading inicia
+        hidePopup();
+        loadingIndicator.style.display = isLoading ? 'inline-flex' : 'none';
+        generateButton.disabled = isLoading;
     }
 
     function resetSessionState() {
         currentSessionStats = { id: null, totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null, startTime: null };
-         // Verifica existência antes de manipular style, como no primeiro código
-        if (finalizeButton) finalizeButton.style.display = 'none';
-        questionsDataStore = {}; // Limpa o armazenamento de dados das questões, como no segundo código
-         // Corrigindo acentos
+        finalizeButton.style.display = 'none';
+        questionsDataStore = {}; // Limpa o armazenamento de dados das questões
         console.log("Estado da sessão e armazenamento de questões resetados.");
     }
 
     function clearOutput() {
-         // Verifica existência antes de manipular innerHTML, como no primeiro código
-        if (questoesOutput) questoesOutput.innerHTML = '';
+        questoesOutput.innerHTML = '';
         hidePopup();
         console.log("Output clear.");
     }
@@ -182,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // === Funções do Popup ===
     function showPopup(message, type = 'info', autoCloseDelay = null) {
         if (!popupOverlay || !popupMessageBox || !popupContent) {
-             // Corrigindo acentos
             console.error("Elementos do Popup não encontrados no DOM.");
             alert(message); // Fallback
             return;
@@ -192,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
             popupTimeoutId = null;
         }
         popupContent.textContent = message;
-        // Usa a classe 'popup-message-box' conforme a referência do segundo código
         popupMessageBox.className = `popup-message-box ${type}`;
         popupOverlay.classList.add('visible');
         if (autoCloseDelay && typeof autoCloseDelay === 'number' && autoCloseDelay > 0) {
@@ -205,15 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
             clearTimeout(popupTimeoutId);
             popupTimeoutId = null;
         }
-         // Verifica existência antes de manipular classList, como no primeiro código
         if (popupOverlay) {
             popupOverlay.classList.remove('visible');
         }
     }
 
     function showError(message) {
-         // Verifica existência antes de manipular innerHTML, como no primeiro código
-        if (questoesOutput) questoesOutput.innerHTML = '';
+        questoesOutput.innerHTML = '';
         showPopup(message, 'error');
         resetSessionState();
         showLoading(false);
@@ -226,7 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
      // === Função: Salvar Resumo da Sessão ===
      function saveSessionSummary() {
-        // Lógica copiada e corrigida (acentos) do segundo código
         if (!currentSessionStats.id || currentSessionStats.totalQuestions === 0) return;
         console.log("Tentando salvar resumo da sessão ID:", currentSessionStats.id);
         let durationMs = 0; if(currentSessionStats.startTime) { durationMs = Date.now() - currentSessionStats.startTime; }
@@ -240,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Função: Finalizar Sessão de Estudo ===
     function finalizeSession(openPanel = false) {
-         // Lógica copiada e corrigida (acentos) do segundo código
         if (currentSessionStats.totalQuestions === 0 || !currentSessionStats.id) return;
         const sessionId = currentSessionStats.id; console.log(`Finalizando sessão ID: ${sessionId}. Flag openPanel=${openPanel}`);
         if (window.timerPopupAPI && typeof window.timerPopupAPI.stopTimer === 'function') { try { console.log("Chamando timerPopupAPI.stopTimer()"); window.timerPopupAPI.stopTimer(); } catch (e) { console.error("Erro ao chamar stopTimer:", e); } } else { console.warn('Função timerPopupAPI.stopTimer() não encontrada.'); }
@@ -249,16 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
      // === Função: Lidar com Saída da Página ===
-     function handleBeforeUnload(event) {
-          // Lógica copiada e corrigida (acentos) do segundo código
-         if (currentSessionStats.id && currentSessionStats.totalQuestions > 0) {
-             console.log("beforeunload: Finalizando sessão ativa...");
-             finalizeSession(false);
-         }
-     }
+     function handleBeforeUnload(event) { if (currentSessionStats.id && currentSessionStats.totalQuestions > 0) { console.log("beforeunload: Finalizando sessão ativa..."); finalizeSession(false); } }
 
     // === Função: Parsear o Texto da API ===
-    // Lógica completamente substituída pela versão aprimorada do segundo código
+    // Modificada para extrair metadados ([META_SOURCE], [META_YEAR])
     function parseGeneratedText(text, expectedType) {
         const questions = [];
          // Inclui os novos marcadores na busca pelo início do conteúdo relevante
@@ -341,12 +274,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (/^\[RES\]/i.test(line)) {
                         questionData.resolution = line.substring(5).trim();
                         foundResolutionMarker = true;
-                    } else if (foundResolutionMarker && questionData.resolution !== null) { // Evita adicionar a linhas de resolução se ela for null
-                        questionData.resolution += '\n' + line;
                     }
                 });
 
-                // Validação específica do tipo, copiada do segundo código
+                // Validação específica do tipo (mantida)
                  if (expectedType === 'multipla_escolha' || expectedType === 'verdadeiro_falso') {
                      if (!foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Marcador de resposta [R] não encontrado.`);
                      if (!questionData.correctAnswer && foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Valor da resposta [R] está vazio.`);
@@ -404,29 +335,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // === Função: Exibir Questões Parseadas ===
-    // Lógica completamente substituída pela versão aprimorada do segundo código
+    // Modificada para incluir a div de metadados.
     function displayParsedQuestions(questionsArray) {
-         // Verifica existência do output, como no primeiro código
-         if (!questoesOutput) {
-            console.error("Elemento questoesOutput não encontrado.");
-            return;
-         }
          questoesOutput.innerHTML = '';
-         questionsDataStore = {}; // Limpa antes de adicionar novas, como no segundo código
+         questionsDataStore = {}; // Limpa antes de adicionar novas
          if (!questionsArray || questionsArray.length === 0) {
-             // Usa a classe 'empty-state' e corrige acentos, conforme o segundo código
              questoesOutput.innerHTML = '<p class="empty-state">Nenhuma questão foi gerada ou processada.</p>';
              return;
          }
          questionsArray.forEach((qData, index) => {
-             // Armazena dados completos para uso posterior (resolução), como no segundo código
+             // Armazena dados completos para uso posterior (resolução)
              questionsDataStore[qData.id] = qData;
 
              const questionDiv = document.createElement('div');
-             // Usa a classe 'question-item' conforme a referência do segundo código
              questionDiv.className = 'question-item';
              questionDiv.id = qData.id;
-             // Usa datasets para estado, como no segundo código
              questionDiv.dataset.questionType = qData.type;
              questionDiv.dataset.answered = 'false';
              if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
@@ -434,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  questionDiv.dataset.selectedOption = '';
              }
 
-             // === Adiciona a div de metadados se existirem (copiado do segundo código) ===
+             // === NOVO: Adiciona a div de metadados se existirem ===
              if (qData.metaSource || qData.metaYear) {
                  const metaDiv = document.createElement('div');
                  metaDiv.className = 'question-meta'; // Classe para estilizar a div container
@@ -467,18 +390,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
              const questionText = document.createElement('p');
-             // Usa a classe 'question-text' e formatação de numeração/quebra de linha, como no segundo código
              questionText.className = 'question-text';
              const sanitizedText = qData.text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
              questionText.innerHTML = `<strong>${index + 1}.</strong> ${sanitizedText.replace(/\n/g, '<br>')}`;
              questionDiv.appendChild(questionText);
 
-             // Adiciona imagem se existir, como no segundo código
+             // Adiciona imagem se existir
              if (qData.image) {
                  const imgElement = document.createElement('img');
                  imgElement.src = qData.image; // Assume que é uma URL válida
                  imgElement.alt = `Imagem para a questão ${index + 1}`;
-                 imgElement.className = 'question-image'; // Usa a classe 'question-image'
+                 imgElement.className = 'question-image';
                  imgElement.onerror = () => {
                      console.warn(`Erro ao carregar imagem: ${qData.image} para questão ${qData.id}`);
                      imgElement.alt = `Erro ao carregar imagem para a questão ${index + 1}`;
@@ -487,23 +409,20 @@ document.addEventListener('DOMContentLoaded', () => {
              }
 
              if (qData.type === 'error') {
-                 // Usa a classe 'question-error' como no segundo código
                  questionDiv.classList.add('question-error');
                  questoesOutput.appendChild(questionDiv);
                  return; // Pula o resto para questões com erro
              }
 
              const optionsContainer = document.createElement('div');
-             // Usa a classe 'options-container' como no segundo código
              optionsContainer.className = 'options-container';
              if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
-                 // Lógica de opções e classes 'option-btn', 'option-letter', 'option-content' copiada do segundo código
                  const optionKeys = (qData.type === 'multipla_escolha') ? Object.keys(qData.options).filter(k => ['A','B','C','D'].includes(k)).sort() : ['V', 'F'];
                  optionKeys.forEach(key => {
                      if (qData.options[key] !== undefined) {
                          const optionButton = document.createElement('button');
                          optionButton.className = 'option-btn';
-                         optionButton.dataset.value = key; // Usa data-value em vez de data-opcao
+                         optionButton.dataset.value = key;
                          const sanitizedOptionText = (qData.options[key] || '').replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
                          const letterHTML = `<span class="option-letter">${key}</span>`;
@@ -525,7 +444,6 @@ document.addEventListener('DOMContentLoaded', () => {
                      }
                  });
              } else if (qData.type === 'dissertativa_curta') {
-                 // Lógica para dissertativa curta e classe 'dissertative-info' copiada do segundo código
                  const answerP = document.createElement('p');
                  answerP.className = 'dissertative-info';
                  let dissertativeText = `<i>Questão dissertativa.`;
@@ -541,40 +459,40 @@ document.addEventListener('DOMContentLoaded', () => {
              }
              questionDiv.appendChild(optionsContainer);
 
-             // Feedback Area (copiado do segundo código)
+             // Feedback Area
              const feedbackArea = document.createElement('div');
-             feedbackArea.className = 'feedback-area'; // Usa a classe 'feedback-area'
+             feedbackArea.className = 'feedback-area';
 
              const feedbackDiv = document.createElement('div');
-             feedbackDiv.className = 'feedback-message'; // Usa a classe 'feedback-message'
+             feedbackDiv.className = 'feedback-message';
              feedbackDiv.style.display = 'none';
              feedbackArea.appendChild(feedbackDiv);
 
-             // Botão Responder (copiado do segundo código)
+             // Botão Responder
              if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
                  const confirmButton = document.createElement('button');
-                 confirmButton.className = 'confirm-answer-btn'; // Usa a classe 'confirm-answer-btn'
-                 confirmButton.textContent = 'Responder'; // Texto corrigido
+                 confirmButton.className = 'confirm-answer-btn';
+                 confirmButton.textContent = 'Responder';
                  confirmButton.disabled = true;
                  feedbackArea.appendChild(confirmButton);
              }
 
-             // Botão Ver Resolução (copiado do segundo código)
+             // Botão Ver Resolução
              if (qData.resolution) {
                  const resolutionButton = document.createElement('button');
-                 resolutionButton.className = 'view-resolution-btn'; // Usa a classe 'view-resolution-btn'
-                 resolutionButton.textContent = 'Ver Resolução'; // Texto corrigido
-                 resolutionButton.dataset.questionId = qData.id; // Usa data-question-id
+                 resolutionButton.className = 'view-resolution-btn';
+                 resolutionButton.textContent = 'Ver Resolução';
+                 resolutionButton.dataset.questionId = qData.id;
                  resolutionButton.style.display = 'none';
                  feedbackArea.appendChild(resolutionButton);
              }
 
              questionDiv.appendChild(feedbackArea);
 
-             // Área para exibir a resolução (copiado do segundo código)
+             // Área para exibir a resolução
              if (qData.resolution) {
                  const resolutionDiv = document.createElement('div');
-                 resolutionDiv.className = 'resolution-area'; // Usa a classe 'resolution-area'
+                 resolutionDiv.className = 'resolution-area';
                  resolutionDiv.style.display = 'none';
                  questionDiv.appendChild(resolutionDiv);
              }
@@ -585,13 +503,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // === Função: Lidar com Clique na OPÇÃO (Seleciona, não confirma) ===
-    // Lógica substituída pela versão aprimorada do segundo código, usando classes e datasets corretos
     function handleOptionClick(clickedButton) {
         const questionDiv = clickedButton.closest('.question-item'); if (!questionDiv || questionDiv.dataset.answered === 'true') { return; } const confirmAnswerBtn = questionDiv.querySelector('.confirm-answer-btn'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const selectedValue = clickedButton.dataset.value; allOptionButtons.forEach(btn => btn.classList.remove('selected-preview')); clickedButton.classList.add('selected-preview'); questionDiv.dataset.selectedOption = selectedValue; console.log(`Set selectedOption=${selectedValue} on ${questionDiv.id}`); if (confirmAnswerBtn) { confirmAnswerBtn.disabled = false; console.log(`Enabled confirm button for ${questionDiv.id}`); } else { console.error("Botão .confirm-answer-btn não encontrado para", questionDiv.id); }
      }
 
     // === Função: Lidar com Clique no Botão RESPONDER (Confirma a resposta) ===
-    // Lógica substituída pela versão aprimorada do segundo código, usando classes e datasets corretos
     function handleConfirmAnswer(confirmButton) {
          console.log("handleConfirmAnswer triggered for button:", confirmButton); const questionDiv = confirmButton.closest('.question-item'); console.log("Associated questionDiv:", questionDiv); if (!questionDiv) { console.error("Não foi possível encontrar o .question-item pai do botão."); return; } const userAnswer = questionDiv.dataset.selectedOption; const isAnswered = questionDiv.dataset.answered === 'true'; console.log("Checking conditions: ", { userAnswer: userAnswer, isAnswered: isAnswered, sessionId: currentSessionStats.id }); if (!userAnswer || isAnswered) { console.warn("Tentativa de confirmar resposta inválida: Nenhuma opção selecionada ou questão já respondida.", { selectedOption: userAnswer, isAnswered: isAnswered }); confirmButton.style.opacity = '0.5'; setTimeout(() => { confirmButton.style.opacity = '1'; }, 300); return; } if (!currentSessionStats.id) { console.warn("Tentativa de responder sem sessão ativa."); showStatus("Erro: Sessão não iniciada.", "error"); return; } console.log("Passed initial checks. Proceeding with answer evaluation..."); const correctAnswer = questionDiv.dataset.correctAnswer; const isCorrect = userAnswer === correctAnswer; const feedbackDiv = questionDiv.querySelector('.feedback-message'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const originallySelectedButton = Array.from(allOptionButtons).find(btn => btn.dataset.value === userAnswer);
          const resolutionButton = questionDiv.querySelector('.view-resolution-btn');
@@ -607,41 +523,34 @@ document.addEventListener('DOMContentLoaded', () => {
      }
 
     // === Função para Lidar com Clique no Botão VER RESOLUÇÃO ===
-    // Lógica substituída pela versão aprimorada do segundo código
     function handleViewResolution(resolutionButton) {
         const questionId = resolutionButton.dataset.questionId;
         const questionDiv = document.getElementById(questionId);
-        const resolutionArea = questionDiv ? questionDiv.querySelector('.resolution-area') : null; // Usa a classe 'resolution-area'
+        const resolutionArea = questionDiv ? questionDiv.querySelector('.resolution-area') : null;
         const questionData = questionsDataStore[questionId];
 
         if (!questionDiv || !resolutionArea || !questionData || !questionData.resolution) {
             console.error(`Erro ao tentar mostrar resolução para questão ${questionId}. Elementos ou dados não encontrados.`);
-            showStatus("Erro ao carregar a resolução.", "error"); // Corrigindo acentos
+            showStatus("Erro ao carregar a resolução.", "error");
             return;
         }
 
         const sanitizedResolution = questionData.resolution.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        resolutionArea.innerHTML = `<strong>Resolução:</strong><br>${sanitizedResolution.replace(/\n/g, '<br>')}`; // Corrigindo acentos
+        resolutionArea.innerHTML = `<strong>Resolução:</strong><br>${sanitizedResolution.replace(/\n/g, '<br>')}`;
         resolutionArea.style.display = 'block';
 
-        resolutionButton.disabled = true; // Desabilita após clicar
+        resolutionButton.disabled = true;
 
-        console.log(`Resolução exibida para ${questionId}`); // Corrigindo acentos
+        console.log(`Resolução exibida para ${questionId}`);
     }
 
     // === Função Principal: Gerar Questões ===
-    // Lógica substancialmente atualizada com base no segundo código, mas mantendo a busca da API key
+    // Modificada para incluir instrução para metadados no prompt.
     async function handleGenerateQuestions() {
         hidePopup();
         if (currentSessionStats.id) {
-             console.log("Gerando novas questões, finalizando sessão anterior..."); // Corrigindo acentos
+             console.log("Gerando novas questões, finalizando sessão anterior...");
              finalizeSession(false);
-        }
-
-        // Validações de entrada, corrigindo acentos e fraseado
-        if (!disciplinaSelect || !assuntoInput || !bibliografiaInput || !numQuestoesInput || !tipoQuestaoSelect || !nivelQuestaoSelect) {
-            showError("Um ou mais elementos do formulário não foram encontrados. Verifique o HTML.");
-            return;
         }
 
         const assunto = assuntoInput.value.trim();
@@ -651,21 +560,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const tipoQuestao = tipoQuestaoSelect.value;
         const nivelQuestao = nivelQuestaoSelect.value; // Valor selecionado no dropdown de dificuldade
 
-        // Validações mais detalhadas e com focus, como no segundo código
-        if (!disciplinaSelecionada) { disciplinaSelect.focus(); return showError("Por favor, selecione uma disciplina."); }
         if (!assunto) { assuntoInput.focus(); return showError("Por favor, informe o Assunto Principal."); }
         if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) { numQuestoesInput.focus(); return showError("Número de questões inválido (1-20)."); }
         if (!nivelQuestao) { nivelQuestaoSelect.focus(); return showError("Por favor, selecione o Nível das questões."); }
+        // Validação da chave OpenRouter
+        if (!OPENROUTER_API_KEY || !OPENROUTER_API_KEY.startsWith('sk-or-v1-')) { return showError("Erro Crítico: Chave da API OpenRouter inválida ou ausente."); }
+        if (!OPENROUTER_MODEL) { return showError("Erro Crítico: Modelo da API OpenRouter não configurado."); }
 
+        const disciplinaParaSessao = disciplinaSelecionada || "Geral";
 
-        const disciplinaParaSessao = disciplinaSelecionada || "N/A"; // Usa a disciplina selecionada para a sessão
-
-        console.log(`Iniciando geração... Assunto: ${assunto}, Nível: ${nivelQuestao}, Modelo: ${OPENROUTER_MODEL}`); // Corrigindo acentos
+        console.log(`Iniciando geração... Assunto: ${assunto}, Nível: ${nivelQuestao}, Modelo: ${OPENROUTER_MODEL}`);
         showLoading(true);
         clearOutput();
 
-
-        // === Construir Prompt (Copiado do segundo código, incluindo metadados e exemplos) ===
+        // === Construir Prompt (Atualizado para incluir instrução para metadados) ===
         let prompt = `Gere ${numQuestoes} questão(ões) EXCLUSIVAMENTE sobre o Assunto Principal "${assunto}".\n`;
         if (disciplinaSelecionada) prompt += `Considere o contexto da Disciplina: "${disciplinaSelecionada}".\n`;
         prompt += `GENERE AS QUESTÕES COM NÍVEL DE DIFICULDADE ESTRITAMENTE: ${nivelQuestao.toUpperCase()}.\n`;
@@ -722,20 +630,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         prompt += `
 IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_SOURCE], [META_YEAR], [IMG], [A], [B], [C], [D], [V], [F], [R], [G], [RES], [SEP]). NÃO adicione NENHUMA outra formatação, numeração automática, texto introdutório ou comentários fora do formato especificado. Gere APENAS o texto das questões conforme solicitado. Certifique-se de que TODAS as questões de múltipla escolha e V/F tenham o marcador [RES] com uma explicação.`;
-        // === Fim Construir Prompt ===
 
 
         try {
-            // === Buscar a API Key da Netlify Function ===
-            const apiKey = await getOpenRouterApiKeyFromNetlify();
-            if (!apiKey) {
-                // A função getOpenRouterApiKeyFromNetlify já deve ter mostrado um erro na UI e desativado o loading.
-                return; // Interrompe a execução se a chave não for obtida.
-            }
-            // === Fim Buscar a API Key ===
-
-
-            // === Corpo da requisição para OpenRouter (formato OpenAI Chat Completions), copiado do segundo código ===
+            // === Corpo da requisição para OpenRouter (formato OpenAI Chat Completions) ===
             const requestBody = {
                 model: OPENROUTER_MODEL,
                 messages: [
@@ -745,17 +643,17 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
                     }
                 ],
                 temperature: 0.7,
-                max_tokens: 450 * numQuestoes + 300, // Ajuste o max_tokens conforme necessário
+                max_tokens: 450 * numQuestoes + 300,
             };
 
-            // === Requisição Fetch para OpenRouter, copiado e aprimorado do segundo código ===
+            // === Requisição Fetch para OpenRouter ===
             const response = await fetch(OPENROUTER_API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`, // Usa a apiKey obtida da Netlify Function
+                    'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
                     'HTTP-Referer': window.location.href,
-                    'X-Title': document.title || 'Gerador de Questões' // Usa o título da página atual
+                    'X-Title': 'Meu App de Questões'
                 },
                 body: JSON.stringify(requestBody)
             });
@@ -792,18 +690,16 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
 
             if (!data.choices || data.choices.length === 0 || !data.choices[0].message?.content) {
                 console.error("Resposta inesperada da API OpenRouter (sem choices ou conteúdo válido):", data);
-                showError("Erro: A API OpenRouter retornou uma resposta vazia ou em formato inesperado."); // Corrigindo acentos
+                showError("Erro: A API OpenRouter retornou uma resposta vazia ou em formato inesperado.");
                 resetSessionState();
                 showLoading(false);
                 return;
             }
 
             const rawTextFromAPI = data.choices[0].message.content;
-            console.log("Texto cru extraído da API:", rawTextFromAPI); // Corrigindo acentos
+            console.log("Texto cru extraído da API:", rawTextFromAPI);
 
-            // Chama a função de parsing aprimorada do segundo código
             const questionsArray = parseGeneratedText(rawTextFromAPI, tipoQuestao);
-            // Chama a função de exibição aprimorada do segundo código
             displayParsedQuestions(questionsArray);
 
             const validQuestions = questionsArray.filter(q => q.type !== 'error');
@@ -811,37 +707,28 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
             const errorQuestionsCount = questionsArray.length - totalValidQuestions;
 
             if (totalValidQuestions > 0) {
-                // Inicia a sessão com base nas questões válidas geradas
                 currentSessionStats = { id: `sess-${Date.now()}`, totalQuestions: totalValidQuestions, answeredCount: 0, correctCount: 0, disciplina: disciplinaParaSessao, startTime: Date.now() };
-                console.log("Nova sessão iniciada:", currentSessionStats); // Corrigindo acentos
+                console.log("Nova sessão iniciada:", currentSessionStats);
 
-                // Lógica de interação com Timer Popup e exibição do botão Finalizar, copiada do segundo código
                 if (window.timerPopupAPI && typeof window.timerPopupAPI.startSession === 'function') {
                      try { console.log(`Iniciando sessão no Timer Popup ID: ${currentSessionStats.id}`); window.timerPopupAPI.startSession( currentSessionStats.totalQuestions, currentSessionStats.disciplina ); console.log("handleGenerateQuestions SUCCESS: Called startSession."); } catch (e) { console.error("Erro ao chamar startSession:", e); }
-                     // Verifica se finalizeButton existe antes de manipular style
-                     if (finalizeButton) finalizeButton.style.display = 'inline-flex';
+                     finalizeButton.style.display = 'inline-flex';
                      let successMsg = `Geradas ${totalValidQuestions} questões! Acompanhe a sessão no painel abaixo.`;
                      if (totalValidQuestions < numQuestoes) {
                          successMsg = `Geradas ${totalValidQuestions} de ${numQuestoes} solicitadas. Acompanhe a sessão no painel abaixo!`;
                      }
                      if (errorQuestionsCount > 0) {
                          successMsg += ` (${errorQuestionsCount} questão(ões) tiveram erro no processamento.)`;
-                         showStatus(successMsg, 'warning'); // Corrigindo acentos
+                         showStatus(successMsg, 'warning');
                      } else {
-                         showStatus(successMsg, 'success'); // Corrigindo acentos
+                         showStatus(successMsg, 'success');
                      }
 
-                } else {
-                    console.warn('API do Timer Popup (startSession) não encontrada.'); // Corrigindo acentos
-                    // Verifica se finalizeButton existe antes de manipular style
-                    if (finalizeButton) finalizeButton.style.display = 'inline-flex';
-                    showStatus('Questões geradas, mas o timer externo não pôde ser iniciado.', 'warning'); // Corrigindo acentos
-                }
+                } else { console.warn('API do Timer Popup (startSession) não encontrada.'); finalizeButton.style.display = 'inline-flex'; showStatus('Questões geradas, mas o timer externo não pôde ser iniciado.', 'warning'); }
 
-                // Lógica para minimizar o bloco do gerador, copiada do segundo código
                 if (generatorBlock && !generatorBlock.classList.contains('minimizado')) {
-                    console.log("Minimizando bloco do gerador..."); // Corrigindo acentos
-                    const minimizeButton = generatorBlock.querySelector('.botao-minimizar'); // Usa a classe 'botao-minimizar'
+                    console.log("Minimizando bloco do gerador...");
+                    const minimizeButton = generatorBlock.querySelector('.botao-minimizar');
                      if (minimizeButton) {
                          minimizeButton.click();
                      } else {
@@ -857,18 +744,13 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
                      }
                 }
 
-                // Rola para a área de questões, como no segundo código
                 setTimeout(() => {
-                     // Verifica se questoesOutput existe antes de rolar
-                     if (questoesOutput) {
-                         questoesOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                         console.log("Rolando para o topo da área de questões..."); // Corrigindo acentos
-                     }
+                     questoesOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                     console.log("Rolando para o topo da área de questões...");
                 }, 100);
 
 
             } else {
-                 // Mensagens de erro mais detalhadas, corrigindo acentos
                  if (questionsArray.length > 0 && questionsArray.every(q => q.type === 'error')) {
                      showError(questionsArray[0].text);
                  } else if (errorQuestionsCount > 0) {
@@ -880,7 +762,6 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
              }
 
             const finishReason = data.choices[0].finish_reason;
-             // Mensagens sobre o motivo da finalização, corrigindo acentos
              if (finishReason && finishReason !== 'stop' && finishReason !== 'length') {
                  console.warn("Geração da API pode ter sido interrompida:", finishReason);
                  showStatus(`Atenção: Geração pode ter sido interrompida (${finishReason}).`, 'warning');
@@ -891,8 +772,8 @@ IMPORTANTE: Siga ESTRITAMENTE o formato pedido usando os marcadores ([Q], [META_
 
 
         } catch (error) {
-            console.error("Falha na requisição ou processamento:", error); // Corrigindo acentos
-            showError(`Erro durante a geração: ${error.message || 'Falha desconhecida.'}`); // Corrigindo acentos
+            console.error("Falha na requisição ou processamento:", error);
+            showError(`Erro durante a geração: ${error.message || 'Falha desconhecida.'}`);
             resetSessionState();
         } finally {
             showLoading(false);
