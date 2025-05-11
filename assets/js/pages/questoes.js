@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // === ConfiguraÃ§Ã£o da API OpenRouter === 
     // A CHAVE DA API SERÃ BUSCADA DA NETLIFY FUNCTION
     const OPENROUTER_API_URL = `https://openrouter.ai/api/v1/chat/completions`;
-    const OPENROUTER_MODEL = 'deepseek/deepseek-prover-v2:free'; // Ou o modelo que vocÃª preferir
+    const OPENROUTER_MODEL = 'openai/gpt-3.5-turbo'; // Ou o modelo que vocÃª preferir
 
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas';
