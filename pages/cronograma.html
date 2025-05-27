@@ -6,7 +6,8 @@
     <title>Gerador de Cronograma</title>
 
     <link rel="stylesheet" href="../assets/css/essentials.css">
-    <link rel="stylesheet" href="../assets/css/pages/cronograma.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/pages/cronograma.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div style="padding-top: 40px;" class="container-principal">
@@ -24,23 +25,38 @@
                     <div class="disciplinas-selecao" id="disciplinas-para-selecao">
                         <p>Carregando disciplinas...</p>
                     </div>
-                    <p style="font-size: 11px; color: red; text-align: center; margin-bottom: 25px;">
+                    <p style="font-size: 11px; color: red; text-align: center; margin-bottom: 10px; margin-top: 5px;">
                         Arraste as disciplinas para cima ou para baixo para definir a prioridade (mais alta no topo).
                     </p>
 
+                    <p style="text-align: center; font-size: 14px; color: #555; margin-top: 20px;">Configure dias especiais (opcional):</p>
+                    <div class="dias-especiais-selecao">
+                        <div class="dia-especial-item">
+                            <input type="checkbox" id="check-dia-descanso" name="tipoDiaEspecial" value="descanso">
+                            <label for="check-dia-descanso">Dias de Descanso</label>
+                        </div>
+                        <div class="dia-especial-item">
+                            <input type="checkbox" id="check-dia-revisao" name="tipoDiaEspecial" value="revisao">
+                            <label for="check-dia-revisao">Dias de Revisão</label>
+                        </div>
+                        <div class="dia-especial-item">
+                            <input type="checkbox" id="check-dia-simulado" name="tipoDiaEspecial" value="simulado">
+                            <label for="check-dia-simulado">Dias de Simulado</label>
+                        </div>
+                    </div>
                     <div class="input-grid">
-                        <label for="minutos-por-dia">Minutos totais de estudo por dia:</label>
-                        <input type="number" id="minutos-por-dia" placeholder="Ex: 180" min="30" step="10">
+                        <label for="minutos-por-dia">Minutos por dia (dias normais):</label>
+                        <input type="number" id="minutos-por-dia" placeholder="Ex: 180" value="180" min="30" step="10">
 
-                        <label for="subjects-per-day">Disciplinas diferentes por dia:</label>
-                        <input type="number" id="subjects-per-day" placeholder="Ex: 3" min="1" step="1">
+                        <label for="subjects-per-day">Disciplinas por dia (dias normais):</label>
+                        <input type="number" id="subjects-per-day" placeholder="Ex: 3" value="3" min="1" step="1">
 
                         <label for="break-time">Descanso entre disciplinas (min):</label>
-                        <input type="number" id="break-time" placeholder="Ex: 15" min="0" step="5">
+                        <input type="number" id="break-time" placeholder="Ex: 15" value="10" min="0" step="5">
 
                         <label for="question-time">Tempo para questões (min):</label>
-                        <input type="number" id="question-time" placeholder="Ex: 20" min="0" step="5">
-                        </div>
+                        <input type="number" id="question-time" placeholder="Ex: 20" value="20" min="0" step="5">
+                    </div>
                     <button id="botao-gerar">Gerar Cronograma</button>
                     <p id="status-geracao"></p>
                 </div>
@@ -54,15 +70,43 @@
                     <p style="text-align: center; color: #888; width: 100%; padding: 20px;">Gere ou carregue um cronograma para visualizar os detalhes aqui.</p>
                 </div>
             </div>
-            <button id="botao-anterior" class="botao-carrossel" aria-label="Dia anterior">&lt;</button>
-            <button id="botao-proximo" class="botao-carrossel" aria-label="Próximo dia">&gt;</button>
+            <button id="botao-anterior" class="botao-carrossel" aria-label="Dia anterior" style="display: none;">&lt;</button>
+            <button id="botao-proximo" class="botao-carrossel" aria-label="Próximo dia" style="display: none;">&gt;</button>
         </div>
 
-         <div class="botao-salvar-container">
-             <button id="botao-salvar">Salvar Cronograma</button>
-             <p id="status-salvar"></p>
+        <div class="botao-salvar-container">
+            <button id="botao-salvar">Salvar Cronograma</button>
+            <p id="status-salvar"></p>
         </div>
 
+    </div> <div id="modal-selecionar-dias" class="modal-overlay">
+        <div class="modal-content">
+            <h4 id="modal-titulo">Selecionar Dias para <span id="modal-tipo-dia-titulo"></span></h4>
+            <div id="modal-dias-semana-checkboxes">
+                <p style="font-size:0.9em; color:#777;">Carregando dias...</p>
+            </div>
+            <div class="modal-opcoes-duracao" style="margin-top: 15px; display: none;">
+                <label for="modal-input-duracao" style="display:none;">Duração (minutos):</label>
+                <input type="number" id="modal-input-duracao" min="30" step="10" style="display:none;">
+            </div>
+            <div class="modal-actions">
+                <button id="modal-botao-confirmar">Confirmar</button>
+                <button id="modal-botao-cancelar">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-substituir-disciplina" class="modal-overlay">
+        <div class="modal-content">
+            <h4>Substituir Disciplina</h4>
+            <p>Substituir <strong id="disciplina-atual-modal"></strong> por:</p>
+            <select id="select-nova-disciplina" class="modal-select">
+                </select>
+            <div class="modal-actions">
+                <button id="modal-substituir-confirmar">Confirmar</button>
+                <button id="modal-substituir-cancelar">Cancelar</button>
+            </div>
+        </div>
     </div>
 
     <script src="../assets/js/components/header.js"></script>
