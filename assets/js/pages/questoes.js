@@ -1,8 +1,5 @@
-// assets/js/pages/questoes.js
-
 document.addEventListener('DOMContentLoaded', () => {
 
-    // === Elementos do DOM ===
     const assuntoInput = document.getElementById('assuntoInput');
     const bibliografiaInput = document.getElementById('bibliografiaInput');
     const disciplinaSelect = document.getElementById('disciplinaSelect');
@@ -15,23 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const finalizeButton = document.getElementById('finalizeButton');
     const generatorBlock = generateButton ? generateButton.closest('.bloco') : null;
 
-    // === Elementos do Popup ===
     const popupOverlay = document.getElementById('popupOverlay');
     const popupMessageBox = document.getElementById('popupMessageBox');
     const popupContent = document.getElementById('popupContent');
     const popupCloseButton = document.getElementById('popupCloseButton');
 
-    // === Configuração para chamada direta à API Google Gemini (APÓS BUSCAR CHAVE) ===
-    // A CHAVE API SERÁ BUSCADA DO BACKEND E USADA TEMPORARIAMENTE
-    // const GEMINI_API_KEY = 'SUA_CHAVE_AQUI'; // REMOVIDO! NÃO DEIXE A CHAVE AQUI.
     const GEMINI_API_URL_BASE = 'https://generativelanguage.googleapis.com/v1beta/models/';
-    const GEMINI_MODEL_TO_USE = 'gemini-1.5-flash-latest'; // Modelo a ser usado
-    const TEMP_API_KEY_STORAGE_ID = 'temp_gk_val_session'; // ID para localStorage (mais específico)
+    const GEMINI_MODEL = 'gemini-1.5-pro-latest';
+    const TEMP_API_KEY_STORAGE_ITEM = 'temp_gemini_api_key_val';
 
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas';
 
-    // --- Variáveis Globais ---
     let currentSessionStats = {
         id: null, totalQuestions: 0, answeredCount: 0,
         correctCount: 0, disciplina: null, startTime: null
@@ -39,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let popupTimeoutId = null;
     let questionsDataStore = {};
 
-    // === Função: Popular Dropdown de Disciplinas ===
     function populateDisciplinaDropdown() {
         const storedData = localStorage.getItem(DISCIPLINAS_STORAGE_KEY);
         disciplinaSelect.innerHTML = '<option value="">-- Selecione a Disciplina --</option>';
@@ -68,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // === Event Listeners ===
     generateButton.addEventListener('click', handleGenerateQuestions);
     finalizeButton.addEventListener('click', () => finalizeSession(true));
 
@@ -89,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     populateDisciplinaDropdown();
 
-    // === Funções Auxiliares de UI ===
     function showLoading(isLoading) {
         hidePopup();
         loadingIndicator.style.display = isLoading ? 'inline-flex' : 'none';
@@ -109,11 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Output clear.");
     }
 
-    // === Funções do Popup ===
     function showPopup(message, type = 'info', autoCloseDelay = null) {
         if (!popupOverlay || !popupMessageBox || !popupContent) {
             console.error("Elementos do Popup não encontrados no DOM.");
-            alert(message); // Fallback
+            alert(message);
             return;
         }
         if (popupTimeoutId) { clearTimeout(popupTimeoutId); popupTimeoutId = null; }
@@ -142,75 +130,28 @@ document.addEventListener('DOMContentLoaded', () => {
         showPopup(message, type, autoClose ? 5000 : null);
     }
 
-    // === Função: Salvar Resumo da Sessão ===
-    // (Mantida a versão melhorada que tenta pegar duração do timerPopupAPI)
-    function saveSessionSummary() {
+     function saveSessionSummary() {
         if (!currentSessionStats.id || currentSessionStats.totalQuestions === 0) return;
         console.log("Tentando salvar resumo da sessão ID:", currentSessionStats.id);
-        let durationMs = 0;
-        if (currentSessionStats.startTime) {
-            durationMs = Date.now() - currentSessionStats.startTime;
-        }
-
+        let durationMs = 0; if(currentSessionStats.startTime) { durationMs = Date.now() - currentSessionStats.startTime; }
         let durationFromTimer = null;
         if (window.timerPopupAPI && typeof window.timerPopupAPI.getDuration === 'function') {
-            try {
-                durationFromTimer = window.timerPopupAPI.getDuration();
-                if (typeof durationFromTimer === 'object' && durationFromTimer !== null && typeof durationFromTimer.ms === 'number') {
-                    durationMs = durationFromTimer.ms;
-                } else if (typeof durationFromTimer === 'number') {
-                    durationMs = durationFromTimer;
-                }
-                console.log("Duração obtida do timerPopupAPI:", durationMs);
-            } catch (e) {
-                console.error("Erro ao chamar getDuration:", e);
-            }
-        } else {
-            // Removido console.warn para não poluir tanto, já que é esperado em alguns casos.
-            // console.warn("Função timerPopupAPI.getDuration() não encontrada. Usando cálculo manual da duração.");
-        }
-
-        const summary = {
-            id: currentSessionStats.id,
-            timestamp: new Date().toISOString(),
-            disciplina: currentSessionStats.disciplina,
-            totalQuestions: currentSessionStats.totalQuestions,
-            answeredCount: currentSessionStats.answeredCount,
-            correctCount: currentSessionStats.correctCount,
-            durationMs: durationMs
-        };
-        try {
-            const existingSummaries = JSON.parse(localStorage.getItem(RESULTS_STORAGE_KEY) || '[]');
-            if (!Array.isArray(existingSummaries)) throw new Error("Formato inválido no localStorage");
-            const index = existingSummaries.findIndex(s => s.id === summary.id);
-            if (index === -1) {
-                existingSummaries.push(summary);
-            } else {
-                existingSummaries[index] = summary;
-            }
-            localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(existingSummaries));
-            console.log(`Resumo da sessão ${summary.id} salvo/atualizado. Respondidas: ${summary.answeredCount}/${summary.totalQuestions}, Duração: ${summary.durationMs}ms`);
-        } catch (error) {
-            console.error("Erro ao salvar resumo da sessão no localStorage:", error);
-            showStatus("Erro ao salvar o resumo da sessão.", "error");
-        }
+            try { durationFromTimer = window.timerPopupAPI.getDuration(); if (typeof durationFromTimer === 'object' && durationFromTimer !== null && typeof durationFromTimer.ms === 'number') { durationMs = durationFromTimer.ms; } else if (typeof durationFromTimer === 'number') { durationMs = durationFromTimer; } console.log("Duração obtida do timerPopupAPI:", durationMs); } catch (e) { console.error("Erro ao chamar getDuration:", e); }
+        } else { console.warn("Função timerPopupAPI.getDuration() não encontrada. Usando cálculo manual."); }
+        const summary = { id: currentSessionStats.id, timestamp: new Date().toISOString(), disciplina: currentSessionStats.disciplina, totalQuestions: currentSessionStats.totalQuestions, answeredCount: currentSessionStats.answeredCount, correctCount: currentSessionStats.correctCount, durationMs: durationMs };
+        try { const existingSummaries = JSON.parse(localStorage.getItem(RESULTS_STORAGE_KEY) || '[]'); if (!Array.isArray(existingSummaries)) throw new Error("Formato inválido no localStorage"); const index = existingSummaries.findIndex(s => s.id === summary.id); if (index === -1) { existingSummaries.push(summary); } else { existingSummaries[index] = summary; } localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(existingSummaries)); console.log(`Resumo da sessão ${summary.id} salvo com sucesso.`); } catch (error) { console.error("Erro ao salvar resumo da sessão no localStorage:", error); showStatus("Erro ao salvar o resumo da sessão.", "error"); }
     }
 
-    // === Função: Finalizar Sessão de Estudo ===
     function finalizeSession(openPanel = false) {
         if (currentSessionStats.totalQuestions === 0 || !currentSessionStats.id) return;
         const sessionId = currentSessionStats.id; console.log(`Finalizando sessão ID: ${sessionId}. Flag openPanel=${openPanel}`);
         if (window.timerPopupAPI && typeof window.timerPopupAPI.stopTimer === 'function') { try { console.log("Chamando timerPopupAPI.stopTimer()"); window.timerPopupAPI.stopTimer(); } catch (e) { console.error("Erro ao chamar stopTimer:", e); } } else { console.warn('Função timerPopupAPI.stopTimer() não encontrada.'); }
-        saveSessionSummary(); // Salva o estado final
-        const wasActive = currentSessionStats.id; resetSessionState();
+        saveSessionSummary(); const wasActive = currentSessionStats.id; resetSessionState();
         if (openPanel && wasActive) { console.log("finalizeSession: Condition openPanel=true met. Attempting to open panel."); if (window.timerPopupAPI && typeof window.timerPopupAPI.openPanel === 'function') { try { console.log("Chamando timerPopupAPI.openPanel()"); window.timerPopupAPI.openPanel(); } catch (e) { console.error("Erro ao chamar openPanel:", e); } } else { console.warn('Função timerPopupAPI.openPanel() não encontrada.'); showStatus("Sessão finalizada e salva. Painel não disponível.", "info"); } } else if (wasActive) { console.log("finalizeSession: Condition openPanel=false met. NOT opening panel."); showStatus("Sessão finalizada e salva.", "success"); } console.log(`Sessão ${sessionId} finalizada.`);
     }
 
-    // === Função: Lidar com Saída da Página ===
-    function handleBeforeUnload(event) { if (currentSessionStats.id && currentSessionStats.totalQuestions > 0) { console.log("beforeunload: Finalizando sessão ativa..."); finalizeSession(false); } }
+     function handleBeforeUnload(event) { if (currentSessionStats.id && currentSessionStats.totalQuestions > 0) { console.log("beforeunload: Finalizando sessão ativa..."); finalizeSession(false); } }
 
-    // === Função: Parsear o Texto da API ===
-    // (Esta função permanece a mesma)
     function parseGeneratedText(text, expectedType) {
         const questions = [];
         const startIndex = Math.min(
@@ -271,27 +212,51 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
 
                  if (expectedType === 'multipla_escolha' || expectedType === 'verdadeiro_falso') {
-                     // ... (validações como no seu código original) ...
-                 } else if (expectedType === 'dissertativa_curta') {
-                    // ... (validações como no seu código original) ...
-                 }
+                     if (!foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Marcador de resposta [R] não encontrado.`);
+                     if (!questionData.correctAnswer && foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Valor da resposta [R] está vazio.`);
+                     if (Object.keys(questionData.options).length === 0) console.warn(`Bloco ${index+1}: Nenhuma opção ([A],[B]... ou [V],[F]) encontrada.`);
+                     if (!foundResolutionMarker) console.warn(`Bloco ${index+1}: Resolução [RES] não encontrada.`);
+                     if (!questionData.resolution && foundResolutionMarker) console.warn(`Bloco ${index+1}: Valor da resolução [RES] está vazio.`);
+                    if (expectedType === 'multipla_escolha') {
+                        const upperCaseCorrect = (questionData.correctAnswer || '').toUpperCase();
+                        if (foundCorrectAnswerMarker && !['A', 'B', 'C', 'D'].includes(upperCaseCorrect)) console.warn(`Bloco ${index+1}: Resposta [R] "${questionData.correctAnswer}" inválida. Use A, B, C ou D.`);
+                         if (foundCorrectAnswerMarker && questionData.options[upperCaseCorrect] === undefined) console.warn(`Bloco ${index+1}: Resposta [R] "${upperCaseCorrect}" não corresponde a nenhuma opção fornecida.`);
+                        if (foundCorrectAnswerMarker) questionData.correctAnswer = upperCaseCorrect;
+                    } else {
+                        const upperCaseCorrect = (questionData.correctAnswer || '').toUpperCase();
+                        if (upperCaseCorrect === 'VERDADEIRO' || upperCaseCorrect === 'V') questionData.correctAnswer = 'V';
+                        else if (upperCaseCorrect === 'FALSO' || upperCaseCorrect === 'F') questionData.correctAnswer = 'F';
+                         else if (foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Resposta [R] "${questionData.correctAnswer}" inválida para V/F. Use V ou F.`);
+                         if (questionData.options['V'] === undefined) questionData.options['V'] = 'Verdadeiro';
+                         if (questionData.options['F'] === undefined) questionData.options['F'] = 'Falso';
+                    }
+                } else if (expectedType === 'dissertativa_curta') {
+                    if (!foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Gabarito [G] não encontrado.`);
+                    if (!questionData.suggestedAnswer && foundCorrectAnswerMarker) console.warn(`Bloco ${index+1}: Valor do gabarito [G] está vazio.`);
+                    if (foundResolutionMarker && !questionData.resolution) console.warn(`Bloco ${index+1}: Valor da resolução [RES] está vazio.`);
+                }
 
                  if (!questionData.text) {
                       console.error(`Erro ao processar bloco ${index + 1}: Enunciado [Q] vazio.`);
-                       questions.push({ id: `q-error-${Date.now()}-${index}`, text: `Erro ao carregar esta questão: Enunciado vazio.`, type: 'error', options: {}, correctAnswer: null, resolution: null, image: null, metaSource: null, metaYear: null });
+                       questions.push({
+                           id: `q-error-${Date.now()}-${index}`, text: `Erro ao carregar esta questão: Enunciado vazio.`,
+                           type: 'error', options: {}, correctAnswer: null, resolution: null, image: null, metaSource: null, metaYear: null
+                       });
                  } else if (questionData.type !== 'error') {
                      questions.push(questionData);
                  }
             } catch (error) {
                 console.error(`Erro ao processar bloco ${index + 1}:`, error, "\nBloco Original:\n---\n", block, "\n---");
-                questions.push({ id: `q-error-${Date.now()}-${index}`, text: `Erro ao carregar esta questão (${error.message}). Verifique o console.`, type: 'error', options: {}, correctAnswer: null, resolution: null, image: null, metaSource: null, metaYear: null });
+                questions.push({
+                    id: `q-error-${Date.now()}-${index}`,
+                    text: `Erro ao carregar esta questão (${error.message}). Verifique o console.`,
+                    type: 'error', options: {}, correctAnswer: null, resolution: null, image: null, metaSource: null, metaYear: null
+                });
             }
         });
         return questions;
     }
 
-    // === Função: Exibir Questões Parseadas ===
-    // (Esta função permanece a mesma)
     function displayParsedQuestions(questionsArray) {
          questoesOutput.innerHTML = '';
          questionsDataStore = {};
@@ -340,7 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
              const optionsContainer = document.createElement('div'); optionsContainer.className = 'options-container';
              if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
-                // ... (lógica de criação de botões de opção como no seu código original) ...
                  const optionKeys = (qData.type === 'multipla_escolha') ? Object.keys(qData.options).filter(k => ['A','B','C','D'].includes(k)).sort() : ['V', 'F'];
                  optionKeys.forEach(key => {
                      if (qData.options[key] !== undefined) {
@@ -355,7 +319,6 @@ document.addEventListener('DOMContentLoaded', () => {
                      }
                  });
              } else if (qData.type === 'dissertativa_curta') {
-                // ... (lógica para questão dissertativa como no seu código original) ...
                  const answerP = document.createElement('p'); answerP.className = 'dissertative-info';
                  let dissertativeText = `<i>Questão dissertativa.`;
                  if(qData.suggestedAnswer) { const sanitizedAnswer = qData.suggestedAnswer.replace(/</g, "&lt;").replace(/>/g, "&gt;"); dissertativeText += ` Resposta Sugerida: ${sanitizedAnswer}`; }
@@ -366,7 +329,6 @@ document.addEventListener('DOMContentLoaded', () => {
              questionDiv.appendChild(optionsContainer);
 
              const feedbackArea = document.createElement('div'); feedbackArea.className = 'feedback-area';
-            // ... (restante da criação da UI da questão como no seu código original) ...
              const feedbackDiv = document.createElement('div'); feedbackDiv.className = 'feedback-message'; feedbackDiv.style.display = 'none'; feedbackArea.appendChild(feedbackDiv);
              if (qData.type === 'multipla_escolha' || qData.type === 'verdadeiro_falso') {
                  const confirmButton = document.createElement('button'); confirmButton.className = 'confirm-answer-btn'; confirmButton.textContent = 'Responder'; confirmButton.disabled = true; feedbackArea.appendChild(confirmButton);
@@ -382,46 +344,16 @@ document.addEventListener('DOMContentLoaded', () => {
          });
     }
 
-    // === Funções de Interação com Questões ===
     function handleOptionClick(clickedButton) {
         const questionDiv = clickedButton.closest('.question-item'); if (!questionDiv || questionDiv.dataset.answered === 'true') { return; } const confirmAnswerBtn = questionDiv.querySelector('.confirm-answer-btn'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const selectedValue = clickedButton.dataset.value; allOptionButtons.forEach(btn => btn.classList.remove('selected-preview')); clickedButton.classList.add('selected-preview'); questionDiv.dataset.selectedOption = selectedValue; console.log(`Set selectedOption=${selectedValue} on ${questionDiv.id}`); if (confirmAnswerBtn) { confirmAnswerBtn.disabled = false; console.log(`Enabled confirm button for ${questionDiv.id}`); } else { console.error("Botão .confirm-answer-btn não encontrado para", questionDiv.id); }
     }
 
-    // (Mantida a versão que salva a sessão após cada resposta)
     function handleConfirmAnswer(confirmButton) {
-        console.log("handleConfirmAnswer triggered for button:", confirmButton);
-        const questionDiv = confirmButton.closest('.question-item');
-        if (!questionDiv) { /* ... erro ... */ return; }
-        const userAnswer = questionDiv.dataset.selectedOption;
-        const isAnswered = questionDiv.dataset.answered === 'true';
-        if (!userAnswer || isAnswered) { /* ... aviso ... */ return; }
-        if (!currentSessionStats.id) { /* ... aviso ... */ return; }
-
-        const correctAnswer = questionDiv.dataset.correctAnswer;
-        const isCorrect = userAnswer === correctAnswer;
-        // ... (lógica de UI para feedback, como no seu código original)
-         const feedbackDiv = questionDiv.querySelector('.feedback-message'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const originallySelectedButton = Array.from(allOptionButtons).find(btn => btn.dataset.value === userAnswer);
+         console.log("handleConfirmAnswer triggered for button:", confirmButton); const questionDiv = confirmButton.closest('.question-item'); console.log("Associated questionDiv:", questionDiv); if (!questionDiv) { console.error("Não foi possível encontrar o .question-item pai do botão."); return; } const userAnswer = questionDiv.dataset.selectedOption; const isAnswered = questionDiv.dataset.answered === 'true'; console.log("Checking conditions: ", { userAnswer: userAnswer, isAnswered: isAnswered, sessionId: currentSessionStats.id }); if (!userAnswer || isAnswered) { console.warn("Tentativa de confirmar resposta inválida: Nenhuma opção selecionada ou questão já respondida.", { selectedOption: userAnswer, isAnswered: isAnswered }); confirmButton.style.opacity = '0.5'; setTimeout(() => { confirmButton.style.opacity = '1'; }, 300); return; } if (!currentSessionStats.id) { console.warn("Tentativa de responder sem sessão ativa."); showStatus("Erro: Sessão não iniciada.", "error"); return; } console.log("Passed initial checks. Proceeding with answer evaluation..."); const correctAnswer = questionDiv.dataset.correctAnswer; const isCorrect = userAnswer === correctAnswer; const feedbackDiv = questionDiv.querySelector('.feedback-message'); const allOptionButtons = questionDiv.querySelectorAll('.option-btn'); const originallySelectedButton = Array.from(allOptionButtons).find(btn => btn.dataset.value === userAnswer);
          const resolutionButton = questionDiv.querySelector('.view-resolution-btn');
-         questionDiv.dataset.answered = 'true'; questionDiv.classList.add('answered'); questionDiv.classList.add(isCorrect ? 'correct' : 'incorrect'); allOptionButtons.forEach(btn => { btn.disabled = true; btn.classList.remove('selected-preview'); if (btn === originallySelectedButton) { btn.classList.add('selected'); } if (btn.dataset.value === correctAnswer) { btn.classList.add('correct-answer-highlight'); } }); confirmButton.disabled = true; if (feedbackDiv) { feedbackDiv.textContent = isCorrect ? 'Resposta Correta!' : `Incorreto. A resposta correta é: ${correctAnswer}`; feedbackDiv.style.display = 'block'; }
-         if (resolutionButton) { resolutionButton.style.display = 'inline-flex';}
-
-
-        currentSessionStats.answeredCount++;
-        if (isCorrect) { currentSessionStats.correctCount++; }
-        console.log('Sessão atual (antes de salvar):', currentSessionStats);
-
-        saveSessionSummary(); // Salva o progresso
-
-        if (window.timerPopupAPI && typeof window.timerPopupAPI.updateStats === 'function') {
-            try { window.timerPopupAPI.updateStats(currentSessionStats.answeredCount, currentSessionStats.correctCount); }
-            catch(e) { console.error("Erro ao chamar updateStats:", e); }
-        } else { console.warn('API do Timer Popup (updateStats) não encontrada.'); }
-
-        if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
-            console.log("Todas as questões foram respondidas!");
-            showStatus("Simulado concluído! Verifique o painel de tempo.", "success");
-            finalizeSession(true);
-        }
+         console.log(`Confirmando resposta para ${questionDiv.id}: User=${userAnswer}, Correct=${correctAnswer}, IsCorrect=${isCorrect}`); questionDiv.dataset.answered = 'true'; questionDiv.classList.add('answered'); questionDiv.classList.add(isCorrect ? 'correct' : 'incorrect'); allOptionButtons.forEach(btn => { btn.disabled = true; btn.classList.remove('selected-preview'); if (btn === originallySelectedButton) { btn.classList.add('selected'); } if (btn.dataset.value === correctAnswer) { btn.classList.add('correct-answer-highlight'); } }); confirmButton.disabled = true; if (feedbackDiv) { feedbackDiv.textContent = isCorrect ? 'Resposta Correta!' : `Incorreto. A resposta correta é: ${correctAnswer}`; feedbackDiv.style.display = 'block'; } else { console.warn("Elemento .feedback-message não encontrado para", questionDiv.id); }
+         if (resolutionButton) { resolutionButton.style.display = 'inline-flex'; console.log(`Botão 'Ver Resolução' exibido para ${questionDiv.id}`); }
+         currentSessionStats.answeredCount++; if (isCorrect) { currentSessionStats.correctCount++; } console.log('Sessão atual:', currentSessionStats); if (window.timerPopupAPI && typeof window.timerPopupAPI.updateStats === 'function') { try { window.timerPopupAPI.updateStats( currentSessionStats.answeredCount, currentSessionStats.correctCount ); } catch(e) { console.error("Erro ao chamar updateStats:", e); } } else { console.warn('API do Timer Popup (updateStats) não encontrada.'); } if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) { console.log("Todas as questões foram respondidas!"); showStatus("Simulado concluído! Verifique o painel de tempo.", "success"); finalizeSession(true); }
     }
 
     function handleViewResolution(resolutionButton) {
@@ -429,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const questionDiv = document.getElementById(questionId);
         const resolutionArea = questionDiv ? questionDiv.querySelector('.resolution-area') : null;
         const questionData = questionsDataStore[questionId];
-        if (!questionDiv || !resolutionArea || !questionData || !questionData.resolution) { console.error(`Erro ao tentar mostrar resolução para questão ${questionId}.`); showStatus("Erro ao carregar a resolução.", "error"); return; }
+        if (!questionDiv || !resolutionArea || !questionData || !questionData.resolution) { console.error(`Erro ao tentar mostrar resolução para questão ${questionId}. Elementos ou dados não encontrados.`); showStatus("Erro ao carregar a resolução.", "error"); return; }
         const sanitizedResolution = questionData.resolution.replace(/</g, "&lt;").replace(/>/g, "&gt;");
         resolutionArea.innerHTML = `<strong>Resolução:</strong><br>${sanitizedResolution.replace(/\n/g, '<br>')}`;
         resolutionArea.style.display = 'block';
@@ -437,12 +369,11 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`Resolução exibida para ${questionId}`);
     }
 
-    // === Função Principal: Gerar Questões (COM BUSCA TEMPORÁRIA DE CHAVE) ===
     async function handleGenerateQuestions() {
         hidePopup();
         if (currentSessionStats.id) {
-            console.log("Gerando novas questões, finalizando sessão anterior...");
-            finalizeSession(false);
+             console.log("Gerando novas questões, finalizando sessão anterior...");
+             finalizeSession(false);
         }
 
         const assunto = assuntoInput.value.trim();
@@ -455,161 +386,96 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!assunto) { assuntoInput.focus(); return showError("Por favor, informe o Assunto Principal."); }
         if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) { numQuestoesInput.focus(); return showError("Número de questões inválido (1-20)."); }
         if (!nivelQuestao) { nivelQuestaoSelect.focus(); return showError("Por favor, selecione o Nível das questões."); }
-        if (!GEMINI_MODEL_TO_USE) { return showError("Erro Crítico: Modelo da API Gemini não configurado no frontend."); }
+        if (!GEMINI_MODEL) { return showError("Erro Crítico: Modelo da API Gemini não configurado."); }
 
-
-        const disciplinaParaSessao = disciplinaSelecionada || "Geral";
-        console.log(`Iniciando geração com Gemini... Assunto: ${assunto}, Nível: ${nivelQuestao}, Modelo: ${GEMINI_MODEL_TO_USE}`);
         showLoading(true);
         clearOutput();
-
-        let prompt = `Gere ${numQuestoes} questão(ões) EXCLUSIVAMENTE sobre o Assunto Principal "${assunto}".\n`;
-        if (disciplinaSelecionada) prompt += `Considere o contexto da Disciplina: "${disciplinaSelecionada}".\n`;
-        prompt += `GENERE AS QUESTÕES COM NÍVEL DE DIFICULDADE ESTRITAMENTE: ${nivelQuestao.toUpperCase()}.\n`;
-        prompt += `A complexidade, vocabulário e conceitos abordados devem ser consistentes com o nível ${nivelQuestao.toUpperCase()}.\n`;
-        if (bibliografia) prompt += `Use a seguinte Bibliografia como inspiração/referência (se aplicável ao assunto): "${bibliografia}".\n`;
-        prompt += `Tipo de questão desejada: ${tipoQuestao === 'multipla_escolha' ? 'Múltipla Escolha (A, B, C, D)' : tipoQuestao === 'verdadeiro_falso' ? 'Verdadeiro/Falso (V/F)' : 'Dissertativa Curta'}.\n`;
-        prompt += `Para cada questão, inclua os seguintes metadados IMEDIATAMENTE APÓS o marcador [Q] e ANTES de quaisquer outros marcadores ([A], [B], [V], [F], [G], [R], [IMG], [RES]).\n`;
-        prompt += `- Fonte/Assunto: Use EXATAMENTE o formato "[META_SOURCE] Texto da fonte ou assunto".\n`;
-        prompt += `- Ano de Geração/Referência: Use EXATAMENTE o formato "[META_YEAR] Ano".\n`;
-        const currentYear = new Date().getFullYear();
-        prompt += `Utilize o ano atual (${currentYear}) como padrão.\n`;
-        prompt += `Formato de saída OBRIGATÓRIO:\n`;
-        prompt += `- Separe CADA questão completa usando APENAS "[SEP]" como separador.\n`;
-        prompt += `- Dentro de cada bloco de questão:\n`;
-        prompt += `  - Inicie o enunciado OBRIGATORIAMENTE com "[Q] ".\n`;
-        prompt += `  - (Opcional) Se a questão NECESSITAR de uma imagem... use EXATAMENTE o formato "[IMG] URL_ou_descrição_detalhada".\n`;
-        switch (tipoQuestao) {
-            case 'multipla_escolha': prompt += `  - Para CADA alternativa, use EXATAMENTE o formato "[A] texto...".\n  - Indique a resposta correta usando "[R] " seguido APENAS pela LETRA maiúscula (A, B, C ou D).\n`; break;
-            case 'verdadeiro_falso': prompt += `  - Forneça a afirmação no enunciado [Q].\n  - Use "[V]" ou deixe vazio.\n  - Use "[F]" ou deixe vazio.\n  - Indique a resposta correta usando "[R] " seguido APENAS por "V" ou "F".\n`; break;
-            case 'dissertativa_curta': prompt += `  - Forneça uma resposta/gabarito curto e direto usando "[G] ".\n`; break;
+        
+        let fetchedApiKey;
+        try {
+            const apiKeyResponse = await fetch('/.netlify/functions/get-api-key');
+            if (!apiKeyResponse.ok) {
+                let errorMsg = `Falha ao buscar a API Key: ${apiKeyResponse.status}`;
+                try {
+                    const errorData = await apiKeyResponse.json();
+                    errorMsg = errorData.error || errorMsg;
+                } catch (e) { /* Ignore parsing error, use status code */ }
+                throw new Error(errorMsg);
+            }
+            const apiKeyData = await apiKeyResponse.json();
+            fetchedApiKey = apiKeyData.apiKey;
+            if (!fetchedApiKey) {
+                throw new Error('API Key não recebida da função Netlify ou está vazia.');
+            }
+            localStorage.setItem(TEMP_API_KEY_STORAGE_ITEM, fetchedApiKey);
+        } catch (error) {
+            console.error("Erro ao obter a API Key da função Netlify:", error);
+            showError(`Erro ao obter a API Key: ${error.message}`);
+            localStorage.removeItem(TEMP_API_KEY_STORAGE_ITEM);
+            showLoading(false);
+            return;
         }
-        prompt += `  - Forneça uma resolução/explicação DETALHADA... usando OBRIGATORIAMENTE o formato "[RES] Texto...".\n`;
-        prompt += `Exemplo Múltipla Escolha:\n[Q] ...\n[META_SOURCE] ...\n[META_YEAR] ...\n[A] ...\n[R] ...\n[RES] ...\n[SEP]\n`;
-        prompt += `IMPORTANTE: Siga ESTRITAMENTE o formato. NÃO adicione NENHUMA outra formatação. Gere APENAS o texto das questões.`;
 
-        let tempApiKeyFromBackend = null;
+        const disciplinaParaSessao = disciplinaSelecionada || "Geral";
+        console.log(`Iniciando geração com Gemini... Assunto: ${assunto}, Nível: ${nivelQuestao}, Modelo: ${GEMINI_MODEL}`);
+        
+        const currentYear = new Date().getFullYear();
+        let prompt = `Você é um assistente especialista na criação de questões para concursos públicos e exames de alta complexidade.\n`;
+        prompt += `Sua tarefa é gerar EXATAMENTE ${numQuestoes} questão(ões) sobre o Assunto Principal: "${assunto}".\n`;
+        if (disciplinaSelecionada) {
+            prompt += `Considere o contexto específico da Disciplina: "${disciplinaSelecionada}".\n`;
+        }
+        prompt += `O Nível de Dificuldade das questões deve ser ESTRITAMENTE: ${nivelQuestao.toUpperCase()}. A complexidade, o vocabulário técnico e os conceitos abordados devem ser perfeitamente consistentes com este nível.\n`;
+        if (bibliografia) {
+            prompt += `Utilize a seguinte Bibliografia como principal fonte de inspiração e referência, se aplicável e relevante ao assunto: "${bibliografia}". As questões devem refletir o conteúdo e o estilo encontrados nesta bibliografia.\n`;
+        }
+        prompt += `Tipo de questão solicitada: ${tipoQuestao === 'multipla_escolha' ? 'Múltipla Escolha com quatro alternativas (A, B, C, D)' : tipoQuestao === 'verdadeiro_falso' ? 'Verdadeiro/Falso (V/F)' : 'Dissertativa Curta'}.\n`;
+        prompt += `REQUISITOS CRÍTICOS PARA QUALIDADE E FORMATO:\n`;
+        prompt += `1. PRECISÃO E RELEVÂNCIA: As questões devem ser factualmente corretas, precisas, claras, sem ambiguidades e altamente relevantes para o assunto, disciplina e nível especificados. O conteúdo deve ser rigoroso e adequado para preparação para concursos públicos.\n`;
+        prompt += `2. METADADOS OBRIGATÓRIOS: Para CADA questão, IMEDIATAMENTE após o marcador [Q] e ANTES de qualquer outro marcador de opção ou resposta, inclua:\n`;
+        prompt += `   - Fonte/Contexto: Use o formato "[META_SOURCE] Texto da fonte ou contexto". Ex: "Disciplina: ${disciplinaParaSessao}, Assunto: ${assunto}", ou o nome de um edital/banca, se a bibliografia sugerir.\n`;
+        prompt += `   - Ano de Referência: Use o formato "[META_YEAR] Ano". Priorize ${currentYear} ou um ano relevante se a bibliografia ou o assunto indicarem (ex: ano de uma lei específica).\n`;
+        prompt += `3. FORMATAÇÃO ESTRITA DE SAÍDA (NÃO DESVIE DESTE FORMATO):\n`;
+        prompt += `   - Separe CADA questão completa (enunciado, metadados, imagem opcional, opções/gabarito, resposta correta e resolução detalhada) usando EXCLUSIVAMENTE "[SEP]" como separador. Nenhum texto ou caractere adicional entre blocos de questão.\n`;
+        prompt += `   - DENTRO DE CADA BLOCO DE QUESTÃO:\n`;
+        prompt += `     - Enunciado: OBRIGATORIAMENTE inicie com "[Q] ". Deve ser claro e completo.\n`;
+        prompt += `     - Imagem (Opcional e Raro): Se ABSOLUTAMENTE NECESSÁRIO para a compreensão da questão, use "[IMG] URL_válida_da_imagem_ou_descrição_extremamente_detalhada_da_imagem". Use com moderação.\n`;
+        prompt += `     - Alternativas/Gabarito:\n`;
+        if (tipoQuestao === 'multipla_escolha') {
+            prompt += `       - Para CADA uma das QUATRO alternativas, use o formato: "[A] Texto da alternativa A", "[B] Texto da alternativa B", etc. As alternativas devem ser plausíveis, mas apenas UMA deve ser inequivocamente correta.\n`;
+            prompt += `       - Resposta Correta: Indique a resposta usando "[R] " seguido APENAS pela LETRA maiúscula da alternativa correta (A, B, C ou D).\n`;
+        } else if (tipoQuestao === 'verdadeiro_falso') {
+            prompt += `       - A afirmação estará no enunciado [Q].\n`;
+            prompt += `       - Use "[V]" para a opção Verdadeiro (pode deixar o texto da opção vazio ou preencher com "Verdadeiro").\n`;
+            prompt += `       - Use "[F]" para a opção Falso (pode deixar o texto da opção vazio ou preencher com "Falso").\n`;
+            prompt += `       - Resposta Correta: Indique a resposta usando "[R] " seguido APENAS por "V" ou "F".\n`;
+        } else {
+            prompt += `       - Gabarito Esperado: Forneça uma resposta modelo concisa e direta usando "[G] Texto do gabarito esperado.".\n`;
+        }
+        prompt += `     - Resolução Detalhada ([RES]): OBRIGATORIAMENTE forneça uma resolução detalhada e didática usando "[RES] Texto da resolução.". Esta resolução deve explicar claramente por que a resposta correta é correta e, para múltipla escolha, por que as demais são incorretas. Para dissertativas, deve detalhar os pontos chave da resposta esperada.\n`;
+        prompt += `4. FOCO NO CONTEÚDO: Gere APENAS o texto das questões conforme o formato. NÃO inclua introduções, despedidas, comentários, numeração automática fora do enunciado, ou qualquer texto que não faça parte das questões formatadas.\n`;
+        prompt += `EXEMPLO DE QUESTÃO DE MÚLTIPLA ESCOLHA (NÍVEL MÉDIO):\n`;
+        prompt += `[Q] De acordo com a Constituição Federal de 1988, qual princípio da administração pública NÃO está expressamente listado no caput do Art. 37?\n`;
+        prompt += `[META_SOURCE] Direito Constitucional, Art. 37 CF/88\n`;
+        prompt += `[META_YEAR] ${currentYear}\n`;
+        prompt += `[A] Legalidade\n`;
+        prompt += `[B] Eficiência\n`;
+        prompt += `[C] Razoabilidade\n`;
+        prompt += `[D] Publicidade\n`;
+        prompt += `[R] C\n`;
+        prompt += `[RES] O caput do Art. 37 da Constituição Federal de 1988 estabelece que a administração pública direta e indireta de qualquer dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios obedecerá aos princípios de legalidade, impessoalidade, moralidade, publicidade e eficiência (LIMPE). O princípio da Razoabilidade, embora aplicado na administração pública, não está expressamente listado no caput do Art. 37, sendo uma construção doutrinária e jurisprudencial.\n`;
+        prompt += `[SEP]\n`;
+        prompt += `Certifique-se de que TODAS as questões solicitadas sejam geradas, sigam TODOS os requisitos e o formato ESTRITO. A qualidade e precisão são cruciais.\n`;
 
         try {
-            console.log("Buscando API key da Netlify Function...");
-            const keyResponse = await fetch('/.netlify/functions/get-api-key', { method: 'GET' });
-
-            if (!keyResponse.ok) {
-                const errorData = await keyResponse.json().catch(() => ({ error: "Falha ao buscar chave, resposta não JSON."}));
-                throw new Error(`Falha ao buscar API key do backend: ${keyResponse.status} ${errorData.error || keyResponse.statusText}`);
+            const apiKeyForGeminiCall = localStorage.getItem(TEMP_API_KEY_STORAGE_ITEM);
+            if (!apiKeyForGeminiCall) {
+                 throw new Error("API Key não encontrada no localStorage para a chamada Gemini. Isso não deveria acontecer se a busca inicial foi bem-sucedida.");
             }
-            const keyData = await keyResponse.json();
-            tempApiKeyFromBackend = keyData.apiKey;
 
-            if (!tempApiKeyFromBackend) {
-                throw new Error("API key não foi recebida do backend.");
-            }
-            // ATENÇÃO: RISCO DE SEGURANÇA! A CHAVE ESTÁ NO CLIENTE AGORA.
-            localStorage.setItem(TEMP_API_KEY_STORAGE_ID, tempApiKeyFromBackend);
-            console.warn("AVISO DE SEGURANÇA: Chave da API temporariamente no localStorage.");
-
-
-            const requestBodyToGemini = {
-                contents: [{ parts: [{ text: prompt }] }],
+            const requestBody = {
+                contents: [{
+                    parts: [{ text: prompt }]
+                }],
                 generationConfig: {
-                    temperature: 0.7,
-                    maxOutputTokens: 500 * numQuestoes + 400,
-                },
-            };
-
-            const fullApiUrl = `${GEMINI_API_URL_BASE}${GEMINI_MODEL_TO_USE}:generateContent?key=${tempApiKeyFromBackend}`;
-
-            console.log("Fazendo chamada direta para a API Gemini...");
-            const geminiApiResponse = await fetch(fullApiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestBodyToGemini)
-            });
-
-            const responseBodyText = await geminiApiResponse.text();
-            let dataFromGemini;
-            try {
-                dataFromGemini = JSON.parse(responseBodyText);
-            } catch (e) {
-                console.error("Erro ao parsear resposta JSON da API Gemini:", responseBodyText);
-                throw new Error(`Resposta inválida da API Gemini: ${geminiApiResponse.status}. Detalhe limitado: ${responseBodyText.substring(0,100)}...`);
-            }
-
-            if (!geminiApiResponse.ok) {
-                const apiError = dataFromGemini.error || {};
-                const detailMessage = apiError.message || `Erro HTTP ${geminiApiResponse.status} da API Gemini.`;
-                 if (geminiApiResponse.status === 400 && detailMessage.includes("API key not valid")) {
-                     throw new Error("Falha na API Gemini: A Chave da API (obtida do backend) não é válida.");
-                 }
-                throw new Error(detailMessage);
-            }
-
-            console.log("Resposta completa da API Gemini (direta):", dataFromGemini);
-
-            let rawTextFromAPI = '';
-            if (dataFromGemini.candidates && dataFromGemini.candidates.length > 0 &&
-                dataFromGemini.candidates[0].content && dataFromGemini.candidates[0].content.parts &&
-                dataFromGemini.candidates[0].content.parts.length > 0 && dataFromGemini.candidates[0].content.parts[0].text) {
-                rawTextFromAPI = dataFromGemini.candidates[0].content.parts[0].text;
-            } else if (dataFromGemini.promptFeedback && dataFromGemini.promptFeedback.blockReason) {
-                 console.error("Prompt bloqueado pela API Gemini:", dataFromGemini.promptFeedback);
-                 const blockReason = dataFromGemini.promptFeedback.blockReason;
-                 const safetyRatings = dataFromGemini.promptFeedback.safetyRatings?.map(r => `${r.category}: ${r.probability}`).join(', ') || 'N/A';
-                 throw new Error(`Seu prompt foi bloqueado pela API Gemini devido a: ${blockReason}. Detalhes: ${safetyRatings}.`);
-            } else {
-                console.error("Resposta inesperada da API Gemini (sem conteúdo válido):", dataFromGemini);
-                throw new Error("Erro: A API Gemini retornou uma resposta vazia ou em formato inesperado.");
-            }
-
-            console.log("Texto cru extraído da API Gemini (direta):", rawTextFromAPI);
-
-            const questionsArray = parseGeneratedText(rawTextFromAPI, tipoQuestao);
-            displayParsedQuestions(questionsArray);
-
-            const validQuestions = questionsArray.filter(q => q.type !== 'error');
-            const totalValidQuestions = validQuestions.length;
-            // const errorQuestionsCount = questionsArray.length - totalValidQuestions; // Você já tinha isso
-
-            if (totalValidQuestions > 0) {
-                currentSessionStats = { id: `sess-${Date.now()}`, totalQuestions: totalValidQuestions, answeredCount: 0, correctCount: 0, disciplina: disciplinaParaSessao, startTime: Date.now() };
-                console.log("Nova sessão iniciada:", currentSessionStats);
-
-                if (window.timerPopupAPI && typeof window.timerPopupAPI.startSession === 'function') {
-                     try { /* ... chamada ao startSession ... */ } catch (e) { console.error("Erro ao chamar startSession:", e); }
-                     finalizeButton.style.display = 'inline-flex';
-                     // ... mensagens de sucesso/aviso ...
-                } else { /* ... aviso timer não encontrado ... */ }
-
-                // ... (lógica de minimizar bloco e scrollIntoView como antes) ...
-            } else {
-                // ... (lógica de erro se nenhuma questão válida foi gerada) ...
-                 if (questionsArray.length > 0 && questionsArray.every(q => q.type === 'error')) {
-                     showError(questionsArray[0].text);
-                 } else { //  if (errorQuestionsCount > 0) ...
-                     showError(`Erro: Nenhuma questão válida retornada pela API. Verifique o console.`);
-                 }
-                 resetSessionState();
-            }
-
-            let finishReason = null;
-            if (dataFromGemini.candidates && dataFromGemini.candidates.length > 0 && dataFromGemini.candidates[0].finishReason) {
-                finishReason = dataFromGemini.candidates[0].finishReason;
-            }
-            // ... (lógica de finishReason como antes) ...
-
-        } catch (error) {
-            console.error("Falha no fluxo de geração de questões:", error);
-            showError(`Erro durante a geração: ${error.message || 'Falha desconhecida.'}`);
-            resetSessionState();
-        } finally {
-            // REMOVER A CHAVE DO LOCALSTORAGE - ESSENCIAL!
-            if (localStorage.getItem(TEMP_API_KEY_STORAGE_ID)) {
-                localStorage.removeItem(TEMP_API_KEY_STORAGE_ID);
-                console.warn("AVISO DE SEGURANÇA: Chave da API temporária removida do localStorage.");
-            }
-            tempApiKeyFromBackend = null; // Limpa a variável da memória
-            showLoading(false);
-        }
-    } // Fim de handleGenerateQuestions
-
-}); // Fim do DOMContentLoaded
+                    temperature:
