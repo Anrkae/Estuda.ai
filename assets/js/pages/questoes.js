@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupCloseButton = document.getElementById('popupCloseButton');
 
     const GEMINI_API_URL_BASE = 'https://generativelanguage.googleapis.com/v1beta/models/';
-    const GEMINI_MODEL = 'gemini-1.5-pro-latest';
+    const GEMINI_MODEL = 'gemini-1.5-flash-latest';
     const TEMP_API_KEY_STORAGE_ITEM = 'temp_gemini_api_key_val';
 
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
