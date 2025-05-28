@@ -478,4 +478,153 @@ document.addEventListener('DOMContentLoaded', () => {
                     parts: [{ text: prompt }]
                 }],
                 generationConfig: {
-                    temperature:
+                    temperature: 0.6,
+                    maxOutputTokens: 800 * numQuestoes + 500,
+                },
+            };
+
+            const fullApiUrl = `${GEMINI_API_URL_BASE}${GEMINI_MODEL}:generateContent?key=${apiKeyForGeminiCall}`;
+
+            const response = await fetch(fullApiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody)
+            });
+
+             if (!response.ok) {
+                 let errorBodyText = await response.text();
+                 console.error("Raw Gemini API Error Response:", errorBodyText);
+                 let errorBody = {};
+                 try { errorBody = JSON.parse(errorBodyText); } catch (e) { console.error("Erro ao parsear erro JSON da Gemini:", e); }
+                 const detailMessage = errorBody?.error?.message || `Erro HTTP ${response.status}`;
+                 if (response.status === 400 && detailMessage.includes("API key not valid")) {
+                     throw new Error("Falha na API Gemini: A Chave da API fornecida não é válida.");
+                 } else if (response.status === 403) {
+                     throw new Error(`Falha na API Gemini: Acesso proibido. Verifique as permissões da chave. ${detailMessage}`);
+                 } else if (response.status === 429) {
+                     throw new Error(`Falha na API Gemini: Limite de requisições atingido. Tente novamente mais tarde. ${detailMessage}`);
+                 } else if (errorBody?.error?.status === "INVALID_ARGUMENT" && errorBody?.error?.message?.includes("resource name")){
+                     throw new Error(`Falha na API Gemini: Modelo "${GEMINI_MODEL}" inválido ou não encontrado. Verifique o nome do modelo. ${detailMessage}`);
+                 }
+                 else {
+                     throw new Error(`Falha na comunicação com a API Gemini: ${detailMessage}`);
+                 }
+             }
+
+            const data = await response.json();
+            console.log("Resposta completa da API Gemini:", data);
+
+            if (data.error) {
+                console.error("Erro retornado pela API Gemini:", data.error);
+                const errorMessage = data.error.message || data.error.status || 'Erro desconhecido retornado pela API Gemini.';
+                showError(`Erro da API Gemini: ${errorMessage}`);
+                resetSessionState();
+                return;
+            }
+
+            let rawTextFromAPI = '';
+            if (data.candidates && data.candidates.length > 0 &&
+                data.candidates[0].content && data.candidates[0].content.parts &&
+                data.candidates[0].content.parts.length > 0 && data.candidates[0].content.parts[0].text) {
+                rawTextFromAPI = data.candidates[0].content.parts[0].text;
+            } else if (data.promptFeedback && data.promptFeedback.blockReason) {
+                 console.error("Prompt bloqueado pela API Gemini:", data.promptFeedback);
+                 const blockReason = data.promptFeedback.blockReason;
+                 const safetyRatings = data.promptFeedback.safetyRatings.map(r => `${r.category}: ${r.probability}`).join(', ');
+                 showError(`Erro: Seu prompt foi bloqueado pela API Gemini devido a: ${blockReason}. Detalhes: ${safetyRatings}. Tente reformular o assunto.`);
+                 resetSessionState();
+                 return;
+            }
+            else {
+                console.error("Resposta inesperada da API Gemini (sem conteúdo válido):", data);
+                showError("Erro: A API Gemini retornou uma resposta vazia ou em formato inesperado.");
+                resetSessionState();
+                return;
+            }
+
+            console.log("Texto cru extraído da API Gemini:", rawTextFromAPI);
+            const questionsArray = parseGeneratedText(rawTextFromAPI, tipoQuestao);
+            displayParsedQuestions(questionsArray);
+
+            const validQuestions = questionsArray.filter(q => q.type !== 'error');
+            const totalValidQuestions = validQuestions.length;
+            const errorQuestionsCount = questionsArray.length - totalValidQuestions;
+
+            if (totalValidQuestions > 0) {
+                currentSessionStats = { id: `sess-${Date.now()}`, totalQuestions: totalValidQuestions, answeredCount: 0, correctCount: 0, disciplina: disciplinaParaSessao, startTime: Date.now() };
+                console.log("Nova sessão iniciada:", currentSessionStats);
+
+                if (window.timerPopupAPI && typeof window.timerPopupAPI.startSession === 'function') {
+                     try { console.log(`Iniciando sessão no Timer Popup ID: ${currentSessionStats.id}`); window.timerPopupAPI.startSession( currentSessionStats.totalQuestions, currentSessionStats.disciplina ); console.log("handleGenerateQuestions SUCCESS: Called startSession."); } catch (e) { console.error("Erro ao chamar startSession:", e); }
+                     finalizeButton.style.display = 'inline-flex';
+                     let successMsg = `Geradas ${totalValidQuestions} questões com Gemini! Acompanhe a sessão no painel abaixo.`;
+                     if (totalValidQuestions < numQuestoes) {
+                         successMsg = `Geradas ${totalValidQuestions} de ${numQuestoes} solicitadas com Gemini. Acompanhe a sessão no painel abaixo!`;
+                     }
+                     if (errorQuestionsCount > 0) {
+                         successMsg += ` (${errorQuestionsCount} questão(ões) tiveram erro no processamento.)`;
+                         showStatus(successMsg, 'warning');
+                     } else {
+                         showStatus(successMsg, 'success');
+                     }
+
+                } else { console.warn('API do Timer Popup (startSession) não encontrada.'); finalizeButton.style.display = 'inline-flex'; showStatus('Questões geradas com Gemini, mas o timer externo não pôde ser iniciado.', 'warning'); }
+
+                if (generatorBlock && !generatorBlock.classList.contains('minimizado')) {
+                    console.log("Minimizando bloco do gerador...");
+                    const minimizeButton = generatorBlock.querySelector('.botao-minimizar');
+                     if (minimizeButton) {
+                         minimizeButton.click();
+                     } else {
+                         generatorBlock.classList.add('minimizado');
+                         const toggleIcon = generatorBlock.querySelector('.botao-minimizar i');
+                         if (toggleIcon) {
+                             toggleIcon.classList.remove('fa-minus');
+                             toggleIcon.classList.add('fa-plus');
+                             if (generatorBlock.querySelector('.botao-minimizar')) {
+                                 generatorBlock.querySelector('.botao-minimizar').setAttribute('aria-label', 'Expandir');
+                             }
+                         }
+                     }
+                }
+                setTimeout(() => {
+                     questoesOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                     console.log("Rolando para o topo da área de questões...");
+                }, 100);
+
+            } else {
+                 if (questionsArray.length > 0 && questionsArray.every(q => q.type === 'error')) {
+                     showError(questionsArray[0].text);
+                 } else if (errorQuestionsCount > 0) {
+                     showError(`Erro: ${errorQuestionsCount} questão(ões) retornada(s) pela API Gemini tiveram erro no processamento e nenhuma foi válida. Verifique o console.`);
+                 } else {
+                     showError("Erro: Nenhuma questão foi retornada pela API Gemini ou o formato estava totalmente irreconhecível.");
+                 }
+                 resetSessionState();
+             }
+
+            let finishReason = null;
+            if (data.candidates && data.candidates.length > 0 && data.candidates[0].finishReason) {
+                finishReason = data.candidates[0].finishReason;
+            }
+
+            if (finishReason && finishReason !== 'STOP' && finishReason !== 'MAX_TOKENS') {
+                 console.warn("Geração da API Gemini pode ter sido interrompida:", finishReason);
+                 showStatus(`Atenção: Geração Gemini pode ter sido interrompida (${finishReason}).`, 'warning');
+            } else if (finishReason === 'MAX_TOKENS' && totalValidQuestions < numQuestoes) {
+                 console.warn("Geração Gemini interrompida por MAX_TOKENS.");
+                 showStatus(`Atenção: Limite de texto Gemini atingido. ${totalValidQuestions} de ${numQuestoes} questões geradas.`, 'warning');
+            }
+
+        } catch (error) {
+            console.error("Falha na requisição ou processamento com Gemini:", error);
+            showError(`Erro durante a geração com Gemini: ${error.message || 'Falha desconhecida.'}`);
+            resetSessionState();
+        } finally {
+            localStorage.removeItem(TEMP_API_KEY_STORAGE_ITEM);
+            showLoading(false);
+        }
+    }
+});
