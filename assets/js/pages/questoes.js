@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const currentYear = new Date().getFullYear();
         let prompt = `Você é um assistente especialista na criação de questões para concursos públicos e exames de alta complexidade.\n`;
-        prompt += `Sua tarefa é gerar EXATAMENTE ${numQuestoes} questão(ões) sobre o Assunto Principal: "${assunto}".\n`;
+        prompt += `Sua tarefa é gerar EXATAMENTE ${numQuestoes} questões sobre o Assunto:  "${assunto}".\n`;
         if (disciplinaSelecionada) {
             prompt += `Considere o contexto específico da Disciplina: "${disciplinaSelecionada}".\n`;
         }
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         prompt += `     - Imagem (Opcional e Raro): Se ABSOLUTAMENTE NECESSÁRIO para a compreensão da questão, use "[IMG] URL_válida_da_imagem_ou_descrição_extremamente_detalhada_da_imagem". Use com moderação.\n`;
         prompt += `     - Alternativas/Gabarito:\n`;
         if (tipoQuestao === 'multipla_escolha') {
-            prompt += `       - Para CADA uma das QUATRO alternativas, use o formato: "[A] Texto da alternativa A", "[B] Texto da alternativa B", etc. As alternativas devem ser plausíveis, mas apenas UMA deve ser inequivocamente correta.\n`;
+            prompt += `       - Para CADA uma das QUATRO alternativas, use o formato: "[A] Texto da alternativa A", "[B] Texto da alternativa B", etc. As alternativas devem ser plausíveis, mas apenas UMA deve ser inequivocamente correta (se a resposta envolver calculos, independente da disciplina ou assunto, calcule inequivocamente).\n`;
             prompt += `       - Resposta Correta: Indique a resposta usando "[R] " seguido APENAS pela LETRA maiúscula da alternativa correta (A, B, C ou D).\n`;
         } else if (tipoQuestao === 'verdadeiro_falso') {
             prompt += `       - A afirmação estará no enunciado [Q].\n`;
