@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Padrões Globais do Chart.js para um visual mais moderno ---
-    // Estes padrões serão aplicados a todos os gráficos, a menos que substituídos localmente.
-
     // Define um tamanho de fonte base.
     Chart.defaults.font.size = 12;
     // Cor padrão para textos (rótulos dos eixos, legendas não especificadas).
@@ -14,8 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     Chart.defaults.plugins.legend.labels.padding = 20; // Espaçamento entre itens da legenda.
     // Adiciona um preenchimento interno ao redor da área do gráfico.
     Chart.defaults.layout.padding = 10;
-
-    // --- Padrões para Elementos Específicos ---
 
     // Linhas (para gráficos de linha)
     Chart.defaults.elements.line.tension = 0.45; // Suaviza as curvas da linha (0 = reto, 1 = muito curvo).
