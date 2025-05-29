@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
 /* Essentials */
-textarea, input, select, checkbox{
+textarea, input, select, checkbox {
     font-size: 12px !important;
     background-color: rgba(0, 0, 0, 0.01) !important;
     border: 1.6px solid #eceae2 !important;
@@ -9,7 +9,6 @@ textarea, input, select, checkbox{
     font-family: Montserrat !important;
     color: #444 !important;
 }
-
 
 select {
   /* Para remover a seta padrão do navegador e permitir uma customizada (via background-image) */
@@ -31,5 +30,3 @@ select:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
-
-select

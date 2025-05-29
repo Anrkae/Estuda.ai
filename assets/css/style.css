@@ -92,17 +92,20 @@ button {
     padding-bottom: 10px;
 }
 
+.resumo-semana-container {
+}
+
 .carousel-card {
     flex-shrink: 0;
-    /* width: 100; */ /* Largura inválida, removida ou ajuste ex: 220px */
-    width: 250px; /* Exemplo */
+    width: 250px;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    border: 0 solid #6735bc;
+    border-left-width: 5px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     text-align: center;
     transition: transform 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .carousel-card h3 {
@@ -206,14 +209,15 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
     margin-bottom: 5px;
     padding-left: 10px;
     margin-left: 0;
-    color: #ff7043;
+    color: rgba(233,102,88,255);
 }
 
 #constancia-section {
-    padding: 0px;
+    border: 0 solid rgba(233,102,88, 1.0);
+    border-left-width: 5px;
+    border-radius: 12px;
+    padding: 15px 10px;
     margin-bottom: 40px;
-    background: none;
-    box-shadow: none;
 }
 
 .constancia-container {
@@ -260,13 +264,13 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 
 /* --- Nova Paleta: Verde (Estudou) / Laranja (Não Estudou) --- */
 .dia-constancia.estudou {
-    background-color: #66BB6A; /* Verde Agradável (Material Design Green 400) */
-    border-color: #55A05A;     /* Verde um pouco mais escuro */
+    background-color: rgba(76,211,133, 1.0); /* Verde Agradável (Material Design Green 400) */
+    border-color: rgba(76,211,133, 1.0);     /* Verde um pouco mais escuro */
 }
 
 .dia-constancia.nao-estudou {
-    background-color: #ff6961; /* Laranja Agradável (Material Design Orange 300) */
-    border-color: #ff6161;     /* Laranja um pouco mais escuro */
+    background-color: rgba(233,102,88, 0.92); /* Laranja Agradável (Material Design Orange 300) */
+    border-color: rgba(233,102,88, 1.0);     /* Laranja um pouco mais escuro */
 }
 
 /* --- Ícones (Usando Font Awesome via Pseudo-elemento ::before) --- */
