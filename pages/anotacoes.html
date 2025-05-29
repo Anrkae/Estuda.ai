@@ -6,7 +6,8 @@
     <title>Anotações e Resumos</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/pages/anotacoes.css"> <link rel="stylesheet" href="../assets/css/components/components.css">
+    <link rel="stylesheet" href="../assets/css/pages/anotacoes.css">
+    <link rel="stylesheet" href="../assets/css/components/components.css">
     <link rel="stylesheet" href="../assets/css/essentials.css">
 
 </head>
@@ -47,12 +48,14 @@
             <div id="tab-resumos" class="tab-content">
                  <div class="content-header-tab">
                     <h3>Resumos Salvos</h3>
-                    </div>
+                    <button id="btn-novo-resumo" class="btn-principal btn-pill" style="display: none;"> <i class="fas fa-plus"></i> Novo Resumo
+                    </button>
+                 </div>
                  <div class="search-container">
                      <input type="search" id="busca-resumos" placeholder="Buscar em resumos salvos...">
                  </div>
                  <div id="lista-resumos" class="lista-itens-tab">
-                    <p class="placeholder-tab">Nenhum resumo salvo ainda.</p>
+                    <p class="placeholder-tab">Nenhum resumo salvo ainda. Clique em "Novo Resumo" para adicionar.</p>
                  </div>
             </div>
 
@@ -85,5 +88,28 @@
         </div>
     </div>
 
-    <script src="../assets/js/pages/anotacoes.js"></script> </body>
+    <div id="modal-novo-resumo" class="modal" style="display: none;">
+        <div class="modal-content">
+            <button class="modal-close-btn" id="modal-novo-resumo-close-btn">&times;</button>
+            <h3 id="modal-novo-resumo-titulo">Novo Resumo</h3>
+            <form id="form-novo-resumo-modal" novalidate>
+                <div class="form-grupo">
+                    <label for="titulo-novo-resumo-modal">Título:</label>
+                    <input type="text" id="titulo-novo-resumo-modal" placeholder="Digite o título (opcional)">
+                </div>
+                <div class="form-grupo">
+                    <label for="texto-novo-resumo-modal">Resumo:*</label>
+                    <textarea id="texto-novo-resumo-modal" placeholder="Digite o conteúdo do resumo..." rows="8" required></textarea>
+                </div>
+                <div id="modal-novo-resumo-feedback" class="modal-feedback" style="display:none;"></div>
+                <div class="modal-actions">
+                    <button type="button" id="btn-cancelar-novo-resumo-modal" class="btn-secundario">Cancelar</button>
+                    <button type="submit" id="btn-salvar-novo-resumo-modal" class="btn-principal">Salvar Resumo</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/pages/anotacoes.js"></script>
+</body>
 </html>

@@ -19,6 +19,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const buscaNotasInput = document.getElementById('busca-notas');
     const buscaResumosInput = document.getElementById('busca-resumos');
 
+    // --- NOVOS Seletores para Adicionar Resumo ---
+    const btnNovoResumo = document.getElementById('btn-novo-resumo'); // Adicione este botão no seu HTML
+    const modalNovoResumo = document.getElementById('modal-novo-resumo'); // Adicione este modal no seu HTML
+    const modalNovoResumoCloseBtn = document.getElementById('modal-novo-resumo-close-btn');
+    const formNovoResumoModal = document.getElementById('form-novo-resumo-modal');
+    const modalNovoResumoTitulo = document.getElementById('modal-novo-resumo-titulo');
+    const modalNovoResumoFeedback = document.getElementById('modal-novo-resumo-feedback');
+    const tituloNovoResumoInput = document.getElementById('titulo-novo-resumo-modal');
+    const textoNovoResumoInput = document.getElementById('texto-novo-resumo-modal');
+    const btnSalvarNovoResumoModal = document.getElementById('btn-salvar-novo-resumo-modal');
+    const btnCancelarNovoResumoModal = document.getElementById('btn-cancelar-novo-resumo-modal');
+
+
     // --- Chaves do localStorage ---
     const ANOTACOES_STORAGE_KEY = 'minhasAnotacoes';
     const RESUMOS_STORAGE_KEY = 'estudaAiSummaries';
@@ -31,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
         tabContents.forEach(content => {
             content.classList.toggle('active', content.id === `tab-${tabId}`);
         });
+        // Mostrar/Ocultar botão "Novo Resumo" dependendo da aba
+        if (btnNovoResumo) {
+            btnNovoResumo.style.display = (tabId === 'resumos') ? 'inline-block' : 'none';
+        }
+
         if (tabId === 'notas') {
             if(buscaResumosInput) buscaResumosInput.value = '';
             if(listaAnotacoesContainer) carregarAnotacoes(); else console.error("#lista-anotacoes não encontrado.");
@@ -86,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof anotacao !== 'object' || !anotacao?.id || !anotacao?.texto || !anotacao?.modificadoEm) return null;
         const card = document.createElement('div'); card.className = 'anotacao-card item-card'; card.dataset.id = anotacao.id;
         const tituloH4 = document.createElement('h4'); tituloH4.textContent = anotacao.titulo || "Anotação sem Título"; if (!anotacao.titulo) tituloH4.classList.add('sem-titulo');
-        const previewP = document.createElement('p'); previewP.className = 'card-preview'; previewP.textContent = anotacao.texto; // Usa texto completo inicialmente, CSS trunca
+        const previewP = document.createElement('p'); previewP.className = 'card-preview'; previewP.textContent = anotacao.texto;
         const dataSpan = document.createElement('span'); dataSpan.className = 'card-date'; try { dataSpan.textContent = `Modificado em: ${new Date(anotacao.modificadoEm).toLocaleString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' })}`; } catch (e) { dataSpan.textContent = 'Data inválida'; }
         const cardContent = document.createElement('div'); cardContent.className = 'card-content'; cardContent.append(tituloH4, previewP, dataSpan);
         const cardActions = document.createElement('div'); cardActions.className = 'card-actions'; cardActions.innerHTML = `<button class="btn-icon btn-edit" aria-label="Editar"><i class="fas fa-edit"></i></button><button class="btn-icon btn-delete" aria-label="Excluir"><i class="fas fa-trash"></i></button>`;
@@ -113,6 +131,97 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Lógica da Aba Resumos ---
 
+    // --- Lógica do Modal de Novo Resumo ---
+    function abrirModalNovoResumo() {
+        if (!modalNovoResumo || !formNovoResumoModal || !tituloNovoResumoInput || !textoNovoResumoInput) {
+            console.error("Elementos do modal de novo resumo não encontrados.");
+            return;
+        }
+        formNovoResumoModal.reset();
+        if(modalNovoResumoFeedback) { modalNovoResumoFeedback.textContent = ''; modalNovoResumoFeedback.className = 'modal-feedback'; modalNovoResumoFeedback.style.display = 'none'; }
+        if(modalNovoResumoTitulo) modalNovoResumoTitulo.textContent = 'Novo Resumo';
+        modalNovoResumo.style.display = 'flex';
+        textoNovoResumoInput.focus();
+    }
+
+    function fecharModalNovoResumo() {
+        if (modalNovoResumo) modalNovoResumo.style.display = 'none';
+    }
+
+    function mostrarFeedbackModalNovoResumo(mensagem, erro = false) {
+        if (!modalNovoResumoFeedback) return;
+        modalNovoResumoFeedback.textContent = mensagem;
+        modalNovoResumoFeedback.className = `modal-feedback ${erro ? 'erro' : 'sucesso'}`;
+        modalNovoResumoFeedback.style.display = 'block';
+        setTimeout(() => {
+            if (modalNovoResumoFeedback.textContent === mensagem) modalNovoResumoFeedback.style.display = 'none';
+        }, 4000);
+    }
+
+    if (btnNovoResumo) {
+        btnNovoResumo.addEventListener('click', abrirModalNovoResumo);
+    }
+    if (modalNovoResumoCloseBtn) {
+        modalNovoResumoCloseBtn.addEventListener('click', fecharModalNovoResumo);
+    }
+    if (btnCancelarNovoResumoModal) {
+        btnCancelarNovoResumoModal.addEventListener('click', fecharModalNovoResumo);
+    }
+    if (modalNovoResumo) {
+        modalNovoResumo.addEventListener('click', (event) => {
+            if (event.target === modalNovoResumo) fecharModalNovoResumo();
+        });
+    }
+
+    // --- Lógica para Salvar Novo Resumo ---
+    if (formNovoResumoModal) {
+        formNovoResumoModal.addEventListener('submit', (event) => {
+            event.preventDefault();
+            if (!textoNovoResumoInput || !tituloNovoResumoInput) {
+                mostrarFeedbackModalNovoResumo("Erro interno ao processar o formulário.", true);
+                return;
+            }
+
+            const titulo = tituloNovoResumoInput.value.trim();
+            const resumoTexto = textoNovoResumoInput.value.trim();
+
+            if (!resumoTexto) {
+                mostrarFeedbackModalNovoResumo("O conteúdo do resumo não pode estar vazio.", true);
+                textoNovoResumoInput.focus();
+                return;
+            }
+
+            try {
+                let resumosSalvos = JSON.parse(localStorage.getItem(RESUMOS_STORAGE_KEY)) || [];
+                // Adiciona o novo resumo no início da lista (mais recentes primeiro)
+                // O ID não é estritamente usado pelo renderizarResumoCard ou deletarResumo atual,
+                // mas é uma boa prática para futuras expansões.
+                // A deleção atual usa o conteúdo do resumo, o que pode ser frágil.
+                const novoResumo = {
+                    // id: `resumo_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`, // ID único
+                    title: titulo,
+                    summary: resumoTexto,
+                    // createdAt: new Date().toISOString() // Data de criação, se necessário
+                };
+
+                resumosSalvos.unshift(novoResumo); // Adiciona no início
+
+                localStorage.setItem(RESUMOS_STORAGE_KEY, JSON.stringify(resumosSalvos));
+                mostrarFeedbackModalNovoResumo("Resumo salvo com sucesso!", false);
+                carregarResumos(buscaResumosInput ? buscaResumosInput.value : ''); // Recarrega a lista de resumos
+                setTimeout(fecharModalNovoResumo, 1200);
+
+            } catch (e) {
+                console.error("Erro ao salvar novo resumo:", e);
+                mostrarFeedbackModalNovoResumo("Erro ao salvar o resumo. Verifique o console.", true);
+                if (e.name === 'QuotaExceededError' || e.name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+                    mostrarFeedbackModalNovoResumo("Erro: Limite de armazenamento local excedido.", true);
+                }
+            }
+        });
+    }
+
+
     function carregarResumos(termoBusca = '') {
         if (!listaResumosContainer) { console.error("Container #lista-resumos não encontrado."); return; }
         listaResumosContainer.innerHTML = '';
@@ -125,9 +234,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 resumosFiltrados.forEach((resumoObj) => { const cardElement = renderizarResumoCard(resumoObj); if (cardElement) listaResumosContainer.appendChild(cardElement); });
             } else {
                  if (placeholderResumos) {
-                    placeholderResumos.textContent = termoLower ? `Nenhum resumo encontrado para "${escapeHTML(termoBusca)}".` : 'Nenhum resumo salvo ainda.';
+                    placeholderResumos.textContent = termoLower ? `Nenhum resumo encontrado para "${escapeHTML(termoBusca)}".` : 'Nenhum resumo salvo ainda. Clique em "Criar Novo Resumo" para adicionar.';
                     placeholderResumos.style.display = 'block'; if (!listaResumosContainer.contains(placeholderResumos)) listaResumosContainer.appendChild(placeholderResumos); placeholderResumos.classList.remove('erro');
-                 } else { const msg = termoLower ? `Nenhum resumo encontrado para "${escapeHTML(termoBusca)}".` : 'Nenhum resumo salvo.'; listaResumosContainer.innerHTML = `<p class="placeholder-tab">${msg}</p>`; }
+                 } else { const msg = termoLower ? `Nenhum resumo encontrado para "${escapeHTML(termoBusca)}".` : 'Nenhum resumo salvo. Clique em "Criar Novo Resumo" para adicionar.'; listaResumosContainer.innerHTML = `<p class="placeholder-tab">${msg}</p>`; }
             }
         } catch (e) {
             console.error("Erro ao carregar/filtrar resumos:", e);
@@ -136,18 +245,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    /**
-     * Cria e retorna o elemento HTML para um card de resumo (com toggle).
-     * Usa <p> para o resumo e lógica de truncamento/expansão.
-     * @param {object} resumoObj - O objeto do resumo contendo {title, summary}.
-     * @returns {HTMLElement|null}
-     */
     function renderizarResumoCard(resumoObj) {
         if (typeof resumoObj !== 'object' || !resumoObj.summary || typeof resumoObj.summary !== 'string' || resumoObj.summary.trim() === '') { console.warn("Objeto de resumo inválido:", resumoObj); return null; }
 
         const card = document.createElement('div');
         card.className = 'resumo-card item-card';
+        // Usar o summary como data-summary-key é arriscado se houver resumos idênticos.
+        // Se você adicionar um ID ao objeto resumo, use-o aqui: card.dataset.id = resumoObj.id;
         card.dataset.summaryKey = resumoObj.summary;
+
 
         const cardContent = document.createElement('div');
         cardContent.className = 'card-content';
@@ -157,40 +263,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!resumoObj.title) tituloH4.classList.add('sem-titulo');
         cardContent.appendChild(tituloH4);
 
-        // Usa <p> e lógica de truncamento/expansão
         const previewP = document.createElement('p');
-        previewP.className = 'card-preview resumo-texto'; // Aplica ambas as classes
+        previewP.className = 'card-preview resumo-texto';
         const fullText = resumoObj.summary;
-        const MAX_PREVIEW_LENGTH = 250; // Defina o limite do preview
+        const MAX_PREVIEW_LENGTH = 250;
         const isTruncated = fullText.length > MAX_PREVIEW_LENGTH;
         const previewText = isTruncated ? fullText.substring(0, MAX_PREVIEW_LENGTH) + '...' : fullText;
 
-        // Define o texto inicial (truncado ou completo se for curto)
         previewP.textContent = previewText;
-        // CSS fará o truncamento visual inicial se for longo (via line-clamp)
-        // Mas o JS ainda controla o texto completo para o botão
-
         cardContent.appendChild(previewP);
 
-        // Adiciona botão "Ver Completo" / "Minimizar" SE necessário
         if (isTruncated) {
             const toggleBtn = document.createElement('button');
             toggleBtn.textContent = 'Ver Completo';
-            toggleBtn.className = 'btn-link btn-toggle-resumo'; // Use a classe CSS definida
+            toggleBtn.className = 'btn-link btn-toggle-resumo';
             toggleBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
                 const isShowingPreview = !previewP.classList.contains('expanded');
                 if (isShowingPreview) {
-                    previewP.textContent = fullText; // Mostra texto completo
+                    previewP.textContent = fullText;
                     previewP.classList.add('expanded');
                     toggleBtn.textContent = 'Minimizar';
                 } else {
-                    previewP.textContent = previewText; // Volta para o preview (JS controla o texto)
+                    previewP.textContent = previewText;
                     previewP.classList.remove('expanded');
                     toggleBtn.textContent = 'Ver Completo';
                 }
             });
-            cardContent.appendChild(toggleBtn); // Adiciona botão após o parágrafo
+            cardContent.appendChild(toggleBtn);
         }
 
         const cardActions = document.createElement('div');
@@ -200,13 +300,16 @@ document.addEventListener('DOMContentLoaded', () => {
         copyBtn.className = 'btn-icon btn-copy-resumo';
         copyBtn.setAttribute('aria-label', 'Copiar');
         copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
-        copyBtn.addEventListener('click', (e) => { e.stopPropagation(); copiarResumo(fullText, copyBtn); }); // Usa fullText
+        copyBtn.addEventListener('click', (e) => { e.stopPropagation(); copiarResumo(fullText, copyBtn); });
 
         const deleteBtn = document.createElement('button');
         deleteBtn.className = 'btn-icon btn-delete-resumo';
         deleteBtn.setAttribute('aria-label', 'Excluir');
         deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
-        deleteBtn.addEventListener('click', (e) => { e.stopPropagation(); deletarResumo(fullText); }); // Usa fullText para identificar
+        // A deleção aqui é baseada no CONTEÚDO do resumo (fullText).
+        // Isso pode ser problemático se houver resumos com conteúdo idêntico.
+        // Idealmente, cada resumo teria um ID único para deleção.
+        deleteBtn.addEventListener('click', (e) => { e.stopPropagation(); deletarResumo(fullText); });
 
         cardActions.appendChild(copyBtn);
         cardActions.appendChild(deleteBtn);
@@ -219,12 +322,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof summaryToDelete !== 'string' || !confirm("Excluir este resumo?")) return;
         try {
             let resumosSalvos = JSON.parse(localStorage.getItem(RESUMOS_STORAGE_KEY)) || [];
+            // ATENÇÃO: Esta lógica de deleção assume que o 'summary' é único.
+            // Se houver resumos com o mesmo conteúdo, apenas o primeiro encontrado será deletado.
+            // Para uma deleção mais robusta, seria necessário um ID único por resumo.
             const indexToDelete = resumosSalvos.findIndex(entry => entry.summary === summaryToDelete);
             if (indexToDelete !== -1) {
                 resumosSalvos.splice(indexToDelete, 1);
                 localStorage.setItem(RESUMOS_STORAGE_KEY, JSON.stringify(resumosSalvos));
                 carregarResumos(buscaResumosInput ? buscaResumosInput.value : '');
-            } else { console.warn("Resumo a ser deletado não encontrado."); alert("Não foi possível encontrar o resumo para excluir."); }
+            } else { console.warn("Resumo a ser deletado não encontrado:", summaryToDelete); alert("Não foi possível encontrar o resumo para excluir."); }
         } catch (e) { console.error("Erro ao deletar resumo:", e); alert("Erro ao excluir resumo."); }
     }
 
@@ -239,17 +345,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Inicialização ---
     function inicializarApp() {
-        const abaPadrao = 'notas';
+        const abaPadrao = 'notas'; // Ou a aba que você preferir como padrão
         const abaLink = document.querySelector(`.tab-link[data-tab="${abaPadrao}"]`);
-        if (abaLink) ativarTab(abaPadrao);
-        else { const primeiraAba = document.querySelector('.tab-link'); if (primeiraAba?.dataset.tab) ativarTab(primeiraAba.dataset.tab); else console.error("Nenhuma aba encontrada."); }
+        if (abaLink) {
+            ativarTab(abaPadrao);
+        } else {
+            const primeiraAba = document.querySelector('.tab-link');
+            if (primeiraAba?.dataset.tab) {
+                ativarTab(primeiraAba.dataset.tab);
+            } else {
+                console.error("Nenhuma aba encontrada para inicializar.");
+                // Se nenhum botão de novo resumo existir, oculte-o por precaução
+                if (btnNovoResumo) btnNovoResumo.style.display = 'none';
+            }
+        }
+         // Se não houver resumos e o placeholder existir, atualize a mensagem
+        if (listaResumosContainer && listaResumosContainer.children.length === 0 && placeholderResumos && placeholderResumos.textContent.includes('Nenhum resumo salvo ainda.')) {
+            placeholderResumos.textContent = 'Nenhum resumo salvo ainda. Clique em "Criar Novo Resumo" para adicionar.';
+        }
     }
 
-    // Função auxiliar para escapar HTML
     function escapeHTML(str) { if (typeof str !== 'string') return ''; const div = document.createElement('div'); div.appendChild(document.createTextNode(str)); return div.innerHTML; }
 
-    // Inicia a aplicação
     inicializarApp();
-
-}); // Fim DOMContentLoaded
-
+});
