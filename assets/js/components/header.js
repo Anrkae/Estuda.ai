@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         /* Estilo do Link Ativo (Pílula Roxa) */
         .sidebar .sidebarBtn.active-link {
             /* **** MODIFICAÇÃO: Fundo roxo sólido **** */
-            background-color: #6735bc;
+            background-color: #6c2fd6;
             /* **** MODIFICAÇÃO: Texto branco **** */
             color: #ffffff;
             font-weight: 600;

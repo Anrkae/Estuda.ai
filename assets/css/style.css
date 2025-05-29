@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
 * {
+    /*roxo #6c2fd6 rgba(108, 47, 214, 1)*/
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -100,7 +101,7 @@ button {
     width: 250px;
     padding: 1rem;
     background-color: rgba(255, 255, 255, 0.5);
-    border: 0 solid #6735bc;
+    border: 0 solid rgba(108, 47, 214, 0.7);
     border-left-width: 5px;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
