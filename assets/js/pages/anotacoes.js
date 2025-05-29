@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const buscaNotasInput = document.getElementById('busca-notas');
     const buscaResumosInput = document.getElementById('busca-resumos');
 
-    // --- NOVOS Seletores para Adicionar Resumo ---
-    const btnNovoResumo = document.getElementById('btn-novo-resumo'); // Adicione este botão no seu HTML
-    const modalNovoResumo = document.getElementById('modal-novo-resumo'); // Adicione este modal no seu HTML
+    // --- Seletores para Adicionar Resumo ---
+    const btnNovoResumo = document.getElementById('btn-novo-resumo');
+    const modalNovoResumo = document.getElementById('modal-novo-resumo');
     const modalNovoResumoCloseBtn = document.getElementById('modal-novo-resumo-close-btn');
     const formNovoResumoModal = document.getElementById('form-novo-resumo-modal');
     const modalNovoResumoTitulo = document.getElementById('modal-novo-resumo-titulo');
@@ -36,6 +36,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const ANOTACOES_STORAGE_KEY = 'minhasAnotacoes';
     const RESUMOS_STORAGE_KEY = 'estudaAiSummaries';
 
+    // --- Funções Auxiliares de String ---
+    function escapeHTML(str) {
+        if (typeof str !== 'string') return '';
+        const div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
+    }
+
+    /**
+     * Normaliza uma string para busca: converte para minúsculas, remove acentos e diacríticos.
+     * @param {string} str A string a ser normalizada.
+     * @returns {string} A string normalizada.
+     */
+    function normalizarStringParaBusca(str) {
+        if (typeof str !== 'string') {
+            return ''; // Retorna string vazia se a entrada não for uma string
+        }
+        return str
+            .toLowerCase() // Converte para minúsculas (ignora capslock)
+            .normalize("NFD") // Decompõe acentos (ex: "á" -> "a" + "´")
+            .replace(/[\u0300-\u036f]/g, ""); // Remove os diacríticos (combining characters)
+    }
+
     // --- Lógica das Abas ---
     function ativarTab(tabId) {
         tabLinks.forEach(link => {
@@ -44,7 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tabContents.forEach(content => {
             content.classList.toggle('active', content.id === `tab-${tabId}`);
         });
-        // Mostrar/Ocultar botão "Novo Resumo" dependendo da aba
         if (btnNovoResumo) {
             btnNovoResumo.style.display = (tabId === 'resumos') ? 'inline-block' : 'none';
         }
@@ -118,10 +140,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Carregamento das Anotações ---
     function carregarAnotacoes(termoBusca = '') {
         if (!listaAnotacoesContainer) return;
-        const anotacoes = getAnotacoes(); listaAnotacoesContainer.innerHTML = ''; const termoLower = termoBusca.toLowerCase().trim();
-        const anotacoesFiltradas = termoLower ? anotacoes.filter(a => (a.titulo?.toLowerCase().includes(termoLower)) || (a.texto?.toLowerCase().includes(termoLower))) : anotacoes;
-        if (anotacoesFiltradas.length > 0) { anotacoesFiltradas.forEach(anotacao => { const card = renderizarAnotacaoCard(anotacao); if (card) listaAnotacoesContainer.appendChild(card); }); }
-        else { const p = document.createElement('p'); p.className = 'placeholder-tab'; p.textContent = termoBusca ? `Nenhuma nota encontrada para "${escapeHTML(termoBusca)}".` : 'Nenhuma anotação criada.'; listaAnotacoesContainer.appendChild(p); }
+        const anotacoes = getAnotacoes();
+        listaAnotacoesContainer.innerHTML = '';
+
+        const termoOriginal = termoBusca.trim();
+        const termoNormalizado = normalizarStringParaBusca(termoOriginal);
+
+        const anotacoesFiltradas = termoNormalizado
+            ? anotacoes.filter(a =>
+                (normalizarStringParaBusca(a.titulo).includes(termoNormalizado)) ||
+                (normalizarStringParaBusca(a.texto).includes(termoNormalizado))
+              )
+            : anotacoes;
+
+        if (anotacoesFiltradas.length > 0) {
+            anotacoesFiltradas.forEach(anotacao => {
+                const card = renderizarAnotacaoCard(anotacao);
+                if (card) listaAnotacoesContainer.appendChild(card);
+            });
+        } else {
+            const p = document.createElement('p');
+            p.className = 'placeholder-tab';
+            p.textContent = termoOriginal
+                ? `Nenhuma nota encontrada para "${escapeHTML(termoOriginal)}".`
+                : 'Nenhuma anotação criada.';
+            listaAnotacoesContainer.appendChild(p);
+        }
     }
 
     // --- Lógica da Busca (Notas e Resumos) ---
@@ -193,22 +237,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 let resumosSalvos = JSON.parse(localStorage.getItem(RESUMOS_STORAGE_KEY)) || [];
-                // Adiciona o novo resumo no início da lista (mais recentes primeiro)
-                // O ID não é estritamente usado pelo renderizarResumoCard ou deletarResumo atual,
-                // mas é uma boa prática para futuras expansões.
-                // A deleção atual usa o conteúdo do resumo, o que pode ser frágil.
                 const novoResumo = {
-                    // id: `resumo_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`, // ID único
                     title: titulo,
                     summary: resumoTexto,
-                    // createdAt: new Date().toISOString() // Data de criação, se necessário
                 };
-
-                resumosSalvos.unshift(novoResumo); // Adiciona no início
-
+                resumosSalvos.unshift(novoResumo);
                 localStorage.setItem(RESUMOS_STORAGE_KEY, JSON.stringify(resumosSalvos));
                 mostrarFeedbackModalNovoResumo("Resumo salvo com sucesso!", false);
-                carregarResumos(buscaResumosInput ? buscaResumosInput.value : ''); // Recarrega a lista de resumos
+                carregarResumos(buscaResumosInput ? buscaResumosInput.value : '');
                 setTimeout(fecharModalNovoResumo, 1200);
 
             } catch (e) {
@@ -227,21 +263,43 @@ document.addEventListener('DOMContentLoaded', () => {
         listaResumosContainer.innerHTML = '';
         try {
             const resumosSalvos = JSON.parse(localStorage.getItem(RESUMOS_STORAGE_KEY)) || [];
-            const termoLower = termoBusca.toLowerCase().trim();
-            const resumosFiltrados = termoLower ? resumosSalvos.filter(resumoObj => (resumoObj.title && resumoObj.title.toLowerCase().includes(termoLower)) || (resumoObj.summary && resumoObj.summary.toLowerCase().includes(termoLower))) : resumosSalvos;
+
+            const termoOriginal = termoBusca.trim();
+            const termoNormalizado = normalizarStringParaBusca(termoOriginal);
+
+            const resumosFiltrados = termoNormalizado
+                ? resumosSalvos.filter(resumoObj =>
+                    (normalizarStringParaBusca(resumoObj.title).includes(termoNormalizado)) ||
+                    (normalizarStringParaBusca(resumoObj.summary).includes(termoNormalizado))
+                  )
+                : resumosSalvos;
+
             if (resumosFiltrados.length > 0) {
                 if (placeholderResumos) placeholderResumos.style.display = 'none';
                 resumosFiltrados.forEach((resumoObj) => { const cardElement = renderizarResumoCard(resumoObj); if (cardElement) listaResumosContainer.appendChild(cardElement); });
             } else {
                  if (placeholderResumos) {
-                    placeholderResumos.textContent = termoLower ? `Nenhum resumo encontrado para "${escapeHTML(termoBusca)}".` : 'Nenhum resumo salvo ainda. Clique em "Criar Novo Resumo" para adicionar.';
+                    placeholderResumos.textContent = termoOriginal
+                        ? `Nenhum resumo encontrado para "${escapeHTML(termoOriginal)}".`
+                        : 'Nenhum resumo salvo ainda. Clique em "Novo Resumo" para adicionar.';
                     placeholderResumos.style.display = 'block'; if (!listaResumosContainer.contains(placeholderResumos)) listaResumosContainer.appendChild(placeholderResumos); placeholderResumos.classList.remove('erro');
-                 } else { const msg = termoLower ? `Nenhum resumo encontrado para "${escapeHTML(termoBusca)}".` : 'Nenhum resumo salvo. Clique em "Criar Novo Resumo" para adicionar.'; listaResumosContainer.innerHTML = `<p class="placeholder-tab">${msg}</p>`; }
+                 } else {
+                    const msg = termoOriginal
+                        ? `Nenhum resumo encontrado para "${escapeHTML(termoOriginal)}".`
+                        : 'Nenhum resumo salvo. Clique em "Novo Resumo" para adicionar.';
+                    listaResumosContainer.innerHTML = `<p class="placeholder-tab">${msg}</p>`;
+                 }
             }
         } catch (e) {
             console.error("Erro ao carregar/filtrar resumos:", e);
-             if (placeholderResumos) { placeholderResumos.textContent = 'Erro ao carregar resumos.'; placeholderResumos.style.display = 'block'; placeholderResumos.classList.add('erro'); if (!listaResumosContainer.contains(placeholderResumos)) listaResumosContainer.appendChild(placeholderResumos); }
-             else { listaResumosContainer.innerHTML = '<p class="placeholder-tab erro">Erro ao carregar resumos.</p>'; }
+             if (placeholderResumos) {
+                placeholderResumos.textContent = 'Erro ao carregar resumos.';
+                placeholderResumos.style.display = 'block';
+                placeholderResumos.classList.add('erro');
+                if (!listaResumosContainer.contains(placeholderResumos)) listaResumosContainer.appendChild(placeholderResumos);
+             } else {
+                listaResumosContainer.innerHTML = '<p class="placeholder-tab erro">Erro ao carregar resumos.</p>';
+             }
         }
     }
 
@@ -250,10 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const card = document.createElement('div');
         card.className = 'resumo-card item-card';
-        // Usar o summary como data-summary-key é arriscado se houver resumos idênticos.
-        // Se você adicionar um ID ao objeto resumo, use-o aqui: card.dataset.id = resumoObj.id;
         card.dataset.summaryKey = resumoObj.summary;
-
 
         const cardContent = document.createElement('div');
         cardContent.className = 'card-content';
@@ -306,9 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
         deleteBtn.className = 'btn-icon btn-delete-resumo';
         deleteBtn.setAttribute('aria-label', 'Excluir');
         deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
-        // A deleção aqui é baseada no CONTEÚDO do resumo (fullText).
-        // Isso pode ser problemático se houver resumos com conteúdo idêntico.
-        // Idealmente, cada resumo teria um ID único para deleção.
         deleteBtn.addEventListener('click', (e) => { e.stopPropagation(); deletarResumo(fullText); });
 
         cardActions.appendChild(copyBtn);
@@ -322,9 +374,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof summaryToDelete !== 'string' || !confirm("Excluir este resumo?")) return;
         try {
             let resumosSalvos = JSON.parse(localStorage.getItem(RESUMOS_STORAGE_KEY)) || [];
-            // ATENÇÃO: Esta lógica de deleção assume que o 'summary' é único.
-            // Se houver resumos com o mesmo conteúdo, apenas o primeiro encontrado será deletado.
-            // Para uma deleção mais robusta, seria necessário um ID único por resumo.
             const indexToDelete = resumosSalvos.findIndex(entry => entry.summary === summaryToDelete);
             if (indexToDelete !== -1) {
                 resumosSalvos.splice(indexToDelete, 1);
@@ -345,7 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Inicialização ---
     function inicializarApp() {
-        const abaPadrao = 'notas'; // Ou a aba que você preferir como padrão
+        const abaPadrao = 'notas';
         const abaLink = document.querySelector(`.tab-link[data-tab="${abaPadrao}"]`);
         if (abaLink) {
             ativarTab(abaPadrao);
@@ -355,17 +404,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 ativarTab(primeiraAba.dataset.tab);
             } else {
                 console.error("Nenhuma aba encontrada para inicializar.");
-                // Se nenhum botão de novo resumo existir, oculte-o por precaução
                 if (btnNovoResumo) btnNovoResumo.style.display = 'none';
             }
         }
-         // Se não houver resumos e o placeholder existir, atualize a mensagem
         if (listaResumosContainer && listaResumosContainer.children.length === 0 && placeholderResumos && placeholderResumos.textContent.includes('Nenhum resumo salvo ainda.')) {
-            placeholderResumos.textContent = 'Nenhum resumo salvo ainda. Clique em "Criar Novo Resumo" para adicionar.';
+            placeholderResumos.textContent = 'Nenhum resumo salvo ainda. Clique em "Novo Resumo" para adicionar.';
         }
     }
-
-    function escapeHTML(str) { if (typeof str !== 'string') return ''; const div = document.createElement('div'); div.appendChild(document.createTextNode(str)); return div.innerHTML; }
-
     inicializarApp();
 });
