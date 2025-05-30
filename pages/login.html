@@ -3,461 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Configuração Inicial - Estuda.ai</title>
+    <title>Acesso - Estuda.ai</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Estilos Gerais */
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
-        body.login-page { display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f1f0ea; padding: 20px 0; font-family: 'Montserrat', sans-serif; }
-        .login-container { margin: 20px; background-color: #fff; padding: 30px 40px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); text-align: center; max-width: 600px; width: 90%; }
-
-        /* Indicador e Conteúdo das Etapas */
-        .step-indicator { font-size: 0.9em; color: #888; margin-bottom: 15px; font-weight: 500; }
-        .step-content { display: none; text-align: left; animation: fadeIn 0.5s ease-in-out; }
-        .step-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .step-content h1 { color: #474c5f; margin-bottom: 10px; font-size: 1.6em; font-weight: 600; text-align: center; }
-        .step-content h2 { color: #575c6f; margin-bottom: 20px; font-size: 1.4em; font-weight: 500; text-align: center; }
-        .step-content h2 small { font-size: 0.7em; color: #999; font-weight: 400; }
-        .step-content p.step-description { color: #666; margin-bottom: 25px; font-size: 1em; line-height: 1.5; text-align: center;}
-
-        /* Estilos Etapa 1 (Dados Pessoais) */
-        #profile-form { text-align: left; margin-top: 15px; }
-        .form-grupo { margin-bottom: 18px; position: relative; }
-        .form-grupo label { display: block; margin-bottom: 7px; font-weight: 500; color: #444; font-size: 0.95em; }
-        .form-grupo label span.required { color: #e53935; margin-left: 2px; }
-        .form-grupo input[type="text"] { width: 100%; padding: 11px 14px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-family: inherit; font-size: 1em; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
-        .form-grupo input[type="text"]:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15); }
-        #age-display { font-size: 0.85em; color: #555; margin-top: 5px; min-height: 1.1em; text-align: right; }
-        #age-display.invalid { color: #e53935; }
-
-        /* Estilos Etapa 2 (Disciplinas Simplificada) */
-        .div2 { padding-top: 30px; }
-        #step-2 .add-disciplina-container { display: flex; gap: 10px; margin-bottom: 20px; }
-        #step-2 .add-disciplina-container input[type="text"] { flex-grow: 1; padding: 10px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 1em; }
-        #step-2 .add-disciplina-container input[type="text"]:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.1); }
-        #step-2 .add-disciplina-container button { padding: 10px 15px; background-color: #6735bc; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 1em; font-weight: 500; transition: background-color 0.2s ease; flex-shrink: 0; display: inline-flex; align-items: center; gap: 5px; }
-        #step-2 .add-disciplina-container button:hover { background-color: #562da4; }
-        #step-2 #disciplinas-list { list-style: none; padding: 0; margin-top: 15px; max-height: 250px; overflow-y: auto; border: 1px solid #eee; border-radius: 6px; background-color: #fff; }
-        #step-2 #disciplinas-list li { display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; border-bottom: 1px solid #f0f0f0; font-size: 1em; color: #444; }
-        #step-2 #disciplinas-list li:last-child { border-bottom: none; }
-        #step-2 .remove-disciplina-btn { background: none; border: none; color: #aaa; cursor: pointer; font-size: 1.2em; padding: 0 5px; transition: color 0.2s ease; }
-        #step-2 .remove-disciplina-btn:hover { color: #e53935; }
-        #step-2 #disciplinas-list .empty-message { text-align: center; color: #999; padding: 20px; font-style: italic; font-size: 0.95em; }
-        #step-2 .list-title { text-align: left; font-size: 1.1em; color: #444; margin-bottom: 10px; font-weight: 500; padding-bottom: 5px; border-bottom: 1px solid #eee; }
-
-        /* Navegação Geral e Status */
-        .navigation-buttons { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; flex-wrap: wrap; }
-        .nav-button { padding: 10px 20px; border: none; border-radius: 6px; font-size: 1em; font-weight: 500; cursor: pointer; transition: background-color 0.2s ease, color 0.2s ease; font-family: inherit; min-width: 100px; text-align: center; margin: 5px; }
-        #prev-btn { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
-        #prev-btn:hover { background-color: #e0e0e0; }
-        #prev-btn:disabled { background-color: #f8f8f8; color: #bbb; cursor: not-allowed; border-color: #eee; }
-        #next-btn { background-color: #6735bc; color: white; margin-left: auto; /* Empurra para direita */ }
-        #next-btn:hover { background-color: #562da4; }
-        #next-btn:active { background-color: #452482; }
-        #next-btn:disabled { background-color: #ccc; cursor: not-allowed; }
-        #skip-btn { background: none; border: none; color: #757575; font-size: 0.9em; cursor: pointer; text-decoration: underline; padding: 10px 5px; margin-right: auto; /* Empurra para esquerda */ display: none; }
-        #skip-btn:hover { color: #452482; }
-        #skip-btn:disabled { color: #bbb; text-decoration: none; cursor: not-allowed; }
-        #status-message { margin-top: 15px; font-size: 0.9em; min-height: 1.2em; font-weight: 500; text-align: center; width: 100%; }
-        #status-message.sucesso { color: #2e7d32; }
-        #status-message.erro { color: #c62828; }
-
-        /* Responsividade */
-        @media (max-width: 700px) {
-             .login-container { max-width: 95%; padding: 20px; }
-        }
-        @media (max-width: 600px) {
-            #step-2 .add-disciplina-container { flex-direction: column; }
-            .navigation-buttons { flex-direction: column; align-items: stretch; }
-            #prev-btn { order: 2; }
-            #skip-btn { order: 1; margin-bottom: 10px; text-align: center; margin-right: 0; }
-            #next-btn { order: 3; margin-left: 0; }
-            .nav-button { width: 100%; margin: 5px 0;}
-        }
-
-    </style>
+    <link rel="stylesheet" href="../assets/css/pages/login.css"> <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/essentials.css">
 </head>
 <body class="login-page">
 
-    <div class="login-container">
+    <div class="auth-container"> <h1 id="auth-title">Entrar</h1>
+        <p id="auth-description" class="auth-description">Acesse sua conta para continuar.</p>
 
-        <div class="step-indicator" id="step-indicator-display">Etapa 1 de 2</div>
+        <form id="login-form" class="auth-form active-form" onsubmit="return false;">
+            <div class="form-grupo">
+                <label for="login-email">Email<span class="required">*</span></label>
+                <input type="email" id="login-email" name="email" required placeholder="seuemail@exemplo.com">
+            </div>
+            <div class="form-grupo">
+                <label for="login-password">Senha<span class="required">*</span></label>
+                <input type="password" id="login-password" name="password" required placeholder="Sua senha">
+            </div>
+            <button type="submit" id="login-button" class="btn-principal">Entrar</button>
+            <div class="links-uteis-form">
+                <a href="#" id="forgot-password-link">Esqueci minha senha</a>
+            </div>
+        </form>
 
-        <div id="step-1" class="step-content">
-            <h1>Dados Pessoais</h1>
-            <p class="step-description">Suas informações básicas.</p>
-            <form id="profile-form" onsubmit="return false;">
-                <div class="form-grupo">
-                    <label for="nome">Nome<span class="required">*</span></label>
-                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
-                </div>
-                <div class="form-grupo">
-                    <label for="dob">Data de Nascimento<span class="required">*</span></label>
-                    <input type="text" id="dob" name="dob" required placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric">
-                    <div id="age-display"></div>
-                </div>
-            </form>
+        <form id="signup-form" class="auth-form" onsubmit="return false;" style="display: none;">
+            <div class="form-grupo">
+                <label for="signup-name">Nome Completo (Opcional)</label>
+                <input type="text" id="signup-name" name="name" placeholder="Seu nome completo">
+            </div>
+            <div class="form-grupo">
+                <label for="signup-email">Email<span class="required">*</span></label>
+                <input type="email" id="signup-email" name="email" required placeholder="seuemail@exemplo.com">
+            </div>
+            <div class="form-grupo">
+                <label for="signup-password">Senha<span class="required">*</span></label>
+                <input type="password" id="signup-password" name="password" required placeholder="Mínimo 6 caracteres">
+            </div>
+            <div class="form-grupo">
+                <label for="signup-confirm-password">Confirmar Senha<span class="required">*</span></label>
+                <input type="password" id="signup-confirm-password" name="confirmPassword" required placeholder="Repita a senha">
+            </div>
+            <button type="submit" id="signup-button" class="btn-principal">Cadastrar</button>
+        </form>
+
+        <div class="separator">
+            <span>OU</span>
         </div>
 
-        <div id="step-2" class="step-content">
-            <h2>Disciplinas <small>(Opcional)</small></h2>
-            <p class="step-description">Adicione as matérias que vai estudar. Se preferir, pode finalizar sem adicionar nenhuma agora.</p>
-            <div class="add-disciplina-container">
-                <input type="text" id="nomeDisciplinaInput" placeholder="Nome da disciplina">
-                <button type="button" onclick="adicionarDisciplina()"><i class="fas fa-plus"></i> Adicionar</button>
-            </div>
-            <div class="div2">
-                <h3 class="list-title">Disciplinas Adicionadas:</h3>
-                <ul id="disciplinas-list">
-                    <li class="empty-message">Nenhuma disciplina adicionada ainda.</li>
-                </ul>
-            </div>
-        </div>
-
+        <button type="button" id="google-login-button" class="btn-social google">
+            <i class="fab fa-google"></i> Entrar com Google
+        </button>
+        
         <div id="status-message"></div>
-        <div class="navigation-buttons">
-            <button id="skip-btn" type="button">Pular etapa e Finalizar</button>
-            <button id="prev-btn" class="nav-button" type="button" disabled>Anterior</button>
-            <button id="next-btn" class="nav-button" type="button">Próximo</button>
+        
+        <div class="toggle-auth-mode">
+            <p id="toggle-message">Não tem uma conta? <a href="#" id="show-signup-link">Cadastre-se</a></p>
         </div>
-
     </div>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        console.log("DOM carregado. Iniciando script de setup.");
 
-        // === Elementos Globais ===
-        const stepIndicatorDisplay = document.getElementById('step-indicator-display');
-        const stepContents = document.querySelectorAll('.step-content');
-        const prevButton = document.getElementById('prev-btn');
-        const nextButton = document.getElementById('next-btn');
-        const skipButton = document.getElementById('skip-btn');
-        const statusMessage = document.getElementById('status-message');
-
-        // === Elementos Etapa 1 ===
-        const nomeInput = document.getElementById('nome');
-        const dobInput = document.getElementById('dob');
-        const ageDisplay = document.getElementById('age-display');
-
-        // === Elementos Etapa 2 ===
-        const nomeDisciplinaInput = document.getElementById('nomeDisciplinaInput');
-        const disciplinasList = document.getElementById('disciplinas-list');
-
-        // === Variáveis de Estado ===
-        let currentStep = 1;
-        const totalSteps = 2; // Total de etapas agora é 2
-        let userData = { nome: null, dob: null };
-        let disciplinas = []; // Sempre representa o estado atual da Etapa 2 (lido do LS)
-
-        // === Funções Utilitárias ===
-        const dateRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
-        function parseAndValidateDdMmYyyy(ds) { const m = ds.match(dateRegex); if (!m) return null; const d = parseInt(m[1], 10), mo = parseInt(m[2], 10), y = parseInt(m[3], 10); if (y < 1900 || y > new Date().getFullYear() || mo < 1 || mo > 12 || d < 1 || d > 31) return null; if ((mo === 4 || mo === 6 || mo === 9 || mo === 11) && d > 30) return null; if (mo === 2) { const iL = (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0); if (d > (iL ? 29 : 28)) return null; } const dt = new Date(y, mo - 1, d); if (dt.getFullYear() !== y || dt.getMonth() !== mo - 1 || dt.getDate() !== d) return null; return dt; }
-        function calculateAgeFromDate(bdo) { if (!bdo || isNaN(bdo.getTime())) return { age: null, error: "Data inválida" }; const t = new Date(); const tm = new Date(t.getFullYear(), t.getMonth(), t.getDate()); const bm = new Date(bdo.getFullYear(), bdo.getMonth(), bdo.getDate()); if (bm > tm) return { age: null, error: "Data futura" }; let a = t.getFullYear() - bdo.getFullYear(); const md = t.getMonth() - bdo.getMonth(); if (md < 0 || (md === 0 && t.getDate() < bdo.getDate())) { a--; } return { age: Math.max(0, a), error: null }; }
-        function applyDateMask(inp) { let v = inp.value.replace(/\D/g, ''), fv = ''; if (v.length > 0) fv += v.substring(0, 2); if (v.length >= 3) fv += '/' + v.substring(2, 4); if (v.length >= 5) fv += '/' + v.substring(4, 8); inp.value = fv.substring(0, 10); }
-        function removerAcentuacao(str) { return str.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
-
-        // === Lógica de Disciplinas (Etapa 2) ===
-        // Usa a chave 'disciplinas' e a estrutura {nome, topicos:[], maximizado:false, excluirAtivo:false}
-        function loadDisciplinasFromStorage() {
-            try {
-                const storedDisciplinas = JSON.parse(localStorage.getItem('disciplinas')) || [];
-                if (Array.isArray(storedDisciplinas)) {
-                    // Garante que cada item é um objeto com a estrutura esperada
-                    disciplinas = storedDisciplinas.map(item => {
-                        if (typeof item === 'object' && item !== null && item.hasOwnProperty('nome')) {
-                            return {
-                                nome: item.nome,
-                                topicos: Array.isArray(item.topicos) ? item.topicos : [],
-                                maximizado: typeof item.maximizado === 'boolean' ? item.maximizado : false,
-                                excluirAtivo: typeof item.excluirAtivo === 'boolean' ? item.excluirAtivo : false
-                            };
-                        } else if (typeof item === 'string' && item.trim() !== '') { // Compatibilidade com formato antigo (apenas string)
-                            return { nome: item.trim(), topicos: [], maximizado: false, excluirAtivo: false };
-                        }
-                        return null;
-                    }).filter(item => item !== null);
-                } else {
-                    disciplinas = [];
-                }
-            } catch (e) {
-                console.error("Erro ao carregar disciplinas do localStorage:", e);
-                disciplinas = [];
-            }
-            console.log("Disciplinas carregadas do localStorage:", disciplinas);
-        }
-
-        function saveDisciplinasToStorage() {
-            try {
-                localStorage.setItem('disciplinas', JSON.stringify(disciplinas));
-                console.log("Disciplinas salvas no localStorage:", disciplinas);
-            } catch (e) {
-                console.error("Erro ao salvar disciplinas no localStorage:", e);
-                statusMessage.textContent = 'Erro ao salvar disciplinas.';
-                statusMessage.className = 'erro';
-            }
-        }
-
-        function exibirDisciplinas() {
-            disciplinasList.innerHTML = '';
-            if (disciplinas.length === 0) {
-                disciplinasList.innerHTML = '<li class="empty-message">Nenhuma disciplina adicionada ainda.</li>';
-                return;
-            }
-            disciplinas.forEach((disciplinaObj, index) => {
-                if (typeof disciplinaObj !== 'object' || disciplinaObj === null || !disciplinaObj.hasOwnProperty('nome')) {
-                    console.warn("Item de disciplina inválido no array 'disciplinas':", disciplinaObj);
-                    return;
-                }
-                const li = document.createElement('li');
-                li.textContent = disciplinaObj.nome;
-                const removeButton = document.createElement('button');
-                removeButton.className = 'remove-disciplina-btn';
-                removeButton.innerHTML = '<i class="fas fa-times"></i>';
-                removeButton.title = `Remover "${disciplinaObj.nome}"`;
-                removeButton.setAttribute('aria-label', `Remover ${disciplinaObj.nome}`);
-                removeButton.onclick = () => removerDisciplina(index);
-                li.appendChild(removeButton);
-                disciplinasList.appendChild(li);
-            });
-        }
-
-        window.adicionarDisciplina = function() {
-            const nome = nomeDisciplinaInput.value.trim();
-            statusMessage.textContent = '';
-            statusMessage.className = '';
-            if (nome === "") {
-                statusMessage.textContent = 'Por favor, digite um nome para a disciplina.';
-                statusMessage.className = 'erro';
-                nomeDisciplinaInput.focus();
-                return;
-            }
-            const nomeSemAcentoLower = removerAcentuacao(nome).toLowerCase();
-            const existe = disciplinas.some(d => removerAcentuacao(d.nome).toLowerCase() === nomeSemAcentoLower);
-            if (existe) {
-                statusMessage.textContent = 'Essa disciplina já está registrada.';
-                statusMessage.className = 'erro';
-                nomeDisciplinaInput.focus();
-                return;
-            }
-            // Adiciona no formato esperado pela outra página
-            const novaDisciplina = { nome: nome, topicos: [], maximizado: false, excluirAtivo: false };
-            disciplinas.push(novaDisciplina);
-            saveDisciplinasToStorage();
-            exibirDisciplinas();
-            nomeDisciplinaInput.value = '';
-            nomeDisciplinaInput.focus();
-        }
-
-        window.removerDisciplina = function(index) {
-            if (index >= 0 && index < disciplinas.length) {
-                const removida = disciplinas.splice(index, 1);
-                console.log("Disciplina removida:", removida[0].nome);
-                saveDisciplinasToStorage();
-                exibirDisciplinas();
-                if (nomeDisciplinaInput) nomeDisciplinaInput.focus();
-            }
-        }
-        if (nomeDisciplinaInput) {
-            nomeDisciplinaInput.addEventListener('keypress', (event) => {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    adicionarDisciplina();
-                }
-            });
-        }
-
-        // === Funções de Navegação e Validação ===
-        function showStep(stepNumber) {
-            stepContents.forEach((stepEl, index) => { stepEl.classList.toggle('active', index + 1 === stepNumber); });
-            stepIndicatorDisplay.textContent = `Etapa ${stepNumber} de ${totalSteps}`;
-            prevButton.disabled = stepNumber === 1;
-            nextButton.textContent = stepNumber === totalSteps ? 'Finalizar Configuração' : 'Próximo';
-            // Botão Pular só na etapa 2 (Disciplinas)
-            skipButton.style.display = (stepNumber === 2) ? 'inline-block' : 'none';
-            skipButton.textContent = (stepNumber === 2) ? 'Finalizar Sem Disciplinas' : 'Pular etapa'; // Ajuste de texto
-
-            statusMessage.textContent = ''; statusMessage.className = '';
-
-            if (stepNumber === 2) {
-                loadDisciplinasFromStorage(); // Carrega ao entrar na etapa 2
-                exibirDisciplinas();
-                if (nomeDisciplinaInput) nomeDisciplinaInput.focus();
-            }
-        }
-
-        function validateStep1() {
-            statusMessage.textContent = ''; statusMessage.className = '';
-            const nome = nomeInput.value.trim(), dataNasc = dobInput.value;
-            if (!nome || nome.length < 3) {
-                statusMessage.textContent = 'Nome inválido (mínimo 3 caracteres).'; statusMessage.className = 'erro';
-                nomeInput.focus(); return false;
-            }
-            const dataNascimentoObj = parseAndValidateDdMmYyyy(dataNasc);
-            if (!dataNascimentoObj) {
-                statusMessage.textContent = 'Data de nascimento inválida.'; statusMessage.className = 'erro';
-                dobInput.focus();
-                if (ageDisplay) { ageDisplay.textContent = 'Inválida'; ageDisplay.className = 'invalid'; }
-                return false;
-            }
-            const { error: dataNascimentoError } = calculateAgeFromDate(dataNascimentoObj);
-            if (dataNascimentoError) {
-                statusMessage.textContent = dataNascimentoError === "Data futura" ? 'Data de nascimento não pode ser futura.' : 'Data de nascimento inválida.';
-                statusMessage.className = 'erro'; dobInput.focus();
-                if (ageDisplay) { ageDisplay.textContent = dataNascimentoError === "Data futura" ? 'Futura' : 'Inválida'; ageDisplay.className = 'invalid'; }
-                return false;
-            }
-            userData.nome = nome; userData.dob = dataNasc;
-            console.log("Etapa 1 OK:", userData);
-            return true;
-        }
-
-        function validateStep2() {
-            // Etapa 2 é opcional, então sempre retorna true para permitir o avanço.
-            // As disciplinas adicionadas (ou não) serão salvas em finalizeSetup.
-            statusMessage.textContent = ''; statusMessage.className = '';
-            console.log("Etapa 2 (Disciplinas) processada.");
-            return true;
-        }
-
-        function finalizeSetup() {
-            console.log("Finalizando configuração...");
-            if (!userData.nome || !userData.dob) {
-                console.error("Erro: Dados do usuário (UserInfo) ausentes na finalização.");
-                statusMessage.textContent = 'Erro interno: dados de perfil incompletos.'; statusMessage.className = 'erro';
-                // Opcionalmente, forçar retorno para a Etapa 1
-                // currentStep = 1; showStep(currentStep);
-                return;
-            }
-            const finalUserInfo = { nome: userData.nome, dob: userData.dob };
-
-            // As disciplinas já foram salvas no localStorage pelas funções add/remove
-            // loadDisciplinasFromStorage(); // Recarrega para garantir o estado mais atual, se necessário, mas saveDisciplinasToStorage() já deve ter feito.
-            // A variável 'disciplinas' já deve estar atualizada.
-
-            try {
-                localStorage.setItem('userInfo', JSON.stringify(finalUserInfo));
-                // Certifique-se de que 'disciplinas' está atualizado e salvo.
-                // saveDisciplinasToStorage(); // Chamado em add/remove, mas pode chamar aqui para garantir.
-                localStorage.removeItem('cronograma'); // Remove qualquer cronograma antigo
-
-                console.log("Salvo userInfo:", finalUserInfo);
-                console.log("Disciplinas (estado atual no localStorage):", JSON.parse(localStorage.getItem('disciplinas') || '[]'));
-                // console.log("Cronograma removido."); // Log de remoção do cronograma
-
-                statusMessage.textContent = `Configuração Concluída! Redirecionando...`; statusMessage.className = 'sucesso';
-                nextButton.disabled = true; prevButton.disabled = true; skipButton.disabled = true;
-                nextButton.textContent = 'Salvo!';
-                setTimeout(() => { window.location.href = 'index.html'; }, 1500);
-            } catch (error) {
-                console.error("Erro ao salvar dados finais:", error);
-                statusMessage.textContent = 'Ocorreu um erro ao salvar a configuração final.'; statusMessage.className = 'erro';
-            }
-        }
-
-        function handleNext() {
-            let isValid = false;
-            if (currentStep === 1) {
-                isValid = validateStep1();
-            } else if (currentStep === 2) { // Agora é a última etapa
-                isValid = validateStep2(); // Etapa 2 é opcional, sempre válida para prosseguir
-                if (isValid) {
-                    finalizeSetup(); // Finaliza a configuração
-                    return; // Sai da função handleNext após iniciar finalização
-                }
-            }
-            if (isValid && currentStep < totalSteps) {
-                currentStep++;
-                showStep(currentStep);
-            }
-        }
-
-        function handlePrev() {
-            if (currentStep > 1) {
-                currentStep--;
-                showStep(currentStep);
-            }
-        }
-
-        function handleSkip() {
-            console.log(`Pulando/Finalizando a partir da Etapa ${currentStep}`);
-            if (currentStep === 2) { // Se está na etapa de disciplinas e clica em "Finalizar sem Disciplinas"
-                finalizeSetup(); // Salva o userInfo e as disciplinas como estão (podem estar vazias ou com dados pré-existentes)
-            }
-        }
-
-        function checkInitialSetup() {
-            let isUserInfoValid = false;
-            try {
-                const userInfoStr = localStorage.getItem('userInfo');
-                if (userInfoStr) {
-                    const userInfo = JSON.parse(userInfoStr);
-                    if (userInfo && userInfo.nome && userInfo.dob && parseAndValidateDdMmYyyy(userInfo.dob)) {
-                        isUserInfoValid = true;
-                    }
-                }
-
-                if (isUserInfoValid) {
-                    console.log("UserInfo válido. Redirecionando para index.html...");
-                    statusMessage.textContent = "Perfil já configurado. Redirecionando...";
-                    statusMessage.className = 'sucesso';
-                    setTimeout(() => {
-                        try {
-                            document.body.innerHTML = '<div style="text-align:center;padding:40px;font-family:Montserrat,sans-serif;color:#333;">Perfil já configurado. Redirecionando...</div>';
-                        } catch (bodyError) {
-                            console.warn("Não foi possível limpar o body, prosseguindo com redirecionamento.");
-                        }
-                        window.location.href = 'index.html';
-                    }, 1000);
-                    return true;
-                } else {
-                    console.log("UserInfo inválido ou ausente. Iniciando setup.");
-                }
-            } catch (e) {
-                console.error("Erro ao verificar localStorage inicial (userInfo):", e);
-                console.log("Assumindo que setup é necessário devido ao erro.");
-                // Em caso de erro, não limpa nada e prossegue com o setup
-            }
-            return false;
-        }
-
-
-        if (!checkInitialSetup()) {
-            showStep(currentStep);
-            prevButton.addEventListener('click', handlePrev);
-            nextButton.addEventListener('click', handleNext);
-            skipButton.addEventListener('click', handleSkip);
-
-            if (dobInput) {
-                dobInput.addEventListener('input', (e) => {
-                    applyDateMask(e.target);
-                    const valor = e.target.value;
-                    let msg = '', classeCss = '';
-                    if (valor.length === 10) {
-                        const dataNascObj = parseAndValidateDdMmYyyy(valor);
-                        if (dataNascObj) {
-                            const { age: idadeCalculada, error: erroIdade } = calculateAgeFromDate(dataNascObj);
-                            if (erroIdade) {
-                                msg = erroIdade === "Data futura" ? 'Futura' : 'Inválida';
-                                classeCss = 'invalid';
-                            } else if (idadeCalculada !== null) {
-                                msg = `Idade: ${idadeCalculada} ${idadeCalculada === 1 ? 'ano' : 'anos'}`;
-                            }
-                        } else {
-                            msg = 'Inválida';
-                            classeCss = 'invalid';
-                        }
-                    }
-                    ageDisplay.textContent = msg;
-                    ageDisplay.className = classeCss;
-                });
-            }
-            console.log("Setup inicializado com 2 etapas.");
-        } else {
-            console.log("Redirecionamento iniciado por checkInitialSetup.");
-        }
-
-    }); // Fim DOMContentLoaded
-    </script>
-</body>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script defer src="../assets/js/pages/auth.js"></script> </body>
 </html>

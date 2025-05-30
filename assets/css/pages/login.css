@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Seus estilos globais para body, fontes, etc., viriam de essentials.css ou style.css */
+
+/* Estilos específicos da página de login */
+body.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f1f0ea; /* Mantido, similar ao #f5f4f0 de referência */
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif; /* Mantido conforme sua instrução */
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Da sua referência */
+    outline: none; /* Da sua referência */
+}
+
+.login-container {
+    margin: 20px;
+    background-color: #fff; /* Mantido */
+    padding: 35px 45px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.login-container h1 {
+    color: #2C2C2C; /* Ajustado para o texto mais escuro da sua referência */
+    margin-bottom: 10px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.login-container p.login-description {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+#login-form {
+    text-align: left;
+}
+
+.form-grupo {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #444; /* Mantido, presente na sua referência */
+    font-size: 0.9em;
+}
+
+.form-grupo label span.required {
+    color: #e53935; /* Cor de erro/requerido, pode ser padronizada se tiver uma específica */
+    margin-left: 3px;
+}
+
+.form-grupo input[type="email"],
+.form-grupo input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Ajustado para o border-radius dos inputs da referência */
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1em;
+    color: #333; /* Mantido, presente na sua referência */
+    background-color: #fff; /* Mantido, presente na sua referência */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-grupo input[type="email"]:focus,
+.form-grupo input[type="password"]:focus {
+    border-color: #673ab7; /* Cor primária da sua referência */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.2); /* Sombra de foco da sua referência */
+}
+
+/* Estilo para o botão principal da página de login */
+/* Se seus estilos globais de botão já cobrem isso, você pode remover/ajustar */
+.btn-principal {
+    width: 100%;
+    padding: 12px 22px; /* Padding do #generateButton da referência */
+    background-color: #673ab7; /* Cor primária da sua referência */
+    color: white;
+    border: none;
+    border-radius: 6px; /* Raio do botão da referência */
+    cursor: pointer;
+    font-size: 1em; /* Tamanho da fonte do #generateButton da referência */
+    font-weight: 500; /* Peso da fonte dos botões da referência */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    font-family: inherit; /* Herdará de body ou de um estilo global de botão */
+    margin-top: 10px;
+    display: inline-flex; /* Para alinhar ícone se houver (dos botões da referência) */
+    align-items: center; /* Para alinhar ícone se houver */
+    justify-content: center; /* Para alinhar ícone se houver */
+    gap: 8px; /* Espaço para ícone se houver */
+}
+
+.btn-principal:hover:not(:disabled) {
+    background-color: #5e35b1; /* Cor de hover do #generateButton da referência */
+}
+
+.btn-principal:active:not(:disabled) {
+    transform: scale(0.98); /* Efeito de clique dos botões da referência */
+    background-color: #512da8; /* Um tom mais escuro para o active, derivado */
+}
+
+.btn-principal:disabled {
+    background-color: #bdbdbd; /* Cor desabilitada da sua referência */
+    color: #757575; /* Cor de texto desabilitada da sua referência */
+    cursor: not-allowed;
+    opacity: 0.7; /* Opacidade desabilitada da sua referência */
+}
+
+#status-message {
+    margin-top: 20px;
+    font-size: 0.9em;
+    min-height: 1.2em;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+}
+
+#status-message.sucesso {
+    color: #2e7d32; /* Um verde comum para sucesso, similar aos da sua referência */
+}
+
+#status-message.erro {
+    color: #c62828; /* Um vermelho comum para erro, similar aos da sua referência */
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #aaa;
+    margin: 25px 0;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.separator:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .25em;
+}
+
+.separator span {
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.btn-social {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-social.google {
+    background-color: #fff;
+    color: #444;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.btn-social.google:hover {
+    background-color: #f7f7f7;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+.btn-social i {
+    font-size: 1.2em;
+}
+
+.btn-social.google .fa-google {
+    color: #DB4437;
+}
+
+.links-uteis {
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+
+.links-uteis a {
+    color: #673ab7; /* Cor primária da sua referência para links */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.links-uteis a:hover {
+    text-decoration: underline;
+    color: #5e35b1; /* Hover para links, derivado da sua referência */
+}
+
+.links-uteis p {
+    margin-top: 10px;
+    color: #555;
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px 30px;
+    }
+    .login-container h1 {
+        font-size: 1.8em;
+    }
+}
+
+/* ... (Seus estilos existentes para .login-page, .auth-container, h1, form-grupo, btn-principal etc.) ... */
+/* Certifique-se de que .auth-container (ou .login-container) e seus filhos estão estilizados conforme o design anterior */
+
+/* Estilo para o container de formulário (se precisar de wrapper adicional, senão, aplique aos forms) */
+.auth-form {
+    /* Adicione transições se quiser animações ao trocar de formulário */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.auth-form:not(.active-form) {
+    display: none; /* Ou use opacity: 0; pointer-events: none; position: absolute; para animações */
+}
+
+.auth-description { /* Se você renomeou login-description */
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.links-uteis-form { /* Para o "Esqueci minha senha" dentro do form de login */
+    margin-top: 15px;
+    text-align: right;
+    font-size: 0.85em;
+}
+.links-uteis-form a {
+    color: #673ab7; /* Sua cor de link */
+    text-decoration: none;
+}
+.links-uteis-form a:hover {
+    text-decoration: underline;
+}
+
+
+/* Separador (já deve existir do passo anterior) */
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #aaa;
+    margin: 25px 0;
+}
+.separator::before, .separator::after {
+    content: ''; flex: 1; border-bottom: 1px solid #eee;
+}
+.separator:not(:empty)::before { margin-right: .25em; }
+.separator:not(:empty)::after { margin-left: .25em; }
+.separator span { font-size: 0.9em; font-weight: 500; }
+
+/* Botão Social (já deve existir) */
+.btn-social {
+    width: 100%; padding: 12px 20px; border: none; border-radius: 6px;
+    cursor: pointer; font-size: 1em; font-weight: 500;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin-bottom: 15px;
+}
+.btn-social.google {
+    background-color: #fff; color: #444; border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.btn-social.google:hover { background-color: #f7f7f7; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
+.btn-social i { font-size: 1.2em; }
+.btn-social.google .fa-google { color: #DB4437; }
+
+/* Mensagem de status (já deve existir) */
+#status-message {
+    margin-top: 20px; font-size: 0.9em; min-height: 1.2em;
+    font-weight: 500; text-align: center; width: 100%;
+}
+#status-message.sucesso { color: #2e7d32; }
+#status-message.erro { color: #c62828; }
+#status-message.info { color: #1565c0; } /* Adicionado para mensagens informativas */
+
+
+/* Área de alternância entre Login e Cadastro */
+.toggle-auth-mode {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.toggle-auth-mode a {
+    color: #673ab7; /* Sua cor de link */
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toggle-auth-mode a:hover {
+    text-decoration: underline;
+}
