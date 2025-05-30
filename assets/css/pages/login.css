@@ -324,3 +324,17 @@ body.login-page {
 .toggle-auth-mode a:hover {
     text-decoration: underline;
 }
+
+/* Adicione ao seu login.css ou similar */
+.input-feedback {
+    display: block;
+    font-size: 0.8em;
+    margin-top: 4px;
+    min-height: 1em; /* Para evitar que o layout pule */
+}
+.input-feedback.error {
+    color: #c62828; /* Sua cor de erro */
+}
+.input-feedback.success {
+    color: #2e7d32; /* Sua cor de sucesso */
+}
