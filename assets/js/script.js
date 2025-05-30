@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Chart.defaults.layout.padding = 10;
 
     // Linhas (para gráficos de linha)
-    Chart.defaults.elements.line.tension = 0.45; // Suaviza as curvas da linha (0 = reto, 1 = muito curvo).
+    Chart.defaults.elements.line.tension = 0.35; // Suaviza as curvas da linha (0 = reto, 1 = muito curvo).
     Chart.defaults.elements.line.borderWidth = 2.5; // Espessura da linha.
 
     // Pontos (em gráficos de linha)
