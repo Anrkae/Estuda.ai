@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Acesso - Estuda.ai</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="../assets/css/pages/login.css"> <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/pages/login.css"> 
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/essentials.css">
     <style>
         /* Estilos rápidos para feedback, podem ser movidos para login.css */
@@ -15,12 +16,10 @@
             margin-top: 4px;
             min-height: 1em; 
         }
-        .input-feedback.error { /* Note: usei 'error' no JS, mas no HTML pode ser mais genérico e o JS adiciona a classe */
+        .input-feedback.error {
             color: #c62828; 
         }
-        .input-feedback.success {
-            color: #2e7d32; 
-        }
+        /* .input-feedback.success { color: #2e7d32; } */ /* Não usado diretamente aqui, mas pode ser útil */
     </style>
 </head>
 <body class="login-page">
@@ -46,18 +45,9 @@
 
         <form id="signup-form" class="auth-form" onsubmit="return false;" style="display: none;">
             <div class="form-grupo">
-                <label for="signup-name">Nome Completo (Opcional)</label>
-                <input type="text" id="signup-name" name="name" placeholder="Seu nome completo">
-            </div>
-            <div class="form-grupo">
                 <label for="signup-username">Escolha seu @usuário<span class="required">*</span></label>
                 <input type="text" id="signup-username" name="username" required placeholder="Ex: aluno_nota10 (3-20 caracteres, letras, números, _)">
                 <small id="username-feedback" class="input-feedback"></small> 
-            </div>
-            <div class="form-grupo">
-                <label for="signup-dob">Data de Nascimento<span class="required">*</span></label>
-                <input type="text" id="signup-dob" name="dob" required placeholder="dd/mm/aaaa" maxlength="10">
-                <small id="dob-feedback" class="input-feedback"></small>
             </div>
             <div class="form-grupo">
                 <label for="signup-email">Email<span class="required">*</span></label>
@@ -84,5 +74,6 @@
     <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-    <script defer src="../assets/js/pages/auth.js"></script> </body>
+    <script defer src="../assets/js/pages/auth.js"></script> 
+</body>
 </html>
