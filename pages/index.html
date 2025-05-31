@@ -69,6 +69,89 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/components/popup-registrar-questao.js"></script>
+    // fim
+    
+    <div style="font-family:sans-serif;max-width:500px;margin:auto;padding:20px;border:2px solid #ccc;border-radius:12px;box-shadow:2px 2px 12px rgba(0,0,0,0.1);">
+    <h2 style="text-align:center;color:#333;">🔧 Gerenciador de LocalStorage</h2>
+    
+    <label>🔑 Chave:</label>
+    <input id="chave" style="width:100%;padding:8px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
+    
+    <label>📝 Valor:</label>
+    <input id="valor" style="width:100%;padding:8px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
+    
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <button onclick="salvar()" style="flex:1;padding:10px;background:#4CAF50;color:white;border:none;border-radius:8px;">💾 Salvar</button>
+        <button onclick="ler()" style="flex:1;padding:10px;background:#2196F3;color:white;border:none;border-radius:8px;">🔍 Ler</button>
+        <button onclick="apagar()" style="flex:1;padding:10px;background:#f44336;color:white;border:none;border-radius:8px;">🗑️ Apagar</button>
+        <button onclick="verTudo()" style="flex:1;padding:10px;background:#FF9800;color:white;border:none;border-radius:8px;">📜 Ver Tudo</button>
+        <button onclick="limparTudo()" style="flex:1;padding:10px;background:#9C27B0;color:white;border:none;border-radius:8px;">♻️ Limpar Tudo</button>
+    </div>
+    
+    <div id="resultado" style="margin-top:20px;padding:10px;background:#f9f9f9;border-radius:8px;min-height:50px;border:1px dashed #ccc;white-space:pre-wrap;"></div>
+</div>
+
+<script>
+    function salvar() {
+        const chave = document.getElementById('chave').value;
+        const valor = document.getElementById('valor').value;
+        if (chave && valor) {
+            localStorage.setItem(chave, valor);
+            mostrar(`✅ Salvou: ${chave} = ${valor}`);
+        } else {
+            mostrar('⚠️ Preencha a chave e o valor.');
+        }
+    }
+    
+    function ler() {
+        const chave = document.getElementById('chave').value;
+        if (chave) {
+            const valor = localStorage.getItem(chave);
+            if (valor !== null) {
+                mostrar(`🔍 ${chave} = ${valor}`);
+            } else {
+                mostrar('❌ Chave não encontrada.');
+            }
+        } else {
+            mostrar('⚠️ Digite a chave para ler.');
+        }
+    }
+    
+    function apagar() {
+        const chave = document.getElementById('chave').value;
+        if (chave) {
+            localStorage.removeItem(chave);
+            mostrar(`🗑️ Apagou a chave: ${chave}`);
+        } else {
+            mostrar('⚠️ Digite a chave para apagar.');
+        }
+    }
+    
+    function verTudo() {
+        if (localStorage.length === 0) {
+            mostrar('📭 LocalStorage vazio.');
+            return;
+        }
+        let resultado = '📜 Dados no LocalStorage:\n\n';
+        for (let i = 0; i < localStorage.length; i++) {
+            const chave = localStorage.key(i);
+            const valor = localStorage.getItem(chave);
+            resultado += `${chave}: ${valor}\n`;
+        }
+        mostrar(resultado);
+    }
+    
+    function limparTudo() {
+        if (confirm('⚠️ Tem certeza que deseja limpar TODO o localStorage?')) {
+            localStorage.clear();
+            mostrar('♻️ LocalStorage limpo!');
+        }
+    }
+    
+    function mostrar(msg) {
+        document.getElementById('resultado').textContent = msg;
+    }
+</script>
 
 </body>
 </html>

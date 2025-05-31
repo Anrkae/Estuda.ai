@@ -10,10 +10,10 @@
 body {
     -webkit-tap-highlight-color: transparent;
     outline: none; /* Adicionado por segurança para garantir que nenhum outline relacionado ao toque apareça */
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer/Edge */
-    user-select: none;         /* Padrão */
+    /* -webkit-user-select: none; Safari 
+    -moz-user-select: none;     Firefox 
+    -ms-user-select: none;      Internet Explorer/Edge 
+    user-select: none;         Padrão */
     font-family: Montserrat, sans-serif;
     background-color: #eceae2;
     color: #333;
