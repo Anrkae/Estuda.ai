@@ -3,77 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Acesso - Estuda.ai</title>
+    <title>Configuração Inicial - Estuda.ai</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/pages/login.css"> 
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/essentials.css">
-    <style>
-        /* Estilos rápidos para feedback, podem ser movidos para login.css */
-        .input-feedback {
-            display: block;
-            font-size: 0.8em;
-            margin-top: 4px;
-            min-height: 1em; 
-        }
-        .input-feedback.error {
-            color: #c62828; 
-        }
-        /* .input-feedback.success { color: #2e7d32; } */ /* Não usado diretamente aqui, mas pode ser útil */
-    </style>
 </head>
-<body class="login-page">
+<body class="login-page"> <div class="login-container"> <div class="step-indicator" id="step-indicator-display">Etapa 1 de 2</div>
 
-    <div class="auth-container">
-        <h1 id="auth-title">Entrar</h1>
-        <p id="auth-description" class="auth-description">Acesse sua conta para continuar.</p>
+        <div id="step-1" class="step-content">
+            <h1>Dados Pessoais</h1>
+            <p class="step-description">Suas informações básicas para começarmos.</p>
+            <form id="profile-form" onsubmit="return false;">
+                <div class="form-grupo">
+                    <label for="nome">Nome<span class="required">*</span></label>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+                <div class="form-grupo">
+                    <label for="dob">Data de Nascimento<span class="required">*</span></label>
+                    <input type="text" id="dob" name="dob" required placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric">
+                    <div id="age-display"></div>
+                </div>
+            </form>
+        </div>
 
-        <form id="login-form" class="auth-form active-form" onsubmit="return false;">
-            <div class="form-grupo">
-                <label for="login-email">Email<span class="required">*</span></label>
-                <input type="email" id="login-email" name="email" required placeholder="seuemail@exemplo.com">
+        <div id="step-2" class="step-content">
+            <h2>Disciplinas <small>(Opcional)</small></h2>
+            <p class="step-description">Adicione as matérias que vai estudar. Se preferir, pode finalizar sem adicionar ou pular esta etapa.</p>
+            <div class="add-disciplina-container">
+                <input type="text" id="nomeDisciplinaInput" placeholder="Nome da disciplina">
+                <button type="button" id="addDisciplinaBtn" class="btn-add-disciplina"><i class="fas fa-plus"></i> Adicionar</button>
             </div>
-            <div class="form-grupo">
-                <label for="login-password">Senha<span class="required">*</span></label>
-                <input type="password" id="login-password" name="password" required placeholder="Sua senha">
+            <div class="disciplinas-list-wrapper">
+                <h3 class="list-title">Disciplinas Adicionadas:</h3>
+                <ul id="disciplinas-list">
+                    <li class="empty-message">Nenhuma disciplina adicionada ainda.</li>
+                </ul>
             </div>
-            <button type="submit" id="login-button" class="btn-principal">Entrar</button>
-            <div class="links-uteis-form">
-                <a href="#" id="forgot-password-link">Esqueci minha senha</a>
-            </div>
-        </form>
+        </div>
 
-        <form id="signup-form" class="auth-form" onsubmit="return false;" style="display: none;">
-            <div class="form-grupo">
-                <label for="signup-username">Escolha seu @usuário<span class="required">*</span></label>
-                <input type="text" id="signup-username" name="username" required placeholder="Ex: aluno_nota10 (3-20 caracteres, letras, números, _)">
-                <small id="username-feedback" class="input-feedback"></small> 
-            </div>
-            <div class="form-grupo">
-                <label for="signup-email">Email<span class="required">*</span></label>
-                <input type="email" id="signup-email" name="email" required placeholder="seuemail@exemplo.com">
-            </div>
-            <div class="form-grupo">
-                <label for="signup-password">Senha<span class="required">*</span></label>
-                <input type="password" id="signup-password" name="password" required placeholder="Mínimo 6 caracteres">
-            </div>
-            <div class="form-grupo">
-                <label for="signup-confirm-password">Confirmar Senha<span class="required">*</span></label>
-                <input type="password" id="signup-confirm-password" name="confirmPassword" required placeholder="Repita a senha">
-            </div>
-            <button type="submit" id="signup-button" class="btn-principal">Cadastrar</button>
-        </form>
-        
         <div id="status-message"></div>
-        
-        <div class="toggle-auth-mode">
-            <p id="toggle-message">Não tem uma conta? <a href="#" id="show-signup-link">Cadastre-se</a></p>
+        <div class="navigation-buttons">
+            <button id="skip-btn" type="button" class="nav-button skip">Pular Etapa</button>
+            <button id="prev-btn" class="nav-button prev" type="button" disabled>Anterior</button>
+            <button id="next-btn" class="nav-button next" type="button">Próximo</button>
         </div>
     </div>
 
-    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-    <script defer src="../assets/js/pages/auth.js"></script> 
+    <script src="../assets/js/pages/login.js"></script> 
 </body>
 </html>

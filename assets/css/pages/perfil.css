@@ -1,310 +1,226 @@
-/* Estilos Gerais e Abas */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* perfil_simples.css */
 
-body { /* Se este body for específico para perfil.css, senão, ele viria do seu style.css/essentials.css */
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer/Edge */
-    user-select: none;         /* Padrão */
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    background-color: #f1f0ea; /* Cor de fundo da página como no login */
-    padding-top: 70px; /* Ajuste conforme seu header fixo */
+/* Assume que 'Montserrat' e resets básicos vêm do seu essentials.css ou style.css global */
+body.profile-page-body {
+    background-color: #f0f2f5; /* Cinza claro para o fundo da página */
     color: #333;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
 }
 
-.profile-container {
+/* Placeholder simples para o header */
+.app-header {
+    background-color: #673ab7; /* Seu roxo principal */
+    color: white;
+    padding: 15px 20px;
     display: flex;
-    flex-direction: column;
-    margin: 30px auto; /* Centralizado */
-    max-width: 800px;
-    padding: 20px;
-    background-color: #f5f4f0; /* Cor de fundo do container da sua referência */
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
-
-/* --- Sistema de Abas --- */
-.tab-navigation {
-    display: flex;
-    border-bottom: 2px solid #eee;
-    margin-bottom: 25px;
+.app-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+    flex-grow: 1; /* Faz o título ocupar espaço e centralizar se houver outros itens */
+    text-align: center;
 }
-
-.tab-button {
-    padding: 12px 20px;
+#header-menu-button { /* Exemplo de botão de menu */
     background: none;
     border: none;
-    border-bottom: 3px solid transparent;
+    color: white;
+    font-size: 1.5em;
     cursor: pointer;
-    font-size: 1.05em;
-    font-weight: 500;
-    color: #666;
-    transition: color 0.2s ease, border-color 0.2s ease;
-    margin-bottom: -2px; /* Para alinhar com a borda da navegação */
-    font-family: inherit;
-    display: inline-flex;
+    padding: 0 10px 0 0;
+}
+.user-actions-header { /* Placeholder para ações do usuário no header */
+    min-width: 40px; /* Para manter o layout do título centralizado */
+}
+
+
+.profile-content-area {
+    padding-top: 90px; /* Espaço para o header fixo + margem */
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
+    min-height: calc(100vh - 90px); /* Altura total menos o padding-top */
+    box-sizing: border-box;
 }
 
-.tab-button:hover {
-    color: #452482; /* Cor roxa mais escura para hover (derivada) */
+.status-message { /* Para #loading-message e #auth-error-message */
+    padding: 15px;
+    margin: 20px;
+    border-radius: 8px;
+    width: calc(100% - 40px);
+    max-width: 500px;
+    text-align: center;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+.status-message.info {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #d1eaff;
+}
+.status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.status-message.success {
+     background-color: #d4edda;
+     color: #155724;
+     border: 1px solid #c3e6cb;
 }
 
-.tab-button.active {
-    color: #6735bc; /* Sua cor roxa principal */
-    border-bottom-color: #6735bc; /* Sua cor roxa principal */
-    font-weight: 600;
+
+#profile-display-container {
+    width: 100%;
+    max-width: 600px; /* Largura do card de perfil */
+    display: none; /* Começa oculto, JS mostra */
+    animation: fadeInProfile 0.5s ease-out;
 }
 
-.tab-content {
-    display: none;
-    animation: fadeInContent 0.4s ease;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-@keyframes fadeInContent {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes fadeInProfile {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Conteúdo da Aba "Perfil" --- */
-#tab-perfil {
-    margin: 0 auto; /* Mantido da sua referência */
-}
-
-#tab-perfil .profile-card {
-    padding: 20px;
-    border: none;
-    box-shadow: none;
-    max-width: none;
-    margin: 0;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-#tab-perfil .profile-picture-container {
-    flex-shrink: 0;
+.profile-card-simple {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     text-align: center;
-    border-radius: 50%;
-    outline: 3px solid #2C2C2C; 
-    outline-offset: 1px; 
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
+    margin-bottom: 25px;
 }
 
-#tab-perfil #profile-pic {
-    width: 100px;
-    height: 100px;
+.profile-pic-simple-wrapper {
+    margin-bottom: 15px;
+}
+
+#profile-pic-display {
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    display: block;
-    background-color: #e0e0e0; /* Cor de fundo enquanto a imagem não carrega */
-}
-
-#tab-perfil .profile-details {
-    flex-grow: 1;
-}
-
-#tab-perfil #profile-name {
-    margin: 0 0 5px 0;
-    font-size: 1.7em;
-    color: #444;
-    font-weight: 600;
-}
-
-/* NOVO: Estilo para o @username */
-#tab-perfil #profile-username {
-    color: #555;
-    font-size: 1em;
-    margin-top: -5px; /* Ajuste fino para proximidade com o nome */
-    margin-bottom: 10px;
-    font-weight: 500;
-}
-/* FIM NOVO */
-
-#tab-perfil #profile-dob-label {
-    font-weight: 500;
-    color: #777;
-    font-size: 0.9em;
-    margin-bottom: 2px;
-    display: block;
-}
-
-#tab-perfil #profile-dob {
-    color: #555;
-    margin: 0 0 20px 0;
-    font-size: 1.1em;
-}
-
-#tab-perfil .profile-actions {
-    margin-top: 15px;
-    display: flex;
-    gap: 15px;
-    align-items: center;
-}
-
-#tab-perfil .btn-edit-profile { /* ID: #edit-profile-btn no HTML */
-    background-color: #6735bc; /* Sua cor roxa principal */
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-#tab-perfil .btn-edit-profile:hover {
-    background-color: #562da4; /* Tom mais escuro do roxo */
-}
-#tab-perfil .btn-edit-profile:disabled { /* Para quando os dados ainda não carregaram */
-    background-color: #bdbdbd;
-    cursor: not-allowed;
-}
-
-
-#tab-perfil .btn-logout { /* ID: #logout-button no HTML */
-    background-color: #e74c3c; /* Vermelho para logout/sair */
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.9em;
-    font-weight: 500;
-    transition: background-color 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-#tab-perfil .btn-logout:hover {
-    background-color: #c0392b; /* Vermelho mais escuro */
-}
-
-#profile-error-message {
-    color: #c62828; /* Cor de erro da sua referência */
-    text-align: center;
-    margin-top: 15px;
-    font-weight: 500;
-    display: none;
-}
-/* NOVO: Estilo para mensagens de sucesso no display do perfil */
-#profile-error-message.success {
-    color: #2e7d32; /* Verde para sucesso */
-}
-/* FIM NOVO */
-
-
-/* --- Conteúdo da Aba "Preferências" --- */
-#tab-preferencias { padding: 20px; }
-#tab-preferencias h3 { margin-top: 0; color: #555; font-weight: 600; }
-#tab-preferencias ul { list-style: disc; padding-left: 20px; color: #666; }
-#tab-preferencias li { margin-bottom: 8px; }
-
-/* --- Conteúdo da Aba "Armazenamento" --- */
-#tab-armazenamento { padding: 20px; }
-#tab-armazenamento h3 { margin-top: 0; color: #555; font-weight: 600; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;}
-#tab-armazenamento p { line-height: 1.6; margin-bottom: 12px; font-size: 0.95em; color: #444; }
-#tab-armazenamento strong { font-weight: 600; }
-#tab-armazenamento code { background-color: #eef; padding: 2px 5px; border-radius: 4px; font-family: monospace; font-size: 0.9em;}
-#tab-armazenamento .reset-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
-#tab-armazenamento .reset-warning { color: #c62828; font-weight: 500; font-size: 0.9em; margin-bottom: 15px; }
-#reset-data-btn {
-    background-color: #ff7043; /* Laranja/Vermelho para reset da sua referência (era #ff9800) */
-    color: white; border: none; padding: 10px 20px; border-radius: 5px;
-    cursor: pointer; font-size: 1em; font-weight: 500;
-    transition: background-color 0.2s ease; display: inline-flex; align-items: center; gap: 8px;
-}
-#reset-data-btn:hover { background-color: #f4511e; } /* Mais escuro */
-#reset-status { margin-top: 15px; font-weight: 500; min-height: 1.2em;}
-#reset-status.success { color: #2e7d32; } /* Mantido da sua referência */
-#reset-status.error { color: #c62828; }   /* Mantido da sua referência */
-#reset-status.info { color: #1565c0; }    /* Para mensagens informativas como "Processando..." */
-
-
-/* --- Modal de Confirmação Reset --- */
-.modal-overlay-reset { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1050; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s 0.3s; }
-.modal-overlay-reset.show { opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s 0s; }
-.modal-dialog-reset { background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); width: 90%; max-width: 480px; transform: scale(0.9); transition: transform 0.3s ease; }
-.modal-overlay-reset.show .modal-dialog-reset { transform: scale(1); }
-.modal-title-reset { margin-top: 0; margin-bottom: 15px; font-size: 1.4em; color: #c62828; text-align: center; font-weight: 600; }
-.modal-message-reset { margin-bottom: 20px; line-height: 1.6; color: #555; text-align: left; font-size: 1em; }
-.modal-message-reset ul { list-style-type: disc; padding-left: 25px; margin-top: 10px; }
-.modal-message-reset strong { color: #c62828; }
-.modal-buttons-reset { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
-.modal-button-reset { padding: 10px 18px; border-radius: 5px; border: none; cursor: pointer; font-weight: 500; font-size: 0.95em; transition: background-color 0.2s ease; }
-.modal-cancel-reset { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
-.modal-cancel-reset:hover { background-color: #e0e0e0; }
-.modal-confirm-reset { background-color: #d9534f; color: white; border: 1px solid #d43f3a; }
-.modal-confirm-reset:hover { background-color: #c9302c; }
-
-/* --- Modal de Edição de Perfil --- */
-.modal-overlay-edit { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: flex; justify-content: center; align-items: center; z-index: 1040; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s 0.3s; }
-.modal-overlay-edit.show { opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s 0s; }
-.modal-dialog-edit { background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); width: 90%; max-width: 500px; transform: scale(0.9); transition: transform 0.3s ease; }
-.modal-overlay-edit.show .modal-dialog-edit { transform: scale(1); }
-.modal-title-edit { margin-top: 0; margin-bottom: 20px; font-size: 1.4em; color: #333; text-align: center; font-weight: 600; }
-.edit-profile-pic-area { text-align: center; margin-bottom: 20px; }
-#edit-profile-pic-preview { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc; display: block; margin: 0 auto 10px auto; background-color: #f0f0f0; }
-#edit-profile-pic-label { display: inline-block; background-color: #eee; color: #555; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: background-color 0.2s; }
-#edit-profile-pic-label:hover { background-color: #ddd; }
-#edit-profile-pic-input { display: none; } /* Mantido oculto */
-.edit-form-grupo { margin-bottom: 15px; }
-.edit-form-grupo label { display: block; margin-bottom: 5px; font-weight: 500; color: #444; font-size: 0.9em; }
-.edit-form-grupo input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 1em; }
-.edit-form-grupo input[type="text"]:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.2); } /* Usando o roxo do seu tema para foco */
-
-/* NOVO: Estilo para input de username desabilitado */
-.edit-form-grupo input[type="text"]#edit-profile-username-input:disabled {
+    border: 4px solid #e0e0e0;
     background-color: #f0f0f0;
-    color: #888;
-    cursor: not-allowed;
-    border-color: #ddd;
-}
-/* FIM NOVO */
-
-#edit-age-display { font-size: 0.8em; color: #555; margin-top: 4px; min-height: 1em; text-align: right; }
-#edit-age-display.invalid { color: #e53935; } /* Cor de erro padrão */
-#edit-profile-status { margin-top: 15px; font-size: 0.9em; min-height: 1.1em; font-weight: 500; text-align: center; color: #c62828; display:none; /* Começa oculto */}
-/* NOVO: Estilo para mensagens de sucesso no modal de edição */
-#edit-profile-status.success {
-    color: #2e7d32; /* Verde para sucesso */
-}
-/* FIM NOVO */
-
-.modal-buttons-edit { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
-.modal-button-edit { padding: 10px 18px; border-radius: 5px; border: none; cursor: pointer; font-weight: 500; font-size: 0.95em; transition: background-color 0.2s ease; }
-.modal-cancel-edit { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
-.modal-cancel-edit:hover { background-color: #e0e0e0; }
-.modal-confirm-edit { background-color: #6735bc; color: white; } /* Sua cor roxa principal */
-.modal-confirm-edit:hover { background-color: #562da4; } /* Tom mais escuro */
-
-
-/* Responsividade (mantida da sua referência) */
-@media (max-width: 600px) {
-    .profile-container { margin: 20px; padding: 15px; }
-    .tab-navigation { overflow-x: auto; white-space: nowrap; }
-    .tab-button { padding: 10px 15px; font-size: 1em; }
-    #tab-perfil .profile-card { flex-direction: column; text-align: center; gap: 15px;}
-    #tab-perfil #profile-name { font-size: 1.5em;}
-    #tab-perfil #profile-dob { font-size: 1em;}
-    #tab-perfil .profile-actions { justify-content: center; }
-    .modal-dialog-reset, .modal-dialog-edit { padding: 20px; } /* Ajuste padding do modal */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* Font Family para elementos de formulário se não herdado globalmente */
-button, input, select, textarea {
+#profile-name-display {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0 2px 0;
+}
+
+.username-text { /* Para #profile-page-username */
+    font-size: 1.1em;
+    color: #673ab7; /* Usando seu roxo principal para o username */
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.profile-info-grid {
+    text-align: left;
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 1em;
+    color: #555;
+}
+
+.info-item .label {
+    font-weight: 600;
+    color: #333;
+    margin-right: 8px;
+    min-width: 100px; /* Para alinhamento */
+    display: inline-flex;
+    align-items: center;
+}
+.info-item .label i {
+    margin-right: 8px;
+    color: #673ab7; /* Ícones com a cor principal */
+    width: 18px; /* Alinhamento */
+    text-align: center;
+}
+
+
+.btn { /* Estilo base para botões */
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1em;
+    transition: background-color 0.2s ease, transform 0.1s ease;
     font-family: 'Montserrat', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+}
+.btn:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.btn-logout-profile { /* Para #profile-page-logout-button */
+    background-color: #757575; /* Cinza para logout */
+    color: white;
+    width: 100%; /* Ocupa largura total abaixo do card */
+    max-width: 300px; /* Limita largura */
+    margin: 0 auto; /* Centraliza */
+    display: block; /* Para que margin auto funcione */
+}
+.btn-logout-profile:hover {
+    background-color: #616161; /* Cinza mais escuro */
+}
+
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .profile-main-container {
+        margin: 15px;
+        padding: 0 15px 15px 15px; /* Ajusta padding para telas menores */
+        padding-top: 80px; /* Mais espaço para header */
+    }
+    .profile-card-simple {
+        padding: 25px;
+    }
+    #profile-pic-display {
+        width: 100px;
+        height: 100px;
+    }
+    #profile-name-display {
+        font-size: 1.6em;
+    }
+    .username-text {
+        font-size: 1em;
+    }
+    .info-item {
+        font-size: 0.95em;
+        flex-direction: column; /* Empilha label e valor */
+        align-items: flex-start;
+        margin-bottom: 15px;
+    }
+    .info-item .label {
+        margin-bottom: 3px;
+    }
+    .btn-logout-profile {
+        max-width: 100%;
+    }
 }

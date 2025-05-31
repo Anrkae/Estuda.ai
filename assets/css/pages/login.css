@@ -1,340 +1,324 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-/* Seus estilos globais para body, fontes, etc., viriam de essentials.css ou style.css */
-
-/* Estilos específicos da página de login */
-body.login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f1f0ea; /* Mantido, similar ao #f5f4f0 de referência */
-    padding: 20px;
-    font-family: 'Montserrat', sans-serif; /* Mantido conforme sua instrução */
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent; /* Da sua referência */
-    outline: none; /* Da sua referência */
+body.login-page { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; 
+    background-color: #f1f0ea; 
+    padding: 20px 0; 
+    font-family: 'Montserrat', sans-serif; 
+    margin:0;
 }
 
-.login-container {
-    margin: 20px;
-    background-color: #fff; /* Mantido */
-    padding: 35px 45px;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
+.login-container { 
+    margin: 20px; 
+    background-color: #fff; 
+    padding: 30px 40px; 
+    border-radius: 12px; 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    max-width: 550px; /* Ajustado para conteúdo */
+    width: 90%; 
 }
 
-.login-container h1 {
-    color: #2C2C2C; /* Ajustado para o texto mais escuro da sua referência */
-    margin-bottom: 10px;
-    font-size: 2em;
-    font-weight: 600;
+.step-indicator { 
+    font-size: 0.9em; 
+    color: #888; 
+    margin-bottom: 15px; 
+    font-weight: 500; 
 }
 
-.login-container p.login-description {
-    color: #666;
-    margin-bottom: 30px;
-    font-size: 1em;
-    line-height: 1.5;
+.step-content { 
+    display: none; 
+    text-align: left; 
+    animation: fadeIn 0.5s ease-in-out; 
+}
+.step-content.active { 
+    display: block; 
+}
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(10px); } 
+    to { opacity: 1; transform: translateY(0); } 
 }
 
-#login-form {
-    text-align: left;
+.step-content h1 { 
+    color: #474c5f; 
+    margin-bottom: 10px; 
+    font-size: 1.8em; 
+    font-weight: 600; 
+    text-align: center; 
 }
-
-.form-grupo {
-    margin-bottom: 20px;
-    position: relative;
+.step-content h2 { 
+    color: #575c6f; 
+    margin-bottom: 10px; 
+    font-size: 1.6em; 
+    font-weight: 500; 
+    text-align: center; 
 }
-
-.form-grupo label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #444; /* Mantido, presente na sua referência */
-    font-size: 0.9em;
-}
-
-.form-grupo label span.required {
-    color: #e53935; /* Cor de erro/requerido, pode ser padronizada se tiver uma específica */
-    margin-left: 3px;
-}
-
-.form-grupo input[type="email"],
-.form-grupo input[type="password"] {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px; /* Ajustado para o border-radius dos inputs da referência */
-    box-sizing: border-box;
-    font-family: inherit;
-    font-size: 1em;
-    color: #333; /* Mantido, presente na sua referência */
-    background-color: #fff; /* Mantido, presente na sua referência */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-grupo input[type="email"]:focus,
-.form-grupo input[type="password"]:focus {
-    border-color: #673ab7; /* Cor primária da sua referência */
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.2); /* Sombra de foco da sua referência */
-}
-
-/* Estilo para o botão principal da página de login */
-/* Se seus estilos globais de botão já cobrem isso, você pode remover/ajustar */
-.btn-principal {
-    width: 100%;
-    padding: 12px 22px; /* Padding do #generateButton da referência */
-    background-color: #673ab7; /* Cor primária da sua referência */
-    color: white;
-    border: none;
-    border-radius: 6px; /* Raio do botão da referência */
-    cursor: pointer;
-    font-size: 1em; /* Tamanho da fonte do #generateButton da referência */
-    font-weight: 500; /* Peso da fonte dos botões da referência */
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    font-family: inherit; /* Herdará de body ou de um estilo global de botão */
-    margin-top: 10px;
-    display: inline-flex; /* Para alinhar ícone se houver (dos botões da referência) */
-    align-items: center; /* Para alinhar ícone se houver */
-    justify-content: center; /* Para alinhar ícone se houver */
-    gap: 8px; /* Espaço para ícone se houver */
-}
-
-.btn-principal:hover:not(:disabled) {
-    background-color: #5e35b1; /* Cor de hover do #generateButton da referência */
-}
-
-.btn-principal:active:not(:disabled) {
-    transform: scale(0.98); /* Efeito de clique dos botões da referência */
-    background-color: #512da8; /* Um tom mais escuro para o active, derivado */
-}
-
-.btn-principal:disabled {
-    background-color: #bdbdbd; /* Cor desabilitada da sua referência */
-    color: #757575; /* Cor de texto desabilitada da sua referência */
-    cursor: not-allowed;
-    opacity: 0.7; /* Opacidade desabilitada da sua referência */
-}
-
-#status-message {
-    margin-top: 20px;
-    font-size: 0.9em;
-    min-height: 1.2em;
-    font-weight: 500;
-    text-align: center;
-    width: 100%;
-}
-
-#status-message.sucesso {
-    color: #2e7d32; /* Um verde comum para sucesso, similar aos da sua referência */
-}
-
-#status-message.erro {
-    color: #c62828; /* Um vermelho comum para erro, similar aos da sua referência */
-}
-
-.separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #aaa;
-    margin: 25px 0;
-}
-
-.separator::before,
-.separator::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid #eee;
-}
-
-.separator:not(:empty)::before {
-    margin-right: .25em;
-}
-
-.separator:not(:empty)::after {
-    margin-left: .25em;
-}
-
-.separator span {
-    font-size: 0.9em;
-    font-weight: 500;
-}
-
-.btn-social {
-    width: 100%;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: 500;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-
-.btn-social.google {
-    background-color: #fff;
-    color: #444;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.btn-social.google:hover {
-    background-color: #f7f7f7;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-}
-
-.btn-social i {
-    font-size: 1.2em;
-}
-
-.btn-social.google .fa-google {
-    color: #DB4437;
-}
-
-.links-uteis {
-    margin-top: 25px;
-    font-size: 0.9em;
-}
-
-.links-uteis a {
-    color: #673ab7; /* Cor primária da sua referência para links */
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.links-uteis a:hover {
-    text-decoration: underline;
-    color: #5e35b1; /* Hover para links, derivado da sua referência */
-}
-
-.links-uteis p {
-    margin-top: 10px;
-    color: #555;
-}
-
-@media (max-width: 480px) {
-    .login-container {
-        padding: 25px 30px;
-    }
-    .login-container h1 {
-        font-size: 1.8em;
-    }
-}
-
-/* ... (Seus estilos existentes para .login-page, .auth-container, h1, form-grupo, btn-principal etc.) ... */
-/* Certifique-se de que .auth-container (ou .login-container) e seus filhos estão estilizados conforme o design anterior */
-
-/* Estilo para o container de formulário (se precisar de wrapper adicional, senão, aplique aos forms) */
-.auth-form {
-    /* Adicione transições se quiser animações ao trocar de formulário */
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.auth-form:not(.active-form) {
-    display: none; /* Ou use opacity: 0; pointer-events: none; position: absolute; para animações */
-}
-
-.auth-description { /* Se você renomeou login-description */
-    color: #666;
-    margin-bottom: 30px;
-    font-size: 1em;
-    line-height: 1.5;
-}
-
-.links-uteis-form { /* Para o "Esqueci minha senha" dentro do form de login */
-    margin-top: 15px;
-    text-align: right;
-    font-size: 0.85em;
-}
-.links-uteis-form a {
-    color: #673ab7; /* Sua cor de link */
-    text-decoration: none;
-}
-.links-uteis-form a:hover {
-    text-decoration: underline;
-}
-
-
-/* Separador (já deve existir do passo anterior) */
-.separator {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #aaa;
-    margin: 25px 0;
-}
-.separator::before, .separator::after {
-    content: ''; flex: 1; border-bottom: 1px solid #eee;
-}
-.separator:not(:empty)::before { margin-right: .25em; }
-.separator:not(:empty)::after { margin-left: .25em; }
-.separator span { font-size: 0.9em; font-weight: 500; }
-
-/* Botão Social (já deve existir) */
-.btn-social {
-    width: 100%; padding: 12px 20px; border: none; border-radius: 6px;
-    cursor: pointer; font-size: 1em; font-weight: 500;
-    transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    display: flex; align-items: center; justify-content: center;
-    gap: 10px; margin-bottom: 15px;
-}
-.btn-social.google {
-    background-color: #fff; color: #444; border: 1px solid #ddd;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-.btn-social.google:hover { background-color: #f7f7f7; box-shadow: 0 3px 6px rgba(0,0,0,0.1); }
-.btn-social i { font-size: 1.2em; }
-.btn-social.google .fa-google { color: #DB4437; }
-
-/* Mensagem de status (já deve existir) */
-#status-message {
-    margin-top: 20px; font-size: 0.9em; min-height: 1.2em;
-    font-weight: 500; text-align: center; width: 100%;
-}
-#status-message.sucesso { color: #2e7d32; }
-#status-message.erro { color: #c62828; }
-#status-message.info { color: #1565c0; } /* Adicionado para mensagens informativas */
-
-
-/* Área de alternância entre Login e Cadastro */
-.toggle-auth-mode {
-    margin-top: 25px;
-    font-size: 0.9em;
-    color: #555;
-}
-
-.toggle-auth-mode a {
-    color: #673ab7; /* Sua cor de link */
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.toggle-auth-mode a:hover {
-    text-decoration: underline;
-}
-
-/* Adicione ao seu login.css ou similar */
-.input-feedback {
-    display: block;
-    font-size: 0.8em;
+.step-content h2 small { 
+    font-size: 0.7em; 
+    color: #999; 
+    font-weight: 400; 
+    display: block; 
     margin-top: 4px;
-    min-height: 1em; /* Para evitar que o layout pule */
 }
-.input-feedback.error {
-    color: #c62828; /* Sua cor de erro */
+.step-content p.step-description { 
+    color: #666; 
+    margin-bottom: 25px; 
+    font-size: 1em; 
+    line-height: 1.5; 
+    text-align: center;
 }
-.input-feedback.success {
-    color: #2e7d32; /* Sua cor de sucesso */
+
+/* Estilos Etapa 1 (Dados Pessoais) */
+#profile-form { 
+    text-align: left; 
+    margin-top: 15px; 
 }
+.form-grupo { 
+    margin-bottom: 20px; 
+    position: relative; 
+}
+.form-grupo label { 
+    display: block; 
+    margin-bottom: 7px; 
+    font-weight: 500; 
+    color: #444; 
+    font-size: 0.95em; 
+}
+.form-grupo label span.required { 
+    color: #e53935; 
+    margin-left: 2px; 
+}
+.form-grupo input[type="text"] { 
+    width: 100%; 
+    padding: 11px 14px; 
+    border: 1px solid #ccc; 
+    border-radius: 6px; 
+    box-sizing: border-box; 
+    font-family: inherit; 
+    font-size: 1em; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+.form-grupo input[type="text"]:focus { 
+    border-color: #6735bc; /* Roxo Estuda.ai */
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15); 
+}
+#age-display { 
+    font-size: 0.85em; 
+    color: #555; 
+    margin-top: 5px; 
+    min-height: 1.1em; 
+    text-align: right; 
+}
+#age-display.invalid { 
+    color: #e53935; 
+}
+
+/* Estilos Etapa 2 (Disciplinas) */
+.add-disciplina-container { 
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 15px; 
+}
+.add-disciplina-container input[type="text"] { 
+    flex-grow: 1; 
+    padding: 10px 14px; 
+    border: 1px solid #ccc; 
+    border-radius: 6px; 
+    font-size: 1em; 
+}
+.add-disciplina-container input[type="text"]:focus { 
+    border-color: #6735bc; /* Roxo Estuda.ai */
+    outline: none; 
+    box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.1); 
+}
+.btn-add-disciplina { 
+    padding: 10px 15px; 
+    background-color: #6735bc; /* Roxo Estuda.ai */
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    cursor: pointer; 
+    font-size: 1em; 
+    font-weight: 500; 
+    transition: background-color 0.2s ease; 
+    flex-shrink: 0; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 5px; 
+}
+.btn-add-disciplina:hover { 
+    background-color: #562da4; /* Roxo mais escuro */
+}
+.disciplinas-list-wrapper {
+    margin-top: 20px;
+}
+.list-title { 
+    text-align: left; 
+    font-size: 1.05em; 
+    color: #444; 
+    margin-bottom: 10px; 
+    font-weight: 500; 
+    padding-bottom: 8px; 
+    border-bottom: 1px solid #eee; 
+}
+#disciplinas-list { 
+    list-style: none; 
+    padding: 0; 
+    margin-top: 0; 
+    max-height: 220px; 
+    overflow-y: auto; 
+    border: 1px solid #eee; 
+    border-radius: 6px; 
+    background-color: #fdfdfd; 
+}
+#disciplinas-list li { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 15px; 
+    border-bottom: 1px solid #f0f0f0; 
+    font-size: 0.95em; 
+    color: #333; 
+}
+#disciplinas-list li:last-child { 
+    border-bottom: none; 
+}
+.remove-disciplina-btn { 
+    background: none; 
+    border: none; 
+    color: #aaa; 
+    cursor: pointer; 
+    font-size: 1.2em; 
+    padding: 0 5px; 
+    transition: color 0.2s ease; 
+}
+.remove-disciplina-btn:hover { 
+    color: #e53935; /* Vermelho */
+}
+#disciplinas-list .empty-message { 
+    text-align: center; 
+    color: #999; 
+    padding: 20px; 
+    font-style: italic; 
+    font-size: 0.9em; 
+    border-bottom: none;
+    justify-content: center;
+}
+
+/* Navegação Geral e Status */
+.navigation-buttons { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-top: 30px; 
+    border-top: 1px solid #eee; 
+    padding-top: 20px; 
+    flex-wrap: wrap; 
+}
+.nav-button { 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 6px; 
+    font-size: 1em; 
+    font-weight: 500; 
+    cursor: pointer; 
+    transition: background-color 0.2s ease, color 0.2s ease; 
+    font-family: inherit; 
+    min-width: 100px; 
+    text-align: center; 
+    margin: 5px; 
+}
+.nav-button.prev { /* #prev-btn */
+    background-color: #f0f0f0; 
+    color: #555; 
+    border: 1px solid #ddd; 
+}
+.nav-button.prev:hover:not(:disabled) { 
+    background-color: #e0e0e0; 
+}
+.nav-button.prev:disabled { 
+    background-color: #f8f8f8; 
+    color: #bbb; 
+    cursor: not-allowed; 
+    border-color: #eee; 
+}
+.nav-button.next { /* #next-btn */
+    background-color: #6735bc; /* Roxo Estuda.ai */
+    color: white; 
+    margin-left: auto; 
+}
+.nav-button.next:hover:not(:disabled) { 
+    background-color: #562da4; /* Roxo mais escuro */
+}
+.nav-button.next:active:not(:disabled) { 
+    background-color: #452482; /* Roxo ainda mais escuro */
+}
+.nav-button.next:disabled { 
+    background-color: #ccc; 
+    cursor: not-allowed; 
+}
+.nav-button.skip { /* #skip-btn */
+    background: none; 
+    border: none; 
+    color: #757575; 
+    font-size: 0.9em; 
+    cursor: pointer; 
+    text-decoration: underline; 
+    padding: 10px 5px; 
+    margin-right: auto; 
+    display: none; /* JS controla visibilidade */
+}
+.nav-button.skip:hover:not(:disabled) { 
+    color: #452482; /* Roxo */
+}
+.nav-button.skip:disabled { 
+    color: #bbb; 
+    text-decoration: none; 
+    cursor: not-allowed; 
+}
+
+#status-message { 
+    margin-top: 15px; 
+    font-size: 0.9em; 
+    min-height: 1.2em; 
+    font-weight: 500; 
+    text-align: center; 
+    width: 100%; 
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+#status-message.sucesso { 
+    color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb;
+}
+#status-message.erro { 
+    color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb;
+}
+#status-message.info { 
+    color: #0c5460; background-color: #d1ecf1; border: 1px solid #bee5eb;
+}
+
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .login-container { 
+        max-width: 95%; 
+        padding: 20px 25px; 
+    }
+    .add-disciplina-container { 
+        flex-direction: column; 
+    }
+    .navigation-buttons { 
+        flex-direction: column; 
+        align-items: stretch; 
+    }
+    .nav-button.prev { order: 2; }
+    .nav-button.skip { order: 1; margin-bottom: 10px; text-align: center; margin-right: 0; }
+    .nav-button.next { order: 3; margin-left: 0; }
+    .nav-button { width: 100%; margin: 5px 0;}
+}
+
