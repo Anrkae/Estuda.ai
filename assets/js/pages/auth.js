@@ -34,6 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const signupConfirmPasswordInput = document.getElementById('signup-confirm-password');
     const signupButton = document.getElementById('signup-button');
 
+    let shouldAttemptMigration = false;
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('migrate') === 'true') {
+        shouldAttemptMigration = true;
+        console.log("AUTH: Parâmetro de migração (?migrate=true) detectado.");
+    }
+
     const dateRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
     function parseAndValidateDdMmYyyy(ds) {
         const m = ds.match(dateRegex); if (!m) return null;
@@ -56,35 +63,33 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setUIState(isLoading, message = '') {
-        if (loginButton) loginButton.disabled = isLoading;
-        if (signupButton) signupButton.disabled = isLoading;
+        if(loginButton) loginButton.disabled = isLoading;
+        if(signupButton) signupButton.disabled = isLoading;
         
         if (isLoading) {
-            if (loginButton) loginButton.textContent = 'Aguarde...';
-            if (signupButton) signupButton.textContent = 'Aguarde...';
+            if(loginButton) loginButton.textContent = 'Aguarde...';
+            if(signupButton) signupButton.textContent = 'Aguarde...';
             if (message && statusMessageEl) {
                 statusMessageEl.textContent = message;
                 statusMessageEl.className = 'info';
             }
         } else {
-            if (loginButton) loginButton.textContent = 'Entrar';
-            if (signupButton) signupButton.textContent = 'Cadastrar';
+            if(loginButton) loginButton.textContent = 'Entrar';
+            if(signupButton) signupButton.textContent = 'Cadastrar';
         }
     }
     
     function showLoginForm(e) {
         if(e) e.preventDefault();
-        if (authTitle) authTitle.textContent = 'Entrar';
-        if (authDescription) authDescription.textContent = 'Acesse sua conta para continuar.';
-        if (loginFormContainer) loginFormContainer.style.display = 'block';
-        if (loginFormContainer) loginFormContainer.classList.add('active-form');
-        if (signupFormContainer) signupFormContainer.style.display = 'none';
-        if (signupFormContainer) signupFormContainer.classList.remove('active-form');
-        if (toggleMessageParagraph) toggleMessageParagraph.innerHTML = 'Não tem uma conta? <a href="#" id="show-signup-link-dynamic">Cadastre-se</a>';
-        
+        if(authTitle) authTitle.textContent = 'Entrar';
+        if(authDescription) authDescription.textContent = 'Acesse sua conta para continuar.';
+        if(loginFormContainer) loginFormContainer.style.display = 'block';
+        if(loginFormContainer) loginFormContainer.classList.add('active-form');
+        if(signupFormContainer) signupFormContainer.style.display = 'none';
+        if(signupFormContainer) signupFormContainer.classList.remove('active-form');
+        if(toggleMessageParagraph) toggleMessageParagraph.innerHTML = 'Não tem uma conta? <a href="#" id="show-signup-link-dynamic">Cadastre-se</a>';
         const dynSignupLink = document.getElementById('show-signup-link-dynamic');
         if(dynSignupLink) dynSignupLink.addEventListener('click', showSignupForm);
-        
         if(!e && statusMessageEl) { statusMessageEl.textContent = ''; statusMessageEl.className = ''; }
         if(usernameFeedbackEl) usernameFeedbackEl.textContent = ''; 
         if(dobFeedbackEl) dobFeedbackEl.textContent = '';
@@ -92,17 +97,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showSignupForm(e) {
         if(e) e.preventDefault();
-        if (authTitle) authTitle.textContent = 'Criar Conta';
-        if (authDescription) authDescription.textContent = 'Preencha os dados para se cadastrar.';
-        if (signupFormContainer) signupFormContainer.style.display = 'block';
-        if (signupFormContainer) signupFormContainer.classList.add('active-form');
-        if (loginFormContainer) loginFormContainer.style.display = 'none';
-        if (loginFormContainer) loginFormContainer.classList.remove('active-form');
-        if (toggleMessageParagraph) toggleMessageParagraph.innerHTML = 'Já tem uma conta? <a href="#" id="show-login-link-dynamic">Faça Login</a>';
-        
+        if(authTitle) authTitle.textContent = 'Criar Conta';
+        if(authDescription) authDescription.textContent = 'Preencha os dados para se cadastrar.';
+        if(signupFormContainer) signupFormContainer.style.display = 'block';
+        if(signupFormContainer) signupFormContainer.classList.add('active-form');
+        if(loginFormContainer) loginFormContainer.style.display = 'none';
+        if(loginFormContainer) loginFormContainer.classList.remove('active-form');
+        if(toggleMessageParagraph) toggleMessageParagraph.innerHTML = 'Já tem uma conta? <a href="#" id="show-login-link-dynamic">Faça Login</a>';
         const dynLoginLink = document.getElementById('show-login-link-dynamic');
         if(dynLoginLink) dynLoginLink.addEventListener('click', showLoginForm);
-
         if(!e && statusMessageEl) { statusMessageEl.textContent = ''; statusMessageEl.className = ''; }
         if(usernameFeedbackEl) usernameFeedbackEl.textContent = ''; 
         if(dobFeedbackEl) dobFeedbackEl.textContent = '';
@@ -110,40 +113,142 @@ document.addEventListener('DOMContentLoaded', () => {
     const initialShowSignupLink = document.getElementById('show-signup-link');
     if (initialShowSignupLink) initialShowSignupLink.addEventListener('click', showSignupForm);
 
-    auth.onAuthStateChanged((user) => {
+    async function migrateLocalDataToFirestore(userId) {
+        if (!userId) {
+            console.error("MIGRATE: UID do usuário não fornecido para migração.");
+            return { success: false, error: "UID não fornecido." };
+        }
+        console.log("MIGRATE: Iniciando tentativa de migração de dados do localStorage para UID:", userId);
+        if (statusMessageEl) {
+            statusMessageEl.textContent = 'Sincronizando seus dados locais anteriores...';
+            statusMessageEl.className = 'info';
+        }
+
+        try {
+            const localUserInfoStr = localStorage.getItem('userInfo');
+            const localDisciplinasStr = localStorage.getItem('disciplinas');
+            // Adicione aqui outras chaves do localStorage que você quer migrar:
+            // const localSessoesEstudoStr = localStorage.getItem('sessoesEstudo');
+            // const localCronogramaStr = localStorage.getItem('cronograma');
+
+            let dataToMigrate = {};
+            let localDataFound = false;
+
+            if (localUserInfoStr) {
+                const localUserInfo = JSON.parse(localUserInfoStr);
+                if (localUserInfo.nome) dataToMigrate.displayName = localUserInfo.nome;
+                if (localUserInfo.dob) dataToMigrate.dob = localUserInfo.dob;
+                if (localUserInfo.profilePicBase64) dataToMigrate.profilePicBase64 = localUserInfo.profilePicBase64;
+                localDataFound = true;
+            }
+
+            if (localDisciplinasStr) {
+                const localDisciplinas = JSON.parse(localDisciplinasStr);
+                if (Array.isArray(localDisciplinas)) {
+                    // Se suas disciplinas no localStorage eram objetos {nome: '...', topicos: []}
+                    // e você quer salvar apenas os nomes no Firestore (como em config-login.js)
+                    dataToMigrate.disciplinas = localDisciplinas.map(d => typeof d === 'string' ? d : d.nome).filter(Boolean);
+                    // Se já eram um array de strings:
+                    // dataToMigrate.disciplinas = localDisciplinas.filter(d => typeof d === 'string');
+                }
+                if (dataToMigrate.disciplinas && dataToMigrate.disciplinas.length > 0) localDataFound = true;
+            }
+            
+            // Exemplo para outras chaves:
+            // if (localSessoesEstudoStr) { dataToMigrate.sessoesEstudo = JSON.parse(localSessoesEstudoStr); localDataFound = true; }
+            // if (localCronogramaStr) { dataToMigrate.cronograma = JSON.parse(localCronogramaStr); localDataFound = true; }
+
+            if (!localDataFound) {
+                console.log("MIGRATE: Nenhum dado local encontrado no localStorage para migrar.");
+                await db.collection('users').doc(userId).set({ localDataMigrated: true, initialSetupComplete: false }, { merge: true });
+                return { success: true, migrated: false }; // Sucesso, mas nada foi migrado
+            }
+
+            // Se dados básicos de perfil foram migrados, consideramos o setup inicial completo.
+            // Se o seu `config-login.html` ainda coleta dados essenciais não presentes no localStorage (ex: studyPurpose),
+            // você pode querer manter initialSetupComplete: false aqui para forçar a passagem por lá.
+            if (dataToMigrate.displayName && dataToMigrate.dob && dataToMigrate.disciplinas && dataToMigrate.disciplinas.length > 0) {
+                dataToMigrate.initialSetupComplete = true;
+            } else {
+                dataToMigrate.initialSetupComplete = false; // Força passagem por config-login se dados essenciais faltam
+            }
+            
+            dataToMigrate.localDataMigrated = true;
+            dataToMigrate.profileLastUpdated = firebase.firestore.FieldValue.serverTimestamp();
+
+            console.log("MIGRATE: Dados preparados para Firestore:", dataToMigrate);
+
+            await db.collection('users').doc(userId).set(dataToMigrate, { merge: true });
+            console.log("MIGRATE: Dados do localStorage migrados com sucesso para o Firestore!");
+
+            if (localUserInfoStr) localStorage.removeItem('userInfo');
+            if (localDisciplinasStr) localStorage.removeItem('disciplinas');
+            // if (localSessoesEstudoStr) localStorage.removeItem('sessoesEstudo');
+            // if (localCronogramaStr) localStorage.removeItem('cronograma');
+            
+            if (statusMessageEl) {
+                statusMessageEl.textContent = 'Seus dados locais foram sincronizados com sucesso!';
+                statusMessageEl.className = 'sucesso';
+            }
+            return { success: true, migrated: true, setupComplete: dataToMigrate.initialSetupComplete };
+
+        } catch (error) {
+            console.error("MIGRATE: Erro durante a migração de dados:", error);
+            if (statusMessageEl) {
+                statusMessageEl.textContent = 'Erro ao sincronizar dados locais. Alguns dados podem não ter sido salvos.';
+                statusMessageEl.className = 'erro';
+            }
+            try { // Tenta marcar que a migração foi tentada mesmo com erro
+                await db.collection('users').doc(userId).set({ localDataMigrated: true, migrationError: error.message || "Erro desconhecido" }, { merge: true });
+            } catch (e) { console.error("MIGRATE: Erro ao salvar status de erro da migração", e); }
+            return { success: false, error: error.message };
+        }
+    }
+
+
+    auth.onAuthStateChanged(async (user) => { // Adicionado async aqui
         if (user) {
             console.log("AUTH: Usuário logado (onAuthStateChanged):", user.uid);
-            if (statusMessageEl) {
+            if (statusMessageEl && !statusMessageEl.textContent.includes("Sincronizando")) { // Evita sobrescrever msg de migração
                 statusMessageEl.textContent = 'Verificando perfil...';
                 statusMessageEl.className = 'info';
             }
-            setUIState(true);
-            db.collection('users').doc(user.uid).get()
-                .then((doc) => {
-                    if (doc.exists && doc.data().initialSetupComplete === true) {
-                        console.log("AUTH: Configuração inicial completa. Redirecionando para index.html");
-                        if (statusMessageEl) {
-                            statusMessageEl.textContent = 'Login bem-sucedido! Redirecionando...';
-                            statusMessageEl.className = 'sucesso';
-                        }
-                        setTimeout(() => { window.location.href = 'index.html'; }, 1000);
-                    } else {
-                        console.log("AUTH: Configuração inicial pendente ou doc não encontrado. Redirecionando para config-login.html");
-                        if (statusMessageEl) {
-                            statusMessageEl.textContent = 'Bem-vindo! Vamos configurar seu perfil...';
-                            statusMessageEl.className = 'info';
-                        }
-                        setTimeout(() => { window.location.href = 'config-login.html'; }, 1000);
-                    }
-                })
-                .catch((error) => {
-                    console.error("AUTH: Erro ao buscar dados do usuário no Firestore:", error);
-                    if (statusMessageEl) {
-                        statusMessageEl.textContent = 'Erro ao verificar perfil. Tente novamente.';
-                        statusMessageEl.className = 'erro';
-                    }
-                    setUIState(false); 
-                });
+            setUIState(true); // Desabilita botões enquanto processa
+
+            // Verifica se a migração precisa ser feita e se já foi feita
+            let userDoc = await db.collection('users').doc(user.uid).get();
+            let userData = userDoc.exists ? userDoc.data() : {};
+
+            if (shouldAttemptMigration && userData.localDataMigrated !== true) {
+                const migrationResult = await migrateLocalDataToFirestore(user.uid);
+                // Após a migração, recarrega os dados do usuário para ter o estado mais atual
+                if (migrationResult.success) {
+                    userDoc = await db.collection('users').doc(user.uid).get(); // Recarrega
+                    userData = userDoc.exists ? userDoc.data() : {};
+                }
+                shouldAttemptMigration = false; // Evita tentar de novo na mesma sessão de página
+                // Remove o parâmetro da URL para não tentar de novo em um refresh simples
+                if (window.history.replaceState) {
+                    const cleanURL = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                    window.history.replaceState({ path: cleanURL }, '', cleanURL);
+                }
+            }
+
+            if (userData.initialSetupComplete === true) {
+                console.log("AUTH: Configuração inicial completa. Redirecionando para index.html");
+                if (statusMessageEl && !statusMessageEl.textContent.includes("sincronizados")) {
+                    statusMessageEl.textContent = 'Login bem-sucedido! Redirecionando...';
+                    statusMessageEl.className = 'sucesso';
+                }
+                setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+            } else {
+                console.log("AUTH: Configuração inicial pendente ou doc não encontrado. Redirecionando para config-login.html");
+                 if (statusMessageEl && !statusMessageEl.textContent.includes("sincronizados") && !statusMessageEl.textContent.includes("configurar")) {
+                    statusMessageEl.textContent = 'Bem-vindo! Vamos configurar seu perfil...';
+                    statusMessageEl.className = 'info';
+                }
+                setTimeout(() => { window.location.href = 'config-login.html'; }, 1500);
+            }
         } else {
             console.log("AUTH: Nenhum usuário logado (onAuthStateChanged).");
             setUIState(false);
@@ -168,6 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
             auth.signInWithEmailAndPassword(email, password)
                 .then((userCredential) => {
                     console.log('AUTH: Login com e-mail/senha bem-sucedido:', userCredential.user.uid);
+                    // onAuthStateChanged e a lógica de migração (se shouldAttemptMigration for true) cuidarão do resto
                 })
                 .catch((error) => {
                     console.error('AUTH-ERROR: Erro no login com e-mail/senha:', error.code, error.message);
@@ -203,17 +309,11 @@ document.addEventListener('DOMContentLoaded', () => {
             setUIState(true, 'Verificando e cadastrando...');
 
             if (!email || !password || !confirmPassword || !username || !dob) {
-                if (statusMessageEl) {
-                    statusMessageEl.textContent = 'Por favor, preencha todos os campos obrigatórios.';
-                    statusMessageEl.className = 'erro'; 
-                }
+                if (statusMessageEl) { statusMessageEl.textContent = 'Por favor, preencha todos os campos obrigatórios.'; statusMessageEl.className = 'erro'; }
                 setUIState(false); return;
             }
             if (password !== confirmPassword) {
-                if (statusMessageEl) {
-                    statusMessageEl.textContent = 'As senhas não coincidem.';
-                    statusMessageEl.className = 'erro'; 
-                }
+                if (statusMessageEl) { statusMessageEl.textContent = 'As senhas não coincidem.'; statusMessageEl.className = 'erro'; }
                 setUIState(false); signupPasswordInput.focus(); return;
             }
             const usernameRegex = /^[a-zA-Z0-9_]{3,20}$/;
@@ -230,27 +330,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (statusMessageEl) {statusMessageEl.textContent = 'Dados inválidos.'; statusMessageEl.className = 'erro';}
                 setUIState(false); signupDobInput.focus(); return;
             }
-
+            
             console.log("--- DEBUG CADASTRO: Dados ANTES da verificação de username ---");
-            console.log("Nome (displayName):", name || '');
-            console.log("Username (para users e usernames):", username);
-            console.log("Data de Nascimento (dob):", dob);
-            console.log("Email (para users):", email);
+            console.log("Nome (displayName):", name || ''); console.log("Username:", username);
+            console.log("Data de Nascimento (dob):", dob); console.log("Email:", email);
 
             try {
                 const usernameDoc = await db.collection('usernames').doc(username).get();
                 if (usernameDoc.exists) {
-                    if(usernameFeedbackEl) usernameFeedbackEl.textContent = `O @usuário "${usernameRaw}" já está em uso. Escolha outro.`;
+                    if(usernameFeedbackEl) usernameFeedbackEl.textContent = `O @usuário "${usernameRaw}" já está em uso.`;
                     if(usernameFeedbackEl) usernameFeedbackEl.className = 'error'; 
                     if (statusMessageEl) { statusMessageEl.textContent = 'Usuário indisponível.'; statusMessageEl.className = 'erro';}
                     setUIState(false); signupUsernameInput.focus(); return;
                 }
             } catch (error) {
                 console.error("AUTH-ERROR: Erro ao verificar nome de usuário no Firestore:", error);
-                if (statusMessageEl) {
-                    statusMessageEl.textContent = 'Erro ao verificar @usuário. Tente novamente.';
-                    statusMessageEl.className = 'erro'; 
-                }
+                if (statusMessageEl) { statusMessageEl.textContent = 'Erro ao verificar @usuário. Tente novamente.'; statusMessageEl.className = 'erro'; }
                 setUIState(false); return;
             }
 
@@ -260,23 +355,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('AUTH: Usuário cadastrado com sucesso no Firebase Auth:', user.uid);
 
                     const userDataForFirestore = {
-                        displayName: name || '',
-                        username: username,
-                        dob: dob,
-                        email: user.email,
-                        photoURL: user.photoURL || '',
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        displayName: name || '', username: username, dob: dob, email: user.email,
+                        photoURL: user.photoURL || '', createdAt: firebase.firestore.FieldValue.serverTimestamp(),
                         initialSetupComplete: false
                     };
                     const usernameDataForFirestore = {
-                        userId: user.uid,
-                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        userId: user.uid, createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     };
-
-                    console.log("--- DEBUG CADASTRO: Objeto para users collection ---");
-                    console.log(JSON.stringify(userDataForFirestore, null, 2));
-                    console.log("--- DEBUG CADASTRO: Objeto para usernames collection ---");
-                    console.log(JSON.stringify(usernameDataForFirestore, null, 2));
+                    
+                    console.log("--- DEBUG CADASTRO: Objeto para users collection ---", JSON.stringify(userDataForFirestore, null, 2));
+                    console.log("--- DEBUG CADASTRO: Objeto para usernames collection ---", JSON.stringify(usernameDataForFirestore, null, 2));
                     
                     const batch = db.batch();
                     const userDocRef = db.collection('users').doc(user.uid);
@@ -288,49 +376,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .then(() => {
                     console.log("FIRESTORE-BATCH: Documento do usuário E username reservado com sucesso!");
+                    // A migração será chamada pelo onAuthStateChanged se shouldAttemptMigration for true
                 })
-                .catch((error) => { // Captura erros do createUserWithEmailAndPassword OU do batch.commit()
+                .catch((error) => {
                     console.error('AUTH/FIRESTORE-ERROR: Erro no cadastro ou ao salvar no Firestore:', error);
                     let mensagemErro = 'Ocorreu um erro ao tentar cadastrar.';
                     if (error.code) {
                         switch (error.code) {
-                            case 'auth/email-already-in-use':
-                                mensagemErro = 'Este e-mail já está em uso por outra conta.';
-                                signupEmailInput.focus();
-                                break;
-                            case 'auth/invalid-email':
-                                mensagemErro = 'O formato do e-mail é inválido.';
-                                signupEmailInput.focus();
-                                break;
-                            case 'auth/weak-password':
-                                mensagemErro = 'A senha é muito fraca. Use pelo menos 6 caracteres.';
-                                signupPasswordInput.focus();
-                                break;
-                            case 'permission-denied':
-                                mensagemErro = 'Permissão negada ao salvar dados do perfil. Verifique as regras de segurança do Firestore.';
-                                break;
-                            default:
-                                if (error.message && error.message.toLowerCase().includes("firestore")) {
-                                     mensagemErro = `Erro ao salvar perfil no Firestore.`; // Removido error.message para não expor detalhes demais
-                                } else {
-                                     mensagemErro = `Erro no cadastro: ${error.code || 'desconhecido'}.`;
-                                }
+                            case 'auth/email-already-in-use': mensagemErro = 'Este e-mail já está em uso.'; signupEmailInput.focus(); break;
+                            case 'auth/invalid-email': mensagemErro = 'O formato do e-mail é inválido.'; signupEmailInput.focus(); break;
+                            case 'auth/weak-password': mensagemErro = 'A senha é fraca (mínimo 6 caracteres).'; signupPasswordInput.focus(); break;
+                            case 'permission-denied': mensagemErro = 'Permissão negada ao salvar perfil. Verifique as regras.'; break;
+                            default: mensagemErro = `Erro no cadastro: ${error.code || 'desconhecido'}.`;
                         }
                     }
-                    if (statusMessageEl) {
-                        statusMessageEl.textContent = mensagemErro;
-                        statusMessageEl.className = 'erro';
-                    }
+                    if (statusMessageEl) { statusMessageEl.textContent = mensagemErro; statusMessageEl.className = 'erro';}
                     setUIState(false);
-
-                    const currentUser = auth.currentUser;
-                     // Se o usuário Auth foi criado mas o Firestore falhou (exceto por validações de Auth como email-em-uso)
-                    if (currentUser && error.code !== 'auth/email-already-in-use' && error.code !== 'auth/weak-password' && error.code !== 'auth/invalid-email') {
+                    const currentUserAuth = auth.currentUser; // Pega o usuário recém criado no Auth
+                    if (currentUserAuth && error.code !== 'auth/email-already-in-use' && error.code !== 'auth/weak-password' && error.code !== 'auth/invalid-email') {
                          if(error.code === 'permission-denied' || (error.message && error.message.toLowerCase().includes("firestore"))) {
-                            currentUser.delete().then(() => {
-                                console.log("AUTH: Usuário órfão deletado após falha no Firestore.");
+                            currentUserAuth.delete().then(() => {
+                                console.log("AUTH: Usuário Auth órfão deletado após falha no Firestore.");
                             }).catch(deleteError => {
-                                console.error("AUTH: Falha ao deletar usuário órfão:", deleteError);
+                                console.error("AUTH: Falha ao deletar usuário Auth órfão:", deleteError);
                             });
                         }
                     }
@@ -344,29 +412,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentEmail = loginEmailInput.value.trim();
             const emailForPasswordReset = prompt("Por favor, digite seu e-mail para redefinir a senha:", currentEmail);
             if (emailForPasswordReset) {
-                if (statusMessageEl) {
-                    statusMessageEl.textContent = 'Enviando e-mail...';
-                    statusMessageEl.className = 'info';
-                }
+                if (statusMessageEl) { statusMessageEl.textContent = 'Enviando e-mail...'; statusMessageEl.className = 'info';}
                 auth.sendPasswordResetEmail(emailForPasswordReset)
                     .then(() => {
-                        if (statusMessageEl) {
-                            statusMessageEl.textContent = 'E-mail de redefinição de senha enviado para ' + emailForPasswordReset;
-                            statusMessageEl.className = 'sucesso';
-                        }
+                        if (statusMessageEl) { statusMessageEl.textContent = 'E-mail de redefinição de senha enviado para ' + emailForPasswordReset; statusMessageEl.className = 'sucesso';}
                     })
                     .catch((error) => {
                         console.error('AUTH-ERROR: Erro ao enviar e-mail de redefinição:', error);
                         let mensagemErro = 'Erro ao enviar e-mail de redefinição.';
-                        if (error.code === 'auth/user-not-found') {
-                           mensagemErro = 'Nenhum usuário encontrado com este e-mail.';
-                        } else if (error.code === 'auth/invalid-email') {
-                            mensagemErro = 'O formato do e-mail é inválido.';
-                        }
-                        if (statusMessageEl) {
-                            statusMessageEl.textContent = mensagemErro;
-                            statusMessageEl.className = 'erro';
-                        }
+                        if (error.code === 'auth/user-not-found') { mensagemErro = 'Nenhum usuário encontrado com este e-mail.';
+                        } else if (error.code === 'auth/invalid-email') { mensagemErro = 'O formato do e-mail é inválido.';}
+                        if (statusMessageEl) { statusMessageEl.textContent = mensagemErro; statusMessageEl.className = 'erro';}
                     });
             }
         });

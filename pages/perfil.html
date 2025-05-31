@@ -7,7 +7,6 @@
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/pages/perfil.css">
-    
     </head>
 <body>
 
@@ -36,10 +35,11 @@
                 </div>
                 <div class="profile-details">
                     <h2 id="profile-name">Carregando...</h2>
-                    <span id="profile-dob-label">Data de Nascimento:</span>
+                    <p id="profile-username" style="color: #555; font-size: 1em; margin-top: -5px; margin-bottom: 10px;">@carregando...</p>
+                    <span id="profile-dob-label" style="font-weight: 500; color: #777; font-size: 0.9em; margin-bottom: 2px; display: block;">Data de Nascimento:</span>
                     <p id="profile-dob">Carregando...</p>
                     <div class="profile-actions">
-                         <button id="edit-profile-btn" class="btn-edit-profile" type="button"><i class="fas fa-pencil-alt"></i> Editar Perfil</button>
+                         <button id="edit-profile-btn" class="btn-edit-profile" type="button" disabled><i class="fas fa-pencil-alt"></i> Editar Perfil</button>
                          <button id="logout-button" class="btn-logout" aria-label="Sair" type="button"><i class="fas fa-sign-out-alt"></i> Sair</button>
                     </div>
                 </div>
@@ -48,56 +48,48 @@
         </div>
 
         <div id="tab-preferencias" class="tab-content">
-            <h3>Preferências</h3>
-            <p>Aqui você poderá ajustar configurações da ferramenta (funcionalidade futura).</p>
-            <p>Sugestões:</p>
+            <h3>Preferências de Estudo</h3>
+            <p>Esta seção permitirá que você personalize suas metas e como o Estuda.ai funciona para você (funcionalidade futura).</p>
+            <p>Ideias para esta seção:</p>
             <ul>
-                <li>Opção de Tema (Claro/Escuro)</li>
-                <li>Definir Duração Padrão de Estudo</li>
-                <li>Definir Tempo Padrão de Descanso</li>
-                <li>Configurar Notificações</li>
-                <li>Escolher Dia de Início da Semana</li>
+                <li>Definir meta diária/semanal de estudos.</li>
+                <li>Escolher áreas de estudo prioritárias.</li>
+                <li>Configurar lembretes de estudo.</li>
+                <li>Opção de Tema da Interface (Claro/Escuro).</li>
             </ul>
         </div>
 
         <div id="tab-armazenamento" class="tab-content">
-            <h3>Gerenciamento de Dados</h3>
-            <p>Os seguintes dados são salvos:</p>
-            <ul>
-                <li><strong>Perfil:</strong> Seu nome e data de nascimento.</li>
-                <li><strong>Disciplinas:</strong> Lista de disciplinas e tópicos.</li>
-                <li><strong>Cronograma:</strong> Último cronograma salvo.</li>
-                <li><strong>Sessões:</strong> Histórico de estudos (se aplicável).</li>
-            </ul>
-
+            <h3>Gerenciamento de Dados da Conta</h3>
+            <p>Aqui você pode gerenciar os dados armazenados pela sua conta Estuda.ai.</p>
+            
             <div class="reset-section">
-                 <h4>Resetar Dados Opcionais</h4>
-                 <p class="reset-warning"><i class="fas fa-exclamation-triangle"></i> Atenção: Remove permanentemente seus dados de Disciplinas, Cronograma e Histórico de Estudos.</p>
+                 <h4>Resetar Dados de Progresso</h4>
+                 <p class="reset-warning"><i class="fas fa-exclamation-triangle"></i> Atenção: Esta ação removerá seus dados de Disciplinas, Cronograma e Histórico de Sessões de Estudo que estão salvos na sua conta. Suas informações de perfil (nome, data de nascimento, foto) serão mantidas.</p>
                 <button id="reset-data-btn" type="button">
-                    <i class="fas fa-trash-alt"></i> Resetar Dados
+                    <i class="fas fa-trash-alt"></i> Resetar Dados de Progresso
                 </button>
-                 <p id="reset-status"></p>
+                 <p id="reset-status" style="min-height: 1.2em; margin-top: 10px;"></p>
             </div>
         </div>
-
     </main>
 
     <div id="modalConfirmacaoResetOverlay" class="modal-overlay-reset">
         <div id="modalConfirmacaoResetDialog" class="modal-dialog-reset">
             <h3 class="modal-title-reset"><i class="fas fa-exclamation-triangle"></i> Confirmar Reset</h3>
             <div class="modal-message-reset">
-                <p>Tem <strong>certeza</strong> que deseja resetar?</p>
+                <p>Tem <strong>ABSOLUTA certeza</strong> que deseja resetar os seguintes dados da sua conta?</p>
                 <ul>
                     <li>Lista de Disciplinas e Tópicos</li>
-                    <li>Cronograma Salvo</li>
+                    <li>Cronograma(s) Salvo(s)</li>
                     <li>Histórico de Sessões de Estudo</li>
-                 </ul>
-                 <p>Seu <strong>Nome</strong> e <strong>Data de Nascimento</strong> serão mantidos.</p>
-                 <p><strong>Ação irreversível.</strong></p>
+                </ul>
+                 <p>Seu <strong>Nome, @usuário, Data de Nascimento e Foto</strong> serão mantidos.</p>
+                 <p><strong>Esta ação é irreversível para os dados resetados.</strong></p>
             </div>
             <div class="modal-buttons-reset">
                 <button id="modalBotaoCancelarReset" class="modal-button-reset modal-cancel-reset" type="button">Cancelar</button>
-                <button id="modalBotaoConfirmarReset" class="modal-button-reset modal-confirm-reset" type="button">Sim, Resetar</button>
+                <button id="modalBotaoConfirmarReset" class="modal-button-reset modal-confirm-reset" type="button">Sim, Resetar Dados</button>
             </div>
         </div>
     </div>
@@ -114,24 +106,46 @@
                      <input type="file" id="edit-profile-pic-input" accept="image/*" style="display: none;">
                  </div>
                  <div class="edit-form-grupo">
-                    <label for="edit-profile-name-input">Nome:</label>
-                    <input type="text" id="edit-profile-name-input" required>
+                     <label for="edit-profile-name-input">Nome:</label>
+                     <input type="text" id="edit-profile-name-input" required>
                  </div>
                  <div class="edit-form-grupo">
-                    <label for="edit-profile-dob-input">Data de Nascimento:</label>
-                    <input type="text" id="edit-profile-dob-input" placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric" required>
-                    <div id="edit-age-display"></div>
+                     <label for="edit-profile-username-input">@usuário: (não pode ser alterado)</label>
+                     <input type="text" id="edit-profile-username-input" disabled> 
                  </div>
-                  <p id="edit-profile-status"></p>
+                 <div class="edit-form-grupo">
+                     <label for="edit-profile-dob-input">Data de Nascimento:</label>
+                     <input type="text" id="edit-profile-dob-input" placeholder="dd/mm/aaaa" maxlength="10" inputmode="numeric" required>
+                     <div id="edit-age-display"></div>
+                 </div>
+                  <p id="edit-profile-status" style="min-height: 1.1em; margin-top:10px; text-align:center;"></p>
                   <div class="modal-buttons-edit">
-                    <button type="button" id="cancel-profile-edit-btn" class="modal-button-edit modal-cancel-edit">Cancelar</button>
-                    <button type="submit" id="save-profile-changes-btn" class="modal-button-edit modal-confirm-edit">Salvar Alterações</button>
+                     <button type="button" id="cancel-profile-edit-btn" class="modal-button-edit modal-cancel-edit">Cancelar</button>
+                     <button type="submit" id="save-profile-changes-btn" class="modal-button-edit modal-confirm-edit">Salvar Alterações</button>
                  </div>
              </form>
         </div>
     </div>
 
-    <script src="../assets/js/pages/perfil.js"></script>
+    <div id="modalSincronizacaoNecessariaOverlay" class="modal-overlay-reset" style="z-index: 1060;">
+        <div id="modalSincronizacaoDialog" class="modal-dialog-reset">
+            <h3 class="modal-title-reset" style="color: #6735bc;"><i class="fas fa-sync-alt"></i> Sincronizar Seus Dados?</h3>
+            <div class="modal-message-reset">
+                <p>Olá! Parece que você tem dados de estudo (como perfil e disciplinas) salvos localmente de uma sessão anterior.</p>
+                <p>Para não perder seu progresso e acessar seus dados em qualquer dispositivo, recomendamos criar uma conta gratuita ou fazer login para sincronizá-los com segurança na nuvem.</p>
+                <p><strong>Deseja ir para a página de login/cadastro para sincronizar agora?</strong></p>
+            </div>
+            <div class="modal-buttons-reset">
+                <button id="modalBotaoContinuarSemSincronizar" class="modal-button-reset modal-cancel-reset" type="button">Continuar Sem Sincronizar</button>
+                <button id="modalBotaoIrParaLoginSinc" class="modal-button-reset modal-confirm-edit" type="button" style="background-color: #6735bc; color:white;">Entrar / Criar Conta</button>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script defer src="../assets/js/pages/perfil.js"></script>
 
 </body>
 </html>
