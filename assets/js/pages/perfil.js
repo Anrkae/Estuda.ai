@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const day = parseInt(match[1], 10); const month = parseInt(match[2], 10); const year = parseInt(match[3], 10);
         const currentYear = new Date().getFullYear();
         if (year < 1900 || year > currentYear || month < 1 || month > 12 || day < 1 || day > 31) {
-             if(year === currentYear && month <= (new Date().getMonth() +1) && day <= new Date().getDate()){ /* permite data atual */ }
+             if(year === currentYear && month <= (new Date().getMonth() +1) && day <= new Date().getDate()){}
              else if (year > currentYear || (year === currentYear && month > new Date().getMonth() + 1) || (year === currentYear && month === new Date().getMonth() + 1 && day > new Date().getDate())) {
                 return null; 
              }
@@ -98,13 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 button.classList.add('active');
                 const targetContent = document.getElementById(targetTabId);
                 if (targetContent) targetContent.classList.add('active');
-                else console.warn(`Conteúdo da aba não encontrado para ID: ${targetTabId}`);
             });
         });
         if(tabButtons.length > 0 && !document.querySelector('.tab-button.active')) {
              if (tabButtons[0]) tabButtons[0].click();
         }
-    } else { console.warn("Elementos das abas não encontrados."); }
+    }
 
     function checkForLocalData() {
         if (localStorage.getItem('userInfo') || localStorage.getItem('disciplinas')) {
@@ -116,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadProfileData() {
+        // ... (função loadProfileData como na sua última versão, sem alterações aqui)
         if (!currentUID) {
             console.error("PERFIL: UID do usuário não disponível para carregar dados.");
             if(profileErrorMessageDiv) {
@@ -130,10 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if(profileDobElement) profileDobElement.textContent = "N/A";
             return;
         }
-
         console.log("PERFIL: Carregando dados do Firestore para UID:", currentUID);
         const defaultPic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
-        
         db.collection('users').doc(currentUID).get()
             .then((doc) => {
                 if (doc.exists) {
@@ -157,8 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if(profileErrorMessageDiv) profileErrorMessageDiv.style.display = 'none';
                 } else {
                     console.warn("PERFIL: Documento do usuário não encontrado no Firestore para UID:", currentUID);
-                     // Isso pode acontecer se o usuário for autenticado mas a criação do doc falhou,
-                     // ou se ele foi para config-login e ainda não salvou.
                     if (profileNameElement) profileNameElement.textContent = "Complete seu perfil";
                     if (profileUsernameElement) profileUsernameElement.textContent = "@?";
                     if (profileDobElement) profileDobElement.textContent = "-";
@@ -167,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         profileErrorMessageDiv.textContent = "Parece que seu perfil não foi completamente configurado.";
                         profileErrorMessageDiv.style.display = 'block';
                     }
-                    if(editProfileBtn) editProfileBtn.disabled = false; // Permite editar para criar os dados
+                    if(editProfileBtn) editProfileBtn.disabled = false;
                 }
             })
             .catch((error) => {
@@ -180,6 +176,97 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
 
+    // --- Listener Principal de Autenticação ---
+    auth.onAuthStateChanged(async (user) => { // Adicionado async
+        if (user) {
+            currentUser = user;
+            currentUID = user.uid;
+            console.log("PERFIL: Usuário está logado (onAuthStateChanged):", currentUID);
+            
+            try {
+                const userDoc = await db.collection('users').doc(currentUID).get();
+                const userData = userDoc.exists ? userDoc.data() : {};
+
+                if (checkForLocalData() && userData.localDataMigrated !== true) {
+                    console.warn("PERFIL: Usuário logado, dados locais existem, e 'localDataMigrated' não é true.");
+                    const querMigrar = confirm("Encontramos dados de estudo salvos localmente neste navegador que parecem não estar sincronizados com sua conta online. Deseja ir para a página de login para tentar sincronizá-los agora?");
+                    
+                    if (querMigrar) {
+                        alert("Você será redirecionado para a página de autenticação para concluir a sincronização. Por favor, faça login novamente lá.");
+                        // Adiciona um delay para o alert ser visto antes do redirect
+                        setTimeout(() => {
+                            window.location.href = `login.html?migrate=true&uid=${currentUID}`;
+                        }, 500);
+                        return; // Interrompe a execução adicional de loadProfileData aqui, pois haverá redirecionamento
+                    } else {
+                        console.log("PERFIL: Usuário logado optou por NÃO migrar dados locais agora. Marcando para não perguntar novamente.");
+                        await db.collection('users').doc(currentUID).set({ 
+                            localDataMigrated: true, 
+                            migrationDeclinedTimestamp: firebase.firestore.FieldValue.serverTimestamp() 
+                        }, { merge: true });
+                        console.log("PERFIL: Marcado no Firestore para não perguntar sobre migração local novamente.");
+                        loadProfileData(); // Carrega o perfil do Firestore (sem os dados locais não migrados)
+                    }
+                } else {
+                    // Condição normal: ou não há dados locais, ou já foram migrados/decisão tomada.
+                    loadProfileData(); 
+                }
+            } catch (error) {
+                console.error("PERFIL: Erro crítico ao buscar perfil do Firestore em onAuthStateChanged:", error);
+                loadProfileData(); // Tenta carregar o que puder, mesmo com erro no estado de migração
+            }
+            if(editProfileBtn) editProfileBtn.disabled = false;
+
+        } else { // Usuário NÃO está logado no Firebase
+            currentUser = null;
+            currentUID = null;
+            console.log("PERFIL: Nenhum usuário Firebase logado.");
+            if (checkForLocalData()) {
+                console.log("PERFIL: Usuário não logado no Firebase, mas dados locais existem. Mostrando modal de sincronização.");
+                if (modalSincronizacaoNecessariaOverlay) {
+                    modalSincronizacaoNecessariaOverlay.classList.add('show');
+                }
+            } else {
+                console.log("PERFIL: Nenhum usuário Firebase e nenhum dado local. Redirecionando para login.html");
+                if(profileErrorMessageDiv) {
+                     profileErrorMessageDiv.textContent = "Você não está logado. Redirecionando...";
+                     profileErrorMessageDiv.className = 'info';
+                     profileErrorMessageDiv.style.display = 'block';
+                }
+                setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+            }
+            // Limpa UI e desabilita edição
+            if(profilePicElement) profilePicElement.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
+            if(profileNameElement) profileNameElement.textContent = "N/A";
+            if(profileUsernameElement) profileUsernameElement.textContent = "@N/A";
+            if(profileDobElement) profileDobElement.textContent = "N/A";
+            if(editProfileBtn) editProfileBtn.disabled = true;
+        }
+    });
+
+    // Listeners para o modal de sincronização (se o usuário não está logado no Firebase)
+    if (modalSincronizacaoNecessariaOverlay && modalBotaoIrParaLoginSinc && modalBotaoContinuarSemSincronizar) {
+        modalBotaoIrParaLoginSinc.addEventListener('click', () => {
+            window.location.href = 'login.html?migrate=true';
+        });
+        modalBotaoContinuarSemSincronizar.addEventListener('click', () => {
+            modalSincronizacaoNecessariaOverlay.classList.remove('show');
+            console.log("PERFIL: Usuário optou por continuar sem sincronizar por enquanto (estava deslogado do Firebase).");
+            alert("Seus dados não estão salvos na nuvem e podem ser perdidos. Para proteger seu progresso, recomendamos criar uma conta ou fazer login.");
+            if(profileErrorMessageDiv) {
+                profileErrorMessageDiv.textContent = "Você está usando o modo offline. Seu progresso não será salvo na nuvem.";
+                profileErrorMessageDiv.className = 'info'; // Pode ser uma classe 'warning'
+                profileErrorMessageDiv.style.display = 'block';
+            }
+            if(editProfileBtn) editProfileBtn.disabled = true;
+        });
+    }
+    
+    // ... (Restante do seu perfil.js: funções de edição de perfil, modais, reset de dados, etc. - como na sua última versão completa)
+    // As funções openEditProfileModal, closeEditProfileModal, listeners de edição, reset, etc. permanecem as mesmas.
+    // Certifique-se de que as funções de validação de data e máscara também estão aqui.
+
+    // Lógica do Botão Sair (Logout Firebase)
     if (logoutButton) {
         logoutButton.addEventListener('click', () => {
             console.log("PERFIL: Botão Sair clicado. Fazendo logout do Firebase...");
@@ -194,74 +281,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-    } else { console.warn("Botão de logout não encontrado."); }
-
-    function openEditProfileModal() {
-        if (!currentUID) { alert("Usuário não autenticado."); return; }
-        if(!modalEditOverlay || !editProfileNameInput || !editProfileUsernameInput || !editProfileDobInput || !editProfilePicPreview || !editAgeDisplay || !editProfileStatus) {
-             console.error("Elementos do modal de edição não encontrados."); return;
-        }
-
-        db.collection('users').doc(currentUID).get().then(doc => {
-            if (doc.exists) {
-                const userData = doc.data();
-                editProfileNameInput.value = userData.displayName || '';
-                editProfileUsernameInput.value = userData.username || '';
-                editProfileUsernameInput.disabled = true; 
-                editProfileDobInput.value = userData.dob || '';
-
-                if(editAgeDisplay) editAgeDisplay.textContent = '';
-                if (userData.dob) {
-                    const birthDateObj = parseAndValidateDdMmYyyy(userData.dob);
-                    if (birthDateObj) {
-                        const { age, error } = calculateAgeFromDate(birthDateObj);
-                        if (!error && age !== null && editAgeDisplay) editAgeDisplay.textContent = `Idade: ${age} ${age === 1 ? 'ano' : 'anos'}`;
-                    }
-                }
-                if(editAgeDisplay) editAgeDisplay.className = '';
-
-                const defaultPic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
-                if(editProfilePicPreview) editProfilePicPreview.src = userData.profilePicBase64 || userData.photoURL || defaultPic;
-                newProfilePicBase64 = null;
-                if(editProfilePicInput) editProfilePicInput.value = '';
-                if(editProfileStatus) {
-                    editProfileStatus.textContent = '';
-                    editProfileStatus.style.display = 'none';
-                }
-                if(modalEditOverlay) modalEditOverlay.classList.add('show');
-                console.log("PERFIL: Modal de edição aberto com dados do Firestore.");
-            } else {
-                // Se o documento não existe, ainda pode abrir o modal para criar os dados
-                console.warn("PERFIL: Documento do usuário não existe. Abrindo modal para criação de perfil.");
-                editProfileNameInput.value = auth.currentUser ? auth.currentUser.displayName || '' : '';
-                editProfileUsernameInput.value = ''; // Usuário não tem @username ainda
-                editProfileUsernameInput.disabled = true; // Manter desabilitado pois @username é definido no cadastro
-                editProfileDobInput.value = '';
-                if(editAgeDisplay) editAgeDisplay.textContent = '';
-                const defaultPic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
-                if(editProfilePicPreview) editProfilePicPreview.src = (auth.currentUser ? auth.currentUser.photoURL : '') || defaultPic;
-                newProfilePicBase64 = null;
-                if(editProfilePicInput) editProfilePicInput.value = '';
-                if(editProfileStatus) {
-                    editProfileStatus.textContent = 'Complete seu perfil.';
-                    editProfileStatus.className = 'info'; // Usar uma classe info para esta mensagem
-                    editProfileStatus.style.display = 'block';
-                }
-                if(modalEditOverlay) modalEditOverlay.classList.add('show');
-            }
-        }).catch(error => {
-            console.error("PERFIL: Erro ao carregar dados para edição:", error);
-            alert("Erro ao carregar dados para edição. Tente novamente.");
-        });
     }
 
-    function closeEditProfileModal() {
-        if (modalEditOverlay) modalEditOverlay.classList.remove('show');
-    }
-
+    // Lógica do Modal de Edição de Perfil (Salvar no Firestore)
     if (editProfileBtn) editProfileBtn.addEventListener('click', openEditProfileModal);
-    else { console.warn("Botão 'Editar Perfil' não encontrado."); }
-
+    
     if (cancelProfileEditBtn) cancelProfileEditBtn.addEventListener('click', closeEditProfileModal);
     
     if (modalEditOverlay) {
@@ -306,7 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 reader.onload = (e) => {
                     newProfilePicBase64 = e.target.result; 
                     if(editProfilePicPreview) editProfilePicPreview.src = newProfilePicBase64;
-                    console.log("Nova imagem selecionada para preview.");
                 }
                 reader.onerror = (e) => {
                     console.error("Erro ao ler arquivo:", e); 
@@ -319,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (editProfilePicInput) editProfilePicInput.value = '';
             }
         });
-    } else { console.warn("Elementos de upload/preview de imagem não encontrados no modal."); }
+    }
 
     if (editProfileForm && saveProfileChangesBtn && editProfileStatus) {
         editProfileForm.addEventListener('submit', (event) => {
@@ -328,9 +351,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 editProfileStatus.textContent = "Erro: Usuário não autenticado.";
                 editProfileStatus.style.display = 'block'; return;
             }
-            console.log("PERFIL: Tentando salvar alterações do perfil...");
             editProfileStatus.textContent = 'Salvando...'; 
-            editProfileStatus.className = 'info'; // Classe para 'salvando'
+            editProfileStatus.className = 'info'; 
             editProfileStatus.style.display = 'block';
             saveProfileChangesBtn.disabled = true; saveProfileChangesBtn.textContent = 'Salvando...';
 
@@ -357,22 +379,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 dob: newDob,
                 profileLastUpdated: firebase.firestore.FieldValue.serverTimestamp()
             };
-
             if (newProfilePicBase64) {
                 dataToUpdate.profilePicBase64 = newProfilePicBase64;
-                console.log("PERFIL: Salvando com nova foto de perfil (Base64).");
             }
 
-            db.collection('users').doc(currentUID).set(dataToUpdate, { merge: true }) // Usar set com merge para criar se não existir
+            db.collection('users').doc(currentUID).set(dataToUpdate, { merge: true })
                 .then(() => {
-                    console.log("PERFIL: Perfil atualizado/criado com sucesso no Firestore.");
-                    if (currentUser && newName !== currentUser.displayName) { // Atualiza o nome no Auth também
+                    if (currentUser && newName !== currentUser.displayName) {
                          currentUser.updateProfile({ displayName: newName })
                             .then(() => console.log("PERFIL: DisplayName do Firebase Auth atualizado."))
-                            .catch(err => console.error("PERFIL: Erro ao atualizar displayName do Firebase Auth:", err));
+                            .catch(err => console.error("PERFIL: Erro ao atualizar displayName Auth:", err));
                     }
-                    // Se você usar Firebase Storage para photoURL, atualizaria auth.currentUser.photoURL aqui também.
-
                     loadProfileData(); 
                     closeEditProfileModal();
                     if (profileErrorMessageDiv) {
@@ -389,12 +406,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 })
                 .catch((error) => {
-                    console.error("PERFIL-ERROR: Erro ao salvar alterações no Firestore:", error);
+                    console.error("PERFIL-ERROR: Erro ao salvar no Firestore:", error);
                     editProfileStatus.textContent = "Erro ao salvar. Tente novamente.";
                     if (error.code === 'permission-denied') {
-                        editProfileStatus.textContent = "Permissão negada. Verifique as regras de segurança.";
+                        editProfileStatus.textContent = "Permissão negada.";
                     }
-                    editProfileStatus.className = 'error'; // Garante que a classe error seja aplicada
+                    editProfileStatus.className = 'error'; 
                     editProfileStatus.style.display = 'block';
                 })
                 .finally(() => {
@@ -402,167 +419,57 @@ document.addEventListener('DOMContentLoaded', () => {
                     saveProfileChangesBtn.textContent = 'Salvar Alterações';
                 });
         });
-    } else { console.warn("Formulário de edição ou botão de salvar não encontrado."); }
+    }
 
+    // Lógica do Reset de Dados Opcionais
     function resetOptionalData() {
-        console.warn("PERFIL: Iniciando reset de dados opcionais...");
-        if(!resetStatusEl) { console.error("Elemento de status do reset não encontrado."); return; }
+        if(!resetStatusEl) { console.error("Elemento reset-status não encontrado."); return; }
         if(!currentUID) { 
             resetStatusEl.textContent = 'Usuário não logado.'; resetStatusEl.className = 'error'; 
             if (resetStatusEl) resetStatusEl.style.display = 'inline-block'; return;
         }
-
         resetStatusEl.textContent = 'Processando reset...';
         resetStatusEl.className = 'info'; 
         if (resetStatusEl) resetStatusEl.style.display = 'inline-block';
 
         const firestoreFieldsToReset = {
-            disciplinas: [],
-            studyPurpose: '',
+            disciplinas: [], studyPurpose: '',
             profileLastUpdated: firebase.firestore.FieldValue.serverTimestamp()
+            // Adicione outros campos do Firestore para resetar aqui, se necessário
         };
 
         db.collection('users').doc(currentUID).update(firestoreFieldsToReset)
             .then(() => {
-                console.log("PERFIL: Campos do Firestore (disciplinas, studyPurpose) resetados.");
-                const localStorageKeysToRemove = ['cronograma', 'sessoesEstudo', 'estudaAiConfig', 'minhasAnotacoes', 'estudaAiSummaries'];
-                let removedLocalStorageCount = 0;
-                localStorageKeysToRemove.forEach(key => {
-                    if (localStorage.getItem(key) !== null) {
-                        localStorage.removeItem(key);
-                        removedLocalStorageCount++;
-                    }
-                });
-                console.log(`${removedLocalStorageCount} chaves do localStorage resetadas.`);
-                if(resetStatusEl) {
-                    resetStatusEl.textContent = 'Dados de progresso resetados com sucesso!';
-                    resetStatusEl.className = 'success';
-                }
-                loadProfileData();
+                console.log("PERFIL: Campos (disciplinas, studyPurpose) do Firestore resetados.");
+                const localStorageKeysToRemove = ['cronograma', 'sessoesEstudo', /* Adicione outras chaves locais aqui */];
+                localStorageKeysToRemove.forEach(key => { if (localStorage.getItem(key)) localStorage.removeItem(key); });
+                if(resetStatusEl) { resetStatusEl.textContent = 'Dados de progresso resetados!'; resetStatusEl.className = 'success';}
+                loadProfileData(); 
             })
             .catch(error => {
                 console.error("PERFIL-ERROR: Erro ao resetar dados no Firestore:", error);
-                if(resetStatusEl) {
-                    resetStatusEl.textContent = 'Ocorreu um erro ao resetar os dados no servidor.';
-                    resetStatusEl.className = 'error';
-                }
+                if(resetStatusEl) { resetStatusEl.textContent = 'Erro ao resetar dados no servidor.'; resetStatusEl.className = 'error';}
             })
             .finally(() => {
                 setTimeout(() => {
-                    if(resetStatusEl) {
-                        resetStatusEl.textContent = '';
-                        resetStatusEl.className = '';
-                        resetStatusEl.style.display = 'none';
-                    }
+                    if(resetStatusEl) { resetStatusEl.textContent = ''; resetStatusEl.className = ''; resetStatusEl.style.display = 'none';}
                 }, 5000);
             });
     }
 
-    function showResetConfirmationModal() { if(modalResetOverlay) modalResetOverlay.classList.add('show'); }
-    function hideResetConfirmationModal() { if(modalResetOverlay) modalResetOverlay.classList.remove('show');}
-
-    if (resetDataBtn) resetDataBtn.addEventListener('click', showResetConfirmationModal);
-    else { console.warn("Botão 'Resetar Dados' não encontrado."); }
-
-    if (modalCancelarResetBtn) modalCancelarResetBtn.addEventListener('click', hideResetConfirmationModal);
+    if (resetDataBtn) resetDataBtn.addEventListener('click', () => {if(modalResetOverlay) modalResetOverlay.classList.add('show');});
+    if (modalCancelarResetBtn) modalCancelarResetBtn.addEventListener('click', () => {if(modalResetOverlay) modalResetOverlay.classList.remove('show');});
     if (modalConfirmarResetBtn) {
         modalConfirmarResetBtn.addEventListener('click', () => {
-            hideResetConfirmationModal(); 
+            if(modalResetOverlay) modalResetOverlay.classList.remove('show'); 
             resetOptionalData();      
         });
     }
     if (modalResetOverlay) {
         modalResetOverlay.addEventListener('click', (event) => {
-            if (event.target === modalResetOverlay) hideResetConfirmationModal();
+            if (event.target === modalResetOverlay) {if(modalResetOverlay) modalResetOverlay.classList.remove('show');}
         });
     }
     
-    if (modalSincronizacaoNecessariaOverlay && modalBotaoIrParaLoginSinc && modalBotaoContinuarSemSincronizar) {
-        modalBotaoIrParaLoginSinc.addEventListener('click', () => {
-            window.location.href = 'login.html?migrate=true';
-        });
-        modalBotaoContinuarSemSincronizar.addEventListener('click', () => {
-            modalSincronizacaoNecessariaOverlay.classList.remove('show');
-            console.log("PERFIL: Usuário optou por continuar sem sincronizar por enquanto.");
-            alert("Seus dados não serão salvos na nuvem e podem ser perdidos. Considere criar uma conta ou fazer login para uma melhor experiência e para salvar seu progresso.");
-            // Aqui você poderia tentar carregar dados do localStorage para exibição,
-            // mas a página atualmente está configurada para priorizar Firebase.
-            // Se fizer isso, certifique-se que as funções de edição saibam que não há UID para salvar no Firebase.
-            // Por agora, apenas fecha o modal. A página mostrará "N/A" ou "Complete seu perfil".
-            if(profileErrorMessageDiv) {
-                profileErrorMessageDiv.textContent = "Você está usando o modo offline. Seu progresso não será salvo na nuvem.";
-                profileErrorMessageDiv.className = 'info';
-                profileErrorMessageDiv.style.display = 'block';
-            }
-             if(editProfileBtn) editProfileBtn.disabled = true; // Desabilita edição se não logado
-        });
-         modalSincronizacaoNecessariaOverlay.addEventListener('click', (event) => {
-            if (event.target === modalSincronizacaoNecessariaOverlay) {
-                 // Não fecha ao clicar fora, força uma decisão nos botões
-            }
-        });
-    }
-
-    // --- Verificação Inicial de Autenticação ---
-    // Movida para o topo do script para definir currentUser e currentUID mais cedo
-    // e então chamar a lógica de exibição do modal de sincronização ou loadProfileData.
-    auth.onAuthStateChanged(user => {
-        if (user) {
-            currentUser = user;
-            currentUID = user.uid;
-            console.log("PERFIL: Usuário está logado (onAuthStateChanged):", currentUID);
-            
-            // Lógica para verificar se precisa migrar dados para um usuário JÁ LOGADO NO FIREBASE
-            // Isso seria para o caso de um usuário Firebase existente logar em um dispositivo
-            // que tem dados antigos no localStorage.
-            db.collection('users').doc(currentUID).get().then(doc => {
-                const userData = doc.exists ? doc.data() : {};
-                if (checkForLocalData() && userData.localDataMigrated !== true) {
-                    // Usuário logado, tem dados locais, e esses dados ainda não foram formalmente migrados/ignorados
-                    if (confirm("Encontramos dados de estudo salvos localmente neste navegador. Deseja tentar sincronizá-los com sua conta online?")) {
-                        // A função migrateLocalDataToFirestore idealmente seria importada ou definida aqui
-                        // e chamada. Ela leria do localStorage e daria set/update no Firestore.
-                        // Por agora, vamos apenas logar e marcar como 'migrado' para não perguntar de novo.
-                        console.log("PERFIL: Usuário logado optou por (simular) migração de dados locais.");
-                        // db.collection('users').doc(currentUID).set({ localDataMigrated: true, profileLastUpdated: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
-                        // ** A migração real aconteceria em auth.js se o usuário for para lá com ?migrate=true
-                        // ** Esta parte é um placeholder para uma lógica de migração mais sofisticada para usuários já logados no Firebase.
-                        // ** Por enquanto, vamos deixar o fluxo principal de migração ser iniciado pelo redirect para login.html?migrate=true
-                        alert("Para sincronizar, seus dados locais serão processados na próxima vez que você fizer login vindo desta sugestão. Se desejar, pode fazer logout e login novamente agora.");
-                        // Para uma migração imediata, precisaríamos da função migrateLocalDataToFirestore aqui.
-                    } else {
-                        console.log("PERFIL: Usuário logado optou por NÃO migrar dados locais agora.");
-                        // db.collection('users').doc(currentUID).set({ localDataMigrated: true, askedToMigrate: true }, { merge: true }); // Marcar para não perguntar de novo
-                    }
-                }
-                loadProfileData(); // Carrega os dados do perfil do Firestore
-            });
-            if(editProfileBtn) editProfileBtn.disabled = false;
-        } else {
-            currentUser = null;
-            currentUID = null;
-            console.log("PERFIL: Nenhum usuário Firebase logado.");
-            if (checkForLocalData()) {
-                console.log("PERFIL: Usuário não logado no Firebase, mas dados locais existem. Mostrando modal de sincronização.");
-                if (modalSincronizacaoNecessariaOverlay) {
-                    modalSincronizacaoNecessariaOverlay.classList.add('show');
-                }
-            } else {
-                console.log("PERFIL: Nenhum usuário Firebase e nenhum dado local. Redirecionando para login.html");
-                if(profileErrorMessageDiv) {
-                     profileErrorMessageDiv.textContent = "Você não está logado. Redirecionando...";
-                     profileErrorMessageDiv.className = 'info'; // Usar info para redirecionamento
-                     profileErrorMessageDiv.style.display = 'block';
-                }
-                setTimeout(() => { window.location.href = 'login.html'; }, 1500);
-            }
-            // Limpa UI e desabilita edição
-            if(profilePicElement) profilePicElement.src = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
-            if(profileNameElement) profileNameElement.textContent = "N/A";
-            if(profileUsernameElement) profileUsernameElement.textContent = "@N/A";
-            if(profileDobElement) profileDobElement.textContent = "N/A";
-            if(editProfileBtn) editProfileBtn.disabled = true;
-        }
-    });
-    console.log("Script perfil.js: Todos os listeners configurados e onAuthStateChanged pronto.");
+    console.log("Script perfil.js: Configuração finalizada, aguardando estado de autenticação.");
 });
