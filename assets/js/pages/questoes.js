@@ -369,262 +369,147 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(`Resolução exibida para ${questionId}`);
     }
 
-    async function handleGenerateQuestions() {
-        hidePopup();
-        if (currentSessionStats.id) {
-             console.log("Gerando novas questões, finalizando sessão anterior...");
-             finalizeSession(false);
-        }
+  async function handleGenerateQuestions() {
+    hidePopup();
 
-        const assunto = assuntoInput.value.trim();
-        const bibliografia = bibliografiaInput.value.trim();
-        const disciplinaSelecionada = disciplinaSelect.value;
-        const numQuestoes = parseInt(numQuestoesInput.value, 10);
-        const tipoQuestao = tipoQuestaoSelect.value;
-        const nivelQuestao = nivelQuestaoSelect.value;
+    if (currentSessionStats.id) finalizeSession(false);
 
-        if (!assunto) { assuntoInput.focus(); return showError("Por favor, informe o Assunto Principal."); }
-        if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) { numQuestoesInput.focus(); return showError("Número de questões inválido (1-20)."); }
-        if (!nivelQuestao) { nivelQuestaoSelect.focus(); return showError("Por favor, selecione o Nível das questões."); }
-        if (!GEMINI_MODEL) { return showError("Erro Crítico: Modelo da API Gemini não configurado."); }
+    const assunto = assuntoInput.value.trim();
+    const bibliografia = bibliografiaInput.value.trim();
+    const disciplinaSelecionada = disciplinaSelect.value;
+    const numQuestoes = parseInt(numQuestoesInput.value, 10);
+    const tipoQuestao = tipoQuestaoSelect.value;
+    const nivelQuestao = nivelQuestaoSelect.value;
 
-        showLoading(true);
-        clearOutput();
-        
-        let fetchedApiKey;
-        try {
-            const apiKeyResponse = await fetch('/.netlify/functions/get-api-key');
-            if (!apiKeyResponse.ok) {
-                let errorMsg = `Falha ao buscar a API Key: ${apiKeyResponse.status}`;
-                try {
-                    const errorData = await apiKeyResponse.json();
-                    errorMsg = errorData.error || errorMsg;
-                } catch (e) { /* Ignore parsing error, use status code */ }
-                throw new Error(errorMsg);
-            }
-            const apiKeyData = await apiKeyResponse.json();
-            fetchedApiKey = apiKeyData.apiKey;
-            if (!fetchedApiKey) {
-                throw new Error('API Key não recebida da função Netlify ou está vazia.');
-            }
-            localStorage.setItem(TEMP_API_KEY_STORAGE_ITEM, fetchedApiKey);
-        } catch (error) {
-            console.error("Erro ao obter a API Key da função Netlify:", error);
-            showError(`Erro ao obter a API Key: ${error.message}`);
-            localStorage.removeItem(TEMP_API_KEY_STORAGE_ITEM);
-            showLoading(false);
-            return;
-        }
+    if (!assunto) return assuntoInput.focus(), showError("Por favor, informe o Assunto Principal.");
+    if (isNaN(numQuestoes) || numQuestoes < 1 || numQuestoes > 20) return numQuestoesInput.focus(), showError("Número de questões inválido (1–20).");
+    if (!nivelQuestao) return nivelQuestaoSelect.focus(), showError("Por favor, selecione o Nível das questões.");
 
-        const disciplinaParaSessao = disciplinaSelecionada || "Geral";
-        console.log(`Iniciando geração com Gemini... Assunto: ${assunto}, Nível: ${nivelQuestao}, Modelo: ${GEMINI_MODEL}`);
-        
-        const currentYear = new Date().getFullYear();
-        let prompt = `Você é um assistente especialista na criação de questões para concursos públicos e exames de alta complexidade.\n`;
-        prompt += `Sua tarefa é gerar EXATAMENTE ${numQuestoes} questões sobre o Assunto:  "${assunto}".\n`;
-        if (disciplinaSelecionada) {
-            prompt += `Considere o contexto específico da Disciplina: "${disciplinaSelecionada}".\n`;
-        }
-        prompt += `O Nível de Dificuldade das questões deve ser ESTRITAMENTE: ${nivelQuestao.toUpperCase()}. A complexidade, o vocabulário técnico e os conceitos abordados devem ser perfeitamente consistentes com este nível.\n`;
-        if (bibliografia) {
-            prompt += `Utilize a seguinte Bibliografia como principal fonte de inspiração e referência, se aplicável e relevante ao assunto: "${bibliografia}". As questões devem refletir o conteúdo e o estilo encontrados nesta bibliografia.\n`;
-        }
-        prompt += `Tipo de questão solicitada: ${tipoQuestao === 'multipla_escolha' ? 'Múltipla Escolha com quatro alternativas (A, B, C, D)' : tipoQuestao === 'verdadeiro_falso' ? 'Verdadeiro/Falso (V/F)' : 'Dissertativa Curta'}.\n`;
-        prompt += `REQUISITOS CRÍTICOS PARA QUALIDADE E FORMATO:\n`;
-        prompt += `1. PRECISÃO E RELEVÂNCIA: As questões devem ser factualmente corretas, precisas, claras, sem ambiguidades e altamente relevantes para o assunto, disciplina e nível especificados. O conteúdo deve ser rigoroso e adequado para preparação para concursos públicos.\n`;
-        prompt += `2. METADADOS OBRIGATÓRIOS: Para CADA questão, IMEDIATAMENTE após o marcador [Q] e ANTES de qualquer outro marcador de opção ou resposta, inclua:\n`;
-        prompt += `   - Fonte/Contexto: Use o formato "[META_SOURCE] Texto da fonte ou contexto". Ex: "Disciplina: ${disciplinaParaSessao}, Assunto: ${assunto}", ou o nome de um edital/banca, se a bibliografia sugerir.\n`;
-        prompt += `   - Ano de Referência: Use o formato "[META_YEAR] Ano". Priorize ${currentYear} ou um ano relevante se a bibliografia ou o assunto indicarem (ex: ano de uma lei específica).\n`;
-        prompt += `3. FORMATAÇÃO ESTRITA DE SAÍDA (NÃO DESVIE DESTE FORMATO):\n`;
-        prompt += `   - Separe CADA questão completa (enunciado, metadados, imagem opcional, opções/gabarito, resposta correta e resolução detalhada) usando EXCLUSIVAMENTE "[SEP]" como separador. Nenhum texto ou caractere adicional entre blocos de questão.\n`;
-        prompt += `   - DENTRO DE CADA BLOCO DE QUESTÃO:\n`;
-        prompt += `     - Enunciado: OBRIGATORIAMENTE inicie com "[Q] ". Deve ser claro e completo.\n`;
-        prompt += `     - Imagem (Opcional e Raro): Se ABSOLUTAMENTE NECESSÁRIO para a compreensão da questão, use "[IMG] URL_válida_da_imagem_ou_descrição_extremamente_detalhada_da_imagem". Use com moderação.\n`;
-        prompt += `     - Alternativas/Gabarito:\n`;
-        if (tipoQuestao === 'multipla_escolha') {
-            prompt += `       - Para CADA uma das QUATRO alternativas, use o formato: "[A] Texto da alternativa A", "[B] Texto da alternativa B", etc. As alternativas devem ser plausíveis, mas apenas UMA deve ser inequivocamente correta (se a resposta envolver calculos, independente da disciplina ou assunto, calcule inequivocamente).\n`;
-            prompt += `       - Resposta Correta: Indique a resposta usando "[R] " seguido APENAS pela LETRA maiúscula da alternativa correta (A, B, C ou D).\n`;
-        } else if (tipoQuestao === 'verdadeiro_falso') {
-            prompt += `       - A afirmação estará no enunciado [Q].\n`;
-            prompt += `       - Use "[V]" para a opção Verdadeiro (pode deixar o texto da opção vazio ou preencher com "Verdadeiro").\n`;
-            prompt += `       - Use "[F]" para a opção Falso (pode deixar o texto da opção vazio ou preencher com "Falso").\n`;
-            prompt += `       - Resposta Correta: Indique a resposta usando "[R] " seguido APENAS por "V" ou "F".\n`;
-        } else {
-            prompt += `       - Gabarito Esperado: Forneça uma resposta modelo concisa e direta usando "[G] Texto do gabarito esperado.".\n`;
-        }
-        prompt += `     - Resolução Detalhada ([RES]): OBRIGATORIAMENTE forneça uma resolução detalhada e didática usando "[RES] Texto da resolução.". Esta resolução deve explicar claramente por que a resposta correta é correta e, para múltipla escolha, por que as demais são incorretas. Para dissertativas, deve detalhar os pontos chave da resposta esperada.\n`;
-        prompt += `4. FOCO NO CONTEÚDO: Gere APENAS o texto das questões conforme o formato. NÃO inclua introduções, despedidas, comentários, numeração automática fora do enunciado, ou qualquer texto que não faça parte das questões formatadas.\n`;
-        prompt += `EXEMPLO DE QUESTÃO DE MÚLTIPLA ESCOLHA (NÍVEL MÉDIO):\n`;
-        prompt += `[Q] De acordo com a Constituição Federal de 1988, qual princípio da administração pública NÃO está expressamente listado no caput do Art. 37?\n`;
-        prompt += `[META_SOURCE] Direito Constitucional, Art. 37 CF/88\n`;
-        prompt += `[META_YEAR] ${currentYear}\n`;
-        prompt += `[A] Legalidade\n`;
-        prompt += `[B] Eficiência\n`;
-        prompt += `[C] Razoabilidade\n`;
-        prompt += `[D] Publicidade\n`;
-        prompt += `[R] C\n`;
-        prompt += `[RES] O caput do Art. 37 da Constituição Federal de 1988 estabelece que a administração pública direta e indireta de qualquer dos Poderes da União, dos Estados, do Distrito Federal e dos Municípios obedecerá aos princípios de legalidade, impessoalidade, moralidade, publicidade e eficiência (LIMPE). O princípio da Razoabilidade, embora aplicado na administração pública, não está expressamente listado no caput do Art. 37, sendo uma construção doutrinária e jurisprudencial.\n`;
-        prompt += `[SEP]\n`;
-        prompt += `Certifique-se de que TODAS as questões solicitadas sejam geradas, sigam TODOS os requisitos e o formato ESTRITO. A qualidade e precisão são cruciais.\n`;
+    showLoading(true);
+    clearOutput();
 
-        try {
-            const apiKeyForGeminiCall = localStorage.getItem(TEMP_API_KEY_STORAGE_ITEM);
-            if (!apiKeyForGeminiCall) {
-                 throw new Error("API Key não encontrada no localStorage para a chamada Gemini. Isso não deveria acontecer se a busca inicial foi bem-sucedida.");
-            }
-
-            const requestBody = {
-                contents: [{
-                    parts: [{ text: prompt }]
-                }],
-                generationConfig: {
-                    temperature: 0.6,
-                    maxOutputTokens: 800 * numQuestoes + 500,
-                },
-            };
-
-            const fullApiUrl = `${GEMINI_API_URL_BASE}${GEMINI_MODEL}:generateContent?key=${apiKeyForGeminiCall}`;
-
-            const response = await fetch(fullApiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(requestBody)
-            });
-
-             if (!response.ok) {
-                 let errorBodyText = await response.text();
-                 console.error("Raw Gemini API Error Response:", errorBodyText);
-                 let errorBody = {};
-                 try { errorBody = JSON.parse(errorBodyText); } catch (e) { console.error("Erro ao parsear erro JSON da Gemini:", e); }
-                 const detailMessage = errorBody?.error?.message || `Erro HTTP ${response.status}`;
-                 if (response.status === 400 && detailMessage.includes("API key not valid")) {
-                     throw new Error("Falha na API Gemini: A Chave da API fornecida não é válida.");
-                 } else if (response.status === 403) {
-                     throw new Error(`Falha na API Gemini: Acesso proibido. Verifique as permissões da chave. ${detailMessage}`);
-                 } else if (response.status === 429) {
-                     throw new Error(`Falha na API Gemini: Limite de requisições atingido. Tente novamente mais tarde. ${detailMessage}`);
-                 } else if (errorBody?.error?.status === "INVALID_ARGUMENT" && errorBody?.error?.message?.includes("resource name")){
-                     throw new Error(`Falha na API Gemini: Modelo "${GEMINI_MODEL}" inválido ou não encontrado. Verifique o nome do modelo. ${detailMessage}`);
-                 }
-                 else {
-                     throw new Error(`Falha na comunicação com a API Gemini: ${detailMessage}`);
-                 }
-             }
-
-            const data = await response.json();
-            console.log("Resposta completa da API Gemini:", data);
-
-            if (data.error) {
-                console.error("Erro retornado pela API Gemini:", data.error);
-                const errorMessage = data.error.message || data.error.status || 'Erro desconhecido retornado pela API Gemini.';
-                showError(`Erro da API Gemini: ${errorMessage}`);
-                resetSessionState();
-                return;
-            }
-
-            let rawTextFromAPI = '';
-            if (data.candidates && data.candidates.length > 0 &&
-                data.candidates[0].content && data.candidates[0].content.parts &&
-                data.candidates[0].content.parts.length > 0 && data.candidates[0].content.parts[0].text) {
-                rawTextFromAPI = data.candidates[0].content.parts[0].text;
-            } else if (data.promptFeedback && data.promptFeedback.blockReason) {
-                 console.error("Prompt bloqueado pela API Gemini:", data.promptFeedback);
-                 const blockReason = data.promptFeedback.blockReason;
-                 const safetyRatings = data.promptFeedback.safetyRatings.map(r => `${r.category}: ${r.probability}`).join(', ');
-                 showError(`Erro: Seu prompt foi bloqueado pela API Gemini devido a: ${blockReason}. Detalhes: ${safetyRatings}. Tente reformular o assunto.`);
-                 resetSessionState();
-                 return;
-            }
-            else {
-                console.error("Resposta inesperada da API Gemini (sem conteúdo válido):", data);
-                showError("Erro: A API Gemini retornou uma resposta vazia ou em formato inesperado.");
-                resetSessionState();
-                return;
-            }
-
-            console.log("Texto cru extraído da API Gemini:", rawTextFromAPI);
-            const questionsArray = parseGeneratedText(rawTextFromAPI, tipoQuestao);
-            displayParsedQuestions(questionsArray);
-
-            const validQuestions = questionsArray.filter(q => q.type !== 'error');
-            const totalValidQuestions = validQuestions.length;
-            const errorQuestionsCount = questionsArray.length - totalValidQuestions;
-
-            if (totalValidQuestions > 0) {
-                currentSessionStats = { id: `sess-${Date.now()}`, totalQuestions: totalValidQuestions, answeredCount: 0, correctCount: 0, disciplina: disciplinaParaSessao, startTime: Date.now() };
-                console.log("Nova sessão iniciada:", currentSessionStats);
-
-                if (window.timerPopupAPI && typeof window.timerPopupAPI.startSession === 'function') {
-                     try { console.log(`Iniciando sessão no Timer Popup ID: ${currentSessionStats.id}`); window.timerPopupAPI.startSession( currentSessionStats.totalQuestions, currentSessionStats.disciplina ); console.log("handleGenerateQuestions SUCCESS: Called startSession."); } catch (e) { console.error("Erro ao chamar startSession:", e); }
-                     finalizeButton.style.display = 'inline-flex';
-                     let successMsg = `Geradas ${totalValidQuestions} questões com Gemini! Acompanhe a sessão no painel abaixo.`;
-                     if (totalValidQuestions < numQuestoes) {
-                         successMsg = `Geradas ${totalValidQuestions} de ${numQuestoes} solicitadas com Gemini. Acompanhe a sessão no painel abaixo!`;
-                     }
-                     if (errorQuestionsCount > 0) {
-                         successMsg += ` (${errorQuestionsCount} questão(ões) tiveram erro no processamento.)`;
-                         showStatus(successMsg, 'warning');
-                     } else {
-                         showStatus(successMsg, 'success');
-                     }
-
-                } else { console.warn('API do Timer Popup (startSession) não encontrada.'); finalizeButton.style.display = 'inline-flex'; showStatus('Questões geradas com Gemini, mas o timer externo não pôde ser iniciado.', 'warning'); }
-
-                if (generatorBlock && !generatorBlock.classList.contains('minimizado')) {
-                    console.log("Minimizando bloco do gerador...");
-                    const minimizeButton = generatorBlock.querySelector('.botao-minimizar');
-                     if (minimizeButton) {
-                         minimizeButton.click();
-                     } else {
-                         generatorBlock.classList.add('minimizado');
-                         const toggleIcon = generatorBlock.querySelector('.botao-minimizar i');
-                         if (toggleIcon) {
-                             toggleIcon.classList.remove('fa-minus');
-                             toggleIcon.classList.add('fa-plus');
-                             if (generatorBlock.querySelector('.botao-minimizar')) {
-                                 generatorBlock.querySelector('.botao-minimizar').setAttribute('aria-label', 'Expandir');
-                             }
-                         }
-                     }
-                }
-                setTimeout(() => {
-                     questoesOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                     console.log("Rolando para o topo da área de questões...");
-                }, 100);
-
-            } else {
-                 if (questionsArray.length > 0 && questionsArray.every(q => q.type === 'error')) {
-                     showError(questionsArray[0].text);
-                 } else if (errorQuestionsCount > 0) {
-                     showError(`Erro: ${errorQuestionsCount} questão(ões) retornada(s) pela API Gemini tiveram erro no processamento e nenhuma foi válida. Verifique o console.`);
-                 } else {
-                     showError("Erro: Nenhuma questão foi retornada pela API Gemini ou o formato estava totalmente irreconhecível.");
-                 }
-                 resetSessionState();
-             }
-
-            let finishReason = null;
-            if (data.candidates && data.candidates.length > 0 && data.candidates[0].finishReason) {
-                finishReason = data.candidates[0].finishReason;
-            }
-
-            if (finishReason && finishReason !== 'STOP' && finishReason !== 'MAX_TOKENS') {
-                 console.warn("Geração da API Gemini pode ter sido interrompida:", finishReason);
-                 showStatus(`Atenção: Geração Gemini pode ter sido interrompida (${finishReason}).`, 'warning');
-            } else if (finishReason === 'MAX_TOKENS' && totalValidQuestions < numQuestoes) {
-                 console.warn("Geração Gemini interrompida por MAX_TOKENS.");
-                 showStatus(`Atenção: Limite de texto Gemini atingido. ${totalValidQuestions} de ${numQuestoes} questões geradas.`, 'warning');
-            }
-
-        } catch (error) {
-            console.error("Falha na requisição ou processamento com Gemini:", error);
-            showError(`Erro durante a geração com Gemini: ${error.message || 'Falha desconhecida.'}`);
-            resetSessionState();
-        } finally {
-            localStorage.removeItem(TEMP_API_KEY_STORAGE_ITEM);
-            showLoading(false);
-        }
+    const apiKey = localStorage.getItem('temp_gemini_api_key_val');
+    if (!apiKey) {
+        showError("API Key não encontrada no localStorage.");
+        showLoading(false);
+        return;
     }
+
+    const modelo = "qwen-2-7b-instruct:free";
+    const endpoint = "https://openrouter.ai/api/v1/chat/completions";
+
+    const currentYear = new Date().getFullYear();
+    const disciplinaParaSessao = disciplinaSelecionada || "Geral";
+
+    let prompt = `Você é um gerador automático de questões de concursos públicos e exames técnicos.`;
+    prompt += ` Gere exatamente ${numQuestoes} questões sobre "${assunto}".\n`;
+    prompt += `Disciplina: "${disciplinaParaSessao}".\n`;
+    prompt += `Nível: ${nivelQuestao.toUpperCase()}.\n`;
+    if (bibliografia) prompt += `Use como referência a bibliografia: "${bibliografia}".\n`;
+
+    prompt += `
+REQUISITOS ABSOLUTOS (SIGA À RISCA, SEM DESVIAR):
+
+1. FORMATO ESTRITO:
+  • Cada questão deve começar com: [Q] Enunciado completo.
+  • Depois, insira:
+    [META_SOURCE] Origem da questão. Ex: "Disciplina: ${disciplinaParaSessao}, Assunto: ${assunto}"
+    [META_YEAR] ${currentYear}
+  • Se necessário, inclua:
+    [IMG] URL_da_imagem ou descrição extremamente detalhada.
+  • Alternativas e gabarito:
+    ${tipoQuestao === 'multipla_escolha' ? `
+      [A] Alternativa A
+      [B] Alternativa B
+      [C] Alternativa C
+      [D] Alternativa D
+      [R] Letra da resposta correta (A, B, C ou D)` : tipoQuestao === 'verdadeiro_falso' ? `
+      [V] Verdadeiro
+      [F] Falso
+      [R] V ou F` : `
+      [G] Gabarito objetivo da resposta esperada`}
+  • Resolução obrigatória: [RES] Texto completo da explicação didática.
+
+2. SAÍDA OBRIGATÓRIA:
+  • Separe as questões com "[SEP]".
+  • Não adicione introduções, explicações, comentários, numeração ou conteúdo fora do formato especificado.
+  • Gere SOMENTE o conteúdo estruturado no padrão acima. Nenhuma frase fora do modelo.
+
+3. QUALIDADE:
+  • Seja 100% preciso, didático e objetivo.
+  • Corrija erros, evite ambiguidade e forneça conteúdo tecnicamente correto.
+  • Calcule corretamente se necessário. Evite questões com múltiplas interpretações.
+
+IMPORTANTE: não gere menos do que ${numQuestoes} questões. Nunca quebre o formato nem repita blocos.
+
+EXEMPLO:
+[Q] Qual é a função do ribossomo nas células eucarióticas?
+[META_SOURCE] Biologia Celular - Organelas
+[META_YEAR] ${currentYear}
+[A] Produção de ATP
+[B] Digestão celular
+[C] Síntese de proteínas
+[D] Transporte de íons
+[R] C
+[RES] O ribossomo é responsável pela síntese de proteínas. Ele lê o RNA mensageiro e monta cadeias de aminoácidos. [SEP]
+`;
+
+    try {
+        const resposta = await fetch(endpoint, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${apiKey}`
+            },
+            body: JSON.stringify({
+                model: modelo,
+                messages: [
+                    {
+                        role: "user",
+                        content: prompt
+                    }
+                ]
+            })
+        });
+
+        if (!resposta.ok) {
+            const erroTexto = await resposta.text();
+            throw new Error(`Erro HTTP ${resposta.status}: ${erroTexto}`);
+        }
+
+        const data = await resposta.json();
+        const texto = data?.choices?.[0]?.message?.content;
+
+        if (!texto) throw new Error("Resposta da IA veio vazia ou malformada.");
+
+        const questionsArray = parseGeneratedText(texto, tipoQuestao);
+        displayParsedQuestions(questionsArray);
+
+        const validQuestions = questionsArray.filter(q => q.type !== 'error');
+        const totalValid = validQuestions.length;
+        const errors = questionsArray.length - totalValid;
+
+        if (totalValid > 0) {
+            currentSessionStats = {
+                id: `sess-${Date.now()}`,
+                totalQuestions: totalValid,
+                answeredCount: 0,
+                correctCount: 0,
+                disciplina: disciplinaParaSessao,
+                startTime: Date.now()
+            };
+            finalizeButton.style.display = 'inline-flex';
+            showStatus(`Geradas ${totalValid} questões com OpenRouter (${modelo}).`, errors > 0 ? 'warning' : 'success');
+        } else {
+            showError("Nenhuma questão válida foi gerada.");
+            resetSessionState();
+        }
+    } catch (err) {
+        console.error("Erro ao gerar questões com OpenRouter:", err);
+        showError(`Erro: ${err.message}`);
+        resetSessionState();
+    } finally {
+        showLoading(false);
+    }
+}
 });
