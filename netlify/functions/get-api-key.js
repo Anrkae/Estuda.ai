@@ -1,22 +1,24 @@
-// netlify/functions/get-api-key.js
-exports.handler = async function (event, context) {
-    // Por segurança, idealmente você restringiria o acesso a esta função
-    // (ex: checando um token secreto enviado pelo frontend, ou limitando origens).
-    // Mas para o caso mais simples de apenas retornar a chave:
+// File: netlify/functions/get-api-key.js
 
-    const apiKey = process.env.GEMINI_API_KEY;
+exports.handler = async (event, context) => {
+  // Pega o valor da variável de ambiente que você configurou no painel do Netlify.
+  const apiKey = process.env.MINHA_API_KEY;
 
-    if (!apiKey) {
-        console.error("Chave GEMINI_API_KEY não encontrada nas variáveis de ambiente do Netlify.");
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ error: "Configuração de API Key ausente no servidor." }),
-        };
-    }
-
+  // Verifica se a variável de ambiente foi definida no Netlify.
+  if (!apiKey) {
     return {
-        statusCode: 200,
-        // Retorna a chave dentro de um objeto JSON
-        body: JSON.stringify({ apiKey: apiKey }),
+      statusCode: 500,
+      body: JSON.stringify({ error: "A variável de ambiente da API Key não foi configurada no servidor." })
     };
+  }
+
+  // Retorna a chave em um objeto JSON, como o frontend espera.
+  return {
+    statusCode: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*" // Opcional, mas recomendado para evitar problemas de CORS.
+    },
+    body: JSON.stringify({ apiKey: apiKey })
+  };
 };
