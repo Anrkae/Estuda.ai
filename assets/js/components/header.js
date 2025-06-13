@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <nav class="sidebar-navigation">
                 <button onclick="window.location.href='index.html'" class="sidebarBtn" data-target="index.html">Inicio</button>
                 <button onclick="window.location.href='questoes.html'" class="sidebarBtn" data-target="questoes.html">Questões</button>
+                <button onclick="window.location.href='trilha.html'" class="sidebarBtn" data-target="trilha.html">Trilha</button>
                 <button onclick="window.location.href='anotacoes.html'" class="sidebarBtn" data-target="anotacoes.html">Anotações</button>
                 <button onclick="window.location.href='resumos.html'" class="sidebarBtn" data-target="resumos.html">Resumos</button>
                 <button onclick="window.location.href='simulados.html'" class="sidebarBtn" data-target="simulados.html">Simulados</button>

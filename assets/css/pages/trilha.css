@@ -1,7 +1,7 @@
 :root {
     /* Cores */
-    --cor-primaria: #004d99; /* Azul escuro principal */
-    --cor-secundaria: #007bff; /* Azul de destaque */
+    --cor-primaria: #673ab7; /* Azul escuro principal */
+    --cor-secundaria: #673ab7; /* Azul de destaque */
     --cor-fundo-claro: #f8faff; /* Fundo muito levemente azulado */
     --cor-fundo-card: #f0f4f8; /* Fundo para cards secundários */
     --cor-texto-principal: #333;
@@ -51,12 +51,13 @@ body {
 
 main {
     max-width: 700px;
-    margin: 0 auto;
-    background: white;
+    margin: 12px !important;
+    background: #f5f4f0;
     padding: var(--espacamento-interno-padrao);
     border-radius: var(--borda-radius-padrao);
     box-shadow: var(--sombra-card);
     overflow: hidden; /* Garante que sombras internas não transbordem */
+    margin-top: 5px !important;
 }
 
 header h1 {
@@ -78,9 +79,7 @@ header h1 {
     overflow-x: auto; /* Permite scroll horizontal */
     white-space: nowrap; /* Impede que o texto das abas quebre */
     -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
-    border-radius: var(--borda-radius-padrao); /* Borda no container para parecer um segmento */
-    box-shadow: var(--sombra-menu-aba); /* Sombra leve no container das abas */
-    background: white; /* Fundo do container para as abas */
+    background: none; /* Fundo do container para as abas */
     scroll-behavior: smooth; /* Rolagem suave das abas */
 
     /* Esconde a barra de rolagem, mas permite a rolagem */
@@ -97,7 +96,7 @@ header h1 {
     flex-shrink: 0; /* Impede que os botões encolham em excesso */
     min-width: 90px; /* Garante um tamanho mínimo de toque em mobile */
     padding: 0.75rem 0.5rem;
-    background: white; /* Fundo branco para botões inativos */
+    background: none; /* Fundo branco para botões inativos */
     border: none;
     cursor: pointer;
     font-weight: 600;
@@ -106,17 +105,7 @@ header h1 {
 
     position: relative; /* Necessário para posicionar o pseudo-elemento da linha */
     overflow: hidden; /* Garante que a linha não vaze durante a animação */
-}
-
-/* Bordas arredondadas para os botões de canto do menu de abas */
-.aba-btn:first-child {
-    border-top-left-radius: var(--borda-radius-padrao);
-    border-bottom-left-radius: var(--borda-radius-padrao);
-}
-
-.aba-btn:last-child {
-    border-top-right-radius: var(--borda-radius-padrao);
-    border-bottom-right-radius: var(--borda-radius-padrao);
+    border-radius: 0 !important;
 }
 
 /* Linha inferior para indicador da aba ativa */
@@ -143,24 +132,18 @@ header h1 {
     background-color: var(--cor-primaria); /* Cor da linha ativa */
     transform: translateX(0); /* Desliza para a posição visível */
 }
-
-/* Efeitos de Hover para abas inativas */
-.aba-btn:hover:not(.active) {
-    background: var(--cor-fundo-card); /* Um leve background no hover */
+.aba-btn {
+    background: none !important;
 }
-
-/* Feedback visual ao toque/clique (mobile e desktop) */
-.aba-btn:active {
-    transform: scale(0.98); /* Leve encolhimento ao tocar/clicar */
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Sombra interna para "pressionado" */
-}
-
 
 /* Transição de conteúdo da aba é controlada pelo JS (GSAP) */
 .conteudo-aba section {
     display: none;
     opacity: 0;
     padding-top: 0.5rem; /* Pequeno respiro após o menu */
+    background-color: transparent !important;
+    box-shadow: none !important;
+    padding: 5px !important;
 }
 
 .conteudo-aba section.active {
@@ -168,10 +151,15 @@ header h1 {
     opacity: 1;
 }
 
+#aba-dashboard {
+    background: none;
+}
+
 /* --- Dashboard Section --- */
 .dashboard-grid {
     display: flex;
-    justify-content: space-around; /* Distribui os itens uniformemente */
+    flex-direction: column;
+    justify-content: center; /* Distribui os itens uniformemente */
     gap: var(--gap-padrao);
     margin-bottom: var(--gap-padrao);
     flex-wrap: wrap; /* Permite que os cards quebrem a linha */
@@ -180,6 +168,7 @@ header h1 {
 .dashboard-card {
     flex: 1 1 calc(33% - var(--gap-padrao)); /* Ocupa ~1/3, ajustado pelo gap */
     min-width: 120px; /* Garante tamanho mínimo em mobile */
+    max-height: 50px !important;
     padding: var(--espacamento-interno-card);
     border-radius: var(--borda-radius-card);
     color: white;
@@ -190,10 +179,8 @@ header h1 {
 
     /* Aprimoramento visual para os cards */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    min-height: 100px; /* Garante uma altura mínima para todos */
     border-bottom: 5px solid; /* Borda colorida na parte inferior */
     box-sizing: border-box; /* Inclui padding e border na largura/altura */
 }
@@ -204,13 +191,13 @@ header h1 {
 }
 
 .dashboard-card h3 {
-    margin: 0 0 0.5rem 0;
+    margin: 0 auto 0.5rem 0;
     font-size: 1.1rem;
     color: white; /* Garante que o texto seja branco dentro do card */
 }
 
 .dashboard-card p {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     margin: 0;
     color: white; /* Garante que o texto seja branco dentro do card */
 }
@@ -234,7 +221,7 @@ header h1 {
     width: 100%; /* Garante que ocupe 100% do pai em telas menores */
     margin: 1.5rem auto; /* Mais espaçamento vertical e centraliza */
     padding: 1rem;
-    background: white;
+    background: rgba(255, 255, 255, 0.6);;
     border-radius: var(--borda-radius-card);
     box-shadow: var(--sombra-card);
     position: relative; /* Para o texto central do doughnut */
@@ -333,12 +320,17 @@ header h1 {
     pointer-events: none; /* Garante que não interfira com interações do gráfico */
 }
 
+.pendencias {
+    padding-top: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: var(--borda-radius-card);
+    box-shadow: var(--sombra-card);
+}
+
 .pendencias-lista {
-    max-height: 180px; /* Um pouco menor para mobile */
+    max-height: auto; /* Um pouco menor para mobile */
     overflow-y: auto;
-    background: var(--cor-fundo-claro);
     padding: 0.8rem var(--espacamento-interno-card);
-    border: 1px solid var(--cor-cinza-claro);
     border-radius: var(--borda-radius-padrao);
     list-style: none; /* Remove bullet points */
     margin: 0;
@@ -372,15 +364,14 @@ header h1 {
 }
 
 .disciplina-card {
-    background: var(--cor-fundo-card);
+    background: rgba(255, 255, 255, 0.6);
     border-radius: var(--borda-radius-padrao);
     padding: var(--espacamento-interno-card);
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05); /* Sombra interna mais suave */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra interna mais suave */
+    border: 0 solid #673ab7;
+    border-left-width: 5px;
+border-radius: 12px;
     transition: box-shadow 0.3s ease;
-}
-
-.disciplina-card:hover {
-    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .disciplina-card h3 {
@@ -406,11 +397,6 @@ header h1 {
     margin-bottom: 0.8rem; /* Mais espaçamento */
     font-size: 0.9rem;
     transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-ver-topicos:hover {
-    background: #0069d9;
-    transform: translateY(-1px);
 }
 
 ul.topicos-lista {

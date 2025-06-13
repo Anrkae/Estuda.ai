@@ -89,21 +89,6 @@ hammer.on("swiperight", () => {
 // --- Funções de Gerenciamento de Tópicos e Progresso ---
 
 /**
- * Adiciona funcionalidade de toggle para os botões "Ver tópicos".
- * Expande/contrai a lista de tópicos e atualiza o texto do botão e o atributo aria-expanded.
- */
-document.querySelectorAll(".btn-ver-topicos").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const ul = btn.nextElementSibling;
-        const expanded = btn.getAttribute("aria-expanded") === "true";
-
-        ul.hidden = expanded;
-        btn.setAttribute("aria-expanded", !expanded);
-        btn.textContent = expanded ? "Ver tópicos" : "Esconder tópicos";
-    });
-});
-
-/**
  * Salva o estado dos checkboxes no localStorage.
  * Exibe um SweetAlert2 de sucesso e atualiza o progresso na UI.
  */

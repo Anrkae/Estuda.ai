@@ -21,8 +21,12 @@
 </head>
 
 <body>
+  
+  <div>
+    <script src="../assets/js/components/header.js"></script>
+  </div>
+  
   <main>
-    <header><h1>Minhas Trilhas de Estudo</h1></header>
 
     <nav class="abas-menu" role="tablist" aria-label="Menu de abas">
       <button class="aba-btn active" data-aba="dashboard" role="tab" aria-selected="true" aria-controls="aba-dashboard" id="btn-dashboard">Dashboard</button>
@@ -80,8 +84,10 @@
           </div>
         </div>
 
-        <h3>Pendências Recentes</h3>
-        <ul id="pendencias-dashboard" class="pendencias-lista"></ul>
+        <div class="pendencias">
+          <h3>Pendências Recentes</h3>
+          <ul id="pendencias-dashboard" class="pendencias-lista"></ul>
+        </div>
       </section>
 
       <section id="aba-editais" role="tabpanel" aria-labelledby="btn-editais">
@@ -136,32 +142,42 @@
             </ul>
           </div>
 
+        <div class="bloco minimizado">
           <div class="disciplina-card" data-disciplina-id="portugues">
-            <h3>Português</h3>
-            <small>4 tópicos • Peso: 25%</small>
-            <button class="btn-ver-topicos" aria-expanded="false" aria-controls="topicos-portugues">Ver tópicos</button>
-            <ul id="topicos-portugues" class="topicos-lista" hidden>
-              <li>
-                <input type="checkbox" id="interpretação" />
-                <label for="interpretação">Interpretação de Texto</label>
-                <span class="comecar-link" data-tippy-content="Leia textos e pratique compreensão">Como começar</span>
-              </li>
-              <li>
-                <input type="checkbox" id="gramatica" />
-                <label for="gramatica">Gramática</label>
-                <span class="comecar-link" data-tippy-content="Revise regras gramaticais e exercícios">Como começar</span>
-              </li>
-              <li>
-                <input type="checkbox" id="ortografia" />
-                <label for="ortografia">Ortografia</label>
-                <span class="comecar-link" data-tippy-content="Aprenda regras ortográficas e pratique">Como começar</span>
-              </li>
-              <li>
-                <input type="checkbox" id="redacao" />
-                <label for="redacao">Redação</label>
-                <span class="comecar-link" data-tippy-content="Pratique escrita com temas variados">Como começar</span>
-              </li>
-            </ul>
+            
+              <div class="tituloBtn botao-minimizar">
+              <h3 class="botao-minimizar">Português</h3>
+              <button class="btn-toggle-bloco botao-minimizar" aria-label="Expandir Geração">
+                          <i class="fas fa-plus"></i>
+              </button>
+              </div>
+            
+            <div class="conteudo-bloco">
+              <small>4 tópicos • Peso: 25%</small>
+              <ul id="topicos-portugues" class="topicos-lista conteudo-bloco">
+                <li>
+                  <input type="checkbox" id="interpretação" />
+                  <label for="interpretação">Interpretação de Texto</label>
+                  <span class="comecar-link" data-tippy-content="Leia textos e pratique compreensão">Como começar</span>
+                </li>
+                <li>
+                  <input type="checkbox" id="gramatica" />
+                  <label for="gramatica">Gramática</label>
+                  <span class="comecar-link" data-tippy-content="Revise regras gramaticais e exercícios">Como começar</span>
+                </li>
+                <li>
+                  <input type="checkbox" id="ortografia" />
+                  <label for="ortografia">Ortografia</label>
+                  <span class="comecar-link" data-tippy-content="Aprenda regras ortográficas e pratique">Como começar</span>
+                </li>
+                <li>
+                  <input type="checkbox" id="redacao" />
+                  <label for="redacao">Redação</label>
+                  <span class="comecar-link" data-tippy-content="Pratique escrita com temas variados">Como começar</span>
+                </li>
+              </ul>
+            </div>
+          </div>
           </div>
         </div>
       </section>
@@ -208,5 +224,6 @@
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
   <script src="../assets/js/pages/trilha.js"></script>
+  <script src="../assets/js/components/bloco.js"></script>
 </body>
 </html>
