@@ -1,0 +1,520 @@
+:root {
+    /* Cores */
+    --cor-primaria: #004d99; /* Azul escuro principal */
+    --cor-secundaria: #007bff; /* Azul de destaque */
+    --cor-fundo-claro: #f8faff; /* Fundo muito levemente azulado */
+    --cor-fundo-card: #f0f4f8; /* Fundo para cards secundários */
+    --cor-texto-principal: #333;
+    --cor-texto-secundario: #666;
+    --cor-cinza-claro: #e0e6ed; /* Para bordas, barras de progresso */
+    --cor-sucesso: #28a745;
+    --cor-atencao: #ff6f61; /* Vermelho mais suave */
+    --cor-info: #007bff; /* Azul para links/botões */
+
+    /* Cores para Gráficos */
+    --grafico-total: #6c757d; /* Cinza para Total */
+    --grafico-concluidos: #28a745; /* Verde para Concluídos */
+    --grafico-pendentes: #dc3545; /* Vermelho para Pendentes */
+    --grafico-matematica: #4CAF50; /* Verde para Matemática */
+    --grafico-portugues: #FF7043; /* Laranja para Português */
+    --grafico-outros: #CCCCCC; /* Cinza claro para Outros */
+    --grafico-linha-concluidos: #007bff; /* Azul para linha de concluídos */
+    --grafico-linha-pendentes: #ff6f61; /* Vermelho suave para linha de pendentes */
+    --grafico-barra-progresso-preenchido: #007bff; /* Azul para preenchimento da barra de progresso */
+    --grafico-barra-progresso-fundo: #e0e6ed; /* Cinza para o fundo da barra de progresso */
+
+
+    /* Sombras */
+    --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --sombra-card-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+    --sombra-aba-ativa: 0 2px 5px rgba(0,0,0,0.08); /* Sombra mais sutil apenas na aba ativa */
+    --sombra-menu-aba: 0 2px 8px rgba(0,0,0,0.05); /* Sombra leve no container das abas */
+
+    /* Espaçamentos */
+    --espacamento-externo: 1rem;
+    --espacamento-interno-padrao: 1.5rem; /* Aumentado um pouco para melhor respiro */
+    --espacamento-interno-card: 1rem;
+    --gap-padrao: 1rem;
+
+    /* Bordas */
+    --borda-radius-padrao: 8px;
+    --borda-radius-card: 12px;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Nova fonte */
+    margin: var(--espacamento-externo);
+    background: var(--cor-fundo-claro);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+}
+
+main {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    padding: var(--espacamento-interno-padrao);
+    border-radius: var(--borda-radius-padrao);
+    box-shadow: var(--sombra-card);
+    overflow: hidden; /* Garante que sombras internas não transbordem */
+}
+
+header h1 {
+    margin-bottom: var(--gap-padrao);
+    text-align: center;
+    color: var(--cor-primaria);
+    font-size: 1.8rem; /* Ajuste para mobile */
+    font-weight: 700;
+}
+
+/* --- Abas Menu Melhorias --- */
+.abas-menu {
+    display: flex;
+    gap: 0; /* REMOVIDO o gap para que os botões se encostem */
+    margin-bottom: var(--gap-padrao);
+    user-select: none;
+    flex-wrap: nowrap; /* Impede que as abas quebrem linha por padrão */
+    justify-content: flex-start; /* Alinha ao início para permitir scroll */
+    overflow-x: auto; /* Permite scroll horizontal */
+    white-space: nowrap; /* Impede que o texto das abas quebre */
+    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
+    border-radius: var(--borda-radius-padrao); /* Borda no container para parecer um segmento */
+    box-shadow: var(--sombra-menu-aba); /* Sombra leve no container das abas */
+    background: white; /* Fundo do container para as abas */
+    scroll-behavior: smooth; /* Rolagem suave das abas */
+
+    /* Esconde a barra de rolagem, mas permite a rolagem */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+.abas-menu::-webkit-scrollbar { /* Chrome, Safari and Opera */
+    display: none;
+}
+
+
+.aba-btn {
+    flex: 1; /* Permite que os botões se estiquem */
+    flex-shrink: 0; /* Impede que os botões encolham em excesso */
+    min-width: 90px; /* Garante um tamanho mínimo de toque em mobile */
+    padding: 0.75rem 0.5rem;
+    background: white; /* Fundo branco para botões inativos */
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--cor-texto-principal); /* Cor do texto principal */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Adicionado transform para feedback ao toque */
+
+    position: relative; /* Necessário para posicionar o pseudo-elemento da linha */
+    overflow: hidden; /* Garante que a linha não vaze durante a animação */
+}
+
+/* Bordas arredondadas para os botões de canto do menu de abas */
+.aba-btn:first-child {
+    border-top-left-radius: var(--borda-radius-padrao);
+    border-bottom-left-radius: var(--borda-radius-padrao);
+}
+
+.aba-btn:last-child {
+    border-top-right-radius: var(--borda-radius-padrao);
+    border-bottom-right-radius: var(--borda-radius-padrao);
+}
+
+/* Linha inferior para indicador da aba ativa */
+.aba-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Espessura da linha */
+    background-color: transparent; /* Cor padrão transparente */
+    transform: translateX(-100%); /* Escondida à esquerda por padrão */
+    transition: transform 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+/* Estilo da aba ativa */
+.aba-btn.active {
+    color: var(--cor-primaria); /* Cor do texto da aba ativa */
+    font-weight: 700; /* Deixa o texto da aba ativa mais forte */
+    /* Removido box-shadow daqui, pois o container .abas-menu já tem */
+}
+
+.aba-btn.active::after {
+    background-color: var(--cor-primaria); /* Cor da linha ativa */
+    transform: translateX(0); /* Desliza para a posição visível */
+}
+
+/* Efeitos de Hover para abas inativas */
+.aba-btn:hover:not(.active) {
+    background: var(--cor-fundo-card); /* Um leve background no hover */
+}
+
+/* Feedback visual ao toque/clique (mobile e desktop) */
+.aba-btn:active {
+    transform: scale(0.98); /* Leve encolhimento ao tocar/clicar */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Sombra interna para "pressionado" */
+}
+
+
+/* Transição de conteúdo da aba é controlada pelo JS (GSAP) */
+.conteudo-aba section {
+    display: none;
+    opacity: 0;
+    padding-top: 0.5rem; /* Pequeno respiro após o menu */
+}
+
+.conteudo-aba section.active {
+    display: block; /* GSAP gerencia a opacidade para transição suave */
+    opacity: 1;
+}
+
+/* --- Dashboard Section --- */
+.dashboard-grid {
+    display: flex;
+    justify-content: space-around; /* Distribui os itens uniformemente */
+    gap: var(--gap-padrao);
+    margin-bottom: var(--gap-padrao);
+    flex-wrap: wrap; /* Permite que os cards quebrem a linha */
+}
+
+.dashboard-card {
+    flex: 1 1 calc(33% - var(--gap-padrao)); /* Ocupa ~1/3, ajustado pelo gap */
+    min-width: 120px; /* Garante tamanho mínimo em mobile */
+    padding: var(--espacamento-interno-card);
+    border-radius: var(--borda-radius-card);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: var(--sombra-card);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    /* Aprimoramento visual para os cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px; /* Garante uma altura mínima para todos */
+    border-bottom: 5px solid; /* Borda colorida na parte inferior */
+    box-sizing: border-box; /* Inclui padding e border na largura/altura */
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px); /* Leve elevação ao passar o mouse */
+    box-shadow: var(--sombra-card-hover);
+}
+
+.dashboard-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: white; /* Garante que o texto seja branco dentro do card */
+}
+
+.dashboard-card p {
+    font-size: 1.8rem;
+    margin: 0;
+    color: white; /* Garante que o texto seja branco dentro do card */
+}
+
+/* Cores específicas para os cards com bordas inferiores */
+.dashboard-card.total { 
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    border-color: #003a7a; /* Azul mais escuro para a borda */
+}
+.dashboard-card.concluidos { 
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    border-color: #1a6f2c; /* Verde mais escuro para a borda */
+}
+.dashboard-card.pendentes { 
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    border-color: #a7232e; /* Vermelho mais escuro para a borda */
+}
+
+.grafico-container {
+    max-width: 600px; /* Ajustei o max-width para desktop */
+    width: 100%; /* Garante que ocupe 100% do pai em telas menores */
+    margin: 1.5rem auto; /* Mais espaçamento vertical e centraliza */
+    padding: 1rem;
+    background: white;
+    border-radius: var(--borda-radius-card);
+    box-shadow: var(--sombra-card);
+    position: relative; /* Para o texto central do doughnut */
+    display: flex; /* Para centralizar o h3 e o canvas */
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente o conteúdo */
+}
+
+.grafico-container h3 {
+    width: 100%; /* Garante que o título ocupe a largura e centraliza o texto */
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--cor-primaria);
+    font-size: 1.25rem;
+}
+
+/* --- Novos estilos para as barras de progresso por disciplina no Dashboard --- */
+.disciplina-progresso-barras {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaço entre as barras de disciplinas */
+    padding: 0.5rem 0; /* Padding interno */
+}
+
+.progresso-item {
+    display: flex;
+    flex-direction: column; /* Título em cima, barra embaixo */
+    gap: 0.3rem; /* Espaço entre o título da disciplina e a barra */
+    width: 100%;
+}
+
+.progresso-item strong {
+    font-size: 1.1rem;
+    color: var(--cor-texto-principal);
+}
+
+.progresso-item .progresso-barra {
+    margin-bottom: 0; /* Remove a margem inferior padrão */
+    height: 25px; /* Deixa a barra um pouco mais alta */
+    border-radius: 12px; /* Mais arredondada */
+    background: var(--grafico-barra-progresso-fundo); /* Fundo cinza */
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.15); /* Sombra interna para profundidade */
+}
+
+/* Estilo específico para o preenchimento da barra de progresso no dashboard */
+.progresso-item .progresso-preenchido {
+    background: var(--grafico-barra-progresso-preenchido); /* Azul padrão para preenchimento */
+    border-radius: 12px; /* Bordas arredondadas internas */
+    transition: width 0.7s ease-in-out;
+}
+
+/* Cores customizadas para as barras de progresso das disciplinas (no dashboard) */
+#barra-progresso-disciplina-matematica {
+    background: var(--grafico-matematica) !important; /* Verde */
+}
+
+#barra-progresso-disciplina-portugues {
+    background: var(--grafico-portugues) !important; /* Laranja */
+}
+
+.progresso-item .progresso-percentual {
+    text-align: right; /* Alinha o percentual à direita */
+    font-weight: 600;
+    color: var(--cor-texto-secundario);
+    font-size: 0.9rem;
+}
+
+/* --- Estilo para centralizar texto no gráfico de rosca (mantido) --- */
+.chart-doughnut-wrapper {
+    position: relative;
+    width: 100%; /* Ocupa a largura total do container */
+    max-width: 250px; /* Limita o tamanho do doughnut para não ficar gigante */
+    aspect-ratio: 1 / 1; /* Garante que o container interno tenha proporção 1:1 */
+    margin-bottom: 0.5rem; /* Espaçamento abaixo do gráfico de rosca */
+}
+
+.chart-doughnut-wrapper canvas {
+    position: absolute; /* Permite que o canvas cresça para preencher o wrapper */
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.chart-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem; /* Tamanho do percentual */
+    font-weight: 700;
+    color: var(--cor-primaria); /* Cor do percentual */
+    text-align: center;
+    pointer-events: none; /* Garante que não interfira com interações do gráfico */
+}
+
+.pendencias-lista {
+    max-height: 180px; /* Um pouco menor para mobile */
+    overflow-y: auto;
+    background: var(--cor-fundo-claro);
+    padding: 0.8rem var(--espacamento-interno-card);
+    border: 1px solid var(--cor-cinza-claro);
+    border-radius: var(--borda-radius-padrao);
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+}
+
+.pendencias-lista li {
+    padding: 0.3rem 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.08); /* Linha divisória suave */
+    color: var(--cor-texto-principal);
+    font-size: 0.95rem;
+    display: flex; /* Para alinhar o ícone com o texto */
+    align-items: center;
+    gap: 0.5rem; /* Espaçamento entre o ícone e o texto */
+}
+
+.pendencias-lista li:last-child {
+    border-bottom: none;
+}
+
+/* Estilo para o ícone de pendência */
+.pendencias-lista li i.fa-circle-exclamation {
+    color: var(--cor-atencao); /* Cor do ícone de atenção/pendência */
+    font-size: 0.9em; /* Ajusta o tamanho do ícone */
+}
+
+/* --- Disciplinas Section (mantida) --- */
+.disciplinas-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Padrão mobile: uma coluna */
+    gap: var(--gap-padrao);
+}
+
+.disciplina-card {
+    background: var(--cor-fundo-card);
+    border-radius: var(--borda-radius-padrao);
+    padding: var(--espacamento-interno-card);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05); /* Sombra interna mais suave */
+    transition: box-shadow 0.3s ease;
+}
+
+.disciplina-card:hover {
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.disciplina-card h3 {
+    margin: 0 0 0.25rem 0;
+    color: var(--cor-primaria);
+    font-size: 1.2rem;
+}
+
+.disciplina-card small {
+    display: block;
+    margin-bottom: 0.6rem; /* Mais espaçamento */
+    color: var(--cor-texto-secundario);
+    font-size: 0.85rem;
+}
+
+.btn-ver-topicos {
+    background: var(--cor-secundaria);
+    border: none;
+    color: white;
+    padding: 0.5rem 0.8rem; /* Aumentado um pouco */
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 0.8rem; /* Mais espaçamento */
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-ver-topicos:hover {
+    background: #0069d9;
+    transform: translateY(-1px);
+}
+
+ul.topicos-lista {
+    list-style: none;
+    padding-left: 0; /* Remove padding padrão da lista */
+    margin-top: 0.5rem;
+}
+
+ul.topicos-lista li {
+    margin-bottom: 0.6rem; /* Mais espaçamento */
+    display: flex;
+    align-items: center;
+    gap: 0.6rem; /* Mais espaçamento */
+    font-size: 0.95rem;
+    color: var(--cor-texto-principal);
+}
+
+ul.topicos-lista li input[type="checkbox"] {
+    min-width: 18px; /* Tamanho fixo para checkbox */
+    min-height: 18px;
+    cursor: pointer;
+    accent-color: var(--cor-primaria); /* Muda a cor do checkbox */
+}
+
+ul.topicos-lista li label {
+    flex-grow: 1; /* Permite que o label ocupe espaço restante */
+    cursor: pointer;
+}
+
+ul.topicos-lista li .comecar-link {
+    margin-left: auto;
+    font-size: 0.8rem; /* Levemente menor */
+    color: var(--cor-info);
+    text-decoration: underline;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap; /* Evita que o link quebre a linha */
+}
+
+/* --- Progresso Section (mantida) --- */
+.progresso-barra {
+    background: var(--cor-cinza-claro);
+    height: 20px; /* Ligeiramente mais alta */
+    border-radius: 10px; /* Metade da altura para bordas arredondadas */
+    overflow: hidden;
+    margin-bottom: 0.8rem;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Sombra interna sutil */
+}
+
+.progresso-preenchido {
+    height: 100%;
+    background: var(--cor-primaria);
+    width: 0;
+    transition: width 0.7s ease-in-out;
+    border-radius: 10px; /* Para as bordas arredondadas internas */
+}
+
+/* Cores específicas para barras de progresso de disciplina */
+#barra-progresso-matematica { background: var(--cor-sucesso) !important; }
+#barra-progresso-portugues { background: var(--cor-atencao) !important; }
+
+.progresso-texto {
+    font-weight: 600;
+    margin-bottom: var(--gap-padrao);
+    text-align: center;
+    color: var(--cor-primaria);
+    font-size: 1.1rem;
+}
+
+/* --- Dicas Section (mantida) --- */
+.dicas-lista {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: var(--cor-texto-principal);
+}
+
+.dicas-lista li {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Media Queries (Mobile-First) --- */
+@media (min-width: 600px) {
+    main {
+        padding: 2rem; /* Mais padding em telas maiores */
+    }
+
+    header h1 {
+        font-size: 2.2rem; /* Maior em telas maiores */
+    }
+
+    .abas-menu {
+        justify-content: center; /* Centraliza as abas em telas maiores */
+    }
+
+    .dashboard-card {
+        flex: 1 1 calc(33.33% - var(--gap-padrao)); /* Volta para 3 cards por linha */
+    }
+
+    .grafico-container {
+        max-width: 600px; /* Pode ser um pouco maior para o gráfico de barras por tópico */
+    }
+    
+
+    .disciplinas-grid {
+        grid-template-columns: 1fr 1fr; /* Duas colunas em telas maiores */
+    }
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Trilha de Estudo Interativa</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/pages/trilha.css" />
+    
+    <link rel="stylesheet" href="../assets/css/essentials.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/components/components.css">
+    
+    <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/scale.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <main>
+    <header><h1>Minhas Trilhas de Estudo</h1></header>
+
+    <nav class="abas-menu" role="tablist" aria-label="Menu de abas">
+      <button class="aba-btn active" data-aba="dashboard" role="tab" aria-selected="true" aria-controls="aba-dashboard" id="btn-dashboard">Dashboard</button>
+      <button class="aba-btn" data-aba="editais" role="tab" aria-selected="false" aria-controls="aba-editais" id="btn-editais">Editais</button>
+      <button class="aba-btn" data-aba="disciplinas" role="tab" aria-selected="false" aria-controls="aba-disciplinas" id="btn-disciplinas">Disciplinas</button>
+      <button class="aba-btn" data-aba="progresso" role="tab" aria-selected="false" aria-controls="aba-progresso" id="btn-progresso">Progresso</button>
+      <button class="aba-btn" data-aba="dicas" role="tab" aria-selected="false" aria-controls="aba-dicas" id="btn-dicas">Dicas</button>
+    </nav>
+
+    <div class="conteudo-aba">
+
+      <section id="aba-dashboard" role="tabpanel" aria-labelledby="btn-dashboard" class="active">
+        <h2>Visão Geral do Progresso</h2>
+
+        <div class="dashboard-grid">
+          <div class="dashboard-card total">
+            <h3>Total de Tópicos</h3>
+            <p id="total-topicos">0</p>
+          </div>
+          <div class="dashboard-card concluidos">
+            <h3>Tópicos Concluídos</h3>
+            <p id="concluidos-topicos">0</p>
+          </div>
+          <div class="dashboard-card pendentes">
+            <h3>Tópicos Pendentes</h3>
+            <p id="pendentes-topicos">0</p>
+          </div>
+        </div>
+
+        <div class="grafico-container">
+            <h3>Progresso por Disciplina</h3>
+            <div class="disciplina-progresso-barras">
+                <div class="progresso-item">
+                    <strong>Matemática:</strong>
+                    <div class="progresso-barra" aria-label="Barra de progresso de Matemática">
+                        <div class="progresso-preenchido" id="barra-progresso-disciplina-matematica"></div>
+                    </div>
+                    <span class="progresso-percentual" id="percentual-matematica">0%</span>
+                </div>
+                <div class="progresso-item">
+                    <strong>Português:</strong>
+                    <div class="progresso-barra" aria-label="Barra de progresso de Português">
+                        <div class="progresso-preenchido" id="barra-progresso-disciplina-portugues"></div>
+                    </div>
+                    <span class="progresso-percentual" id="percentual-portugues">0%</span>
+                </div>
+                </div>
+        </div>
+        
+        <div class="grafico-container">
+          <h3>Distribuição de Progresso</h3>
+          <div class="chart-doughnut-wrapper">
+             <canvas id="graficoProgresso"></canvas>
+             <div class="chart-center-text" id="progressoGeralCentro"></div>
+          </div>
+        </div>
+
+        <h3>Pendências Recentes</h3>
+        <ul id="pendencias-dashboard" class="pendencias-lista"></ul>
+      </section>
+
+      <section id="aba-editais" role="tabpanel" aria-labelledby="btn-editais">
+        <h2>Edital ESA 2025</h2>
+        <p><strong>Data da prova:</strong> 12/11/2025</p>
+        <p><strong>Banca:</strong> ESA</p>
+        <p><strong>Número de vagas:</strong> 300</p>
+        <p><strong>Observações:</strong> Prova objetiva com peso maior para Matemática e Português.</p>
+        <h3>Peso por disciplina</h3>
+        <ul>
+          <li>Matemática - 30%</li>
+          <li>Português - 25%</li>
+          <li>Inglês - 10%</li>
+          <li>Direito - 20%</li>
+          <li>Outros - 15%</li>
+        </ul>
+      </section>
+
+      <section id="aba-disciplinas" role="tabpanel" aria-labelledby="btn-disciplinas">
+        <div class="disciplinas-grid">
+
+          <div class="disciplina-card" data-disciplina-id="matematica">
+            <h3>Matemática</h3>
+            <small>5 tópicos • Peso: 30%</small>
+            <button class="btn-ver-topicos" aria-expanded="false" aria-controls="topicos-matematica">Ver tópicos</button>
+            <ul id="topicos-matematica" class="topicos-lista" hidden>
+              <li>
+                <input type="checkbox" id="algebra" />
+                <label for="algebra">Álgebra</label>
+                <span class="comecar-link" data-tippy-content="Comece revisando teoria básica e exercícios">Como começar</span>
+              </li>
+              <li>
+                <input type="checkbox" id="geometria" />
+                <label for="geometria">Geometria</label>
+                <span class="comecar-link" data-tippy-content="Estude os principais teoremas e pratique problemas">Como começar</span>
+              </li>
+              <li>
+                <input type="checkbox" id="combinatoria" />
+                <label for="combinatoria">Análise Combinatória</label>
+                <span class="comecar-link" data-tippy-content="Aprenda técnicas de contagem e resolução de problemas">Como começar</span>
+              </li>
+              <li>
+                <input type="checkbox" id="probabilidade" />
+                <label for="probabilidade">Probabilidade</label>
+                <span class="comecar-link" data-tippy-content="Estude eventos, probabilidade condicional e independência">Como começar</span>
+              </li>
+              <li>
+                <input type="checkbox" id="estatistica" />
+                <label for="estatistica">Estatística</label>
+                <span class="comecar-link" data-tippy-content="Foque em medidas de tendência e dispersão">Como começar</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="disciplina-card" data-disciplina-id="portugues">
+            <h3>Português</h3>
+            <small>4 tópicos • Peso: 25%</small>
+            <button class="btn-ver-topicos" aria-expanded="false" aria-controls="topicos-portugues">Ver tópicos</button>
+            <ul id="topicos-portugues" class="topicos-lista" hidden>
+              <li>
+                <input type="checkbox" id="interpretação" />
+                <label for="interpretação">Interpretação de Texto</label>
+                <span class="comecar-link" data-tippy-content="Leia textos e pratique compreensão">Como começar</span>
+              </li>
+              <li>
+                <input type="checkbox" id="gramatica" />
+                <label for="gramatica">Gramática</label>
+                <span class="comecar-link" data-tippy-content="Revise regras gramaticais e exercícios">Como começar</span>
+              </li>
+              <li>
+                <input type="checkbox" id="ortografia" />
+                <label for="ortografia">Ortografia</label>
+                <span class="comecar-link" data-tippy-content="Aprenda regras ortográficas e pratique">Como começar</span>
+              </li>
+              <li>
+                <input type="checkbox" id="redacao" />
+                <label for="redacao">Redação</label>
+                <span class="comecar-link" data-tippy-content="Pratique escrita com temas variados">Como começar</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="aba-progresso" role="tabpanel" aria-labelledby="btn-progresso">
+        <h2>Progresso Geral</h2>
+        <div class="progresso-barra" aria-label="Barra de progresso geral">
+          <div class="progresso-preenchido" id="barra-progresso-geral" style="width: 0;"></div>
+        </div>
+        <div class="progresso-texto" id="texto-progresso-geral">0% do edital concluído</div>
+
+        <h3>Progresso por disciplina</h3>
+
+        <div>
+          <strong>Matemática:</strong>
+          <div class="progresso-barra" aria-label="Barra de progresso de Matemática" style="margin-bottom: 0.5rem;">
+            <div class="progresso-preenchido" id="barra-progresso-matematica" style="width: 0; background:#008000"></div>
+          </div>
+          <strong>Português:</strong>
+          <div class="progresso-barra" aria-label="Barra de progresso de Português" style="margin-bottom: 0.5rem;">
+            <div class="progresso-preenchido" id="barra-progresso-portugues" style="width: 0; background:#ff6f61"></div>
+          </div>
+        </div>
+
+        <h3>Pendências</h3>
+        <ul id="pendencias-lista"></ul>
+      </section>
+
+      <section id="aba-dicas" role="tabpanel" aria-labelledby="btn-dicas">
+        <h2>Dicas de Estudo</h2>
+        <ul class="dicas-lista">
+          <li>Comece pela teoria de Matemática, focando nos tópicos com maior peso.</li>
+          <li>Pratique muitas questões de Português diariamente para fixar gramática e interpretação.</li>
+          <li>Use revisões espaçadas para melhorar a memorização.</li>
+          <li>Reserve um dia na semana para simulados e correção detalhada.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <script src="https://unpkg.com/tippy.js@6"></script>
+  <script src="../assets/js/pages/trilha.js"></script>
+</body>
+</html>
