@@ -248,7 +248,12 @@ main {
 
 .disciplina-card h3 {
     margin: 0;
-    color: #673ab7 !important;
+    color: #2C2C2C !important;
+}
+
+.btn-toggle-bloco {
+    background: none !important;
+    color: #2C2C2C !important;
 }
 
 .disciplina-card small {
@@ -438,6 +443,7 @@ ul.topicos-lista-botoes {
 #drawer-topic-info {
     border-bottom: 1px solid var(--cor-cinza-claro);
     padding-bottom: 1rem;
+    margin-top: 50px !important;
     margin-bottom: 1rem;
 }
 
@@ -483,11 +489,6 @@ ul.topicos-lista-botoes {
 
 .drawer-aulas a:hover {
     background-color: #e9eef2;
-}
-
-.btn-toggle-bloco {
-    background: none !important;
-    color: black;
 }
 
 @media (min-width: 600px) {

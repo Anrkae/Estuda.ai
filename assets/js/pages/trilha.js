@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const icon = toggleButton.querySelector('i.fas');
                     if (icon) {
                         icon.classList.toggle('fa-plus');
-                        icon.classList.toggle('fa-');
+                        icon.classList.toggle('fa-plus');
                     }
                 }
             }
