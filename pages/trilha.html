@@ -8,9 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="../assets/css/pages/trilha.css" />
     
+    <link rel="stylesheet" href="../assets/css/pages/trilha.css" />
     <link rel="stylesheet" href="../assets/css/essentials.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/css/components/components.css">
@@ -20,22 +19,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
-<body>
-  
-  <div>
-    <script src="../assets/js/components/header.js"></script>
-  </div>
-  
-  <main>
-
-    <nav class="abas-menu" role="tablist" aria-label="Menu de abas">
-      <button class="aba-btn active" data-aba="dashboard" role="tab" aria-selected="true" aria-controls="aba-dashboard" id="btn-dashboard">Dashboard</button>
-      <button class="aba-btn" data-aba="editais" role="tab" aria-selected="false" aria-controls="aba-editais" id="btn-editais">Editais</button>
-      <button class="aba-btn" data-aba="disciplinas" role="tab" aria-selected="false" aria-controls="aba-disciplinas" id="btn-disciplinas">Disciplinas</button>
-      <button class="aba-btn" data-aba="progresso" role="tab" aria-selected="false" aria-controls="aba-progresso" id="btn-progresso">Progresso</button>
-      <button class="aba-btn" data-aba="dicas" role="tab" aria-selected="false" aria-controls="aba-dicas" id="btn-dicas">Dicas</button>
-    </nav>
-
+<body class="body-with-bottom-nav">
+ 
+ <div>
+   <script src="../assets/js/components/header.js"></script>
+ </div>
+ 
+ <main>
     <div class="conteudo-aba">
 
       <section id="aba-dashboard" role="tabpanel" aria-labelledby="btn-dashboard" class="active">
@@ -57,8 +47,15 @@
         </div>
 
         <div class="grafico-container">
-            <h3>Progresso por Disciplina</h3>
+            <h3>Progresso</h3>
             <div class="disciplina-progresso-barras">
+                <div class="progresso-item">
+                    <strong>Geral:</strong>
+                    <div class="progresso-barra" aria-label="Barra de progresso geral">
+                        <div class="progresso-preenchido" id="barra-progresso-total-dashboard"></div>
+                    </div>
+                    <span class="progresso-percentual" id="percentual-total-dashboard">0%</span>
+                </div>
                 <div class="progresso-item">
                     <strong>Matemática:</strong>
                     <div class="progresso-barra" aria-label="Barra de progresso de Matemática">
@@ -73,7 +70,7 @@
                     </div>
                     <span class="progresso-percentual" id="percentual-portugues">0%</span>
                 </div>
-                </div>
+            </div>
         </div>
         
         <div class="grafico-container">
@@ -96,134 +93,113 @@
         <p><strong>Banca:</strong> ESA</p>
         <p><strong>Número de vagas:</strong> 300</p>
         <p><strong>Observações:</strong> Prova objetiva com peso maior para Matemática e Português.</p>
-        <h3>Peso por disciplina</h3>
-        <ul>
-          <li>Matemática - 30%</li>
-          <li>Português - 25%</li>
-          <li>Inglês - 10%</li>
-          <li>Direito - 20%</li>
-          <li>Outros - 15%</li>
-        </ul>
+        <h3>Peso por disciplina (%)</h3>
+        <div id="grafico-pesos-container" class="grafico-container">
+            <canvas id="graficoPesos"></canvas>
+        </div>
       </section>
 
       <section id="aba-disciplinas" role="tabpanel" aria-labelledby="btn-disciplinas">
         <div class="disciplinas-grid">
-
-          <div class="disciplina-card" data-disciplina-id="matematica">
-            <h3>Matemática</h3>
-            <small>5 tópicos • Peso: 30%</small>
-            <button class="btn-ver-topicos" aria-expanded="false" aria-controls="topicos-matematica">Ver tópicos</button>
-            <ul id="topicos-matematica" class="topicos-lista" hidden>
-              <li>
-                <input type="checkbox" id="algebra" />
-                <label for="algebra">Álgebra</label>
-                <span class="comecar-link" data-tippy-content="Comece revisando teoria básica e exercícios">Como começar</span>
-              </li>
-              <li>
-                <input type="checkbox" id="geometria" />
-                <label for="geometria">Geometria</label>
-                <span class="comecar-link" data-tippy-content="Estude os principais teoremas e pratique problemas">Como começar</span>
-              </li>
-              <li>
-                <input type="checkbox" id="combinatoria" />
-                <label for="combinatoria">Análise Combinatória</label>
-                <span class="comecar-link" data-tippy-content="Aprenda técnicas de contagem e resolução de problemas">Como começar</span>
-              </li>
-              <li>
-                <input type="checkbox" id="probabilidade" />
-                <label for="probabilidade">Probabilidade</label>
-                <span class="comecar-link" data-tippy-content="Estude eventos, probabilidade condicional e independência">Como começar</span>
-              </li>
-              <li>
-                <input type="checkbox" id="estatistica" />
-                <label for="estatistica">Estatística</label>
-                <span class="comecar-link" data-tippy-content="Foque em medidas de tendência e dispersão">Como começar</span>
-              </li>
-            </ul>
-          </div>
-
-        <div class="bloco minimizado">
-          <div class="disciplina-card" data-disciplina-id="portugues">
-            
-              <div class="tituloBtn botao-minimizar">
-              <h3 class="botao-minimizar">Português</h3>
-              <button class="btn-toggle-bloco botao-minimizar" aria-label="Expandir Geração">
-                          <i class="fas fa-plus"></i>
-              </button>
+            <div class="bloco minimizado">
+              <div class="disciplina-card">
+                <div class="tituloBtn botao-minimizar">
+                  <h3>Matemática</h3>
+                  <button class="btn-toggle-bloco botao-minimizar"><i class="fas fa-plus"></i></button>
+                </div>
+                <div class="conteudo-bloco">
+                  <small>5 tópicos • Peso: 30%</small>
+                  <ul id="topicos-matematica" class="topicos-lista-botoes">
+                    <li><input type="checkbox" id="algebra" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="algebra">Álgebra</button></li>
+                    <li><input type="checkbox" id="geometria" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="geometria">Geometria</button></li>
+                    <li><input type="checkbox" id="combinatoria" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="combinatoria">Análise Combinatória</button></li>
+                    <li><input type="checkbox" id="probabilidade" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="probabilidade">Probabilidade</button></li>
+                    <li><input type="checkbox" id="estatistica" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="estatistica">Estatística</button></li>
+                  </ul>
+                </div> 
               </div>
-            
-            <div class="conteudo-bloco">
-              <small>4 tópicos • Peso: 25%</small>
-              <ul id="topicos-portugues" class="topicos-lista conteudo-bloco">
-                <li>
-                  <input type="checkbox" id="interpretação" />
-                  <label for="interpretação">Interpretação de Texto</label>
-                  <span class="comecar-link" data-tippy-content="Leia textos e pratique compreensão">Como começar</span>
-                </li>
-                <li>
-                  <input type="checkbox" id="gramatica" />
-                  <label for="gramatica">Gramática</label>
-                  <span class="comecar-link" data-tippy-content="Revise regras gramaticais e exercícios">Como começar</span>
-                </li>
-                <li>
-                  <input type="checkbox" id="ortografia" />
-                  <label for="ortografia">Ortografia</label>
-                  <span class="comecar-link" data-tippy-content="Aprenda regras ortográficas e pratique">Como começar</span>
-                </li>
-                <li>
-                  <input type="checkbox" id="redacao" />
-                  <label for="redacao">Redação</label>
-                  <span class="comecar-link" data-tippy-content="Pratique escrita com temas variados">Como começar</span>
-                </li>
-              </ul>
+            </div> 
+            <div class="bloco minimizado">
+              <div class="disciplina-card">
+                  <div class="tituloBtn botao-minimizar">
+                    <h3>Português</h3>
+                    <button class="btn-toggle-bloco botao-minimizar"><i class="fas fa-plus"></i></button>
+                  </div>
+                <div class="conteudo-bloco">
+                  <small>4 tópicos • Peso: 25%</small>
+                  <ul id="topicos-portugues" class="topicos-lista-botoes">
+                    <li><input type="checkbox" id="interpretação" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="interpretação">Interpretação de Texto</button></li>
+                    <li><input type="checkbox" id="gramatica" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="gramatica">Gramática</button></li>
+                    <li><input type="checkbox" id="ortografia" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="ortografia">Ortografia</button></li>
+                    <li><input type="checkbox" id="redacao" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="redacao">Redação</button></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-          </div>
         </div>
-      </section>
-
-      <section id="aba-progresso" role="tabpanel" aria-labelledby="btn-progresso">
-        <h2>Progresso Geral</h2>
-        <div class="progresso-barra" aria-label="Barra de progresso geral">
-          <div class="progresso-preenchido" id="barra-progresso-geral" style="width: 0;"></div>
-        </div>
-        <div class="progresso-texto" id="texto-progresso-geral">0% do edital concluído</div>
-
-        <h3>Progresso por disciplina</h3>
-
-        <div>
-          <strong>Matemática:</strong>
-          <div class="progresso-barra" aria-label="Barra de progresso de Matemática" style="margin-bottom: 0.5rem;">
-            <div class="progresso-preenchido" id="barra-progresso-matematica" style="width: 0; background:#008000"></div>
-          </div>
-          <strong>Português:</strong>
-          <div class="progresso-barra" aria-label="Barra de progresso de Português" style="margin-bottom: 0.5rem;">
-            <div class="progresso-preenchido" id="barra-progresso-portugues" style="width: 0; background:#ff6f61"></div>
-          </div>
-        </div>
-
-        <h3>Pendências</h3>
-        <ul id="pendencias-lista"></ul>
       </section>
 
       <section id="aba-dicas" role="tabpanel" aria-labelledby="btn-dicas">
-        <h2>Dicas de Estudo</h2>
-        <ul class="dicas-lista">
-          <li>Comece pela teoria de Matemática, focando nos tópicos com maior peso.</li>
-          <li>Pratique muitas questões de Português diariamente para fixar gramática e interpretação.</li>
-          <li>Use revisões espaçadas para melhorar a memorização.</li>
-          <li>Reserve um dia na semana para simulados e correção detalhada.</li>
-        </ul>
+        <h2>Dicas e Estratégias</h2>
+        <div class="dicas-section">
+            <h3><i class="fa-solid fa-bullseye"></i> Seus tópicos para hoje</h3>
+            <ul id="lista-topicos-hoje" class="lista-topicos-hoje">
+                </ul>
+        </div>
+        <div class="dicas-section">
+            <h3><i class="fa-solid fa-compass-drafting"></i> Estratégias de Estudo</h3>
+            <ul class="dicas-lista">
+              <li>Use a técnica Pomodoro: 25 minutos de foco total e 5 de descanso.</li>
+              <li>Pratique revisões espaçadas para fortalecer a memória de longo prazo.</li>
+              <li>Reserve um dia na semana para simulados e correção detalhada.</li>
+            </ul>
+        </div>
       </section>
     </div>
-  </main>
+ </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="https://unpkg.com/@popperjs/core@2"></script>
-  <script src="https://unpkg.com/tippy.js@6"></script>
-  <script src="../assets/js/pages/trilha.js"></script>
-  <script src="../assets/js/components/bloco.js"></script>
+ <nav class="bottom-nav">
+    <button class="nav-item active" data-aba="dashboard" aria-label="Dashboard"><i class="fa-solid fa-house"></i><span class="nav-text">Dashboard</span></button>
+    <button class="nav-item" data-aba="editais" aria-label="Editais"><i class="fa-solid fa-file-contract"></i><span class="nav-text">Editais</span></button>
+    <button class="nav-item" data-aba="disciplinas" aria-label="Disciplinas"><i class="fa-solid fa-book-open"></i><span class="nav-text">Disciplinas</span></button>
+    <button class="nav-item" data-aba="dicas" aria-label="Dicas"><i class="fa-solid fa-lightbulb"></i><span class="nav-text">Dicas</span></button>
+ </nav>
+
+ <div class="custom-drawer" id="drawer-main">
+    <div class="drawer__overlay" data-drawer-close></div>
+    <div class="drawer__container">
+      <header class="drawer__header">
+        <h2 class="drawer__title" id="drawer-title">Detalhes do Tópico</h2>
+        <button class="drawer__close" aria-label="Fechar" data-drawer-close>&times;</button>
+      </header>
+      <main class="drawer__content">
+          <div id="drawer-topic-info">
+              <p id="drawer-description"></p>
+              <div class="drawer-details">
+                  <strong>Peso do Tópico:</strong> <span id="drawer-peso"></span>
+              </div>
+              <div class="drawer-actions">
+                  <label>
+                      <input type="checkbox" id="drawer-checkbox">
+                      Marcar como concluído
+                  </label>
+              </div>
+          </div>
+          <div class="drawer-aulas">
+              <h3><i class="fa-solid fa-video"></i> Aulas Sugeridas</h3>
+              <ul id="drawer-aulas-lista">
+                  </ul>
+          </div>
+      </main>
+    </div>
+  </div>
+
+ <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <script src="https://unpkg.com/tippy.js@6"></script>
+ 
+ <script src="../assets/js/pages/trilha.js" defer></script>
+ <script src="../assets/js/components/bloco.js" defer></script>
+
 </body>
 </html>

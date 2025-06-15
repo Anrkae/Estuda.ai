@@ -1,237 +1,135 @@
 :root {
-    /* Cores */
-    --cor-primaria: #673ab7; /* Azul escuro principal */
-    --cor-secundaria: #673ab7; /* Azul de destaque */
-    --cor-fundo-claro: #f8faff; /* Fundo muito levemente azulado */
-    --cor-fundo-card: #f0f4f8; /* Fundo para cards secundários */
+    --cor-primaria: #673ab7;
+    --cor-secundaria: #673ab7;
+    --cor-fundo-claro: #f8faff;
+    --cor-fundo-card: #f0f4f8;
     --cor-texto-principal: #333;
     --cor-texto-secundario: #666;
-    --cor-cinza-claro: #e0e6ed; /* Para bordas, barras de progresso */
+    --cor-cinza-claro: #e0e6ed;
     --cor-sucesso: #28a745;
-    --cor-atencao: #ff6f61; /* Vermelho mais suave */
-    --cor-info: #007bff; /* Azul para links/botões */
-
-    /* Cores para Gráficos */
-    --grafico-total: #6c757d; /* Cinza para Total */
-    --grafico-concluidos: #28a745; /* Verde para Concluídos */
-    --grafico-pendentes: #dc3545; /* Vermelho para Pendentes */
-    --grafico-matematica: #4CAF50; /* Verde para Matemática */
-    --grafico-portugues: #FF7043; /* Laranja para Português */
-    --grafico-outros: #CCCCCC; /* Cinza claro para Outros */
-    --grafico-linha-concluidos: #007bff; /* Azul para linha de concluídos */
-    --grafico-linha-pendentes: #ff6f61; /* Vermelho suave para linha de pendentes */
-    --grafico-barra-progresso-preenchido: #007bff; /* Azul para preenchimento da barra de progresso */
-    --grafico-barra-progresso-fundo: #e0e6ed; /* Cinza para o fundo da barra de progresso */
-
-
-    /* Sombras */
+    --cor-atencao: #ff6f61;
+    --cor-info: #007bff;
+    --grafico-total: #6c757d;
+    --grafico-concluidos: #28a745;
+    --grafico-pendentes: #dc3545;
+    --grafico-matematica: #4CAF50;
+    --grafico-portugues: #FF7043;
+    --grafico-outros: #CCCCCC;
+    --grafico-barra-progresso-preenchido: #007bff;
+    --grafico-barra-progresso-fundo: #e0e6ed;
     --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.08);
     --sombra-card-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
-    --sombra-aba-ativa: 0 2px 5px rgba(0,0,0,0.08); /* Sombra mais sutil apenas na aba ativa */
-    --sombra-menu-aba: 0 2px 8px rgba(0,0,0,0.05); /* Sombra leve no container das abas */
-
-    /* Espaçamentos */
-    --espacamento-externo: 1rem;
-    --espacamento-interno-padrao: 1.5rem; /* Aumentado um pouco para melhor respiro */
-    --espacamento-interno-card: 1rem;
-    --gap-padrao: 1rem;
-
-    /* Bordas */
     --borda-radius-padrao: 8px;
     --borda-radius-card: 12px;
+    --gap-padrao: 1rem;
+    --espacamento-interno-card: 1rem;
+    --espacamento-interno-padrao: 1.5rem;
+    --espacamento-externo: 1rem;
 }
 
 body {
-    font-family: 'Inter', sans-serif; /* Nova fonte */
+    font-family: 'Inter', sans-serif;
     margin: var(--espacamento-externo);
     background: var(--cor-fundo-claro);
     color: var(--cor-texto-principal);
     line-height: 1.6;
 }
 
+body.body-with-bottom-nav {
+    padding-bottom: 70px;
+}
+
 main {
     max-width: 700px;
-    margin: 12px !important;
+    margin: 1rem auto !important;
     background: #f5f4f0;
     padding: var(--espacamento-interno-padrao);
     border-radius: var(--borda-radius-padrao);
     box-shadow: var(--sombra-card);
-    overflow: hidden; /* Garante que sombras internas não transbordem */
-    margin-top: 5px !important;
+    overflow: hidden;
 }
 
-header h1 {
-    margin-bottom: var(--gap-padrao);
-    text-align: center;
-    color: var(--cor-primaria);
-    font-size: 1.8rem; /* Ajuste para mobile */
-    font-weight: 700;
-}
-
-/* --- Abas Menu Melhorias --- */
-.abas-menu {
-    display: flex;
-    gap: 0; /* REMOVIDO o gap para que os botões se encostem */
-    margin-bottom: var(--gap-padrao);
-    user-select: none;
-    flex-wrap: nowrap; /* Impede que as abas quebrem linha por padrão */
-    justify-content: flex-start; /* Alinha ao início para permitir scroll */
-    overflow-x: auto; /* Permite scroll horizontal */
-    white-space: nowrap; /* Impede que o texto das abas quebre */
-    -webkit-overflow-scrolling: touch; /* Melhora a rolagem em iOS */
-    background: none; /* Fundo do container para as abas */
-    scroll-behavior: smooth; /* Rolagem suave das abas */
-
-    /* Esconde a barra de rolagem, mas permite a rolagem */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
-}
-.abas-menu::-webkit-scrollbar { /* Chrome, Safari and Opera */
-    display: none;
-}
-
-
-.aba-btn {
-    flex: 1; /* Permite que os botões se estiquem */
-    flex-shrink: 0; /* Impede que os botões encolham em excesso */
-    min-width: 90px; /* Garante um tamanho mínimo de toque em mobile */
-    padding: 0.75rem 0.5rem;
-    background: none; /* Fundo branco para botões inativos */
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    color: var(--cor-texto-principal); /* Cor do texto principal */
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease; /* Adicionado transform para feedback ao toque */
-
-    position: relative; /* Necessário para posicionar o pseudo-elemento da linha */
-    overflow: hidden; /* Garante que a linha não vaze durante a animação */
-    border-radius: 0 !important;
-}
-
-/* Linha inferior para indicador da aba ativa */
-.aba-btn::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 4px; /* Espessura da linha */
-    background-color: transparent; /* Cor padrão transparente */
-    transform: translateX(-100%); /* Escondida à esquerda por padrão */
-    transition: transform 0.3s ease-out, background-color 0.3s ease-out;
-}
-
-/* Estilo da aba ativa */
-.aba-btn.active {
-    color: var(--cor-primaria); /* Cor do texto da aba ativa */
-    font-weight: 700; /* Deixa o texto da aba ativa mais forte */
-    /* Removido box-shadow daqui, pois o container .abas-menu já tem */
-}
-
-.aba-btn.active::after {
-    background-color: var(--cor-primaria); /* Cor da linha ativa */
-    transform: translateX(0); /* Desliza para a posição visível */
-}
-.aba-btn {
-    background: none !important;
-}
-
-/* Transição de conteúdo da aba é controlada pelo JS (GSAP) */
 .conteudo-aba section {
     display: none;
     opacity: 0;
-    padding-top: 0.5rem; /* Pequeno respiro após o menu */
-    background-color: transparent !important;
-    box-shadow: none !important;
-    padding: 5px !important;
 }
 
 .conteudo-aba section.active {
-    display: block; /* GSAP gerencia a opacidade para transição suave */
+    display: block;
     opacity: 1;
 }
 
-#aba-dashboard {
-    background: none;
-}
-
-/* --- Dashboard Section --- */
 .dashboard-grid {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Distribui os itens uniformemente */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: var(--gap-padrao);
     margin-bottom: var(--gap-padrao);
-    flex-wrap: wrap; /* Permite que os cards quebrem a linha */
 }
 
 .dashboard-card {
-    flex: 1 1 calc(33% - var(--gap-padrao)); /* Ocupa ~1/3, ajustado pelo gap */
-    min-width: 120px; /* Garante tamanho mínimo em mobile */
-    max-height: 50px !important;
     padding: var(--espacamento-interno-card);
     border-radius: var(--borda-radius-card);
     color: white;
     text-align: center;
-    font-weight: bold;
     box-shadow: var(--sombra-card);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-    /* Aprimoramento visual para os cards */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 5px solid; /* Borda colorida na parte inferior */
-    box-sizing: border-box; /* Inclui padding e border na largura/altura */
+    border-bottom: 5px solid;
+    box-sizing: border-box;
 }
 
 .dashboard-card:hover {
-    transform: translateY(-3px); /* Leve elevação ao passar o mouse */
+    transform: translateY(-3px);
     box-shadow: var(--sombra-card-hover);
 }
 
 .dashboard-card h3 {
-    margin: 0 auto 0.5rem 0;
-    font-size: 1.1rem;
-    color: white; /* Garante que o texto seja branco dentro do card */
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .dashboard-card p {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     margin: 0;
-    color: white; /* Garante que o texto seja branco dentro do card */
+    font-weight: 700;
 }
 
-/* Cores específicas para os cards com bordas inferiores */
 .dashboard-card.total { 
     background: linear-gradient(135deg, #007bff, #0056b3);
-    border-color: #003a7a; /* Azul mais escuro para a borda */
+    border-color: #003a7a;
 }
 .dashboard-card.concluidos { 
     background: linear-gradient(135deg, #28a745, #1e7e34);
-    border-color: #1a6f2c; /* Verde mais escuro para a borda */
+    border-color: #1a6f2c;
 }
 .dashboard-card.pendentes { 
     background: linear-gradient(135deg, #dc3545, #c82333);
-    border-color: #a7232e; /* Vermelho mais escuro para a borda */
+    border-color: #a7232e;
 }
 
 .grafico-container {
-    max-width: 600px; /* Ajustei o max-width para desktop */
-    width: 100%; /* Garante que ocupe 100% do pai em telas menores */
-    margin: 1.5rem auto; /* Mais espaçamento vertical e centraliza */
+    max-width: 600px;
+    width: 100%;
+    margin: 1.5rem auto;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.6);;
     border-radius: var(--borda-radius-card);
     box-shadow: var(--sombra-card);
-    position: relative; /* Para o texto central do doughnut */
-    display: flex; /* Para centralizar o h3 e o canvas */
-    flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente o conteúdo */
+}
+
+#grafico-pesos-container {
+    padding: 1.5rem 1rem;
+    background: transparent;
+    box-shadow: none;
+}
+
+#grafico-pesos-container canvas {
+    max-height: 40px;
+    width: 100% !important;
 }
 
 .grafico-container h3 {
-    width: 100%; /* Garante que o título ocupe a largura e centraliza o texto */
+    width: 100%;
     text-align: center;
     margin-top: 0;
     margin-bottom: 1rem;
@@ -239,73 +137,67 @@ header h1 {
     font-size: 1.25rem;
 }
 
-/* --- Novos estilos para as barras de progresso por disciplina no Dashboard --- */
 .disciplina-progresso-barras {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Espaço entre as barras de disciplinas */
-    padding: 0.5rem 0; /* Padding interno */
+    gap: 1rem;
+    padding: 0.5rem 0;
 }
 
 .progresso-item {
     display: flex;
-    flex-direction: column; /* Título em cima, barra embaixo */
-    gap: 0.3rem; /* Espaço entre o título da disciplina e a barra */
+    flex-direction: column;
+    gap: 0.3rem;
     width: 100%;
 }
 
 .progresso-item strong {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--cor-texto-principal);
 }
 
 .progresso-item .progresso-barra {
-    margin-bottom: 0; /* Remove a margem inferior padrão */
-    height: 25px; /* Deixa a barra um pouco mais alta */
-    border-radius: 12px; /* Mais arredondada */
-    background: var(--grafico-barra-progresso-fundo); /* Fundo cinza */
-    box-shadow: inset 0 1px 4px rgba(0,0,0,0.15); /* Sombra interna para profundidade */
+    height: 25px;
+    border-radius: 12px;
+    background: var(--grafico-barra-progresso-fundo);
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.15);
+    overflow: hidden;
 }
 
-/* Estilo específico para o preenchimento da barra de progresso no dashboard */
 .progresso-item .progresso-preenchido {
-    background: var(--grafico-barra-progresso-preenchido); /* Azul padrão para preenchimento */
-    border-radius: 12px; /* Bordas arredondadas internas */
+    height: 100%;
+    width: 0%;
+    background: var(--grafico-barra-progresso-preenchido);
+    border-radius: 12px;
     transition: width 0.7s ease-in-out;
 }
 
-/* Cores customizadas para as barras de progresso das disciplinas (no dashboard) */
+#barra-progresso-total-dashboard {
+    background: var(--grafico-total) !important;
+}
+
 #barra-progresso-disciplina-matematica {
-    background: var(--grafico-matematica) !important; /* Verde */
+    background: var(--grafico-matematica) !important;
 }
 
 #barra-progresso-disciplina-portugues {
-    background: var(--grafico-portugues) !important; /* Laranja */
+    background: var(--grafico-portugues) !important;
 }
 
 .progresso-item .progresso-percentual {
-    text-align: right; /* Alinha o percentual à direita */
+    text-align: right;
     font-weight: 600;
     color: var(--cor-texto-secundario);
     font-size: 0.9rem;
 }
 
-/* --- Estilo para centralizar texto no gráfico de rosca (mantido) --- */
 .chart-doughnut-wrapper {
     position: relative;
-    width: 100%; /* Ocupa a largura total do container */
-    max-width: 250px; /* Limita o tamanho do doughnut para não ficar gigante */
-    aspect-ratio: 1 / 1; /* Garante que o container interno tenha proporção 1:1 */
-    margin-bottom: 0.5rem; /* Espaçamento abaixo do gráfico de rosca */
-}
-
-.chart-doughnut-wrapper canvas {
-    position: absolute; /* Permite que o canvas cresça para preencher o wrapper */
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    height: 100% !important;
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio: 1 / 1;
+    margin: 0 auto 0.5rem auto;
 }
 
 .chart-center-text {
@@ -313,194 +205,286 @@ header h1 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 1.8rem; /* Tamanho do percentual */
+    font-size: 1.8rem;
     font-weight: 700;
-    color: var(--cor-primaria); /* Cor do percentual */
+    color: var(--cor-primaria);
     text-align: center;
-    pointer-events: none; /* Garante que não interfira com interações do gráfico */
-}
-
-.pendencias {
-    padding-top: 20px;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: var(--borda-radius-card);
-    box-shadow: var(--sombra-card);
+    pointer-events: none;
 }
 
 .pendencias-lista {
-    max-height: auto; /* Um pouco menor para mobile */
-    overflow-y: auto;
-    padding: 0.8rem var(--espacamento-interno-card);
-    border-radius: var(--borda-radius-padrao);
-    list-style: none; /* Remove bullet points */
+    list-style: none;
+    padding: 0;
     margin: 0;
 }
 
 .pendencias-lista li {
     padding: 0.3rem 0;
-    border-bottom: 1px dashed rgba(0,0,0,0.08); /* Linha divisória suave */
-    color: var(--cor-texto-principal);
+    border-bottom: 1px dashed rgba(0,0,0,0.08);
     font-size: 0.95rem;
-    display: flex; /* Para alinhar o ícone com o texto */
+    display: flex;
     align-items: center;
-    gap: 0.5rem; /* Espaçamento entre o ícone e o texto */
+    gap: 0.5rem;
 }
 
 .pendencias-lista li:last-child {
     border-bottom: none;
 }
 
-/* Estilo para o ícone de pendência */
 .pendencias-lista li i.fa-circle-exclamation {
-    color: var(--cor-atencao); /* Cor do ícone de atenção/pendência */
-    font-size: 0.9em; /* Ajusta o tamanho do ícone */
-}
-
-/* --- Disciplinas Section (mantida) --- */
-.disciplinas-grid {
-    display: grid;
-    grid-template-columns: 1fr; /* Padrão mobile: uma coluna */
-    gap: var(--gap-padrao);
+    color: var(--cor-atencao);
 }
 
 .disciplina-card {
     background: rgba(255, 255, 255, 0.6);
     border-radius: var(--borda-radius-padrao);
     padding: var(--espacamento-interno-card);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra interna mais suave */
-    border: 0 solid #673ab7;
-    border-left-width: 5px;
-border-radius: 12px;
-    transition: box-shadow 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid var(--cor-primaria);
 }
 
 .disciplina-card h3 {
-    margin: 0 0 0.25rem 0;
-    color: var(--cor-primaria);
-    font-size: 1.2rem;
+    margin: 0;
 }
 
 .disciplina-card small {
     display: block;
-    margin-bottom: 0.6rem; /* Mais espaçamento */
+    margin: 0.25rem 0 0.6rem 0;
     color: var(--cor-texto-secundario);
     font-size: 0.85rem;
 }
 
-.btn-ver-topicos {
-    background: var(--cor-secundaria);
-    border: none;
-    color: white;
-    padding: 0.5rem 0.8rem; /* Aumentado um pouco */
-    border-radius: 4px;
-    cursor: pointer;
-    margin-bottom: 0.8rem; /* Mais espaçamento */
-    font-size: 0.9rem;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-ul.topicos-lista {
+ul.topicos-lista-botoes {
     list-style: none;
-    padding-left: 0; /* Remove padding padrão da lista */
-    margin-top: 0.5rem;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-ul.topicos-lista li {
-    margin-bottom: 0.6rem; /* Mais espaçamento */
+.topico-btn {
+    width: 100%;
+    background-color: var(--cor-fundo-card);
+    border: 1px solid var(--cor-cinza-claro);
+    padding: 0.75rem;
+    border-radius: var(--borda-radius-padrao);
+    text-align: left;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.topico-btn:hover {
+    background-color: #e9eef2;
+    transform: translateY(-2px);
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background: none;
+    border: none;
+    color: var(--cor-texto-secundario);
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-item i {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.nav-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.nav-item.active {
+    color: var(--cor-primaria);
+}
+
+.dicas-section {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 1rem;
+    border-radius: var(--borda-radius-padrao);
+    margin-bottom: 1.5rem;
+}
+
+.dicas-section:last-child {
+    margin-bottom: 0;
+}
+
+.dicas-section h3 {
+    font-size: 1.1rem;
+    color: var(--cor-primaria);
+    margin: 0 0 0.75rem 0;
     display: flex;
     align-items: center;
-    gap: 0.6rem; /* Mais espaçamento */
-    font-size: 0.95rem;
-    color: var(--cor-texto-principal);
+    gap: 0.5rem;
 }
 
-ul.topicos-lista li input[type="checkbox"] {
-    min-width: 18px; /* Tamanho fixo para checkbox */
-    min-height: 18px;
-    cursor: pointer;
-    accent-color: var(--cor-primaria); /* Muda a cor do checkbox */
+.lista-topicos-hoje {
+    list-style: none;
+    padding: 0;
 }
 
-ul.topicos-lista li label {
-    flex-grow: 1; /* Permite que o label ocupe espaço restante */
-    cursor: pointer;
-}
-
-ul.topicos-lista li .comecar-link {
-    margin-left: auto;
-    font-size: 0.8rem; /* Levemente menor */
-    color: var(--cor-info);
-    text-decoration: underline;
-    cursor: pointer;
-    user-select: none;
-    white-space: nowrap; /* Evita que o link quebre a linha */
-}
-
-/* --- Progresso Section (mantida) --- */
-.progresso-barra {
-    background: var(--cor-cinza-claro);
-    height: 20px; /* Ligeiramente mais alta */
-    border-radius: 10px; /* Metade da altura para bordas arredondadas */
-    overflow: hidden;
-    margin-bottom: 0.8rem;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1); /* Sombra interna sutil */
-}
-
-.progresso-preenchido {
-    height: 100%;
-    background: var(--cor-primaria);
-    width: 0;
-    transition: width 0.7s ease-in-out;
-    border-radius: 10px; /* Para as bordas arredondadas internas */
-}
-
-/* Cores específicas para barras de progresso de disciplina */
-#barra-progresso-matematica { background: var(--cor-sucesso) !important; }
-#barra-progresso-portugues { background: var(--cor-atencao) !important; }
-
-.progresso-texto {
-    font-weight: 600;
-    margin-bottom: var(--gap-padrao);
-    text-align: center;
-    color: var(--cor-primaria);
-    font-size: 1.1rem;
-}
-
-/* --- Dicas Section (mantida) --- */
-.dicas-lista {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    color: var(--cor-texto-principal);
-}
-
-.dicas-lista li {
+.lista-topicos-hoje li {
+    background-color: var(--cor-fundo-card);
+    padding: 0.75rem;
+    border-radius: var(--borda-radius-padrao);
     margin-bottom: 0.5rem;
+    font-size: 0.95rem;
 }
 
-/* --- Media Queries (Mobile-First) --- */
+.dicas-lista {
+    list-style-type: '• ';
+    padding-left: 1.2rem;
+}
+
+/* Estilos do nosso Drawer Customizado */
+.custom-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.3s, opacity 0.3s ease;
+}
+
+.custom-drawer.is-open {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+.drawer__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    cursor: pointer;
+}
+
+.drawer__container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 90%;
+    max-width: 400px;
+    background-color: #fff;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+}
+
+.custom-drawer.is-open .drawer__container {
+    transform: translateX(0);
+}
+
+.drawer__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--cor-cinza-claro);
+}
+
+.drawer__title {
+    font-size: 1.25rem;
+    color: var(--cor-primaria);
+    margin: 0;
+}
+
+.drawer__close {
+    background: transparent;
+    border: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.drawer__content { padding: 1.5rem; }
+
+#drawer-topic-info {
+    border-bottom: 1px solid var(--cor-cinza-claro);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.drawer-details { margin: 1rem 0; font-size: 0.9rem; }
+.drawer-details strong { color: var(--cor-texto-principal); }
+
+.drawer-actions label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+#drawer-checkbox {
+    width: 1.2em;
+    height: 1.2em;
+    accent-color: var(--cor-primaria);
+}
+
+.drawer-aulas h3 {
+    margin-top: 0;
+    color: var(--cor-primaria);
+}
+
+.drawer-aulas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.drawer-aulas a {
+    display: block;
+    background-color: var(--cor-fundo-card);
+    padding: 0.75rem;
+    border-radius: var(--borda-radius-padrao);
+    text-decoration: none;
+    color: var(--cor-info);
+    transition: background-color 0.2s;
+}
+
+.drawer-aulas a:hover {
+    background-color: #e9eef2;
+}
+
 @media (min-width: 600px) {
     main {
-        padding: 2rem; /* Mais padding em telas maiores */
+        padding: 2rem;
     }
-
-    header h1 {
-        font-size: 2.2rem; /* Maior em telas maiores */
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
-
-    .abas-menu {
-        justify-content: center; /* Centraliza as abas em telas maiores */
-    }
-
-    .dashboard-card {
-        flex: 1 1 calc(33.33% - var(--gap-padrao)); /* Volta para 3 cards por linha */
-    }
-
-    .grafico-container {
-        max-width: 600px; /* Pode ser um pouco maior para o gráfico de barras por tópico */
-    }
-    
-
     .disciplinas-grid {
-        grid-template-columns: 1fr 1fr; /* Duas colunas em telas maiores */
+        grid-template-columns: 1fr 1fr;
     }
 }
