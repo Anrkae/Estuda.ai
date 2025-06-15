@@ -114,7 +114,7 @@ main {
     width: 100%;
     margin: 1.5rem auto;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.6);;
+    background: rgba(255, 255, 255, 0.2);;
     border-radius: var(--borda-radius-card);
     box-shadow: var(--sombra-card);
 }
@@ -212,6 +212,18 @@ main {
     color: var(--cor-primaria);
     text-align: center;
     pointer-events: none;
+}
+
+.pendencias {
+    max-width: 600px;
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: var(--borda-radius-card);
+    box-shadow: var(--sombra-card);
+    border-left: 5px solid var(--cor-primaria);
+    
 }
 
 .pendencias-lista {
@@ -489,6 +501,15 @@ ul.topicos-lista-botoes {
 
 .drawer-aulas a:hover {
     background-color: #e9eef2;
+}
+
+.tituloBtn {
+    display: flex !important;
+    align-content: space-between !important;
+}
+
+.tituloBtn h3 {
+    margin: auto 0 !important;
 }
 
 @media (min-width: 600px) {
