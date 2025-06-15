@@ -5,9 +5,9 @@
   "vagas": 1125,
   "observacoes": "Concurso de Admissão aos Cursos de Formação e Graduação de Sargentos das Áreas Geral, Músico e Saúde. A Redação é de caráter eliminatório.",
   "pesos_gerais": {
-    "labels": ["Matemática", "Português", "Hist/Geo", "Inglês"],
-    "data": [28, 28, 24, 20],
-    "colors": ["#004d40", "#ff6f00", "#bf360c", "#0d47a1"]
+    "labels": ["Matemática", "Português", "Inglês", "História", "Geografia", "Literatura"],
+    "data": [28, 20, 20, 12, 12, 8],
+    "colors": ["#0d47a1", "#1565c0", "#1e88e5", "#42a5f5", "#90caf9", "#bbdefb"]
   },
   "disciplinas": [
     {
@@ -15,147 +15,95 @@
       "nome": "Matemática",
       "peso_disciplina": 28,
       "topicos": [
-        {
-          "id": "conjuntos_logica",
-          "nome": "Conjuntos e Raciocínio Lógico",
-          "desc": "Representação de conjuntos, subconjuntos, operações: união, interseção, diferença e complementar.",
-          "peso_topico": "Frequente",
-          "aulas": []
-        },
-        {
-          "id": "funcoes",
-          "nome": "Funções",
-          "desc": "Função Linear, Afim, Quadrática, Modular, Exponencial e Logarítmica. Um dos tópicos mais importantes da prova.",
-          "peso_topico": "Essencial",
-          "aulas": []
-        },
-        {
-          "id": "trigonometria",
-          "nome": "Trigonometria",
-          "desc": "Arcos, identidades, equações e inequações trigonométricas, resolução de triângulos.",
-          "peso_topico": "Muito Frequente",
-          "aulas": []
-        },
-        {
-          "id": "analise_combinatoria",
-          "nome": "Análise Combinatória e Probabilidade",
-          "desc": "Princípios de contagem, arranjos, combinações, permutações e probabilidade. Presença garantida na prova.",
-          "peso_topico": "Muito Frequente",
-          "aulas": []
-        },
-        {
-          "id": "geometria_espacial",
-          "nome": "Geometria Espacial",
-          "desc": "Geometria de posição e métrica, incluindo poliedros, prismas, pirâmides, cilindros, cones e esferas.",
-          "peso_topico": "Essencial",
-          "aulas": []
-        }
+        { "id": "conjuntos_numericos", "nome": "Conjuntos Numéricos", "desc": "Naturais, Inteiros, Racionais, Reais. Operações e propriedades.", "peso_topico": "Frequente", "aulas": [ { "t": "Conjuntos Numéricos para ESA e EEAR - Prof. Thiago Esquian", "u": "https://www.youtube.com/watch?v=1EptS4-yA_Q" }, { "t": "Concurso ESA 2026: Matemática na Prática | Conjunto dos Números", "u": "https://www.youtube.com/watch?v=sBBoj04b2aE" }, { "t": "MATEMÁTICA PARA (ESA,EEAR E EAM)- APRENDA CONJUNTOS !!", "u": "https://www.youtube.com/watch?v=LgI8B-H7Lz8" } ] },
+        { "id": "funcao_afim", "nome": "Função Afim", "desc": "Gráfico, coeficientes, zero da função, inequações e problemas.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Matemática para Militar: Função Afim", "u": "https://www.youtube.com/watch?v=S2U532gE6pA" }, { "t": "ESA 2019 | Função Afim (Passo a Passo)", "u": "https://www.youtube.com/watch?v=Yp98g2a-fXA" }, { "t": "REVISÃO ESA - FUNÇÃO AFIM COM GEOMETRIA ANALÍTICA !!", "u": "https://www.youtube.com/watch?v=pDwsL6iF2b4" } ] },
+        { "id": "funcao_quadratica", "nome": "Função Quadrática", "desc": "Gráfico (parábola), vértice, raízes, estudo do sinal, inequações.", "peso_topico": "Essencial", "aulas": [ { "t": "Função Quadrática | ESA 2021 – Intensivo de Matemática", "u": "https://www.youtube.com/watch?v=1xGZ3n0j2jI" }, { "t": "10 EXERCÍCIOS DE FUNÇÃO QUADRÁTICA PARA A EEAr e ESA", "u": "https://www.youtube.com/watch?v=wX1j-9Q9j_c" }, { "t": "ESA 2017 | Função Quadrática | Valor Mínimo da Função", "u": "https://www.youtube.com/watch?v=e-8x_fQ8Q3o" } ] },
+        { "id": "funcao_modular", "nome": "Função Modular", "desc": "Definição, equações e inequações modulares.", "peso_topico": "Frequente", "aulas": [ { "t": "🔥 FUNÇÃO MODULAR COMPLETA + EXERCÍCIOS | ESA EEAR", "u": "https://www.youtube.com/watch?v=" }, { "t": "Função Modular para a ESA (Teoria e Questões) - Prof. Procopio", "u": "youtube.com" }, { "t": "AULA AO VIVO - FUNÇÃO MODULAR - ESA/EEAR", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw1" } ] },
+        { "id": "funcao_exponencial", "nome": "Função Exponencial", "desc": "Gráfico, equações e inequações exponenciais.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "FUNÇÃO EXPONENCIAL COMPLETA + EXERCÍCIOS | ESA EEAR", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw2" }, { "t": "Função Exponencial - Matemática | Concurso ESA", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw3" }, { "t": "ESA / EEAR - FUNÇÃO EXPONENCIAL - BIZU", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw4" } ] },
+        { "id": "funcao_logaritmica", "nome": "Função Logarítmica", "desc": "Definição, propriedades, equações e inequações logarítmicas.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "LOGARITMOS do ZERO para ESA e EEAR (AULA COMPLETA)", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw5" }, { "t": "Função Logarítmica - AULÃO PARA A ESA", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw6" }, { "t": "Tudo sobre LOGARITMOS para ESA e EsPCEx", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw7" } ] },
+        { "id": "trig_triangulo_retangulo", "nome": "Trigonometria no Triângulo Retângulo", "desc": "Seno, cosseno, tangente. Ângulos notáveis.", "peso_topico": "Frequente", "aulas": [ { "t": "Trigonometria no Triângulo Retângulo (Aula Completa)", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw8" }, { "t": "TRIGONOMETRIA NO TRIÂNGULO RETÂNGULO PARA EEAR E ESA", "u": "https://www.youtube.com/watch?v=BMHYM5Wwzqw9" }, { "t": "Trigonometria - Triângulo Retângulo e Tabela de Ângulos Notáveis", "u": "https://www.youtube.com/watch?v=L1_yWnN26W40" } ] },
+        { "id": "trig_circunferencia", "nome": "Trigonometria na Circunferência", "desc": "Arcos, seno, cosseno e tangente na circunferência. Redução de quadrantes.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Ciclo trigonométrico (circunferência trigonométrica) | Aula completa", "u": "https://www.youtube.com/watch?v=L1_yWnN26W41" }, { "t": "TRIGONOMETRIA - CICLO TRIGONOMÉTRICO PARA A ESA", "u": "https://www.youtube.com/watch?v=L1_yWnN26W42" }, { "t": "Arcos Côngruos e Redução ao 1º Quadrante", "u": "https://www.youtube.com/watch?v=L1_yWnN26W43" } ] },
+        { "id": "analise_combinatoria_pfc", "nome": "Análise Combinatória: PFC", "desc": "Princípio Fundamental da Contagem (Princípio Aditivo e Multiplicativo).", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Princípio Fundamental da Contagem (PFC) - Análise Combinatória", "u": "https://www.youtube.com/watch?v=L1_yWnN26W44" }, { "t": "ANÁLISE COMBINATÓRIA - PRINCÍPIO FUNDAMENTAL DA CONTAGEM (PFC) - (ESA)", "u": "https://www.youtube.com/watch?v=L1_yWnN26W45" }, { "t": "Princípio Fundamental da Contagem (Aula 1 de Análise Combinatória)", "u": "https://www.youtube.com/watch?v=L1_yWnN26W46" } ] },
+        { "id": "analise_combinatoria_agrupamentos", "nome": "Análise Combinatória: Agrupamentos", "desc": "Arranjos, combinações e permutações simples e com repetição.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "PERMUTAÇÃO, ARRANJO E COMBINAÇÃO | ANÁLISE COMBINATÓRIA", "u": "https://www.youtube.com/watch?v=L1_yWnN26W47" }, { "t": "Análise Combinatória para ESA e EEAR - Arranjo, Combinação e Permutação", "u": "https://www.youtube.com/watch?v=L1_yWnN26W48" }, { "t": "Como diferenciar Arranjo, Permutação e Combinação?", "u": "https://www.youtube.com/watch?v=L1_yWnN26W49" } ] },
+        { "id": "probabilidade", "nome": "Probabilidade", "desc": "Conceitos, probabilidade da união, condicional e eventos independentes.", "peso_topico": "Frequente", "aulas": [ { "t": "PROBABILIDADE PARA A ESA - AULA COMPLETA", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM0" }, { "t": "Probabilidade: Aula Completa (Definição, União, Condicional)", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM1" }, { "t": "Probabilidade - Questões ESA", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM2" } ] },
+        { "id": "geometria_plana", "nome": "Geometria Plana", "desc": "Áreas de figuras planas (triângulos, quadriláteros, polígonos, círculo). Teoremas de Tales e Pitágoras.", "peso_topico": "Essencial", "aulas": [ { "t": "Geometria Plana - Tudo sobre Áreas de Figuras Planas", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM3" }, { "t": "GEOMETRIA PLANA PARA A ESA - TUDO O QUE VOCÊ PRECISA SABER!", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM4" }, { "t": "Teorema de Tales e Teorema de Pitágoras - Aula Completa", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM5" } ] },
+        { "id": "geometria_espacial_poliedros", "nome": "Geometria Espacial: Poliedros", "desc": "Prismas e pirâmides: áreas e volumes.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Geometria Espacial: Prismas e Pirâmides (Áreas e Volumes)", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM6" }, { "t": "GEOMETRIA ESPACIAL PARA A ESA - Poliedros, Prismas e Pirâmides", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM7" }, { "t": "Tudo sobre PRISMAS: áreas e volumes (para ESA)", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM8" } ] },
+        { "id": "geometria_espacial_corpos_redondos", "nome": "Geometria Espacial: Corpos Redondos", "desc": "Cilindro, cone e esfera: áreas e volumes.", "peso_topico": "Essencial", "aulas": [ { "t": "Corpos Redondos: Cilindro, Cone e Esfera (Aulão Completo)", "u": "https://www.youtube.com/watch?v=iJNKv5FbgZM9" }, { "t": "GEOMETRIA ESPACIAL - CILINDRO, CONE E ESFERA PARA A ESA", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w0" }, { "t": "Resumo de CILINDRO, CONE E ESFERA", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w1" } ] },
+        { "id": "geometria_analitica", "nome": "Geometria Analítica", "desc": "Estudo do ponto, da reta e da circunferência no plano cartesiano.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Geometria Analítica: Ponto, Reta e Circunferência | Aula Completa", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w2" }, { "t": "GEOMETRIA ANALÍTICA PARA A ESA - TUDO O QUE VOCÊ PRECISA!", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w3" }, { "t": "Geometria Analítica - Estudo da Reta (Equação Geral, Reduzida)", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w4" } ] }
       ]
     },
     {
       "id": "portugues",
       "nome": "Português",
-      "peso_disciplina": 28,
+      "peso_disciplina": 20,
       "topicos": [
-        {
-          "id": "interpretacao",
-          "nome": "Interpretação de Texto",
-          "desc": "Leitura, interpretação e análise de diversos gêneros textuais. Corresponde à maior parte das questões.",
-          "peso_topico": "Essencial",
-          "aulas": []
-        },
-        {
-          "id": "gramatica_morfossintaxe",
-          "nome": "Gramática e Morfossintaxe",
-          "desc": "Morfologia (classes de palavras) e Sintaxe (período simples e composto, concordância, regência e crase).",
-          "peso_topico": "Muito Frequente",
-          "aulas": []
-        },
-        {
-          "id": "semantica_estilistica",
-          "nome": "Semântica e Estilística",
-          "desc": "Significação das palavras, figuras de linguagem e funções da linguagem.",
-          "peso_topico": "Frequente",
-          "aulas": []
-        },
-        {
-            "id": "literatura",
-            "nome": "Literatura Brasileira",
-            "desc": "Contexto histórico e características das escolas literárias: Quinhentismo, Barroco, Arcadismo, Romantismo, Realismo, etc.",
-            "peso_topico": "Ocasional",
-            "aulas": []
-          }
+        { "id": "interpretacao_textual", "nome": "Interpretação de Textos", "desc": "Compreensão de textos literários e não literários. Ideia principal e secundárias.", "peso_topico": "Essencial", "aulas": [ { "t": "Interpretação de Texto para Concursos (Aula Completa)", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w6" }, { "t": "INTERPRETAÇÃO DE TEXTO PARA A ESA: AULA 1", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w7" }, { "t": "Como Gabaritar Interpretação de Texto em Concursos Militares", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w8" } ] },
+        { "id": "morfologia_classes_palavras", "nome": "Morfologia: Classes de Palavras", "desc": "Identificação e uso de substantivos, adjetivos, verbos, advérbios, pronomes, etc.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Morfologia para Concursos - Prof.ª Pamba", "u": "https://www.youtube.com/watch?v=2fvujLVe_9w9" }, { "t": "Classes de Palavras (Morfologia) para a ESA", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E0" }, { "t": "ESA | Classes Gramaticais: o que você precisa saber", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E1" } ] },
+        { "id": "sintaxe_periodo_simples", "nome": "Sintaxe: Período Simples", "desc": "Sujeito, predicado, tipos de predicado, complementos verbais e nominais, adjuntos.", "peso_topico": "Frequente", "aulas": [ { "t": "Sintaxe: Frase, Oração e Período | Termos da Oração", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E2" }, { "t": "Análise Sintática - Período Simples (Aula Completa)", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E3" }, { "t": "Termos Essenciais da Oração para a ESA", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E4" } ] },
+        { "id": "sintaxe_periodo_composto", "nome": "Sintaxe: Período Composto", "desc": "Orações coordenadas e subordinadas.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Período Composto por Coordenação e Subordinação (RESUMO COMPLETO)", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E5" }, { "t": "PERÍODO COMPOSTO PARA A ESA", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E6" }, { "t": "Orações Subordinadas - Português para Concursos", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E7" } ] },
+        { "id": "concordancia", "nome": "Concordância Verbal e Nominal", "desc": "Regras gerais e casos especiais de concordância.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Concordância Verbal e Nominal - AULA COMPLETA", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E8" }, { "t": "CONCORDÂNCIA verbal e nominal para a ESA", "u": "https://www.youtube.com/watch?v=0uEddyhLQ1E9" }, { "t": "Exercícios de Concordância Verbal - ESA e EEAR", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE0" } ] },
+        { "id": "regencia", "nome": "Regência Verbal e Nominal", "desc": "Verbos e nomes que exigem preposição. Uso correto da preposição.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Regência Verbal e Nominal para Concursos (Aula Completa)", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE1" }, { "t": "REGÊNCIA VERBAL E NOMINAL PARA A ESA!", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE2" }, { "t": "Principais Verbos e Regras de Regência", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE3" } ] },
+        { "id": "crase", "nome": "Crase", "desc": "Regras de uso do acento grave indicador da crase.", "peso_topico": "Frequente", "aulas": [ { "t": "CRASE: macetes para NUNCA mais errar! (ESA/EEAR)", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE4" }, { "t": "Aprenda CRASE em 15 Minutos - Prof. Noslen", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE5" }, { "t": "Crase - Português para Concurso ESA", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE6" } ] },
+        { "id": "pontuacao", "nome": "Pontuação", "desc": "Uso de vírgula, ponto, ponto e vírgula, dois-pontos, etc.", "peso_topico": "Frequente", "aulas": [ { "t": "PONTUAÇÃO para Concursos (VÍRGULA, PONTO E VÍRGULA, DOIS-PONTOS)", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE7" }, { "t": "Uso da VÍRGULA para a ESA e EEAR", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE8" }, { "t": "REGRAS DE PONTUAÇÃO (ESA)", "u": "https://www.youtube.com/watch?v=C_mMVa_tstE9" } ] },
+        { "id": "figuras_linguagem", "nome": "Figuras de Linguagem", "desc": "Metáfora, metonímia, hipérbole, ironia, etc.", "peso_topico": "Ocasional", "aulas": [ { "t": "FIGURAS DE LINGUAGEM (COMPLETO) | QUER QUE DESENHE", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM0" }, { "t": "Figuras de Linguagem para a ESA: o que mais cai", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM1" }, { "t": "Aula de Figuras de Linguagem para Concursos", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM2" } ] }
       ]
     },
     {
-        "id": "hist_geo",
-        "nome": "História e Geografia",
-        "peso_disciplina": 24,
+      "id": "literatura",
+      "nome": "Literatura",
+      "peso_disciplina": 8,
+      "topicos": [
+        { "id": "lit_romantismo", "nome": "Romantismo", "desc": "Prosa e poesia. Gerações românticas e principais autores.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Romantismo no Brasil (Poesia e Prosa) | Resumo de Literatura", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM3" }, { "t": "LITERATURA PARA A ESA: ROMANTISMO", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM4" }, { "t": "Romantismo | Quer Que Desenhe | Descomplica", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM5" } ] },
+        { "id": "lit_realismo_naturalismo", "nome": "Realismo, Naturalismo e Parnasianismo", "desc": "Características e principais autores, como Machado de Assis e Aluísio Azevedo.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Realismo e Naturalismo no Brasil | Resumo de Literatura", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM6" }, { "t": "LITERATURA PARA A ESA: REALISMO/NATURALISMO/PARNASIANISMO", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM7" }, { "t": "Realismo e Naturalismo em 15 minutos", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM8" } ] },
+        { "id": "lit_pre_modernismo", "nome": "Pré-Modernismo", "desc": "Contexto histórico e autores como Euclides da Cunha e Lima Barreto.", "peso_topico": "Frequente", "aulas": [ { "t": "Pré-Modernismo | Resumo de Literatura para o Enem", "u": "https://www.youtube.com/watch?v=sn1nNxp09GM9" }, { "t": "Pré-Modernismo (ESA)", "u": "https://www.youtube.com/watch?v=ouOkya8XWY40" }, { "t": "Tudo sobre o PRÉ-MODERNISMO!", "u": "https://www.youtube.com/watch?v=ouOkya8XWY41" } ] },
+        { "id": "lit_modernismo", "nome": "Modernismo no Brasil", "desc": "Semana de Arte Moderna, fases (1ª, 2ª e 3ª) e principais autores e obras.", "peso_topico": "Essencial", "aulas": [ { "t": "Modernismo no Brasil (Resumo Completo) | Quer Que Desenhe", "u": "https://www.youtube.com/watch?v=ouOkya8XWY42" }, { "t": "LITERATURA PARA A ESA: MODERNISMO", "u": "https://www.youtube.com/watch?v=ouOkya8XWY43" }, { "t": "Modernismo no Brasil: 1ª, 2ª e 3ª fase (resumo)", "u": "https://www.youtube.com/watch?v=ouOkya8XWY44" } ] }
+      ]
+    },
+    {
+        "id": "historia",
+        "nome": "História do Brasil",
+        "peso_disciplina": 12,
         "topicos": [
-          {
-            "id": "brasil_colonia",
-            "nome": "História: Brasil Colônia",
-            "desc": "Período pré-colonial, administração, economia, sociedade, rebeliões nativistas e movimentos de independência.",
-            "peso_topico": "Muito Frequente",
-            "aulas": []
-          },
-          {
-            "id": "brasil_imperio",
-            "nome": "História: Brasil Império",
-            "desc": "Primeiro Reinado, Período Regencial e Segundo Reinado: política, economia e conflitos.",
-            "peso_topico": "Frequente",
-            "aulas": []
-          },
-          {
-            "id": "brasil_republica",
-            "nome": "História: Brasil República",
-            "desc": "Da República Velha aos dias atuais, incluindo a Era Vargas, o Regime Militar e a Nova República.",
-            "peso_topico": "Muito Frequente",
-            "aulas": []
-          },
-          {
-            "id": "espaco_natural_br",
-            "nome": "Geografia: Espaço Natural",
-            "desc": "Características do território brasileiro: relevo, clima, vegetação, hidrografia e recursos naturais.",
-            "peso_topico": "Muito Frequente",
-            "aulas": []
-          },
-          {
-            "id": "espaco_economico_br",
-            "nome": "Geografia: Espaço Econômico",
-            "desc": "A formação do território, industrialização, urbanização, transportes e dinâmica do espaço agrário.",
-            "peso_topico": "Frequente",
-            "aulas": []
-          }
+          { "id": "hist_exp_maritima", "nome": "Expansão Marítima Portuguesa", "desc": "Contexto e chegada dos portugueses ao Brasil.", "peso_topico": "Frequente", "aulas": [ { "t": "A Expansão Marítima Portuguesa | HISTÓRIA PARA ESA", "u": "https://www.youtube.com/watch?v=ouOkya8XWY45" }, { "t": "EXPANSÃO MARÍTIMA: A CHEGADA DOS PORTUGUESES AO BRASIL", "u": "https://www.youtube.com/watch?v=ouOkya8XWY46" }, { "t": "As Grandes Navegações e a Expansão Marítima", "u": "https://www.youtube.com/watch?v=ouOkya8XWY47" } ] },
+          { "id": "hist_brasil_colonia_adm", "nome": "Brasil Colônia: Administração", "desc": "Capitanias Hereditárias e Governo-Geral.", "peso_topico": "Frequente", "aulas": [ { "t": "ADMINISTRAÇÃO COLONIAL (CAPITANIAS HEREDITÁRIAS E GOVERNO-GERAL)", "u": "https://www.youtube.com/watch?v=ouOkya8XWY48" }, { "t": "História do Brasil para a ESA: Administração Colonial", "u": "https://www.youtube.com/watch?v=ouOkya8XWY49" }, { "t": "Capitanias Hereditárias e Governo Geral - Brasil Colônia", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g0" } ] },
+          { "id": "hist_brasil_colonia_eco", "nome": "Brasil Colônia: Economia", "desc": "Ciclos econômicos (açúcar, ouro) e a escravidão.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Economia Colonial - Ciclo do Açúcar e Ciclo do Ouro", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g1" }, { "t": "Ciclo do Ouro no Brasil Colônia", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g2" }, { "t": "ECONOMIA AÇUCAREIRA - HISTÓRIA ESA", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g3" } ] },
+          { "id": "hist_revoltas_coloniais", "nome": "Revoltas Coloniais", "desc": "Nativistas (Amador Bueno, Beckman) e Separatistas (Inconfidência Mineira, Conjuração Baiana).", "peso_topico": "Frequente", "aulas": [ { "t": "REVOLTAS NATIVISTAS E SEPARATISTAS - (ESA)", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g4" }, { "t": "Revoltas Coloniais: Nativistas e Separatistas", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g5" }, { "t": "Inconfidência Mineira e Conjuração Baiana", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g6" } ] },
+          { "id": "hist_primeiro_reinado", "nome": "Primeiro Reinado (1822-1831)", "desc": "Processo de independência, Constituição de 1824 e abdicação de D. Pedro I.", "peso_topico": "Frequente", "aulas": [ { "t": "Primeiro Reinado (1822-1831) - História para a ESA", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g7" }, { "t": "O Primeiro Reinado em 15 minutos", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g8" }, { "t": "PRIMEIRO REINADO - AULA COMPLETA (ESA)", "u": "https://www.youtube.com/watch?v=Re5ZGeO0x2g9" } ] },
+          { "id": "hist_periodo_regencial", "nome": "Período Regencial (1831-1840)", "desc": "Instabilidade política e revoltas regenciais (Cabanagem, Farroupilha, Sabinada, Balaiada).", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Período Regencial e Revoltas Regenciais (RESUMO COMPLETO)", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw0" }, { "t": "PERÍODO REGENCIAL PARA A ESA", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw1" }, { "t": "História do Brasil: Período Regencial (1831-1840)", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw2" } ] },
+          { "id": "hist_segundo_reinado", "nome": "Segundo Reinado (1840-1889)", "desc": "Política, economia cafeeira, Guerra do Paraguai e crise do Império.", "peso_topico": "Essencial", "aulas": [ { "t": "SEGUNDO REINADO - AULA COMPLETA PARA A ESA", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw3" }, { "t": "Segundo Reinado no Brasil (RESUMO) | Quer que desenhe", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw4" }, { "t": "Segundo Reinado - História do Brasil para Concursos", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw5" } ] },
+          { "id": "hist_republica_velha", "nome": "República Velha (1889-1930)", "desc": "República da Espada, Oligárquica, política do café com leite e movimentos sociais.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "República Velha (1889 - 1930) | História do Brasil", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw6" }, { "t": "República Velha - (ESA)", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw7" }, { "t": "A REPÚBLICA VELHA EM 20 MINUTOS", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw8" } ] },
+          { "id": "hist_era_vargas", "nome": "Era Vargas (1930-1945)", "desc": "Governo Provisório, Constitucional e Estado Novo.", "peso_topico": "Essencial", "aulas": [ { "t": "A Era Vargas (1930-1945) - Resumo Completo", "u": "https://www.youtube.com/watch?v=18SlJqCCwsw9" }, { "t": "ERA VARGAS - AULA COMPLETA PARA A ESA", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk0" }, { "t": "ERA VARGAS | Quer que Desenhe | Descomplica", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk1" } ] },
+          { "id": "hist_republica_populista", "nome": "República Populista (1945-1964)", "desc": "Governos de Dutra, Vargas, JK, Jânio e Jango.", "peso_topico": "Frequente", "aulas": [ { "t": "República Populista ou Quarta República (1945-1964)", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk2" }, { "t": "República Populista para a ESA", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk3" }, { "t": "A República Liberal Populista (1945-1964) - Resumo", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk4" } ] },
+          { "id": "hist_regime_militar", "nome": "Regime Militar (1964-1985)", "desc": "Atos Institucionais, milagre econômico e processo de abertura política.", "peso_topico": "Frequente", "aulas": [ { "t": "Ditadura Militar no Brasil (RESUMO) | Quer que Desenhe", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk5" }, { "t": "Ditadura Militar para a ESA", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk6" }, { "t": "Regime Militar (1964-1985) | História do Brasil", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk7" } ] }
         ]
-      },
-      {
+    },
+    {
+        "id": "geografia",
+        "nome": "Geografia do Brasil",
+        "peso_disciplina": 12,
+        "topicos": [
+          { "id": "geo_territorio", "nome": "Território Nacional", "desc": "Localização, fronteiras, fusos horários e organização político-administrativa.", "peso_topico": "Frequente", "aulas": [ { "t": "GEOGRAFIA DO BRASIL - Território, Posição e Limites (ESA)", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk8" }, { "t": "Aula 01 - Geografia do Brasil - Posição Geográfica e Território", "u": "https://www.youtube.com/watch?v=1I-LlmBeDBk9" }, { "t": "Localização do Brasil no Mundo", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL00" } ] },
+          { "id": "geo_relevo", "nome": "Relevo Brasileiro", "desc": "Planaltos, planícies e depressões. Classificação de Jurandyr Ross.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "RELEVO BRASILEIRO (CLASSIFICAÇÃO DE JURANDYR ROSS) - (ESA)", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL01" }, { "t": "Relevo do Brasil - Geografia para Concursos", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL02" }, { "t": "Geografia - Relevo Brasileiro - Formas e classificações", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL03" } ] },
+          { "id": "geo_clima", "nome": "Clima no Brasil", "desc": "Fatores e elementos climáticos. Tipos de clima e massas de ar.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "CLIMA DO BRASIL (COMPLETO) - GEOGRAFIA ESA", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL04" }, { "t": "Climas do Brasil | Quer que Desenhe", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL05" }, { "t": "Fatores e Elementos do Clima - Geografia", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL06" } ] },
+          { "id": "geo_vegetacao", "nome": "Vegetação e Biomas", "desc": "Amazônia, Cerrado, Caatinga, Mata Atlântica, Pampas e Pantanal.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "BIOMAS DO BRASIL (COMPLETO) - GEOGRAFIA ESA", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL07" }, { "t": "Domínios Morfoclimáticos do Brasil | Resumo Completo", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL08" }, { "t": "Biomas Brasileiros - Aula de Geografia", "u": "https://www.youtube.com/watch?v=8EJeKY8pGL09" } ] },
+          { "id": "geo_hidrografia", "nome": "Hidrografia", "desc": "Principais bacias hidrográficas e potencial hídrico.", "peso_topico": "Frequente", "aulas": [ { "t": "HIDROGRAFIA DO BRASIL (COMPLETO) - GEOGRAFIA ESA", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU0" }, { "t": "Hidrografia do Brasil (Resumo) | Quer que Desenhe", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU1" }, { "t": "Bacias Hidrográficas do Brasil - Geografia", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU2" } ] },
+          { "id": "geo_demografia", "nome": "Demografia", "desc": "Crescimento, estrutura etária, distribuição da população e migrações.", "peso_topico": "Frequente", "aulas": [ { "t": "POPULAÇÃO BRASILEIRA (COMPLETO) - GEOGRAFIA ESA", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU3" }, { "t": "Demografia - Conceitos e Teorias | Geografia", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU4" }, { "t": "Pirâmides Etárias - Análise e Interpretação", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU5" } ] },
+          { "id": "geo_urbanizacao", "nome": "Urbanização", "desc": "Processo de urbanização, rede urbana e problemas urbanos.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "URBANIZAÇÃO BRASILEIRA (COMPLETO) - GEOGRAFIA ESA", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU6" }, { "t": "Urbanização no Brasil | Quer que Desenhe", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU7" }, { "t": "Rede e Hierarquia Urbana - Geografia", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU8" } ] },
+          { "id": "geo_industria", "nome": "Industrialização", "desc": "Processo de industrialização, tipos de indústria e distribuição espacial.", "peso_topico": "Frequente", "aulas": [ { "t": "INDUSTRIALIZAÇÃO BRASILEIRA (COMPLETO) - GEOGRAFIA ESA", "u": "https://www.youtube.com/watch?v=H9pNyTO4tTU9" }, { "t": "Industrialização do Brasil | Resumo de Geografia", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso0" }, { "t": "Tipos de Indústria - Geografia", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso1" } ] },
+          { "id": "geo_energia", "nome": "Fontes de Energia", "desc": "Matriz energética brasileira, fontes renováveis e não renováveis.", "peso_topico": "Ocasional", "aulas": [ { "t": "FONTES DE ENERGIA (COMPLETO) - GEOGRAFIA ESA", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso2" }, { "t": "Fontes de Energia no Brasil | Quer que Desenhe", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso3" }, { "t": "Matriz Energética Brasileira - Geografia", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso4" } ] }
+        ]
+    },
+    {
         "id": "ingles",
         "nome": "Inglês",
         "peso_disciplina": 20,
         "topicos": [
-          {
-            "id": "reading_comprehension",
-            "nome": "Compreensão de Texto",
-            "desc": "Leitura e interpretação de textos de gêneros variados. É a base da prova de inglês.",
-            "peso_topico": "Essencial",
-            "aulas": []
-          },
-          {
-            "id": "verb_tenses",
-            "nome": "Tempos e Modos Verbais",
-            "desc": "Simple Present, Present Continuous, Simple Past, Past Continuous, Future, Present Perfect.",
-            "peso_topico": "Muito Frequente",
-            "aulas": []
-          },
-          {
-            "id": "pronouns_articles",
-            "nome": "Pronomes e Artigos",
-            "desc": "Uso de pronomes pessoais, possessivos, demonstrativos e artigos definidos e indefinidos.",
-            "peso_topico": "Frequente",
-            "aulas": []
-          }
+          { "id": "eng_reading_comprehension", "nome": "Compreensão de Texto", "desc": "Leitura e interpretação de textos de gêneros variados. É a base da prova de inglês.", "peso_topico": "Essencial", "aulas": [ { "t": "Interpretação de Textos em Inglês para Concursos (Dicas e Estratégias)", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso5" }, { "t": "Como Gabaritar Interpretação de Texto em Inglês (ESA/EEAR)", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso6" }, { "t": "Técnicas de Leitura: Skimming e Scanning", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso7" } ] },
+          { "id": "eng_verb_tenses", "nome": "Tempos Verbais", "desc": "Simple Present, Present Continuous, Simple Past, Past Continuous, Future, Present Perfect.", "peso_topico": "Muito Frequente", "aulas": [ { "t": "Tempos Verbais em Inglês - (ESA)", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso8" }, { "t": "Todos os Tempos Verbais em Inglês em 25 Minutos", "u": "https://www.youtube.com/watch?v=W2WWYjNQFso9" }, { "t": "Present Perfect: o que é e como usar", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX0" } ] },
+          { "id": "eng_modal_verbs", "nome": "Verbos Modais", "desc": "Can, could, may, might, must, should, would.", "peso_topico": "Frequente", "aulas": [ { "t": "Verbos Modais em Inglês (Aula Completa)", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX1" }, { "t": "Modal Verbs para a ESA: o que mais cai", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX2" }, { "t": "Can, Could, Should, Would - Como Usar", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX3" } ] },
+          { "id": "eng_pronouns", "nome": "Pronomes", "desc": "Pessoais, possessivos, demonstrativos, relativos e interrogativos.", "peso_topico": "Frequente", "aulas": [ { "t": "Pronomes em Inglês (Todos os Tipos)", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX4" }, { "t": "Pronouns - Inglês para a ESA", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX5" }, { "t": "Relative Pronouns: Who, Which, That, Whose, Whom", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX6" } ] },
+          { "id": "eng_prepositions", "nome": "Preposições", "desc": "In, on, at, for, since, with, by.", "peso_topico": "Ocasional", "aulas": [ { "t": "Preposições IN, ON, AT (Lugar e Tempo)", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX7" }, { "t": "Prepositions - Inglês para a ESA", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX8" }, { "t": "As Preposições Mais Usadas em Inglês", "u": "https://www.youtube.com/playlist?list=PLLf-Ux79FzOvJBvxdTNGI0F2sLYg12WWX9" } ] }
         ]
-      }
+    }
   ]
 }

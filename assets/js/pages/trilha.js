@@ -102,25 +102,46 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        atualizarGraficoDoughnut(progressosDisciplinas, percGeral);
+        const progMat = progressosDisciplinas['Matemática'] || 0;
+        const progPor = progressosDisciplinas['Português'] || 0;
+        atualizarGraficoDoughnut(progMat, progPor, percGeral);
     }
 
-    function atualizarGraficoDoughnut(progressos, percGeral) {
+    function atualizarGraficoDoughnut(matematica, portugues, percGeral) {
         const ctx = document.getElementById('graficoProgresso')?.getContext('2d');
         if (!ctx) return;
         
-        document.getElementById("progressoGeralCentro").textContent = `${percGeral}%`;
+        document.getElementById("progressoGeralCentro").textContent = ""; // REMOVIDO O TEXTO CENTRAL
 
-        if (graficoDoughnut) graficoDoughnut.destroy();
-
-        const labels = Object.keys(progressos);
-        const data = Object.values(progressos);
-        const colors = editalData.pesos_gerais.colors.slice(0, labels.length);
+        if (graficoDoughnut) {
+            graficoDoughnut.destroy();
+        }
 
         graficoDoughnut = new Chart(ctx, {
             type: 'doughnut',
-            data: { labels, datasets: [{ data, backgroundColor: colors, hoverOffset: 8, borderColor: '#f5f4f0', borderWidth: 4 }] },
-            options: { responsive: true, maintainAspectRatio: true, cutout: '75%', plugins: { legend: { position: 'bottom' } } }
+            data: {
+                labels: ['Matemática', 'Português', 'Outros'],
+                datasets: [{
+                    data: [matematica, portugues, (100 - matematica - portugues)],
+                    backgroundColor: [ '#4CAF50', '#FF7043', '#CCCCCC' ],
+                    hoverOffset: 8,
+                    borderColor: '#f5f4f0',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                cutout: '75%',
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    },
+                    datalabels: { display: false },
+                    tooltip: { enabled: true, callbacks: { label: (c) => `  ${c.raw}%` }
+                    }
+                }
+            }
         });
     }
 
@@ -132,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const datasets = labels.map((label, index) => ({
             label: label,
             data: [data[index]],
-            backgroundColor: colors[index]
+            backgroundColor: colors[index],
+            barThickness: 40
         }));
         
         datasets.forEach((d, i) => {
@@ -146,10 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'bar',
             data: { labels: [''], datasets: datasets },
             options: {
-                indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
                     legend: { display: true, position: 'bottom', labels: { boxWidth: 15, font: { size: 12 } } },
-                    tooltip: { enabled: true, callbacks: { label: (c) => ` ${c.dataset.label}: ${c.raw}%` } }
+                    tooltip: { enabled: true, callbacks: { label: (c) => ` ${c.dataset.label}: ${c.raw}%` } },
+                    datalabels: { display: false }
                 },
                 scales: { x: { stacked: true, max: 100, grid: { display: false }, ticks: { display: false } }, y: { stacked: true, grid: { display: false }, ticks: { display: false } } }
             }
@@ -195,6 +220,48 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>`;
             container.appendChild(bloco);
         });
+    }
+
+    function mostrarTopicosDeHoje() {
+        const listaEl = document.getElementById('lista-topicos-hoje');
+        if (!listaEl) return;
+
+        const cronogramaSalvo = JSON.parse(localStorage.getItem('cronograma')) || {};
+        const hoje = (new Date().getDay() + 6) % 7;
+        const eventosDeHoje = cronogramaSalvo[hoje] || [];
+        
+        listaEl.innerHTML = '';
+        if (eventosDeHoje.length > 0) {
+            eventosDeHoje.forEach(evento => {
+                const li = document.createElement('li');
+                let icone = '';
+                let texto = '';
+
+                switch (evento.type) {
+                    case 'study':
+                        icone = '<i class="fa-solid fa-book-open-reader"></i>';
+                        texto = `Estudar: <strong>${evento.subject}</strong>`;
+                        break;
+                    case 'review':
+                        icone = '<i class="fa-solid fa-clipboard-check"></i>';
+                        texto = `Revisar: <strong>${evento.subject || 'Tópicos da semana'}</strong>`;
+                        break;
+                    case 'rest':
+                        icone = '<i class="fa-solid fa-mug-hot"></i>';
+                        texto = 'Dia de Descanso';
+                        break;
+                    default:
+                        icone = '<i class="fa-solid fa-star"></i>';
+                        texto = evento.subject || 'Atividade Programada';
+                }
+                li.innerHTML = `${icone} ${texto}`;
+                listaEl.appendChild(li);
+            });
+        } else {
+            const li = document.createElement('li');
+            li.innerHTML = '<i class="fa-solid fa-calendar-times"></i> Nenhuma atividade programada para hoje.';
+            listaEl.appendChild(li);
+        }
     }
 
     function abrirDrawer(topicId, disciplineId) {
@@ -255,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const icon = toggleButton.querySelector('i.fas');
                     if (icon) {
                         icon.classList.toggle('fa-plus');
-                        icon.classList.toggle('fa-minus');
+                        icon.classList.toggle('fa-');
                     }
                 }
             }
@@ -276,15 +343,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function iniciar() {
         try {
+            Chart.register(ChartDataLabels);
+            
             const response = await fetch('../assets/data/edital.json');
             if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
             editalData = await response.json();
             
             preencherAbaEdital();
-            criarGraficoPesos();
             gerarBlocosDisciplinas();
-            carregarProgresso();
             configurarOuvintesEventos();
+            carregarProgresso();
+            criarGraficoPesos();
+            mostrarTopicosDeHoje();
             
         } catch (error) {
             console.error('Falha ao iniciar a aplicação:', error);
