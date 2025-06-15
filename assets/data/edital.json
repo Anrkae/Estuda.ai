@@ -1,0 +1,161 @@
+{
+  "nome": "Edital ESA 2026",
+  "data_prova": "28/09/2025",
+  "banca": "Comissão Própria (ESA)",
+  "vagas": 1125,
+  "observacoes": "Concurso de Admissão aos Cursos de Formação e Graduação de Sargentos das Áreas Geral, Músico e Saúde. A Redação é de caráter eliminatório.",
+  "pesos_gerais": {
+    "labels": ["Matemática", "Português", "Hist/Geo", "Inglês"],
+    "data": [28, 28, 24, 20],
+    "colors": ["#004d40", "#ff6f00", "#bf360c", "#0d47a1"]
+  },
+  "disciplinas": [
+    {
+      "id": "matematica",
+      "nome": "Matemática",
+      "peso_disciplina": 28,
+      "topicos": [
+        {
+          "id": "conjuntos_logica",
+          "nome": "Conjuntos e Raciocínio Lógico",
+          "desc": "Representação de conjuntos, subconjuntos, operações: união, interseção, diferença e complementar.",
+          "peso_topico": "Frequente",
+          "aulas": []
+        },
+        {
+          "id": "funcoes",
+          "nome": "Funções",
+          "desc": "Função Linear, Afim, Quadrática, Modular, Exponencial e Logarítmica. Um dos tópicos mais importantes da prova.",
+          "peso_topico": "Essencial",
+          "aulas": []
+        },
+        {
+          "id": "trigonometria",
+          "nome": "Trigonometria",
+          "desc": "Arcos, identidades, equações e inequações trigonométricas, resolução de triângulos.",
+          "peso_topico": "Muito Frequente",
+          "aulas": []
+        },
+        {
+          "id": "analise_combinatoria",
+          "nome": "Análise Combinatória e Probabilidade",
+          "desc": "Princípios de contagem, arranjos, combinações, permutações e probabilidade. Presença garantida na prova.",
+          "peso_topico": "Muito Frequente",
+          "aulas": []
+        },
+        {
+          "id": "geometria_espacial",
+          "nome": "Geometria Espacial",
+          "desc": "Geometria de posição e métrica, incluindo poliedros, prismas, pirâmides, cilindros, cones e esferas.",
+          "peso_topico": "Essencial",
+          "aulas": []
+        }
+      ]
+    },
+    {
+      "id": "portugues",
+      "nome": "Português",
+      "peso_disciplina": 28,
+      "topicos": [
+        {
+          "id": "interpretacao",
+          "nome": "Interpretação de Texto",
+          "desc": "Leitura, interpretação e análise de diversos gêneros textuais. Corresponde à maior parte das questões.",
+          "peso_topico": "Essencial",
+          "aulas": []
+        },
+        {
+          "id": "gramatica_morfossintaxe",
+          "nome": "Gramática e Morfossintaxe",
+          "desc": "Morfologia (classes de palavras) e Sintaxe (período simples e composto, concordância, regência e crase).",
+          "peso_topico": "Muito Frequente",
+          "aulas": []
+        },
+        {
+          "id": "semantica_estilistica",
+          "nome": "Semântica e Estilística",
+          "desc": "Significação das palavras, figuras de linguagem e funções da linguagem.",
+          "peso_topico": "Frequente",
+          "aulas": []
+        },
+        {
+            "id": "literatura",
+            "nome": "Literatura Brasileira",
+            "desc": "Contexto histórico e características das escolas literárias: Quinhentismo, Barroco, Arcadismo, Romantismo, Realismo, etc.",
+            "peso_topico": "Ocasional",
+            "aulas": []
+          }
+      ]
+    },
+    {
+        "id": "hist_geo",
+        "nome": "História e Geografia",
+        "peso_disciplina": 24,
+        "topicos": [
+          {
+            "id": "brasil_colonia",
+            "nome": "História: Brasil Colônia",
+            "desc": "Período pré-colonial, administração, economia, sociedade, rebeliões nativistas e movimentos de independência.",
+            "peso_topico": "Muito Frequente",
+            "aulas": []
+          },
+          {
+            "id": "brasil_imperio",
+            "nome": "História: Brasil Império",
+            "desc": "Primeiro Reinado, Período Regencial e Segundo Reinado: política, economia e conflitos.",
+            "peso_topico": "Frequente",
+            "aulas": []
+          },
+          {
+            "id": "brasil_republica",
+            "nome": "História: Brasil República",
+            "desc": "Da República Velha aos dias atuais, incluindo a Era Vargas, o Regime Militar e a Nova República.",
+            "peso_topico": "Muito Frequente",
+            "aulas": []
+          },
+          {
+            "id": "espaco_natural_br",
+            "nome": "Geografia: Espaço Natural",
+            "desc": "Características do território brasileiro: relevo, clima, vegetação, hidrografia e recursos naturais.",
+            "peso_topico": "Muito Frequente",
+            "aulas": []
+          },
+          {
+            "id": "espaco_economico_br",
+            "nome": "Geografia: Espaço Econômico",
+            "desc": "A formação do território, industrialização, urbanização, transportes e dinâmica do espaço agrário.",
+            "peso_topico": "Frequente",
+            "aulas": []
+          }
+        ]
+      },
+      {
+        "id": "ingles",
+        "nome": "Inglês",
+        "peso_disciplina": 20,
+        "topicos": [
+          {
+            "id": "reading_comprehension",
+            "nome": "Compreensão de Texto",
+            "desc": "Leitura e interpretação de textos de gêneros variados. É a base da prova de inglês.",
+            "peso_topico": "Essencial",
+            "aulas": []
+          },
+          {
+            "id": "verb_tenses",
+            "nome": "Tempos e Modos Verbais",
+            "desc": "Simple Present, Present Continuous, Simple Past, Past Continuous, Future, Present Perfect.",
+            "peso_topico": "Muito Frequente",
+            "aulas": []
+          },
+          {
+            "id": "pronouns_articles",
+            "nome": "Pronomes e Artigos",
+            "desc": "Uso de pronomes pessoais, possessivos, demonstrativos e artigos definidos e indefinidos.",
+            "peso_topico": "Frequente",
+            "aulas": []
+          }
+        ]
+      }
+  ]
+}

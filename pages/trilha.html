@@ -20,11 +20,11 @@
 </head>
 
 <body class="body-with-bottom-nav">
- 
+
  <div>
    <script src="../assets/js/components/header.js"></script>
  </div>
- 
+
  <main>
     <div class="conteudo-aba">
 
@@ -56,20 +56,7 @@
                     </div>
                     <span class="progresso-percentual" id="percentual-total-dashboard">0%</span>
                 </div>
-                <div class="progresso-item">
-                    <strong>Matemática:</strong>
-                    <div class="progresso-barra" aria-label="Barra de progresso de Matemática">
-                        <div class="progresso-preenchido" id="barra-progresso-disciplina-matematica"></div>
-                    </div>
-                    <span class="progresso-percentual" id="percentual-matematica">0%</span>
-                </div>
-                <div class="progresso-item">
-                    <strong>Português:</strong>
-                    <div class="progresso-barra" aria-label="Barra de progresso de Português">
-                        <div class="progresso-preenchido" id="barra-progresso-disciplina-portugues"></div>
-                    </div>
-                    <span class="progresso-percentual" id="percentual-portugues">0%</span>
-                </div>
+                <div id="disciplinas-progresso-container-dashboard"></div>
             </div>
         </div>
         
@@ -88,11 +75,11 @@
       </section>
 
       <section id="aba-editais" role="tabpanel" aria-labelledby="btn-editais">
-        <h2>Edital ESA 2025</h2>
-        <p><strong>Data da prova:</strong> 12/11/2025</p>
-        <p><strong>Banca:</strong> ESA</p>
-        <p><strong>Número de vagas:</strong> 300</p>
-        <p><strong>Observações:</strong> Prova objetiva com peso maior para Matemática e Português.</p>
+        <h2 id="edital-nome">Carregando edital...</h2>
+        <p><strong>Data da prova:</strong> <span id="edital-data"></span></p>
+        <p><strong>Banca:</strong> <span id="edital-banca"></span></p>
+        <p><strong>Número de vagas:</strong> <span id="edital-vagas"></span></p>
+        <p><strong>Observações:</strong> <span id="edital-obs"></span></p>
         <h3>Peso por disciplina (%)</h3>
         <div id="grafico-pesos-container" class="grafico-container">
             <canvas id="graficoPesos"></canvas>
@@ -100,42 +87,7 @@
       </section>
 
       <section id="aba-disciplinas" role="tabpanel" aria-labelledby="btn-disciplinas">
-        <div class="disciplinas-grid">
-            <div class="bloco minimizado">
-              <div class="disciplina-card">
-                <div class="tituloBtn botao-minimizar">
-                  <h3>Matemática</h3>
-                  <button class="btn-toggle-bloco botao-minimizar"><i class="fas fa-plus"></i></button>
-                </div>
-                <div class="conteudo-bloco">
-                  <small>5 tópicos • Peso: 30%</small>
-                  <ul id="topicos-matematica" class="topicos-lista-botoes">
-                    <li><input type="checkbox" id="algebra" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="algebra">Álgebra</button></li>
-                    <li><input type="checkbox" id="geometria" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="geometria">Geometria</button></li>
-                    <li><input type="checkbox" id="combinatoria" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="combinatoria">Análise Combinatória</button></li>
-                    <li><input type="checkbox" id="probabilidade" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="probabilidade">Probabilidade</button></li>
-                    <li><input type="checkbox" id="estatistica" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="estatistica">Estatística</button></li>
-                  </ul>
-                </div> 
-              </div>
-            </div> 
-            <div class="bloco minimizado">
-              <div class="disciplina-card">
-                  <div class="tituloBtn botao-minimizar">
-                    <h3>Português</h3>
-                    <button class="btn-toggle-bloco botao-minimizar"><i class="fas fa-plus"></i></button>
-                  </div>
-                <div class="conteudo-bloco">
-                  <small>4 tópicos • Peso: 25%</small>
-                  <ul id="topicos-portugues" class="topicos-lista-botoes">
-                    <li><input type="checkbox" id="interpretação" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="interpretação">Interpretação de Texto</button></li>
-                    <li><input type="checkbox" id="gramatica" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="gramatica">Gramática</button></li>
-                    <li><input type="checkbox" id="ortografia" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="ortografia">Ortografia</button></li>
-                    <li><input type="checkbox" id="redacao" class="checkbox-original" hidden><button class="topico-btn" data-drawer-trigger="drawer-main" data-topic-id="redacao">Redação</button></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+        <div class="disciplinas-grid" id="disciplinas-container">
         </div>
       </section>
 
@@ -144,7 +96,7 @@
         <div class="dicas-section">
             <h3><i class="fa-solid fa-bullseye"></i> Seus tópicos para hoje</h3>
             <ul id="lista-topicos-hoje" class="lista-topicos-hoje">
-                </ul>
+            </ul>
         </div>
         <div class="dicas-section">
             <h3><i class="fa-solid fa-compass-drafting"></i> Estratégias de Estudo</h3>
@@ -188,18 +140,17 @@
           <div class="drawer-aulas">
               <h3><i class="fa-solid fa-video"></i> Aulas Sugeridas</h3>
               <ul id="drawer-aulas-lista">
-                  </ul>
+              </ul>
           </div>
       </main>
     </div>
-  </div>
+ </div>
 
  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  <script src="https://unpkg.com/tippy.js@6"></script>
  
  <script src="../assets/js/pages/trilha.js" defer></script>
- <script src="../assets/js/components/bloco.js" defer></script>
 
 </body>
 </html>
