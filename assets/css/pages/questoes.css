@@ -697,6 +697,9 @@ body {
      color: #e65100;
 }
 
+#assuntoInput {
+    text-transform: none !important;
+}
 
 /* --- Responsividade --- */
 @media (max-width: 768px) {
