@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- 1. CONFIGURAÇÃO ---
-    const YOUR_SITE_URL = "http://127.0.0.1:5500";
+    const YOUR_SITE_URL = window.location.origin;
     const YOUR_APP_NAME = "Estuda.ai";
     const MODEL_TO_USE = "qwen/qwen2.5-vl-72b-instruct:free";
-    const API_KEY_STORAGE_NAME = 'apiKeyUsuario'; // Nome da chave no localStorage
+    const API_KEY_STORAGE_KEY = 'estudaai_openrouter_apikey'; // NOVO NOME DA CHAVE
 
     // --- Seletores de Elementos do DOM ---
     const assuntoInput = document.getElementById('assuntoInput');
@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupContent = document.getElementById('popupContent');
     const popupCloseButton = document.getElementById('popupCloseButton');
 
+    // --- Seletores do Modal de API Key ---
+    const apiKeyModalOverlay = document.getElementById('apiKeyModalOverlay');
+    const apiKeyInputModal = document.getElementById('apiKeyInputModal');
+    const saveApiKeyButton = document.getElementById('saveApiKeyButton');
+    const cancelApiKeyButton = document.getElementById('cancelApiKeyButton');
+
     // --- Chaves de Armazenamento e Estado da Sessão ---
     const RESULTS_STORAGE_KEY = 'sessoesEstudo';
     const DISCIPLINAS_STORAGE_KEY = 'disciplinas';
@@ -31,33 +37,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA DE GERAÇÃO E API ---
 
-    // Função para obter a chave: Primeiro do localStorage, depois do backend.
-    async function getApiKey() {
-        // 1. Tenta pegar do localStorage primeiro.
-        let storedKey = localStorage.getItem(API_KEY_STORAGE_NAME);
-        if (storedKey) {
-            return storedKey;
-        }
-
-        // 2. Se não estiver no localStorage, busca da Netlify Function.
-        const response = await fetch('/.netlify/functions/get-api-key');
-        if (!response.ok) {
-            throw new Error('Falha crítica ao buscar a chave de API do backend.');
-        }
-        const data = await response.json();
-        const fetchedKey = data.apiKey;
-
-        if (!fetchedKey) {
-            throw new Error('Backend retornou uma chave de API vazia.');
-        }
-
-        // 3. Armazena no localStorage para usos futuros.
-        localStorage.setItem(API_KEY_STORAGE_NAME, fetchedKey);
-        return fetchedKey;
+    // Função simplificada para obter a chave do localStorage
+    function getApiKey() {
+        return localStorage.getItem(API_KEY_STORAGE_KEY);
     }
 
+    // Funções para controlar o modal da chave de API
+    function showApiKeyModal() {
+        if (apiKeyModalOverlay) apiKeyModalOverlay.classList.add('visible');
+    }
+
+    function hideApiKeyModal() {
+        if (apiKeyModalOverlay) apiKeyModalOverlay.classList.remove('visible');
+    }
+
+    async function handleSaveApiKey() {
+        const apiKey = apiKeyInputModal.value.trim();
+        if (!apiKey || !apiKey.startsWith("sk-or-")) {
+            alert("Por favor, insira uma chave de API válida da OpenRouter, começando com 'sk-or-'.");
+            return;
+        }
+        localStorage.setItem(API_KEY_STORAGE_KEY, apiKey);
+        hideApiKeyModal();
+        // Tenta gerar as questões novamente agora que a chave foi salva
+        handleGenerateQuestions();
+    }
 
     async function handleGenerateQuestions() {
+        // --- NOVA VERIFICAÇÃO DA CHAVE DE API ---
+        const apiKey = getApiKey();
+        if (!apiKey) {
+            showApiKeyModal();
+            return; // Interrompe a execução se não houver chave
+        }
+        // --- FIM DA VERIFICAÇÃO ---
+
         hidePopup();
         if (currentSessionStats.id) {
             finalizeSession(false);
@@ -76,16 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         showLoading(true);
         clearOutput();
 
-        let apiKey;
-        try {
-            apiKey = await getApiKey();
-        } catch (error) {
-            console.error(error);
-            showError(error.message || "ERRO: Não foi possível obter a configuração de API.");
-            showLoading(false);
-            return;
-        }
-
         const allGeneratedQuestions = [];
         const statusIndicator = loadingIndicator.querySelector('p');
 
@@ -96,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             try {
                 const prompt = buildEnhancedPrompt(assunto, disciplinaSelecionada, bibliografia, tipoQuestao, nivelQuestao, allGeneratedQuestions);
-                const questionData = await fetchSingleQuestion(prompt, apiKey); 
+                const questionData = await fetchSingleQuestion(prompt, apiKey);
                 if (questionData) {
                     allGeneratedQuestions.push(questionData);
                 }
@@ -145,6 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const data = await response.json();
+        if (!data.choices || data.choices.length === 0) {
+            throw new Error("A API retornou uma resposta vazia (sem 'choices').");
+        }
         const rawContent = data.choices[0].message.content;
 
         const startIndex = rawContent.indexOf('{');
@@ -469,7 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.timerPopupAPI?.getDuration) {
              const durationFromTimer = window.timerPopupAPI.getDuration();
              if (typeof durationFromTimer?.ms === 'number') {
-                 durationMs = durationFromTimer.ms;
+                  durationMs = durationFromTimer.ms;
              }
         }
         const summary = { ...currentSessionStats, durationMs, timestamp: new Date().toISOString() };
@@ -520,6 +527,10 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('beforeunload', handleBeforeUnload);
     if (popupCloseButton) popupCloseButton.addEventListener('click', hidePopup);
     if (popupOverlay) popupOverlay.addEventListener('click', (event) => { if (event.target === popupOverlay) hidePopup(); });
+
+    // --- Event Listeners para o NOVO MODAL ---
+    if (saveApiKeyButton) saveApiKeyButton.addEventListener('click', handleSaveApiKey);
+    if (cancelApiKeyButton) cancelApiKeyButton.addEventListener('click', hideApiKeyModal);
 
     // --- Inicialização ---
     populateDisciplinaDropdown();
