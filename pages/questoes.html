@@ -97,10 +97,12 @@
         </div>
     </main>
 
-    <div id="popupOverlay" class="popup-overlay" style="display: none;">
-        <div id="popupMessageBox" class="popup-message-box"> <button id="popupCloseButton" class="popup-close-button" aria-label="Fechar">&times;</button>
-            <div id="popupContent" class="popup-content">
-                </div>
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-message-box" id="popupMessageBox">
+            <p id="popupContent"></p>
+            <div class="popup-actions" id="popupActions">
+                <button id="popupCloseButton">Fechar</button>
+            </div>
         </div>
     </div>
     
@@ -120,13 +122,12 @@
     </div>
 
     <footer>
-        </footer>
+    </footer>
 
-    <script src="../assets/js/pages/questoes.js"></script> <script src="../assets/js/components/timerPopup.js"></script>
-    <script src="../assets/js/components/bloco.js"></script>
-    <script src="../assets/js/components/select.js"></script>
-    
-    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script src="../assets/js/components/timerPopup.js" defer></script>
+    <script src="../assets/js/components/bloco.js" defer></script>
+    <script src="../assets/js/components/select.js" defer></script>
+    <script src="../assets/js/pages/questoes.js" defer></script> <script src="//cdn.jsdelivr.net/npm/eruda"></script>
     <script>eruda.init();</script>
 
 </body>

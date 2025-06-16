@@ -871,3 +871,10 @@ button, input, select, textarea {
     justify-content: flex-end;
     gap: 1rem;
 }
+
+.popup-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
