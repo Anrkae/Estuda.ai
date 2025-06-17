@@ -2,9 +2,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. CONFIGURAÇÃO ---
     const YOUR_SITE_URL = window.location.origin;
     const YOUR_APP_NAME = "Estuda.ai";
-    // MODELO ALTERADO PARA GOOGLE GEMMA
     const MODEL_TO_USE = "deepseek/deepseek-r1-0528-qwen3-8b:free";
     const API_KEY_STORAGE_KEY = 'estudaai_openrouter_apikey';
+
+    const SYSTEM_PROMPT = `Você é um assistente de IA especializado, atuando como um "Gerador de Questões para Concursos". Sua única função é criar questões educacionais baseadas nas especificações do usuário.
+
+REGRAS INVIOLÁVEIS:
+1.  Factualidade Absoluta: Todas as informações, enunciados e resoluções devem ser factualmente corretos e verificáveis. Não invente dados.
+2.  Neutralidade: Mantenha um tom estritamente neutro, formal e acadêmico. Evite qualquer tipo de viés, opinião ou conteúdo controverso.
+3.  Formato de Saída: Sua resposta DEVE SER SEMPRE um único objeto JSON válido. Sua resposta DEVE começar com o caractere '{' e terminar com '}' e não pode conter nenhuma palavra, observação ou caractere fora do objeto JSON.`;
 
     // --- Seletores de Elementos do DOM ---
     const assuntoInput = document.getElementById('assuntoInput');
@@ -101,13 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                const prompt = buildEnhancedPrompt(assunto, disciplinaSelecionada, bibliografia, tipoQuestao, nivelQuestao, allGeneratedQuestions);
-                const questionData = await fetchSingleQuestion(prompt, apiKey);
+                const userPrompt = buildUserPrompt(assunto, disciplinaSelecionada, bibliografia, tipoQuestao, nivelQuestao, allGeneratedQuestions);
+                const questionData = await fetchSingleQuestion(userPrompt, apiKey);
                 if (questionData) {
                     allGeneratedQuestions.push(questionData);
                 }
             } catch (error) {
-                console.error(`Erro ao gerar questão ${i}:`, error);
+                console.error(`Erro ao gerar questão ${i}:`, error.message || error);
                 const errorMessage = error.message || "Ocorreu um erro desconhecido.";
                 const isKeyError = /key|auth|token|unauthorized|forbidden/i.test(errorMessage);
 
@@ -141,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showLoading(false);
     }
 
-    async function fetchSingleQuestion(prompt, apiKey) {
+    async function fetchSingleQuestion(userPrompt, apiKey) {
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -152,15 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({
                 "model": MODEL_TO_USE,
-                "messages": [{
-                    "role": "user",
-                    "content": prompt
-                }],
+                "messages": [
+                    { "role": "system", "content": SYSTEM_PROMPT },
+                    { "role": "user", "content": userPrompt }
+                ],
                 "response_format": {
                     "type": "json_object"
                 },
                 "temperature": 0.3,
-                "max_tokens": 4096,
+                "max_tokens": 32768, // <<< LIMITE AUMENTADO PARA O VALOR MÁXIMO
             })
         });
 
@@ -174,9 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error("A API retornou uma resposta vazia (sem 'choices').");
         }
         const rawContent = data.choices[0].message.content;
-
-        // LOG REMOVIDO
-        // console.log("RESPOSTA BRUTA DA API:", rawContent);
 
         const startIndex = rawContent.indexOf('{');
         const endIndex = rawContent.lastIndexOf('}');
@@ -196,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function buildEnhancedPrompt(assunto, disciplina, bibliografia, tipo, nivel, questoesAnteriores = []) {
+    function buildUserPrompt(assunto, disciplina, bibliografia, tipo, nivel, questoesAnteriores = []) {
         const currentYear = new Date().getFullYear();
         const tipoDescricao = {
             'multipla_escolha': 'múltipla escolha com quatro alternativas (A, B, C, D)',
@@ -214,48 +217,41 @@ document.addEventListener('DOMContentLoaded', () => {
         let historico = "";
         if (questoesAnteriores.length > 0) {
             historico = `
-    Evite repetir os mesmos pontos ou estruturas das seguintes questões já geradas nesta sessão:
-    ${questoesAnteriores.map((q, i) => `- ${i + 1}: "${q.enunciado}"`).join('\n')}
+# Histórico de Questões Anteriores (Evite Repetir):
+${questoesAnteriores.map((q, i) => `- ${i + 1}: "${q.enunciado}"`).join('\n')}
             `.trim();
         }
 
         return `
-    Você é um gerador de questões para concursos públicos. Crie APENAS UMA questão com base nas instruções abaixo:
+Crie UMA questão de concurso, seguindo estritamente as especificações abaixo.
 
-    - Assunto: "${assunto}"
-    - Disciplina: ${disciplina || "Geral"}
-    - Tipo: ${tipoDescricao}
-    - Inspiração (bibliografia ou estilo): ${bibliografia || "Concursos"}
-    - Nível: ${nivel} (${definicoesDeNivel[nivel] || 'Intermediário'})
-    ${historico ? '\n' + historico : ''}
+# Parâmetros da Questão:
+- Assunto Principal: "${assunto}"
+- Disciplina: ${disciplina || "Geral"}
+- Tipo de Questão: ${tipoDescricao}
+- Bibliografia de Inspiração: ${bibliografia || "Concursos de alto nível"}
+- Nível de Dificuldade: ${nivel} (${definicoesDeNivel[nivel] || 'Intermediário'})
+${historico ? '\n' + historico : ''}
 
-    Respeite os critérios:
-    1. Nenhuma informação pode estar errada ou ser ambígua.
-    2. Sempre que possível, use questões reais de concursos, provas ou exames como base, adaptando apenas para clareza ou formato. Não invente fatos.
-    3. A complexidade e o tamanho devem seguir o nível definido.
-    4. Se não tiver certeza sobre um dado, substitua por algo seguro e factual.
-
-    Formato da resposta (JSON estrito):
+# Estrutura do JSON de Saída:
+{
+  "questoes": [
     {
-    "questoes": [
-        {
-        "enunciado": "Texto da pergunta.",
-        "tipo": "${tipo}",
-        "metadata": { "fonte": "${disciplina || 'Geral'}", "ano": ${currentYear} },
-        "imagem_url": null,
-        "opcoes": [
-            {"letra": "A", "texto": "..."},
-            {"letra": "B", "texto": "..."},
-            {"letra": "C", "texto": "..."},
-            {"letra": "D", "texto": "..."}
-        ],
-        "resposta_correta": "A",
-        "gabarito_sugerido": null,
-        "resolucao": "Explicação da resposta correta, com base em fatos."
-        }
-    ]
+      "enunciado": "Enunciado claro e bem formulado da questão.",
+      "tipo": "${tipo}",
+      "metadata": { "fonte": "${disciplina || 'Geral'}", "ano": ${currentYear} },
+      "imagem_url": null,
+      "opcoes": [
+        {"letra": "A", "texto": "Texto da alternativa A. Deve ser plausível mas inequivocamente errada."},
+        {"letra": "B", "texto": "Texto da alternativa B. Deve ser plausível mas inequivocamente errada."},
+        {"letra": "C", "texto": "Texto da alternativa C. Esta é a alternativa correta."},
+        {"letra": "D", "texto": "Texto da alternativa D. Deve ser plausível mas inequivocamente errada."}
+      ],
+      "resposta_correta": "C",
+      "resolucao": "Explicação detalhada e factual do porquê a resposta correta está certa, e uma justificativa muito breve do porquê as outras estão erradas."
     }
-    IMPORTANTE: Sua resposta DEVE começar com o caractere '{' e terminar com '}'. Não inclua nenhuma palavra, explicação ou caractere antes ou depois do objeto JSON.
+  ]
+}
         `.trim();
     }
 
@@ -279,9 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (generatorBlock && !generatorBlock.classList.contains('minimizado')) {
                 generatorBlock.querySelector('.botao-minimizar')?.click();
             }
-            // SCROLL ALTERADO PARA O TOPO DA PÁGINA
             setTimeout(() => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             }, 100);
         } else {
             resetSessionState();
