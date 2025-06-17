@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. CONFIGURAÇÃO ---
     const YOUR_SITE_URL = window.location.origin;
     const YOUR_APP_NAME = "Estuda.ai";
-    // MODELO ALTERADO PARA UM MAIS ESTÁVEL
-    const MODEL_TO_USE = "mistralai/mistral-7b-instruct:free"; 
+    // MODELO ALTERADO PARA GOOGLE GEMMA
+    const MODEL_TO_USE = "deepseek/deepseek-r1-0528-qwen3-8b:free";
     const API_KEY_STORAGE_KEY = 'estudaai_openrouter_apikey';
 
     // --- Seletores de Elementos do DOM ---
@@ -110,13 +110,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error(`Erro ao gerar questão ${i}:`, error);
                 const errorMessage = error.message || "Ocorreu um erro desconhecido.";
                 const isKeyError = /key|auth|token|unauthorized|forbidden/i.test(errorMessage);
-                
+
                 if (errorMessage.includes("JSON")) {
                     showErrorModal("A IA não gerou uma questão no formato esperado. Por favor, tente novamente. Se o erro persistir, o modelo pode estar instável.", isKeyError);
                 } else {
                     showErrorModal(errorMessage, isKeyError);
                 }
-                
+
                 criticalErrorOccurred = true;
                 break;
             }
@@ -132,9 +132,9 @@ document.addEventListener('DOMContentLoaded', () => {
             displayParsedQuestions(allGeneratedQuestions);
             setupSession(allGeneratedQuestions, disciplinaSelecionada || "Geral");
         } else {
-             if (!criticalErrorOccurred) {
+            if (!criticalErrorOccurred) {
                 showErrorModal("Nenhuma questão pôde ser gerada. A API pode estar sobrecarregada. Tente novamente.");
-             }
+            }
             resetSessionState();
         }
 
@@ -152,8 +152,13 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify({
                 "model": MODEL_TO_USE,
-                "messages": [{ "role": "user", "content": prompt }],
-                "response_format": { "type": "json_object" },
+                "messages": [{
+                    "role": "user",
+                    "content": prompt
+                }],
+                "response_format": {
+                    "type": "json_object"
+                },
                 "temperature": 0.3,
                 "max_tokens": 4096,
             })
@@ -169,8 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error("A API retornou uma resposta vazia (sem 'choices').");
         }
         const rawContent = data.choices[0].message.content;
-        
-        console.log("RESPOSTA BRUTA DA API:", rawContent);
+
+        // LOG REMOVIDO
+        // console.log("RESPOSTA BRUTA DA API:", rawContent);
 
         const startIndex = rawContent.indexOf('{');
         const endIndex = rawContent.lastIndexOf('}');
@@ -178,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
             throw new Error("A IA não retornou um objeto JSON. A resposta pode ter sido um texto simples.");
         }
         const jsonString = rawContent.substring(startIndex, endIndex + 1);
-        
+
         try {
             const parsedData = JSON.parse(jsonString);
             if (!parsedData.questoes || !Array.isArray(parsedData.questoes) || parsedData.questoes.length === 0) {
@@ -186,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return parsedData.questoes[0];
         } catch (e) {
-             throw new Error("A IA retornou um JSON malformado. Resposta: " + jsonString);
+            throw new Error("A IA retornou um JSON malformado. Resposta: " + jsonString);
         }
     }
 
@@ -256,7 +262,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupSession(questionsArray, disciplina) {
         const validQuestions = questionsArray.filter(q => q && q.enunciado);
         if (validQuestions.length > 0) {
-            currentSessionStats = { id: `sess-${Date.now()}`, totalQuestions: validQuestions.length, answeredCount: 0, correctCount: 0, disciplina: disciplina, startTime: Date.now() };
+            currentSessionStats = {
+                id: `sess-${Date.now()}`,
+                totalQuestions: validQuestions.length,
+                answeredCount: 0,
+                correctCount: 0,
+                disciplina: disciplina,
+                startTime: Date.now()
+            };
             finalizeButton.style.display = 'inline-flex';
 
             if (window.timerPopupAPI?.startSession) {
@@ -266,8 +279,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (generatorBlock && !generatorBlock.classList.contains('minimizado')) {
                 generatorBlock.querySelector('.botao-minimizar')?.click();
             }
+            // SCROLL ALTERADO PARA O TOPO DA PÁGINA
             setTimeout(() => {
-                questoesOutput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }, 100);
         } else {
             resetSessionState();
