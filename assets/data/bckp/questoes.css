@@ -1,9 +1,13 @@
+
+
 body {
     -webkit-tap-highlight-color: transparent;
     outline: none;
     padding-top: 0 !important;
     margin: 0 !important;
 }
+
+/* --- Estilos gerais da seção --- */
 .question-generator-section {
     max-width: 800px;
     margin: 20px auto;
@@ -12,6 +16,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
 .tituloBtn h2 {
     padding: 5px;
     margin: 5px;
@@ -22,21 +27,35 @@ body {
     font-size: 1.3em;
     font-weight: 600;
 }
+
 .tituloBtn h2 i {
     margin-right: 10px;
     color: #2C2C2C;
 }
-.input-area, .options-area, .action-area, .output-area {
+
+/* --- Áreas de Input, Opções, Ação e Saída --- */
+.input-area,
+.options-area,
+.action-area,
+.output-area {
     margin-bottom: 10px;
 }
-.input-area label, .options-area label, .output-area label {
+
+.input-area label,
+.options-area label,
+.output-area label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
     color: #444;
     font-size: 0.95em;
 }
-.input-area textarea, .options-area input[type="text"], .options-area input[type="number"], .options-area select {
+
+/* Inputs e Selects Base */
+.input-area textarea,
+.options-area input[type="text"],
+.options-area input[type="number"],
+.options-area select {
     width: 100%;
     padding: 12px 15px;
     border: 1px solid #ccc;
@@ -48,21 +67,31 @@ body {
     font-size: 1em;
     color: #333;
 }
+
 .input-area textarea {
     resize: vertical;
     min-height: 40px;
 }
-.input-area textarea:focus, .options-area input[type="text"]:focus, .options-area input[type="number"]:focus, .options-area select:focus {
+
+/* Efeito de Foco para Inputs, Textareas e Selects */
+.input-area textarea:focus,
+.options-area input[type="text"]:focus,
+.options-area input[type="number"]:focus,
+.options-area select:focus {
     border-color: #673ab7;
     outline: none;
     box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.2);
 }
+
+/* Grid para Opções */
 .options-area {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
     align-items: end;
 }
+
+/* --- Área de Ação (Botões, Loading) --- */
 .action-area {
     display: flex;
     flex-wrap: wrap;
@@ -72,7 +101,12 @@ body {
     padding-top: 20px;
     margin-top: 20px;
 }
-.action-area button, .confirm-answer-btn, #finalizeButton, .view-resolution-btn, .btn-annul-question {
+
+/* Estilo Base para Botões de Ação e Controle */
+.action-area button,
+.confirm-answer-btn,
+#finalizeButton,
+.view-resolution-btn {
     padding: 10px 18px;
     border: none;
     border-radius: 6px;
@@ -87,25 +121,38 @@ body {
     gap: 8px;
     line-height: 1.2;
 }
-.action-area button:active, .confirm-answer-btn:active:not(:disabled), #finalizeButton:active:not(:disabled), .view-resolution-btn:active:not(:disabled), .btn-annul-question:active:not(:disabled) {
+
+/* Estilo Base para Botões de Ação e Controle (Estado Ativo) */
+.action-area button:active,
+.confirm-answer-btn:active:not(:disabled),
+#finalizeButton:active:not(:disabled),
+.view-resolution-btn:active:not(:disabled) {
     transform: scale(0.98);
 }
+
+/* Estilo Específico Botão Gerar */
 #generateButton {
     background-color: #673ab7;
     color: white;
     padding: 12px 22px;
     font-size: 1em;
 }
+
 #generateButton:hover:not(:disabled) {
     background-color: #5e35b1;
 }
+
+/* Estilo Específico Botão Finalizar Global */
 #finalizeButton {
     background-color: #f44336;
     color: white;
 }
+
 #finalizeButton:hover:not(:disabled) {
     background-color: #d32f2f;
 }
+
+/* Estilo Específico Botão Responder (dentro da questão) */
 .confirm-answer-btn {
     background-color: #2196F3;
     color: white;
@@ -114,9 +161,12 @@ body {
     min-width: 100px;
     align-self: flex-end;
 }
+
 .confirm-answer-btn:hover:not(:disabled) {
     background-color: #1976D2;
 }
+
+/* Estilo Específico Botão Ver Resolução */
 .view-resolution-btn {
     background-color: #ff9800;
     color: white;
@@ -126,18 +176,29 @@ body {
     align-self: flex-end;
     display: none;
 }
+
 .view-resolution-btn:hover:not(:disabled) {
     background-color: #f57c00;
 }
-#generateButton:disabled, #finalizeButton:disabled, .confirm-answer-btn:disabled, .view-resolution-btn:disabled, .option-btn:disabled, .btn-annul-question:disabled {
-    background-color: #bdbdbd;
-    cursor: not-allowed;
-    color: #757575;
-    opacity: 0.7;
+
+/* Estilo Base para Botões Desabilitados */
+#generateButton:disabled,
+#finalizeButton:disabled,
+.confirm-answer-btn:disabled,
+.view-resolution-btn:disabled,
+.option-btn:disabled {
+     background-color: #bdbdbd;
+     cursor: not-allowed;
+     color: #757575;
+     opacity: 0.7;
 }
+
+/* Exceção para o opacity de botões de opção desabilitados já respondidos */
 .question-item.answered .option-btn:disabled {
-    opacity: 0.65;
+     opacity: 0.65; /* Pode ser ajustado ou removido se o opacity base já for suficiente */
 }
+
+/* Indicador de Loading */
 .loading {
     display: inline-flex;
     align-items: center;
@@ -146,6 +207,7 @@ body {
     color: #555;
     margin-left: 10px;
 }
+
 .spinner {
     border: 4px solid #f3f3f3;
     border-top: 4px solid #673ab7;
@@ -154,18 +216,23 @@ body {
     height: 20px;
     animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* --- Área de Saída e Questões Interativas --- */
 .output-area {
     margin-top: 30px;
 }
+
 .output-area label {
     font-size: 1.1em;
     font-weight: 600;
     color: #333;
 }
+
 .questoes-output-container {
     background-color: #eceae2;
     padding: 10px;
@@ -174,6 +241,8 @@ body {
     overflow-y: auto;
     border-radius: 8px;
 }
+
+/* --- Estilos para Cada Item de Questão --- */
 .question-item {
     background-color: #2C2C2C;
     border: 0 solid #fff;
@@ -184,35 +253,47 @@ body {
     transition: border-color 0.3s ease, background-color 0.3s ease;
     box-shadow: 0 3px 16px rgba(0, 0, 0, 0.2);
 }
+
 .question-item:last-child {
     margin-bottom: 5px;
 }
+
+/* Cores de Feedback (Correto/Incorreto/Erro) */
 .question-item.correct {
     border-left-color: #4CAF50;
 }
+
 .question-item.incorrect {
     border-left-color: #f44336;
 }
+
 .question-item.question-error {
-    border-left-color: #ff9800;
+     border-left-color: #ff9800;
 }
+
+/* Texto da Questão */
 .question-text {
     font-weight: 500;
-    color: #fff;
+    color: #fff; /* Cor base do texto da questão no fundo escuro */
     margin-bottom: 18px;
     line-height: 1.6;
     font-size: 1.05em;
 }
+
+/* Cor do texto da questão nos fundos claros (correto/incorreto/erro) */
 .question-item.correct .question-text,
 .question-item.incorrect .question-text,
 .question-item.question-error .question-text {
-    color: #fff;
+     color: #fff; /* Cor mais escura para contraste nos fundos claros */
 }
+
 .question-text strong {
     margin-right: 8px;
-    color: inherit;
+    color: inherit; /* Herda a cor do texto da questão */
     font-weight: 600;
 }
+
+/* Estilo para Imagem na Questão */
 .question-image {
     max-width: 100%;
     height: auto;
@@ -223,35 +304,35 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Container das Opções */
 .options-container {
     display: flex;
     flex-direction: column;
     gap: 1px;
     margin-bottom: 5px;
 }
-.options-container > div {
-    display: flex;
-    align-items: stretch;
-    margin-bottom: 8px;
-}
+
+/* Botões de Opção Base */
 .option-btn {
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 0;
+    padding: 0; /* Padding controlado pelos spans internos */
     text-align: left;
     font-weight: 500;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo translúcido no estado padrão */
     box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
-    border: 0px solid #fff;
+    border: 0px solid #fff; /* Borda translúcida no estado padrão */
     border-radius: 10px;
     cursor: pointer;
     font-size: 0.85em;
-    color: #fff;
+    color: #fff; /* Cor base do texto da opção no fundo escuro */
     transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
-    min-height: 44px;
-    flex-grow: 1;
+    min-height: 44px; /* Altura mínima para botões vazios ou com pouco texto */
 }
+
+
 .option-btn .option-letter {
     font-size: 1.2em;
     background-color: #fff;
@@ -263,17 +344,21 @@ body {
     min-width: 30px;
     margin-right: 10px;
     text-align: center;
-    align-self: stretch;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    align-self: stretch; /* Faz este item flex esticar verticalmente */
+    display: flex; /* Torna .option-letter um container flex */
+    align-items: center; /* Centraliza o conteúdo (A)) verticalmente dentro de .option-letter */
+    justify-content: center; /* Centraliza o conteúdo (A)) horizontalmente dentro de .option-letter */
 }
+
 .option-btn .option-content {
     flex-grow: 1;
     word-break: break-word;
-    padding: 10px 0;
-    color: inherit;
+    padding: 10px 0; /* Ajuste o padding vertical conforme necessário */
+    /* padding-right: 10px; /* Opcional: Adicionar padding à direita do conteúdo */
+    color: inherit; /* Herda a cor do texto do botão pai */
 }
+
 .question-meta {
     font-size: 0.9em;
     margin-bottom: 20px;
@@ -284,6 +369,7 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 5px;
 }
+
 .question-meta .meta-source {
     margin-left: 0 !important;
     padding: 5px 8px;
@@ -291,6 +377,7 @@ body {
     border-radius: 7px 16px 16px 7px;
     color: #333;
 }
+
 .question-meta .meta-year {
     padding: 5px 8px;
     border-radius: 16px 7px 7px 16px;
@@ -300,102 +387,142 @@ body {
     text-transform: uppercase;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
+
+.question-meta .meta-separator {
+    /* Estilos para o separador */
+}
+
+
+/* Estilo para opção selecionada ANTES de confirmar */
 .option-btn.selected-preview {
     background-color: rgba(33, 150, 243, 0.15);
     border-color: #2196F3;
-    color: #fff;
+    color: #fff; /* Cor do texto para o estado de preview */
     font-weight: 800;
     box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
-    padding: 0;
+    padding: 0; /* Padding controlado pelos spans */
 }
+/* Ajuste a cor da letra no estado de preview */
 .option-btn.selected-preview .option-letter {
-    color: #2c2c2c;
+    color: #2c2c2c; /* Cor de texto mais escura no fundo claro */
 }
 .option-btn.selected-preview .option-content {
-    color: #fff;
+     color: #fff; /* Cor do texto do conteúdo no estado de preview */
 }
+
+
+/* Estilos Pós-Resposta */
 .question-item.answered .option-btn {
     cursor: default;
-    border-color: #e0e0e0;
-    background-color: #ededed;
-    color: #757575;
-    padding: 0;
+    border-color: #e0e0e0; /* Borda padrão desabilitada */
+    background-color: #ededed; /* Fundo padrão desabilitado */
+    color: #757575; /* Cor do texto padrão desabilitado */
+    padding: 0; /* Padding controlado pelos spans */
 }
 .question-item.answered .option-btn:not(.selected):not(.correct-answer-highlight) {
-    opacity: 0.65;
+   opacity: 0.65; /* Opacidade para opções não selecionadas/incorretas */
 }
 .question-item.answered .option-btn .option-letter {
-    background-color: #dcdcdc;
+    background-color: #dcdcdc; /* Fundo da letra no estado respondido genérico */
     color: #555;
 }
 .question-item.answered .option-btn .option-content {
-    color: #757575;
+    color: #757575; /* Cor do texto no estado respondido genérico */
 }
+
+
+/* Botão Selecionado pelo Usuário (Aplicação de cor e borda no botão pai) */
 .option-btn.selected {
     border-width: 2px;
     font-weight: bold;
-    padding: 0;
+    /* padding: 11px 17px; /* Removido, padding agora é nos spans */
+    padding: 0; /* Padding controlado pelos spans */
 }
+
+/* Cores para o botão selecionado CORRETO */
 .question-item.correct .option-btn.selected {
     border: none;
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.25);
-    background-color: rgba(76, 175, 80, 0.1);
-    color: #1b5e20;
-    opacity: 1 !important;
+    background-color: rgba(76, 175, 80, 0.1); /* Fundo verde claro */
+    color: #1b5e20; /* Texto verde escuro */
+    opacity: 1 !important; /* Garante visibilidade */
 }
+/* Cores para a letra e conteúdo no botão selecionado CORRETO */
 .question-item.correct .option-btn.selected .option-letter {
-    background-color: #388e3c;
-    color: #fff;
+     background-color: #388e3c; /* Fundo verde um pouco mais escuro */
+     color: #fff;
 }
 .question-item.correct .option-btn.selected .option-content {
     color: #fff;
 }
+
+
+/* Cores para o botão selecionado INCORRETO */
 .question-item.incorrect .option-btn.selected {
-    border: none;
-    background-color: rgba(244, 67, 54, 0.1);
-    box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.25);
-    color: #c62828;
-    opacity: 1 !important;
+     border: none; /* Vermelho */
+     background-color: rgba(244, 67, 54, 0.1); /* Fundo vermelho claro */
+     box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.25);
+     color: #c62828; /* Texto vermelho escuro */
+     opacity: 1 !important;
 }
+/* Cores para a letra e conteúdo no botão selecionado INCORRETO */
 .question-item.incorrect .option-btn.selected .option-letter {
-    background-color: #ef9a9a;
-    color: #fff;
+     background-color: #ef9a9a; /* Fundo vermelho um pouco mais escuro */
+     color: #fff;
 }
 .question-item.incorrect .option-btn.selected .option-content {
     color: #c62828;
 }
+
+
+/* Destaque da Resposta Correta (para opções corretas não selecionadas pelo usuário) */
 .option-btn.correct-answer-highlight {
-    border-color: #4CAF50;
-    background-color: #c8e6c9;
-    font-weight: bold;
-    color: #1b5e20 !important;
-    opacity: 1 !important;
-    border-width: 1px;
-    padding: 0;
+     border-color: #4CAF50; /* Verde */
+     background-color: #c8e6c9; /* Fundo verde um pouco mais escuro */
+     font-weight: bold;
+     color: #1b5e20 !important; /* Texto verde escuro */
+     opacity: 1 !important;
+     border-width: 1px; /* Pode ajustar a borda se selected tiver 2px */
+     padding: 0; /* Padding controlado pelos spans */
 }
+/* Cores para a letra e conteúdo na opção correta destacada (quando não selecionada) */
 .option-btn.correct-answer-highlight .option-letter {
-    background-color: #a5d6a7;
+    background-color: #a5d6a7; /* Fundo verde */
     color: #1b5e20;
 }
 .option-btn.correct-answer-highlight .option-content {
     color: #1b5e20;
 }
+
+
+/* Hover/Active (apenas para estados interativos) */
 .option-btn:hover:not(:disabled):not(.selected-preview):not(.answered .option-btn) {
-    background-color: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.15); /* Fundo sutil no hover */
+    border-color: rgba(255, 255, 255, 0.3); /* Borda sutil no hover */
 }
+
 .option-btn:active:not(:disabled):not(.answered .option-btn) {
     transform: scale(0.99);
 }
+
+
+/* Dissertative Info */
 .dissertative-info {
     font-size: 0.9em;
-    color: #fff;
+    color: #fff; /* Cor para o fundo escuro */
     margin-bottom: 0;
-    padding: 5px 10px;
+    padding: 5px 10px; /* Padding interno */
 }
-.question-item.correct .dissertative-info, .question-item.incorrect .dissertative-info, .question-item.question-error .dissertative-info {
-    color: #555;
+
+/* Cor da info dissertativa nos fundos claros */
+.question-item.correct .dissertative-info,
+.question-item.incorrect .dissertative-info,
+.question-item.question-error .dissertative-info {
+     color: #555; /* Cor mais escura */
 }
+
+
+/* Container para feedback e botão responder/resolução */
 .feedback-area {
     display: flex;
     justify-content: space-between;
@@ -404,15 +531,25 @@ body {
     flex-wrap: wrap;
     gap: 10px;
 }
+
+/* Mensagem de Feedback dentro da questão */
 .feedback-message {
     font-size: 0.9em;
     font-weight: bold;
     padding: 5px 0;
     text-align: left;
-    flex-grow: 1;
+    flex-grow: 1; /* Permite que ocupe espaço */
 }
-.question-item.correct .feedback-message { color: #388e3c; }
-.question-item.incorrect .feedback-message { color: #d32f2f; }
+
+/* Cores da Mensagem de Feedback */
+.question-item.correct .feedback-message {
+    color: #388e3c;
+}
+.question-item.incorrect .feedback-message {
+    color: #d32f2f;
+}
+
+/* Área para exibir a resolução */
 .resolution-area {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid #ddd;
@@ -430,12 +567,20 @@ body {
     color: #fff;
     font-weight: 600;
 }
+
+/* Área de Ação Global (Finalizar Simulado) */
 .global-action-area {
     max-width: 800px;
-    margin: 20px auto 80px auto;
+    margin: 20px auto 80px auto; /* Ajuste o margin-top para dar espaço */
     padding: 0 15px;
     text-align: right;
 }
+
+
+/* ========================================= */
+/* --- Popup Overlay e Mensagens --- */
+/* ========================================= */
+
 .popup-overlay {
     position: fixed;
     top: 0;
@@ -453,10 +598,12 @@ body {
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
+
 .popup-overlay.visible {
     opacity: 1;
     visibility: visible;
 }
+
 .popup-message-box {
     background-color: #fff;
     padding: 30px 35px;
@@ -469,9 +616,11 @@ body {
     transform: scale(0.9);
     transition: transform 0.3s ease;
 }
+
 .popup-overlay.visible .popup-message-box {
     transform: scale(1);
 }
+
 .popup-close-button {
     position: absolute;
     top: 10px;
@@ -485,7 +634,10 @@ body {
     padding: 0;
     transition: color 0.2s ease;
 }
-.popup-close-button:hover { color: #333; }
+.popup-close-button:hover {
+    color: #333;
+}
+
 .popup-content {
     font-size: 1.05em;
     line-height: 1.6;
@@ -493,38 +645,124 @@ body {
     text-align: center;
     word-wrap: break-word;
 }
-.popup-message-box.error { background-color: #ffebee; border-left-color: #f44336; }
-.popup-message-box.error .popup-content, .popup-message-box.error .popup-close-button { color: #c62828; }
-.popup-message-box.error .popup-close-button:hover { color: #b71c1c; }
-.popup-message-box.success { background-color: #e8f5e9; border-left-color: #4CAF50; }
-.popup-message-box.success .popup-content, .popup-message-box.success .popup-close-button { color: #2e7d32; }
-.popup-message-box.success .popup-close-button:hover { color: #1b5e20; }
-.popup-message-box.info { background-color: #e3f2fd; border-left-color: #2196F3; }
-.popup-message-box.info .popup-content, .popup-message-box.info .popup-close-button { color: #1565c0; }
-.popup-message-box.info .popup-close-button:hover { color: #0d47a1; }
-.popup-message-box.warning { background-color: #fff8e1; border-left-color: #ff9800; }
-.popup-message-box.warning .popup-content, .popup-message-box.warning .popup-close-button { color: #b75d00; }
-.popup-message-box.warning .popup-close-button:hover { color: #e65100; }
-#assuntoInput { text-transform: none !important; }
+
+/* Estilos por tipo de Popup */
+.popup-message-box.error {
+    background-color: #ffebee;
+    border-left-color: #f44336;
+}
+.popup-message-box.error .popup-content,
+.popup-message-box.error .popup-close-button {
+    color: #c62828;
+}
+.popup-message-box.error .popup-close-button:hover {
+     color: #b71c1c;
+}
+
+.popup-message-box.success {
+     background-color: #e8f5e9;
+     border-left-color: #4CAF50;
+}
+.popup-message-box.success .popup-content,
+.popup-message-box.success .popup-close-button {
+    color: #2e7d32;
+}
+.popup-message-box.success .popup-close-button:hover {
+     color: #1b5e20;
+}
+
+
+.popup-message-box.info {
+     background-color: #e3f2fd;
+     border-left-color: #2196F3;
+}
+.popup-message-box.info .popup-content,
+.popup-message-box.info .popup-close-button {
+     color: #1565c0;
+}
+.popup-message-box.info .popup-close-button:hover {
+     color: #0d47a1;
+}
+
+
+.popup-message-box.warning {
+     background-color: #fff8e1;
+     border-left-color: #ff9800;
+}
+.popup-message-box.warning .popup-content,
+.popup-message-box.warning .popup-close-button {
+     color: #b75d00;
+}
+.popup-message-box.warning .popup-close-button:hover {
+     color: #e65100;
+}
+
+#assuntoInput {
+    text-transform: none !important;
+}
+
+/* --- Responsividade --- */
 @media (max-width: 768px) {
-    .question-generator-section { padding: 20px; }
-    .options-area { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-    .global-action-area { padding: 0 20px; }
-    .popup-message-box { max-width: 95%; }
+    .question-generator-section {
+        padding: 20px;
+    }
+    .options-area {
+         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+     .global-action-area {
+         padding: 0 20px;
+     }
+     .popup-message-box {
+        max-width: 95%;
+     }
 }
+
 @media (max-width: 600px) {
-    .question-generator-section { padding: 20px 15px; }
-    .options-area { grid-template-columns: 1fr; }
-    .action-area { flex-direction: column; align-items: stretch; }
-    .action-area button { width: 100%; justify-content: center; }
-    .feedback-area { flex-direction: column; align-items: stretch; }
-    .confirm-answer-btn, .view-resolution-btn { align-self: stretch; margin-top: 10px; }
-    .global-action-area { text-align: center; padding: 0 15px; }
-    #finalizeButton { width: 100%; }
-    .popup-message-box { padding: 25px 20px; }
-    .popup-content { font-size: 1em; }
-    .popup-close-button { font-size: 1.6em; top: 8px; right: 8px; }
+    .question-generator-section {
+        padding: 20px 15px;
+    }
+     .options-area {
+        grid-template-columns: 1fr;
+    }
+    .action-area {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .action-area button {
+        width: 100%;
+        justify-content: center;
+    }
+     .feedback-area {
+         flex-direction: column;
+         align-items: stretch;
+     }
+     .confirm-answer-btn,
+     .view-resolution-btn {
+         align-self: stretch;
+         margin-top: 10px;
+     }
+     .global-action-area {
+         text-align: center;
+         padding: 0 15px;
+     }
+     #finalizeButton {
+         width: 100%;
+     }
+     /* Ajustes Popup em Telas Pequenas */
+     .popup-message-box {
+        padding: 25px 20px;
+     }
+     .popup-content {
+        font-size: 1em;
+     }
+     .popup-close-button {
+        font-size: 1.6em;
+        top: 8px;
+        right: 8px;
+     }
 }
+
+/* --- Estilos Bloco Colapsável --- */
 .tituloBtn {
     display: flex;
     justify-content: space-between;
@@ -533,12 +771,15 @@ body {
     padding: 0 !important;
     margin: 0 !important;
 }
+
 .tituloBtn h2 {
     margin: 0px !important;
 }
+
 #primeiroInput {
     margin-top: 25px;
 }
+
 .botao-minimizar {
     padding: 5px;
     margin: 5px;
@@ -548,16 +789,23 @@ body {
     color: #2C2C2C;
     cursor: pointer;
 }
+
 .botao-minimizar:hover {
     background: none;
     opacity: 0.8;
 }
+
 .minimizado .conteudo-bloco {
     display: none;
+    
 }
+
+/* --- Font Family --- */
 button, input, select, textarea {
     font-family: 'Montserrat', sans-serif;
 }
+
+/* Estilos para o Modal de Chave de API */
 .api-key-modal-overlay {
     position: fixed;
     top: 0;
@@ -573,11 +821,13 @@ button, input, select, textarea {
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0s 0.3s;
 }
+
 .api-key-modal-overlay.visible {
     opacity: 1;
     visibility: visible;
     transition-delay: 0s;
 }
+
 .api-key-modal-box {
     background-color: #fff;
     padding: 2rem;
@@ -587,97 +837,47 @@ button, input, select, textarea {
     max-width: 450px;
     text-align: center;
 }
+
 .api-key-modal-box h3 {
     margin-top: 0;
     color: var(--cor-primaria, #673ab7);
 }
+
 .api-key-modal-box p {
     font-size: 0.95rem;
     color: #666;
     margin-bottom: 1.5rem;
 }
+
 .api-key-modal-box .input-group {
     text-align: left;
     margin-bottom: 1.5rem;
 }
+
 .api-key-modal-box .input-group label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 600;
 }
+
 .api-key-modal-box .input-group input {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Garante que padding não afete a largura total */
 }
+
 .api-key-modal-box .modal-actions {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
 }
+
 .popup-actions {
     margin-top: 1.5rem;
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-}
-
-.btn-annul-question {
-    background-color: #ffc107;
-    color: #333;
-    margin-top: 10px;
-    width: auto;
-    min-width: 100px;
-    align-self: flex-end;
-    display: none;
-}
-.btn-annul-question:hover:not(:disabled) {
-    background-color: #e6a700;
-}
-.btn-cut-option {
-    flex-shrink: 0;
-    width: 40px;
-    background-color: #e9ecef;
-    border: 1px solid #ddd;
-    border-left: none;
-    color: #999;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: all 0.2s;
-    border-radius: 0 10px 10px 0;
-}
-.btn-cut-option:hover {
-    color: #dc3545;
-}
-.option-btn.eliminada {
-    opacity: 0.5;
-    text-decoration: line-through;
-    pointer-events: none;
-}
-.option-btn.eliminada + .btn-cut-option {
-    color: #28a745;
-}
-.question-item.anulada {
-    position: relative;
-    border-left-color: #ffc107;
-}
-.question-item.anulada::after {
-    content: 'ANULADA';
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #ffc107;
-    color: #343a40;
-    padding: 3px 8px;
-    font-size: 10px;
-    font-weight: bold;
-    border-radius: 4px;
-    transform: rotate(5deg);
-}
-
-select {
-    background-color: red !important;
 }
