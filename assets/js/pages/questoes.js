@@ -1,204 +1,273 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    let questoesJson = [];
-    let questionsDataStore = {};
-    let currentSessionStats = { id: null, totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null, startTime: null };
-    
-    const campoBusca = document.getElementById('campoBusca');
-    const filtroDisciplina = new Choices('#filtroDisciplina', { removeItemButton: true });
-    const filtroAssunto = new Choices('#filtroAssunto', { removeItemButton: true });
-    const numeroQuestoes = document.getElementById('numeroQuestoes');
-    const buscarQuestoes = document.getElementById('buscarQuestoes');
-    const finalizeButton = document.getElementById('finalizeButton');
-    const questoesOutput = document.getElementById('questoesOutput');
-    
-    async function carregarQuestoes() {
-        const response = await fetch('../assets/data/questoes.json');
-        questoesJson = await response.json();
-        preencherFiltros(questoesJson);
+  const QUESTOES_JSON_URL = '../assets/data/questoes.json';
+  const STORAGE_KEY_RESOLVIDAS = 'questoesResolvidas';
+
+  let todasQuestoes = [];
+  let questoesFiltradas = [];
+  let questoesExibidas = [];
+  let questionsDataStore = {};
+  let resolvidas = [];
+
+  let currentSessionStats = {
+    id: null,
+    totalQuestions: 0,
+    answeredCount: 0,
+    correctCount: 0,
+    disciplina: null
+  };
+
+  // ELEMENTOS
+  const campoBusca = document.getElementById('campoBusca');
+  const filtroDisciplina = new Choices('#filtroDisciplina', { removeItemButton: true });
+  const filtroAssunto = new Choices('#filtroAssunto', { removeItemButton: true });
+  const filtroTipo = new Choices('#filtroTipo', { removeItemButton: true });
+  const filtroDificuldade = new Choices('#filtroDificuldade', { removeItemButton: true });
+  const filtroAno = new Choices('#filtroAno', { removeItemButton: true });
+
+  const numeroQuestoes = document.getElementById('numeroQuestoes');
+  const questoesOutput = document.getElementById('questoesOutput');
+  const buscarQuestoes = document.getElementById('buscarQuestoes');
+  const finalizeButton = document.getElementById('finalizeButton');
+
+  const drawer = document.getElementById('drawerFiltros');
+  const backdrop = document.getElementById('drawerBackdrop');
+  const abrirDrawer = document.getElementById('abrirDrawerFiltros');
+  const aplicarFiltros = document.getElementById('aplicarFiltros');
+  const redefinirFiltros = document.getElementById('redefinirFiltros');
+
+  // UTILITÁRIOS
+
+  const embaralhar = (arr) => [...arr].sort(() => Math.random() - 0.5);
+  const getValorSelecionado = (name) =>
+    document.querySelector(`input[name="${name}"]:checked`)?.value || 'todas';
+
+  const salvarResolvida = (id, correta) => {
+    if (!resolvidas.some(q => q.id === id)) {
+      resolvidas.push({ id, correta });
+      localStorage.setItem(STORAGE_KEY_RESOLVIDAS, JSON.stringify(resolvidas));
     }
-    
-    function preencherFiltros(questoes) {
-        const disciplinas = [...new Set(questoes.map(q => q.disciplina))];
-        const assuntos = [...new Set(questoes.map(q => q.assunto))];
-        filtroDisciplina.setChoices(disciplinas.map(d => ({ value: d, label: d })), 'value', 'label', true);
-        filtroAssunto.setChoices(assuntos.map(a => ({ value: a, label: a })), 'value', 'label', true);
+  };
+
+  const carregarResolvidas = () => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY_RESOLVIDAS)) || [];
+    } catch {
+      return [];
     }
-    
-    function iniciarSessao(questoes, disciplina) {
-        currentSessionStats = {
-            id: `sess-${Date.now()}`,
-            totalQuestions: questoes.length,
-            answeredCount: 0,
-            correctCount: 0,
-            disciplina: disciplina,
-            startTime: Date.now()
-        };
-        finalizeButton.style.display = 'inline-flex';
-        if (window.timerPopupAPI?.startSession) window.timerPopupAPI.startSession(questoes.length, disciplina);
-        if (window.timerPopupAPI?.openPanel) window.timerPopupAPI.openPanel();
-    }
-    
-    function finalizarSessao(abrirPainel = true) {
-        if (!currentSessionStats.id) return;
-        if (window.timerPopupAPI?.stopTimer) window.timerPopupAPI.stopTimer();
-        if (abrirPainel && window.timerPopupAPI?.openPanel) window.timerPopupAPI.openPanel();
-        finalizeButton.style.display = 'none';
-        questionsDataStore = {};
-        currentSessionStats = { id: null, totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null, startTime: null };
-    }
-    
-    function atualizarStatus(isCorreta) {
-        if (!currentSessionStats.id) return;
-        currentSessionStats.answeredCount++;
-        if (isCorreta) currentSessionStats.correctCount++;
-        if (window.timerPopupAPI?.updateStats) {
-            window.timerPopupAPI.updateStats(currentSessionStats.answeredCount, currentSessionStats.correctCount);
-        }
-        if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
-            finalizarSessao(true);
-        }
-    }
-    
-    function exibirQuestoes(questoes) {
-        questoesOutput.innerHTML = '';
-        questionsDataStore = {};
-        
-        questoes.forEach((q, index) => {
-            const id = `q-${Date.now()}-${index}`;
-            questionsDataStore[id] = q;
-            
-            const div = document.createElement('div');
-            div.className = 'question-item';
-            div.id = id;
-            
-            const enunciado = document.createElement('p');
-            enunciado.className = 'question-text';
-            enunciado.innerHTML = `<strong>${index + 1}.</strong> ${q.enunciado}`;
-            div.appendChild(enunciado);
-            
-            if (q.metadata?.fonte || q.metadata?.ano) {
-                const meta = document.createElement('div');
-                meta.className = 'question-meta';
-                if (q.metadata.fonte) meta.innerHTML += `<span class="meta-source">${q.metadata.fonte}</span>`;
-                if (q.metadata.fonte && q.metadata.ano) meta.innerHTML += ` <span class="meta-separator">|</span> `;
-                if (q.metadata.ano) meta.innerHTML += `<span class="meta-year">${q.metadata.ano}</span>`;
-                div.appendChild(meta);
-            }
-            
-            const opcoes = document.createElement('div');
-            opcoes.className = 'options-container';
-            
-            q.opcoes.forEach(op => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.dataset.value = op.letra;
-                btn.innerHTML = `<span class="option-letter">${op.letra}</span><span class="option-content">${op.texto}</span>`;
-                btn.addEventListener('click', () => selecionarOpcao(btn));
-                opcoes.appendChild(btn);
-            });
-            
-            div.appendChild(opcoes);
-            
-            const feedback = document.createElement('div');
-            feedback.className = 'feedback-area';
-            const msg = document.createElement('div');
-            msg.className = 'feedback-message';
-            feedback.appendChild(msg);
-            
-            const responder = document.createElement('button');
-            responder.className = 'confirm-answer-btn';
-            responder.textContent = 'Responder';
-            responder.disabled = true;
-            responder.addEventListener('click', () => confirmarResposta(div, responder));
-            feedback.appendChild(responder);
-            
-            if (q.resolucao) {
-                const gabarito = document.createElement('button');
-                gabarito.className = 'view-resolution-btn';
-                gabarito.textContent = 'Gabarito';
-                gabarito.style.display = 'none';
-                gabarito.addEventListener('click', () => {
-                    const res = div.querySelector('.resolution-area');
-                    const visivel = res.style.display === 'block';
-                    res.style.display = visivel ? 'none' : 'block';
-                    gabarito.textContent = visivel ? 'Gabarito' : 'Ocultar Gabarito';
-                });
-                feedback.appendChild(gabarito);
-                
-                const resolucao = document.createElement('div');
-                resolucao.className = 'resolution-area';
-                resolucao.innerHTML = `<strong>Resolução:</strong><br>${q.resolucao}`;
-                resolucao.style.display = 'none';
-                div.appendChild(resolucao);
-            }
-            
-            div.appendChild(feedback);
-            questoesOutput.appendChild(div);
-        });
-    }
-    
-    function selecionarOpcao(btn) {
-        const item = btn.closest('.question-item');
-        if (item.classList.contains('answered')) return;
-        item.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected-preview'));
-        btn.classList.add('selected-preview');
-        const confirmar = item.querySelector('.confirm-answer-btn');
-        confirmar.disabled = false;
-        item.dataset.selected = btn.dataset.value;
-    }
-    
-    function confirmarResposta(item, btn) {
-        const id = item.id;
-        const q = questionsDataStore[id];
-        const resposta = item.dataset.selected;
-        if (!resposta || !q || item.classList.contains('answered')) return;
-        
-        const correta = q.resposta_correta;
-        const acertou = resposta === correta;
-        item.classList.add('answered', acertou ? 'correct' : 'incorrect');
-        
-        item.querySelectorAll('.option-btn').forEach(b => {
-            b.disabled = true;
-            if (b.dataset.value === resposta) b.classList.add('selected');
-            if (b.dataset.value === correta) b.classList.add('correct-answer-highlight');
-        });
-        
-        btn.disabled = true;
-        const msg = item.querySelector('.feedback-message');
-        msg.textContent = acertou ? 'Resposta Correta!' : `Incorreto. A resposta correta é: ${correta}`;
-        msg.style.display = 'block';
-        
-        const gabarito = item.querySelector('.view-resolution-btn');
-        if (gabarito) gabarito.style.display = 'inline-flex';
-        
-        atualizarStatus(acertou);
-    }
-    
-    buscarQuestoes.addEventListener('click', () => {
-        const termo = campoBusca.value.trim().toLowerCase();
-        const disciplinas = filtroDisciplina.getValue(true);
-        const assuntos = filtroAssunto.getValue(true);
-        const qtd = parseInt(numeroQuestoes.value, 10) || 5;
-        
-        let filtradas = questoesJson.filter(q =>
-            (!termo || q.enunciado.toLowerCase().includes(termo)) &&
-            (!disciplinas.length || disciplinas.includes(q.disciplina)) &&
-            (!assuntos.length || assuntos.includes(q.assunto))
-        );
-        
-        if (!filtradas.length) {
-            questoesOutput.innerHTML = '<p class="empty-state">Nenhuma questão encontrada.</p>';
-            return;
-        }
-        
-        const selecionadas = filtradas.sort(() => 0.5 - Math.random()).slice(0, qtd);
-        exibirQuestoes(selecionadas);
-        iniciarSessao(selecionadas, disciplinas.join(', ') || 'Diversas');
+  };
+
+  const preencherFiltros = () => {
+    const disciplinas = [...new Set(todasQuestoes.map(q => q.disciplina))].sort();
+    const assuntos = [...new Set(todasQuestoes.map(q => q.assunto))].sort();
+    const anos = [...new Set(todasQuestoes.map(q => q.metadata?.ano))].sort((a, b) => b - a);
+
+    filtroDisciplina.setChoices(disciplinas.map(d => ({ value: d, label: d })), 'value', 'label', true);
+    filtroAssunto.setChoices(assuntos.map(a => ({ value: a, label: a })), 'value', 'label', true);
+    filtroAno.setChoices(anos.map(a => ({ value: a, label: a })), 'value', 'label', true);
+  };
+
+  const exibirQuestoes = (lista) => {
+    questoesOutput.innerHTML = '';
+    questionsDataStore = {};
+
+    lista.forEach((q, idx) => {
+      const id = `q-${q.id}`;
+      questionsDataStore[id] = q;
+
+      const div = document.createElement('div');
+      div.className = 'question-item';
+      div.id = id;
+
+      div.innerHTML = `
+        <p class="question-text"><strong>${idx + 1}.</strong> ${q.enunciado}</p>
+        ${q.metadata?.fonte || q.metadata?.ano ? `
+          <div class="question-meta">
+            ${q.metadata.fonte ? `<span class="meta-source">${q.metadata.fonte}</span>` : ''}
+            ${q.metadata.fonte && q.metadata.ano ? ' | ' : ''}
+            ${q.metadata.ano ? `<span class="meta-year">${q.metadata.ano}</span>` : ''}
+          </div>` : ''}
+        <div class="options-container">
+          ${q.opcoes.map(op => `
+            <button class="option-btn" data-value="${op.letra}">
+              <span class="option-letter">${op.letra}</span>
+              <span class="option-content">${op.texto}</span>
+            </button>
+          `).join('')}
+        </div>
+        <div class="feedback-area">
+          <div class="feedback-message"></div>
+          <button class="confirm-answer-btn" disabled>Responder</button>
+          ${q.resolucao ? '<button class="view-resolution-btn" style="display:none;">Gabarito</button>' : ''}
+        </div>
+        ${q.resolucao ? `<div class="resolution-area" style="display:none;"><strong>Resolução:</strong><br>${q.resolucao}</div>` : ''}
+      `;
+
+      questoesOutput.appendChild(div);
     });
-    
-    finalizeButton.addEventListener('click', () => {
-        finalizarSessao(true);
+  };
+
+  const aplicarFiltrosAvancados = () => {
+    const termo = campoBusca.value.toLowerCase().trim();
+    const disciplinas = filtroDisciplina.getValue(true);
+    const assuntos = filtroAssunto.getValue(true);
+    const tipos = filtroTipo.getValue(true);
+    const dificuldades = filtroDificuldade.getValue(true);
+    const anos = filtroAno.getValue(true);
+    const modo = getValorSelecionado('filtroResolvidas');
+
+    questoesFiltradas = todasQuestoes.filter(q => {
+      const resolvida = resolvidas.find(r => r.id === q.id);
+      const acertou = resolvida?.correta;
+
+      if (modo === 'resolvidas' && !resolvida) return false;
+      if (modo === 'nao_resolvidas' && resolvida) return false;
+      if (modo === 'corretas' && acertou !== true) return false;
+      if (modo === 'erradas' && acertou !== false) return false;
+
+      return (
+        (!termo || q.enunciado.toLowerCase().includes(termo)) &&
+        (!disciplinas.length || disciplinas.includes(q.disciplina)) &&
+        (!assuntos.length || assuntos.includes(q.assunto)) &&
+        (!tipos.length || tipos.includes(q.tipo)) &&
+        (!dificuldades.length || dificuldades.includes(q.dificuldade)) &&
+        (!anos.length || anos.includes(q.metadata?.ano))
+      );
     });
-    
-    await carregarQuestoes();
+
+    console.log('Filtros aplicados. Total filtrado:', questoesFiltradas.length);
+  };
+
+  const buscarQuestoesSelecionadas = () => {
+    aplicarFiltrosAvancados();
+
+    const qtd = parseInt(numeroQuestoes.value) || 5;
+    if (!questoesFiltradas.length) {
+      questoesOutput.innerHTML = '<p class="empty-state">Nenhuma questão encontrada.</p>';
+      return;
+    }
+
+    questoesExibidas = embaralhar(questoesFiltradas).slice(0, qtd);
+    exibirQuestoes(questoesExibidas);
+
+    iniciarSessao(questoesExibidas);
+  };
+
+  const iniciarSessao = (questoes) => {
+    currentSessionStats = {
+      id: `sess-${Date.now()}`,
+      totalQuestions: questoes.length,
+      answeredCount: 0,
+      correctCount: 0,
+      disciplina: questoes[0]?.disciplina || "Diversas"
+    };
+    finalizeButton.style.display = 'inline-flex';
+
+    if (window.timerPopupAPI?.startSession) {
+      window.timerPopupAPI.startSession(questoes.length, currentSessionStats.disciplina);
+    }
+  };
+
+  const finalizarSessao = (abrir = true) => {
+    if (!currentSessionStats.id) return;
+    if (window.timerPopupAPI?.stopTimer) window.timerPopupAPI.stopTimer();
+    if (abrir && window.timerPopupAPI?.openPanel) window.timerPopupAPI.openPanel();
+    finalizeButton.style.display = 'none';
+    currentSessionStats = {
+      id: null, totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null
+    };
+  };
+
+  const selecionarOpcao = (btn) => {
+    const container = btn.closest('.question-item');
+    if (!container || container.classList.contains('answered')) return;
+    container.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected-preview'));
+    btn.classList.add('selected-preview');
+    container.dataset.selected = btn.dataset.value;
+    container.querySelector('.confirm-answer-btn').disabled = false;
+  };
+
+  const responderQuestao = (btn) => {
+    const container = btn.closest('.question-item');
+    const id = container.id;
+    const questao = questionsDataStore[id];
+    const resposta = container.dataset.selected;
+    if (!questao || !resposta || container.classList.contains('answered')) return;
+
+    const correta = questao.resposta_correta;
+    const acertou = resposta === correta;
+    container.classList.add('answered', acertou ? 'correct' : 'incorrect');
+
+    container.querySelectorAll('.option-btn').forEach(b => {
+      b.disabled = true;
+      if (b.dataset.value === resposta) b.classList.add('selected');
+      if (b.dataset.value === correta) b.classList.add('correct-answer-highlight');
+    });
+
+    container.querySelector('.feedback-message').textContent = acertou
+      ? 'Resposta Correta!'
+      : `Incorreto. A resposta correta é: ${correta}`;
+
+    const gabaritoBtn = container.querySelector('.view-resolution-btn');
+    if (gabaritoBtn) gabaritoBtn.style.display = 'inline-flex';
+
+    currentSessionStats.answeredCount++;
+    if (acertou) currentSessionStats.correctCount++;
+
+    salvarResolvida(questao.id, acertou);
+
+    if (window.timerPopupAPI?.updateStats) {
+      window.timerPopupAPI.updateStats(currentSessionStats.answeredCount, currentSessionStats.correctCount);
+    }
+
+    if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
+      finalizarSessao(true);
+    }
+  };
+
+  // EVENTOS
+
+  questoesOutput.addEventListener('click', (e) => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    if (btn.classList.contains('option-btn')) selecionarOpcao(btn);
+    if (btn.classList.contains('confirm-answer-btn')) responderQuestao(btn);
+    if (btn.classList.contains('view-resolution-btn')) {
+      const area = btn.closest('.question-item').querySelector('.resolution-area');
+      const visivel = area.style.display === 'block';
+      area.style.display = visivel ? 'none' : 'block';
+      btn.textContent = visivel ? 'Gabarito' : 'Ocultar Gabarito';
+    }
+  });
+
+  buscarQuestoes.addEventListener('click', buscarQuestoesSelecionadas);
+  finalizeButton.addEventListener('click', () => finalizarSessao(true));
+
+  abrirDrawer.addEventListener('click', () => {
+    drawer.classList.add('open');
+    backdrop.classList.add('active');
+  });
+
+  backdrop.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    backdrop.classList.remove('active');
+  });
+
+  aplicarFiltros.addEventListener('click', () => {
+    aplicarFiltrosAvancados();
+    drawer.classList.remove('open');
+    backdrop.classList.remove('active');
+  });
+
+  redefinirFiltros.addEventListener('click', () => {
+    filtroTipo.clearStore();
+    filtroDificuldade.clearStore();
+    filtroAno.clearStore();
+    document.querySelector('input[name="filtroResolvidas"][value="todas"]').checked = true;
+  });
+
+  // INICIALIZAÇÃO
+  resolvidas = carregarResolvidas();
+  const res = await fetch(QUESTOES_JSON_URL);
+  todasQuestoes = await res.json();
+  preencherFiltros();
 });

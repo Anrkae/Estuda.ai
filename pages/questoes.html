@@ -8,12 +8,13 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
-  <!-- CSS Principal -->
+  <!-- Estilos -->
   <link rel="stylesheet" href="../assets/css/essentials.css" />
   <link rel="stylesheet" href="../assets/css/pages/questoes.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <link rel="stylesheet" href="../assets/css/components/components.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+  <link rel="stylesheet" href="../assets/css/components/filtros.css" />
 </head>
 
 <body>
@@ -54,24 +55,62 @@
             </div>
 
             <div>
-              <label style="opacity:0">Filtros</label>
-              <button id="abrirFiltros"><i class="fas fa-filter"></i> Filtros Avançados</button>
-            </div>
-          </div>
-
-          <div class="action-area">
-            <button id="buscarQuestoes">
-              <i class="fas fa-search"></i> Buscar Questões
-            </button>
-            <div id="loadingIndicator" class="loading" style="display: none;">
-              <div class="spinner"></div>
-              <p>Buscando questões...</p>
+              <button id="abrirDrawerFiltros" class="btn-secundario">
+                <i class="fas fa-filter"></i> Filtros
+              </button>
+              <button id="buscarQuestoes" class="btn-primario">
+                <i class="fas fa-search"></i> Buscar
+              </button>
+              <div id="loadingIndicator" class="loading" style="display: none;">
+                <div class="spinner"></div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Drawer de Filtros (Vertical - Topo) -->
+    <div id="drawerFiltros">
+      <div class="drawer-content">
+        <h3><i class="fas fa-sliders-h"></i> Filtros Avançados</h3>
+
+        <label for="filtroTipo">Tipo de Questão:</label>
+        <select id="filtroTipo" multiple>
+          <option value="multipla_escolha">Múltipla Escolha</option>
+          <option value="verdadeiro_falso">Verdadeiro ou Falso</option>
+          <option value="dissertativa_curta">Dissertativa Curta</option>
+        </select>
+
+        <label for="filtroDificuldade">Dificuldade:</label>
+        <select id="filtroDificuldade" multiple>
+          <option value="Fácil">Fácil</option>
+          <option value="Médio">Médio</option>
+          <option value="Difícil">Difícil</option>
+          <option value="Muito Difícil">Muito Difícil</option>
+        </select>
+
+        <label for="filtroAno">Ano:</label>
+        <select id="filtroAno" multiple></select>
+
+        <label>Exibir questões:</label>
+        <div class="grupo-resolvidas">
+          <label><input type="radio" name="filtroResolvidas" value="todas" checked /> Todas</label><br />
+          <label><input type="radio" name="filtroResolvidas" value="resolvidas" /> Resolvidas</label><br />
+          <label><input type="radio" name="filtroResolvidas" value="corretas" /> Corretas</label><br />
+          <label><input type="radio" name="filtroResolvidas" value="erradas" /> Erradas</label><br />
+          <label><input type="radio" name="filtroResolvidas" value="nao_resolvidas" /> Não resolvidas</label>
+        </div>
+
+        <button id="aplicarFiltros"><i class="fas fa-check"></i> Aplicar Filtros</button>
+        <button id="redefinirFiltros"><i class="fas fa-rotate-left"></i> Redefinir Filtros</button>
+      </div>
+    </div>
+
+    <!-- Backdrop -->
+    <div class="drawer-backdrop" id="drawerBackdrop"></div>
+
+    <!-- Resultado -->
     <div class="output-area">
       <label for="questoesOutput">Questões Filtradas:</label>
       <div id="questoesOutput" class="questoes-output-container" aria-live="polite"></div>
@@ -84,7 +123,7 @@
     </div>
   </main>
 
-  <!-- Popup genérico -->
+  <!-- Popup -->
   <div class="popup-overlay" id="popupOverlay">
     <div class="popup-message-box" id="popupMessageBox">
       <p id="popupContent"></p>
@@ -96,7 +135,7 @@
 
   <footer></footer>
 
-  <!-- JS scripts -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
   <script src="../assets/js/components/timerPopup.js" defer></script>
   <script src="../assets/js/components/bloco.js" defer></script>
