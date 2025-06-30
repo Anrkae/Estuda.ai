@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const redefinirFiltros = document.getElementById('redefinirFiltros');
 
   // UTILITÁRIOS
-
   const embaralhar = (arr) => [...arr].sort(() => Math.random() - 0.5);
   const getValorSelecionado = (name) =>
     document.querySelector(`input[name="${name}"]:checked`)?.value || 'todas';
@@ -74,18 +73,35 @@ document.addEventListener('DOMContentLoaded', async () => {
       const id = `q-${q.id}`;
       questionsDataStore[id] = q;
 
+      const temContexto = q.contexto && q.contexto.trim() !== '';
+      const temImagem = q.imagem_url && q.imagem_url.trim() !== '';
+
       const div = document.createElement('div');
       div.className = 'question-item';
       div.id = id;
 
       div.innerHTML = `
         <p class="question-text"><strong>${idx + 1}.</strong> ${q.enunciado}</p>
+
+        ${temContexto ? `
+          <button class="btn-contexto toggle-btn" data-target="contexto-${id}">Texto associado +</button>
+          <div class="contexto-content toggle-content oculto" id="contexto-${id}">${q.contexto}</div>
+        ` : ''}
+
+        ${temImagem ? `
+          <button class="btn-imagem toggle-btn" data-target="imagem-${id}">Ver imagem +</button>
+          <div class="imagem-content toggle-content oculto" id="imagem-${id}">
+            <img src="${q.imagem_url}" alt="Imagem da questão" style="max-width: 100%;">
+          </div>
+        ` : ''}
+
         ${q.metadata?.fonte || q.metadata?.ano ? `
           <div class="question-meta">
             ${q.metadata.fonte ? `<span class="meta-source">${q.metadata.fonte}</span>` : ''}
             ${q.metadata.fonte && q.metadata.ano ? ' | ' : ''}
             ${q.metadata.ano ? `<span class="meta-year">${q.metadata.ano}</span>` : ''}
           </div>` : ''}
+
         <div class="options-container">
           ${q.opcoes.map(op => `
             <button class="option-btn" data-value="${op.letra}">
@@ -94,11 +110,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             </button>
           `).join('')}
         </div>
+
         <div class="feedback-area">
           <div class="feedback-message"></div>
           <button class="confirm-answer-btn" disabled>Responder</button>
           ${q.resolucao ? '<button class="view-resolution-btn" style="display:none;">Gabarito</button>' : ''}
         </div>
+
         ${q.resolucao ? `<div class="resolution-area" style="display:none;"><strong>Resolução:</strong><br>${q.resolucao}</div>` : ''}
       `;
 
@@ -148,7 +166,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     questoesExibidas = embaralhar(questoesFiltradas).slice(0, qtd);
     exibirQuestoes(questoesExibidas);
-
     iniciarSessao(questoesExibidas);
   };
 
@@ -225,7 +242,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   // EVENTOS
-
   questoesOutput.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
@@ -236,6 +252,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       const visivel = area.style.display === 'block';
       area.style.display = visivel ? 'none' : 'block';
       btn.textContent = visivel ? 'Gabarito' : 'Ocultar Gabarito';
+    }
+    if (btn.classList.contains('toggle-btn')) {
+      const targetId = btn.dataset.target;
+      const alvo = document.getElementById(targetId);
+      if (alvo) alvo.classList.toggle('oculto');
     }
   });
 

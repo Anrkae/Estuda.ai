@@ -1,0 +1,78 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+textarea, input, select {
+  width: 100%;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  padding: 8px;
+}
+
+#pdfText {
+  min-height: 300px;
+  font-family: monospace;
+  background: #f8f8f8;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.image-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.image-list img {
+  width: 120px;
+  height: auto;
+  border: 1px solid #888;
+  cursor: pointer;
+}
+
+form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  background: #fdfdfd;
+}
+
+button {
+  padding: 10px 15px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+pre {
+  background: #f7f7f7;
+  padding: 10px;
+  overflow: auto;
+  max-height: 400px;
+}
+
+.questao-item {
+  background: #eef;
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 4px solid #88f;
+  border-radius: 6px;
+}
+
+.questao-item button {
+  margin: 4px 4px 0 0;
+}
+
+#statusMsg {
+  margin-left: 10px;
+  color: green;
+  font-weight: bold;
+}
+
+#listaQuestoes {
+  margin-top: 20px;
+}

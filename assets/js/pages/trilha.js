@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const abas = document.querySelectorAll(".nav-item");
     const secoes = document.querySelectorAll(".conteudo-aba section");
-    
+
     let editalData = {};
     let graficoDoughnut;
     const STORAGE_KEY_PROGRESSO = "progresso_trilha_estudo";
@@ -16,12 +16,26 @@ document.addEventListener('DOMContentLoaded', () => {
         animarAba(index);
     }
 
+    function aplicarClasseConcluido() {
+        const botoesTopicos = document.querySelectorAll(".topico-btn");
+        botoesTopicos.forEach(botao => {
+            const id = botao.dataset.topicId;
+            const checkbox = document.getElementById(id);
+            if (checkbox && checkbox.checked) {
+                botao.classList.add("topico-concluido");
+            } else {
+                botao.classList.remove("topico-concluido");
+            }
+        });
+    }
+
     function salvarProgresso() {
         let estado = {};
         const checkboxes = document.querySelectorAll(".checkbox-original");
         checkboxes.forEach(cb => { estado[cb.id] = cb.checked; });
         localStorage.setItem(STORAGE_KEY_PROGRESSO, JSON.stringify(estado));
         atualizarProgresso();
+        aplicarClasseConcluido();
     }
 
     function carregarProgresso() {
@@ -36,21 +50,22 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         atualizarProgresso();
+        aplicarClasseConcluido();
     }
-    
+
     function calcularProgressoDisciplina(disciplinaId) {
         const disciplina = editalData.disciplinas.find(d => d.id === disciplinaId);
         if (!disciplina || disciplina.topicos.length === 0) return 0;
-        
+
         const ids = disciplina.topicos.map(t => t.id);
         const marcadosDisciplina = ids.filter(id => {
             const cb = document.getElementById(id);
             return cb ? cb.checked : false;
         }).length;
-        
+
         return Math.round((marcadosDisciplina / ids.length) * 100);
     }
-    
+
     function atualizarBarraProgresso(barraId, percentualId, percentual) {
         const barraElement = document.getElementById(barraId);
         const percentualElement = document.getElementById(percentualId);
@@ -66,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const marcados = document.querySelectorAll(".checkbox-original:checked").length;
         const pendentes = total - marcados;
         const percGeral = total > 0 ? Math.round((marcados / total) * 100) : 0;
-        
+
         document.getElementById("total-topicos").textContent = total;
         document.getElementById("concluidos-topicos").textContent = marcados;
         document.getElementById("pendentes-topicos").textContent = pendentes;
-        
+
         atualizarBarraProgresso('barra-progresso-total-dashboard', 'percentual-total-dashboard', percGeral);
-        
+
         const containerProgressoDashboard = document.getElementById('disciplinas-progresso-container-dashboard');
         containerProgressoDashboard.innerHTML = '';
         let progressosDisciplinas = {};
@@ -101,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 pendenciasDashboardEl.appendChild(liDash);
             }
         });
-        
+
         const progMat = progressosDisciplinas['Matemática'] || 0;
         const progPor = progressosDisciplinas['Português'] || 0;
         atualizarGraficoDoughnut(progMat, progPor, percGeral);
@@ -110,8 +125,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function atualizarGraficoDoughnut(matematica, portugues, percGeral) {
         const ctx = document.getElementById('graficoProgresso')?.getContext('2d');
         if (!ctx) return;
-        
-        document.getElementById("progressoGeralCentro").textContent = ""; // REMOVIDO O TEXTO CENTRAL
+
+        document.getElementById("progressoGeralCentro").textContent = "";
 
         if (graficoDoughnut) {
             graficoDoughnut.destroy();
@@ -123,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 labels: ['Matemática', 'Português', 'Outros'],
                 datasets: [{
                     data: [matematica, portugues, (100 - matematica - portugues)],
-                    backgroundColor: [ '#4CAF50', '#FF7043', '#CCCCCC' ],
+                    backgroundColor: ['#4CAF50', '#FF7043', '#CCCCCC'],
                     hoverOffset: 8,
                     borderColor: '#f5f4f0',
                     borderWidth: 4
@@ -134,11 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 maintainAspectRatio: true,
                 cutout: '75%',
                 plugins: {
-                    legend: {
-                        position: 'bottom'
-                    },
+                    legend: { position: 'bottom' },
                     datalabels: { display: false },
-                    tooltip: { enabled: true, callbacks: { label: (c) => `  ${c.raw}%` }
+                    tooltip: {
+                        enabled: true,
+                        callbacks: { label: (c) => `  ${c.raw}%` }
                     }
                 }
             }
@@ -156,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             backgroundColor: colors[index],
             barThickness: 40
         }));
-        
+
         datasets.forEach((d, i) => {
             const radius = 10;
             d.borderRadius = (i === 0) ? { topRight: 0, bottomRight: 0, topLeft: radius, bottomLeft: radius }
@@ -172,15 +187,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { display: true, position: 'bottom', labels: { boxWidth: 15, font: { size: 12 } } },
-                    tooltip: { enabled: true, callbacks: { label: (c) => ` ${c.dataset.label}: ${c.raw}%` } },
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: { boxWidth: 15, font: { size: 12 } }
+                    },
+                    tooltip: {
+                        enabled: true,
+                        callbacks: { label: (c) => ` ${c.dataset.label}: ${c.raw}%` }
+                    },
                     datalabels: { display: false }
                 },
-                scales: { x: { stacked: true, max: 100, grid: { display: false }, ticks: { display: false } }, y: { stacked: true, grid: { display: false }, ticks: { display: false } } }
+                scales: {
+                    x: { stacked: true, max: 100, grid: { display: false }, ticks: { display: false } },
+                    y: { stacked: true, grid: { display: false }, ticks: { display: false } }
+                }
             }
         });
     }
-    
+
     function preencherAbaEdital() {
         document.getElementById('edital-nome').textContent = editalData.nome;
         document.getElementById('edital-data').textContent = editalData.data_prova;
@@ -229,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const cronogramaSalvo = JSON.parse(localStorage.getItem('cronograma')) || {};
         const hoje = (new Date().getDay() + 6) % 7;
         const eventosDeHoje = cronogramaSalvo[hoje] || [];
-        
+
         listaEl.innerHTML = '';
         if (eventosDeHoje.length > 0) {
             eventosDeHoje.forEach(evento => {
@@ -269,15 +294,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!disciplina) return;
         const topicData = disciplina.topicos.find(t => t.id === topicId);
         if (!topicData) return;
-        
+
         const drawer = document.getElementById('drawer-main');
         const originalCheckbox = document.getElementById(topicId);
         const modalCheckbox = document.getElementById('drawer-checkbox');
-        
+
         document.getElementById('drawer-title').textContent = topicData.nome;
         document.getElementById('drawer-description').textContent = topicData.desc;
         document.getElementById('drawer-peso').textContent = topicData.peso_topico;
-        
+
         const aulasListaEl = document.getElementById('drawer-aulas-lista');
         aulasListaEl.innerHTML = '';
         topicData.aulas.forEach(aula => {
@@ -289,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
             li.appendChild(a);
             aulasListaEl.appendChild(li);
         });
-        
+
         modalCheckbox.checked = originalCheckbox.checked;
         modalCheckbox.dataset.originalId = topicId;
         drawer.classList.add('is-open');
@@ -297,21 +322,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function configurarOuvintesEventos() {
         abas.forEach((aba, i) => aba.addEventListener("click", () => ativarAba(i)));
-        
+
         const containerDisciplinas = document.getElementById('disciplinas-container');
         containerDisciplinas.addEventListener('click', (e) => {
             const topicButton = e.target.closest('.topico-btn');
             if (topicButton) {
                 const { topicId, disciplineId } = topicButton.dataset;
                 abrirDrawer(topicId, disciplineId);
-                return; 
+                return;
             }
 
             const checkbox = e.target.closest('.checkbox-original');
-            if(checkbox) {
-                 salvarProgresso();
-                 Swal.fire({ icon: 'success', title: 'Progresso salvo!', timer: 1500, showConfirmButton: false, toast: true, position: 'top-end' });
-                 return;
+            if (checkbox) {
+                salvarProgresso();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Progresso salvo!',
+                    timer: 1500,
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'top-end'
+                });
+                return;
             }
 
             const toggleButton = e.target.closest('.botao-minimizar');
@@ -327,10 +359,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         });
-        
+
         const drawer = document.getElementById('drawer-main');
-        drawer.querySelectorAll('[data-drawer-close]').forEach(el => el.addEventListener('click', () => drawer.classList.remove('is-open')));
-        
+        drawer.querySelectorAll('[data-drawer-close]').forEach(el =>
+            el.addEventListener('click', () => drawer.classList.remove('is-open'))
+        );
+
         document.getElementById('drawer-checkbox').addEventListener('change', (e) => {
             const originalId = e.target.dataset.originalId;
             const originalCheckbox = document.getElementById(originalId);
@@ -344,18 +378,18 @@ document.addEventListener('DOMContentLoaded', () => {
     async function iniciar() {
         try {
             Chart.register(ChartDataLabels);
-            
+
             const response = await fetch('../assets/data/edital.json');
             if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
             editalData = await response.json();
-            
+
             preencherAbaEdital();
             gerarBlocosDisciplinas();
             configurarOuvintesEventos();
             carregarProgresso();
             criarGraficoPesos();
             mostrarTopicosDeHoje();
-            
+
         } catch (error) {
             console.error('Falha ao iniciar a aplicação:', error);
             document.getElementById('edital-nome').textContent = 'Falha ao carregar dados';
