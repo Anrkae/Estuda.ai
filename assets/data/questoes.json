@@ -6838,5 +6838,1445 @@
     ],
     "resposta_correta": "B",
     "resolucao": "Null"
+  },
+  {
+    "id": 181,
+    "enunciado": "A Inconfidência Mineira (1789) pretendia:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "C",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Inconfidência Mineira, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 182,
+    "enunciado": "A Revolta de Felipe dos Santos (1720) foi motivada por:",
+    "disciplina": "História",
+    "assunto": "Revolta de Felipe dos Santos",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "B",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "C",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "E",
+        "texto": "A luta contra a ocupação holandesa"
+      }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A questão aborda o tema Revolta de Felipe dos Santos, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 183,
+    "enunciado": "A Revolta dos Mascates (1710–1711) envolveu:",
+    "disciplina": "História",
+    "assunto": "Revolta dos Mascates",
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "C",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta dos Mascates, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 184,
+    "enunciado": "A Confederação do Equador (1824), no contexto do Primeiro Reinado, foi:",
+    "disciplina": "História",
+    "assunto": "Confederação do Equador",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "B",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "D",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "E",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A questão aborda o tema Confederação do Equador, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 185,
+    "enunciado": "A Revolta de Vila Rica teve como um de seus principais líderes:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "B",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta de Vila Rica, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 186,
+    "enunciado": "A Inconfidência Mineira (1789) pretendia:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "B",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "C",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Inconfidência Mineira, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 187,
+    "enunciado": "A Revolta de Vila Rica teve como um de seus principais líderes:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "B",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "D",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "E",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A questão aborda o tema Revolta de Vila Rica, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 188,
+    "enunciado": "A Revolta dos Mascates (1710–1711) envolveu:",
+    "disciplina": "História",
+    "assunto": "Revolta dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "B",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "C",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "D",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "E",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A questão aborda o tema Revolta dos Mascates, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 189,
+    "enunciado": "A Guerra dos Emboabas (1707–1709) foi resultado de:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "C",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "E",
+        "texto": "A defesa da escravidão como forma de economia"
+      }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A questão aborda o tema Guerra dos Emboabas, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 190,
+    "enunciado": "A Revolta de Vila Rica teve como um de seus principais líderes:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "C",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta de Vila Rica, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 191,
+    "enunciado": "A Conjuração Baiana (1798) se destacou por:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "B",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A criação de um governo provisório nas colônias"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Conjuração Baiana, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 192,
+    "enunciado": "A Guerra dos Emboabas (1707–1709) foi resultado de:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "B",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "C",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A criação de um governo provisório nas colônias"
+      }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A questão aborda o tema Guerra dos Emboabas, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 193,
+    "enunciado": "A Confederação do Equador (1824), no contexto do Primeiro Reinado, foi:",
+    "disciplina": "História",
+    "assunto": "Confederação do Equador",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "B",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "D",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "E",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A questão aborda o tema Confederação do Equador, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 194,
+    "enunciado": "A Guerra dos Emboabas (1707–1709) foi resultado de:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "B",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "C",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "E",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A questão aborda o tema Guerra dos Emboabas, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 195,
+    "enunciado": "A Revolta dos Mascates (1710–1711) envolveu:",
+    "disciplina": "História",
+    "assunto": "Revolta dos Mascates",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "C",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "E",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A questão aborda o tema Revolta dos Mascates, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 196,
+    "enunciado": "A Revolta dos Mascates (1710–1711) envolveu:",
+    "disciplina": "História",
+    "assunto": "Revolta dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "B",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "C",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta dos Mascates, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 197,
+    "enunciado": "A Revolta de Beckman, ocorrida no Maranhão em 1684, foi causada por:",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "B",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "C",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta de Beckman, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 198,
+    "enunciado": "A Conjuração Baiana (1798) se destacou por:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "B",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "C",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A criação de um governo provisório nas colônias"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Conjuração Baiana, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 199,
+    "enunciado": "A Revolta dos Mascates (1710–1711) envolveu:",
+    "disciplina": "História",
+    "assunto": "Revolta dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "B",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "C",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A luta contra a ocupação holandesa"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta dos Mascates, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 200,
+    "enunciado": "A Conjuração Baiana (1798) se destacou por:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "B",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "C",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "E",
+        "texto": "A criação de um governo provisório nas colônias"
+      }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A questão aborda o tema Conjuração Baiana, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 201,
+    "enunciado": "A Guerra dos Emboabas (1707–1709) foi resultado de:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "B",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "E",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A questão aborda o tema Guerra dos Emboabas, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 202,
+    "enunciado": "A Guerra dos Emboabas (1707–1709) foi resultado de:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "B",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "D",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "E",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A questão aborda o tema Guerra dos Emboabas, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 203,
+    "enunciado": "A Revolta de Beckman, ocorrida no Maranhão em 1684, foi causada por:",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "C",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta de Beckman, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 204,
+    "enunciado": "A Confederação do Equador (1824), no contexto do Primeiro Reinado, foi:",
+    "disciplina": "História",
+    "assunto": "Confederação do Equador",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "B",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "C",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "D",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "E",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A questão aborda o tema Confederação do Equador, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 205,
+    "enunciado": "A Inconfidência Mineira (1789) pretendia:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "B",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "C",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "E",
+        "texto": "A criação de um governo provisório nas colônias"
+      }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A questão aborda o tema Inconfidência Mineira, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 206,
+    "enunciado": "A Inconfidência Mineira (1789) pretendia:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "B",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "C",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A luta contra a ocupação holandesa"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Inconfidência Mineira, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 207,
+    "enunciado": "A Revolta de Felipe dos Santos (1720) foi motivada por:",
+    "disciplina": "História",
+    "assunto": "Revolta de Felipe dos Santos",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "B",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "C",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta de Felipe dos Santos, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 208,
+    "enunciado": "A Confederação do Equador (1824), no contexto do Primeiro Reinado, foi:",
+    "disciplina": "História",
+    "assunto": "Confederação do Equador",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "B",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "C",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A questão aborda o tema Confederação do Equador, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 209,
+    "enunciado": "A Revolta de Felipe dos Santos (1720) foi motivada por:",
+    "disciplina": "História",
+    "assunto": "Revolta de Felipe dos Santos",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "C",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "D",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "E",
+        "texto": "A luta contra a ocupação holandesa"
+      }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A questão aborda o tema Revolta de Felipe dos Santos, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 210,
+    "enunciado": "A Conjuração Baiana (1798) se destacou por:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "C",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Conjuração Baiana, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 211,
+    "enunciado": "A Revolta de Felipe dos Santos (1720) foi motivada por:",
+    "disciplina": "História",
+    "assunto": "Revolta de Felipe dos Santos",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "C",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta de Felipe dos Santos, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 212,
+    "enunciado": "A Revolta de Vila Rica teve como um de seus principais líderes:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "C",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "D",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A questão aborda o tema Revolta de Vila Rica, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 213,
+    "enunciado": "A Confederação do Equador (1824), no contexto do Primeiro Reinado, foi:",
+    "disciplina": "História",
+    "assunto": "Confederação do Equador",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "B",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "D",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A questão aborda o tema Confederação do Equador, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 214,
+    "enunciado": "A Revolta dos Mascates (1710–1711) envolveu:",
+    "disciplina": "História",
+    "assunto": "Revolta dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "B",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "D",
+        "texto": "A oposição aos jesuítas na missão religiosa no sertão"
+      },
+      {
+        "letra": "E",
+        "texto": "A criação de um governo provisório nas colônias"
+      }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A questão aborda o tema Revolta dos Mascates, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 215,
+    "enunciado": "A Inconfidência Mineira (1789) pretendia:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "C",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "D",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "E",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A questão aborda o tema Inconfidência Mineira, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 216,
+    "enunciado": "A Confederação do Equador (1824), no contexto do Primeiro Reinado, foi:",
+    "disciplina": "História",
+    "assunto": "Confederação do Equador",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "B",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "C",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "D",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A questão aborda o tema Confederação do Equador, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 217,
+    "enunciado": "A Revolta de Vila Rica teve como um de seus principais líderes:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "C",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "D",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "E",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A questão aborda o tema Revolta de Vila Rica, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 218,
+    "enunciado": "A Revolta dos Mascates (1710–1711) envolveu:",
+    "disciplina": "História",
+    "assunto": "Revolta dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A revolta contra o monopólio da Companhia de Comércio"
+      },
+      {
+        "letra": "B",
+        "texto": "A cobrança de impostos injustos pela Coroa"
+      },
+      {
+        "letra": "C",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "D",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "E",
+        "texto": "A defesa da escravidão como forma de economia"
+      }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A questão aborda o tema Revolta dos Mascates, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 219,
+    "enunciado": "A Conjuração Baiana (1798) se destacou por:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Média",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A defesa da escravidão como forma de economia"
+      },
+      {
+        "letra": "C",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      },
+      {
+        "letra": "D",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "E",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A questão aborda o tema Conjuração Baiana, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
+  },
+  {
+    "id": 220,
+    "enunciado": "A Revolta de Beckman, ocorrida no Maranhão em 1684, foi causada por:",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      {
+        "letra": "A",
+        "texto": "A luta contra a ocupação holandesa"
+      },
+      {
+        "letra": "B",
+        "texto": "A resistência à exploração da metrópole portuguesa"
+      },
+      {
+        "letra": "C",
+        "texto": "A criação de um governo provisório nas colônias"
+      },
+      {
+        "letra": "D",
+        "texto": "A imposição de taxas alfandegárias pela Inglaterra"
+      },
+      {
+        "letra": "E",
+        "texto": "A rivalidade entre portugueses e espanhóis"
+      }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A questão aborda o tema Revolta de Beckman, cuja principal motivação foi a resistência à exploração da metrópole portuguesa. Trata-se de um episódio marcante da resistência colonial contra os abusos da administração portuguesa."
   }
 ]
