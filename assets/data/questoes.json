@@ -2873,5 +2873,1132 @@
     ],
     "resposta_correta": "B",
     "resolucao": "'Ninguém' é pronome indefinido, pois não especifica um indivíduo determinado."
+  },
+  {
+    "id": 658,
+    "enunciado": "Qual dos processos a seguir é resultado direto da atuação de agentes internos na formação do relevo brasileiro?",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Erosão pluvial" },
+      { "letra": "B", "texto": "Sedimentação fluvial" },
+      { "letra": "C", "texto": "Formação de dobramentos antigos" },
+      { "letra": "D", "texto": "Deslizamento de encostas" },
+      { "letra": "E", "texto": "Assoreamento de rios" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A formação dos escudos cristalinos e dobramentos antigos é resultado da atuação de agentes internos, como o tectonismo."
+  },
+  {
+    "id": 659,
+    "contexto": "Em regiões como o Planalto Meridional, ocorrem frequentes processos erosivos, especialmente em áreas de agricultura mecanizada e desmatamento.",
+    "enunciado": "O processo descrito no contexto acima é causado, principalmente, pela atuação de:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vulcanismo" },
+      { "letra": "B", "texto": "Erosão eólica" },
+      { "letra": "C", "texto": "Ação antrópica e erosão hídrica" },
+      { "letra": "D", "texto": "Soterramento por placas tectônicas" },
+      { "letra": "E", "texto": "Movimentos orogenéticos recentes" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O desmatamento e a mecanização expõem o solo à ação da água, intensificando a erosão hídrica, agente externo agravado pela ação humana."
+  },
+  {
+    "id": 660,
+    "enunciado": "Em relação à geomorfologia brasileira, assinale a afirmativa correta:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O Brasil apresenta dobramentos modernos com atividade sísmica frequente." },
+      { "letra": "B", "texto": "A ação dos ventos é o principal modelador do relevo nas áreas litorâneas." },
+      { "letra": "C", "texto": "As bacias sedimentares foram formadas exclusivamente por ação tectônica." },
+      { "letra": "D", "texto": "Os escudos cristalinos sofreram grande desgaste devido a agentes externos ao longo do tempo geológico." },
+      { "letra": "E", "texto": "O relevo brasileiro é recente e instável." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Os escudos cristalinos são estruturas geológicas antigas, bastante desgastadas pela erosão e intempéries ao longo de milhões de anos."
+  },
+  {
+    "id": 661,
+    "contexto": "Durante um trabalho de campo no Cerrado brasileiro, estudantes observaram diversos processos de voçorocamento em áreas agrícolas.",
+    "enunciado": "Esse fenômeno geomorfológico está diretamente associado à atuação de qual agente externo?",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Erosão pluvial" },
+      { "letra": "B", "texto": "Tectonismo" },
+      { "letra": "C", "texto": "Neotectônica" },
+      { "letra": "D", "texto": "Vulcanismo" },
+      { "letra": "E", "texto": "Movimento de placas" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O voçorocamento é causado pela erosão intensa provocada pela água da chuva, especialmente em solos desprotegidos."
+  },
+  {
+    "id": 662,
+    "enunciado": "Assinale a alternativa que apresenta exclusivamente agentes internos de formação do relevo:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Intemperismo, erosão e sedimentação" },
+      { "letra": "B", "texto": "Vulcanismo, tectonismo e abalos sísmicos" },
+      { "letra": "C", "texto": "Pluviosidade, erosão e escorregamento" },
+      { "letra": "D", "texto": "Vento, gelo e erosão fluvial" },
+      { "letra": "E", "texto": "Sedimentação, escorregamento e deposição" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os agentes internos são forças endógenas que atuam no interior da Terra, como vulcanismo, tectonismo e terremotos."
+  },
+  {
+    "id": 663,
+    "contexto": "No nordeste brasileiro, algumas áreas apresentam relevos suavemente ondulados, resultado de longo processo de desgaste das rochas cristalinas expostas.",
+    "enunciado": "Esse processo predominante é causado por:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Erosão glacial" },
+      { "letra": "B", "texto": "Tectonismo recente" },
+      { "letra": "C", "texto": "Intemperismo físico e químico" },
+      { "letra": "D", "texto": "Sedimentação orgânica" },
+      { "letra": "E", "texto": "Desabamento tectônico" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O intemperismo, especialmente o químico, é responsável pela decomposição lenta das rochas e formação de relevo ondulado."
+  },
+  {
+    "id": 664,
+    "enunciado": "Qual tipo de estrutura geológica é predominante no Brasil e está mais suscetível à ação dos agentes externos?",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Dobramentos modernos" },
+      { "letra": "B", "texto": "Escudos cristalinos" },
+      { "letra": "C", "texto": "Bacias oceânicas" },
+      { "letra": "D", "texto": "Vulcões ativos" },
+      { "letra": "E", "texto": "Plataformas continentais" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os escudos cristalinos, estruturas geológicas antigas, são predominantes no Brasil e altamente desgastados por agentes externos."
+  },
+  {
+    "id": 665,
+    "contexto": "A Bacia Amazônica apresenta áreas onde rios transportam e depositam grandes quantidades de sedimentos.",
+    "enunciado": "Esse processo é caracterizado como:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tectonismo" },
+      { "letra": "B", "texto": "Sedimentação fluvial" },
+      { "letra": "C", "texto": "Intemperismo mecânico" },
+      { "letra": "D", "texto": "Erosão glacial" },
+      { "letra": "E", "texto": "Desmonoramento sísmico" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A sedimentação fluvial ocorre quando os rios transportam materiais e os depositam em seu leito ou nas planícies de inundação."
+  },
+  {
+    "id": 666,
+    "enunciado": "No contexto brasileiro, os processos erosivos são mais intensos em áreas onde predominam:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Rochas magmáticas cristalinas" },
+      { "letra": "B", "texto": "Cobertura vegetal preservada" },
+      { "letra": "C", "texto": "Desmatamento e uso intensivo do solo" },
+      { "letra": "D", "texto": "Relevo tabular e seco" },
+      { "letra": "E", "texto": "Áreas costeiras com baixa declividade" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A remoção da vegetação facilita a atuação de agentes externos, como a água, intensificando o processo erosivo."
+  },
+  {
+    "id": 667,
+    "contexto": "O Brasil não apresenta vulcões ativos nem dobramentos modernos, o que influencia diretamente em seu relevo.",
+    "enunciado": "Esse fato é consequência direta da ausência de:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Placas tectônicas continentais" },
+      { "letra": "B", "texto": "Instabilidade climática" },
+      { "letra": "C", "texto": "Atividade tectônica recente" },
+      { "letra": "D", "texto": "Serras cristalinas" },
+      { "letra": "E", "texto": "Erosão glacial" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Brasil encontra-se no centro da Placa Sul-Americana, afastado das zonas de contato tectônico, o que evita grandes instabilidades."
+  },
+  {
+    "id": 668,
+    "enunciado": "Sobre os agentes externos do relevo, é correto afirmar que:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "São processos geológicos que ocorrem no interior da crosta terrestre." },
+      { "letra": "B", "texto": "Dependem exclusivamente da ação antrópica." },
+      { "letra": "C", "texto": "Atuam apenas em regiões montanhosas." },
+      { "letra": "D", "texto": "São representados por intemperismo, erosão e sedimentação." },
+      { "letra": "E", "texto": "Estão relacionados à movimentação de placas tectônicas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Agentes externos incluem processos como intemperismo, erosão (água, vento, gelo) e deposição (sedimentação)."
+  },
+  {
+    "id": 669,
+    "contexto": "Na região do Pantanal, a sedimentação fluvial exerce papel fundamental na dinâmica do relevo.",
+    "enunciado": "Esse tipo de agente externo atua predominantemente através de:",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Deposição de materiais transportados pelas águas" },
+      { "letra": "B", "texto": "Intensa movimentação tectônica" },
+      { "letra": "C", "texto": "Deslizamento de placas" },
+      { "letra": "D", "texto": "Explosões vulcânicas antigas" },
+      { "letra": "E", "texto": "Impactos meteoríticos" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A sedimentação fluvial é a principal responsável pela formação das planícies inundáveis do Pantanal."
+  },
+  {
+    "id": 670,
+    "enunciado": "O intemperismo químico é mais comum em quais regiões brasileiras?",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Centro-Oeste árido" },
+      { "letra": "B", "texto": "Região Norte com clima úmido" },
+      { "letra": "C", "texto": "Zona da Mata Sul" },
+      { "letra": "D", "texto": "Interior semiárido nordestino" },
+      { "letra": "E", "texto": "Chapada Diamantina" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A alta umidade e temperaturas elevadas favorecem o intemperismo químico na região Norte do Brasil."
+  },
+  {
+    "id": 671,
+    "contexto": "Áreas do Sudeste com forte urbanização apresentam frequentes escorregamentos de encostas durante o verão.",
+    "enunciado": "Esse fenômeno está associado a quais agentes?",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vulcanismo e tectonismo" },
+      { "letra": "B", "texto": "Chuvas intensas e ocupação irregular" },
+      { "letra": "C", "texto": "Ventos e terremotos" },
+      { "letra": "D", "texto": "Tsunamis e marés altas" },
+      { "letra": "E", "texto": "Rebaixamento do lençol freático" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Chuvas intensas associadas à ocupação de encostas desprotegidas geram escorregamentos no relevo urbano."
+  },
+  {
+    "id": 672,
+    "enunciado": "A erosão eólica atua de forma mais intensa em qual das regiões abaixo?",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Região Amazônica" },
+      { "letra": "B", "texto": "Pantanal" },
+      { "letra": "C", "texto": "Semiárido nordestino" },
+      { "letra": "D", "texto": "Litoral sul" },
+      { "letra": "E", "texto": "Vale do Ribeira" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Em áreas com clima seco e pouca vegetação, como o semiárido, a ação dos ventos é acentuada sobre o solo."
+  },
+  {
+    "id": 673,
+    "enunciado": "Assinale a alternativa incorreta sobre os agentes de transformação do relevo brasileiro.",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Os ventos, apesar de atuarem lentamente, são importantes em áreas desérticas." },
+      { "letra": "B", "texto": "O tectonismo atua de forma intensa na atualidade no Brasil." },
+      { "letra": "C", "texto": "A água é o agente externo mais atuante no país." },
+      { "letra": "D", "texto": "O intemperismo pode ser químico, físico ou biológico." },
+      { "letra": "E", "texto": "A ação antrópica intensifica os processos erosivos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O tectonismo no Brasil é muito antigo e atualmente atua de forma pouco perceptível, exceto em raros abalos sísmicos."
+  },
+  {
+    "id": 674,
+    "contexto": "As falhas geológicas presentes em regiões do Sudeste registram abalos sísmicos de baixa magnitude.",
+    "enunciado": "Esses eventos são causados por qual tipo de agente geológico?",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Movimentações glaciais" },
+      { "letra": "B", "texto": "Sedimentação marinha" },
+      { "letra": "C", "texto": "Tectonismo residual" },
+      { "letra": "D", "texto": "Pressão atmosférica" },
+      { "letra": "E", "texto": "Erosão pluvial" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Brasil apresenta tectonismo residual, com pequenas movimentações em falhas antigas que geram tremores de baixa intensidade."
+  },
+  {
+    "id": 675,
+    "enunciado": "Qual das alternativas apresenta dois exemplos de agentes modeladores externos do relevo?",
+    "disciplina": "Geografia",
+    "assunto": "Agentes Internos e Externos do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tectonismo e erosão" },
+      { "letra": "B", "texto": "Vulcanismo e vento" },
+      { "letra": "C", "texto": "Erosão e sedimentação" },
+      { "letra": "D", "texto": "Intemperismo e dobramento" },
+      { "letra": "E", "texto": "Erosão glacial e terremoto" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Erosão e sedimentação são processos típicos de agentes externos que atuam na modelagem da superfície terrestre."
+  },
+  {
+    "id": 676,
+    "enunciado": "Os escudos cristalinos no Brasil são estruturas geológicas formadas predominantemente por:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Rochas sedimentares recentes" },
+      { "letra": "B", "texto": "Rochas metamórficas e magmáticas antigas" },
+      { "letra": "C", "texto": "Solos argilosos e arenosos" },
+      { "letra": "D", "texto": "Rochas vulcânicas basálticas recentes" },
+      { "letra": "E", "texto": "Depósitos aluviais e orgânicos" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os escudos cristalinos são compostos por rochas magmáticas e metamórficas, originadas em eras geológicas muito antigas."
+  },
+  {
+    "id": 677,
+    "contexto": "O território brasileiro possui três grandes unidades estruturais: os escudos cristalinos, as bacias sedimentares e os dobramentos modernos.",
+    "enunciado": "Com base no contexto, qual das alternativas apresenta corretamente a distribuição dessas unidades no Brasil?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Dobramentos modernos predominam no Centro-Oeste" },
+      { "letra": "B", "texto": "Bacias sedimentares predominam na Região Norte" },
+      { "letra": "C", "texto": "Escudos cristalinos ocupam todo o Nordeste" },
+      { "letra": "D", "texto": "A Região Sul é dominada por dobramentos recentes" },
+      { "letra": "E", "texto": "O Sudeste é composto apenas por bacias sedimentares" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As bacias sedimentares são extensas na Região Norte, especialmente com a Bacia Amazônica. Dobramentos modernos estão ausentes no Brasil."
+  },
+  {
+    "id": 678,
+    "enunciado": "Qual unidade geológica brasileira concentra as maiores reservas de minerais metálicos, como ferro e manganês?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Bacias sedimentares" },
+      { "letra": "B", "texto": "Depressões periféricas" },
+      { "letra": "C", "texto": "Dobramentos modernos" },
+      { "letra": "D", "texto": "Escudos cristalinos" },
+      { "letra": "E", "texto": "Planícies costeiras" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Os escudos cristalinos concentram minerais metálicos, como ferro (Quadrilátero Ferrífero) e manganês (Serra dos Carajás)."
+  },
+  {
+    "id": 679,
+    "contexto": "A Bacia do Paraná é uma das principais bacias sedimentares do território brasileiro.",
+    "enunciado": "Sobre as características dessa bacia, assinale a alternativa correta:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Predominância de rochas metamórficas" },
+      { "letra": "B", "texto": "Presença de fósseis e combustíveis fósseis" },
+      { "letra": "C", "texto": "Origem magmática recente" },
+      { "letra": "D", "texto": "Formação durante o período Quaternário" },
+      { "letra": "E", "texto": "Composição exclusivamente granítica" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Bacia do Paraná contém formações sedimentares ricas em fósseis, como o carvão mineral, formadas durante o Paleozoico."
+  },
+  {
+    "id": 680,
+    "enunciado": "Sobre as estruturas geológicas do território brasileiro, é correto afirmar:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A presença de dobramentos modernos torna o relevo brasileiro instável." },
+      { "letra": "B", "texto": "O Brasil possui grande instabilidade tectônica devido ao seu posicionamento." },
+      { "letra": "C", "texto": "As bacias sedimentares recobrem áreas de escudos antigos." },
+      { "letra": "D", "texto": "O território brasileiro é rico em montanhas jovens com vulcões ativos." },
+      { "letra": "E", "texto": "O relevo do Brasil é recente e elevado." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As bacias sedimentares frequentemente recobrem antigas formações cristalinas, como ocorre na Bacia do Amazonas e do Paraná."
+  },
+  {
+    "id": 681,
+    "contexto": "A região do Quadrilátero Ferrífero, em Minas Gerais, destaca-se na geologia brasileira.",
+    "enunciado": "Essa área é reconhecida por apresentar:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Rochas vulcânicas recentes" },
+      { "letra": "B", "texto": "Vulcões ativos e dobramentos recentes" },
+      { "letra": "C", "texto": "Formações sedimentares com petróleo" },
+      { "letra": "D", "texto": "Elevadas reservas de ferro em terrenos cristalinos" },
+      { "letra": "E", "texto": "Clima desértico e ausência de minerais" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Quadrilátero Ferrífero é uma das maiores reservas de ferro do mundo, situado sobre rochas do embasamento cristalino."
+  },
+  {
+    "id": 682,
+    "enunciado": "As bacias sedimentares brasileiras possuem grande importância econômica por abrigarem:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Depósitos de ouro e diamantes" },
+      { "letra": "B", "texto": "Reservas de petróleo, gás natural e carvão" },
+      { "letra": "C", "texto": "Rochas metamórficas" },
+      { "letra": "D", "texto": "Minérios de ferro e níquel" },
+      { "letra": "E", "texto": "Cristais e pedras semipreciosas" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As bacias sedimentares, como a do Recôncavo Baiano e do Amazonas, concentram importantes reservas de combustíveis fósseis."
+  },
+  {
+    "id": 683,
+    "contexto": "A formação geológica da Serra do Mar é associada ao soerguimento de blocos cristalinos.",
+    "enunciado": "Esse tipo de estrutura está relacionada à qual unidade geológica?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Dobramentos modernos" },
+      { "letra": "B", "texto": "Plataformas oceânicas" },
+      { "letra": "C", "texto": "Escudos cristalinos" },
+      { "letra": "D", "texto": "Planícies sedimentares" },
+      { "letra": "E", "texto": "Depósitos fluviais" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Serra do Mar foi originada pelo soerguimento de blocos cristalinos, típicos dos escudos antigos."
+  },
+  {
+    "id": 684,
+    "enunciado": "As estruturas geológicas brasileiras se formaram, em sua maioria, em quais eras geológicas?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Quaternária e Terciária" },
+      { "letra": "B", "texto": "Paleozóica e Mesozóica" },
+      { "letra": "C", "texto": "Arqueozoica e Proterozoica" },
+      { "letra": "D", "texto": "Cenozoica e Mesozóica" },
+      { "letra": "E", "texto": "Pré-cambriana e Quaternária" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As formações geológicas mais antigas do Brasil datam das eras Arqueozoica e Proterozoica (Pré-Cambriano)."
+  },
+  {
+    "id": 685,
+    "contexto": "As bacias sedimentares ocupam cerca de 64% do território brasileiro.",
+    "enunciado": "Essa extensão se deve à predominância de qual processo geológico?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Erosão glacial" },
+      { "letra": "B", "texto": "Depositação de sedimentos ao longo das eras" },
+      { "letra": "C", "texto": "Movimentos orogenéticos recentes" },
+      { "letra": "D", "texto": "Vulcanismo quaternário" },
+      { "letra": "E", "texto": "Deposição de cinzas vulcânicas" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A deposição contínua de sedimentos ao longo de milhões de anos formou extensas bacias sedimentares no Brasil."
+  },
+  {
+    "id": 690,
+    "enunciado": "Qual das alternativas apresenta corretamente duas importantes bacias sedimentares do território brasileiro?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Bacia do Paraná e Bacia do Amazonas" },
+      { "letra": "B", "texto": "Bacia do Tocantins e Escudo das Guianas" },
+      { "letra": "C", "texto": "Bacia do Paraguai e Serra do Mar" },
+      { "letra": "D", "texto": "Bacia do Araguaia e Planalto Meridional" },
+      { "letra": "E", "texto": "Bacia do São Francisco e Dobramento Andino" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "As bacias do Paraná e do Amazonas são duas das maiores bacias sedimentares do Brasil, com importância geológica e econômica."
+  },
+  {
+    "id": 691,
+    "contexto": "Apesar da estabilidade tectônica, o Brasil apresenta zonas de falhas geológicas antigas, como no Vale do Ribeira.",
+    "enunciado": "Essas falhas são resultado de:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Atividade vulcânica recente" },
+      { "letra": "B", "texto": "Movimentos epirogenéticos antigos" },
+      { "letra": "C", "texto": "Sedimentação marinha atual" },
+      { "letra": "D", "texto": "Fricção com a placa africana" },
+      { "letra": "E", "texto": "Formação de dobramentos modernos" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As falhas geológicas no território brasileiro derivam de movimentos tectônicos antigos, conhecidos como epirogênese."
+  },
+  {
+    "id": 692,
+    "enunciado": "A ausência de montanhas recentes e vulcanismo no Brasil se deve principalmente:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "À sua localização nas bordas das placas tectônicas" },
+      { "letra": "B", "texto": "Ao clima tropical" },
+      { "letra": "C", "texto": "À estabilidade geológica por estar no centro da Placa Sul-Americana" },
+      { "letra": "D", "texto": "À baixa densidade demográfica" },
+      { "letra": "E", "texto": "À alta pluviosidade nas áreas costeiras" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Por estar no centro da placa tectônica, o Brasil apresenta pouca atividade sísmica ou vulcânica recente."
+  },
+  {
+    "id": 693,
+    "contexto": "O embasamento cristalino brasileiro é rico em minerais metálicos como ferro, manganês, ouro e bauxita.",
+    "enunciado": "Esse embasamento se formou principalmente em qual período geológico?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Quaternário" },
+      { "letra": "B", "texto": "Terciário" },
+      { "letra": "C", "texto": "Proterozoico e Arqueano" },
+      { "letra": "D", "texto": "Mesozóico" },
+      { "letra": "E", "texto": "Paleozóico Superior" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O embasamento cristalino brasileiro é muito antigo, datando dos períodos Arqueano e Proterozoico."
+  },
+  {
+    "id": 694,
+    "enunciado": "As formações sedimentares encontradas na Bacia do São Francisco são importantes por abrigarem:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vulcões e terremotos" },
+      { "letra": "B", "texto": "Rochas cristalinas expostas" },
+      { "letra": "C", "texto": "Jazidas de carvão mineral" },
+      { "letra": "D", "texto": "Petróleo e gás natural" },
+      { "letra": "E", "texto": "Depósitos de calcário e fósseis" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A Bacia do São Francisco contém formações sedimentares ricas em fósseis e depósitos de calcário."
+  },
+  {
+    "id": 695,
+    "contexto": "A região amazônica é dominada por uma imensa bacia sedimentar de origem fanerozoica.",
+    "enunciado": "Essa região é caracterizada por:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Rochas cristalinas e escudos arqueanos" },
+      { "letra": "B", "texto": "Formações dobradas e modernas" },
+      { "letra": "C", "texto": "Depósitos sedimentares extensos com fósseis" },
+      { "letra": "D", "texto": "Movimentos orogenéticos recentes" },
+      { "letra": "E", "texto": "Planaltos vulcânicos ativos" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Bacia Amazônica é uma bacia sedimentar fanerozoica com espessos depósitos de sedimentos e fósseis."
+  },
+  {
+    "id": 696,
+    "enunciado": "Assinale a alternativa que apresenta apenas estruturas do embasamento cristalino brasileiro:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Bacia do Paraná e Bacia do Maranhão" },
+      { "letra": "B", "texto": "Serra do Mar e Quadrilátero Ferrífero" },
+      { "letra": "C", "texto": "Planalto Amazônico e Bacia do Araguaia" },
+      { "letra": "D", "texto": "Pantanal e Chapada Diamantina" },
+      { "letra": "E", "texto": "Bacia do Parnaíba e Vale do Ribeira" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Serra do Mar e Quadrilátero Ferrífero são formações cristalinas antigas, ricas em minerais metálicos."
+  },
+  {
+    "id": 697,
+    "contexto": "As jazidas de petróleo brasileiras se concentram tanto em áreas terrestres como em plataformas continentais.",
+    "enunciado": "Geologicamente, essas jazidas estão localizadas em:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Dobramentos modernos" },
+      { "letra": "B", "texto": "Escudos cristalinos" },
+      { "letra": "C", "texto": "Bacias sedimentares" },
+      { "letra": "D", "texto": "Depressões interplanálticas" },
+      { "letra": "E", "texto": "Cordilheiras costeiras" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As reservas de petróleo se concentram em bacias sedimentares, como a de Campos e a do Recôncavo."
+  },
+  {
+    "id": 698,
+    "enunciado": "O escudo das Guianas está localizado predominantemente em qual região brasileira?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Centro-Oeste" },
+      { "letra": "B", "texto": "Sudeste" },
+      { "letra": "C", "texto": "Norte" },
+      { "letra": "D", "texto": "Sul" },
+      { "letra": "E", "texto": "Nordeste" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O escudo das Guianas está localizado ao norte da Região Norte, abrangendo áreas como Roraima, Amapá e norte do Pará."
+  },
+  {
+    "id": 699,
+    "contexto": "As bacias sedimentares, além de minerais combustíveis, também são importantes por abrigarem aquíferos.",
+    "enunciado": "Qual das bacias sedimentares brasileiras abriga o Aquífero Guarani?",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Bacia do Parnaíba" },
+      { "letra": "B", "texto": "Bacia do Amazonas" },
+      { "letra": "C", "texto": "Bacia do Paraná" },
+      { "letra": "D", "texto": "Bacia de Campos" },
+      { "letra": "E", "texto": "Bacia do São Francisco" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Aquífero Guarani está localizado na Bacia do Paraná, sendo um dos maiores reservatórios de água doce subterrânea do mundo."
+  },
+  {
+    "id": 700,
+    "enunciado": "Assinale a alternativa que apresenta apenas unidades geológicas brasileiras formadas durante o Pré-Cambriano:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planalto Central e Bacia do Paraná" },
+      { "letra": "B", "texto": "Escudo das Guianas e Escudo Brasileiro" },
+      { "letra": "C", "texto": "Planície Amazônica e Dobramento Andino" },
+      { "letra": "D", "texto": "Bacia de Santos e Serra do Mar" },
+      { "letra": "E", "texto": "Pantanal e Vale do Paraíba" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os escudos cristalinos, como o das Guianas e o Brasileiro, formaram-se durante o Pré-Cambriano, com rochas antigas."
+  },
+  {
+    "id": 701,
+    "contexto": "O relevo brasileiro é reflexo direto de sua estrutura geológica antiga e estável.",
+    "enunciado": "Esse fato está relacionado à predominância de:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Rochas recentes com intensa atividade vulcânica" },
+      { "letra": "B", "texto": "Escudos antigos e bacias sedimentares" },
+      { "letra": "C", "texto": "Cordilheiras modernas e glaciações recentes" },
+      { "letra": "D", "texto": "Formações alpinas e dobramentos ativos" },
+      { "letra": "E", "texto": "Sistemas montanhosos do Terciário" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A estrutura geológica do Brasil é composta predominantemente por escudos cristalinos e bacias sedimentares, o que gera um relevo suave e antigo."
+  },
+  {
+    "id": 702,
+    "enunciado": "Sobre a estrutura geológica do Brasil, é incorreto afirmar que:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O país possui escudos antigos formados por rochas magmáticas e metamórficas" },
+      { "letra": "B", "texto": "Dobramentos modernos são comuns no território brasileiro" },
+      { "letra": "C", "texto": "Bacias sedimentares ocupam mais da metade do território nacional" },
+      { "letra": "D", "texto": "O relevo reflete a estabilidade da estrutura geológica" },
+      { "letra": "E", "texto": "A Serra do Mar está associada a blocos soerguidos do embasamento cristalino" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Dobramentos modernos não existem no Brasil; o relevo é antigo, com ausência de atividade tectônica recente."
+  },
+  {
+    "id": 703,
+    "contexto": "A geodiversidade do território brasileiro está intimamente ligada à sua complexa estrutura geológica.",
+    "enunciado": "Essa diversidade está relacionada principalmente à:",
+    "disciplina": "Geografia",
+    "assunto": "Estrutura Geológica do Brasil",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Presença de vulcões ativos em todas as regiões" },
+      { "letra": "B", "texto": "Distribuição uniforme de rochas sedimentares" },
+      { "letra": "C", "texto": "Convivência de rochas cristalinas, sedimentares e diversos processos erosivos" },
+      { "letra": "D", "texto": "Escassez de recursos minerais no território" },
+      { "letra": "E", "texto": "Formação recente de dobramentos modernos" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A diversidade do relevo brasileiro se deve à variedade de formações rochosas e à longa atuação dos agentes externos."
+  },
+  {
+    "id": 704,
+    "enunciado": "Segundo a classificação de Jurandyr Ross, qual forma de relevo ocupa a maior parte do território brasileiro?",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planícies" },
+      { "letra": "B", "texto": "Depressões" },
+      { "letra": "C", "texto": "Planaltos" },
+      { "letra": "D", "texto": "Serras" },
+      { "letra": "E", "texto": "Montanhas" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A classificação de Ross identifica os planaltos como a forma de relevo predominante no território brasileiro."
+  },
+  {
+    "id": 705,
+    "contexto": "A classificação de Ross divide o relevo brasileiro em 28 unidades, com base em critérios morfoclimáticos e altimétricos.",
+    "enunciado": "Essa abordagem considera como principal critério de separação:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Latitude e longitude" },
+      { "letra": "B", "texto": "Fronteiras estaduais" },
+      { "letra": "C", "texto": "Altitude e processos de erosão/sedimentação" },
+      { "letra": "D", "texto": "Densidade populacional" },
+      { "letra": "E", "texto": "Cobertura vegetal e uso agrícola" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Ross utilizou critérios geomorfológicos como altitude e predominância de processos erosivos ou sedimentares."
+  },
+  {
+    "id": 706,
+    "enunciado": "As chapadas são formas típicas dos planaltos sedimentares e apresentam como característica principal:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Superfície convexa e inclinada" },
+      { "letra": "B", "texto": "Topo plano e encostas abruptas" },
+      { "letra": "C", "texto": "Origem vulcânica e solo fértil" },
+      { "letra": "D", "texto": "Formação por afundamento tectônico" },
+      { "letra": "E", "texto": "Associação direta com áreas glaciares" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Chapadas são superfícies planas com bordas escarpadas, comuns em áreas de relevo sedimentar como no Planalto Central."
+  },
+  {
+    "id": 707,
+    "contexto": "A planície do Pantanal é uma das maiores áreas alagadas do planeta, influenciada pelo regime hidrológico do rio Paraguai.",
+    "enunciado": "Essa planície tem origem predominante em processos:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tectônicos recentes" },
+      { "letra": "B", "texto": "Eólicos" },
+      { "letra": "C", "texto": "Glaciais" },
+      { "letra": "D", "texto": "Sedimentares fluviais" },
+      { "letra": "E", "texto": "Magmáticos" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Pantanal é uma planície de origem fluvial, com deposição intensa de sedimentos trazidos pelos rios da Bacia do Paraguai."
+  },
+  {
+    "id": 708,
+    "enunciado": "A Depressão Sertaneja e do São Francisco se caracteriza por ser uma área:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Altamente vulcânica" },
+      { "letra": "B", "texto": "De relevo elevado e acidentado" },
+      { "letra": "C", "texto": "Esculpida entre planaltos cristalinos" },
+      { "letra": "D", "texto": "Dominada por campos de dunas" },
+      { "letra": "E", "texto": "Totalmente alagada" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Essa depressão está entre os planaltos da Borborema e o Planalto Central, esculpida em rochas cristalinas mais frágeis."
+  },
+  {
+    "id": 709,
+    "contexto": "O relevo brasileiro é caracterizado pela ausência de dobramentos modernos e vulcões ativos.",
+    "enunciado": "Isso se explica pelo fato de o Brasil:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Estar localizado em zona de subducção" },
+      { "letra": "B", "texto": "Ser atravessado pelo Círculo Polar Antártico" },
+      { "letra": "C", "texto": "Situar-se no centro da placa Sul-Americana" },
+      { "letra": "D", "texto": "Apresentar clima equatorial dominante" },
+      { "letra": "E", "texto": "Ter intensa atividade sísmica e vulcânica" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A estabilidade tectônica do território brasileiro se deve à sua posição central na Placa Sul-Americana."
+  },
+  {
+    "id": 710,
+    "enunciado": "O Planalto Meridional se destaca por conter:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Dobramentos recentes e atividade vulcânica" },
+      { "letra": "B", "texto": "Formações areníticas e depósitos glaciais" },
+      { "letra": "C", "texto": "Extensas formações basálticas resultantes de vulcanismo antigo" },
+      { "letra": "D", "texto": "Planícies costeiras rebaixadas" },
+      { "letra": "E", "texto": "Sedimentos fluviais recentes" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Planalto Meridional é composto por rochas basálticas, oriundas de antigos derrames vulcânicos."
+  },
+  {
+    "id": 711,
+    "enunciado": "No modelo de Ross, a principal diferença entre planalto e planície é que:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planaltos sempre estão acima de 2.000 metros de altitude" },
+      { "letra": "B", "texto": "Planícies ocorrem apenas no litoral" },
+      { "letra": "C", "texto": "Planaltos têm predominância de processos erosivos e planícies, de sedimentação" },
+      { "letra": "D", "texto": "Planaltos são mais antigos que planícies" },
+      { "letra": "E", "texto": "Planícies são formadas por rochas metamórficas" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Ross classificou os planaltos como áreas de desgaste e as planícies como áreas de acumulação de sedimentos."
+  },
+  {
+    "id": 712,
+    "contexto": "As planícies litorâneas são moldadas por processos recentes e possuem relevância econômica e ambiental.",
+    "enunciado": "Um exemplo típico desse tipo de relevo ocorre no estado de:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Mato Grosso" },
+      { "letra": "B", "texto": "Goiás" },
+      { "letra": "C", "texto": "Bahia" },
+      { "letra": "D", "texto": "Amazonas" },
+      { "letra": "E", "texto": "Roraima" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Bahia possui extensas planícies costeiras formadas por ação marinha e fluvial."
+  },
+  {
+    "id": 713,
+    "enunciado": "Assinale a alternativa que apresenta apenas formas de relevo predominantes em regiões sedimentares:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Chapadas e planícies" },
+      { "letra": "B", "texto": "Escarpas e serras cristalinas" },
+      { "letra": "C", "texto": "Planaltos antigos e dobramentos" },
+      { "letra": "D", "texto": "Cristas residuais e morros" },
+      { "letra": "E", "texto": "Graben e horst" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Chapadas e planícies são típicas de regiões sedimentares, como o Planalto Central e o Pantanal."
+  },
+  {
+    "id": 714,
+    "contexto": "Apesar da baixa altitude, o relevo brasileiro é bastante variado.",
+    "enunciado": "Essa variedade resulta principalmente de:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Formações alpinas recentes" },
+      { "letra": "B", "texto": "Dobramentos terciários" },
+      { "letra": "C", "texto": "Processos erosivos e sedimentares atuando há milhões de anos" },
+      { "letra": "D", "texto": "Cobertura glacial permanente" },
+      { "letra": "E", "texto": "Deriva continental ativa" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A diversidade do relevo brasileiro decorre da atuação prolongada dos agentes externos em estruturas geológicas antigas."
+  },
+  {
+    "id": 718,
+    "enunciado": "Qual unidade de relevo é caracterizada por terrenos planos ou suavemente ondulados, de baixa altitude e formados por deposição recente de sedimentos?",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planalto" },
+      { "letra": "B", "texto": "Depressão relativa" },
+      { "letra": "C", "texto": "Serras" },
+      { "letra": "D", "texto": "Planície" },
+      { "letra": "E", "texto": "Chapada" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "As planícies apresentam baixa altitude e predominância de processos de sedimentação recente."
+  },
+  {
+    "id": 719,
+    "contexto": "As escarpas delimitam grandes compartimentos de relevo e podem representar contatos entre estruturas diferentes.",
+    "enunciado": "No relevo brasileiro, um exemplo marcante de escarpa ocorre entre:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planalto da Borborema e o litoral do Nordeste" },
+      { "letra": "B", "texto": "Planície do Pantanal e Serra do Mar" },
+      { "letra": "C", "texto": "Serra do Espinhaço e Chapada Diamantina" },
+      { "letra": "D", "texto": "Planície Amazônica e Depressão Sertaneja" },
+      { "letra": "E", "texto": "Planalto Meridional e Serra da Mantiqueira" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A escarpa da Borborema separa o planalto interior das planícies costeiras, com forte declividade em direção ao mar."
+  },
+  {
+    "id": 720,
+    "enunciado": "As depressões são formas de relevo que, no Brasil, geralmente se localizam entre:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planaltos e planícies" },
+      { "letra": "B", "texto": "Dobramentos modernos" },
+      { "letra": "C", "texto": "Rios e vales glaciares" },
+      { "letra": "D", "texto": "Formações eólicas" },
+      { "letra": "E", "texto": "Domínios geomorfológicos costeiros" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "As depressões aparecem geralmente entre áreas mais elevadas (planaltos) e áreas rebaixadas (planícies)."
+  },
+  {
+    "id": 721,
+    "contexto": "No modelo de Jurandyr Ross, o relevo brasileiro é classificado em planaltos, planícies e depressões.",
+    "enunciado": "Essa classificação é fundamentada em critérios como:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Altitude absoluta e vegetação nativa" },
+      { "letra": "B", "texto": "Origem geológica e tipo de rocha" },
+      { "letra": "C", "texto": "Processos predominantes: erosão ou sedimentação" },
+      { "letra": "D", "texto": "Distribuição política-administrativa" },
+      { "letra": "E", "texto": "Uso agrícola e impacto humano" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Ross classificou o relevo com base na predominância dos processos geomorfológicos atuantes: erosão ou sedimentação."
+  },
+  {
+    "id": 722,
+    "enunciado": "A Depressão Marginal Norte-Amazônica localiza-se entre:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planície Amazônica e Planalto das Guianas" },
+      { "letra": "B", "texto": "Planície do Pantanal e Planalto Meridional" },
+      { "letra": "C", "texto": "Planície Costeira e Planalto Central" },
+      { "letra": "D", "texto": "Planície do Araguaia e Serra do Mar" },
+      { "letra": "E", "texto": "Depressão Sertaneja e Serra da Mantiqueira" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A Depressão Marginal Norte-Amazônica está situada entre o Planalto das Guianas e a Planície Amazônica, com altitudes intermediárias."
+  },
+  {
+    "id": 723,
+    "contexto": "As formas de relevo condicionam o uso da terra e a ocupação humana no Brasil.",
+    "enunciado": "Áreas de chapadas, por exemplo, são preferidas para:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Mineração em larga escala" },
+      { "letra": "B", "texto": "Construção de hidrelétricas" },
+      { "letra": "C", "texto": "Agricultura mecanizada" },
+      { "letra": "D", "texto": "Instalação de polos petroquímicos" },
+      { "letra": "E", "texto": "Preservação de ecossistemas litorâneos" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As chapadas possuem relevo plano e extensas áreas livres, favorecendo a agricultura mecanizada, como no MATOPIBA."
+  },
+  {
+    "id": 724,
+    "enunciado": "A Serra do Mar é um exemplo de escarpa que marca a transição entre:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planícies sedimentares e terras baixas" },
+      { "letra": "B", "texto": "Planaltos interiores e litoral atlântico" },
+      { "letra": "C", "texto": "Depressões e áreas de falhamento" },
+      { "letra": "D", "texto": "Domínios tropicais e subtropicais" },
+      { "letra": "E", "texto": "Domínios áridos e planícies costeiras" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Serra do Mar é uma escarpa voltada para o litoral, separando o planalto do interior do Sudeste da faixa costeira."
+  },
+  {
+    "id": 725,
+    "contexto": "O relevo do Brasil não apresenta dobramentos modernos, o que o diferencia de países andinos ou do Himalaia.",
+    "enunciado": "Em termos geológicos, essa característica indica que o Brasil:",
+    "disciplina": "Geografia",
+    "assunto": "Formas do Relevo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Possui intensa atividade vulcânica" },
+      { "letra": "B", "texto": "É tectonicamente estável" },
+      { "letra": "C", "texto": "Está sobre uma zona de colisão continental" },
+      { "letra": "D", "texto": "É constituído por crosta oceânica jovem" },
+      { "letra": "E", "texto": "Faz parte do Círculo de Fogo do Pacífico" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Brasil está situado em zona estável do ponto de vista geotectônico, sem dobramentos modernos nem vulcanismo ativo."
   }
 ]
