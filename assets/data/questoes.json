@@ -1786,5 +1786,528 @@
     ],
     "resposta_correta": "C",
     "resolucao": "As depressões periféricas são áreas de transição entre planaltos e planícies, com altitudes intermediárias e origem principalmente erosiva."
+  },
+  {
+    "id": 600,
+    "enunciado": "Assinale a alternativa em que há um substantivo abstrato.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Casa" },
+      { "letra": "B", "texto": "Janela" },
+      { "letra": "C", "texto": "Esperança" },
+      { "letra": "D", "texto": "Sol" },
+      { "letra": "E", "texto": "Relógio" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A palavra 'esperança' é um sentimento, portanto classifica-se como substantivo abstrato."
+  },
+  {
+    "id": 601,
+    "enunciado": "Assinale a alternativa em que a palavra destacada é um substantivo coletivo.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Casa" },
+      { "letra": "B", "texto": "Relógio" },
+      { "letra": "C", "texto": "Alcateia" },
+      { "letra": "D", "texto": "Janela" },
+      { "letra": "E", "texto": "Flor" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Alcateia é coletivo de lobos, sendo um exemplo de substantivo coletivo."
+  },
+  {
+    "id": 602,
+    "enunciado": "Assinale a alternativa em que ocorre um substantivo derivado.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Mar" },
+      { "letra": "B", "texto": "Sol" },
+      { "letra": "C", "texto": "Pedreira" },
+      { "letra": "D", "texto": "Flor" },
+      { "letra": "E", "texto": "Gente" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Pedreira deriva de 'pedra', sendo um substantivo derivado por sufixação."
+  },
+  {
+    "id": 603,
+    "enunciado": "Identifique a opção em que há um substantivo simples.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Beija-flor" },
+      { "letra": "B", "texto": "Paraquedas" },
+      { "letra": "C", "texto": "Mesa" },
+      { "letra": "D", "texto": "Couro-frio" },
+      { "letra": "E", "texto": "Guarda-chuva" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Mesa' é formado por apenas um radical e é, portanto, substantivo simples."
+  },
+  {
+    "id": 604,
+    "enunciado": "Marque a alternativa com substantivo composto.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Árvore" },
+      { "letra": "B", "texto": "Relógio" },
+      { "letra": "C", "texto": "Couve-flor" },
+      { "letra": "D", "texto": "Chuva" },
+      { "letra": "E", "texto": "Mar" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Couve-flor' é um substantivo composto, pois é formado por dois radicais."
+  },
+  {
+    "id": 605,
+    "enunciado": "Assinale a alternativa em que o substantivo é comum de dois gêneros.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Homem" },
+      { "letra": "B", "texto": "Mulher" },
+      { "letra": "C", "texto": "Estudante" },
+      { "letra": "D", "texto": "Galo" },
+      { "letra": "E", "texto": "Galinha" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "‘Estudante’ é um substantivo comum de dois gêneros: o artigo define o gênero (o estudante / a estudante)."
+  },
+  {
+    "id": 606,
+    "enunciado": "Assinale a alternativa em que o substantivo é sobrecomum.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Homem" },
+      { "letra": "B", "texto": "Menino" },
+      { "letra": "C", "texto": "Criança" },
+      { "letra": "D", "texto": "Garoto" },
+      { "letra": "E", "texto": "Rapaz" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Criança' é sobrecomum, pois se refere a ambos os sexos com apenas uma forma."
+  },
+  {
+    "id": 607,
+    "enunciado": "Assinale a alternativa em que o substantivo é epiceno.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Jacaré macho" },
+      { "letra": "B", "texto": "Garoto" },
+      { "letra": "C", "texto": "Estudante" },
+      { "letra": "D", "texto": "Galinha" },
+      { "letra": "E", "texto": "Menino" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Jacaré é epiceno, pois possui um único gênero gramatical. Especifica-se o sexo com 'macho' ou 'fêmea'."
+  },
+  {
+    "id": 608,
+    "contexto": "Em uma crônica urbana, o autor descreve a cidade como viva e pulsante, com alma própria.",
+    "enunciado": "A partir do contexto, identifique o substantivo abstrato.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Cidade" },
+      { "letra": "B", "texto": "Autor" },
+      { "letra": "C", "texto": "Alma" },
+      { "letra": "D", "texto": "Rua" },
+      { "letra": "E", "texto": "Crônica" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Alma' representa uma ideia abstrata atribuída à cidade no contexto literário, sendo substantivo abstrato."
+  },
+  {
+    "id": 609,
+    "contexto": "Durante a aula de Ciências, o professor explicou que 'cardume' é o termo usado para um grupo de peixes.",
+    "enunciado": "A palavra 'cardume' no contexto é exemplo de qual tipo de substantivo?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Simples" },
+      { "letra": "B", "texto": "Primitivo" },
+      { "letra": "C", "texto": "Derivado" },
+      { "letra": "D", "texto": "Comum" },
+      { "letra": "E", "texto": "Coletivo" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "‘Cardume’ é um substantivo coletivo, pois representa um grupo de seres da mesma espécie (peixes)."
+  },
+  {
+    "id": 610,
+    "contexto": "Na narrativa, a jovem observava as flores com atenção e carinho, notando a beleza de cada florzinha.",
+    "enunciado": "Qual é o grau do substantivo 'florzinha' no contexto?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Normal" },
+      { "letra": "B", "texto": "Diminutivo" },
+      { "letra": "C", "texto": "Aumentativo" },
+      { "letra": "D", "texto": "Composto" },
+      { "letra": "E", "texto": "Primitivo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Florzinhas' está no diminutivo afetivo, utilizado para indicar carinho no contexto narrativo."
+  },
+  {
+    "id": 611,
+    "contexto": "Em um artigo sobre urbanização, o autor mencionou o crescimento das periferias como um fenômeno social.",
+    "enunciado": "A palavra 'crescimento' é classificada como:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Verbo" },
+      { "letra": "B", "texto": "Adjetivo" },
+      { "letra": "C", "texto": "Substantivo concreto" },
+      { "letra": "D", "texto": "Substantivo abstrato" },
+      { "letra": "E", "texto": "Advérbio" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Crescimento' é um substantivo abstrato, pois deriva de verbo (crescer) e depende de algo para se manifestar."
+  },
+  {
+    "id": 612,
+    "contexto": "Em um poema, o eu lírico se refere ao Brasil como uma 'terra de encantos mil'.",
+    "enunciado": "A palavra 'terra' no contexto é classificada como:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Substantivo abstrato" },
+      { "letra": "B", "texto": "Substantivo composto" },
+      { "letra": "C", "texto": "Substantivo coletivo" },
+      { "letra": "D", "texto": "Substantivo concreto" },
+      { "letra": "E", "texto": "Substantivo derivado" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Terra' é um substantivo concreto, pois designa algo que existe de forma independente."
+  },
+  {
+    "id": 613,
+    "contexto": "Durante o julgamento, o juiz elogiou a 'bravura' do réu ao agir em legítima defesa.",
+    "enunciado": "A palavra 'bravura' é:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Substantivo concreto" },
+      { "letra": "B", "texto": "Adjetivo" },
+      { "letra": "C", "texto": "Verbo" },
+      { "letra": "D", "texto": "Substantivo abstrato" },
+      { "letra": "E", "texto": "Numeral" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Bravura' é qualidade atribuída a alguém e, portanto, substantivo abstrato."
+  },
+  {
+    "id": 614,
+    "contexto": "O romance narrava as desventuras de um viajante em busca de paz.",
+    "enunciado": "A palavra 'paz' no contexto é um exemplo de:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Substantivo próprio" },
+      { "letra": "B", "texto": "Adjetivo" },
+      { "letra": "C", "texto": "Substantivo concreto" },
+      { "letra": "D", "texto": "Verbo" },
+      { "letra": "E", "texto": "Substantivo abstrato" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "'Paz' é uma ideia, sentimento abstrato, não palpável, sendo substantivo abstrato."
+  },
+  {
+    "id": 615,
+    "contexto": "Em seu diário, ela escreveu sobre a saudade que sentia dos avós.",
+    "enunciado": "A palavra 'saudade' é classificada como:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Adjetivo" },
+      { "letra": "B", "texto": "Verbo" },
+      { "letra": "C", "texto": "Advérbio" },
+      { "letra": "D", "texto": "Substantivo abstrato" },
+      { "letra": "E", "texto": "Substantivo próprio" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Saudade' é sentimento, logo, substantivo abstrato."
+  },
+  {
+    "id": 616,
+    "contexto": "No conto, o autor descreve a multidão comovida diante do desastre.",
+    "enunciado": "A palavra 'multidão' é exemplo de:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Coletivo" },
+      { "letra": "B", "texto": "Primitivo" },
+      { "letra": "C", "texto": "Composto" },
+      { "letra": "D", "texto": "Verbal" },
+      { "letra": "E", "texto": "Adjetivo" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Multidão' é substantivo coletivo usado para designar grande número de pessoas."
+  },
+  {
+    "id": 617,
+    "contexto": "Em uma entrevista, o atleta falou sobre a importância da disciplina.",
+    "enunciado": "A palavra 'disciplina' é classificada como:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Substantivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Concreto" },
+      { "letra": "B", "texto": "Primitivo" },
+      { "letra": "C", "texto": "Abstrato" },
+      { "letra": "D", "texto": "Comum" },
+      { "letra": "E", "texto": "Composto" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Disciplina' é ideia, valor, comportamento – logo, substantivo abstrato."
+  },
+  {
+    "id": 618,
+    "enunciado": "Assinale a alternativa em que o adjetivo expressa uma qualidade permanente do substantivo.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Roupa limpa" },
+      { "letra": "B", "texto": "Menina alta" },
+      { "letra": "C", "texto": "Jornal diário" },
+      { "letra": "D", "texto": "Homem doente" },
+      { "letra": "E", "texto": "Comida quente" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "‘Alta’ expressa uma característica permanente da menina, enquanto as demais indicam estados temporários."
+  },
+  {
+    "id": 619,
+    "enunciado": "Marque a alternativa em que o adjetivo é pátrio.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Amável" },
+      { "letra": "B", "texto": "Chileno" },
+      { "letra": "C", "texto": "Azul" },
+      { "letra": "D", "texto": "Gentil" },
+      { "letra": "E", "texto": "Humano" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Chileno' é adjetivo pátrio, pois indica nacionalidade ou origem geográfica."
+  },
+  {
+    "id": 620,
+    "contexto": "O historiador descreve o exército como corajoso, disciplinado e estratégico.",
+    "enunciado": "Assinale a alternativa em que todos os adjetivos do contexto possuem valor positivo.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Corajoso, temido, orgulhoso" },
+      { "letra": "B", "texto": "Corajoso, disciplinado, estratégico" },
+      { "letra": "C", "texto": "Corajoso, cruel, estratégico" },
+      { "letra": "D", "texto": "Disciplinado, arrogante, forte" },
+      { "letra": "E", "texto": "Frio, rígido, estratégico" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Todos os adjetivos da alternativa B indicam qualidades positivas e condizem com o contexto do exército."
+  },
+  {
+    "id": 621,
+    "enunciado": "Marque a alternativa que apresenta adjetivo composto.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Feliz" },
+      { "letra": "B", "texto": "Azul-claro" },
+      { "letra": "C", "texto": "Alegre" },
+      { "letra": "D", "texto": "Bondoso" },
+      { "letra": "E", "texto": "Forte" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Azul-claro' é um adjetivo composto, formado por dois radicais unidos por hífen."
+  },
+  {
+    "id": 622,
+    "contexto": "Na propaganda, o carro era apresentado como veloz, econômico e moderno.",
+    "enunciado": "Aponte o adjetivo que indica característica funcional.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Veloz" },
+      { "letra": "B", "texto": "Econômico" },
+      { "letra": "C", "texto": "Moderno" },
+      { "letra": "D", "texto": "Elegante" },
+      { "letra": "E", "texto": "Compacto" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Econômico' indica função prática do carro: gastar pouco combustível."
+  },
+  {
+    "id": 623,
+    "enunciado": "Assinale a alternativa em que o adjetivo modifica um pronome.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ela é bonita." },
+      { "letra": "B", "texto": "A moça simpática chegou." },
+      { "letra": "C", "texto": "Os jovens estudiosos venceram." },
+      { "letra": "D", "texto": "Algo estranho aconteceu." },
+      { "letra": "E", "texto": "Ele estava ferido." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Estranho' modifica 'algo', que é um pronome indefinido. Logo, o adjetivo está qualificando um pronome."
+  },
+  {
+    "id": 624,
+    "enunciado": "Assinale a alternativa que apresenta locução adjetiva.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Militar experiente" },
+      { "letra": "B", "texto": "Homem valente" },
+      { "letra": "C", "texto": "Juiz de paz" },
+      { "letra": "D", "texto": "Médico estrangeiro" },
+      { "letra": "E", "texto": "Atleta jovem" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'De paz' é uma locução adjetiva que equivale a 'pacífico', qualificando 'juiz'."
+  },
+  {
+    "id": 625,
+    "contexto": "O político fez um discurso arrogante, confuso e contraditório.",
+    "enunciado": "Qual dos adjetivos expressa julgamento negativo de caráter?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Confuso" },
+      { "letra": "B", "texto": "Contraditório" },
+      { "letra": "C", "texto": "Arrogante" },
+      { "letra": "D", "texto": "Longo" },
+      { "letra": "E", "texto": "Complexo" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Arrogante' expressa uma crítica moral ou comportamental, um juízo de caráter negativo."
+  },
+  {
+    "id": 626,
+    "enunciado": "Qual alternativa apresenta adjetivo com função predicativa?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O aluno estudioso venceu." },
+      { "letra": "B", "texto": "O carro veloz é novo." },
+      { "letra": "C", "texto": "O dia amanheceu lindo." },
+      { "letra": "D", "texto": "Ele é cantor famoso." },
+      { "letra": "E", "texto": "A menina alegre chegou." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "‘Lindo’ está ligado ao verbo de ligação 'amanheceu', exercendo função predicativa (atributo do sujeito)."
   }
 ]
