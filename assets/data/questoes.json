@@ -2309,5 +2309,169 @@
     ],
     "resposta_correta": "C",
     "resolucao": "‘Lindo’ está ligado ao verbo de ligação 'amanheceu', exercendo função predicativa (atributo do sujeito)."
+  },
+  {
+    "id": 627,
+    "enunciado": "Em qual das alternativas o adjetivo está posposto ao substantivo com finalidade expressiva?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Forte soldado" },
+      { "letra": "B", "texto": "Soldado forte" },
+      { "letra": "C", "texto": "Jovem rapaz" },
+      { "letra": "D", "texto": "Doce criança" },
+      { "letra": "E", "texto": "Paciente médico" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Ao colocar o adjetivo depois do substantivo ('soldado forte'), enfatiza-se a força como algo marcante."
+  },
+  {
+    "id": 628,
+    "enunciado": "Qual das alternativas apresenta adjetivo com valor conotativo?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Olhar cortante" },
+      { "letra": "B", "texto": "Navio lento" },
+      { "letra": "C", "texto": "Caminho estreito" },
+      { "letra": "D", "texto": "Rua longa" },
+      { "letra": "E", "texto": "Ambiente fechado" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "‘Cortante’ não é literal, mas expressa a intensidade do olhar, caracterizando valor conotativo (figurado)."
+  },
+  {
+    "id": 629,
+    "contexto": "Durante a pandemia, os profissionais da saúde mostraram dedicação inabalável.",
+    "enunciado": "O termo 'inabalável' exerce função de:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Substantivo abstrato" },
+      { "letra": "B", "texto": "Verbo transitivo" },
+      { "letra": "C", "texto": "Locução adjetiva" },
+      { "letra": "D", "texto": "Adjetivo" },
+      { "letra": "E", "texto": "Advérbio" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Inabalável' qualifica o substantivo 'dedicação', sendo, portanto, um adjetivo."
+  },
+  {
+    "id": 630,
+    "enunciado": "Marque a alternativa em que o adjetivo indica origem geográfica.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Docente" },
+      { "letra": "B", "texto": "Paulista" },
+      { "letra": "C", "texto": "Elegante" },
+      { "letra": "D", "texto": "Paciente" },
+      { "letra": "E", "texto": "Velho" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Paulista' é adjetivo pátrio, pois indica origem da cidade de São Paulo."
+  },
+  {
+    "id": 631,
+    "contexto": "No romance, a autora descreve a personagem com um sorriso enigmático.",
+    "enunciado": "A função sintática do termo 'enigmático' é:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Objeto direto" },
+      { "letra": "B", "texto": "Predicativo do objeto" },
+      { "letra": "C", "texto": "Adjunto adnominal" },
+      { "letra": "D", "texto": "Predicativo do sujeito" },
+      { "letra": "E", "texto": "Complemento nominal" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "‘Enigmático’ caracteriza diretamente o substantivo 'sorriso', sendo adjunto adnominal."
+  },
+  {
+    "id": 632,
+    "enunciado": "Assinale a alternativa em que o adjetivo concorda incorretamente com o substantivo.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "As provas difíceis" },
+      { "letra": "B", "texto": "Os homens valentes" },
+      { "letra": "C", "texto": "As criança felizes" },
+      { "letra": "D", "texto": "Os livros velhos" },
+      { "letra": "E", "texto": "As decisões importantes" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "‘As criança felizes’ apresenta erro de concordância: o correto seria 'As crianças felizes'."
+  },
+  {
+    "id": 633,
+    "enunciado": "Qual das alternativas apresenta um adjetivo que também pode ser utilizado como substantivo?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Feliz" },
+      { "letra": "B", "texto": "Triste" },
+      { "letra": "C", "texto": "Presidente" },
+      { "letra": "D", "texto": "Esperto" },
+      { "letra": "E", "texto": "Pobre" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "'Pobre' é adjetivo que pode ser substantivado: 'O pobre precisa de ajuda'."
+  },
+  {
+    "id": 634,
+    "enunciado": "Assinale a alternativa em que o adjetivo indica uma característica ocasional.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Homem generoso" },
+      { "letra": "B", "texto": "Pessoa bondosa" },
+      { "letra": "C", "texto": "Aluno triste" },
+      { "letra": "D", "texto": "Garoto honesto" },
+      { "letra": "E", "texto": "Político corrupto" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Triste' pode ser um estado momentâneo do aluno, logo, adjetivo ocasional ou transitório."
+  },
+  {
+    "id": 635,
+    "enunciado": "Qual das alternativas apresenta um adjetivo que expressa julgamento subjetivo?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Adjetivo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Casa grande" },
+      { "letra": "B", "texto": "Homem forte" },
+      { "letra": "C", "texto": "Carro rápido" },
+      { "letra": "D", "texto": "Filme interessante" },
+      { "letra": "E", "texto": "Relógio novo" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Interessante' expressa opinião do falante, logo, julgamento subjetivo."
   }
 ]
