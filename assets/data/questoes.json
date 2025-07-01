@@ -2473,5 +2473,405 @@
     ],
     "resposta_correta": "D",
     "resolucao": "'Interessante' expressa opinião do falante, logo, julgamento subjetivo."
+  },
+  {
+    "id": 636,
+    "enunciado": "Assinale a alternativa em que o uso do artigo definido altera o sentido do substantivo.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Gosto de mulher honesta." },
+      { "letra": "B", "texto": "A mulher honesta foi homenageada." },
+      { "letra": "C", "texto": "Criança precisa de atenção." },
+      { "letra": "D", "texto": "Ele comprou casa nova." },
+      { "letra": "E", "texto": "Fizemos passeio agradável." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Com o uso do artigo definido 'a', especifica-se a mulher. Sem o artigo, o termo seria genérico."
+  },
+  {
+    "id": 637,
+    "enunciado": "Qual das alternativas apresenta uso incorreto do artigo definido?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "As águas do rio estavam calmas." },
+      { "letra": "B", "texto": "A Marte é um planeta vermelho." },
+      { "letra": "C", "texto": "Os livros do autor foram vendidos." },
+      { "letra": "D", "texto": "A lua apareceu cedo." },
+      { "letra": "E", "texto": "O Sol aquece a Terra." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O nome de planetas normalmente não recebe artigo definido: o correto seria 'Marte é um planeta vermelho'."
+  },
+  {
+    "id": 638,
+    "enunciado": "Assinale a alternativa que apresenta artigo definido com função enfática.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O homem é um ser racional." },
+      { "letra": "B", "texto": "O poeta inspira a juventude." },
+      { "letra": "C", "texto": "O garoto caiu." },
+      { "letra": "D", "texto": "O amor é eterno." },
+      { "letra": "E", "texto": "A música tocava alto." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "‘O homem’ é usado com valor generalizante e enfático, representando a humanidade."
+  },
+  {
+    "id": 639,
+    "contexto": "Pedro disse: 'O importante é manter a calma.'",
+    "enunciado": "Na frase, o artigo definido 'o' exerce a função de:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Indicar pluralidade" },
+      { "letra": "B", "texto": "Transformar o adjetivo em substantivo" },
+      { "letra": "C", "texto": "Referir-se ao sujeito oculto" },
+      { "letra": "D", "texto": "Concordar com o verbo" },
+      { "letra": "E", "texto": "Funcionar como pronome demonstrativo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'O' substantiva o adjetivo 'importante', transformando-o em um substantivo abstrato."
+  },
+  {
+    "id": 640,
+    "enunciado": "Marque a alternativa em que o artigo modifica um pronome de tratamento.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A sua excelência compareceu." },
+      { "letra": "B", "texto": "Sua excelência está ausente." },
+      { "letra": "C", "texto": "Excelência, aqui está o relatório." },
+      { "letra": "D", "texto": "Vossa senhoria faltou à reunião." },
+      { "letra": "E", "texto": "Senhor, sua presença é aguardada." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O artigo definido 'a' antecede o pronome de tratamento, o que é permitido nesse tipo de construção formal."
+  },
+  {
+    "id": 641,
+    "enunciado": "Qual das alternativas apresenta o uso do artigo com valor afetivo?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O Sol nasceu cedo." },
+      { "letra": "B", "texto": "A minha mãe chegou." },
+      { "letra": "C", "texto": "A Maria chorou." },
+      { "letra": "D", "texto": "O professor explicou." },
+      { "letra": "E", "texto": "A Terra gira." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O uso do artigo definido antes de nomes próprios indica afetividade ou familiaridade, como em 'a Maria'."
+  },
+  {
+    "id": 642,
+    "enunciado": "Qual das frases apresenta artigo indefinido com sentido depreciativo?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ela comprou um carro novo." },
+      { "letra": "B", "texto": "Vi um filme interessante." },
+      { "letra": "C", "texto": "Apareceu um sujeito estranho." },
+      { "letra": "D", "texto": "Trouxe um presente para você." },
+      { "letra": "E", "texto": "Encontrei um amigo no shopping." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Um sujeito estranho' usa o artigo indefinido para indicar desconhecimento e leve desprezo."
+  },
+  {
+    "id": 643,
+    "contexto": "Durante a cerimônia, o orador elogiou a coragem da juventude.",
+    "enunciado": "Na frase, o artigo 'a' tem como função:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Generalizar o substantivo" },
+      { "letra": "B", "texto": "Substituir um pronome" },
+      { "letra": "C", "texto": "Indicar posse" },
+      { "letra": "D", "texto": "Indicar especificidade" },
+      { "letra": "E", "texto": "Transformar verbo em substantivo" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O artigo 'a' especifica 'coragem', tornando-a determinada dentro do contexto apresentado."
+  },
+  {
+    "id": 644,
+    "enunciado": "Assinale a alternativa em que há crase entre preposição e artigo definido.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Fui a escola rapidamente." },
+      { "letra": "B", "texto": "Dirigi a casa de João." },
+      { "letra": "C", "texto": "Voltei à escola com pressa." },
+      { "letra": "D", "texto": "Fui a pé até lá." },
+      { "letra": "E", "texto": "Cheguei a tarde no trabalho." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A crase ocorre pela fusão da preposição 'a' com o artigo definido feminino 'a': 'à escola'."
+  },
+  {
+    "id": 645,
+    "enunciado": "Qual alternativa apresenta um artigo definido com substantivo abstrato?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A tristeza invadiu a sala." },
+      { "letra": "B", "texto": "O menino correu rápido." },
+      { "letra": "C", "texto": "As montanhas eram altas." },
+      { "letra": "D", "texto": "O professor explicou." },
+      { "letra": "E", "texto": "A flor murchou." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Tristeza' é substantivo abstrato, e o artigo 'a' o torna específico no contexto."
+  },
+  {
+    "id": 646,
+    "enunciado": "Marque a frase em que há uso facultativo do artigo definido antes do nome próprio.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Artigo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A Ana chegou cedo." },
+      { "letra": "B", "texto": "Pedro ligou para a Maria." },
+      { "letra": "C", "texto": "João visitou o Marcos." },
+      { "letra": "D", "texto": "Vi a Joana no mercado." },
+      { "letra": "E", "texto": "Estudei com o Felipe ontem." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O uso do artigo definido antes de nomes próprios femininos é facultativo: 'Ana' ou 'a Ana'."
+  },
+  {
+    "id": 647,
+    "enunciado": "Assinale a alternativa em que o pronome oblíquo está corretamente empregado em início de frase.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Me emprestou o livro." },
+      { "letra": "B", "texto": "Lhe disse a verdade." },
+      { "letra": "C", "texto": "Nos informaram do ocorrido." },
+      { "letra": "D", "texto": "Me avisaram ontem." },
+      { "letra": "E", "texto": "Disse-lhe o que pensava." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A colocação pronominal correta em início de frase exige ênclise: 'Disse-lhe'. As demais estão inadequadas."
+  },
+  {
+    "id": 648,
+    "enunciado": "Qual alternativa apresenta corretamente um pronome demonstrativo com valor anafórico?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Este livro é interessante." },
+      { "letra": "B", "texto": "Esse foi o problema que causou tudo." },
+      { "letra": "C", "texto": "Aquele rapaz chegou agora." },
+      { "letra": "D", "texto": "Esses são os novos alunos." },
+      { "letra": "E", "texto": "Este carro é meu." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Esse' retoma algo já mencionado anteriormente, cumprindo função anafórica (retomada)."
+  },
+  {
+    "id": 649,
+    "contexto": "Marcos não gostava de regras; aquelas, em especial, o incomodavam.",
+    "enunciado": "O pronome 'aquelas' exerce função de:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pronome indefinido" },
+      { "letra": "B", "texto": "Pronome pessoal" },
+      { "letra": "C", "texto": "Pronome demonstrativo" },
+      { "letra": "D", "texto": "Pronome interrogativo" },
+      { "letra": "E", "texto": "Pronome de tratamento" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Aquelas' indica algo distante no discurso, classificando-se como pronome demonstrativo."
+  },
+  {
+    "id": 650,
+    "enunciado": "Marque a frase em que há pronome relativo com função de sujeito.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A moça que vi ontem é simpática." },
+      { "letra": "B", "texto": "O livro que você leu é ótimo." },
+      { "letra": "C", "texto": "O aluno que estuda vence." },
+      { "letra": "D", "texto": "A cidade em que nasci é pequena." },
+      { "letra": "E", "texto": "O homem de quem falei chegou." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O pronome 'que' é sujeito do verbo 'estuda', pois se refere ao 'aluno' que realiza a ação."
+  },
+  {
+    "id": 651,
+    "enunciado": "Qual alternativa apresenta um pronome indefinido corretamente empregado?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Algum dos meninos não chegaram." },
+      { "letra": "B", "texto": "Nenhum dos alunos faltou." },
+      { "letra": "C", "texto": "Todos os colega trouxeram lanche." },
+      { "letra": "D", "texto": "Muitos dos problema já passaram." },
+      { "letra": "E", "texto": "Pouco dos documentos foram lidos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Nenhum' é pronome indefinido que exige verbo no singular. A concordância está correta na alternativa B."
+  },
+  {
+    "id": 652,
+    "enunciado": "Assinale a alternativa em que o pronome reflexivo está corretamente empregado.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Eles se cumprimentaram cordialmente." },
+      { "letra": "B", "texto": "João cumprimentou-lhe ao chegar." },
+      { "letra": "C", "texto": "Ela lhe feriu com palavras." },
+      { "letra": "D", "texto": "Cumprimentaram-se um ao outro." },
+      { "letra": "E", "texto": "Nós se ajudamos." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O pronome 'se' é reflexivo e está corretamente usado em 'Eles se cumprimentaram'."
+  },
+  {
+    "id": 653,
+    "enunciado": "Marque a alternativa com pronome de tratamento incorretamente empregado.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vossa Excelência decidirá." },
+      { "letra": "B", "texto": "Vossa Senhoria está enganado." },
+      { "letra": "C", "texto": "Vossa Majestade quer isto." },
+      { "letra": "D", "texto": "Sua Excelência determinou que saíssemos." },
+      { "letra": "E", "texto": "Vossa Alteza nos nomeou." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Quando se fala diretamente com a autoridade, usa-se 'Vossa Excelência'; 'Sua Excelência' é para referência indireta."
+  },
+  {
+    "id": 654,
+    "enunciado": "Qual das opções apresenta um pronome possessivo com valor afetivo?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Meu Deus, que susto!" },
+      { "letra": "B", "texto": "Nosso carro quebrou." },
+      { "letra": "C", "texto": "Minha casa é azul." },
+      { "letra": "D", "texto": "Teu gesto foi nobre." },
+      { "letra": "E", "texto": "Seu nome é comum." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Em 'Meu Deus!', o possessivo tem função emotiva, típica de interjeições e expressões afetivas."
+  },
+  {
+    "id": 655,
+    "enunciado": "Assinale a alternativa que apresenta pronome interrogativo.",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Este livro é caro?" },
+      { "letra": "B", "texto": "Qual é o seu nome?" },
+      { "letra": "C", "texto": "O que houve com ele?" },
+      { "letra": "D", "texto": "Você viu aquilo?" },
+      { "letra": "E", "texto": "Isso é perigoso?" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Qual' é um pronome interrogativo quando usado em perguntas diretas ou indiretas."
+  },
+  {
+    "id": 656,
+    "enunciado": "Qual das alternativas apresenta pronomes pessoais corretamente empregados na função de sujeito e objeto?",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Eu vi ele ontem." },
+      { "letra": "B", "texto": "Mim viu você." },
+      { "letra": "C", "texto": "Ela viu-me no portão." },
+      { "letra": "D", "texto": "Me viu ele." },
+      { "letra": "E", "texto": "A gente viu nós mesmos." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A forma 'viu-me' está correta para objeto direto. O sujeito 'Ela' também está corretamente empregado."
+  },
+  {
+    "id": 657,
+    "contexto": "Ninguém soube explicar o motivo da ausência.",
+    "enunciado": "O pronome 'ninguém' é classificado como:",
+    "disciplina": "Português",
+    "assunto": "Classes Gramaticais - Pronome",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pronome demonstrativo" },
+      { "letra": "B", "texto": "Pronome indefinido" },
+      { "letra": "C", "texto": "Pronome interrogativo" },
+      { "letra": "D", "texto": "Pronome pessoal" },
+      { "letra": "E", "texto": "Advérbio de negação" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Ninguém' é pronome indefinido, pois não especifica um indivíduo determinado."
   }
 ]
