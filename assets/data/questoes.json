@@ -878,5 +878,913 @@
     ],
     "resposta_correta": "C",
     "resolucao": "A disputa pelo controle das minas revelou as tensões internas da sociedade colonial e a luta por poder e prestígio entre grupos locais."
+  },
+  {
+    "id": 350,
+    "enunciado": "Qual das alternativas apresenta corretamente a principal característica do relevo brasileiro?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Predomínio de cadeias montanhosas jovens de elevada altitude." },
+      { "letra": "B", "texto": "Presença dominante de planícies aluviais recentes." },
+      { "letra": "C", "texto": "Formações dobradas recentes associadas à Cordilheira dos Andes." },
+      { "letra": "D", "texto": "Predomínio de planaltos e relevos suavemente ondulados." },
+      { "letra": "E", "texto": "Relevo predominantemente vulcânico e instável." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O relevo brasileiro é, em sua maior parte, composto por planaltos antigos e desgastados, com formas suaves e modestas altitudes."
+  },
+  {
+    "id": 351,
+    "enunciado": "A classificação do relevo brasileiro elaborada por Jurandyr Ross em 1989 se diferencia das anteriores por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Considerar exclusivamente a altitude como critério classificatório." },
+      { "letra": "B", "texto": "Dividir o território em escudos cristalinos e bacias sedimentares." },
+      { "letra": "C", "texto": "Adotar o critério morfoestrutural internacional." },
+      { "letra": "D", "texto": "Levar em conta a dinâmica de formação e os processos geomorfológicos." },
+      { "letra": "E", "texto": "Excluir planícies da classificação formal." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Jurandyr Ross propôs uma classificação baseada não apenas na altitude, mas também na origem e nos processos atuantes na formação do relevo."
+  },
+  {
+    "id": 352,
+    "enunciado": "Na estrutura geológica brasileira, os escudos cristalinos têm grande importância porque:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "São áreas de intensa atividade tectônica atual." },
+      { "letra": "B", "texto": "Concentram reservas de petróleo em bacias marinhas." },
+      { "letra": "C", "texto": "Constituem áreas de origem vulcânica recente." },
+      { "letra": "D", "texto": "Abrigam recursos minerais metálicos como ferro e manganês." },
+      { "letra": "E", "texto": "Possuem relevo acidentado e presença de fiordes." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Os escudos cristalinos são formações geológicas antigas e ricas em minerais metálicos, como ferro, ouro e manganês."
+  },
+  {
+    "id": 353,
+    "enunciado": "Qual estrutura geológica está associada à presença de planícies no Brasil?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Escudos cristalinos." },
+      { "letra": "B", "texto": "Bacias sedimentares." },
+      { "letra": "C", "texto": "Dobramentos modernos." },
+      { "letra": "D", "texto": "Terrenos vulcânicos recentes." },
+      { "letra": "E", "texto": "Formações metamórficas cenozoicas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As planícies brasileiras estão associadas a áreas de sedimentação recente, localizadas predominantemente em bacias sedimentares."
+  },
+  {
+    "id": 354,
+    "enunciado": "Os planaltos brasileiros, em sua maioria, são formados por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Depósitos sedimentares do período quaternário." },
+      { "letra": "B", "texto": "Materiais cristalinos antigos e intensamente erodidos." },
+      { "letra": "C", "texto": "Estruturas dobradas recentes." },
+      { "letra": "D", "texto": "Formações de origem vulcânica do Holoceno." },
+      { "letra": "E", "texto": "Resíduos glaciais da era paleozoica." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os planaltos do Brasil são compostos, em sua maior parte, por rochas cristalinas antigas, remodeladas por milhões de anos de erosão."
+  },
+  {
+    "id": 355,
+    "enunciado": "O que diferencia um planalto de uma planície, segundo a classificação de Jurandyr Ross?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O grau de inclinação e altitude absoluta." },
+      { "letra": "B", "texto": "A intensidade de erosão versus sedimentação." },
+      { "letra": "C", "texto": "A composição mineral das rochas presentes." },
+      { "letra": "D", "texto": "A vegetação predominante nas regiões estudadas." },
+      { "letra": "E", "texto": "A localização em áreas costeiras ou continentais." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Para Ross, planaltos são áreas onde predomina a erosão, enquanto planícies são marcadas por acúmulo de sedimentos (sedimentação)."
+  },
+  {
+    "id": 356,
+    "enunciado": "A formação das depressões no relevo brasileiro está associada principalmente a:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Processos de sedimentação recentes em áreas litorâneas." },
+      { "letra": "B", "texto": "A deposição de material glacial na era Quaternária." },
+      { "letra": "C", "texto": "Movimentos tectônicos de expansão do manto terrestre." },
+      { "letra": "D", "texto": "Processos erosivos em áreas entre planaltos e bacias sedimentares." },
+      { "letra": "E", "texto": "Erosão fluvial em áreas de dobramentos modernos." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "As depressões brasileiras se formam, em geral, por processos de erosão que ocorrem entre planaltos e áreas de sedimentação, configurando áreas rebaixadas."
+  },
+  {
+    "id": 357,
+    "enunciado": "Sobre a classificação morfoestrutural do Brasil, assinale a correta:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O território brasileiro se encontra totalmente sobre dobramentos modernos." },
+      { "letra": "B", "texto": "A maior parte do Brasil é composta por estruturas cristalinas antigas e estáveis." },
+      { "letra": "C", "texto": "Bacias sedimentares são inexistentes no território nacional." },
+      { "letra": "D", "texto": "O relevo brasileiro é dominado por terrenos vulcânicos recentes." },
+      { "letra": "E", "texto": "As principais cordilheiras do Brasil estão associadas a zonas de subducção." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Brasil se localiza sobre uma plataforma geologicamente estável, dominada por escudos cristalinos e bacias sedimentares, sem dobramentos modernos."
+  },
+  {
+    "id": 358,
+    "enunciado": "A Serra do Mar e a Serra da Mantiqueira fazem parte de qual unidade de relevo segundo Jurandyr Ross?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planície Litorânea" },
+      { "letra": "B", "texto": "Depressão Periférica" },
+      { "letra": "C", "texto": "Planalto Atlântico" },
+      { "letra": "D", "texto": "Planície Costeira Sudeste" },
+      { "letra": "E", "texto": "Depressão Sertaneja" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As serras do Sudeste fazem parte do Planalto Atlântico, uma das unidades de relevo identificadas por Jurandyr Ross com base em características morfogenéticas."
+  },
+  {
+    "id": 359,
+    "enunciado": "A estrutura geológica conhecida como escudo das Guianas está localizada predominantemente em qual região brasileira?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Nordeste" },
+      { "letra": "B", "texto": "Sudeste" },
+      { "letra": "C", "texto": "Norte" },
+      { "letra": "D", "texto": "Sul" },
+      { "letra": "E", "texto": "Centro-Oeste" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O escudo das Guianas localiza-se na porção norte do Brasil, abrangendo áreas da região Norte, especialmente Roraima, Amapá e partes do Pará."
+  },
+  {
+    "id": 360,
+    "enunciado": "O planalto da Bacia do Paraná é caracterizado principalmente por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Presença de morros testemunhos e tabuleiros." },
+      { "letra": "B", "texto": "Constituição de rochas magmáticas e ocorrência de derrames basálticos." },
+      { "letra": "C", "texto": "Formações compostas por calcários e dolomitos." },
+      { "letra": "D", "texto": "Dominância de dunas e lagunas costeiras." },
+      { "letra": "E", "texto": "Planícies aluviais associadas a grandes rios de planície." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Planalto da Bacia do Paraná é marcado por grandes derrames basálticos, especialmente na formação da Serra Geral, e presença de rochas magmáticas."
+  },
+  {
+    "id": 361,
+    "enunciado": "A formação de chapadas é comum em qual tipo de estrutura geológica do Brasil?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Escudos cristalinos" },
+      { "letra": "B", "texto": "Bacias sedimentares" },
+      { "letra": "C", "texto": "Dobramentos modernos" },
+      { "letra": "D", "texto": "Complexos vulcânicos" },
+      { "letra": "E", "texto": "Cratões arqueanos" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As chapadas são formas tabulares típicas de regiões sedimentares onde a erosão atua diferencialmente sobre camadas horizontais de rochas."
+  },
+  {
+    "id": 362,
+    "enunciado": "As escarpas da Serra do Mar resultam de processos geológicos relacionados a:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vulcanismo do período Holoceno" },
+      { "letra": "B", "texto": "Soerguimento tectônico e falhamento da borda da plataforma" },
+      { "letra": "C", "texto": "Deposição de sedimentos aluviais" },
+      { "letra": "D", "texto": "Formação de caldeiras e crateras" },
+      { "letra": "E", "texto": "Movimentos orogênicos recentes" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As escarpas da Serra do Mar formaram-se a partir de movimentos de soerguimento da crosta, gerando o desnivelamento entre o planalto e o litoral."
+  },
+  {
+    "id": 363,
+    "enunciado": "O Planalto Central brasileiro exerce influência direta sobre o regime dos rios por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ser uma área de depressão absoluta." },
+      { "letra": "B", "texto": "Atuar como divisor natural de águas entre grandes bacias hidrográficas." },
+      { "letra": "C", "texto": "Apresentar intensa salinização e impedir a formação de cursos d’água." },
+      { "letra": "D", "texto": "Ser uma planície sedimentar rebaixada com baixa declividade." },
+      { "letra": "E", "texto": "Apresentar aquíferos fossilizados que drenam os rios subterraneamente." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Planalto Central atua como importante divisor de águas no território brasileiro, separando bacias como a Amazônica, Tocantins-Araguaia, São Francisco e Platina."
+  },
+  {
+    "id": 364,
+    "enunciado": "A erosão diferencial nas chapadas brasileiras ocorre porque:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O vento atua de forma homogênea sobre todas as camadas." },
+      { "letra": "B", "texto": "As camadas rochosas têm a mesma resistência à erosão." },
+      { "letra": "C", "texto": "As rochas inferiores erodem mais rapidamente que as superiores." },
+      { "letra": "D", "texto": "A vegetação retarda o processo erosivo." },
+      { "letra": "E", "texto": "A ação glacial ainda é presente em algumas chapadas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Nas chapadas, as camadas superiores mais resistentes formam escarpas, enquanto as inferiores, mais frágeis, sofrem erosão mais intensa, modelando o relevo."
+  },
+  {
+    "id": 365,
+    "enunciado": "O Planalto das Guianas é caracterizado por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Extensas planícies sedimentares do Nordeste brasileiro." },
+      { "letra": "B", "texto": "Depressões periféricas esculpidas por rios intermitentes." },
+      { "letra": "C", "texto": "Formações montanhosas jovens associadas a dobramentos modernos." },
+      { "letra": "D", "texto": "Relevo antigo, cristalino, com presença de serras e tepuis." },
+      { "letra": "E", "texto": "Planícies aluviais em áreas de transbordamento do Rio São Francisco." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Planalto das Guianas é uma formação antiga, com estruturas cristalinas e presença de relevos residuais como os tepuis (mesas)."
+  },
+  {
+    "id": 366,
+    "enunciado": "Qual das opções apresenta corretamente o conjunto de formas que compõem o relevo brasileiro, segundo Jurandyr Ross?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Montanhas, vales e dobramentos modernos." },
+      { "letra": "B", "texto": "Planaltos, planícies e escudos vulcânicos." },
+      { "letra": "C", "texto": "Planalto, planície e depressão." },
+      { "letra": "D", "texto": "Bacias sedimentares, dobramentos antigos e vales encaixados." },
+      { "letra": "E", "texto": "Planícies costeiras, dunas e glaciares." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Jurandyr Ross propôs uma classificação baseada em três grandes unidades: planaltos (erosão), planícies (sedimentação) e depressões (erosão em áreas rebaixadas)."
+  },
+  {
+    "id": 367,
+    "enunciado": "As planícies brasileiras mais extensas estão associadas principalmente a:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Áreas de dobramentos modernos e instabilidade tectônica." },
+      { "letra": "B", "texto": "Regiões de intensa erosão glacial." },
+      { "letra": "C", "texto": "Zonas de sedimentação associadas a grandes rios, como Amazonas e Pantanal." },
+      { "letra": "D", "texto": "Depressões residuais ao longo da costa leste." },
+      { "letra": "E", "texto": "Reentrâncias do litoral nordestino." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Planícies como a Amazônica e a do Pantanal estão associadas a processos de sedimentação fluvial em regiões com baixa declividade e transbordamentos periódicos."
+  },
+  {
+    "id": 368,
+    "enunciado": "As escarpas cuestas são típicas do relevo brasileiro e se formam por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Deposição glacial diferenciada sobre bacias sedimentares." },
+      { "letra": "B", "texto": "Acúmulo de sedimentos orgânicos em vales úmidos." },
+      { "letra": "C", "texto": "Erosão seletiva sobre camadas inclinadas de rochas sedimentares." },
+      { "letra": "D", "texto": "Fusão de placas tectônicas sob pressão." },
+      { "letra": "E", "texto": "Impactos meteoríticos associados a falhas estruturais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Cuestas se formam quando a erosão age sobre terrenos com camadas de rochas sedimentares inclinadas, originando escarpas assimétricas."
+  },
+  {
+    "id": 369,
+    "enunciado": "A presença de grandes relevos residuais, como os morros testemunhos, indica:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Áreas de intensa atividade vulcânica." },
+      { "letra": "B", "texto": "Formações dobradas por compressão recente." },
+      { "letra": "C", "texto": "Resquícios de estruturas sedimentares mais resistentes à erosão." },
+      { "letra": "D", "texto": "Relevos formados por geleiras tropicais." },
+      { "letra": "E", "texto": "Formações calcárias rebaixadas pelo intemperismo químico." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os morros testemunhos são evidências de áreas que resistiram à erosão, por possuírem rochas mais duras que o entorno, caracterizando relevo residual."
+  },
+  {
+    "id": 370,
+    "enunciado": "Qual planície brasileira é conhecida por sua sazonalidade de alagamentos e biodiversidade associada?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planície Litorânea" },
+      { "letra": "B", "texto": "Pantanal Mato-Grossense" },
+      { "letra": "C", "texto": "Planície Costeira Amazônica" },
+      { "letra": "D", "texto": "Planície do São Francisco" },
+      { "letra": "E", "texto": "Tabuleiros Nordestinos" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Pantanal é uma planície alagável com alternância entre períodos secos e cheios, abrigando rica fauna e flora adaptada ao ciclo hidrológico sazonal."
+  },
+  {
+    "id": 371,
+    "enunciado": "A presença de grandes chapadões no centro-oeste brasileiro está relacionada a:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Escudos cristalinos recentes." },
+      { "letra": "B", "texto": "Bacias sedimentares com camadas horizontais e relevo tabular." },
+      { "letra": "C", "texto": "Dobramentos intensos do Mesozoico." },
+      { "letra": "D", "texto": "Formações calcárias do litoral atlântico." },
+      { "letra": "E", "texto": "Depressões erodidas por rios perenes." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os chapadões do Centro-Oeste são típicos de bacias sedimentares, caracterizados por superfícies planas e horizontais esculpidas pela erosão."
+  },
+  {
+    "id": 372,
+    "enunciado": "O conceito de bacia sedimentar no contexto do relevo brasileiro refere-se a:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Depressões com fundo vulcânico ativo." },
+      { "letra": "B", "texto": "Áreas soerguidas por falhas geológicas." },
+      { "letra": "C", "texto": "Depósitos de sedimentos acumulados ao longo de eras geológicas." },
+      { "letra": "D", "texto": "Relevos dobrados modernos em planaltos tropicais." },
+      { "letra": "E", "texto": "Regiões com atividade sísmica elevada." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As bacias sedimentares são áreas onde se acumularam, ao longo do tempo, sedimentos que originaram importantes formações geológicas e aquíferos."
+  },
+  {
+    "id": 373,
+    "enunciado": "A região da Serra Geral é marcada por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Cordilheiras jovens com dobramentos recentes." },
+      { "letra": "B", "texto": "Depressões cársticas em calcário." },
+      { "letra": "C", "texto": "Derrames basálticos associados a vulcanismo antigo." },
+      { "letra": "D", "texto": "Formações dunares costeiras instáveis." },
+      { "letra": "E", "texto": "Planícies pantanosas com origem lacustre." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Serra Geral possui extensas áreas de basalto, resultado de antigos derrames vulcânicos associados ao final da era Mesozoica."
+  },
+  {
+    "id": 374,
+    "enunciado": "As depressões brasileiras foram oficialmente reconhecidas como unidade de relevo a partir de qual classificação?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Aroldo de Azevedo (1949)" },
+      { "letra": "B", "texto": "Aziz Ab'Saber (1958)" },
+      { "letra": "C", "texto": "Jurandyr Ross (1989)" },
+      { "letra": "D", "texto": "IBGE (1960)" },
+      { "letra": "E", "texto": "Projeto RadamBrasil (1970)" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Foi na classificação de Jurandyr Ross que as depressões passaram a ser reconhecidas como unidades distintas do relevo, ao lado de planaltos e planícies."
+  },
+  {
+    "id": 375,
+    "contexto": "A partir da década de 1970, o avanço do agronegócio no Centro-Oeste exigiu a mecanização em áreas de relevo pouco acidentado, sobre estruturas sedimentares.",
+    "enunciado": "Considerando o contexto e as características do relevo brasileiro, a área descrita refere-se principalmente a:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Depressões periféricas do Sudeste" },
+      { "letra": "B", "texto": "Planaltos cristalinos do Norte" },
+      { "letra": "C", "texto": "Chapadões sedimentares do Planalto Central" },
+      { "letra": "D", "texto": "Relevos residuais do Pantanal" },
+      { "letra": "E", "texto": "Tabuleiros litorâneos do Nordeste" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Planalto Central é composto por chapadões sobre bacias sedimentares, com relevo plano favorável à mecanização agrícola, especialmente em áreas de cerrado."
+  },
+  {
+    "id": 376,
+    "contexto": "Com base em imagens de satélite, observou-se que o avanço do desmatamento na Amazônia provoca mudanças no relevo local.",
+    "enunciado": "Qual processo geomorfológico tende a se intensificar nessas regiões após a retirada da vegetação?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sedimentação e formação de planícies" },
+      { "letra": "B", "texto": "Vulcanismo e subsidência do solo" },
+      { "letra": "C", "texto": "Erosão laminar e voçorocamento" },
+      { "letra": "D", "texto": "Glaciação em alta latitude" },
+      { "letra": "E", "texto": "Rebote isostático da crosta" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A retirada da vegetação favorece processos erosivos como a erosão laminar e o surgimento de voçorocas, especialmente em solos arenosos da Amazônia Ocidental."
+  },
+  {
+    "id": 377,
+    "enunciado": "A presença de planaltos escarpados no litoral sudeste brasileiro é consequência de:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Subdução da placa sul-americana sob a placa de Nazca" },
+      { "letra": "B", "texto": "Soerguimento da borda continental em áreas de falhamento antigo" },
+      { "letra": "C", "texto": "Colapso de caldeiras vulcânicas recentes" },
+      { "letra": "D", "texto": "Atividade sísmica frequente na região costeira" },
+      { "letra": "E", "texto": "Acúmulo de sedimentos fluviais no embasamento cristalino" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A formação da Serra do Mar e outras escarpas litorâneas resulta de antigos soerguimentos tectônicos, com fraturamentos e falhamentos da crosta continental."
+  },
+  {
+    "id": 378,
+    "enunciado": "As principais feições do relevo brasileiro resultam de processos antigos, sem influência de dobramentos modernos. Essa característica implica que:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Há elevado risco de terremotos e vulcanismo ativo no país" },
+      { "letra": "B", "texto": "O relevo é instável e sofre rebaixamentos frequentes" },
+      { "letra": "C", "texto": "As formas são geralmente aplainadas e suavizadas por longos processos erosivos" },
+      { "letra": "D", "texto": "O Brasil apresenta grande quantidade de fiordes e falésias costeiras" },
+      { "letra": "E", "texto": "O processo de formação glacial ainda atua sobre as serras do sul" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A ausência de dobramentos modernos confere ao relevo brasileiro formas mais suaves, com predomínio de planaltos antigos e áreas erodidas ao longo de milhões de anos."
+  },
+  {
+    "id": 379,
+    "enunciado": "O relevo da Bacia do Paraná se destaca por conter grandes derrames basálticos. Essa característica está diretamente relacionada com:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tectonismo alpino e formação da Cordilheira dos Andes" },
+      { "letra": "B", "texto": "Episódios de vulcanismo fissural durante o Mesozoico" },
+      { "letra": "C", "texto": "Erosão pluvial sobre escudos arqueanos" },
+      { "letra": "D", "texto": "Glaciação intensa e posterior derretimento" },
+      { "letra": "E", "texto": "Atividade tectônica no Cenozoico superior" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Bacia do Paraná contém espessos derrames de basalto gerados por vulcanismo fissural no final do Mesozoico, o que resultou em relevos tabulares como os da Serra Geral."
+  },
+  {
+    "id": 380,
+    "contexto": "Durante o mapeamento de áreas para instalação de usinas hidrelétricas no Sudeste, identificou-se que a declividade e o tipo de rocha influenciam diretamente o potencial energético.",
+    "enunciado": "A característica geomorfológica mais favorável para esse tipo de empreendimento é:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planícies fluviais em regiões costeiras" },
+      { "letra": "B", "texto": "Chapadas sedimentares de baixa altitude" },
+      { "letra": "C", "texto": "Escarpas de planaltos cristalinos com cursos fluviais encaixados" },
+      { "letra": "D", "texto": "Áreas de bacias sedimentares com solos hidromórficos" },
+      { "letra": "E", "texto": "Depressões marginalmente úmidas com pouca variação altimétrica" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Planaltos cristalinos com escarpas e rios encaixados favorecem a geração de energia hidrelétrica, pois oferecem declives acentuados e rochas firmes para construção de barragens."
+  },
+  {
+    "id": 381,
+    "enunciado": "As estruturas conhecidas como cuestas ocorrem no relevo brasileiro principalmente em qual região?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Amazônia Ocidental" },
+      { "letra": "B", "texto": "Pantanal Sul-Mato-Grossense" },
+      { "letra": "C", "texto": "Oeste Paulista e norte do Paraná" },
+      { "letra": "D", "texto": "Serra do Espinhaço e região do Vale do Jequitinhonha" },
+      { "letra": "E", "texto": "Litoral sul do Nordeste" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As cuestas são típicas do oeste paulista e norte do Paraná, em áreas de transição entre escudos e bacias sedimentares, com camadas inclinadas sujeitas à erosão diferencial."
+  },
+  {
+    "id": 382,
+    "enunciado": "O conceito de 'relevo aplainado' aplicado ao Brasil refere-se ao predomínio de:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Formações resultantes de dobramentos modernos" },
+      { "letra": "B", "texto": "Modelagem de grandes planícies costeiras" },
+      { "letra": "C", "texto": "Erosão prolongada sobre terrenos antigos e estáveis" },
+      { "letra": "D", "texto": "Vulcanismo recente e deposição de cinzas" },
+      { "letra": "E", "texto": "Movimentos epirogênicos recentes" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O relevo brasileiro é predominantemente aplainado devido à ação erosiva prolongada sobre estruturas geológicas antigas e estáveis como escudos cristalinos."
+  },
+  {
+    "id": 383,
+    "contexto": "No Cerrado brasileiro, áreas com solos arenosos e relevo suave convivem com regiões abruptas e mal drenadas.",
+    "enunciado": "Essa diversidade morfoestrutural se explica pela presença predominante de:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Relevos glaciotectônicos do Quaternário" },
+      { "letra": "B", "texto": "Interações entre planaltos cristalinos e chapadões sedimentares" },
+      { "letra": "C", "texto": "Depressões de subsidência recente com acúmulo de sedimentos" },
+      { "letra": "D", "texto": "Vulcões ativos encobertos por vegetação arbustiva" },
+      { "letra": "E", "texto": "Rios de planície com escarpas aluviais instáveis" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Cerrado apresenta relevo misto, com planaltos antigos cristalinos e chapadões sedimentares, o que resulta em variedade de altitudes, solos e formas erosivas."
+  },
+  {
+    "id": 384,
+    "enunciado": "A morfogênese dominante nas áreas planálticas do Brasil está ligada principalmente a qual processo?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sedimentação lacustre" },
+      { "letra": "B", "texto": "Tectonismo horizontal compressivo" },
+      { "letra": "C", "texto": "Intensa erosão" },
+      { "letra": "D", "texto": "Glaciação intertropical" },
+      { "letra": "E", "texto": "Deposição de rochas vulcânicas ácidas" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os planaltos brasileiros se formaram principalmente por erosão, o que os diferencia das planícies, que se formam por sedimentação."
+  },
+  {
+    "id": 385,
+    "enunciado": "As 'pediplanações' e 'peneplanos' do território brasileiro são evidências de:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Atividade tectônica recente" },
+      { "letra": "B", "texto": "Climas periglaciais" },
+      { "letra": "C", "texto": "Modelagem fluvial intensa sobre terrenos cristalinos" },
+      { "letra": "D", "texto": "Processos erosivos antigos que rebaixaram o relevo ao longo do tempo" },
+      { "letra": "E", "texto": "Formação de deltas e estuários" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Peneplanos e pediplanos são superfícies muito antigas resultantes de longo processo de erosão que aplainou grandes áreas de terrenos antigos e estáveis."
+  },
+  {
+    "id": 386,
+    "enunciado": "O relevo da Depressão Sertaneja e do São Francisco está relacionado principalmente à atuação de:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Atividade vulcânica recente" },
+      { "letra": "B", "texto": "Rebaixamento erosivo entre planaltos" },
+      { "letra": "C", "texto": "Acúmulo de gelo na era Quaternária" },
+      { "letra": "D", "texto": "Dobramentos modernos da borda litorânea" },
+      { "letra": "E", "texto": "Soerguimento epirogênico da plataforma" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Essas depressões se formam entre planaltos e bacias sedimentares, configurando-se como áreas de rebaixamento relativo esculpidas por processos erosivos."
+  },
+  {
+    "id": 387,
+    "enunciado": "Uma das características marcantes do relevo brasileiro é a ausência de:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Escudos cristalinos" },
+      { "letra": "B", "texto": "Bacias sedimentares" },
+      { "letra": "C", "texto": "Planaltos aplainados" },
+      { "letra": "D", "texto": "Dobramentos modernos" },
+      { "letra": "E", "texto": "Formas erosivas residuais" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Brasil está situado em uma área geologicamente estável e não possui dobramentos modernos, como os encontrados nos Andes ou Alpes."
+  },
+  {
+    "id": 388,
+    "enunciado": "A presença de 'inselbergs' (morros isolados) no Nordeste brasileiro está relacionada à:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Fusão de placas tectônicas" },
+      { "letra": "B", "texto": "Modelagem glacial de áreas tropicais" },
+      { "letra": "C", "texto": "Erosão diferencial sobre rochas cristalinas resistentes" },
+      { "letra": "D", "texto": "Acúmulo de areia sedimentar" },
+      { "letra": "E", "texto": "Movimento tectônico de colisão continental" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os inselbergs são formas residuais deixadas após a erosão de rochas menos resistentes, deixando morros isolados compostos por granitos ou gnaisses."
+  },
+  {
+    "id": 389,
+    "contexto": "A construção de obras de infraestrutura em áreas de tabuleiros costeiros demanda atenção à composição geológica.",
+    "enunciado": "A principal limitação técnica associada aos tabuleiros é:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Solos espessos e resistentes à drenagem" },
+      { "letra": "B", "texto": "Presença de rochas cristalinas de difícil perfuração" },
+      { "letra": "C", "texto": "Fragilidade de solos arenosos sujeitos à erosão e desmoronamentos" },
+      { "letra": "D", "texto": "Excesso de argila compactada com alta impermeabilidade" },
+      { "letra": "E", "texto": "Solos lateríticos impenetráveis" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Tabuleiros litorâneos são compostos por solos arenosos e pouco coesos, o que favorece a erosão e dificulta a estabilidade de construções e estradas."
+  },
+  {
+    "id": 390,
+    "enunciado": "As planícies do Pantanal são formadas predominantemente por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Depósitos de origem glacial" },
+      { "letra": "B", "texto": "Materiais sedimentares recentes, sujeitos a inundações periódicas" },
+      { "letra": "C", "texto": "Rochas metamórficas antigas" },
+      { "letra": "D", "texto": "Derrames basálticos" },
+      { "letra": "E", "texto": "Lavas vulcânicas do Proterozoico" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Pantanal é uma planície sedimentar recente sujeita a processos de inundação sazonal, com solos formados por deposição fluvial contínua."
+  },
+  {
+    "id": 391,
+    "enunciado": "No relevo brasileiro, os planaltos predominam sobre as planícies. Isso se deve principalmente ao fato de que:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O Brasil está localizado em um cinturão de orogênese ativa" },
+      { "letra": "B", "texto": "As bacias sedimentares são jovens e elevadas" },
+      { "letra": "C", "texto": "A maioria do território foi intensamente erodida, restando superfícies elevadas" },
+      { "letra": "D", "texto": "A presença de escudos arqueanos impede a formação de planícies" },
+      { "letra": "E", "texto": "O clima tropical impede a formação de formas planas" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A predominância de planaltos está relacionada ao intenso desgaste erosivo em estruturas antigas, o que originou superfícies rebaixadas e suavizadas, mas ainda elevadas."
+  },
+  {
+    "id": 392,
+    "contexto": "Pesquisadores estudam áreas do semiárido nordestino, onde o relevo influencia o armazenamento de água subterrânea.",
+    "enunciado": "As formações cristalinas dessas regiões apresentam qual característica quanto ao aquífero?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Alta porosidade e grande capacidade de armazenamento" },
+      { "letra": "B", "texto": "Permeabilidade elevada por fraturamento das rochas" },
+      { "letra": "C", "texto": "Baixa porosidade e baixa retenção de água" },
+      { "letra": "D", "texto": "Elevada infiltração e surgência de águas termais" },
+      { "letra": "E", "texto": "Presença constante de lençóis freáticos profundos" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As rochas cristalinas do semiárido são pouco porosas e dificultam a infiltração e retenção de água, o que limita os aquíferos e o acesso ao lençol freático."
+  },
+  {
+    "id": 393,
+    "enunciado": "Em que região brasileira é mais comum a ocorrência de planaltos estruturais com cobertura de latossolos ácidos?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Amazônia Ocidental" },
+      { "letra": "B", "texto": "Centro-Oeste brasileiro" },
+      { "letra": "C", "texto": "Litoral sul" },
+      { "letra": "D", "texto": "Pampa gaúcho" },
+      { "letra": "E", "texto": "Zona da Mata mineira" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Centro-Oeste abriga chapadões estruturais com solos profundos, como os latossolos ácidos, exigindo correção para uso agrícola intensivo."
+  },
+  {
+    "id": 394,
+    "enunciado": "Os tabuleiros costeiros do Nordeste se destacam por apresentar:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Depressões com solos argilosos e vegetação de várzea" },
+      { "letra": "B", "texto": "Relevos altos esculpidos por rios perenes" },
+      { "letra": "C", "texto": "Superfícies levemente inclinadas e solos arenosos" },
+      { "letra": "D", "texto": "Formações cristalinas com afloramentos graníticos" },
+      { "letra": "E", "texto": "Serras dobradas formadas por tectonismo recente" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os tabuleiros litorâneos do Nordeste são antigos terraços marinhos com solos arenosos, levemente inclinados e suscetíveis à erosão costeira."
+  },
+  {
+    "id": 395,
+    "contexto": "Na formação da Serra do Mar, observam-se escarpas elevadas paralelas ao litoral sudeste.",
+    "enunciado": "Essa formação geológica resulta principalmente de:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Falhamentos antigos associados ao soerguimento da borda continental" },
+      { "letra": "B", "texto": "Dobramentos recentes e elevação alpina" },
+      { "letra": "C", "texto": "Deposição de sedimentos e movimentação de dunas" },
+      { "letra": "D", "texto": "Tectonismo lateral com vulcanismo ácido" },
+      { "letra": "E", "texto": "Erosão fluvial intensa em áreas sedimentares" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A Serra do Mar é resultado de falhamentos tectônicos antigos que elevaram blocos rochosos, formando escarpas paralelas à costa atlântica."
+  },
+  {
+    "id": 396,
+    "enunciado": "A escarpa da Serra Geral, no Sul do Brasil, é formada por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Dobramentos modernos do Neogeno" },
+      { "letra": "B", "texto": "Depósitos glaciais do Quaternário" },
+      { "letra": "C", "texto": "Derrames basálticos associados a vulcanismo fissural" },
+      { "letra": "D", "texto": "Materiais sedimentares recobertos por aluviões" },
+      { "letra": "E", "texto": "Erosão fluvial recente sobre chapadas" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A escarpa da Serra Geral resulta de antigos derrames basálticos no Mesozoico, relacionados ao vulcanismo fissural da separação da América do Sul da África."
+  },
+  {
+    "id": 397,
+    "enunciado": "Qual a principal diferença entre planaltos e depressões no modelo de classificação de Jurandyr Ross?",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planaltos têm origem vulcânica; depressões, glacial" },
+      { "letra": "B", "texto": "Planaltos formam-se por sedimentação; depressões, por erosão" },
+      { "letra": "C", "texto": "Planaltos têm maior altitude absoluta; depressões, menor" },
+      { "letra": "D", "texto": "Planaltos predominam erosão; depressões também, mas com menor energia" },
+      { "letra": "E", "texto": "Não há distinção processual entre os dois" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Segundo Jurandyr Ross, a diferença está na energia do relevo: planaltos são áreas de predominância de erosão e altitudes relativas elevadas, enquanto as depressões também resultam de erosão, mas com rebaixamento relativo."
+  },
+  {
+    "id": 398,
+    "enunciado": "As serras da Mantiqueira e do Espinhaço são formadas predominantemente por:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Rochas sedimentares recentes" },
+      { "letra": "B", "texto": "Formações graníticas e gnáissicas antigas" },
+      { "letra": "C", "texto": "Dobramentos terciários do Paleoceno" },
+      { "letra": "D", "texto": "Arenitos e calcários do Cretáceo" },
+      { "letra": "E", "texto": "Lavas e tufos basálticos" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Essas serras são compostas por rochas muito antigas, como granitos e gnaisses, que sofreram processos de soerguimento e erosão ao longo de milhões de anos."
+  },
+  {
+    "id": 399,
+    "contexto": "Em áreas de contato entre planaltos e planícies amazônicas, observa-se uma faixa de transição com escarpas e variação altimétrica acentuada.",
+    "enunciado": "Essa faixa é classificada no modelo de Ross como:",
+    "disciplina": "Geografia",
+    "assunto": "Relevo Brasileiro",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Planalto residuais" },
+      { "letra": "B", "texto": "Planícies fluviais recentes" },
+      { "letra": "C", "texto": "Depressões periféricas" },
+      { "letra": "D", "texto": "Pediplanos intermontanos" },
+      { "letra": "E", "texto": "Cuestas marginais" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As depressões periféricas são áreas de transição entre planaltos e planícies, com altitudes intermediárias e origem principalmente erosiva."
   }
 ]
