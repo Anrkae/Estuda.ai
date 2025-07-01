@@ -1,5 +1,5 @@
 [
-    {
+  {
     "id": 310,
     "contexto": "A Revolta de Beckman ocorreu em 1684, no Maranhão, liderada pelos irmãos Manuel e Tomás Beckman. Os revoltosos se insurgiram contra a Companhia de Comércio do Estado do Maranhão, acusada de descumprir seus compromissos comerciais com a população local.",
     "enunciado": "Com base no contexto apresentado, é correto afirmar sobre a Revolta de Beckman:",
@@ -218,5 +218,665 @@
     ],
     "resposta_correta": "C",
     "resolucao": "A elite agrária dependia da mão de obra escravizada e dos gêneros importados, o que foi afetado pela má gestão da Companhia."
+  },
+  {
+    "id": 320,
+    "contexto": "A Companhia de Comércio do Maranhão foi implantada como parte da política mercantilista da Coroa portuguesa, buscando controlar o comércio colonial e garantir lucros para a metrópole.",
+    "enunciado": "A criação da Companhia de Comércio do Maranhão reflete qual aspecto da política colonial portuguesa?",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A adoção de práticas econômicas liberais no século XVII." },
+      { "letra": "B", "texto": "O abandono do sistema de capitanias hereditárias." },
+      { "letra": "C", "texto": "A centralização do comércio sob o modelo mercantilista." },
+      { "letra": "D", "texto": "A aliança econômica com os Países Baixos." },
+      { "letra": "E", "texto": "O incentivo à autonomia produtiva das colônias." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A criação da Companhia é exemplo clássico de mercantilismo, buscando garantir o controle e lucro exclusivo para a metrópole."
+  },
+  {
+    "id": 321,
+    "contexto": "A Revolta de Beckman foi uma das primeiras manifestações organizadas de insatisfação contra os abusos do sistema colonial português.",
+    "enunciado": "Qual das alternativas expressa corretamente o caráter da Revolta de Beckman?",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Separatista e influenciada pela Revolução Francesa." },
+      { "letra": "B", "texto": "Colonial, elitista e com objetivos reformistas." },
+      { "letra": "C", "texto": "Religiosa, apoiada pela Companhia de Jesus." },
+      { "letra": "D", "texto": "Revolucionária e antiescravista." },
+      { "letra": "E", "texto": "Popular e de base camponesa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Foi uma revolta liderada pela elite colonial, buscando reformas dentro da estrutura do sistema, não a ruptura com a Coroa."
+  },
+  {
+    "id": 322,
+    "contexto": "A expulsão temporária dos jesuítas do Maranhão, durante a Revolta de Beckman, foi uma resposta à sua atuação contrária à escravização indígena.",
+    "enunciado": "A atitude dos revoltosos em relação aos jesuítas demonstra:",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Alinhamento entre colonos e missionários indígenas." },
+      { "letra": "B", "texto": "Apoio dos religiosos à revolta." },
+      { "letra": "C", "texto": "Conflito entre interesses econômicos e religiosos." },
+      { "letra": "D", "texto": "Interferência francesa no conflito." },
+      { "letra": "E", "texto": "Submissão da elite às normas eclesiásticas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os colonos visavam a escravização dos indígenas, o que se chocava diretamente com a missão religiosa dos jesuítas."
+  },
+  {
+    "id": 323,
+    "contexto": "A Coroa portuguesa buscava aplicar o modelo mercantilista em todas as regiões da colônia, mas no Maranhão a experiência com a Companhia de Comércio fracassou.",
+    "enunciado": "O fracasso da Companhia de Comércio do Maranhão pode ser atribuído:",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "À oposição das autoridades metropolitanas." },
+      { "letra": "B", "texto": "À eficiência das práticas comerciais privadas." },
+      { "letra": "C", "texto": "À incapacidade de atender às necessidades locais." },
+      { "letra": "D", "texto": "Ao boicote dos indígenas aliados aos holandeses." },
+      { "letra": "E", "texto": "À concorrência legal com comerciantes franceses." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Companhia falhava ao fornecer produtos e mão de obra, gerando crise entre colonos e administração portuguesa."
+  },
+  {
+    "id": 324,
+    "contexto": "Tomás Beckman, irmão de Manuel Beckman, foi um dos articuladores do movimento, representando os interesses da elite mercantil maranhense.",
+    "enunciado": "Qual era o perfil social e político dos líderes da Revolta de Beckman?",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Religiosos e membros da Companhia de Jesus." },
+      { "letra": "B", "texto": "Oficiais metropolitanos enviados por Lisboa." },
+      { "letra": "C", "texto": "Militares de baixa patente vindos do sul." },
+      { "letra": "D", "texto": "Senhores de engenho e comerciantes locais." },
+      { "letra": "E", "texto": "Artífices urbanos e camponeses indígenas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A revolta foi protagonizada por setores da elite colonial, descontentes com os rumos da política econômica da metrópole."
+  },
+  {
+    "id": 325,
+    "contexto": "Embora reprimida, a Revolta de Beckman gerou mudanças administrativas no Maranhão, incluindo a substituição do governador e o fim da Companhia.",
+    "enunciado": "Uma consequência indireta da Revolta de Beckman foi:",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O fim da cobrança de impostos pela Coroa." },
+      { "letra": "B", "texto": "A oficialização da escravidão indígena no Norte." },
+      { "letra": "C", "texto": "A substituição do governador e extinção da Companhia." },
+      { "letra": "D", "texto": "A independência do Maranhão por decreto régio." },
+      { "letra": "E", "texto": "A incorporação do Maranhão à Capitania da Bahia." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Coroa buscou restaurar a ordem por meio de medidas administrativas, reconhecendo parcialmente os problemas apontados pelos revoltosos."
+  },
+  {
+    "id": 326,
+    "contexto": "O contexto da Revolta de Beckman evidencia tensões típicas do Antigo Sistema Colonial, como o conflito entre interesses locais e decisões impostas pela metrópole.",
+    "enunciado": "A Revolta de Beckman é exemplo típico de qual característica do período colonial?",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Domínio francês sobre as capitanias do norte." },
+      { "letra": "B", "texto": "Conflito entre interesses metropolitanos e locais." },
+      { "letra": "C", "texto": "Fim das atividades missionárias no Maranhão." },
+      { "letra": "D", "texto": "Abolição do trabalho compulsório indígena." },
+      { "letra": "E", "texto": "Implantação do liberalismo econômico na colônia." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O choque entre interesses coloniais e metropolitanos marcou profundamente a Revolta, sendo uma constante no período colonial."
+  },
+  {
+    "id": 327,
+    "contexto": "A Revolta de Beckman é considerada um marco nas lutas coloniais contra os abusos da administração portuguesa, embora tenha tido caráter regional.",
+    "enunciado": "Qual é a principal importância histórica da Revolta de Beckman?",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ter sido a única revolta separatista do século XVII." },
+      { "letra": "B", "texto": "Demonstrar os limites do absolutismo no Brasil." },
+      { "letra": "C", "texto": "Revelar a tensão entre os colonos e a administração metropolitana." },
+      { "letra": "D", "texto": "Consolidar o tráfico de africanos no norte." },
+      { "letra": "E", "texto": "Dar origem à capitania do Grão-Pará." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A revolta teve papel central ao evidenciar os conflitos locais diante das imposições da Coroa portuguesa."
+  },
+  {
+    "id": 328,
+    "contexto": "O Maranhão integrava o Estado do Maranhão e Grão-Pará, separado administrativamente do Estado do Brasil até o século XVIII.",
+    "enunciado": "A separação administrativa entre Maranhão e Brasil tinha como objetivo:",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Facilitar o controle religioso jesuítico." },
+      { "letra": "B", "texto": "Proteger as fronteiras do sul." },
+      { "letra": "C", "texto": "Aumentar o poder dos governadores locais." },
+      { "letra": "D", "texto": "Melhorar a administração e defesa do norte colonial." },
+      { "letra": "E", "texto": "Criar novas ordens religiosas no Norte." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A divisão administrativa buscava tornar a gestão mais eficaz e proteger áreas estratégicas do Norte do Brasil."
+  },
+  {
+    "id": 329,
+    "contexto": "O ciclo do açúcar no Brasil impulsionou o uso de mão de obra escravizada e a criação de sistemas comerciais entre Europa, África e América.",
+    "enunciado": "Como o contexto econômico do século XVII influenciou a Revolta de Beckman?",
+    "disciplina": "História",
+    "assunto": "Revolta de Beckman",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Reduziu a dependência de mão de obra escravizada." },
+      { "letra": "B", "texto": "Eliminou a necessidade de importação de produtos." },
+      { "letra": "C", "texto": "Intensificou a demanda por escravizados e comércio regulado." },
+      { "letra": "D", "texto": "Estimulou o desenvolvimento da indústria local." },
+      { "letra": "E", "texto": "Aboliu o sistema de plantation no norte da colônia." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A demanda por escravizados e produtos importados gerava pressão sobre a Companhia e insatisfação entre os colonos, alimentando a revolta."
+  },
+  {
+    "id": 330,
+    "contexto": "A Guerra dos Emboabas foi um conflito ocorrido entre 1707 e 1709 nas Minas Gerais, envolvendo paulistas, que inicialmente descobriram ouro na região, e os chamados 'emboabas', majoritariamente forasteiros interessados na exploração aurífera.",
+    "enunciado": "A principal causa da Guerra dos Emboabas foi:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A disputa entre indígenas e bandeirantes pela posse da terra." },
+      { "letra": "B", "texto": "A luta contra a abolição do trabalho escravo." },
+      { "letra": "C", "texto": "O confronto entre paulistas e forasteiros pela exploração do ouro." },
+      { "letra": "D", "texto": "A resistência dos jesuítas ao avanço da mineração." },
+      { "letra": "E", "texto": "A divisão do território mineiro entre Portugal e Espanha." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O conflito foi motivado pela rivalidade entre paulistas e os emboabas, que disputavam o controle das recém-descobertas jazidas de ouro."
+  },
+  {
+    "id": 331,
+    "contexto": "Os emboabas eram compostos por indivíduos de várias regiões, principalmente da Bahia, Rio de Janeiro e Portugal, que chegaram às minas atraídos pela riqueza do ouro.",
+    "enunciado": "O termo 'emboaba', utilizado pelos paulistas, tinha conotação pejorativa e indicava:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O pertencimento a uma elite local." },
+      { "letra": "B", "texto": "O uso de calçados fechados, típico dos forasteiros." },
+      { "letra": "C", "texto": "A fidelidade ao rei português." },
+      { "letra": "D", "texto": "A origem indígena dos garimpeiros." },
+      { "letra": "E", "texto": "A ligação direta com o tráfico de escravos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "‘Emboaba’ significa ‘aves de pés cobertos’ ou ‘botas grandes’, ironizando os forasteiros que usavam sapatos fechados, ao contrário dos paulistas."
+  },
+  {
+    "id": 332,
+    "contexto": "Durante a Guerra dos Emboabas, os paulistas exigiam o direito exclusivo de exploração das minas de ouro, alegando terem sido os descobridores da região.",
+    "enunciado": "A justificativa dos paulistas para o controle exclusivo das minas baseava-se:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "No apoio da Coroa Portuguesa à sua causa." },
+      { "letra": "B", "texto": "Na primazia da descoberta e ocupação das minas." },
+      { "letra": "C", "texto": "Na presença de tropas militares regulares." },
+      { "letra": "D", "texto": "Na associação com missionários da região." },
+      { "letra": "E", "texto": "No uso exclusivo de trabalho indígena." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os paulistas consideravam-se com direito prioritário por terem desbravado o interior e descoberto o ouro nas Minas Gerais."
+  },
+  {
+    "id": 333,
+    "contexto": "A Coroa portuguesa viu com preocupação a Guerra dos Emboabas, pois o conflito interno ameaçava a estabilidade e os lucros da mineração.",
+    "enunciado": "A principal atitude da Coroa frente à Guerra dos Emboabas foi:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Apoiar os paulistas com tropas oficiais." },
+      { "letra": "B", "texto": "Incentivar a expansão para o sul da colônia." },
+      { "letra": "C", "texto": "Medir e dividir as minas entre as partes envolvidas." },
+      { "letra": "D", "texto": "Criar o sistema de capitação e intervir diretamente na região." },
+      { "letra": "E", "texto": "Distribuir sesmarias apenas aos emboabas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Coroa interveio para evitar prejuízos econômicos, estabelecendo controle direto sobre a exploração mineral e criando a capitania das Minas."
+  },
+  {
+    "id": 334,
+    "contexto": "Após o fim do conflito, em 1709, a Coroa criou a Capitania de São Paulo e Minas de Ouro, separando a administração local e reforçando o controle sobre a mineração.",
+    "enunciado": "A criação da Capitania de São Paulo e Minas de Ouro teve como objetivo:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Premiar os paulistas por sua lealdade." },
+      { "letra": "B", "texto": "Isolar a região das invasões francesas." },
+      { "letra": "C", "texto": "Reduzir tensões locais e centralizar o controle da mineração." },
+      { "letra": "D", "texto": "Estimular a independência das vilas mineiras." },
+      { "letra": "E", "texto": "Impedir o avanço dos bandeirantes rumo ao sul." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Com a nova capitania, a Coroa buscava conter conflitos e reforçar o controle fiscal e administrativo sobre a exploração do ouro."
+  },
+  {
+    "id": 335,
+    "contexto": "A Guerra dos Emboabas teve episódios violentos, incluindo a chacina do Capão da Traição, quando diversos paulistas foram mortos após se renderem.",
+    "enunciado": "O episódio conhecido como Capão da Traição demonstra:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A violência praticada pelos indígenas aliados aos emboabas." },
+      { "letra": "B", "texto": "O apoio militar português aos paulistas." },
+      { "letra": "C", "texto": "O massacre de paulistas após rendição, pelos emboabas." },
+      { "letra": "D", "texto": "A fundação da Capitania de Minas Gerais." },
+      { "letra": "E", "texto": "O combate entre os jesuítas e os bandeirantes." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os emboabas assassinaram paulistas rendidos, o que acirrou ainda mais a violência e causou forte comoção entre os bandeirantes."
+  },
+  {
+    "id": 336,
+    "contexto": "Com a vitória dos emboabas, os paulistas passaram a se deslocar para outras regiões, abrindo caminho para novas frentes mineradoras.",
+    "enunciado": "Uma consequência indireta da Guerra dos Emboabas foi:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O abandono total das atividades mineradoras." },
+      { "letra": "B", "texto": "A colonização de regiões como Goiás e Mato Grosso." },
+      { "letra": "C", "texto": "A fundação de missões jesuíticas no Sudeste." },
+      { "letra": "D", "texto": "A independência de São Paulo por decreto régio." },
+      { "letra": "E", "texto": "A destruição das vilas fundadas por emboabas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os paulistas, derrotados, buscaram novas áreas de exploração mineral, contribuindo para a expansão territorial e econômica do interior."
+  },
+  {
+    "id": 337,
+    "contexto": "A Guerra dos Emboabas é considerada uma das primeiras disputas por recursos naturais no território brasileiro.",
+    "enunciado": "A Guerra dos Emboabas revela qual aspecto central da colonização portuguesa no Brasil?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A ausência de disputas entre grupos coloniais." },
+      { "letra": "B", "texto": "O controle equilibrado das riquezas pelas autoridades locais." },
+      { "letra": "C", "texto": "A dependência da Coroa em relação aos paulistas." },
+      { "letra": "D", "texto": "A disputa interna por riquezas e o controle sobre as minas." },
+      { "letra": "E", "texto": "A resistência indígena à presença dos emboabas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O episódio mostra como a riqueza mineral provocava disputas violentas entre diferentes grupos coloniais."
+  },
+  {
+    "id": 338,
+    "contexto": "A intensa movimentação populacional provocada pela corrida do ouro resultou em desequilíbrios sociais e administrativos no início do século XVIII.",
+    "enunciado": "Qual foi um dos principais efeitos da corrida do ouro sobre a administração colonial?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Redução da presença metropolitana na colônia." },
+      { "letra": "B", "texto": "Estagnação das vilas do litoral." },
+      { "letra": "C", "texto": "Centralização das decisões sobre mineração nas mãos da Coroa." },
+      { "letra": "D", "texto": "Diminuição da cobrança de impostos." },
+      { "letra": "E", "texto": "Fortalecimento dos poderes das câmaras municipais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A mineração levou a uma política de maior centralização por parte da Coroa, que visava assegurar os lucros do ouro."
+  },
+  {
+    "id": 339,
+    "contexto": "O deslocamento de paulistas após a derrota na Guerra dos Emboabas resultou em novas frentes de exploração mineral e de expansão territorial.",
+    "enunciado": "A expansão para Goiás e Mato Grosso, após a Guerra dos Emboabas, foi motivada principalmente:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Pela decisão régia de expulsar os emboabas da região das minas." },
+      { "letra": "B", "texto": "Pela busca de terras férteis para a lavoura canavieira." },
+      { "letra": "C", "texto": "Pela continuação da busca por ouro e metais preciosos." },
+      { "letra": "D", "texto": "Pelo crescimento das missões religiosas no Norte." },
+      { "letra": "E", "texto": "Pelo declínio do tráfico de escravos africanos." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Derrotados, os paulistas seguiram rumo ao interior do território em busca de novas minas, ampliando o espaço colonial."
+  },
+  {
+    "id": 340,
+    "contexto": "A descoberta do ouro nas Minas Gerais transformou radicalmente a estrutura econômica e populacional da colônia, provocando a chegada massiva de forasteiros.",
+    "enunciado": "Qual foi um dos fatores que intensificou o conflito entre paulistas e emboabas?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A rejeição dos paulistas ao sistema de sesmarias." },
+      { "letra": "B", "texto": "O apoio explícito da Coroa aos paulistas." },
+      { "letra": "C", "texto": "A imposição do monopólio açucareiro nas minas." },
+      { "letra": "D", "texto": "A chegada em massa de forasteiros às áreas de mineração." },
+      { "letra": "E", "texto": "A abolição do trabalho compulsório indígena." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A chegada de emboabas, vindos de outras regiões, acirrou a disputa pelo ouro e pelo controle político das vilas mineradoras."
+  },
+  {
+    "id": 341,
+    "contexto": "A ausência de uma estrutura administrativa consolidada nas primeiras décadas da mineração contribuiu para conflitos como a Guerra dos Emboabas.",
+    "enunciado": "A fragilidade do controle estatal nas áreas mineradoras favoreceu:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A organização de um governo popular autônomo." },
+      { "letra": "B", "texto": "O domínio total dos indígenas sobre as minas." },
+      { "letra": "C", "texto": "A explosão de rivalidades entre grupos coloniais." },
+      { "letra": "D", "texto": "A criação de universidades locais para mineradores." },
+      { "letra": "E", "texto": "A federalização das vilas mineradoras." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A falta de presença efetiva da Coroa permitiu que grupos como paulistas e emboabas entrassem em confronto direto pelo controle local."
+  },
+  {
+    "id": 342,
+    "contexto": "A Guerra dos Emboabas é considerada um marco na história das disputas internas na colônia, demonstrando a complexidade das relações entre diferentes grupos sociais.",
+    "enunciado": "Qual a importância histórica da Guerra dos Emboabas no contexto colonial?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ela fortaleceu o poder dos bandeirantes sobre o norte do país." },
+      { "letra": "B", "texto": "Foi o primeiro movimento separatista do Brasil colonial." },
+      { "letra": "C", "texto": "Evidenciou os conflitos entre grupos coloniais pelo controle da riqueza." },
+      { "letra": "D", "texto": "Resultou na expulsão dos portugueses da região mineradora." },
+      { "letra": "E", "texto": "Marcou a aliança entre emboabas e indígenas contra a Coroa." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A guerra demonstrou como a exploração de riquezas na colônia gerava rivalidades entre grupos coloniais, desafiando a autoridade da metrópole."
+  },
+  {
+    "id": 343,
+    "contexto": "O fim do conflito marcou o início de um período de maior intervenção da Coroa portuguesa na administração das minas e da região sudeste.",
+    "enunciado": "Como a Coroa reagiu ao final da Guerra dos Emboabas?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Privatizando as minas em favor dos paulistas." },
+      { "letra": "B", "texto": "Estimulando nova migração para o litoral." },
+      { "letra": "C", "texto": "Estabelecendo maior centralização sobre a exploração mineral." },
+      { "letra": "D", "texto": "Criando uma aliança formal com os emboabas." },
+      { "letra": "E", "texto": "Proibindo novas descobertas auríferas no interior." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Coroa interveio diretamente, criando mecanismos para fiscalizar e lucrar com a mineração, como o quinto e as casas de fundição."
+  },
+  {
+    "id": 344,
+    "contexto": "O processo de urbanização em Minas Gerais foi acelerado após os conflitos, com o surgimento de vilas e estruturas administrativas mais estáveis.",
+    "enunciado": "Uma consequência da Guerra dos Emboabas para o espaço urbano colonial foi:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A paralisação total da mineração por décadas." },
+      { "letra": "B", "texto": "O surgimento de estruturas urbanas mais organizadas." },
+      { "letra": "C", "texto": "A extinção das vilas paulistas e sua expulsão da região." },
+      { "letra": "D", "texto": "A conversão das vilas em colônias militares." },
+      { "letra": "E", "texto": "A fundação de uma nova capital colonial." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Com o controle da Coroa e a pacificação da região, houve maior organização administrativa e urbana nas áreas mineradoras."
+  },
+  {
+    "id": 345,
+    "contexto": "A mineração provocou intensas transformações sociais, gerando novas hierarquias, tensões e oportunidades de ascensão, especialmente para forasteiros.",
+    "enunciado": "Que mudança social relevante ocorreu durante e após a Guerra dos Emboabas?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A ascensão dos indígenas à elite colonial." },
+      { "letra": "B", "texto": "A afirmação de grupos forasteiros na política local." },
+      { "letra": "C", "texto": "A fundação de quilombos apoiados pela Coroa." },
+      { "letra": "D", "texto": "A emancipação dos cativos por decreto régio." },
+      { "letra": "E", "texto": "A eliminação da escravidão nas vilas mineradoras." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Com a vitória dos emboabas, muitos passaram a ocupar posições de poder nas vilas e câmaras municipais, substituindo os paulistas."
+  },
+  {
+    "id": 346,
+    "contexto": "Além de serem disputas políticas, os conflitos nas minas envolviam também diferentes visões sobre propriedade e legitimidade.",
+    "enunciado": "Durante a Guerra dos Emboabas, o conceito de propriedade sobre as minas era:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Baseado exclusivamente no direito divino dos reis." },
+      { "letra": "B", "texto": "Regulado por tratados com populações indígenas." },
+      { "letra": "C", "texto": "Determinado pela posse e descoberta da terra." },
+      { "letra": "D", "texto": "Fundado em doações de ordens religiosas." },
+      { "letra": "E", "texto": "Exclusivo aos nascidos na colônia." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os paulistas defendiam a ideia de que quem descobria tinha o direito à posse, o que se chocava com a visão da Coroa e dos emboabas."
+  },
+  {
+    "id": 347,
+    "contexto": "A Coroa portuguesa viu-se obrigada a aplicar medidas fiscais rigorosas para controlar a produção aurífera e garantir receitas.",
+    "enunciado": "Qual medida fiscal foi adotada após a Guerra dos Emboabas para garantir os lucros da Coroa?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Imposto da carta régia." },
+      { "letra": "B", "texto": "Décima real." },
+      { "letra": "C", "texto": "O dízimo laico." },
+      { "letra": "D", "texto": "O quinto e a instalação de casas de fundição." },
+      { "letra": "E", "texto": "Tributo das entradas gerais." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A cobrança do quinto (20% do ouro) e a fundição obrigatória buscavam impedir o contrabando e garantir a parte da metrópole."
+  },
+  {
+    "id": 348,
+    "contexto": "O domínio dos emboabas nas vilas mineradoras criou novas formas de organização social e administrativa alinhadas aos interesses da Coroa.",
+    "enunciado": "O domínio dos emboabas após o conflito influenciou:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A independência de Minas Gerais no século XVIII." },
+      { "letra": "B", "texto": "A submissão total da região às autoridades paulistas." },
+      { "letra": "C", "texto": "A criação de vilas diretamente subordinadas à Coroa." },
+      { "letra": "D", "texto": "O retorno dos bandeirantes ao poder local." },
+      { "letra": "E", "texto": "O fim da exploração mineral no sudeste." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Coroa reorganizou a administração da região mineradora, criando vilas com autoridades leais à metrópole e afastando os paulistas do poder."
+  },
+  {
+    "id": 349,
+    "contexto": "A rivalidade entre paulistas e emboabas pode ser vista como um reflexo das disputas por poder no interior da sociedade colonial.",
+    "enunciado": "O que a Guerra dos Emboabas revela sobre as relações internas no Brasil colonial?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Emboabas",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "ESA",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Que havia plena igualdade entre os grupos coloniais." },
+      { "letra": "B", "texto": "Que os conflitos sociais eram exclusivos da metrópole." },
+      { "letra": "C", "texto": "Que diferentes grupos coloniais disputavam espaço e riqueza." },
+      { "letra": "D", "texto": "Que a sociedade colonial rejeitava a escravidão." },
+      { "letra": "E", "texto": "Que as decisões políticas eram sempre coletivas e consensuais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A disputa pelo controle das minas revelou as tensões internas da sociedade colonial e a luta por poder e prestígio entre grupos locais."
   }
 ]
