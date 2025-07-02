@@ -56,14 +56,60 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   const preencherFiltros = () => {
-    const disciplinas = [...new Set(todasQuestoes.map(q => q.disciplina))].sort();
-    const assuntos = [...new Set(todasQuestoes.map(q => q.assunto))].sort();
-    const anos = [...new Set(todasQuestoes.map(q => q.metadata?.ano))].sort((a, b) => b - a);
-
-    filtroDisciplina.setChoices(disciplinas.map(d => ({ value: d, label: d })), 'value', 'label', true);
-    filtroAssunto.setChoices(assuntos.map(a => ({ value: a, label: a })), 'value', 'label', true);
-    filtroAno.setChoices(anos.map(a => ({ value: a, label: a })), 'value', 'label', true);
+  const disciplinas = [...new Set(todasQuestoes.map(q => q.disciplina))].sort();
+  const anos = [...new Set(todasQuestoes.map(q => q.metadata?.ano))].sort((a, b) => b - a);
+  
+  // Preenche disciplinas e anos
+  filtroDisciplina.setChoices(
+    disciplinas.map(d => ({ value: d, label: d })),
+    'value',
+    'label',
+    true
+  );
+  
+  filtroAno.setChoices(
+    anos.map(a => ({ value: a, label: a })),
+    'value',
+    'label',
+    true
+    );
+    
+    // Preenche os assuntos inicialmente com todas as disciplinas
+    atualizarAssuntosPorDisciplina([]);
   };
+  
+  const atualizarAssuntosPorDisciplina = (disciplinasSelecionadas) => {
+    let assuntosFiltrados = [];
+    
+    if (disciplinasSelecionadas.length === 0) {
+      // Nenhuma disciplina selecionada → todos os assuntos
+      assuntosFiltrados = [...new Set(todasQuestoes.map(q => q.assunto))];
+    } else {
+      // Filtra os assuntos com base nas disciplinas selecionadas
+      assuntosFiltrados = [
+        ...new Set(
+          todasQuestoes
+          .filter(q => disciplinasSelecionadas.includes(q.disciplina))
+          .map(q => q.assunto)
+        )
+      ];
+    }
+    
+    // Atualiza o filtro de assunto com os assuntos filtrados
+    filtroAssunto.clearStore();
+    filtroAssunto.setChoices(
+      assuntosFiltrados.map(a => ({ value: a, label: a })),
+      'value',
+      'label',
+      true
+    );
+  };
+  
+  // Atualiza os assuntos sempre que as disciplinas forem alteradas
+  document.querySelector('#filtroDisciplina').addEventListener('change', () => {
+    const disciplinasSelecionadas = filtroDisciplina.getValue(true);
+    atualizarAssuntosPorDisciplina(disciplinasSelecionadas);
+  });
 
   const exibirQuestoes = (lista) => {
     questoesOutput.innerHTML = '';
