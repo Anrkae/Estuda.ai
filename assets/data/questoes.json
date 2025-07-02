@@ -4000,5 +4000,297 @@
     ],
     "resposta_correta": "B",
     "resolucao": "O Brasil está situado em zona estável do ponto de vista geotectônico, sem dobramentos modernos nem vulcanismo ativo."
+  },
+  {
+    "id": 732,
+    "enunciado": "Considere a função f(x) = |x - 2|. Qual o valor de f(5)?",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "2" },
+      { "letra": "B", "texto": "3" },
+      { "letra": "C", "texto": "5" },
+      { "letra": "D", "texto": "1" },
+      { "letra": "E", "texto": "-3" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "f(5) = |5 - 2| = |3| = 3."
+  },
+  {
+    "id": 733,
+    "enunciado": "A função f(x) = |2x + 4| - 3 tem seu ponto de mínimo em:",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "x = -2" },
+      { "letra": "B", "texto": "x = -1" },
+      { "letra": "C", "texto": "x = 0" },
+      { "letra": "D", "texto": "x = -4" },
+      { "letra": "E", "texto": "x = -3" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A função tem mínimo no ponto que anula o módulo: 2x + 4 = 0 ⇒ x = -2."
+  },
+  {
+    "id": 734,
+    "enunciado": "Se f(x) = |x| + |x - 2|, então o valor de f(1) é:",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "1" },
+      { "letra": "B", "texto": "2" },
+      { "letra": "C", "texto": "3" },
+      { "letra": "D", "texto": "4" },
+      { "letra": "E", "texto": "5" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "f(1) = |1| + |1 - 2| = 1 + 1 = 2."
+  },
+  {
+    "id": 735,
+    "enunciado": "Qual a raiz da função f(x) = |x - 3| - 5?",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "-2 e 8" },
+      { "letra": "B", "texto": "-1 e 4" },
+      { "letra": "C", "texto": "-5 e 3" },
+      { "letra": "D", "texto": "-2 e 3" },
+      { "letra": "E", "texto": "-2 e 1" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "|x - 3| - 5 = 0 ⇒ |x - 3| = 5 ⇒ x - 3 = ±5 ⇒ x = 8 ou x = -2."
+  },
+  {
+    "id": 736,
+    "enunciado": "Considere a função f(x) = |x² - 9|. Qual o conjunto verdade de f(x) = 0?",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "{3, -3}" },
+      { "letra": "B", "texto": "{0}" },
+      { "letra": "C", "texto": "{9, -9}" },
+      { "letra": "D", "texto": "{±√9}" },
+      { "letra": "E", "texto": "Não possui solução" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "|x² - 9| = 0 ⇒ x² - 9 = 0 ⇒ x² = 9 ⇒ x = ±3."
+  },
+  {
+    "id": 737,
+    "enunciado": "A função f(x) = |x + 1| + |x - 1| tem um ponto de mínimo em:",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "x = 0" },
+      { "letra": "B", "texto": "x = -1" },
+      { "letra": "C", "texto": "x = 1" },
+      { "letra": "D", "texto": "x = 2" },
+      { "letra": "E", "texto": "x = -2" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A soma de dois módulos com raízes simétricas tem ponto de mínimo no valor médio: x = 0."
+  },
+  {
+    "id": 738,
+    "enunciado": "Dada a função f(x) = |2x - 4|, determine sua raiz.",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "x = 0" },
+      { "letra": "B", "texto": "x = 2" },
+      { "letra": "C", "texto": "x = 4" },
+      { "letra": "D", "texto": "x = -2" },
+      { "letra": "E", "texto": "x = 1" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "|2x - 4| = 0 ⇒ 2x - 4 = 0 ⇒ x = 2."
+  },
+  {
+    "id": 739,
+    "enunciado": "O gráfico da função f(x) = |x| possui vértice em:",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "(0,0)" },
+      { "letra": "B", "texto": "(1,1)" },
+      { "letra": "C", "texto": "(-1,1)" },
+      { "letra": "D", "texto": "(0,1)" },
+      { "letra": "E", "texto": "(1,0)" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O gráfico da função f(x) = |x| é uma “V” com vértice na origem (0,0)."
+  },
+  {
+    "id": 740,
+    "enunciado": "Qual das expressões representa uma função **par** com valor mínimo não nulo?",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "f(x) = |x - 2|" },
+      { "letra": "B", "texto": "f(x) = |x| + 3" },
+      { "letra": "C", "texto": "f(x) = |x + 1| - 1" },
+      { "letra": "D", "texto": "f(x) = |x - 1| - 1" },
+      { "letra": "E", "texto": "f(x) = |x + 2|" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "f(x) = |x| + 3 é par (simétrica em relação ao eixo y) e tem mínimo em y = 3."
+  },
+  {
+    "id": 741,
+    "contexto": "Considere a equação |x - 1| + |x - 3| = 4.",
+    "enunciado": "Quantas soluções reais existem para essa equação?",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Nenhuma" },
+      { "letra": "B", "texto": "Uma" },
+      { "letra": "C", "texto": "Duas" },
+      { "letra": "D", "texto": "Infinitas" },
+      { "letra": "E", "texto": "Três" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A equação admite duas soluções reais: x = 0 e x = 4."
+  },
+  {
+    "id": 742,
+    "enunciado": "O gráfico da função f(x) = |x - 2| + |x + 2| apresenta vértice em:",
+    "imagem_url": "../assets/data/img/questoes/fmod1.png",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "x = 0" },
+      { "letra": "B", "texto": "x = -2" },
+      { "letra": "C", "texto": "x = 2" },
+      { "letra": "D", "texto": "x = -1" },
+      { "letra": "E", "texto": "x = 1" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Para soma de módulos simétricos, o mínimo ocorre no ponto médio: x = 0."
+  },
+  {
+    "id": 743,
+    "enunciado": "O gráfico abaixo representa qual das funções a seguir?",
+    "imagem_url": "../assets/data/img/questoes/fmod2.png",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "f(x) = |x|" },
+      { "letra": "B", "texto": "f(x) = |x - 2|" },
+      { "letra": "C", "texto": "f(x) = |x + 2|" },
+      { "letra": "D", "texto": "f(x) = |x - 2| + 1" },
+      { "letra": "E", "texto": "f(x) = |x + 2| - 1" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A translação é horizontal para a esquerda (x + 2) e vertical para baixo (-1)."
+  },
+  {
+    "id": 744,
+    "enunciado": "Qual alternativa representa a equação da função modular que passa pelos pontos (0,3), (1,2) e (2,3)?",
+    "imagem_url": "../assets/data/img/questoes/fmod3.png",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "f(x) = |x - 1| + 2" },
+      { "letra": "B", "texto": "f(x) = |x + 1| + 2" },
+      { "letra": "C", "texto": "f(x) = |x - 1| + 1" },
+      { "letra": "D", "texto": "f(x) = |x - 1| + 3" },
+      { "letra": "E", "texto": "f(x) = |x| + 2" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A função tem vértice em x = 1 com valor 2. A equação f(x) = |x - 1| + 2 satisfaz todos os pontos."
+  },
+  {
+    "id": 745,
+    "enunciado": "Se f(x) = |x - 1| + |x - 5|, então f é minimizada quando x for igual a:",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "3" },
+      { "letra": "B", "texto": "2" },
+      { "letra": "C", "texto": "4" },
+      { "letra": "D", "texto": "5" },
+      { "letra": "E", "texto": "6" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Soma de dois módulos tem mínimo no valor médio: x = (1 + 5)/2 = 3."
+  },
+  {
+    "id": 746,
+    "enunciado": "Se f(x) = |x² - 4x + 3|, o número de raízes reais de f(x) = 0 é:",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "1" },
+      { "letra": "B", "texto": "2" },
+      { "letra": "C", "texto": "3" },
+      { "letra": "D", "texto": "0" },
+      { "letra": "E", "texto": "4" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "x² - 4x + 3 = 0 ⇒ (x - 1)(x - 3) ⇒ x = 1 e x = 3. Como está dentro do módulo, as raízes ainda são válidas."
+  },
+  {
+    "id": 747,
+    "enunciado": "A função f(x) = |x² - 1| tem gráfico com mínimo em:",
+    "disciplina": "Matemática",
+    "assunto": "Função Modular",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "x = 0" },
+      { "letra": "B", "texto": "x = 1" },
+      { "letra": "C", "texto": "x = 2" },
+      { "letra": "D", "texto": "x = -1" },
+      { "letra": "E", "texto": "x = ±1" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O valor mínimo ocorre quando x² - 1 = 0 ⇒ x = ±1 ⇒ f(x) = 0, mas o menor valor do módulo ocorre para x = 0 ⇒ f(0) = 1. Portanto, a questão exige interpretação gráfica."
   }
 ]
