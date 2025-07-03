@@ -4805,5 +4805,297 @@
     ],
     "resposta_correta": "D",
     "resolucao": "Ao falar diretamente com a autoridade, usa-se 'Vossa', não 'Sua'."
+  },
+  {
+    "id": 776,
+    "enunciado": "Assinale a alternativa em que o uso do pronome demonstrativo está inadequado quanto à posição no tempo.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Esta semana será decisiva para o batalhão." },
+      { "letra": "B", "texto": "Naquele ano, formaram-se as primeiras tropas." },
+      { "letra": "C", "texto": "Essa manhã foi a mais fria do mês." },
+      { "letra": "D", "texto": "Isto será importante para a missão de hoje." },
+      { "letra": "E", "texto": "Essa decisão foi tomada ontem." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A manhã ainda está em curso, portanto o adequado seria 'esta manhã'. 'Essa' refere-se ao passado próximo, o que gera inadequação."
+  },
+  {
+    "id": 777,
+    "contexto": "No relatório de operações: 'Este relatório apresenta dados atualizados; aquele contém dados históricos.'",
+    "enunciado": "A diferença entre os pronomes demonstrativos 'este' e 'aquele' marca:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Intensidade da informação" },
+      { "letra": "B", "texto": "Posição no espaço apenas" },
+      { "letra": "C", "texto": "Tempo passado e presente" },
+      { "letra": "D", "texto": "Valor afetivo" },
+      { "letra": "E", "texto": "Relação com quem fala e com o interlocutor" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "'Este' refere-se ao que está com quem fala; 'aquele' ao que está distante de ambos (falante e ouvinte)."
+  },
+  {
+    "id": 778,
+    "enunciado": "Em qual alternativa o pronome demonstrativo está incorretamente empregado?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Aqueles soldados participaram do conflito de 1932." },
+      { "letra": "B", "texto": "Essa missão exige preparo físico." },
+      { "letra": "C", "texto": "Esta tropa foi destacada para hoje." },
+      { "letra": "D", "texto": "Aquele foi o melhor resultado entre todos esses." },
+      { "letra": "E", "texto": "Esse documento que trago apresenta o resumo final." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "O pronome 'esse' refere-se a algo próximo do ouvinte ou já mencionado. Como o falante 'traz' o documento, deveria usar 'este'."
+  },
+  {
+    "id": 779,
+    "enunciado": "Assinale a alternativa em que o pronome demonstrativo está usado para retomar uma ideia anterior.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Esses soldados precisam descansar." },
+      { "letra": "B", "texto": "Esta batalha será decisiva." },
+      { "letra": "C", "texto": "Isso foi o que determinou o sucesso." },
+      { "letra": "D", "texto": "Aquele é o meu superior imediato." },
+      { "letra": "E", "texto": "Este é um dos nossos principais valores." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O pronome 'isso' é comumente usado para retomar uma ideia anterior completa, funcionando como pronome anafórico."
+  },
+  {
+    "id": 780,
+    "enunciado": "Aponte a frase em que o uso do demonstrativo **indica futuro**.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Esse mês foi o mais seco do ano." },
+      { "letra": "B", "texto": "Naquele inverno houve nevascas." },
+      { "letra": "C", "texto": "Esta semana teremos nova convocação." },
+      { "letra": "D", "texto": "Esse dia já passou." },
+      { "letra": "E", "texto": "Aquela decisão foi injusta." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Esta semana' está no tempo futuro, e o uso de 'esta' indica o tempo atual ou futuro imediato."
+  },
+  {
+    "id": 781,
+    "contexto": "Durante o planejamento da missão: 'Esta será a ação mais estratégica de todas.'",
+    "enunciado": "O termo 'esta' refere-se a:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Uma ação futura" },
+      { "letra": "B", "texto": "Uma ação passada" },
+      { "letra": "C", "texto": "Uma ação próxima do interlocutor" },
+      { "letra": "D", "texto": "Uma ação indefinida" },
+      { "letra": "E", "texto": "Uma ação já realizada" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O pronome 'esta' geralmente indica proximidade com quem fala ou tempo futuro."
+  },
+  {
+    "id": 782,
+    "enunciado": "Qual alternativa apresenta uso **correto** dos pronomes demonstrativos em relação à estrutura textual?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Essas são as diretrizes, e aquelas foram as antigas." },
+      { "letra": "B", "texto": "Aquele relatório é o que trago comigo." },
+      { "letra": "C", "texto": "Esse uniforme aqui é novo." },
+      { "letra": "D", "texto": "Esta missão que mencionei ocorreu ontem." },
+      { "letra": "E", "texto": "Aqueles soldados lutam neste exato momento." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Uso contrastivo correto entre pronomes demonstrativos: 'essas' para as atuais, 'aquelas' para as antigas."
+  },
+  {
+    "id": 783,
+    "enunciado": "Em qual alternativa o pronome demonstrativo tem valor **catafórico**?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Isso é o que se espera dos líderes: disciplina e coragem." },
+      { "letra": "B", "texto": "Aquele soldado era respeitado." },
+      { "letra": "C", "texto": "Este é o motivo da convocação que você recebeu." },
+      { "letra": "D", "texto": "Essa tropa deve se apresentar em minutos." },
+      { "letra": "E", "texto": "Aquelas ordens foram suspensas." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Isso' antecipa o conteúdo seguinte, sendo um caso clássico de valor catafórico (pronome aponta para frente)."
+  },
+  {
+    "id": 784,
+    "enunciado": "Assinale a alternativa que apresenta **ambiguidade** no uso do pronome demonstrativo.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Esse documento deve ser arquivado com urgência." },
+      { "letra": "B", "texto": "Esse oficial e seu comandante foram promovidos." },
+      { "letra": "C", "texto": "Essa missão será importante." },
+      { "letra": "D", "texto": "Este veículo será substituído." },
+      { "letra": "E", "texto": "Aquele local não será mais utilizado." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Não fica claro se o pronome 'seu' refere-se ao 'oficial' ou ao 'comandante'. Há ambiguidade pronominal."
+  },
+  {
+    "id": 785,
+    "enunciado": "Qual alternativa apresenta uma **regra incorreta** de uso dos pronomes demonstrativos?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "'Este' indica proximidade com quem fala." },
+      { "letra": "B", "texto": "'Esse' retoma ideia anterior." },
+      { "letra": "C", "texto": "'Aquele' é usado para ideias já mencionadas." },
+      { "letra": "D", "texto": "'Isso' refere-se ao que foi dito." },
+      { "letra": "E", "texto": "'Isto' antecipa uma ideia a ser apresentada." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O pronome 'aquele' é normalmente usado para indicar o que está distante no espaço ou tempo, ou para retomar ideia mais afastada, não imediata."
+  },
+  {
+    "id": 786,
+    "enunciado": "Em 'Esses soldados merecem destaque pela bravura', o pronome demonstrativo indica:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tempo passado distante" },
+      { "letra": "B", "texto": "Proximidade do ouvinte" },
+      { "letra": "C", "texto": "Proximidade do falante" },
+      { "letra": "D", "texto": "Ideia futura" },
+      { "letra": "E", "texto": "Ideia abstrata" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Esses' indica algo próximo do ouvinte ou já mencionado no discurso."
+  },
+  {
+    "id": 787,
+    "enunciado": "Em qual alternativa o pronome demonstrativo tem valor de referência a algo que ainda será mencionado?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Essa é a melhor opção entre todas." },
+      { "letra": "B", "texto": "Isso foi o que causou o erro: a falta de atenção." },
+      { "letra": "C", "texto": "Aquele foi o treinamento mais difícil." },
+      { "letra": "D", "texto": "Este foi o motivo: não cumpriu a missão." },
+      { "letra": "E", "texto": "Essas regras foram criadas ontem." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Este' antecipa o conteúdo 'não cumpriu a missão', funcionando como pronome catafórico."
+  },
+  {
+    "id": 788,
+    "contexto": "Relatório oficial: 'Este relatório contém dados operacionais; aquele, dados estratégicos.'",
+    "enunciado": "Qual é o papel dos pronomes demonstrativos nesse contexto?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Comparar tempo presente com passado" },
+      { "letra": "B", "texto": "Estabelecer oposição entre dois elementos" },
+      { "letra": "C", "texto": "Expressar valores afetivos" },
+      { "letra": "D", "texto": "Retomar um conteúdo anterior" },
+      { "letra": "E", "texto": "Enfatizar a ausência de um sujeito" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Este' e 'aquele' são usados para contrastar dois elementos distintos dentro do texto."
+  },
+  {
+    "id": 789,
+    "enunciado": "Aponte a alternativa em que o pronome demonstrativo 'isso' está usado **indevidamente**.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Isso foi o que me disseram." },
+      { "letra": "B", "texto": "Disse isso e saiu." },
+      { "letra": "C", "texto": "Isso será feito amanhã." },
+      { "letra": "D", "texto": "Isso livro é do comandante." },
+      { "letra": "E", "texto": "Não esperava isso de você." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Isso' é um pronome substantivo, e não pode ser usado diretamente antes de um substantivo. O correto seria 'esse livro'."
+  },
+  {
+    "id": 790,
+    "enunciado": "Sobre o uso de pronomes demonstrativos em redações oficiais e relatórios, assinale a afirmativa correta.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Deve-se evitar 'este', pois é muito coloquial." },
+      { "letra": "B", "texto": "O pronome 'isso' é utilizado para antecipar ideias." },
+      { "letra": "C", "texto": "Emprega-se 'este' para referência ao documento em elaboração." },
+      { "letra": "D", "texto": "Aquele é sempre preferido a 'este' em comunicações formais." },
+      { "letra": "E", "texto": "'Esse' se refere ao que ainda será mencionado." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Em textos técnicos, 'este' refere-se ao documento atual; 'esse', a outro documento já mencionado."
+  },
+  {
+    "id": 791,
+    "contexto": "Trecho de instrução: 'A ordem é clara: este batalhão segue para o sul, aquele permanece no norte.'",
+    "enunciado": "No contexto acima, o uso dos pronomes demonstra:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Relação entre tempo verbal e ação" },
+      { "letra": "B", "texto": "Proximidade física entre batalhões" },
+      { "letra": "C", "texto": "Organização por relevância" },
+      { "letra": "D", "texto": "Contraste entre dois elementos pela posição espacial" },
+      { "letra": "E", "texto": "Hierarquia militar" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Usa-se 'este' para o mais próximo (batalhão que parte), e 'aquele' para o mais distante (batalhão que permanece)."
   }
 ]
