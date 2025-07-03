@@ -4292,5 +4292,518 @@
     ],
     "resposta_correta": "A",
     "resolucao": "O valor mínimo ocorre quando x² - 1 = 0 ⇒ x = ±1 ⇒ f(x) = 0, mas o menor valor do módulo ocorre para x = 0 ⇒ f(0) = 1. Portanto, a questão exige interpretação gráfica."
+  },
+  {
+    "id": 748,
+    "contexto": "Durante a cerimônia, o orador disse: 'Aqueles que aqui estão jamais esquecerão o que foi feito por eles.'",
+    "enunciado": "Na frase acima, o termo 'eles' refere-se a:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Os presentes" },
+      { "letra": "B", "texto": "Os oradores" },
+      { "letra": "C", "texto": "Os homenageados" },
+      { "letra": "D", "texto": "Os organizadores" },
+      { "letra": "E", "texto": "Os que fizeram o discurso" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O pronome 'eles' retoma 'os homenageados', que são o foco da ação feita por terceiros."
+  },
+  {
+    "id": 749,
+    "enunciado": "Assinale a alternativa em que há **uso incorreto** de pronome oblíquo.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Entregaram-lhe o prêmio merecido." },
+      { "letra": "B", "texto": "Pediu-me ajuda para a tarefa." },
+      { "letra": "C", "texto": "Vi-o saindo às pressas." },
+      { "letra": "D", "texto": "Ofereceram-me flores e carinho." },
+      { "letra": "E", "texto": "Avisaram-me que eles viriam comigo." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "O pronome 'me' não pode ser seguido da preposição 'comigo'. O correto seria 'Avisaram-me que viriam'."
+  },
+  {
+    "id": 750,
+    "contexto": "Texto de instrução militar: 'Cada soldado deve cuidar do seu equipamento.'",
+    "enunciado": "O pronome possessivo 'seu' na frase acima está empregado de forma:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ambígua, pois pode indicar equipamento de outro" },
+      { "letra": "B", "texto": "Correta, concordando com o sujeito da oração" },
+      { "letra": "C", "texto": "Errada, pois deveria usar 'teu'" },
+      { "letra": "D", "texto": "Excessiva, poderia ser omitida" },
+      { "letra": "E", "texto": "Arcaica, fora do uso atual" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O pronome 'seu' está corretamente empregado como possessivo do sujeito 'cada soldado'."
+  },
+  {
+    "id": 751,
+    "enunciado": "Assinale a alternativa em que o pronome relativo foi empregado de forma incorreta.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A cidade onde nasci é pacata." },
+      { "letra": "B", "texto": "O amigo a quem me referi chegou." },
+      { "letra": "C", "texto": "O livro que comprei é caro." },
+      { "letra": "D", "texto": "A decisão cujo resultado surpreendeu a todos." },
+      { "letra": "E", "texto": "A moça qual conheci era simpática." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Falta a preposição antes de 'qual': o correto seria 'a moça à qual conheci'."
+  },
+  {
+    "id": 752,
+    "enunciado": "Em 'Disse-me ela que viria', o pronome 'me' exerce função:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Objeto direto" },
+      { "letra": "B", "texto": "Sujeito" },
+      { "letra": "C", "texto": "Objeto indireto" },
+      { "letra": "D", "texto": "Complemento nominal" },
+      { "letra": "E", "texto": "Adjunto adnominal" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Me' é objeto indireto do verbo 'dizer', que exige preposição implícita: 'dizer a alguém'."
+  },
+  {
+    "id": 753,
+    "enunciado": "Assinale a alternativa em que o pronome demonstrativo foi corretamente utilizado.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Esses dias que virão serão difíceis." },
+      { "letra": "B", "texto": "Este ano passado foi complicado." },
+      { "letra": "C", "texto": "Aquele momento agora foi decisivo." },
+      { "letra": "D", "texto": "Essa semana que passou choveu muito." },
+      { "letra": "E", "texto": "Este momento passado me marcou." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Esses' refere-se ao futuro, portanto está correto ao indicar dias que ainda virão."
+  },
+  {
+    "id": 754,
+    "enunciado": "Qual alternativa apresenta apenas pronomes indefinidos?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Nada, algum, todos" },
+      { "letra": "B", "texto": "Ele, aquilo, certo" },
+      { "letra": "C", "texto": "Todos, quem, que" },
+      { "letra": "D", "texto": "Alguém, você, tudo" },
+      { "letra": "E", "texto": "Alguns, ninguém, cada" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Todos os elementos da alternativa E são pronomes indefinidos."
+  },
+  {
+    "id": 755,
+    "contexto": "Em relatório militar: 'Cada um dos soldados recebeu sua missão.'",
+    "enunciado": "O pronome 'sua' concorda com:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Soldados" },
+      { "letra": "B", "texto": "Missão" },
+      { "letra": "C", "texto": "Cada" },
+      { "letra": "D", "texto": "Um" },
+      { "letra": "E", "texto": "Dos" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Sua' refere-se a 'um', núcleo do sujeito composto 'cada um dos soldados'."
+  },
+  {
+    "id": 756,
+    "contexto": "Durante o discurso, o oficial afirmou: 'Informei-lhe sobre a movimentação das tropas.'",
+    "enunciado": "Na frase acima, o pronome 'lhe' exerce função de:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Objeto direto" },
+      { "letra": "B", "texto": "Complemento nominal" },
+      { "letra": "C", "texto": "Adjunto adnominal" },
+      { "letra": "D", "texto": "Objeto indireto" },
+      { "letra": "E", "texto": "Sujeito" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Lhe' indica a quem algo foi informado. Exercendo função de objeto indireto."
+  },
+  {
+    "id": 757,
+    "enunciado": "Assinale a alternativa em que o pronome de tratamento foi utilizado de forma **gramaticalmente incorreta**.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vossa Excelência deve comparecer à reunião." },
+      { "letra": "B", "texto": "Vossa Senhoria está ciente dos fatos." },
+      { "letra": "C", "texto": "Vossa Alteza encontra-se indisposto." },
+      { "letra": "D", "texto": "Sua Excelência decidiu por si mesma." },
+      { "letra": "E", "texto": "Vossa Reverendíssima procederá com sabedoria." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O uso correto é com o pronome 'Vossa' ao se dirigir diretamente à autoridade. 'Sua Excelência' só se usa na 3ª pessoa, fora da interlocução."
+  },
+  {
+    "id": 758,
+    "enunciado": "Em 'Eles se entreolharam durante o interrogatório', o pronome 'se' indica:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Reflexividade total" },
+      { "letra": "B", "texto": "Partícula de realce" },
+      { "letra": "C", "texto": "Objeto indireto" },
+      { "letra": "D", "texto": "Reciprocidade" },
+      { "letra": "E", "texto": "Objeto direto" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Na forma 'entreolharam-se', há reciprocidade entre os sujeitos — um olha para o outro."
+  },
+  {
+    "id": 759,
+    "enunciado": "A alternativa em que o pronome pessoal está **inadequadamente empregado** é:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Eles o viram no pátio." },
+      { "letra": "B", "texto": "Ela me ofereceu ajuda." },
+      { "letra": "C", "texto": "A mim não me disseram nada." },
+      { "letra": "D", "texto": "Vi-o de longe, parado." },
+      { "letra": "E", "texto": "Tu me ouves, soldado?" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A expressão 'A mim me' é redundante e gramaticalmente incorreta."
+  },
+  {
+    "id": 760,
+    "contexto": "Ofício administrativo: 'Vossa Senhoria deverá encaminhar o relatório até o dia 15.'",
+    "enunciado": "Sobre o uso do pronome de tratamento 'Vossa Senhoria', é correto afirmar que:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Refere-se à pessoa presente, mas usa-se a 3ª pessoa" },
+      { "letra": "B", "texto": "Está incorreto, pois não há autoridade presente" },
+      { "letra": "C", "texto": "Aplica-se exclusivamente a chefes militares" },
+      { "letra": "D", "texto": "Usa-se em contextos religiosos" },
+      { "letra": "E", "texto": "Está incorreto, pois deveria ser 'Sua Senhoria'" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Todos os pronomes de tratamento são usados com verbos na 3ª pessoa, mesmo sendo dirigidos diretamente ao interlocutor."
+  },
+  {
+    "id": 761,
+    "enunciado": "Qual alternativa apresenta apenas **pronomes pessoais do caso reto**?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Eu, tu, ele" },
+      { "letra": "B", "texto": "Mim, ele, nós" },
+      { "letra": "C", "texto": "Contigo, comigo, ti" },
+      { "letra": "D", "texto": "Me, nos, vos" },
+      { "letra": "E", "texto": "Ele, o, me" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Os pronomes retos são: eu, tu, ele/ela, nós, vós, eles/elas. São sujeitos das orações."
+  },
+  {
+    "id": 762,
+    "enunciado": "Assinale a alternativa em que há **erro no uso do pronome de tratamento**.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vossa Senhoria receberá as ordens." },
+      { "letra": "B", "texto": "Vossa Excelência deseja que eu compareça?" },
+      { "letra": "C", "texto": "Desejamos que Sua Excelência aprove as mudanças." },
+      { "letra": "D", "texto": "Vossa Alteza te aguarda no salão." },
+      { "letra": "E", "texto": "A audiência ocorrerá na presença de Vossa Senhoria." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O pronome 'te' não deve ser usado com pronomes de tratamento. O correto seria: 'Vossa Alteza o aguarda...'"
+  },
+  {
+    "id": 763,
+    "enunciado": "Em 'Trouxeram-nos os armamentos requisitados', o pronome 'nos' exerce qual função sintática?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sujeito" },
+      { "letra": "B", "texto": "Objeto direto" },
+      { "letra": "C", "texto": "Complemento nominal" },
+      { "letra": "D", "texto": "Objeto indireto" },
+      { "letra": "E", "texto": "Predicativo" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O verbo 'trazer' admite dois complementos, sendo 'nos' objeto indireto (para nós) e 'os armamentos' objeto direto."
+  },
+  {
+    "id": 764,
+    "contexto": "Em correspondência: 'Vossa Senhoria deverá encaminhar sua resposta até o fim do dia.'",
+    "enunciado": "Na frase, o pronome 'sua' refere-se a:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "A terceira pessoa do discurso" },
+      { "letra": "B", "texto": "A própria Vossa Senhoria" },
+      { "letra": "C", "texto": "Ao interlocutor ausente" },
+      { "letra": "D", "texto": "À instituição" },
+      { "letra": "E", "texto": "Ao remetente" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Embora o interlocutor seja tratado com Vossa Senhoria (2ª pessoa formal), os verbos e pronomes são flexionados na 3ª pessoa: 'sua resposta'."
+  },
+  {
+    "id": 765,
+    "enunciado": "Assinale a alternativa cuja frase contém uso reflexivo do pronome pessoal.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ele se feriu com a baioneta." },
+      { "letra": "B", "texto": "Vi-o saindo da base." },
+      { "letra": "C", "texto": "Ela nos acompanhou na missão." },
+      { "letra": "D", "texto": "Lhe entregaram o uniforme novo." },
+      { "letra": "E", "texto": "Os soldados o ouviram atentamente." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Se feriu' indica ação praticada e recebida pelo mesmo sujeito. Uso reflexivo do pronome 'se'."
+  },
+  {
+    "id": 766,
+    "enunciado": "Marque a alternativa em que o uso do pronome pessoal está **gramaticalmente inadequado**.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Entre eu e tu não deve haver segredos." },
+      { "letra": "B", "texto": "Entre mim e ele está resolvido." },
+      { "letra": "C", "texto": "Ela sempre confiou em mim." },
+      { "letra": "D", "texto": "Nada disseram a mim." },
+      { "letra": "E", "texto": "Vi você na cerimônia." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Após preposição, devem ser usados pronomes oblíquos: o correto é 'entre mim e ti'."
+  },
+  {
+    "id": 767,
+    "contexto": "Em uma ordem formal: 'Vossa Senhoria deverá comparecer ao quartel às 8h.'",
+    "enunciado": "A forma verbal usada com o pronome de tratamento está na:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "1ª pessoa do singular" },
+      { "letra": "B", "texto": "2ª pessoa do singular" },
+      { "letra": "C", "texto": "3ª pessoa do singular" },
+      { "letra": "D", "texto": "2ª pessoa do plural" },
+      { "letra": "E", "texto": "3ª pessoa do plural" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Pronomes de tratamento exigem concordância verbal com a 3ª pessoa do singular, mesmo sendo dirigidos à 2ª."
+  },
+  {
+    "id": 768,
+    "enunciado": "Qual alternativa apresenta apenas pronomes pessoais oblíquos átonos?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Me, te, se, nos, vos" },
+      { "letra": "B", "texto": "Mim, ti, si, conosco, convosco" },
+      { "letra": "C", "texto": "Me, mim, si" },
+      { "letra": "D", "texto": "Tu, me, ele" },
+      { "letra": "E", "texto": "Te, ti, você" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Os pronomes oblíquos átonos não vêm acompanhados de preposição e exercem função sintática de complemento."
+  },
+  {
+    "id": 769,
+    "contexto": "Durante o interrogatório: 'Disse-me que não sabia de nada.'",
+    "enunciado": "Na frase, o pronome 'me' indica:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sujeito" },
+      { "letra": "B", "texto": "Complemento nominal" },
+      { "letra": "C", "texto": "Objeto direto" },
+      { "letra": "D", "texto": "Objeto indireto" },
+      { "letra": "E", "texto": "Adjunto adnominal" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Me' é objeto indireto do verbo 'dizer', que exige preposição: 'dizer a alguém'."
+  },
+  {
+    "id": 770,
+    "enunciado": "Qual frase apresenta **erro no uso do pronome de tratamento**?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vossa Excelência julgará o caso." },
+      { "letra": "B", "texto": "Dissemos a Vossa Senhoria o que ocorreu." },
+      { "letra": "C", "texto": "Sua Excelência mandou nos chamar." },
+      { "letra": "D", "texto": "Desejamos que Vossa Santidade nos abençoe." },
+      { "letra": "E", "texto": "Te informei que Vossa Senhoria viria." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Não se deve usar 'te' com pronome de tratamento. Seria necessário 'lhe' ou omitir completamente."
+  },
+  {
+    "id": 771,
+    "enunciado": "Em 'Eles se olharam com desconfiança', o 'se' representa qual valor?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Reflexivo" },
+      { "letra": "B", "texto": "Indefinido" },
+      { "letra": "C", "texto": "Recíproco" },
+      { "letra": "D", "texto": "Apassivador" },
+      { "letra": "E", "texto": "Partícula expletiva" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Quando dois ou mais sujeitos praticam a ação entre si, há valor de reciprocidade."
+  },
+  {
+    "id": 772,
+    "enunciado": "Assinale a alternativa em que o pronome está empregado **corretamente** em relação à regência verbal.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Assisti o acidente e fiquei chocado." },
+      { "letra": "B", "texto": "Prefiro ele ao outro candidato." },
+      { "letra": "C", "texto": "Paguei-lhe a dívida ontem mesmo." },
+      { "letra": "D", "texto": "Obedeci eles sem questionar." },
+      { "letra": "E", "texto": "Respondi o comandante rapidamente." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O verbo 'pagar' exige objeto indireto para a pessoa: 'paguei a ele' = 'paguei-lhe'."
+  },
+  {
+    "id": 773,
+    "contexto": "Ordem militar: 'Cada um de vocês será responsável pelo seu armamento.'",
+    "enunciado": "Na frase acima, os pronomes empregados são, respectivamente:",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pessoal reto e possessivo" },
+      { "letra": "B", "texto": "Possessivo e pessoal" },
+      { "letra": "C", "texto": "Pessoal reto e pessoal oblíquo" },
+      { "letra": "D", "texto": "Pessoal oblíquo e possessivo" },
+      { "letra": "E", "texto": "Indefinido e possessivo" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Vocês' é pronome pessoal do caso reto (sujeito), 'seu' é possessivo."
+  },
+  {
+    "id": 774,
+    "enunciado": "Aponte a frase correta quanto ao uso do pronome pessoal.",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Convidei eu e ele para o evento." },
+      { "letra": "B", "texto": "Entre tu e eu não deve haver conflito." },
+      { "letra": "C", "texto": "Entre mim e ele houve silêncio." },
+      { "letra": "D", "texto": "Nada disseram a eu." },
+      { "letra": "E", "texto": "Vi a mim mesmo na gravação." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Após preposição, usa-se pronomes oblíquos: 'mim' e 'ele'."
+  },
+  {
+    "id": 775,
+    "enunciado": "Qual das alternativas apresenta pronome de tratamento **incorretamente empregado em sua forma pronominal**?",
+    "disciplina": "Português",
+    "assunto": "Pronomes",
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Vossa Excelência comparecerá à solenidade." },
+      { "letra": "B", "texto": "Aguardamos resposta de Sua Excelência." },
+      { "letra": "C", "texto": "Vossa Senhoria nos orientou bem." },
+      { "letra": "D", "texto": "Sua Senhoria deseja ser ouvido pessoalmente." },
+      { "letra": "E", "texto": "Vossa Santidade autorizará a bênção." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Ao falar diretamente com a autoridade, usa-se 'Vossa', não 'Sua'."
   }
 ]
