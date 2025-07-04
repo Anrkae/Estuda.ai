@@ -5097,5 +5097,446 @@
     ],
     "resposta_correta": "D",
     "resolucao": "Usa-se 'este' para o mais próximo (batalhão que parte), e 'aquele' para o mais distante (batalhão que permanece)."
+  },
+  {
+    "id": 792,
+    "contexto": "A Inconfidência Mineira foi um movimento de caráter elitista ocorrido na capitania de Minas Gerais no século XVIII, inspirado em ideais iluministas e na independência das colônias inglesas.",
+    "enunciado": "Qual era o principal objetivo dos inconfidentes mineiros?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Abolir a escravidão em todas as capitanias" },
+      { "letra": "B", "texto": "Implantar uma república independente em Minas Gerais" },
+      { "letra": "C", "texto": "Proclamar a independência do Brasil sob regime monárquico" },
+      { "letra": "D", "texto": "Unir-se ao movimento da Revolta dos Beckman" },
+      { "letra": "E", "texto": "Estabelecer um pacto entre Portugal e as elites locais" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O objetivo dos inconfidentes era instaurar uma república independente na capitania de Minas Gerais, inspirada nos ideais iluministas e na independência dos EUA."
+  },
+  {
+    "id": 793,
+    "enunciado": "Quem foi o delator que denunciou o movimento da Inconfidência Mineira às autoridades portuguesas?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tomás Antônio Gonzaga" },
+      { "letra": "B", "texto": "Joaquim José da Silva Xavier" },
+      { "letra": "C", "texto": "Cláudio Manuel da Costa" },
+      { "letra": "D", "texto": "Joaquim Silvério dos Reis" },
+      { "letra": "E", "texto": "Manuel Inácio da Silva Alvarenga" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Joaquim Silvério dos Reis delatou o movimento à Coroa em troca do perdão de suas dívidas com a Fazenda Real."
+  },
+  {
+    "id": 794,
+    "contexto": "A derrama era o imposto compulsório cobrado quando a capitania de Minas Gerais não atingia a cota anual de ouro estipulada pela Coroa portuguesa.",
+    "enunciado": "A revolta dos inconfidentes estava diretamente relacionada à iminência da cobrança da derrama. Nesse contexto, a derrama representava:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Uma taxa aduaneira sobre a importação de produtos europeus" },
+      { "letra": "B", "texto": "A cobrança retroativa de impostos atrasados em forma de ouro" },
+      { "letra": "C", "texto": "A imposição de novos tributos sobre escravizados e senhores de terras" },
+      { "letra": "D", "texto": "Uma contribuição voluntária das vilas mineradoras" },
+      { "letra": "E", "texto": "Um imposto incidente sobre o comércio interprovincial" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A derrama era um imposto compulsório cobrado para completar o quinto real quando a cota anual de ouro não era atingida."
+  },
+  {
+    "id": 795,
+    "enunciado": "A Inconfidência Mineira contou com a participação de diversos setores da sociedade. Qual grupo teve maior destaque no movimento?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Camponeses e escravizados" },
+      { "letra": "B", "texto": "Mercadores portugueses" },
+      { "letra": "C", "texto": "Clero regular" },
+      { "letra": "D", "texto": "Elite ilustrada local, formada por militares, intelectuais e magistrados" },
+      { "letra": "E", "texto": "Bandeirantes e tropeiros" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Inconfidência foi liderada por membros da elite letrada mineira, influenciados pelo Iluminismo e pela independência americana."
+  },
+  {
+    "id": 796,
+    "contexto": "Entre os principais nomes do movimento inconfidente estavam Tomás Antônio Gonzaga, Cláudio Manuel da Costa e Tiradentes.",
+    "enunciado": "Qual desses personagens assumiu uma postura mais radical e foi o único executado?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tomás Antônio Gonzaga" },
+      { "letra": "B", "texto": "Cláudio Manuel da Costa" },
+      { "letra": "C", "texto": "Joaquim Silvério dos Reis" },
+      { "letra": "D", "texto": "Joaquim José da Silva Xavier" },
+      { "letra": "E", "texto": "Álvarenga Peixoto" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Tiradentes foi o único condenado à morte e executado publicamente, tornando-se o principal mártir do movimento."
+  },
+  {
+    "id": 797,
+    "enunciado": "Os ideais iluministas influenciaram diretamente os inconfidentes. Esses ideais pregavam:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "A centralização monárquica e o absolutismo" },
+      { "letra": "B", "texto": "A superioridade racial como base do poder político" },
+      { "letra": "C", "texto": "A valorização da razão, da liberdade e da igualdade" },
+      { "letra": "D", "texto": "A submissão das colônias aos interesses metropolitanos" },
+      { "letra": "E", "texto": "A supremacia da fé sobre a razão" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Iluminismo defendia valores como liberdade, racionalidade, república e rompimento com o absolutismo."
+  },
+  {
+    "id": 798,
+    "enunciado": "Qual foi o principal fator econômico que contribuiu para o surgimento da Inconfidência Mineira?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Fim do ciclo do açúcar" },
+      { "letra": "B", "texto": "Estagnação do comércio transatlântico" },
+      { "letra": "C", "texto": "Crise na mineração e pressão fiscal da Coroa" },
+      { "letra": "D", "texto": "Expansão da lavoura cafeeira" },
+      { "letra": "E", "texto": "Falta de mão de obra escrava" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Com a decadência do ouro, a Coroa aumentou a cobrança de impostos, culminando na ameaça da derrama, o que fomentou o movimento."
+  },
+  {
+    "id": 799,
+    "enunciado": "A Inconfidência Mineira não chegou a se concretizar. Um dos motivos foi:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A forte adesão popular que provocou caos" },
+      { "letra": "B", "texto": "A ação preventiva das tropas inglesas" },
+      { "letra": "C", "texto": "A traição interna que revelou o plano antes da execução" },
+      { "letra": "D", "texto": "A substituição do governador da capitania" },
+      { "letra": "E", "texto": "A falta de recursos militares da Coroa" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O plano foi descoberto antes de sua execução devido à delação de Joaquim Silvério dos Reis."
+  },
+  {
+    "id": 808,
+    "contexto": "A Inconfidência Mineira foi um movimento que, embora tenha fracassado, marcou o início da luta pela independência no Brasil.",
+    "enunciado": "Qual fator foi decisivo para o fracasso da Inconfidência Mineira?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "A falta de apoio da Inglaterra" },
+      { "letra": "B", "texto": "O atraso no pagamento da derrama" },
+      { "letra": "C", "texto": "A denúncia feita por um dos envolvidos" },
+      { "letra": "D", "texto": "A intervenção do exército francês" },
+      { "letra": "E", "texto": "A discordância entre os inconfidentes quanto à forma de governo" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A delação de Joaquim Silvério dos Reis antecipou a repressão da Coroa, levando à prisão e julgamento dos inconfidentes."
+  },
+  {
+    "id": 809,
+    "enunciado": "A Inconfidência Mineira se inspirou fortemente em outro movimento revolucionário. Qual?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Revolução Francesa" },
+      { "letra": "B", "texto": "Revolução Haitiana" },
+      { "letra": "C", "texto": "Independência dos Estados Unidos" },
+      { "letra": "D", "texto": "Guerra dos Mascates" },
+      { "letra": "E", "texto": "Revolução Industrial" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os inconfidentes foram profundamente influenciados pelos ideais republicanos e liberais da independência dos EUA (1776)."
+  },
+  {
+    "id": 810,
+    "enunciado": "Qual era a relação dos inconfidentes com a escravidão?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Todos defendiam a abolição imediata" },
+      { "letra": "B", "texto": "A escravidão era um dos principais alvos da revolta" },
+      { "letra": "C", "texto": "Havia posições divergentes, com alguns defendendo a manutenção" },
+      { "letra": "D", "texto": "O movimento excluiu escravizados das discussões" },
+      { "letra": "E", "texto": "Defendiam a substituição da escravidão por trabalho assalariado" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Alguns inconfidentes defendiam a abolição, mas a maioria, ligada à elite, desejava manter o sistema escravocrata."
+  },
+  {
+    "id": 811,
+    "enunciado": "Sobre a atuação de Cláudio Manuel da Costa na Inconfidência Mineira, assinale a afirmativa correta.",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi o único a propor a abolição da escravidão" },
+      { "letra": "B", "texto": "Teve papel secundário e não chegou a ser preso" },
+      { "letra": "C", "texto": "Era poeta e jurista, e morreu misteriosamente durante o processo" },
+      { "letra": "D", "texto": "Foi executado ao lado de Tiradentes" },
+      { "letra": "E", "texto": "Liderou tropas armadas na tentativa de tomar Vila Rica" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Cláudio Manuel da Costa foi preso e morreu na prisão, em circunstâncias ainda debatidas pela historiografia."
+  },
+  {
+    "id": 812,
+    "contexto": "A atuação da Coroa portuguesa frente aos movimentos de contestação colonial era marcada pela repressão e controle fiscal.",
+    "enunciado": "No caso da Inconfidência Mineira, qual foi a estratégia da Coroa ao final do processo?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Anistia geral para evitar revoltas futuras" },
+      { "letra": "B", "texto": "Exílio de todos os envolvidos" },
+      { "letra": "C", "texto": "Execução coletiva dos líderes" },
+      { "letra": "D", "texto": "Exemplo público com a execução de Tiradentes" },
+      { "letra": "E", "texto": "Conversão dos líderes ao serviço militar obrigatório" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A execução de Tiradentes foi usada como advertência aos que ousassem conspirar contra a Coroa."
+  },
+  {
+    "id": 813,
+    "enunciado": "O lema 'Libertas quae sera tamen' escolhido pelos inconfidentes significa:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A liberdade será eterna" },
+      { "letra": "B", "texto": "Liberdade ainda que tardia" },
+      { "letra": "C", "texto": "Somente os livres serão fortes" },
+      { "letra": "D", "texto": "Liberdade para os que combatem" },
+      { "letra": "E", "texto": "A justiça sempre vence" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O lema latino escolhido simbolizava o anseio por independência, mesmo que tardia."
+  },
+  {
+    "id": 814,
+    "contexto": "Os inconfidentes estavam preocupados com a manutenção de privilégios e com a crescente presença da Coroa na economia regional.",
+    "enunciado": "Esse contexto demonstra que o movimento foi motivado principalmente por:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pressões religiosas e culturais" },
+      { "letra": "B", "texto": "Interesses coletivos e populares" },
+      { "letra": "C", "texto": "Interesses regionais e elitistas" },
+      { "letra": "D", "texto": "Reivindicações indígenas" },
+      { "letra": "E", "texto": "Movimento nacionalista com apoio popular" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A elite local, temendo prejuízos econômicos e perda de privilégios, articulou o movimento."
+  },
+  {
+    "id": 815,
+    "enunciado": "O que distingue a Inconfidência Mineira de outros movimentos coloniais contemporâneos, como a Conjuração Baiana?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "A Conjuração Baiana foi liderada por escravizados e a Inconfidência por elites ilustradas" },
+      { "letra": "B", "texto": "A Inconfidência foi vitoriosa, e a Conjuração não" },
+      { "letra": "C", "texto": "A Conjuração propunha o retorno da monarquia lusitana" },
+      { "letra": "D", "texto": "Ambas tinham apoio estrangeiro formal" },
+      { "letra": "E", "texto": "A Inconfidência Mineira defendia o fim do trabalho livre" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A Conjuração Baiana teve caráter mais popular e radical, enquanto a Inconfidência foi elitista e republicana."
+  },
+  {
+    "id": 820,
+    "contexto": "A economia mineira, no final do século XVIII, vivia uma acentuada crise provocada pelo esgotamento das jazidas auríferas.",
+    "enunciado": "Como a crise econômica da mineração influenciou diretamente a organização da Inconfidência Mineira?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Impulsionou a imigração de trabalhadores estrangeiros para as minas." },
+      { "letra": "B", "texto": "Levou ao aumento do contrabando de diamantes, que financiou o movimento." },
+      { "letra": "C", "texto": "Aumentou a pressão fiscal da Coroa, intensificando o descontentamento das elites locais." },
+      { "letra": "D", "texto": "Estimulou a criação de milícias populares com apoio da Coroa portuguesa." },
+      { "letra": "E", "texto": "Favoreceu a aproximação com movimentos indígenas da região central do Brasil." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A crise econômica levou ao aumento da cobrança de impostos pela Coroa, o que foi decisivo para a articulação da conspiração."
+  },
+  {
+    "id": 821,
+    "enunciado": "Por que Tiradentes se tornou o símbolo máximo da Inconfidência Mineira, mesmo não sendo o líder intelectual do movimento?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Por ter organizado a estratégia militar da revolta." },
+      { "letra": "B", "texto": "Por ser o único integrante a não possuir laços com a elite mineira e assumir a culpa isoladamente." },
+      { "letra": "C", "texto": "Por ter sido o autor do plano de independência com apoio francês." },
+      { "letra": "D", "texto": "Por ser membro do alto clero e representar o poder religioso." },
+      { "letra": "E", "texto": "Por ter sido absolvido no julgamento e exaltado após sua morte natural." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Tiradentes, homem do povo, sem prestígio social, foi transformado em mártir após assumir sozinho a responsabilidade."
+  },
+  {
+    "id": 822,
+    "enunciado": "A atuação da Real Junta de Justiça no processo da Inconfidência Mineira evidencia:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "A autonomia política da capitania de Minas Gerais." },
+      { "letra": "B", "texto": "O caráter informal do julgamento dos réus." },
+      { "letra": "C", "texto": "A centralização do poder judicial pela Coroa e a repressão exemplar." },
+      { "letra": "D", "texto": "A influência francesa nas decisões judiciais." },
+      { "letra": "E", "texto": "A tolerância da Coroa com a liberdade de expressão." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O julgamento foi conduzido diretamente pela Real Junta de Justiça para garantir repressão exemplar aos conspiradores."
+  },
+  {
+    "id": 823,
+    "contexto": "Os inconfidentes defendiam a criação de um governo republicano, inspirado nos princípios do Iluminismo europeu e na independência dos EUA.",
+    "enunciado": "Qual seria o papel de Ouro Preto no plano dos inconfidentes, caso a república fosse implantada?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sede de um vice-reinado sob domínio britânico." },
+      { "letra": "B", "texto": "Capital republicana e centro de difusão de ideias iluministas." },
+      { "letra": "C", "texto": "Região autônoma subordinada a São João del-Rei." },
+      { "letra": "D", "texto": "Centro eclesiástico do novo império do Brasil." },
+      { "letra": "E", "texto": "Local de exílio para os representantes da Coroa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os planos da Inconfidência incluíam transformar Vila Rica (atual Ouro Preto) na capital da república mineira."
+  },
+  {
+    "id": 824,
+    "enunciado": "Em relação ao apoio internacional ao movimento da Inconfidência Mineira, pode-se afirmar:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Havia articulação direta com tropas francesas no Caribe." },
+      { "letra": "B", "texto": "O movimento tinha apoio declarado da Inglaterra." },
+      { "letra": "C", "texto": "Não houve apoio externo formal, embora se admirassem os modelos estrangeiros." },
+      { "letra": "D", "texto": "Portugal era secretamente favorável à república mineira." },
+      { "letra": "E", "texto": "A Espanha prometeu reconhecimento imediato da nova república." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Embora os inconfidentes se inspirassem nos EUA e no Iluminismo, o movimento não teve apoio formal de potências estrangeiras."
+  },
+  {
+    "id": 825,
+    "enunciado": "A repressão da Inconfidência Mineira serviu de modelo para a resposta da Coroa a outros movimentos coloniais porque:",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Proporcionou abertura política em outras capitanias." },
+      { "letra": "B", "texto": "Resultou na abolição da derrama em todo o território colonial." },
+      { "letra": "C", "texto": "Demonstrou a eficácia da delação e da punição exemplar para manter a ordem." },
+      { "letra": "D", "texto": "Serviu como precedente para acordos com líderes insurgentes." },
+      { "letra": "E", "texto": "Impulsionou a federalização do território colonial." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O uso da delação e da execução pública foram medidas que intimidaram outros grupos e consolidaram o controle metropolitano."
+  },
+  {
+    "id": 826,
+    "contexto": "Tiradentes foi enforcado e esquartejado em praça pública, e seus restos expostos em caminhos importantes de Minas Gerais.",
+    "enunciado": "Qual o significado simbólico dessa punição?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "A consagração de Tiradentes como herói nacional." },
+      { "letra": "B", "texto": "A canonização de mártires pela Igreja Católica." },
+      { "letra": "C", "texto": "A demonstração de misericórdia da Coroa." },
+      { "letra": "D", "texto": "Um exemplo de repressão pedagógica e dissuasória." },
+      { "letra": "E", "texto": "O cumprimento de um ritual fúnebre tradicional." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A pena exemplar buscava aterrorizar e dissuadir qualquer tentativa de insurreição nas demais capitanias."
+  },
+  {
+    "id": 827,
+    "enunciado": "Por que a maioria dos inconfidentes teve a pena comutada para degredo, exceto Tiradentes?",
+    "disciplina": "História",
+    "assunto": "Inconfidência Mineira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Porque Tiradentes era reincidente em outros movimentos separatistas." },
+      { "letra": "B", "texto": "Porque a Coroa portuguesa decidiu poupar os membros mais ricos e letrados." },
+      { "letra": "C", "texto": "Porque Tiradentes assumiu toda a culpa e não tinha prestígio social." },
+      { "letra": "D", "texto": "Porque ele havia matado um oficial português durante a prisão." },
+      { "letra": "E", "texto": "Porque ele havia fugido e resistido por meses." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A escolha de Tiradentes como bode expiatório relaciona-se à sua origem humilde e confissão sem delação de outros."
   }
 ]
