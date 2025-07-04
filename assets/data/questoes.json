@@ -5538,5 +5538,187 @@
     ],
     "resposta_correta": "C",
     "resolucao": "A escolha de Tiradentes como bode expiatório relaciona-se à sua origem humilde e confissão sem delação de outros."
+  },
+  {
+    "id": 832,
+    "enunciado": "Qual das funções a seguir representa uma função exponencial?",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "f(x) = x²" },
+      { "letra": "B", "texto": "f(x) = 2ˣ" },
+      { "letra": "C", "texto": "f(x) = log(x)" },
+      { "letra": "D", "texto": "f(x) = √x" },
+      { "letra": "E", "texto": "f(x) = x³ + 1" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Funções exponenciais possuem a variável no expoente. Apenas f(x) = 2ˣ satisfaz essa condição."
+  },
+  {
+    "id": 833,
+    "enunciado": "Uma função exponencial é sempre definida por qual das características a seguir?",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Possui expoente negativo" },
+      { "letra": "B", "texto": "A base pode ser qualquer número real" },
+      { "letra": "C", "texto": "A base é constante e o expoente é variável" },
+      { "letra": "D", "texto": "Tem domínio restrito a x > 0" },
+      { "letra": "E", "texto": "É sempre decrescente" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Na função exponencial f(x) = aˣ, 'a' é a base constante e 'x' a variável no expoente."
+  },
+  {
+    "id": 834,
+    "enunciado": "Qual das opções abaixo NÃO representa uma função exponencial?",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "f(x) = 3ˣ" },
+      { "letra": "B", "texto": "f(x) = 0,5ˣ" },
+      { "letra": "C", "texto": "f(x) = eˣ" },
+      { "letra": "D", "texto": "f(x) = x³" },
+      { "letra": "E", "texto": "f(x) = 2^(-x)" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "f(x) = x³ é uma função polinomial. Apenas as funções com variável no expoente são exponenciais."
+  },
+  {
+    "id": 835,
+    "contexto": "Observe o comportamento gráfico das funções exponenciais com diferentes bases.",
+    "enunciado": "A função exponencial f(x) = aˣ será decrescente se:",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "a > 1" },
+      { "letra": "B", "texto": "a = 1" },
+      { "letra": "C", "texto": "0 < a < 1" },
+      { "letra": "D", "texto": "a < 0" },
+      { "letra": "E", "texto": "a = 0" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Funções exponenciais com base entre 0 e 1 são decrescentes no domínio real."
+  },
+  {
+    "id": 836,
+    "enunciado": "O domínio de qualquer função exponencial do tipo f(x) = aˣ, com a > 0 e a ≠ 1, é:",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "x ∈ ℝ⁺" },
+      { "letra": "B", "texto": "x ∈ ℝ" },
+      { "letra": "C", "texto": "x ∈ ℕ" },
+      { "letra": "D", "texto": "x ∈ ℚ⁺" },
+      { "letra": "E", "texto": "x ∈ ℤ" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Toda função exponencial está definida para todos os números reais: seu domínio é ℝ."
+  },
+  {
+    "id": 837,
+    "enunciado": "Em uma função exponencial f(x) = aˣ, qual das afirmações é verdadeira?",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O gráfico sempre passa pela origem" },
+      { "letra": "B", "texto": "O valor de f(x) nunca é negativo" },
+      { "letra": "C", "texto": "O gráfico tem como assíntota horizontal o eixo y" },
+      { "letra": "D", "texto": "O gráfico cruza o eixo x em x = 0" },
+      { "letra": "E", "texto": "O gráfico sempre possui um ponto de mínimo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O valor da função exponencial f(x) = aˣ é sempre positivo, pois a > 0, a ≠ 1."
+  },
+  {
+    "id": 838,
+    "enunciado": "Assinale a alternativa que apresenta uma base inválida para a função f(x) = aˣ.",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "a = 2" },
+      { "letra": "B", "texto": "a = 0,5" },
+      { "letra": "C", "texto": "a = 1" },
+      { "letra": "D", "texto": "a = e" },
+      { "letra": "E", "texto": "a = 0,1" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Para ser uma função exponencial, a base deve ser positiva e diferente de 1. Quando a = 1, f(x) = 1 para todo x, não é exponencial."
+  },
+  {
+    "id": 839,
+    "contexto": "Funções exponenciais modelam diversos fenômenos, como crescimento populacional e radioatividade.",
+    "enunciado": "Qual propriedade é verdadeira para qualquer função f(x) = aˣ com a > 0, a ≠ 1?",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Possui imagem negativa para x < 0" },
+      { "letra": "B", "texto": "Admite valores negativos no contradomínio" },
+      { "letra": "C", "texto": "Tem imagem restrita a ℝ⁺*" },
+      { "letra": "D", "texto": "É sempre simétrica em relação ao eixo y" },
+      { "letra": "E", "texto": "É função par" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A imagem de toda função exponencial é ℝ⁺*, ou seja, valores reais positivos excluindo o zero."
+  },
+  {
+    "id": 840,
+    "enunciado": "O ponto (0,1) pertence ao gráfico de qualquer função exponencial f(x) = aˣ. Isso ocorre porque:",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Todo número elevado a 0 é igual a 1" },
+      { "letra": "B", "texto": "Toda função crescente passa pela origem" },
+      { "letra": "C", "texto": "O domínio da função é limitado em x = 0" },
+      { "letra": "D", "texto": "A função é simétrica em relação ao eixo x" },
+      { "letra": "E", "texto": "O ponto (0,1) define a concavidade da curva" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "f(0) = a⁰ = 1 para qualquer a ≠ 0. Por isso, o gráfico passa pelo ponto (0,1)."
+  },
+  {
+    "id": 841,
+    "enunciado": "Se f(x) = aˣ é decrescente, o que se pode afirmar sobre o valor da base 'a'?",
+    "disciplina": "Matemática",
+    "assunto": "Função Exponencial",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "a = 1" },
+      { "letra": "B", "texto": "a > 1" },
+      { "letra": "C", "texto": "0 < a < 1" },
+      { "letra": "D", "texto": "a < 0" },
+      { "letra": "E", "texto": "a é um número irracional" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A função exponencial é decrescente apenas quando a ∈ (0,1)."
   }
 ]
