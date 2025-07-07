@@ -5720,5 +5720,315 @@
     ],
     "resposta_correta": "C",
     "resolucao": "A função exponencial é decrescente apenas quando a ∈ (0,1)."
+  },
+  {
+    "id": 842,
+    "enunciado": "A Conjuração Baiana (1798) se destacou por apresentar características diferentes de outros movimentos coloniais. Uma de suas principais singularidades foi:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ter sido liderada exclusivamente pela elite mineira." },
+      { "letra": "B", "texto": "Lutar pela manutenção dos privilégios da Coroa portuguesa." },
+      { "letra": "C", "texto": "Incluir setores populares como soldados, alfaiates e escravizados." },
+      { "letra": "D", "texto": "Exigir o retorno do absolutismo português." },
+      { "letra": "E", "texto": "Ter apoio militar direto da França napoleônica." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Diferentemente da Inconfidência Mineira, a Conjuração Baiana teve ampla participação de setores populares e escravizados."
+  },
+  {
+    "id": 843,
+    "contexto": "No final do século XVIII, Salvador era um importante centro urbano e militar do Brasil colonial.",
+    "enunciado": "O ambiente social de Salvador contribuiu para a eclosão da Conjuração Baiana por quê?",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Havia forte influência do clero português sobre os soldados." },
+      { "letra": "B", "texto": "A cidade passava por grave crise econômica, com fome e inflação." },
+      { "letra": "C", "texto": "Os comerciantes estavam satisfeitos com o monopólio luso." },
+      { "letra": "D", "texto": "Os grandes senhores apoiavam a república e a abolição." },
+      { "letra": "E", "texto": "O movimento era influenciado por bandeirantes paulistas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A crise econômica e social, especialmente a fome, aumentou a insatisfação popular e facilitou a adesão ao movimento."
+  },
+  {
+    "id": 844,
+    "enunciado": "A Conjuração Baiana também ficou conhecida como Revolta dos Alfaiates porque:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi patrocinada por corporações de ofício ligadas à costura." },
+      { "letra": "B", "texto": "A principal liderança era composta por costureiros vindos da África." },
+      { "letra": "C", "texto": "Alfaiates urbanos estavam entre os líderes e idealizadores do movimento." },
+      { "letra": "D", "texto": "O movimento exigia uniforme para seus membros." },
+      { "letra": "E", "texto": "Os insurgentes tinham como lema: \"Viva o pano e a liberdade!\"" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os alfaiates urbanos foram parte significativa da liderança, o que levou à alcunha Revolta dos Alfaiates."
+  },
+  {
+    "id": 845,
+    "enunciado": "Entre as reivindicações do movimento estavam:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Manutenção da escravidão e criação de uma monarquia tropical." },
+      { "letra": "B", "texto": "Formação de uma república independente, fim da escravidão e igualdade social." },
+      { "letra": "C", "texto": "Autonomia da Bahia dentro do império português." },
+      { "letra": "D", "texto": "Federalismo e aumento de impostos sobre alimentos." },
+      { "letra": "E", "texto": "Religiosidade obrigatória e maior controle da Igreja." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Conjuração Baiana defendia abertamente a república, o fim da escravidão e maior igualdade social."
+  },
+  {
+    "id": 846,
+    "enunciado": "A Conjuração Baiana teve como uma de suas principais inspirações internacionais:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Revolução Inglesa" },
+      { "letra": "B", "texto": "Revolução Francesa" },
+      { "letra": "C", "texto": "Iluminismo Ibérico" },
+      { "letra": "D", "texto": "Guerra da Crimeia" },
+      { "letra": "E", "texto": "Guerra dos Sete Anos" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Revolução Francesa, com ideais de liberdade, igualdade e fraternidade, influenciou profundamente os conjurados."
+  },
+  {
+    "id": 847,
+    "contexto": "Soldados, trabalhadores livres e negros libertos eram parte da base do movimento.",
+    "enunciado": "Essa composição social diferencia a Conjuração Baiana por evidenciar:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "A participação direta da nobreza rural." },
+      { "letra": "B", "texto": "A centralidade do clero na articulação política." },
+      { "letra": "C", "texto": "A ausência de interesses sociais no movimento." },
+      { "letra": "D", "texto": "A presença significativa de grupos subalternos com pautas populares." },
+      { "letra": "E", "texto": "O caráter exclusivamente militar da revolta." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Diferente de outras revoltas elitistas, a Conjuração Baiana teve forte componente popular e racialmente diverso."
+  },
+  {
+    "id": 848,
+    "enunciado": "Qual das alternativas representa um objetivo político dos conjurados baianos?",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Manutenção do vínculo com a Coroa portuguesa" },
+      { "letra": "B", "texto": "Adoção do modelo absolutista francês" },
+      { "letra": "C", "texto": "Implantação de um governo republicano na Bahia" },
+      { "letra": "D", "texto": "Transformação de Salvador em sede do Reino Unido" },
+      { "letra": "E", "texto": "Federalização do Brasil colonial" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O movimento defendia a ruptura com Portugal e a criação de uma república autônoma na Bahia."
+  },
+  {
+    "id": 849,
+    "enunciado": "Entre os motivos da repressão severa ao movimento pela Coroa portuguesa, destaca-se:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A defesa da escravidão pelos conjurados." },
+      { "letra": "B", "texto": "A natureza popular e o potencial de alastramento da revolta." },
+      { "letra": "C", "texto": "A proteção da elite local ao movimento." },
+      { "letra": "D", "texto": "O apoio dos jesuítas à insurreição." },
+      { "letra": "E", "texto": "A baixa repercussão internacional." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A participação popular e a defesa de igualdade assustaram a Coroa, que temia um efeito dominó nas capitanias."
+  },
+  {
+    "id": 850,
+    "enunciado": "A execução de quatro líderes do movimento em praça pública tinha como objetivo:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Celebrar os mártires do absolutismo." },
+      { "letra": "B", "texto": "Comover o povo e angariar apoio ao movimento." },
+      { "letra": "C", "texto": "Demonstrar a força da repressão e servir como exemplo." },
+      { "letra": "D", "texto": "Impedir o avanço militar do movimento para o sul." },
+      { "letra": "E", "texto": "Punir os traidores que apoiavam a França." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A exposição pública dos corpos buscava dissuadir a população de apoiar futuras insurreições."
+  },
+  {
+    "id": 852,
+    "enunciado": "A participação de indivíduos negros e mulatos na Conjuração Baiana revela:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A centralidade do tráfico negreiro como pauta." },
+      { "letra": "B", "texto": "A inexistência de hierarquias sociais na colônia." },
+      { "letra": "C", "texto": "O protagonismo de camadas populares em movimentos emancipatórios." },
+      { "letra": "D", "texto": "A influência direta da Coroa britânica sobre o movimento." },
+      { "letra": "E", "texto": "A luta contra a religiosidade africana." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A presença de negros e mulatos livres evidencia a atuação popular na articulação política."
+  },
+  {
+    "id": 853,
+    "contexto": "Diversos panfletos com ideias revolucionárias foram espalhados por Salvador em 1798.",
+    "enunciado": "Esses panfletos tinham como função principal:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Promover o absolutismo português." },
+      { "letra": "B", "texto": "Convidar aliados franceses para o levante." },
+      { "letra": "C", "texto": "Propagar ideias de igualdade, república e abolição da escravidão." },
+      { "letra": "D", "texto": "Divulgar as ordens da Coroa portuguesa." },
+      { "letra": "E", "texto": "Convocar a elite açucareira para formar um governo provisório." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Esses panfletos tinham caráter subversivo e buscavam mobilizar a população para uma nova ordem social e política."
+  },
+  {
+    "id": 854,
+    "enunciado": "A repressão à Conjuração Baiana foi mais violenta do que a ocorrida na Inconfidência Mineira, principalmente por:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A revolta ter apoio militar de Portugal." },
+      { "letra": "B", "texto": "Haver maior número de sacerdotes envolvidos." },
+      { "letra": "C", "texto": "A forte presença de negros e plebeus, representando risco à ordem escravista." },
+      { "letra": "D", "texto": "A existência de panfletos escritos em francês." },
+      { "letra": "E", "texto": "A proximidade da revolta com a região do ouro em Minas Gerais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A natureza popular e antiescravista do movimento representava maior ameaça à estrutura colonial."
+  },
+  {
+    "id": 855,
+    "enunciado": "Entre os líderes executados estava João de Deus do Nascimento. Seu perfil social representa:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Um militar da elite branca portuguesa." },
+      { "letra": "B", "texto": "Um funcionário da Coroa no interior baiano." },
+      { "letra": "C", "texto": "Um alfaiate negro livre, representante do povo urbano." },
+      { "letra": "D", "texto": "Um proprietário de engenho ligado à aristocracia." },
+      { "letra": "E", "texto": "Um soldado português a serviço da França." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "João de Deus era alfaiate e negro livre, evidenciando o caráter popular da liderança da revolta."
+  },
+  {
+    "id": 856,
+    "contexto": "A Conjuração Baiana ocorreu no auge da crise do sistema colonial.",
+    "enunciado": "Essa crise favoreceu o surgimento do movimento porque:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A elite estava satisfeita com a centralização administrativa." },
+      { "letra": "B", "texto": "A crise fiscal portuguesa gerou aumento de impostos e fome." },
+      { "letra": "C", "texto": "A abolição da escravidão já era realidade na colônia." },
+      { "letra": "D", "texto": "O comércio estava em franca expansão." },
+      { "letra": "E", "texto": "Os movimentos eram incentivados pelo rei." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A crise do Antigo Regime refletia-se nas colônias, com mais exploração fiscal e dificuldades econômicas."
+  },
+  {
+    "id": 857,
+    "enunciado": "A Conjuração Baiana representa um marco importante da história brasileira por:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ter sido a primeira revolta com pauta monarquista." },
+      { "letra": "B", "texto": "Demonstrar o envolvimento das elites agrárias com o republicanismo." },
+      { "letra": "C", "texto": "Ter sido um movimento com forte caráter popular e abolicionista." },
+      { "letra": "D", "texto": "Consolidar o vínculo com o governo espanhol." },
+      { "letra": "E", "texto": "Abolir a escravidão em Salvador ainda no século XVIII." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Conjuração Baiana foi um movimento singular por aliar republicanismo e abolicionismo com base popular."
+  },
+  {
+    "id": 858,
+    "enunciado": "A Conjuração Baiana ocorreu no ano de:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "1789" },
+      { "letra": "B", "texto": "1808" },
+      { "letra": "C", "texto": "1822" },
+      { "letra": "D", "texto": "1798" },
+      { "letra": "E", "texto": "1792" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Revolta dos Alfaiates eclodiu em Salvador em 1798, no contexto das ideias iluministas."
+  },
+  {
+    "id": 859,
+    "enunciado": "A Conjuração Baiana se diferencia da Inconfidência Mineira principalmente porque:",
+    "disciplina": "História",
+    "assunto": "Conjuração Baiana",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tinha como foco principal a independência da metrópole." },
+      { "letra": "B", "texto": "Foi liderada por grandes comerciantes portugueses." },
+      { "letra": "C", "texto": "Teve caráter elitista e conservador." },
+      { "letra": "D", "texto": "Possuía forte base popular e defendia igualdade racial e social." },
+      { "letra": "E", "texto": "Propunha a manutenção da escravidão como base produtiva." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Enquanto a Inconfidência Mineira foi liderada pela elite branca, a Conjuração Baiana teve natureza popular e pautas sociais amplas."
   }
 ]
