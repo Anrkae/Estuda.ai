@@ -6030,5 +6030,643 @@
     ],
     "resposta_correta": "D",
     "resolucao": "Enquanto a Inconfidência Mineira foi liderada pela elite branca, a Conjuração Baiana teve natureza popular e pautas sociais amplas."
+  },
+  {
+    "id": 860,
+    "enunciado": "A Guerra dos Mascates foi um conflito que envolveu principalmente:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Militares e jesuítas pela posse de terras na Amazônia." },
+      { "letra": "B", "texto": "Senhores de engenho de Olinda e comerciantes portugueses do Recife." },
+      { "letra": "C", "texto": "Bandeirantes paulistas e indígenas na região do Planalto Central." },
+      { "letra": "D", "texto": "Escravizados fugidos e tropas reais no sertão nordestino." },
+      { "letra": "E", "texto": "Elite agrária da Bahia e militares franceses no Recôncavo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A guerra opôs a aristocracia rural de Olinda aos comerciantes portugueses (apelidados de 'mascates') do Recife, que buscavam maior autonomia política."
+  },
+  {
+    "id": 861,
+    "contexto": "No início do século XVIII, Recife crescia como centro comercial, enquanto Olinda enfrentava crise econômica.",
+    "enunciado": "Esse cenário contribuiu para a Guerra dos Mascates porque:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Olinda desejava manter sua dependência econômica de Lisboa." },
+      { "letra": "B", "texto": "Recife buscava separação do Reino Unido de Portugal." },
+      { "letra": "C", "texto": "Os olindenses temiam a ascensão comercial dos recifenses e sua autonomia." },
+      { "letra": "D", "texto": "A Coroa portuguesa proibia a produção agrícola em Olinda." },
+      { "letra": "E", "texto": "Os comerciantes do Recife proibiram o acesso à Igreja Católica." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Comerciantes do Recife prosperavam, e a autonomia dada à vila despertou a ira da elite rural olindense, levando ao conflito."
+  },
+  {
+    "id": 862,
+    "enunciado": "O apelido 'mascates' dado aos comerciantes do Recife tinha originalmente um sentido:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Elogioso, indicando prestígio social." },
+      { "letra": "B", "texto": "Pejorativo, indicando desprezo pela atividade comercial." },
+      { "letra": "C", "texto": "Religioso, relacionado a práticas católicas." },
+      { "letra": "D", "texto": "Militar, indicando soldados portugueses." },
+      { "letra": "E", "texto": "Acadêmico, relacionado a universitários recifenses." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O termo 'mascate' era usado de forma depreciativa pelos olindenses para menosprezar os comerciantes portugueses do Recife."
+  },
+  {
+    "id": 863,
+    "enunciado": "O conflito entre Olinda e Recife reflete tensões entre:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Burguesia comercial e aristocracia agrária." },
+      { "letra": "B", "texto": "Trabalhadores urbanos e tropas indígenas." },
+      { "letra": "C", "texto": "Jesuítas e bandeirantes." },
+      { "letra": "D", "texto": "Funcionários da Coroa e escravizados libertos." },
+      { "letra": "E", "texto": "Mineradores e comerciantes de tabaco." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A guerra revela o choque entre uma elite agrária decadente (Olinda) e uma burguesia mercantil em ascensão (Recife)."
+  },
+  {
+    "id": 864,
+    "contexto": "Em 1710, a vila de Recife foi elevada à categoria de município por ordem da Coroa.",
+    "enunciado": "Essa decisão teve qual impacto imediato?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Favoreceu a aliança entre Olinda e Recife contra os ingleses." },
+      { "letra": "B", "texto": "Gerou protestos da elite olindense, que não aceitava perder influência." },
+      { "letra": "C", "texto": "Levantou apoio entre os indígenas do sertão." },
+      { "letra": "D", "texto": "Fortaleceu a Igreja no controle da política local." },
+      { "letra": "E", "texto": "Iniciou a abolição da escravidão na região." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A elevação de Recife aumentou sua autonomia e causou revolta nos senhores de engenho de Olinda, iniciando o conflito."
+  },
+  {
+    "id": 865,
+    "enunciado": "A Guerra dos Mascates demonstra um aspecto importante da sociedade colonial brasileira:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A ausência total de conflitos entre diferentes grupos coloniais." },
+      { "letra": "B", "texto": "A supremacia contínua dos senhores rurais sobre o comércio." },
+      { "letra": "C", "texto": "A emergência de tensões entre aristocracia agrária e burguesia comercial." },
+      { "letra": "D", "texto": "A dependência do sistema colonial da manufatura local." },
+      { "letra": "E", "texto": "A homogeneidade econômica das vilas nordestinas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A guerra evidencia o conflito entre modelos econômicos e interesses distintos na colônia."
+  },
+  {
+    "id": 866,
+    "enunciado": "Qual fator abaixo foi determinante para o fortalecimento dos comerciantes recifenses?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Crescimento das manufaturas na zona da mata." },
+      { "letra": "B", "texto": "Apoio da Coroa portuguesa e maior fluxo de comércio atlântico." },
+      { "letra": "C", "texto": "Declínio da agricultura de subsistência em Olinda." },
+      { "letra": "D", "texto": "Fuga da população rural para os engenhos." },
+      { "letra": "E", "texto": "Isolamento geográfico do Recife." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A política mercantilista portuguesa favorecia o comércio marítimo e o centro recifense, fortalecendo os mascates."
+  },
+  {
+    "id": 867,
+    "contexto": "Durante o conflito, olindenses invadiram o Recife e destruíram arquivos e edifícios.",
+    "enunciado": "Esse episódio reflete:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "O apoio recifense à monarquia inglesa." },
+      { "letra": "B", "texto": "A fragilidade institucional das câmaras coloniais." },
+      { "letra": "C", "texto": "A reação à ocupação francesa na costa atlântica." },
+      { "letra": "D", "texto": "A tentativa de fundar um novo centro político em Olinda." },
+      { "letra": "E", "texto": "A submissão de Olinda ao governo do Maranhão." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A invasão de Recife mostra a instabilidade e fragilidade das instituições coloniais locais diante de disputas de poder."
+  },
+  {
+    "id": 868,
+    "enunciado": "A atuação da Coroa portuguesa durante a Guerra dos Mascates visava principalmente:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Estimular o confronto para reduzir a influência dos senhores de engenho." },
+      { "letra": "B", "texto": "Restabelecer a ordem e garantir o controle político sobre a colônia." },
+      { "letra": "C", "texto": "Unir Olinda e Recife sob um governo autônomo." },
+      { "letra": "D", "texto": "Apoiar os comerciantes contra os interesses metropolitanos." },
+      { "letra": "E", "texto": "Declarar independência da região para fundar uma capitania autônoma." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O objetivo da Coroa era conter a instabilidade e reafirmar seu domínio sobre os dois grupos em disputa."
+  },
+  {
+    "id": 869,
+    "contexto": "Após a guerra, o Recife consolidou-se como centro administrativo de Pernambuco.",
+    "enunciado": "Esse desfecho indica qual transformação na estrutura colonial?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ascensão da economia de subsistência." },
+      { "letra": "B", "texto": "Decadência da mineração no interior do Nordeste." },
+      { "letra": "C", "texto": "Fortalecimento do poder político urbano e mercantil." },
+      { "letra": "D", "texto": "Supremacia da aristocracia agrária." },
+      { "letra": "E", "texto": "Extinção dos impostos metropolitanos sobre o açúcar." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Recife emergiu como centro urbano e comercial, representando a força da burguesia mercantil frente à elite rural olindense."
+  },
+  {
+    "id": 870,
+    "enunciado": "A Guerra dos Mascates ocorreu em qual contexto econômico mais amplo do Brasil colonial?",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Exploração da borracha na Amazônia." },
+      { "letra": "B", "texto": "Crescimento da mineração nas regiões centro-sul." },
+      { "letra": "C", "texto": "Expansão do algodão no Nordeste." },
+      { "letra": "D", "texto": "Predomínio do açúcar e fortalecimento do comércio atlântico." },
+      { "letra": "E", "texto": "Domínio francês sobre o litoral nordestino." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A economia açucareira era central no Brasil colonial no início do século XVIII, e Recife destacava-se como entreposto comercial estratégico."
+  },
+  {
+    "id": 871,
+    "enunciado": "O conflito entre Olinda e Recife revela um traço característico da colonização portuguesa:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Centralização administrativa e harmonia entre os grupos." },
+      { "letra": "B", "texto": "Estímulo à autonomia local e ao republicanismo." },
+      { "letra": "C", "texto": "Fragilidade institucional e disputas entre elites locais." },
+      { "letra": "D", "texto": "Descentralização econômica controlada por líderes indígenas." },
+      { "letra": "E", "texto": "Aliança entre colonos e escravizados contra o domínio metropolitano." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A guerra demonstra como a administração colonial portuguesa era permeada por conflitos entre diferentes elites e falta de controle efetivo."
+  },
+  {
+    "id": 873,
+    "contexto": "A tensão entre Olinda e Recife refletia o declínio econômico da aristocracia açucareira.",
+    "enunciado": "Esse declínio ocorreu por causa de:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Crise mundial de produção de tabaco." },
+      { "letra": "B", "texto": "Crescimento das exportações de café no sul do Brasil." },
+      { "letra": "C", "texto": "Queda dos preços internacionais do açúcar e concorrência caribenha." },
+      { "letra": "D", "texto": "Desastres naturais na região amazônica." },
+      { "letra": "E", "texto": "Imposição de tarifas sobre produtos manufaturados europeus." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A decadência do açúcar brasileiro, agravada pela concorrência com o açúcar das Antilhas, enfraqueceu a elite rural de Olinda."
+  },
+  {
+    "id": 874,
+    "enunciado": "O termo 'mascates' também evidencia uma oposição simbólica entre:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Abolicionistas e escravocratas." },
+      { "letra": "B", "texto": "Colonialistas e missionários jesuítas." },
+      { "letra": "C", "texto": "Agricultores endividados e comerciantes rentistas." },
+      { "letra": "D", "texto": "Autoridades militares e religiosos franciscanos." },
+      { "letra": "E", "texto": "Mineradores e lavradores de algodão." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os senhores de engenho olindenses estavam frequentemente endividados com os mascates, criando tensão entre ambos os grupos."
+  },
+  {
+    "id": 875,
+    "enunciado": "Entre as consequências políticas da Guerra dos Mascates, destaca-se:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Retirada da Coroa portuguesa do Nordeste brasileiro." },
+      { "letra": "B", "texto": "Domínio de Olinda sobre toda a capitania." },
+      { "letra": "C", "texto": "Afirmação do Recife como centro administrativo e político." },
+      { "letra": "D", "texto": "Submissão do comércio recifense ao controle olindense." },
+      { "letra": "E", "texto": "Declínio da atividade açucareira na região Sul do Brasil." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Ao fim da guerra, Recife consolidou-se como centro urbano e político da capitania de Pernambuco."
+  },
+  {
+    "id": 876,
+    "enunciado": "A Guerra dos Mascates reflete uma característica marcante da sociedade colonial:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Mobilização de escravizados em movimentos políticos." },
+      { "letra": "B", "texto": "Estabilidade entre os centros urbanos e rurais." },
+      { "letra": "C", "texto": "Desigualdade e disputa entre elites locais pelo poder político." },
+      { "letra": "D", "texto": "Domínio absoluto do clero sobre os assuntos civis." },
+      { "letra": "E", "texto": "Neutralidade da Coroa nos assuntos coloniais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A disputa entre comerciantes e senhores de engenho mostra o conflito de interesses entre diferentes setores da elite colonial."
+  },
+  {
+    "id": 877,
+    "enunciado": "Durante a Guerra dos Mascates, o governador Sebastião de Castro Caldas Barbosa foi acusado de:",
+    "disciplina": "História",
+    "assunto": "Guerra dos Mascates",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Apoiar os comerciantes em detrimento dos senhores rurais." },
+      { "letra": "B", "texto": "Fundar uma vila independente no sertão baiano." },
+      { "letra": "C", "texto": "Ser aliado dos missionários jesuítas." },
+      { "letra": "D", "texto": "Financiar a resistência dos olindenses contra a Coroa." },
+      { "letra": "E", "texto": "Trazer reforços militares franceses para o Recife." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O governador foi acusado de parcialidade ao favorecer os mascates, o que acirrou ainda mais o conflito com Olinda."
+  },
+  {
+    "id": 878,
+    "enunciado": "A Revolta de Vila Rica, ocorrida em 1720, teve como causa imediata:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Imposição de tributos sobre o gado do sertão." },
+      { "letra": "B", "texto": "A cobrança das Casas de Fundição e o aumento do controle fiscal." },
+      { "letra": "C", "texto": "A proibição do cultivo de cana na região mineradora." },
+      { "letra": "D", "texto": "O aumento da escravidão indígena pelos bandeirantes." },
+      { "letra": "E", "texto": "A nomeação de governadores franceses para Minas Gerais." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Revolta de Vila Rica foi provocada principalmente pela insatisfação com a instalação das Casas de Fundição, que visavam controlar e taxar a produção aurífera."
+  },
+  {
+    "id": 879,
+    "contexto": "A cobrança do quinto e a centralização da fundição de ouro geravam fortes tensões em Minas Gerais no início do século XVIII.",
+    "enunciado": "Essas tensões culminaram na Revolta de Vila Rica porque:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A elite mineira se aliou aos indígenas contra a escravidão." },
+      { "letra": "B", "texto": "A Coroa aumentou os impostos sobre a produção agrícola local." },
+      { "letra": "C", "texto": "Os mineradores se rebelaram contra a rigidez do controle metropolitano sobre o ouro." },
+      { "letra": "D", "texto": "O rei autorizou a independência da região." },
+      { "letra": "E", "texto": "A Igreja apoiou abertamente a abolição da fundição." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Revolta surgiu da resistência dos mineradores locais à política fiscal portuguesa, que dificultava o comércio livre do ouro."
+  },
+  {
+    "id": 880,
+    "enunciado": "O principal líder da Revolta de Vila Rica foi:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tiradentes" },
+      { "letra": "B", "texto": "Frei Caneca" },
+      { "letra": "C", "texto": "Filipe dos Santos" },
+      { "letra": "D", "texto": "Tomás Antônio Gonzaga" },
+      { "letra": "E", "texto": "José Bonifácio" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Filipe dos Santos liderou a revolta, articulando a insatisfação dos mineradores contra os abusos da Coroa portuguesa."
+  },
+  {
+    "id": 881,
+    "enunciado": "O desfecho da Revolta de Vila Rica evidencia:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "A anistia completa aos revoltosos, após pressão popular." },
+      { "letra": "B", "texto": "A vitória dos colonos sobre o exército português." },
+      { "letra": "C", "texto": "A astúcia do governo colonial ao prometer diálogo e depois reprimir a revolta com violência." },
+      { "letra": "D", "texto": "A independência temporária da capitania de Minas Gerais." },
+      { "letra": "E", "texto": "A substituição dos governadores portugueses por líderes locais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O governador Pedro Miguel de Almeida enganou os revoltosos com promessas de negociação, mas depois ordenou repressão e punições severas, incluindo a execução de Filipe dos Santos."
+  },
+  {
+    "id": 882,
+    "enunciado": "Entre as demandas dos revoltosos de Vila Rica estava:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A construção de escolas e universidades na região." },
+      { "letra": "B", "texto": "O fim da cobrança do quinto e das Casas de Fundição." },
+      { "letra": "C", "texto": "A criação de um exército colonial independente." },
+      { "letra": "D", "texto": "A concessão de títulos de nobreza aos mineradores." },
+      { "letra": "E", "texto": "A abolição da escravidão na mineração." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os colonos queriam o fim da obrigatoriedade de fundir o ouro nas casas oficiais e de pagar impostos excessivos à Coroa."
+  },
+  {
+    "id": 883,
+    "contexto": "A região das minas, no início do século XVIII, era palco de intensas tensões entre os interesses locais e os fiscais da Coroa.",
+    "enunciado": "Essa realidade contribuiu para a Revolta de Vila Rica porque:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Os mineradores queriam liberdade total de exploração do ouro." },
+      { "letra": "B", "texto": "Os indígenas se revoltaram contra a exploração nas minas." },
+      { "letra": "C", "texto": "Os jesuítas foram expulsos por não colaborarem com a fundição." },
+      { "letra": "D", "texto": "Os impostos agrícolas foram transferidos para a mineração." },
+      { "letra": "E", "texto": "A Coroa reduziu os incentivos para o comércio interno." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A elite mineradora desejava maior autonomia e menor controle fiscal, o que motivou a resistência à política fundiária da Coroa."
+  },
+  {
+    "id": 884,
+    "enunciado": "O governador Pedro Miguel de Almeida, conde de Assumar, desempenhou papel fundamental na revolta ao:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Apoiar abertamente os revoltosos contra Lisboa." },
+      { "letra": "B", "texto": "Ignorar o conflito, deixando-o se agravar." },
+      { "letra": "C", "texto": "Prometer diálogo, prender líderes e intensificar a repressão." },
+      { "letra": "D", "texto": "Negociar com Filipe dos Santos um acordo político." },
+      { "letra": "E", "texto": "Transferir a capital da capitania para Ouro Preto." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O conde de Assumar prometeu negociar com os rebeldes, mas ordenou a prisão e execução dos líderes logo após sufocar a revolta."
+  },
+  {
+    "id": 885,
+    "enunciado": "Diferentemente da Inconfidência Mineira, a Revolta de Vila Rica:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi liderada por oficiais militares." },
+      { "letra": "B", "texto": "Teve caráter claramente separatista." },
+      { "letra": "C", "texto": "Não possuía projeto de independência, apenas crítica ao fisco." },
+      { "letra": "D", "texto": "Contou com apoio estrangeiro." },
+      { "letra": "E", "texto": "Defendia a abolição da escravidão." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A revolta tinha caráter local, não era separatista, sendo contra os abusos fiscais e administrativos da metrópole."
+  },
+  {
+    "id": 886,
+    "enunciado": "A instalação das Casas de Fundição determinava que:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Todo o ouro extraído deveria passar por fundição oficial para recolhimento de impostos." },
+      { "letra": "B", "texto": "A fundição de ouro estava proibida fora de Lisboa." },
+      { "letra": "C", "texto": "Os mineradores poderiam fundir o ouro em troca de títulos de nobreza." },
+      { "letra": "D", "texto": "O ouro não fundido era considerado isento de tributos." },
+      { "letra": "E", "texto": "A fundição seria feita apenas em igrejas locais." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "As Casas de Fundição foram criadas para controlar e tributar o ouro produzido, o que gerou grande insatisfação entre os mineradores."
+  },
+  {
+    "id": 887,
+    "enunciado": "A repressão à Revolta de Vila Rica teve como efeito:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Anistia a todos os envolvidos e fechamento das Casas de Fundição." },
+      { "letra": "B", "texto": "Execução de Filipe dos Santos e aumento da vigilância da Coroa." },
+      { "letra": "C", "texto": "Fim do controle fiscal sobre o ouro." },
+      { "letra": "D", "texto": "Liberdade comercial na capitania de Minas Gerais." },
+      { "letra": "E", "texto": "Transferência da capital para o Rio de Janeiro." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A revolta foi sufocada com violência. Filipe dos Santos foi executado e a Coroa reforçou o controle sobre a extração do ouro."
+  },
+  {
+    "id": 888,
+    "contexto": "A Coroa portuguesa buscava garantir o monopólio fiscal sobre a produção de ouro no Brasil.",
+    "enunciado": "Essa política resultava, frequentemente, em:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Conflitos entre mineradores e autoridades metropolitanas." },
+      { "letra": "B", "texto": "Incentivos ao comércio livre entre colônias." },
+      { "letra": "C", "texto": "Formação de conselhos populares em Vila Rica." },
+      { "letra": "D", "texto": "Redução da dependência da Coroa em relação ao ouro." },
+      { "letra": "E", "texto": "Reformas políticas baseadas em princípios iluministas." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A política fiscal rigorosa causava resistência, gerando revoltas como a de Vila Rica, devido ao excesso de cobrança e centralização."
+  },
+  {
+    "id": 889,
+    "enunciado": "Entre os principais alvos dos revoltosos estavam:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "As autoridades e fiscais ligados à Casa de Fundição." },
+      { "letra": "B", "texto": "Os senhores de engenho da Bahia." },
+      { "letra": "C", "texto": "Os comerciantes estrangeiros do Rio de Janeiro." },
+      { "letra": "D", "texto": "Os religiosos que se opunham à mineração." },
+      { "letra": "E", "texto": "Os líderes quilombolas do interior." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Os revoltosos miravam principalmente os fiscais da Coroa e representantes da Casa de Fundição, vistos como instrumentos de opressão fiscal."
+  },
+  {
+    "id": 890,
+    "enunciado": "A Revolta de Vila Rica é considerada um movimento:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Separatista, de ideais iluministas." },
+      { "letra": "B", "texto": "Regional, de caráter antifiscal." },
+      { "letra": "C", "texto": "Nacionalista e liberal." },
+      { "letra": "D", "texto": "Monarquista e absolutista." },
+      { "letra": "E", "texto": "Reformista e educacional." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O movimento foi regional e motivado pelo descontentamento com os tributos e o controle sobre a atividade mineradora."
+  },
+  {
+    "id": 891,
+    "enunciado": "Filipe dos Santos foi enforcado e esquartejado, o que demonstra:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "A perda de poder da Coroa portuguesa." },
+      { "letra": "B", "texto": "O respeito à autonomia regional." },
+      { "letra": "C", "texto": "A repressão exemplar contra lideranças populares coloniais." },
+      { "letra": "D", "texto": "A vitória dos revoltosos sobre a Coroa." },
+      { "letra": "E", "texto": "A adesão das elites à rebelião." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A execução brutal de Filipe dos Santos teve caráter simbólico e intimidatório, visando conter futuras rebeliões."
+  },
+  {
+    "id": 892,
+    "enunciado": "A relação entre a Revolta de Vila Rica e o pacto colonial evidencia:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A harmonia entre colonos e metrópole." },
+      { "letra": "B", "texto": "A resistência colonial às políticas mercantilistas da metrópole." },
+      { "letra": "C", "texto": "A liberdade econômica dada pelas Casas de Fundição." },
+      { "letra": "D", "texto": "O fim da exploração aurífera no Brasil." },
+      { "letra": "E", "texto": "A independência imediata de Vila Rica." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O movimento expressa a insatisfação com o pacto colonial, que favorecia os interesses metropolitanos e impunha tributos pesados aos colonos."
+  },
+  {
+    "id": 893,
+    "enunciado": "A repressão à Revolta de Vila Rica fortaleceu:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "As Câmaras Municipais de Vila Rica." },
+      { "letra": "B", "texto": "O controle metropolitano e a fiscalização sobre o ouro." },
+      { "letra": "C", "texto": "A autonomia das vilas mineradoras." },
+      { "letra": "D", "texto": "A presença francesa nas minas." },
+      { "letra": "E", "texto": "O poder dos bandeirantes paulistas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Coroa intensificou o controle sobre a produção aurífera após o levante, com aumento da fiscalização e do poder das Casas de Fundição."
+  },
+  {
+    "id": 894,
+    "enunciado": "A Revolta de Vila Rica pode ser vista como precursora de outras revoltas coloniais, pois:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Inaugurou o uso do voto popular nas vilas mineiras." },
+      { "letra": "B", "texto": "Defendia os princípios do socialismo científico." },
+      { "letra": "C", "texto": "Foi o primeiro movimento popular contra a exploração colonial." },
+      { "letra": "D", "texto": "Liderou a independência do Brasil em 1720." },
+      { "letra": "E", "texto": "Aboliu o monopólio do ouro." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Embora não separatista, a Revolta de Vila Rica revelou tensões estruturais da colonização portuguesa e antecipou futuras rebeliões."
+  },
+  {
+    "id": 895,
+    "enunciado": "A política de fundição obrigatória do ouro afetava os mineradores porque:",
+    "disciplina": "História",
+    "assunto": "Revolta de Vila Rica",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Aumentava os lucros com as exportações de ouro." },
+      { "letra": "B", "texto": "Impedia o contrabando e estimulava a produção legal." },
+      { "letra": "C", "texto": "Retinha parte do ouro em troca de proteção militar." },
+      { "letra": "D", "texto": "Reduzia a margem de lucro e restringia a autonomia comercial." },
+      { "letra": "E", "texto": "Era opcional e beneficiava os grandes mineradores." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A fundição obrigatória prejudicava a lucratividade dos mineradores, que viam na política uma ingerência excessiva da Coroa."
   }
 ]
