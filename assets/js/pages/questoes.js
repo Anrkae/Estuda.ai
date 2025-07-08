@@ -1,4 +1,4 @@
-// questoes_completo.js - Atualizado com suporte a múltiplos assuntos e corte de alternativas
+// questoes_completo.js com corte por emoji ✂️
 
 document.addEventListener('DOMContentLoaded', async () => {
   const QUESTOES_JSON_URL = '../assets/data/questoes.json';
@@ -70,13 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (disciplinasSelecionadas.length === 0) {
       assuntosFiltrados = [...new Set(todasQuestoes.flatMap(q => q.assunto || []))];
     } else {
-      assuntosFiltrados = [
-        ...new Set(
-          todasQuestoes
-            .filter(q => disciplinasSelecionadas.includes(q.disciplina))
-            .flatMap(q => q.assunto || [])
-        )
-      ];
+      assuntosFiltrados = [...new Set(todasQuestoes.filter(q => disciplinasSelecionadas.includes(q.disciplina)).flatMap(q => q.assunto || []))];
     }
     filtroAssunto.clearStore();
     filtroAssunto.setChoices(assuntosFiltrados.map(a => ({ value: a, label: a })), 'value', 'label', true);
@@ -103,61 +97,144 @@ document.addEventListener('DOMContentLoaded', async () => {
       div.id = id;
 
       div.innerHTML = `
-        ${q.metadata?.fonte || q.metadata?.ano ? `
-          <div class="question-meta">
-            ${q.metadata.fonte ? `<span class="meta-source">${q.metadata.fonte}</span>` : ''}
-            ${q.metadata.fonte && q.metadata.ano ? ' | ' : ''}
-            ${q.metadata.ano ? `<span class="meta-year">${q.metadata.ano}</span>` : ''}
-          </div>` : ''}
-
+        ${q.metadata?.fonte || q.metadata?.ano ? `<div class="question-meta">
+          ${q.metadata.fonte ? `<span class="meta-source">${q.metadata.fonte}</span>` : ''}
+          ${q.metadata.fonte && q.metadata.ano ? ' | ' : ''}
+          ${q.metadata.ano ? `<span class="meta-year">${q.metadata.ano}</span>` : ''}
+        </div>` : ''}
         <div class="question-tags">
           ${Array.isArray(q.assunto) ? q.assunto.map(a => `<span class="tag-assunto">${a}</span>`).join(' ') : ''}
           ${q.dificuldade ? `<span class="tag-dificuldade">${q.dificuldade}</span>` : ''}
         </div>
-
         <p class="question-text"><strong>${idx + 1}.</strong> ${q.enunciado}</p>
-
-        ${temContexto ? `
-          <button class="btn-contexto toggle-btn" data-target="contexto-${id}">Texto associado +</button>
-          <div class="contexto-content toggle-content oculto" id="contexto-${id}">${q.contexto}</div>
-        ` : ''}
-
-        ${temImagem ? `
-          <button class="btn-imagem toggle-btn" data-target="imagem-${id}">Ver imagem +</button>
+        ${temContexto ? `<button class="btn-contexto toggle-btn" data-target="contexto-${id}">Texto associado +</button>
+          <div class="contexto-content toggle-content oculto" id="contexto-${id}">${q.contexto}</div>` : ''}
+        ${temImagem ? `<button class="btn-imagem toggle-btn" data-target="imagem-${id}">Ver imagem +</button>
           <div class="imagem-content toggle-content oculto" id="imagem-${id}">
             <img src="${q.imagem_url}" alt="Imagem da questão" style="max-width: 100%;">
-          </div>
-        ` : ''}
-
+          </div>` : ''}
         <div class="options-container">
           ${q.opcoes.map(op => `
             <button class="option-btn" data-value="${op.letra}">
               <span class="option-letter">${op.letra}</span>
               <span class="option-content">${op.texto}</span>
-              <button class="corte-btn" title="Cortar alternativa" data-letra="${op.letra}" style="display: none;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="6" cy="6" r="3" />
-                  <circle cx="6" cy="18" r="3" />
-                  <line x1="20" y1="4" x2="8.12" y2="15.88" />
-                  <line x1="14.47" y1="14.48" x2="20" y2="20" />
-                  <line x1="8.12" y1="8.12" x2="12" y2="12" />
-                </svg>
-              </button>
+              <span class="corte-btn" title="Cortar alternativa" data-letra="${op.letra}" style="display: none;">✂️</span>
             </button>
           `).join('')}
         </div>
-
         <div class="feedback-area">
           <div class="feedback-message"></div>
           <button class="confirm-answer-btn" disabled>Responder</button>
           ${q.resolucao ? '<button class="view-resolution-btn" style="display:none;">Gabarito</button>' : ''}
         </div>
-
         ${q.resolucao ? `<div class="resolution-area" style="display:none;"><strong>Resolução:</strong><br>${q.resolucao}</div>` : ''}
       `;
 
       questoesOutput.appendChild(div);
     });
+  };
+
+  questoesOutput.addEventListener('click', (e) => {
+    const btn = e.target.closest('.option-btn, .confirm-answer-btn, .view-resolution-btn, .toggle-btn, .corte-btn');
+    if (!btn) return;
+
+    if (btn.classList.contains('option-btn')) selecionarOpcao(btn);
+
+    if (btn.classList.contains('corte-btn')) {
+      const container = btn.closest('.question-item');
+      const letra = btn.dataset.letra;
+      const alt = container.querySelector(`.option-btn[data-value="${letra}"]`);
+      if (!alt) return;
+
+      const isCortada = alt.classList.toggle('cortada');
+
+      if (isCortada) {
+        alt.classList.remove('selected-preview');
+        delete container.dataset.selected;
+        container.querySelector('.confirm-answer-btn').disabled = true;
+        btn.textContent = '↩️';
+        btn.setAttribute('title', 'Restaurar alternativa');
+      } else {
+        btn.textContent = '✂️';
+        btn.setAttribute('title', 'Cortar alternativa');
+      }
+    }
+
+    if (btn.classList.contains('confirm-answer-btn')) responderQuestao(btn);
+
+    if (btn.classList.contains('view-resolution-btn')) {
+      const area = btn.closest('.question-item').querySelector('.resolution-area');
+      const visivel = area.style.display === 'block';
+      area.style.display = visivel ? 'none' : 'block';
+      btn.textContent = visivel ? 'Gabarito' : 'Ocultar Gabarito';
+    }
+
+    if (btn.classList.contains('toggle-btn')) {
+      const targetId = btn.dataset.target;
+      const alvo = document.getElementById(targetId);
+      if (alvo) alvo.classList.toggle('oculto');
+    }
+  });
+
+  const selecionarOpcao = (btn) => {
+    const container = btn.closest('.question-item');
+    if (!container || container.classList.contains('answered')) return;
+    if (btn.classList.contains('cortada')) return;
+
+    container.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected-preview'));
+    container.dataset.selected = btn.dataset.value;
+    btn.classList.add('selected-preview');
+
+    container.querySelectorAll('.option-btn').forEach(opt => {
+      const corte = opt.querySelector('.corte-btn');
+      if (!corte) return;
+      
+      if (opt === btn && !btn.classList.contains('cortada')) {
+        corte.style.display = 'inline-flex';
+      } else {
+        corte.style.display = 'none';
+      }
+    });
+
+    container.querySelector('.confirm-answer-btn').disabled = false;
+  };
+
+  const responderQuestao = (btn) => {
+    const container = btn.closest('.question-item');
+    const id = container.id;
+    const questao = questionsDataStore[id];
+    const resposta = container.dataset.selected;
+    if (!questao || !resposta || container.classList.contains('answered')) return;
+
+    const correta = questao.resposta_correta;
+    const acertou = resposta === correta;
+    container.classList.add('answered', acertou ? 'correct' : 'incorrect');
+
+    container.querySelectorAll('.option-btn').forEach(b => {
+      b.disabled = true;
+      if (b.dataset.value === resposta) b.classList.add('selected');
+      if (b.dataset.value === correta) b.classList.add('correct-answer-highlight');
+    });
+
+    container.querySelector('.feedback-message').textContent = acertou
+      ? 'Resposta Correta!'
+      : `Incorreto. A resposta correta é: ${correta}`;
+
+    const gabaritoBtn = container.querySelector('.view-resolution-btn');
+    if (gabaritoBtn) gabaritoBtn.style.display = 'inline-flex';
+
+    currentSessionStats.answeredCount++;
+    if (acertou) currentSessionStats.correctCount++;
+
+    salvarResolvida(questao.id, acertou);
+
+    if (window.timerPopupAPI?.updateStats) {
+      window.timerPopupAPI.updateStats(currentSessionStats.answeredCount, currentSessionStats.correctCount);
+    }
+
+    if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
+      finalizarSessao(true);
+    }
   };
 
   const aplicarFiltrosAvancados = () => {
@@ -207,10 +284,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       totalQuestions: questoes.length,
       answeredCount: 0,
       correctCount: 0,
-      disciplina: questoes[0]?.disciplina || "Diversas"
+      disciplina: questoes[0]?.disciplina || 'Diversas'
     };
     finalizeButton.style.display = 'inline-flex';
-
     if (window.timerPopupAPI?.startSession) {
       window.timerPopupAPI.startSession(questoes.length, currentSessionStats.disciplina);
     }
@@ -222,100 +298,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (abrir && window.timerPopupAPI?.openPanel) window.timerPopupAPI.openPanel();
     finalizeButton.style.display = 'none';
     currentSessionStats = {
-      id: null, totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null
+      id: null,
+      totalQuestions: 0,
+      answeredCount: 0,
+      correctCount: 0,
+      disciplina: null
     };
   };
-
-  const selecionarOpcao = (btn) => {
-    const container = btn.closest('.question-item');
-    if (!container || container.classList.contains('answered')) return;
-    if (btn.classList.contains('cortada')) return;
-
-    container.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected-preview'));
-    container.dataset.selected = btn.dataset.value;
-    btn.classList.add('selected-preview');
-
-    container.querySelectorAll('.corte-btn').forEach(c => {
-      const letra = c.dataset.letra;
-      c.style.display = (letra === btn.dataset.value) ? 'inline-flex' : 'none';
-    });
-
-    container.querySelector('.confirm-answer-btn').disabled = false;
-  };
-
-  const responderQuestao = (btn) => {
-    const container = btn.closest('.question-item');
-    const id = container.id;
-    const questao = questionsDataStore[id];
-    const resposta = container.dataset.selected;
-    if (!questao || !resposta || container.classList.contains('answered')) return;
-
-    const correta = questao.resposta_correta;
-    const acertou = resposta === correta;
-    container.classList.add('answered', acertou ? 'correct' : 'incorrect');
-
-    container.querySelectorAll('.option-btn').forEach(b => {
-      b.disabled = true;
-      if (b.dataset.value === resposta) b.classList.add('selected');
-      if (b.dataset.value === correta) b.classList.add('correct-answer-highlight');
-    });
-
-    container.querySelector('.feedback-message').textContent = acertou
-      ? 'Resposta Correta!'
-      : `Incorreto. A resposta correta é: ${correta}`;
-
-    const gabaritoBtn = container.querySelector('.view-resolution-btn');
-    if (gabaritoBtn) gabaritoBtn.style.display = 'inline-flex';
-
-    currentSessionStats.answeredCount++;
-    if (acertou) currentSessionStats.correctCount++;
-
-    salvarResolvida(questao.id, acertou);
-
-    if (window.timerPopupAPI?.updateStats) {
-      window.timerPopupAPI.updateStats(currentSessionStats.answeredCount, currentSessionStats.correctCount);
-    }
-
-    if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
-      finalizarSessao(true);
-    }
-  };
-
-  questoesOutput.addEventListener('click', (e) => {
-    const btn = e.target.closest('button');
-    if (!btn) return;
-
-    if (btn.classList.contains('option-btn')) selecionarOpcao(btn);
-    if (btn.classList.contains('confirm-answer-btn')) responderQuestao(btn);
-    if (btn.classList.contains('view-resolution-btn')) {
-      const area = btn.closest('.question-item').querySelector('.resolution-area');
-      const visivel = area.style.display === 'block';
-      area.style.display = visivel ? 'none' : 'block';
-      btn.textContent = visivel ? 'Gabarito' : 'Ocultar Gabarito';
-    }
-    if (btn.classList.contains('toggle-btn')) {
-      const targetId = btn.dataset.target;
-      const alvo = document.getElementById(targetId);
-      if (alvo) alvo.classList.toggle('oculto');
-    }
-    if (btn.classList.contains('corte-btn')) {
-      const container = btn.closest('.question-item');
-      const letra = btn.dataset.letra;
-      const alt = container.querySelector(`.option-btn[data-value="${letra}"]`);
-      if (!alt) return;
-
-      const isCortada = alt.classList.toggle('cortada');
-      if (isCortada) {
-        alt.classList.remove('selected-preview');
-        delete container.dataset.selected;
-        container.querySelector('.confirm-answer-btn').disabled = true;
-        btn.setAttribute('title', 'Restaurar alternativa');
-      } else {
-        btn.setAttribute('title', 'Cortar alternativa');
-      }
-      btn.style.display = 'inline-flex';
-    }
-  });
 
   buscarQuestoes.addEventListener('click', buscarQuestoesSelecionadas);
   finalizeButton.addEventListener('click', () => finalizarSessao(true));

@@ -798,49 +798,6 @@ button, input, select, textarea {
 }
 
 /* Estilos para alternativa com botão de corte embutido */
-.option-btn {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
-    padding-right: 30px;
-}
-
-.option-btn .option-letter {
-    font-weight: bold;
-    margin-right: 5px;
-}
-
-.option-btn .option-content {
-    flex: 1;
-    text-align: left;
-}
-
-.corte-btn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: transparent;
-    border: none;
-    padding: 2px;
-    opacity: 0.3;
-    cursor: pointer;
-    display: none;
-}
-
-.option-btn:hover .corte-btn {
-    display: inline-flex;
-    opacity: 0.6;
-}
-
-.option-btn.cortada {
-    opacity: 0.4;
-    text-decoration: line-through;
-    background-color: #f9f9f9;
-    cursor: not-allowed;
-}
-
 /* Tags de meta-info */
 .question-tags {
     margin: 5px 0 10px;
@@ -854,4 +811,48 @@ button, input, select, textarea {
     padding: 2px 6px;
     margin-right: 5px;
     display: inline-block;
+}
+
+/* Mostrar o botão sempre que a alternativa estiver pré-selecionada ou cortada */
+.option-btn.selected-preview .corte-btn,
+.option-btn.cortada .corte-btn {
+  display: inline-flex !important;
+  opacity: 0.7;
+}
+
+/* Tesoura padrão */
+.corte-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.4;
+  user-select: none;
+  z-index: 2;
+  display: none;
+}
+
+/* Para manter o botão visível fixamente durante seleção */
+.option-btn.selected-preview:hover .corte-btn,
+.option-btn.cortada:hover .corte-btn {
+  opacity: 1;
+}
+
+.option-btn.selected-preview .corte-btn,
+.option-btn.cortada .corte-btn {
+    display: inline-flex !important;
+    opacity: 0.8;
+}
+
+.corte-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    opacity: 0.4;
+    user-select: none;
+    display: none;
+    z-index: 2;
 }
