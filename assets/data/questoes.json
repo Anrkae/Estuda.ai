@@ -7181,5 +7181,261 @@
     ],
     "resposta_correta": "E",
     "resolucao": "A forma correta seria 'vir', não 'ver', no sentido de 'comparecer' ou 'chegar'."
+  },
+  {
+    "id": 924,
+    "enunciado": "Assinale a alternativa em que o verbo está conjugado no modo subjuntivo, expressando incerteza.",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Caso ele chegue, avise-me." },
+      { "letra": "B", "texto": "Ele chega cedo todos os dias." },
+      { "letra": "C", "texto": "Chegue logo!" },
+      { "letra": "D", "texto": "Chegaria mais cedo, se pudesse." },
+      { "letra": "E", "texto": "Ele havia chegado tarde ontem." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A forma 'chegue' expressa hipótese ou incerteza, própria do modo subjuntivo."
+  },
+  {
+    "id": 925,
+    "contexto": "Você estuda com dedicação, se esforça e revisa sempre.",
+    "enunciado": "O modo verbal predominante no trecho é:",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Subjuntivo" },
+      { "letra": "B", "texto": "Imperativo" },
+      { "letra": "C", "texto": "Indicativo" },
+      { "letra": "D", "texto": "Infinitivo" },
+      { "letra": "E", "texto": "Gerúndio" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O modo indicativo expressa certeza e fatos concretos — todos os verbos do trecho estão nesse modo."
+  },
+  {
+    "id": 926,
+    "enunciado": "Assinale a frase que apresenta verbo no **modo imperativo afirmativo**.",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Talvez ele venha amanhã." },
+      { "letra": "B", "texto": "Vem comigo agora!" },
+      { "letra": "C", "texto": "Se ele vier, falarei." },
+      { "letra": "D", "texto": "Não fale comigo!" },
+      { "letra": "E", "texto": "Ele virá comigo mais tarde." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O modo imperativo afirmativo aparece em 'Vem comigo agora!', que expressa uma ordem direta."
+  },
+  {
+    "id": 927,
+    "enunciado": "O verbo da frase 'Se ele estudasse, seria aprovado' está no modo:",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Imperativo e indicativo" },
+      { "letra": "B", "texto": "Infinitivo e subjuntivo" },
+      { "letra": "C", "texto": "Subjuntivo e indicativo" },
+      { "letra": "D", "texto": "Apenas subjuntivo" },
+      { "letra": "E", "texto": "Subjuntivo e condicional" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Estudasse' está no pretérito imperfeito do subjuntivo e 'seria' no indicativo (futuro do pretérito)."
+  },
+  {
+    "id": 928,
+    "contexto": "Estude mais, concentre-se nos erros e reveja os conteúdos importantes.",
+    "enunciado": "Sobre os modos verbais do trecho, é correto afirmar:",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Todos os verbos estão no indicativo." },
+      { "letra": "B", "texto": "Todos os verbos estão no subjuntivo." },
+      { "letra": "C", "texto": "Há verbos no infinitivo." },
+      { "letra": "D", "texto": "Todos os verbos estão no modo imperativo afirmativo." },
+      { "letra": "E", "texto": "Há mistura entre indicativo e subjuntivo." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Os verbos 'estude', 'concentre-se' e 'reveja' estão no modo imperativo afirmativo, indicando ordens ou conselhos."
+  },
+  {
+    "id": 929,
+    "enunciado": "Qual das frases apresenta verbo no **modo imperativo negativo**?",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Não fale alto durante a aula." },
+      { "letra": "B", "texto": "Fale baixo durante a aula." },
+      { "letra": "C", "texto": "Talvez ele fale baixo." },
+      { "letra": "D", "texto": "Falava baixo durante a aula." },
+      { "letra": "E", "texto": "Falou baixo durante a aula." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Não fale' é modo imperativo negativo, pois expressa proibição ou advertência."
+  },
+  {
+    "id": 930,
+    "contexto": "Mesmo que ele tente, não conseguirá resolver sem ajuda.",
+    "enunciado": "O verbo 'tente' está conjugado no:",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Futuro do indicativo" },
+      { "letra": "B", "texto": "Presente do subjuntivo" },
+      { "letra": "C", "texto": "Imperativo afirmativo" },
+      { "letra": "D", "texto": "Infinitivo pessoal" },
+      { "letra": "E", "texto": "Pretérito do subjuntivo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Tente' indica hipótese ou incerteza — forma típica do presente do subjuntivo."
+  },
+  {
+    "id": 931,
+    "enunciado": "Em qual alternativa o verbo expressa certeza e está no **modo indicativo**?",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Talvez ele viaje amanhã." },
+      { "letra": "B", "texto": "Viajará amanhã." },
+      { "letra": "C", "texto": "Que ele viaje amanhã." },
+      { "letra": "D", "texto": "Viaje amanhã!" },
+      { "letra": "E", "texto": "Se ele viajar amanhã, avise-me." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Viajará' está no futuro do indicativo, expressando certeza sobre ação futura."
+  },
+  {
+    "id": 932,
+    "enunciado": "Assinale a alternativa em que o verbo está no **modo subjuntivo** e indica uma condição.",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se ele for, irá sozinho." },
+      { "letra": "B", "texto": "Ele irá amanhã." },
+      { "letra": "C", "texto": "Ele vai amanhã." },
+      { "letra": "D", "texto": "Ele forçou a barra." },
+      { "letra": "E", "texto": "Ele foi à escola." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Se ele for' expressa condição hipotética e está no futuro do subjuntivo."
+  },
+  {
+    "id": 933,
+    "contexto": "Professor: Estude bastante. Revise o conteúdo e mantenha o foco.",
+    "enunciado": "Todos os verbos estão no modo:",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Indicativo" },
+      { "letra": "B", "texto": "Subjuntivo" },
+      { "letra": "C", "texto": "Imperativo afirmativo" },
+      { "letra": "D", "texto": "Infinitivo impessoal" },
+      { "letra": "E", "texto": "Gerúndio" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Estude', 'revise' e 'mantenha' expressam ordens diretas, típicas do imperativo afirmativo."
+  },
+  {
+    "id": 934,
+    "enunciado": "Assinale a frase cuja forma verbal está incorretamente usada no modo imperativo.",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Venha comigo!" },
+      { "letra": "B", "texto": "Sai daí agora mesmo!" },
+      { "letra": "C", "texto": "Vá com calma." },
+      { "letra": "D", "texto": "Fica tranquilo!" },
+      { "letra": "E", "texto": "Pare de gritar." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A forma correta seria 'Fique tranquilo!' — 'fica' está no presente do indicativo e não no imperativo."
+  },
+  {
+    "id": 935,
+    "enunciado": "Qual das alternativas apresenta o verbo conjugado corretamente no **modo subjuntivo**?",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Espero que ele venha." },
+      { "letra": "B", "texto": "Talvez ele virá." },
+      { "letra": "C", "texto": "Talvez ele veio." },
+      { "letra": "D", "texto": "Espero que ele viria." },
+      { "letra": "E", "texto": "Talvez ele viera." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Venha' é presente do subjuntivo, exigido pelo verbo 'espero'."
+  },
+  {
+    "id": 936,
+    "enunciado": "Identifique a alternativa cuja forma verbal esteja no **modo indicativo**.",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Que ele venha logo." },
+      { "letra": "B", "texto": "Ele viria, se soubesse." },
+      { "letra": "C", "texto": "Venha logo!" },
+      { "letra": "D", "texto": "Se vier cedo, dormirá bem." },
+      { "letra": "E", "texto": "Se ele tivesse vindo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Viria' está no futuro do pretérito do indicativo, expressando hipótese."
+  },
+  {
+    "id": 937,
+    "enunciado": "Assinale a alternativa em que os verbos indicam desejo ou hipótese.",
+    "disciplina": "Português",
+    "assuntos": ["Modo verbal", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Amanhã viajarei com calma." },
+      { "letra": "B", "texto": "Desejo que você estude." },
+      { "letra": "C", "texto": "Estudou com afinco." },
+      { "letra": "D", "texto": "Estuda muito para passar." },
+      { "letra": "E", "texto": "Vai passar na prova." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Estude' está no presente do subjuntivo, exigido pelo verbo 'desejo'."
   }
 ]
