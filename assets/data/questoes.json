@@ -6668,5 +6668,518 @@
     ],
     "resposta_correta": "D",
     "resolucao": "A fundição obrigatória prejudicava a lucratividade dos mineradores, que viam na política uma ingerência excessiva da Coroa."
+  },
+  {
+    "id": 896,
+    "enunciado": "Assinale a alternativa em que o verbo está corretamente conjugado no pretérito mais-que-perfeito.",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Quando ele chegou, eu já terminava o relatório." },
+      { "letra": "B", "texto": "Quando ele chegou, eu já terminara o relatório." },
+      { "letra": "C", "texto": "Quando ele chegou, eu já tinha terminava o relatório." },
+      { "letra": "D", "texto": "Quando ele chegou, eu terminava o relatório." },
+      { "letra": "E", "texto": "Quando ele chegou, eu terminará o relatório." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A forma verbal 'terminara' está no pretérito mais-que-perfeito simples, correta para indicar uma ação anterior a outra já passada."
+  },
+  {
+    "id": 897,
+    "contexto": "Se ele tivesse estudado mais, provavelmente teria sido aprovado.",
+    "enunciado": "O período acima apresenta verbos conjugados em tempos que indicam:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Certeza no futuro." },
+      { "letra": "B", "texto": "Ações simultâneas." },
+      { "letra": "C", "texto": "Condição irreal no passado." },
+      { "letra": "D", "texto": "Fato ocorrido com precisão." },
+      { "letra": "E", "texto": "Hipótese sobre o presente." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O uso de 'tivesse estudado' e 'teria sido' indica uma hipótese não realizada no passado."
+  },
+  {
+    "id": 898,
+    "enunciado": "Assinale a alternativa em que o verbo está no futuro do pretérito do indicativo.",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se ele quisesse, aceitaria o convite." },
+      { "letra": "B", "texto": "Aceitará o convite com prazer." },
+      { "letra": "C", "texto": "Aceitasse o convite, ficaríamos felizes." },
+      { "letra": "D", "texto": "Ele aceitava o convite sempre." },
+      { "letra": "E", "texto": "Se ele quiser, aceitará o convite." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Aceitaria' é futuro do pretérito do indicativo, usado em situações condicionais."
+  },
+  {
+    "id": 899,
+    "contexto": "Caso soubéssemos antes, teríamos nos preparado melhor.",
+    "enunciado": "Os tempos verbais do período indicam uma ação:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Conclusiva e esperada." },
+      { "letra": "B", "texto": "Hipotética, irrealizada no passado." },
+      { "letra": "C", "texto": "Futura com certeza." },
+      { "letra": "D", "texto": "Habitual no presente." },
+      { "letra": "E", "texto": "Real no passado." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A estrutura 'caso soubéssemos' + 'teríamos nos preparado' denota uma condição não realizada no passado."
+  },
+  {
+    "id": 900,
+    "enunciado": "Assinale a alternativa cuja forma verbal está no tempo futuro do presente.",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ontem, viajamos à tarde." },
+      { "letra": "B", "texto": "Hoje, viajamos pela manhã." },
+      { "letra": "C", "texto": "Amanhã, viajaremos cedo." },
+      { "letra": "D", "texto": "Sempre viajávamos em julho." },
+      { "letra": "E", "texto": "Viajávamos quando podíamos." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Viajaremos' é forma verbal do futuro do presente do modo indicativo."
+  },
+  {
+    "id": 901,
+    "enunciado": "Assinale a alternativa que apresenta um verbo no pretérito imperfeito do subjuntivo:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2020 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se eu estudar, passo." },
+      { "letra": "B", "texto": "Se eu estudasse, passaria." },
+      { "letra": "C", "texto": "Se eu estudo, passo." },
+      { "letra": "D", "texto": "Se eu estudara, passei." },
+      { "letra": "E", "texto": "Se eu estudei, passei." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Estudasse' está no pretérito imperfeito do subjuntivo, indicando condição hipotética."
+  },
+  {
+    "id": 902,
+    "contexto": "Na entrevista, o candidato afirmou que viria ao evento, mas se atrasaria.",
+    "enunciado": "Os tempos verbais 'viria' e 'atrasaria' estão no:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Futuro do presente." },
+      { "letra": "B", "texto": "Pretérito imperfeito." },
+      { "letra": "C", "texto": "Futuro do pretérito." },
+      { "letra": "D", "texto": "Futuro do subjuntivo." },
+      { "letra": "E", "texto": "Pretérito perfeito." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os verbos 'viria' e 'atrasaria' estão no futuro do pretérito, usado para indicar uma ação posterior a outra passada."
+  },
+  {
+    "id": 903,
+    "enunciado": "Assinale a alternativa em que todos os verbos estão no modo subjuntivo.",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se ele quer, que queira de verdade." },
+      { "letra": "B", "texto": "Talvez ele saiba, mas finja que não." },
+      { "letra": "C", "texto": "Quando ele vem, traz presentes." },
+      { "letra": "D", "texto": "Tomara que ele vem logo." },
+      { "letra": "E", "texto": "Se souberes, não diga a ninguém." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Saiba' e 'finja' estão no presente do subjuntivo, expressando dúvida ou desejo."
+  },
+  {
+    "id": 904,
+    "contexto": "Caso chova amanhã, cancelaremos o passeio.",
+    "enunciado": "A forma verbal 'chova' indica:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Certeza no futuro." },
+      { "letra": "B", "texto": "Condicional no passado." },
+      { "letra": "C", "texto": "Desejo no presente." },
+      { "letra": "D", "texto": "Hipótese futura (subjuntivo)." },
+      { "letra": "E", "texto": "Fato habitual." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Chova' está no presente do subjuntivo, usado para hipótese futura com valor condicional."
+  },
+  {
+    "id": 905,
+    "enunciado": "Assinale a alternativa em que o verbo está no pretérito perfeito do indicativo.",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Eu fazia tudo com cuidado." },
+      { "letra": "B", "texto": "Eu fiz tudo com cuidado." },
+      { "letra": "C", "texto": "Eu faria tudo com cuidado." },
+      { "letra": "D", "texto": "Eu fazia e farei tudo com cuidado." },
+      { "letra": "E", "texto": "Se eu fizer tudo com cuidado, será melhor." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Fiz' está no pretérito perfeito, indicando ação concluída no passado."
+  },
+  {
+    "id": 906,
+    "contexto": "Ainda que trabalhasse o dobro, não conseguiria pagar a dívida.",
+    "enunciado": "A forma verbal 'trabalhasse' está no:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Presente do indicativo." },
+      { "letra": "B", "texto": "Pretérito imperfeito do subjuntivo." },
+      { "letra": "C", "texto": "Futuro do subjuntivo." },
+      { "letra": "D", "texto": "Pretérito mais-que-perfeito." },
+      { "letra": "E", "texto": "Futuro do pretérito." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Trabalhasse' expressa uma hipótese, e está no pretérito imperfeito do subjuntivo."
+  },
+  {
+    "id": 907,
+    "enunciado": "Qual alternativa apresenta corretamente o uso do futuro do subjuntivo?",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se ele vir, diremos a verdade." },
+      { "letra": "B", "texto": "Se ele viesse, diríamos a verdade." },
+      { "letra": "C", "texto": "Se ele veio, falamos a verdade." },
+      { "letra": "D", "texto": "Se ele vier, dirá a verdade." },
+      { "letra": "E", "texto": "Se ele ver, disse a verdade." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Vier' está no futuro do subjuntivo, usado para expressar condição futura incerta."
+  },
+  {
+    "id": 908,
+    "enunciado": "Em qual alternativa o verbo está corretamente no pretérito mais-que-perfeito composto?",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ele já tinha feito tudo quando chegamos." },
+      { "letra": "B", "texto": "Ele fez tudo antes que chegássemos." },
+      { "letra": "C", "texto": "Ele teria feito tudo se soubesse." },
+      { "letra": "D", "texto": "Ele tinha fazer tudo antes da festa." },
+      { "letra": "E", "texto": "Ele fazia tudo quando nós chegássemos." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Tinha feito' é forma composta do pretérito mais-que-perfeito."
+  },
+  {
+    "id": 909,
+    "enunciado": "Em 'Tomara que ele chegue a tempo', o verbo está no tempo:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Presente do indicativo." },
+      { "letra": "B", "texto": "Futuro do indicativo." },
+      { "letra": "C", "texto": "Pretérito imperfeito do indicativo." },
+      { "letra": "D", "texto": "Presente do subjuntivo." },
+      { "letra": "E", "texto": "Futuro do subjuntivo." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Chegue' expressa desejo e está no presente do subjuntivo."
+  },
+  {
+    "id": 910,
+    "enunciado": "Marque a alternativa em que o verbo está corretamente no futuro do pretérito do indicativo:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Eu viajaria, se tivesse tempo." },
+      { "letra": "B", "texto": "Eu viajava quando era jovem." },
+      { "letra": "C", "texto": "Eu viajará ontem à noite." },
+      { "letra": "D", "texto": "Eu viajo sempre que posso." },
+      { "letra": "E", "texto": "Eu tinha viajado muito pouco." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Viajaria' é futuro do pretérito do indicativo, expressando uma ação condicionada a outra."
+  },
+  {
+    "id": 911,
+    "contexto": "Se ele viesse hoje, ainda conseguiríamos resolver o problema.",
+    "enunciado": "O uso de 'viesse' e 'conseguiríamos' indica que a frase expressa:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Fato certo no futuro." },
+      { "letra": "B", "texto": "Hipótese presente com consequência futura." },
+      { "letra": "C", "texto": "Desejo certo no presente." },
+      { "letra": "D", "texto": "Fato habitual no passado." },
+      { "letra": "E", "texto": "Ação contínua futura." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Viesse' (pretérito imperfeito do subjuntivo) + 'conseguiríamos' (futuro do pretérito) indicam hipótese atual com consequência futura possível."
+  },
+  {
+    "id": 912,
+    "enunciado": "Qual frase apresenta corretamente o uso do futuro do subjuntivo?",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se eu saber, eu conto." },
+      { "letra": "B", "texto": "Quando eu souber, aviso." },
+      { "letra": "C", "texto": "Quando eu sabia, falava." },
+      { "letra": "D", "texto": "Quando eu saberei, contarei." },
+      { "letra": "E", "texto": "Se eu sabia, dizia." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Souber' está no futuro do subjuntivo, adequado para expressar uma condição incerta no futuro."
+  },
+  {
+    "id": 913,
+    "enunciado": "Assinale a alternativa em que o verbo NÃO está no tempo indicado entre parênteses.",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se eu pudesse, ajudava. (Pretérito imperfeito do subjuntivo)" },
+      { "letra": "B", "texto": "Espero que ele venha. (Presente do subjuntivo)" },
+      { "letra": "C", "texto": "Assim que terminar, sairemos. (Futuro do subjuntivo)" },
+      { "letra": "D", "texto": "Caso estudasse, passaria. (Pretérito imperfeito do subjuntivo)" },
+      { "letra": "E", "texto": "Ele virá amanhã. (Presente do subjuntivo)" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "'Virá' está no futuro do indicativo, e não no presente do subjuntivo como indicado."
+  },
+  {
+    "id": 914,
+    "enunciado": "Qual frase apresenta uso inadequado do tempo verbal, segundo a norma-padrão?",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se ele vier, conversaremos." },
+      { "letra": "B", "texto": "Caso estudasse, teria sido aprovado." },
+      { "letra": "C", "texto": "Quando ele chegar, sairemos." },
+      { "letra": "D", "texto": "Se ele vir, falaríamos com ele." },
+      { "letra": "E", "texto": "Se soubéssemos, evitaríamos o erro." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O uso de 'vir' no presente com 'falaríamos' (futuro do pretérito) gera incompatibilidade temporal."
+  },
+  {
+    "id": 915,
+    "contexto": "Ainda que ele tivesse estudado, não passaria na prova.",
+    "enunciado": "A sequência verbal apresenta um uso correto dos tempos verbais:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sim, ambos indicam uma ação futura certa." },
+      { "letra": "B", "texto": "Sim, tratam-se de formas nominais." },
+      { "letra": "C", "texto": "Sim, expressam uma hipótese irrealizada no passado." },
+      { "letra": "D", "texto": "Não, 'tivesse estudado' está no presente do indicativo." },
+      { "letra": "E", "texto": "Não, há erro no uso do subjuntivo." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Tivesse estudado' e 'não passaria' constroem um período hipotético irrealizado no passado."
+  },
+  {
+    "id": 916,
+    "enunciado": "Assinale a alternativa que apresenta dois tempos verbais diferentes e compatíveis.",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se eu estudasse, passo na prova." },
+      { "letra": "B", "texto": "Se eu estudar, estudei bem." },
+      { "letra": "C", "texto": "Se eu tivesse estudado, teria passado." },
+      { "letra": "D", "texto": "Se eu estudo, estudaria bem." },
+      { "letra": "E", "texto": "Se eu estudarei, estudaria bem." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Tivesse estudado' (pretérito mais-que-perfeito do subjuntivo) + 'teria passado' (futuro do pretérito composto) formam uma construção adequada."
+  },
+  {
+    "id": 917,
+    "enunciado": "Assinale a alternativa em que o verbo está conjugado incorretamente segundo a norma culta.",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Quando eu vier, trarei boas notícias." },
+      { "letra": "B", "texto": "Se eu pusesse esforço, conseguiria." },
+      { "letra": "C", "texto": "Oxalá ele veja o erro." },
+      { "letra": "D", "texto": "Caso ele por esforço, conseguirá." },
+      { "letra": "E", "texto": "Talvez ela prefira outra solução." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A forma correta seria 'puser', pois o verbo 'pôr' no presente do subjuntivo é 'puser'."
+  },
+  {
+    "id": 918,
+    "contexto": "Mesmo que ele **disser** a verdade, não será suficiente.",
+    "enunciado": "No contexto apresentado, a forma verbal **disser** está corretamente usada?",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sim, é futuro do subjuntivo, expressando hipótese futura." },
+      { "letra": "B", "texto": "Não, deveria ser 'dissesse', pois trata-se de pretérito." },
+      { "letra": "C", "texto": "Não, o correto seria 'dirá'." },
+      { "letra": "D", "texto": "Sim, pois está no pretérito mais-que-perfeito composto." },
+      { "letra": "E", "texto": "Não, a forma verbal 'disser' não existe." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Disser' é futuro do subjuntivo, usado corretamente para expressar hipótese futura."
+  },
+  {
+    "id": 919,
+    "enunciado": "Em qual alternativa o verbo sublinhado está conjugado no pretérito imperfeito do indicativo?",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Enquanto estudava, ele escutava música." },
+      { "letra": "B", "texto": "Se ele estudasse, passaria." },
+      { "letra": "C", "texto": "Assim que estudar, será aprovado." },
+      { "letra": "D", "texto": "Ele estudará para a prova." },
+      { "letra": "E", "texto": "Ele tinha estudado bastante." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Estudava' e 'escutava' estão no pretérito imperfeito do indicativo, expressando ação habitual no passado."
+  },
+  {
+    "id": 920,
+    "enunciado": "Qual das alternativas apresenta erro na conjugação verbal de acordo com a norma-padrão?",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se ele intervir, tudo mudará." },
+      { "letra": "B", "texto": "Talvez ele interviu no processo." },
+      { "letra": "C", "texto": "Caso ele intervenha, será decisivo." },
+      { "letra": "D", "texto": "É necessário que ele intervenha." },
+      { "letra": "E", "texto": "Quando ele intervier, tomaremos decisão." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O verbo 'intervir' no pretérito perfeito é 'interveio', e não 'interviu'."
+  },
+  {
+    "id": 921,
+    "contexto": "Eles **teriam ajudado**, caso tivessem sido informados.",
+    "enunciado": "Os tempos verbais expressam qual ideia?",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Fato concluído no passado." },
+      { "letra": "B", "texto": "Probabilidade no presente." },
+      { "letra": "C", "texto": "Hipótese passada não realizada." },
+      { "letra": "D", "texto": "Desejo futuro com certeza." },
+      { "letra": "E", "texto": "Ação progressiva atual." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A combinação de 'teriam ajudado' + 'tivessem sido' constrói uma hipótese não concretizada no passado."
+  },
+  {
+    "id": 922,
+    "enunciado": "Em 'Quando ele souber da verdade, mudará de ideia', o verbo 'souber' está no tempo:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Presente do subjuntivo." },
+      { "letra": "B", "texto": "Futuro do subjuntivo." },
+      { "letra": "C", "texto": "Pretérito do indicativo." },
+      { "letra": "D", "texto": "Futuro do pretérito." },
+      { "letra": "E", "texto": "Infinitivo impessoal." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Souber' está no futuro do subjuntivo, usado para indicar evento incerto no futuro."
+  },
+  {
+    "id": 923,
+    "enunciado": "Assinale a alternativa cuja conjugação verbal está ERRADA:",
+    "disciplina": "Português",
+    "assunto": ["Tempos verbais", "Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Quando eu vir o resultado, avisarei." },
+      { "letra": "B", "texto": "Se ele mantiver a palavra, confiaremos." },
+      { "letra": "C", "texto": "Quando ele pôr a mesa, serviremos." },
+      { "letra": "D", "texto": "Se tu intervires, a decisão será outra." },
+      { "letra": "E", "texto": "Quando eu ver o filme, falarei com você." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A forma correta seria 'vir', não 'ver', no sentido de 'comparecer' ou 'chegar'."
   }
 ]
