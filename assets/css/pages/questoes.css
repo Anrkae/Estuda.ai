@@ -796,3 +796,62 @@ button, input, select, textarea {
   border-left: 4px solid #ccc;
   font-size: 0.95rem;
 }
+
+/* Estilos para alternativa com botão de corte embutido */
+.option-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding-right: 30px;
+}
+
+.option-btn .option-letter {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.option-btn .option-content {
+    flex: 1;
+    text-align: left;
+}
+
+.corte-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    padding: 2px;
+    opacity: 0.3;
+    cursor: pointer;
+    display: none;
+}
+
+.option-btn:hover .corte-btn {
+    display: inline-flex;
+    opacity: 0.6;
+}
+
+.option-btn.cortada {
+    opacity: 0.4;
+    text-decoration: line-through;
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+}
+
+/* Tags de meta-info */
+.question-tags {
+    margin: 5px 0 10px;
+}
+
+.tag-assunto,
+.tag-dificuldade {
+    background: #eee;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    margin-right: 5px;
+    display: inline-block;
+}

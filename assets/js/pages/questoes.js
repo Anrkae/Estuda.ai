@@ -1,3 +1,5 @@
+// questoes_completo.js - Atualizado com suporte a múltiplos assuntos e corte de alternativas
+
 document.addEventListener('DOMContentLoaded', async () => {
   const QUESTOES_JSON_URL = '../assets/data/questoes.json';
   const STORAGE_KEY_RESOLVIDAS = 'questoesResolvidas';
@@ -16,7 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     disciplina: null
   };
 
-  // ELEMENTOS
   const campoBusca = document.getElementById('campoBusca');
   const filtroDisciplina = new Choices('#filtroDisciplina', { removeItemButton: true });
   const filtroAssunto = new Choices('#filtroAssunto', { removeItemButton: true });
@@ -35,7 +36,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   const aplicarFiltros = document.getElementById('aplicarFiltros');
   const redefinirFiltros = document.getElementById('redefinirFiltros');
 
-  // UTILITÁRIOS
   const embaralhar = (arr) => [...arr].sort(() => Math.random() - 0.5);
   const getValorSelecionado = (name) =>
     document.querySelector(`input[name="${name}"]:checked`)?.value || 'todas';
@@ -56,56 +56,32 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   const preencherFiltros = () => {
-  const disciplinas = [...new Set(todasQuestoes.map(q => q.disciplina))].sort();
-  const anos = [...new Set(todasQuestoes.map(q => q.metadata?.ano))].sort((a, b) => b - a);
-  
-  // Preenche disciplinas e anos
-  filtroDisciplina.setChoices(
-    disciplinas.map(d => ({ value: d, label: d })),
-    'value',
-    'label',
-    true
-  );
-  
-  filtroAno.setChoices(
-    anos.map(a => ({ value: a, label: a })),
-    'value',
-    'label',
-    true
-    );
-    
-    // Preenche os assuntos inicialmente com todas as disciplinas
-    atualizarAssuntosPorDisciplina([]);
+    const disciplinas = [...new Set(todasQuestoes.map(q => q.disciplina))].sort();
+    const anos = [...new Set(todasQuestoes.map(q => q.metadata?.ano))].sort((a, b) => b - a);
+    const assuntos = [...new Set(todasQuestoes.flatMap(q => q.assunto || []))];
+
+    filtroDisciplina.setChoices(disciplinas.map(d => ({ value: d, label: d })), 'value', 'label', true);
+    filtroAno.setChoices(anos.map(a => ({ value: a, label: a })), 'value', 'label', true);
+    filtroAssunto.setChoices(assuntos.map(a => ({ value: a, label: a })), 'value', 'label', true);
   };
-  
+
   const atualizarAssuntosPorDisciplina = (disciplinasSelecionadas) => {
     let assuntosFiltrados = [];
-    
     if (disciplinasSelecionadas.length === 0) {
-      // Nenhuma disciplina selecionada → todos os assuntos
-      assuntosFiltrados = [...new Set(todasQuestoes.map(q => q.assunto))];
+      assuntosFiltrados = [...new Set(todasQuestoes.flatMap(q => q.assunto || []))];
     } else {
-      // Filtra os assuntos com base nas disciplinas selecionadas
       assuntosFiltrados = [
         ...new Set(
           todasQuestoes
-          .filter(q => disciplinasSelecionadas.includes(q.disciplina))
-          .map(q => q.assunto)
+            .filter(q => disciplinasSelecionadas.includes(q.disciplina))
+            .flatMap(q => q.assunto || [])
         )
       ];
     }
-    
-    // Atualiza o filtro de assunto com os assuntos filtrados
     filtroAssunto.clearStore();
-    filtroAssunto.setChoices(
-      assuntosFiltrados.map(a => ({ value: a, label: a })),
-      'value',
-      'label',
-      true
-    );
+    filtroAssunto.setChoices(assuntosFiltrados.map(a => ({ value: a, label: a })), 'value', 'label', true);
   };
-  
-  // Atualiza os assuntos sempre que as disciplinas forem alteradas
+
   document.querySelector('#filtroDisciplina').addEventListener('change', () => {
     const disciplinasSelecionadas = filtroDisciplina.getValue(true);
     atualizarAssuntosPorDisciplina(disciplinasSelecionadas);
@@ -127,6 +103,18 @@ document.addEventListener('DOMContentLoaded', async () => {
       div.id = id;
 
       div.innerHTML = `
+        ${q.metadata?.fonte || q.metadata?.ano ? `
+          <div class="question-meta">
+            ${q.metadata.fonte ? `<span class="meta-source">${q.metadata.fonte}</span>` : ''}
+            ${q.metadata.fonte && q.metadata.ano ? ' | ' : ''}
+            ${q.metadata.ano ? `<span class="meta-year">${q.metadata.ano}</span>` : ''}
+          </div>` : ''}
+
+        <div class="question-tags">
+          ${Array.isArray(q.assunto) ? q.assunto.map(a => `<span class="tag-assunto">${a}</span>`).join(' ') : ''}
+          ${q.dificuldade ? `<span class="tag-dificuldade">${q.dificuldade}</span>` : ''}
+        </div>
+
         <p class="question-text"><strong>${idx + 1}.</strong> ${q.enunciado}</p>
 
         ${temContexto ? `
@@ -141,18 +129,20 @@ document.addEventListener('DOMContentLoaded', async () => {
           </div>
         ` : ''}
 
-        ${q.metadata?.fonte || q.metadata?.ano ? `
-          <div class="question-meta">
-            ${q.metadata.fonte ? `<span class="meta-source">${q.metadata.fonte}</span>` : ''}
-            ${q.metadata.fonte && q.metadata.ano ? ' | ' : ''}
-            ${q.metadata.ano ? `<span class="meta-year">${q.metadata.ano}</span>` : ''}
-          </div>` : ''}
-
         <div class="options-container">
           ${q.opcoes.map(op => `
             <button class="option-btn" data-value="${op.letra}">
               <span class="option-letter">${op.letra}</span>
               <span class="option-content">${op.texto}</span>
+              <button class="corte-btn" title="Cortar alternativa" data-letra="${op.letra}" style="display: none;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="6" r="3" />
+                  <circle cx="6" cy="18" r="3" />
+                  <line x1="20" y1="4" x2="8.12" y2="15.88" />
+                  <line x1="14.47" y1="14.48" x2="20" y2="20" />
+                  <line x1="8.12" y1="8.12" x2="12" y2="12" />
+                </svg>
+              </button>
             </button>
           `).join('')}
         </div>
@@ -191,25 +181,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       return (
         (!termo || q.enunciado.toLowerCase().includes(termo)) &&
         (!disciplinas.length || disciplinas.includes(q.disciplina)) &&
-        (!assuntos.length || assuntos.includes(q.assunto)) &&
+        (!assuntos.length || (Array.isArray(q.assunto) && q.assunto.some(a => assuntos.includes(a)))) &&
         (!tipos.length || tipos.includes(q.tipo)) &&
         (!dificuldades.length || dificuldades.includes(q.dificuldade)) &&
         (!anos.length || anos.includes(q.metadata?.ano))
       );
     });
-
-    console.log('Filtros aplicados. Total filtrado:', questoesFiltradas.length);
   };
 
   const buscarQuestoesSelecionadas = () => {
     aplicarFiltrosAvancados();
-
     const qtd = parseInt(numeroQuestoes.value) || 5;
     if (!questoesFiltradas.length) {
       questoesOutput.innerHTML = '<p class="empty-state">Nenhuma questão encontrada.</p>';
       return;
     }
-
     questoesExibidas = embaralhar(questoesFiltradas).slice(0, qtd);
     exibirQuestoes(questoesExibidas);
     iniciarSessao(questoesExibidas);
@@ -243,9 +229,17 @@ document.addEventListener('DOMContentLoaded', async () => {
   const selecionarOpcao = (btn) => {
     const container = btn.closest('.question-item');
     if (!container || container.classList.contains('answered')) return;
+    if (btn.classList.contains('cortada')) return;
+
     container.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected-preview'));
-    btn.classList.add('selected-preview');
     container.dataset.selected = btn.dataset.value;
+    btn.classList.add('selected-preview');
+
+    container.querySelectorAll('.corte-btn').forEach(c => {
+      const letra = c.dataset.letra;
+      c.style.display = (letra === btn.dataset.value) ? 'inline-flex' : 'none';
+    });
+
     container.querySelector('.confirm-answer-btn').disabled = false;
   };
 
@@ -287,10 +281,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   };
 
-  // EVENTOS
   questoesOutput.addEventListener('click', (e) => {
     const btn = e.target.closest('button');
     if (!btn) return;
+
     if (btn.classList.contains('option-btn')) selecionarOpcao(btn);
     if (btn.classList.contains('confirm-answer-btn')) responderQuestao(btn);
     if (btn.classList.contains('view-resolution-btn')) {
@@ -304,27 +298,40 @@ document.addEventListener('DOMContentLoaded', async () => {
       const alvo = document.getElementById(targetId);
       if (alvo) alvo.classList.toggle('oculto');
     }
+    if (btn.classList.contains('corte-btn')) {
+      const container = btn.closest('.question-item');
+      const letra = btn.dataset.letra;
+      const alt = container.querySelector(`.option-btn[data-value="${letra}"]`);
+      if (!alt) return;
+
+      const isCortada = alt.classList.toggle('cortada');
+      if (isCortada) {
+        alt.classList.remove('selected-preview');
+        delete container.dataset.selected;
+        container.querySelector('.confirm-answer-btn').disabled = true;
+        btn.setAttribute('title', 'Restaurar alternativa');
+      } else {
+        btn.setAttribute('title', 'Cortar alternativa');
+      }
+      btn.style.display = 'inline-flex';
+    }
   });
 
   buscarQuestoes.addEventListener('click', buscarQuestoesSelecionadas);
   finalizeButton.addEventListener('click', () => finalizarSessao(true));
-
   abrirDrawer.addEventListener('click', () => {
     drawer.classList.add('open');
     backdrop.classList.add('active');
   });
-
   backdrop.addEventListener('click', () => {
     drawer.classList.remove('open');
     backdrop.classList.remove('active');
   });
-
   aplicarFiltros.addEventListener('click', () => {
     aplicarFiltrosAvancados();
     drawer.classList.remove('open');
     backdrop.classList.remove('active');
   });
-
   redefinirFiltros.addEventListener('click', () => {
     filtroTipo.clearStore();
     filtroDificuldade.clearStore();
@@ -332,7 +339,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelector('input[name="filtroResolvidas"][value="todas"]').checked = true;
   });
 
-  // INICIALIZAÇÃO
   resolvidas = carregarResolvidas();
   const res = await fetch(QUESTOES_JSON_URL);
   todasQuestoes = await res.json();
