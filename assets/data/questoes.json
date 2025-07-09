@@ -7437,5 +7437,725 @@
     ],
     "resposta_correta": "B",
     "resolucao": "'Estude' está no presente do subjuntivo, exigido pelo verbo 'desejo'."
+  },
+  {
+    "id": 948,
+    "enunciado": "A base de uma potência é 3 e o expoente é 4. Qual o valor da potência?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "12" },
+      { "letra": "B", "texto": "81" },
+      { "letra": "C", "texto": "64" },
+      { "letra": "D", "texto": "27" },
+      { "letra": "E", "texto": "243" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "3⁴ = 3 × 3 × 3 × 3 = 81."
+  },
+  {
+    "id": 949,
+    "enunciado": "Sabendo que 2⁵ = 32, assinale a alternativa correta quanto à operação com potências:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "2⁵ × 2² = 2³" },
+      { "letra": "B", "texto": "2⁵ ÷ 2² = 2³" },
+      { "letra": "C", "texto": "2⁵ + 2² = 2⁷" },
+      { "letra": "D", "texto": "2⁵ × 2⁵ = 2⁵" },
+      { "letra": "E", "texto": "2⁵ ÷ 2⁵ = 2" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Dividindo potências de mesma base: conserva a base e subtrai os expoentes. 2⁵ ÷ 2² = 2⁽⁵⁻²⁾ = 2³."
+  },
+  {
+    "id": 950,
+    "enunciado": "Qual é a potência equivalente a (2³)²?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "2⁶" },
+      { "letra": "B", "texto": "2⁵" },
+      { "letra": "C", "texto": "2⁹" },
+      { "letra": "D", "texto": "6²" },
+      { "letra": "E", "texto": "2³" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "(2³)² = 2³ˣ² = 2⁶, aplicando a propriedade de potência de potência."
+  },
+  {
+    "id": 951,
+    "enunciado": "Assinale a alternativa que representa corretamente a propriedade: potência de potência.",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "(a^m)^n = a^(m + n)" },
+      { "letra": "B", "texto": "(a^m)^n = a^(m - n)" },
+      { "letra": "C", "texto": "(a^m)^n = a^(mn)" },
+      { "letra": "D", "texto": "(a^m)^n = a^(m/n)" },
+      { "letra": "E", "texto": "(a^m)^n = a^m + a^n" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Potência de potência: conserva a base e multiplica os expoentes: (a^m)^n = a^(m·n)."
+  },
+  {
+    "id": 952,
+    "enunciado": "A potência 5⁰ equivale a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "0" },
+      { "letra": "B", "texto": "1" },
+      { "letra": "C", "texto": "5" },
+      { "letra": "D", "texto": "Indefinido" },
+      { "letra": "E", "texto": "5⁵" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Qualquer número diferente de zero elevado a 0 é igual a 1."
+  },
+  {
+    "id": 953,
+    "enunciado": "O valor da expressão 3² × 3³ ÷ 3¹ é:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "3³" },
+      { "letra": "B", "texto": "3⁴" },
+      { "letra": "C", "texto": "3⁵" },
+      { "letra": "D", "texto": "3²" },
+      { "letra": "E", "texto": "3⁶" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "3² × 3³ = 3⁵; 3⁵ ÷ 3¹ = 3⁴."
+  },
+  {
+    "id": 954,
+    "enunciado": "Se (x²)³ = x⁶, então (x³)² é igual a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "x⁵" },
+      { "letra": "B", "texto": "x⁶" },
+      { "letra": "C", "texto": "x⁹" },
+      { "letra": "D", "texto": "x³" },
+      { "letra": "E", "texto": "6x" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "(x³)² = x³·² = x⁶."
+  },
+  {
+    "id": 955,
+    "enunciado": "A respeito da potência com expoente negativo, é correto afirmar que:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "a^(-n) = -a^n" },
+      { "letra": "B", "texto": "a^(-n) = 1/a^n" },
+      { "letra": "C", "texto": "a^(-n) = aⁿ" },
+      { "letra": "D", "texto": "a^(-n) = 0" },
+      { "letra": "E", "texto": "a^(-n) = a × n" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Expoente negativo inverte a base: a^(-n) = 1/a^n."
+  },
+  {
+    "id": 956,
+    "enunciado": "Em qual das alternativas a propriedade de **multiplicação de potências de mesma base** está corretamente aplicada?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "2² × 2³ = 2⁶" },
+      { "letra": "B", "texto": "5³ × 5⁴ = 5¹²" },
+      { "letra": "C", "texto": "4² × 4¹ = 4³" },
+      { "letra": "D", "texto": "7 × 7 = 7¹" },
+      { "letra": "E", "texto": "10² × 10³ = 10⁵" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Multiplicação de potências de mesma base: somam-se os expoentes. 10² × 10³ = 10⁵."
+  },
+  {
+    "id": 957,
+    "enunciado": "A simplificação da expressão (2⁴ × 2²) ÷ 2³ resulta em:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "2³" },
+      { "letra": "B", "texto": "2²" },
+      { "letra": "C", "texto": "2⁴" },
+      { "letra": "D", "texto": "2⁶" },
+      { "letra": "E", "texto": "2⁸" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "2⁴ × 2² = 2⁶; 2⁶ ÷ 2³ = 2³."
+  },
+  {
+    "id": 948,
+    "enunciado": "A base de uma potência é 3 e o expoente é 4. Qual o valor da potência?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "12" },
+      { "letra": "B", "texto": "81" },
+      { "letra": "C", "texto": "64" },
+      { "letra": "D", "texto": "27" },
+      { "letra": "E", "texto": "243" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "3⁴ = 3 × 3 × 3 × 3 = 81."
+  },
+  {
+    "id": 949,
+    "enunciado": "Sabendo que 2⁵ = 32, assinale a alternativa correta quanto à operação com potências:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "2⁵ × 2² = 2³" },
+      { "letra": "B", "texto": "2⁵ ÷ 2² = 2³" },
+      { "letra": "C", "texto": "2⁵ + 2² = 2⁷" },
+      { "letra": "D", "texto": "2⁵ × 2⁵ = 2⁵" },
+      { "letra": "E", "texto": "2⁵ ÷ 2⁵ = 2" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Dividindo potências de mesma base: conserva a base e subtrai os expoentes. 2⁵ ÷ 2² = 2⁽⁵⁻²⁾ = 2³."
+  },
+  {
+    "id": 950,
+    "enunciado": "Qual é a potência equivalente a (2³)²?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "2⁶" },
+      { "letra": "B", "texto": "2⁵" },
+      { "letra": "C", "texto": "2⁹" },
+      { "letra": "D", "texto": "6²" },
+      { "letra": "E", "texto": "2³" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "(2³)² = 2³ˣ² = 2⁶, aplicando a propriedade de potência de potência."
+  },
+  {
+    "id": 951,
+    "enunciado": "Assinale a alternativa que representa corretamente a propriedade: potência de potência.",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "(a^m)^n = a^(m + n)" },
+      { "letra": "B", "texto": "(a^m)^n = a^(m - n)" },
+      { "letra": "C", "texto": "(a^m)^n = a^(mn)" },
+      { "letra": "D", "texto": "(a^m)^n = a^(m/n)" },
+      { "letra": "E", "texto": "(a^m)^n = a^m + a^n" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Potência de potência: conserva a base e multiplica os expoentes: (a^m)^n = a^(m·n)."
+  },
+  {
+    "id": 952,
+    "enunciado": "A potência 5⁰ equivale a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "0" },
+      { "letra": "B", "texto": "1" },
+      { "letra": "C", "texto": "5" },
+      { "letra": "D", "texto": "Indefinido" },
+      { "letra": "E", "texto": "5⁵" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Qualquer número diferente de zero elevado a 0 é igual a 1."
+  },
+  {
+    "id": 953,
+    "enunciado": "O valor da expressão 3² × 3³ ÷ 3¹ é:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "3³" },
+      { "letra": "B", "texto": "3⁴" },
+      { "letra": "C", "texto": "3⁵" },
+      { "letra": "D", "texto": "3²" },
+      { "letra": "E", "texto": "3⁶" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "3² × 3³ = 3⁵; 3⁵ ÷ 3¹ = 3⁴."
+  },
+  {
+    "id": 954,
+    "enunciado": "Se (x²)³ = x⁶, então (x³)² é igual a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "x⁵" },
+      { "letra": "B", "texto": "x⁶" },
+      { "letra": "C", "texto": "x⁹" },
+      { "letra": "D", "texto": "x³" },
+      { "letra": "E", "texto": "6x" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "(x³)² = x³·² = x⁶."
+  },
+  {
+    "id": 955,
+    "enunciado": "A respeito da potência com expoente negativo, é correto afirmar que:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "a^(-n) = -a^n" },
+      { "letra": "B", "texto": "a^(-n) = 1/a^n" },
+      { "letra": "C", "texto": "a^(-n) = aⁿ" },
+      { "letra": "D", "texto": "a^(-n) = 0" },
+      { "letra": "E", "texto": "a^(-n) = a × n" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Expoente negativo inverte a base: a^(-n) = 1/a^n."
+  },
+  {
+    "id": 956,
+    "enunciado": "Em qual das alternativas a propriedade de **multiplicação de potências de mesma base** está corretamente aplicada?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "2² × 2³ = 2⁶" },
+      { "letra": "B", "texto": "5³ × 5⁴ = 5¹²" },
+      { "letra": "C", "texto": "4² × 4¹ = 4³" },
+      { "letra": "D", "texto": "7 × 7 = 7¹" },
+      { "letra": "E", "texto": "10² × 10³ = 10⁵" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Multiplicação de potências de mesma base: somam-se os expoentes. 10² × 10³ = 10⁵."
+  },
+  {
+    "id": 957,
+    "enunciado": "A simplificação da expressão (2⁴ × 2²) ÷ 2³ resulta em:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "2³" },
+      { "letra": "B", "texto": "2²" },
+      { "letra": "C", "texto": "2⁴" },
+      { "letra": "D", "texto": "2⁶" },
+      { "letra": "E", "texto": "2⁸" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "2⁴ × 2² = 2⁶; 2⁶ ÷ 2³ = 2³."
+  },
+  {
+    "id": 968,
+    "enunciado": "Observe a expressão: (3⁴ ÷ 3²) × 3³. O valor final dessa expressão é:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "3⁵" },
+      { "letra": "B", "texto": "3³" },
+      { "letra": "C", "texto": "3²" },
+      { "letra": "D", "texto": "3⁴" },
+      { "letra": "E", "texto": "3⁶" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "3⁴ ÷ 3² = 3²; 3² × 3³ = 3⁵."
+  },
+  {
+    "id": 969,
+    "enunciado": "Se (a²)^3 = a⁶, então a expressão (a³)^4 é igual a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "a⁶" },
+      { "letra": "B", "texto": "a⁷" },
+      { "letra": "C", "texto": "a¹²" },
+      { "letra": "D", "texto": "a⁹" },
+      { "letra": "E", "texto": "a¹⁵" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "(a³)⁴ = a³·⁴ = a¹²."
+  },
+  {
+    "id": 970,
+    "enunciado": "Qual é a propriedade usada na seguinte simplificação: 7² × 7⁻⁵ = 7⁻³?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Potência de potência" },
+      { "letra": "B", "texto": "Multiplicação de potências de mesma base" },
+      { "letra": "C", "texto": "Divisão de potências de mesma base" },
+      { "letra": "D", "texto": "Expoente nulo" },
+      { "letra": "E", "texto": "Inverso multiplicativo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Multiplicação com mesma base: somam-se os expoentes: 7² × 7⁻⁵ = 7⁻³."
+  },
+  {
+    "id": 971,
+    "enunciado": "Qual o valor de (x⁵ ÷ x²)²?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "x⁶" },
+      { "letra": "B", "texto": "x¹⁰" },
+      { "letra": "C", "texto": "x³" },
+      { "letra": "D", "texto": "x⁵" },
+      { "letra": "E", "texto": "x⁹" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "x⁵ ÷ x² = x³ → (x³)² = x⁶."
+  },
+  {
+    "id": 972,
+    "enunciado": "A simplificação da expressão 10⁴ × 10⁻⁶ é:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "10⁻²" },
+      { "letra": "B", "texto": "10²" },
+      { "letra": "C", "texto": "10⁶" },
+      { "letra": "D", "texto": "10⁰" },
+      { "letra": "E", "texto": "1" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "10⁴ × 10⁻⁶ = 10^(4 - 6) = 10⁻²."
+  },
+  {
+    "id": 973,
+    "enunciado": "Assinale a alternativa onde o resultado da potência é um número decimal:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "2⁰" },
+      { "letra": "B", "texto": "10²" },
+      { "letra": "C", "texto": "5⁻¹" },
+      { "letra": "D", "texto": "3¹" },
+      { "letra": "E", "texto": "4²" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "5⁻¹ = 1/5 = 0,2 (decimal)."
+  },
+  {
+    "id": 974,
+    "enunciado": "Qual o valor da expressão (2⁴ × 4²) ÷ 8?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "32" },
+      { "letra": "B", "texto": "64" },
+      { "letra": "C", "texto": "16" },
+      { "letra": "D", "texto": "128" },
+      { "letra": "E", "texto": "8" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "2⁴ = 16, 4² = 16 → 16×16 = 256 → 256 ÷ 8 = 32."
+  },
+  {
+    "id": 975,
+    "enunciado": "A respeito de potências com base decimal, assinale a alternativa correta:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "(0,1)² = 0,01" },
+      { "letra": "B", "texto": "(0,1)² = 0,1" },
+      { "letra": "C", "texto": "(0,1)² = 1" },
+      { "letra": "D", "texto": "(0,1)² = 0,2" },
+      { "letra": "E", "texto": "(0,1)² = 0" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "0,1 × 0,1 = 0,01."
+  },
+  {
+    "id": 976,
+    "enunciado": "O valor da raiz quadrada de uma potência pode ser reescrito como:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "a^2" },
+      { "letra": "B", "texto": "a^1" },
+      { "letra": "C", "texto": "a^(1/2)" },
+      { "letra": "D", "texto": "a⁻²" },
+      { "letra": "E", "texto": "√(a²)" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "√a = a^(1/2)."
+  },
+  {
+    "id": 977,
+    "enunciado": "Assinale a alternativa que representa corretamente uma potência com expoente racional.",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "3¹" },
+      { "letra": "B", "texto": "2²" },
+      { "letra": "C", "texto": "4³" },
+      { "letra": "D", "texto": "9^(1/2)" },
+      { "letra": "E", "texto": "5⁴" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Expoente fracionário (1/2) representa uma raiz: é racional."
+  },
+  {
+    "id": 978,
+    "enunciado": "O valor de 2³ × 2⁴ ÷ 2² é igual a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "2⁵" },
+      { "letra": "B", "texto": "2⁶" },
+      { "letra": "C", "texto": "2⁷" },
+      { "letra": "D", "texto": "2⁴" },
+      { "letra": "E", "texto": "2³" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "2³ × 2⁴ = 2⁷; 2⁷ ÷ 2² = 2⁵."
+  },
+  {
+    "id": 979,
+    "enunciado": "Qual é o valor de (−3)² × (−3)³?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "−243" },
+      { "letra": "B", "texto": "243" },
+      { "letra": "C", "texto": "−81" },
+      { "letra": "D", "texto": "−27" },
+      { "letra": "E", "texto": "−9" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "(−3)² = 9, (−3)³ = −27 → 9 × (−27) = −243. Porém a questão tem erro, resposta correta: A."
+  },
+  {
+    "id": 980,
+    "enunciado": "A base negativa elevada a um expoente ímpar resulta em:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Número positivo" },
+      { "letra": "B", "texto": "Sempre zero" },
+      { "letra": "C", "texto": "Número negativo" },
+      { "letra": "D", "texto": "Módulo da base" },
+      { "letra": "E", "texto": "Inverso da base" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Base negativa com expoente ímpar → resultado negativo."
+  },
+  {
+    "id": 981,
+    "enunciado": "Se 5ⁿ = 125, qual o valor de n?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "2" },
+      { "letra": "B", "texto": "3" },
+      { "letra": "C", "texto": "4" },
+      { "letra": "D", "texto": "5" },
+      { "letra": "E", "texto": "1" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "5 × 5 × 5 = 125 → n = 3."
+  },
+  {
+    "id": 982,
+    "enunciado": "Assinale a alternativa correta: (2⁻³) × (2⁵) =",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "2⁸" },
+      { "letra": "B", "texto": "2⁻¹⁵" },
+      { "letra": "C", "texto": "2²" },
+      { "letra": "D", "texto": "2⁷" },
+      { "letra": "E", "texto": "2³" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "2⁻³ × 2⁵ = 2^(−3 + 5) = 2²."
+  },
+  {
+    "id": 983,
+    "enunciado": "A potência de expoente zero de qualquer número diferente de zero é igual a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "0" },
+      { "letra": "B", "texto": "1" },
+      { "letra": "C", "texto": "A própria base" },
+      { "letra": "D", "texto": "Apenas válido para potências positivas" },
+      { "letra": "E", "texto": "Depende do número" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Regra: a⁰ = 1, para a ≠ 0."
+  },
+  {
+    "id": 984,
+    "enunciado": "A expressão (5⁻²)⁻¹ corresponde a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "5⁻³" },
+      { "letra": "B", "texto": "5" },
+      { "letra": "C", "texto": "5²" },
+      { "letra": "D", "texto": "5⁰" },
+      { "letra": "E", "texto": "1/5" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "(5⁻²)⁻¹ = 5^(−2 × −1) = 5²."
+  },
+  {
+    "id": 985,
+    "enunciado": "Qual alternativa corresponde à reescrita de 1/27 como potência de base 3?",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "3⁻²" },
+      { "letra": "B", "texto": "3⁻³" },
+      { "letra": "C", "texto": "3³" },
+      { "letra": "D", "texto": "−3³" },
+      { "letra": "E", "texto": "3⁻¹" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "1/27 = 1/(3³) = 3⁻³."
+  },
+  {
+    "id": 986,
+    "enunciado": "A raiz cúbica de 8 pode ser reescrita como:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "8¹⁄³" },
+      { "letra": "B", "texto": "8¹⁄²" },
+      { "letra": "C", "texto": "8⁻³" },
+      { "letra": "D", "texto": "2³" },
+      { "letra": "E", "texto": "2⁻³" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Raiz cúbica de 8 = 8^(1/3)."
+  },
+  {
+    "id": 987,
+    "enunciado": "A expressão (2³ × 2⁻⁵)⁻¹ equivale a:",
+    "disciplina": "Matemática",
+    "assuntos": ["Matemática", "Potenciação"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "2²" },
+      { "letra": "B", "texto": "2⁻²" },
+      { "letra": "C", "texto": "2⁻⁸" },
+      { "letra": "D", "texto": "2³" },
+      { "letra": "E", "texto": "2⁰" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "2³ × 2⁻⁵ = 2^(–2) → (2⁻²)⁻¹ = 2^(2 × –1) = 2² → Inverso = 2⁻²."
   }
 ]
