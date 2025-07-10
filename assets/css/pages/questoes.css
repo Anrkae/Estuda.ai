@@ -844,7 +844,9 @@ button, input, select, textarea {
     display: inline-flex !important;
     opacity: 0.8;
 }
-
+.option-btn.cortada {
+    opacity: 0.1;
+}
 .corte-btn {
     position: absolute;
     top: 6px;

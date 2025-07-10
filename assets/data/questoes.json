@@ -8157,5 +8157,663 @@
     ],
     "resposta_correta": "B",
     "resolucao": "2³ × 2⁻⁵ = 2^(–2) → (2⁻²)⁻¹ = 2^(2 × –1) = 2² → Inverso = 2⁻²."
+  },
+  {
+    "id": 988,
+    "contexto": "Durante uma entrevista de emprego, o candidato disse: 'Se eu tivesse mais experiência, conseguiria esse cargo facilmente'.",
+    "enunciado": "O verbo 'tivesse' encontra-se conjugado no:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Futuro do pretérito do indicativo" },
+      { "letra": "B", "texto": "Pretérito imperfeito do indicativo" },
+      { "letra": "C", "texto": "Pretérito mais-que-perfeito do indicativo" },
+      { "letra": "D", "texto": "Pretérito imperfeito do subjuntivo" },
+      { "letra": "E", "texto": "Futuro do subjuntivo" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O verbo 'tivesse' está no pretérito imperfeito do subjuntivo, usado em orações condicionais."
+  },
+  {
+    "id": 989,
+    "enunciado": "Assinale a alternativa em que o verbo está no modo subjuntivo e no tempo futuro:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais", "Tempos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se eu falasse com ela" },
+      { "letra": "B", "texto": "Quando eu chegar" },
+      { "letra": "C", "texto": "Eu teria falado" },
+      { "letra": "D", "texto": "Falo sempre que posso" },
+      { "letra": "E", "texto": "Caso ele compreenda" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Chegar' no contexto 'quando eu chegar' está no futuro do subjuntivo."
+  },
+  {
+    "id": 990,
+    "enunciado": "O infinitivo impessoal do verbo é aquele que aparece:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sem flexão e sem sujeito definido" },
+      { "letra": "B", "texto": "Sempre acompanhado de pronome" },
+      { "letra": "C", "texto": "Com flexão de número e pessoa" },
+      { "letra": "D", "texto": "Somente com preposição" },
+      { "letra": "E", "texto": "Somente em orações principais" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O infinitivo impessoal é a forma básica do verbo, sem flexão e sem sujeito definido."
+  },
+  {
+    "id": 991,
+    "contexto": "Texto: 'É preciso lutar por justiça, mesmo que tudo pareça perdido.'",
+    "enunciado": "No trecho acima, o verbo 'lutar' está na forma:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Infinitivo pessoal" },
+      { "letra": "B", "texto": "Gerúndio" },
+      { "letra": "C", "texto": "Infinitivo impessoal" },
+      { "letra": "D", "texto": "Particípio" },
+      { "letra": "E", "texto": "Imperativo" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O verbo 'lutar' está no infinitivo impessoal, usado sem sujeito determinado."
+  },
+  {
+    "id": 992,
+    "enunciado": "Em qual alternativa o verbo se encontra conjugado no modo imperativo afirmativo?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Espero que ele estude mais." },
+      { "letra": "B", "texto": "Não fale agora." },
+      { "letra": "C", "texto": "Estuda para a prova!" },
+      { "letra": "D", "texto": "Ele estuda todos os dias." },
+      { "letra": "E", "texto": "Estudasse mais, passaria." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O modo imperativo afirmativo é usado para ordens e pedidos: 'Estuda para a prova!'."
+  },
+  {
+    "id": 993,
+    "enunciado": "Qual alternativa apresenta verbo no particípio?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Comendo" },
+      { "letra": "B", "texto": "Fazendo" },
+      { "letra": "C", "texto": "Partido" },
+      { "letra": "D", "texto": "Falar" },
+      { "letra": "E", "texto": "Dormir" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Partido' é forma nominal do particípio."
+  },
+  {
+    "id": 994,
+    "contexto": "No meio da tempestade, o comandante gritava: 'Que todos se acalmem agora!'",
+    "enunciado": "O modo verbal usado na fala do comandante é:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Indicativo" },
+      { "letra": "B", "texto": "Imperativo" },
+      { "letra": "C", "texto": "Subjuntivo" },
+      { "letra": "D", "texto": "Infinitivo pessoal" },
+      { "letra": "E", "texto": "Gerúndio" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Se acalmem' indica desejo ou ordem indireta → futuro do subjuntivo."
+  },
+  {
+    "id": 995,
+    "enunciado": "A frase que apresenta o verbo no futuro do presente do indicativo é:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ele estudava com frequência." },
+      { "letra": "B", "texto": "Estudará bastante para o concurso." },
+      { "letra": "C", "texto": "Ele estudaria se tivesse tempo." },
+      { "letra": "D", "texto": "Estudou para a prova de ontem." },
+      { "letra": "E", "texto": "Estudando, passou de ano." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O futuro do presente do indicativo é usado para ações futuras certas: 'Estudará'."
+  },
+  {
+    "id": 996,
+    "contexto": "Durante o planejamento, ela disse: 'Quando viajarmos, levaremos pouca bagagem.'",
+    "enunciado": "O verbo 'viajarmos' está no:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Infinitivo impessoal" },
+      { "letra": "B", "texto": "Infinitivo pessoal" },
+      { "letra": "C", "texto": "Futuro do presente" },
+      { "letra": "D", "texto": "Futuro do subjuntivo" },
+      { "letra": "E", "texto": "Gerúndio" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Viajarmos' é infinitivo pessoal (flexionado na 1ª pessoa do plural)."
+  },
+  {
+    "id": 997,
+    "enunciado": "Assinale a alternativa em que o verbo está no gerúndio:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Partido" },
+      { "letra": "B", "texto": "Fazendo" },
+      { "letra": "C", "texto": "Falado" },
+      { "letra": "D", "texto": "Comer" },
+      { "letra": "E", "texto": "Faz" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Fazendo' está no gerúndio, que indica ação contínua ou em progresso."
+  },
+  {
+    "id": 998,
+    "enunciado": "Qual das frases apresenta o verbo no modo indicativo e no tempo pretérito perfeito?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais", "Tempos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se ele falasse, eu escutaria." },
+      { "letra": "B", "texto": "Ele falou com clareza." },
+      { "letra": "C", "texto": "Falará amanhã." },
+      { "letra": "D", "texto": "Falaria se quisesse." },
+      { "letra": "E", "texto": "Falando baixo, foi ouvido." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Falou' é pretérito perfeito do indicativo — ação finalizada no passado."
+  },
+  {
+    "id": 999,
+    "enunciado": "Em qual das alternativas o verbo está conjugado no futuro do pretérito do indicativo?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ele estudava com dedicação." },
+      { "letra": "B", "texto": "Estudaria se tivesse tempo." },
+      { "letra": "C", "texto": "Estudando muito, foi aprovado." },
+      { "letra": "D", "texto": "Estude para passar." },
+      { "letra": "E", "texto": "Estudei ontem à noite." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Estudaria' expressa uma ação futura dependente de condição → futuro do pretérito do indicativo."
+  },
+  {
+    "id": 1000,
+    "enunciado": "A forma verbal 'tivesse falado' é composta e pertence ao:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pretérito mais-que-perfeito composto do indicativo" },
+      { "letra": "B", "texto": "Futuro do presente composto do subjuntivo" },
+      { "letra": "C", "texto": "Pretérito imperfeito do subjuntivo" },
+      { "letra": "D", "texto": "Pretérito mais-que-perfeito composto do subjuntivo" },
+      { "letra": "E", "texto": "Futuro do pretérito composto do indicativo" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Tivesse falado' é pretérito mais-que-perfeito composto do subjuntivo: ação anterior a outra no passado e condicionada."
+  },
+  {
+    "id": 1001,
+    "contexto": "Trecho: 'O relatório sendo entregue hoje resolverá muitos problemas.'",
+    "enunciado": "A forma verbal 'sendo' pertence a qual forma nominal?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Gerúndio" },
+      { "letra": "B", "texto": "Infinitivo pessoal" },
+      { "letra": "C", "texto": "Infinitivo impessoal" },
+      { "letra": "D", "texto": "Particípio" },
+      { "letra": "E", "texto": "Subjuntivo" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Sendo' é gerúndio — ação em progresso ligada ao verbo 'ser'."
+  },
+  {
+    "id": 1002,
+    "enunciado": "Qual alternativa apresenta o verbo no modo indicativo e no tempo presente?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Eles caminham todos os dias." },
+      { "letra": "B", "texto": "Eles caminharam muito ontem." },
+      { "letra": "C", "texto": "Eles caminharão amanhã." },
+      { "letra": "D", "texto": "Eles caminhariam mais, se possível." },
+      { "letra": "E", "texto": "Eles caminhassem com vontade." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Caminham' está no presente do indicativo — ação habitual no tempo presente."
+  },
+  {
+    "id": 1003,
+    "enunciado": "Identifique a alternativa em que o verbo está conjugado no modo subjuntivo:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Espero que ele estude." },
+      { "letra": "B", "texto": "Ele estuda muito." },
+      { "letra": "C", "texto": "Estudaria se pudesse." },
+      { "letra": "D", "texto": "Estudará para a prova." },
+      { "letra": "E", "texto": "Estudou bastante." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O verbo 'estude' é forma do presente do subjuntivo, expressando desejo ou incerteza."
+  },
+  {
+    "id": 1004,
+    "contexto": "Trecho: 'Ao terminarem o trabalho, sairão para o almoço.'",
+    "enunciado": "O verbo 'terminarem' está flexionado como:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Infinitivo pessoal" },
+      { "letra": "B", "texto": "Infinitivo impessoal" },
+      { "letra": "C", "texto": "Subjuntivo" },
+      { "letra": "D", "texto": "Gerúndio" },
+      { "letra": "E", "texto": "Particípio" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Terminarem' é infinitivo pessoal flexionado na 3ª pessoa do plural ('eles')."
+  },
+  {
+    "id": 1005,
+    "enunciado": "Assinale a alternativa em que a forma verbal está no modo imperativo negativo:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Não digas isso!" },
+      { "letra": "B", "texto": "Não digo nada." },
+      { "letra": "C", "texto": "Não direi nada." },
+      { "letra": "D", "texto": "Não dizendo, ficará em paz." },
+      { "letra": "E", "texto": "Não disse isso." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O imperativo negativo é formado com o presente do subjuntivo: 'Não digas'."
+  },
+  {
+    "id": 1006,
+    "contexto": "Frase dita por um político: 'Se tivéssemos investido antes, os resultados já teriam aparecido.'",
+    "enunciado": "O tempo e modo da forma verbal 'teriam aparecido' são:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pretérito imperfeito do indicativo" },
+      { "letra": "B", "texto": "Futuro do pretérito composto do indicativo" },
+      { "letra": "C", "texto": "Pretérito mais-que-perfeito do indicativo" },
+      { "letra": "D", "texto": "Futuro do subjuntivo" },
+      { "letra": "E", "texto": "Pretérito perfeito do subjuntivo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Teriam aparecido' é o futuro do pretérito composto, usado para hipóteses ou consequências não realizadas."
+  },
+  {
+    "id": 1007,
+    "enunciado": "Assinale a frase em que o verbo está no **gerúndio**:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tenho estudado bastante." },
+      { "letra": "B", "texto": "Estudava com afinco." },
+      { "letra": "C", "texto": "Estudando muito, passei." },
+      { "letra": "D", "texto": "Estudei ontem." },
+      { "letra": "E", "texto": "Estudaria se pudesse." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Estudando' é a forma nominal de gerúndio, indicando ação contínua ou simultânea."
+  },
+  {
+    "id": 1008,
+    "enunciado": "Qual das alternativas apresenta corretamente o modo **subjuntivo** no **presente**?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais", "Tempos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ele estudava sempre." },
+      { "letra": "B", "texto": "Talvez ele estude bastante." },
+      { "letra": "C", "texto": "Estudei até tarde." },
+      { "letra": "D", "texto": "Estudará amanhã." },
+      { "letra": "E", "texto": "Estudando assim, passa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Estude' é presente do subjuntivo, usado para hipótese ou desejo."
+  },
+  {
+    "id": 1009,
+    "enunciado": "Em qual alternativa há um verbo no **infinitivo pessoal**?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "É necessário comer bem." },
+      { "letra": "B", "texto": "Para vencermos, devemos insistir." },
+      { "letra": "C", "texto": "Comendo assim, ficará doente." },
+      { "letra": "D", "texto": "Falaria com ele amanhã." },
+      { "letra": "E", "texto": "Estudar é essencial." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Vencermos' é infinitivo pessoal (1ª pessoa do plural, com sujeito definido)."
+  },
+  {
+    "id": 1010,
+    "contexto": "Trecho de diário: 'Teria ido ao cinema se não tivesse tanto dever.'",
+    "enunciado": "O verbo 'teria ido' pertence ao tempo:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pretérito perfeito do indicativo" },
+      { "letra": "B", "texto": "Futuro do pretérito composto do indicativo" },
+      { "letra": "C", "texto": "Pretérito imperfeito do subjuntivo" },
+      { "letra": "D", "texto": "Pretérito mais-que-perfeito do indicativo" },
+      { "letra": "E", "texto": "Futuro do presente do indicativo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Teria ido' expressa possibilidade condicionada — futuro do pretérito composto."
+  },
+  {
+    "id": 1011,
+    "enunciado": "Assinale a alternativa em que o verbo está no **modo imperativo afirmativo**:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Não corra agora!" },
+      { "letra": "B", "texto": "Corres todos os dias." },
+      { "letra": "C", "texto": "Corre para a aula!" },
+      { "letra": "D", "texto": "Corresse, ganharia." },
+      { "letra": "E", "texto": "Corrido, chegou a tempo." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Corre!' é uma ordem → imperativo afirmativo."
+  },
+  {
+    "id": 1012,
+    "enunciado": "Em qual alternativa o verbo se encontra no **pretérito mais-que-perfeito do indicativo**?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Partiu de manhã." },
+      { "letra": "B", "texto": "Partira antes da reunião." },
+      { "letra": "C", "texto": "Partiria se soubesse." },
+      { "letra": "D", "texto": "Partirá cedo." },
+      { "letra": "E", "texto": "Partindo assim, chegará tarde." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Partira' é pretérito mais-que-perfeito do indicativo, usado para uma ação anterior a outra no passado."
+  },
+  {
+    "id": 1013,
+    "contexto": "Frase: 'Mesmo sem saber, ela continuava tentando.'",
+    "enunciado": "A forma verbal 'tentando' está no:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Infinitivo impessoal" },
+      { "letra": "B", "texto": "Infinitivo pessoal" },
+      { "letra": "C", "texto": "Gerúndio" },
+      { "letra": "D", "texto": "Particípio" },
+      { "letra": "E", "texto": "Imperativo" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Tentando' é forma verbal no gerúndio, indicando ação em desenvolvimento."
+  },
+  {
+    "id": 1014,
+    "enunciado": "Qual das frases apresenta uma forma **nominal verbal** que pode exercer função de substantivo?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Comi bem." },
+      { "letra": "B", "texto": "Falar bem é importante." },
+      { "letra": "C", "texto": "Falando baixo, entrou." },
+      { "letra": "D", "texto": "Tinha falado com ela." },
+      { "letra": "E", "texto": "Falo com calma." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Falar' é infinitivo impessoal e exerce a função de substantivo na frase."
+  },
+  {
+    "id": 1015,
+    "enunciado": "Assinale a alternativa em que o verbo está conjugado no modo subjuntivo e expressa ideia de possibilidade:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Se ele estuda, passa." },
+      { "letra": "B", "texto": "Se ele estudar, passará." },
+      { "letra": "C", "texto": "Se ele estudou, passou." },
+      { "letra": "D", "texto": "Se ele estudava, entendia." },
+      { "letra": "E", "texto": "Se ele estudaria, passaria." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A forma 'estudar' está no futuro do subjuntivo e expressa hipótese."
+  },
+  {
+    "id": 1016,
+    "enunciado": "Qual das alternativas contém um **verbo defectivo** em uso?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ele falava alto demais." },
+      { "letra": "B", "texto": "Chegava atrasado frequentemente." },
+      { "letra": "C", "texto": "Quem reaverá o dinheiro perdido?" },
+      { "letra": "D", "texto": "Eles corriam muito." },
+      { "letra": "E", "texto": "Ela estudava sempre." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Reaver' é verbo defectivo — não possui todas as formas de conjugação."
+  },
+  {
+    "id": 1017,
+    "enunciado": "Em 'Estudar exige disciplina', o verbo está na forma:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Gerúndio" },
+      { "letra": "B", "texto": "Infinitivo impessoal" },
+      { "letra": "C", "texto": "Infinitivo pessoal" },
+      { "letra": "D", "texto": "Particípio" },
+      { "letra": "E", "texto": "Subjuntivo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Estudar' é infinitivo impessoal, pois não está flexionado para nenhum sujeito."
+  },
+  {
+    "id": 1018,
+    "contexto": "Trecho: 'Ao sabermos da notícia, ficamos aliviados.'",
+    "enunciado": "A forma verbal 'sabermos' é:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Gerúndio" },
+      { "letra": "B", "texto": "Infinitivo impessoal" },
+      { "letra": "C", "texto": "Infinitivo pessoal" },
+      { "letra": "D", "texto": "Particípio" },
+      { "letra": "E", "texto": "Indicativo" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Sabermos' é infinitivo pessoal flexionado na 1ª pessoa do plural."
+  },
+  {
+    "id": 1019,
+    "enunciado": "Marque a alternativa em que o **particípio** é utilizado corretamente:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Formas nominais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Tenho chego tarde ultimamente." },
+      { "letra": "B", "texto": "Eles haviam imprimido o livro." },
+      { "letra": "C", "texto": "Tínhamos trazido os documentos." },
+      { "letra": "D", "texto": "Ele tinha rompido-se com os pais." },
+      { "letra": "E", "texto": "Estávamos sido levados." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Tínhamos trazido' é uso correto do particípio regular com auxiliar 'ter'."
+  },
+  {
+    "id": 1020,
+    "enunciado": "Assinale a frase com verbo conjugado no **futuro do presente do indicativo**:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ele estuda todos os dias." },
+      { "letra": "B", "texto": "Ele estudava com afinco." },
+      { "letra": "C", "texto": "Ele estudará para a prova." },
+      { "letra": "D", "texto": "Ele estudou muito ontem." },
+      { "letra": "E", "texto": "Ele estudasse melhor, passaria." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Estudará' é futuro do presente do indicativo, expressando ação que ocorrerá."
+  },
+  {
+    "id": 1021,
+    "enunciado": "Qual verbo abaixo está conjugado no **pretérito imperfeito do subjuntivo**?",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Falava" },
+      { "letra": "B", "texto": "Falei" },
+      { "letra": "C", "texto": "Falasse" },
+      { "letra": "D", "texto": "Falou" },
+      { "letra": "E", "texto": "Falaria" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Falasse' é pretérito imperfeito do subjuntivo, geralmente usado com oração condicional."
+  },
+  {
+    "id": 1022,
+    "enunciado": "Assinale a alternativa em que o verbo está conjugado corretamente no **imperativo negativo**:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Modos verbais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Não fala assim!" },
+      { "letra": "B", "texto": "Não falai desse jeito!" },
+      { "letra": "C", "texto": "Não fale assim!" },
+      { "letra": "D", "texto": "Não falando isso, tudo bem." },
+      { "letra": "E", "texto": "Não falaste nada!" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O imperativo negativo é sempre formado com o presente do subjuntivo: 'Não fale'."
+  },
+  {
+    "id": 1023,
+    "enunciado": "Em 'Estudaria mais, se tivesse tempo', o verbo 'estudaria' expressa:",
+    "disciplina": "Português",
+    "assuntos": ["Verbos", "Tempos verbais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pretérito imperfeito do indicativo" },
+      { "letra": "B", "texto": "Futuro do presente" },
+      { "letra": "C", "texto": "Futuro do pretérito do indicativo" },
+      { "letra": "D", "texto": "Presente do subjuntivo" },
+      { "letra": "E", "texto": "Infinitivo pessoal" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Estudaria' expressa ação futura dependente de condição — futuro do pretérito."
   }
 ]
