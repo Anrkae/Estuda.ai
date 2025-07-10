@@ -8815,5 +8815,113 @@
     ],
     "resposta_correta": "C",
     "resolucao": "'Estudaria' expressa ação futura dependente de condição — futuro do pretérito."
+  },
+  {
+    "id": 1024,
+    "enunciado": "O Quinhentismo é marcado por dois tipos principais de produção literária: a literatura informativa e a literatura jesuítica. Sobre elas, é correto afirmar:",
+    "disciplina": "Literatura",
+    "assunto": "Quinhentismo",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "A literatura jesuítica visava entreter os colonos com poesias religiosas." },
+      { "letra": "B", "texto": "A literatura informativa buscava catequizar os indígenas." },
+      { "letra": "C", "texto": "Ambas as vertentes eram voltadas à crítica política." },
+      { "letra": "D", "texto": "A literatura informativa descrevia o Brasil para a metrópole, enquanto a jesuítica tinha caráter pedagógico e evangelizador." },
+      { "letra": "E", "texto": "O Quinhentismo é considerado o primeiro movimento literário brasileiro propriamente dito." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A literatura informativa descrevia o território e os nativos para a Coroa portuguesa; já a jesuítica era voltada à catequese indígena."
+  },
+  {
+    "id": 1025,
+    "enunciado": "Assinale a alternativa que apresenta uma característica marcante do estilo barroco:",
+    "disciplina": "Literatura",
+    "assunto": "Barroco",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Simplicidade linguística e objetividade racional." },
+      { "letra": "B", "texto": "Uso de linguagem coloquial e temas cotidianos." },
+      { "letra": "C", "texto": "Dualismo entre corpo e espírito, além de contraste e rebuscamento." },
+      { "letra": "D", "texto": "Valorização do coletivo e da natureza." },
+      { "letra": "E", "texto": "Racionalismo absoluto e ausência de religiosidade." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Barroco se destaca pelo conflito entre matéria e espírito, pelo uso do contraste e da linguagem elaborada."
+  },
+  {
+    "id": 1026,
+    "enunciado": "Sobre o autor Padre Antônio Vieira, é correto afirmar:",
+    "disciplina": "Literatura",
+    "assunto": "Barroco",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi o principal poeta do Arcadismo brasileiro." },
+      { "letra": "B", "texto": "Destacou-se como orador sacro no período barroco, com estilo persuasivo e culto." },
+      { "letra": "C", "texto": "Criou obras informativas sobre o Brasil para a Coroa." },
+      { "letra": "D", "texto": "Adotou o pseudônimo de Cláudio Manuel da Costa." },
+      { "letra": "E", "texto": "Foi expulso da Companhia de Jesus por criticar a catequese." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Vieira foi um dos maiores oradores sacros do Barroco, conhecido por seus sermões altamente elaborados e persuasivos."
+  },
+  {
+    "id": 1027,
+    "enunciado": "Assinale a alternativa que apresenta uma característica do Arcadismo:",
+    "disciplina": "Literatura",
+    "assunto": "Arcadismo",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Uso exagerado de figuras de linguagem e religiosidade." },
+      { "letra": "B", "texto": "Idealização do ambiente urbano e linguagem rebuscada." },
+      { "letra": "C", "texto": "Fuga do campo para a cidade, buscando progresso técnico." },
+      { "letra": "D", "texto": "Valorização da natureza, simplicidade e ideal bucólico." },
+      { "letra": "E", "texto": "Rejeição da razão em favor da fé e do mistério." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Arcadismo valoriza a natureza, o campo e a simplicidade, seguindo ideais iluministas."
+  },
+  {
+    "id": 1028,
+    "enunciado": "Qual das expressões abaixo representa um ideal do Arcadismo?",
+    "disciplina": "Literatura",
+    "assunto": "Arcadismo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Carpe diem et memento mori." },
+      { "letra": "B", "texto": "Fugit irreparabile tempus." },
+      { "letra": "C", "texto": "A vida é um vale de lágrimas." },
+      { "letra": "D", "texto": "In medio virtus." },
+      { "letra": "E", "texto": "Inutilia truncat." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "'Inutilia truncat' significa cortar o supérfluo, um dos ideais árcades, ligado à simplicidade e racionalidade."
+  },
+  {
+    "id": 1029,
+    "enunciado": "O Quinhentismo foi marcado por uma visão etnocêntrica dos europeus em relação aos povos indígenas. Essa visão está presente:",
+    "disciplina": "Literatura",
+    "assunto": "Quinhentismo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Apenas nos sermões jesuíticos." },
+      { "letra": "B", "texto": "Na idealização dos indígenas como seres superiores." },
+      { "letra": "C", "texto": "Nas descrições elogiosas dos indígenas como modelos de civilidade." },
+      { "letra": "D", "texto": "Na tentativa de converter os indígenas à fé cristã e nos relatos informativos." },
+      { "letra": "E", "texto": "Apenas nas poesias arcádicas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "As descrições do Quinhentismo revelam o olhar europeu sobre os indígenas, muitas vezes com o intuito de conversão religiosa e controle cultural."
   }
 ]
