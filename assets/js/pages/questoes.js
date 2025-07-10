@@ -1,14 +1,14 @@
-// questoes_completo.js — Ajustes: corte fora do botão, responderQuestao, filtros e FontAwesome
+// questoes_final.js — Código completo com todas as lógicas originais e ajustes
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const QUESTOES_JSON_URL = '../assets/data/questoes.json';
+  const QUESTOES_JSON_URL     = '../assets/data/questoes.json';
   const STORAGE_KEY_RESOLVIDAS = 'questoesResolvidas';
 
-  let todasQuestoes = [];
-  let questoesFiltradas = [];
-  let questoesExibidas = [];
+  let todasQuestoes      = [];
+  let questoesFiltradas  = [];
+  let questoesExibidas   = [];
   let questionsDataStore = {};
-  let resolvidas = [];
+  let resolvidas         = [];
 
   let currentSessionStats = {
     id: null,
@@ -19,23 +19,23 @@ document.addEventListener('DOMContentLoaded', async () => {
   };
 
   // ELEMENTOS
-  const campoBusca       = document.getElementById('campoBusca');
-  const filtroDisciplina = new Choices('#filtroDisciplina', { removeItemButton: true });
-  const filtroAssunto    = new Choices('#filtroAssunto',    { removeItemButton: true });
-  const filtroTipo       = new Choices('#filtroTipo',       { removeItemButton: true });
-  const filtroDificuldade= new Choices('#filtroDificuldade',{ removeItemButton: true });
-  const filtroAno        = new Choices('#filtroAno',        { removeItemButton: true });
+  const campoBusca        = document.getElementById('campoBusca');
+  const filtroDisciplina  = new Choices('#filtroDisciplina', { removeItemButton: true });
+  const filtroAssunto     = new Choices('#filtroAssunto',    { removeItemButton: true });
+  const filtroTipo        = new Choices('#filtroTipo',       { removeItemButton: true });
+  const filtroDificuldade = new Choices('#filtroDificuldade',{ removeItemButton: true });
+  const filtroAno         = new Choices('#filtroAno',        { removeItemButton: true });
 
   const numeroQuestoes = document.getElementById('numeroQuestoes');
   const questoesOutput = document.getElementById('questoesOutput');
   const buscarQuestoes = document.getElementById('buscarQuestoes');
   const finalizeButton = document.getElementById('finalizeButton');
 
-  const drawer         = document.getElementById('drawerFiltros');
-  const backdrop       = document.getElementById('drawerBackdrop');
-  const abrirDrawer    = document.getElementById('abrirDrawerFiltros');
-  const aplicarFiltros = document.getElementById('aplicarFiltros');
-  const redefinirFiltros = document.getElementById('redefinirFiltros');
+  const drawer          = document.getElementById('drawerFiltros');
+  const backdrop        = document.getElementById('drawerBackdrop');
+  const abrirDrawer     = document.getElementById('abrirDrawerFiltros');
+  const aplicarFiltros  = document.getElementById('aplicarFiltros');
+  const redefinirFiltros= document.getElementById('redefinirFiltros');
 
   // UTILITÁRIOS
   const embaralhar = arr => [...arr].sort(() => Math.random() - 0.5);
@@ -43,60 +43,67 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelector(`input[name="${name}"]:checked`)?.value || 'todas';
 
   const salvarResolvida = (id, correta) => {
-    if (!resolvidas.some(q => q.id === id)) {
+    if (!resolvidas.some(r => r.id === id)) {
       resolvidas.push({ id, correta });
       localStorage.setItem(STORAGE_KEY_RESOLVIDAS, JSON.stringify(resolvidas));
     }
   };
+
   const carregarResolvidas = () => {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY_RESOLVIDAS)) || []; }
-    catch { return []; }
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY_RESOLVIDAS)) || [];
+    } catch {
+      return [];
+    }
   };
 
-  // Função de resposta
+  // Função de resposta (igual ao base questoes(11).js)
   const responderQuestao = (btn) => {
     const container = btn.closest('.question-item');
-    const id = container.id;
-    const questao = questionsDataStore[id];
-    const resposta = container.dataset.selected;
+    const id        = container.id;
+    const questao   = questionsDataStore[id];
+    const resposta  = container.dataset.selected;
     if (!questao || !resposta || container.classList.contains('answered')) return;
-    
+
     const correta = questao.resposta_correta;
     const acertou = resposta === correta;
     container.classList.add('answered', acertou ? 'correct' : 'incorrect');
-    
+
     container.querySelectorAll('.option-btn').forEach(b => {
       b.disabled = true;
       if (b.dataset.value === resposta) b.classList.add('selected');
       if (b.dataset.value === correta) b.classList.add('correct-answer-highlight');
     });
-    
-    container.querySelector('.feedback-message').textContent = acertou ?
-      'Resposta Correta!' :
-      `Incorreto. A resposta correta é: ${correta}`;
-    
+
+    container.querySelector('.feedback-message').textContent = acertou
+      ? 'Resposta Correta!'
+      : `Incorreto. A resposta correta é: ${correta}`;
+
     const gabaritoBtn = container.querySelector('.view-resolution-btn');
     if (gabaritoBtn) gabaritoBtn.style.display = 'inline-flex';
-    
+
     currentSessionStats.answeredCount++;
     if (acertou) currentSessionStats.correctCount++;
-    
+
     salvarResolvida(questao.id, acertou);
-    
+
     if (window.timerPopupAPI?.updateStats) {
-      window.timerPopupAPI.updateStats(currentSessionStats.answeredCount, currentSessionStats.correctCount);
+      window.timerPopupAPI.updateStats(
+        currentSessionStats.answeredCount,
+        currentSessionStats.correctCount
+      );
     }
-    
+
     if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
-      finalizarSessao(true);
+      finalizeButton.click();
     }
   };
 
-  // Preencher filtros
+  // Preencher filtros (flexível para assunto/assuntos)
   const preencherFiltros = () => {
     const disciplinas = [...new Set(todasQuestoes.map(q => q.disciplina))].sort();
-    const anos = [...new Set(todasQuestoes.map(q => q.metadata?.ano))].sort((a,b)=>b-a);
-    const assuntos = [...new Set(
+    const anos        = [...new Set(todasQuestoes.map(q => q.metadata?.ano))].sort((a,b)=>b-a);
+    const assuntos    = [...new Set(
       todasQuestoes.flatMap(q => {
         if (Array.isArray(q.assuntos)) return q.assuntos;
         if (Array.isArray(q.assunto))  return q.assunto;
@@ -104,26 +111,26 @@ document.addEventListener('DOMContentLoaded', async () => {
       })
     )].sort();
 
-    filtroDisciplina.setChoices(disciplinas.map(d=>({value:d,label:d})), 'value','label', true);
-    filtroAno.setChoices(anos.map(a=>({value:a,label:a})), 'value','label', true);
-    filtroAssunto.setChoices(assuntos.map(a=>({value:a,label:a})), 'value','label', true);
+    filtroDisciplina.setChoices(disciplinas.map(d => ({ value:d,label:d })), 'value','label', true);
+    filtroAno       .setChoices(anos.map(a => ({ value:a,label:a })),       'value','label', true);
+    filtroAssunto   .setChoices(assuntos.map(a=> ({ value:a,label:a })),   'value','label', true);
   };
 
   const atualizarAssuntosPorDisciplina = sel => {
     let lista = [];
     if (!sel.length) {
       lista = todasQuestoes.flatMap(q =>
-        Array.isArray(q.assuntos) ? q.assuntos :
-        Array.isArray(q.assunto)  ? q.assunto  :
-        [q.assunto || q.assuntos].filter(Boolean)
+        Array.isArray(q.assuntos)? q.assuntos :
+        Array.isArray(q.assunto)?  q.assunto  :
+        [q.assunto||q.assuntos].filter(Boolean)
       );
     } else {
       lista = todasQuestoes
         .filter(q => sel.includes(q.disciplina))
         .flatMap(q =>
-          Array.isArray(q.assuntos) ? q.assuntos :
-          Array.isArray(q.assunto)  ? q.assunto  :
-          [q.assunto || q.assuntos].filter(Boolean)
+          Array.isArray(q.assuntos)? q.assuntos :
+          Array.isArray(q.assunto)?  q.assunto  :
+          [q.assunto||q.assuntos].filter(Boolean)
         );
     }
     const uniq = [...new Set(lista)].sort();
@@ -158,8 +165,7 @@ document.addEventListener('DOMContentLoaded', async () => {
              </div>`
           : ''}
         <div class="question-tags">
-          ${tagsAssuntos}
-          <span class="tag-dificuldade">${q.dificuldade||''}</span>
+          ${tagsAssuntos}<span class="tag-dificuldade">${q.dificuldade||''}</span>
         </div>
         <p class="question-text"><strong>${i+1}.</strong> ${q.enunciado}</p>
         ${hasCtx
@@ -190,7 +196,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <button class="confirm-answer-btn" disabled>Responder</button>
           ${q.resolucao?'<button class="view-resolution-btn" style="display:none;">Gabarito</button>':''}
         </div>
-        ${q.resolucao?`<div class="resolution-area oculto"><strong>Resolução:</strong><br>${q.resolucao}</div>`:''}
+        ${q.resolucao?`<div class="resolution-area" style="display:none;"><strong>Resolução:</strong><br>${q.resolucao}</div>`:''}
       `;
       questoesOutput.appendChild(div);
     });
@@ -198,17 +204,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Filtros avançados
   const aplicarFiltrosAvancados = () => {
-    const termo = campoBusca.value.toLowerCase().trim();
-    const discs = filtroDisciplina.getValue(true);
-    const assSel= filtroAssunto.getValue(true);
-    const tip  = filtroTipo.getValue(true);
-    const diff = filtroDificuldade.getValue(true);
+    const termo   = campoBusca.value.toLowerCase().trim();
+    const discs   = filtroDisciplina.getValue(true);
+    const assSel  = filtroAssunto.getValue(true);
+    const tip     = filtroTipo.getValue(true);
+    const diff    = filtroDificuldade.getValue(true);
     const anosArr = filtroAno.getValue(true);
-    const modo = getValorSelecionado('filtroResolvidas');
+    const modo    = getValorSelecionado('filtroResolvidas');
 
     questoesFiltradas = todasQuestoes.filter(q=>{
-      const r= resolvidas.find(x=>x.id===q.id);
-      const c= r?.correta;
+      const r = resolvidas.find(x=>x.id===q.id);
+      const c = r?.correta;
       if(modo==='resolvidas'&&!r) return false;
       if(modo==='nao_resolvidas'&&r) return false;
       if(modo==='corretas'&&c!==true) return false;
@@ -229,22 +235,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Seleção de alternativa
   const selecionarOpcao = btn => {
-    const wrp = btn.closest('.option-wrapper');
     const container = btn.closest('.question-item');
     if(!container||container.classList.contains('answered')||btn.classList.contains('cortada')) return;
-
     container.querySelectorAll('.option-btn').forEach(o=>{
       o.classList.remove('selected-preview');
       const corte = o.closest('.option-wrapper').querySelector('.corte-btn');
-      if(corte) corte.style.display='none';
+      if(corte) corte.style.display = 'none';
     });
-
     btn.classList.add('selected-preview');
     container.dataset.selected = btn.dataset.value;
-
     const corteBtn = btn.closest('.option-wrapper').querySelector('.corte-btn');
-    if(corteBtn) corteBtn.style.display='inline-flex';
-
+    if(corteBtn) corteBtn.style.display = 'inline-flex';
     container.querySelector('.confirm-answer-btn').disabled = false;
   };
 
@@ -253,93 +254,106 @@ document.addEventListener('DOMContentLoaded', async () => {
     const t = e.target;
 
     // Cortar/Restaurar
-    if(t.closest('.corte-btn')){
+    if(t.closest('.corte-btn')) {
       e.stopPropagation();
-      const corteBtn = t.closest('.corte-btn');
-      const container = corteBtn.closest('.question-item');
-      const letra = corteBtn.dataset.letra;
+      const cb = t.closest('.corte-btn');
+      const container = cb.closest('.question-item');
+      const letra = cb.dataset.letra;
       const altBtn = container.querySelector(`.option-btn[data-value="${letra}"]`);
       if(!altBtn) return;
-      const cortada = altBtn.classList.toggle('cortada');
-      corteBtn.innerHTML = cortada
-        ? '<i class="fas fa-rotate-left"></i>'
-        : '<i class="fas fa-scissors"></i>';
-      if(cortada){
+      const cort = altBtn.classList.toggle('cortada');
+      cb.innerHTML = cort ? '<i class="fas fa-rotate-left"></i>' : '<i class="fas fa-scissors"></i>';
+      if(cort) {
         altBtn.classList.remove('selected-preview');
         delete container.dataset.selected;
-        container.querySelector('.confirm-answer-btn').disabled=true;
+        container.querySelector('.confirm-answer-btn').disabled = true;
       }
-      corteBtn.style.display='inline-flex';
+      cb.style.display = 'inline-flex';
       return;
     }
 
-    // Selecionar
-    const opt = t.closest('.option-btn');
-    if(opt){
-      selecionarOpcao(opt);
-      return;
-    }
+    // Selecionar alternativa
+    const optBtn = t.closest('.option-btn');
+    if(optBtn) { selecionarOpcao(optBtn); return; }
 
     // Responder
-    if(t.classList.contains('confirm-answer-btn')){
+    if(t.classList.contains('confirm-answer-btn')) {
       responderQuestao(t);
       return;
     }
 
-    // Outras ações (view-resolution, toggle-btn, etc.) podem seguir aqui...
-  });
-
-  // Botões principais
-  buscarQuestoes.addEventListener('click', async ()=>{
-    aplicarFiltrosAvancados();
-    const qtd = parseInt(numeroQuestoes.value)||5;
-    if(!questoesFiltradas.length){
-      questoesOutput.innerHTML='<p class="empty-state">Nenhuma questão encontrada.</p>';
+    // Gabarito toggle (exato do base)
+    if(t.classList.contains('view-resolution-btn')) {
+      const container = t.closest('.question-item');
+      const area = container.querySelector('.resolution-area');
+      const visivel = area.style.display === 'block';
+      area.style.display = visivel ? 'none' : 'block';
+      t.textContent = visivel ? 'Gabarito' : 'Ocultar Gabarito';
       return;
     }
-    questoesExibidas = embaralhar(questoesFiltradas).slice(0,qtd);
+
+    // Toggle contexto/imagem
+    if(t.classList.contains('toggle-btn')) {
+      const alvo = document.getElementById(t.dataset.target);
+      if(alvo) alvo.classList.toggle('oculto');
+      return;
+    }
+  });
+
+  // Buscar questões e iniciar sessão
+  buscarQuestoes.addEventListener('click', async () => {
+    aplicarFiltrosAvancados();
+    const qtd = parseInt(numeroQuestoes.value) || 5;
+    if (!questoesFiltradas.length) {
+      questoesOutput.innerHTML = '<p class="empty-state">Nenhuma questão encontrada.</p>';
+      return;
+    }
+    questoesExibidas = embaralhar(questoesFiltradas).slice(0, qtd);
     exibirQuestoes(questoesExibidas);
     currentSessionStats = {
       id: `sess-${Date.now()}`,
       totalQuestions: questoesExibidas.length,
       answeredCount: 0,
       correctCount: 0,
-      disciplina: questoesExibidas[0]?.disciplina||'Diversas'
+      disciplina: questoesExibidas[0]?.disciplina || 'Diversas'
     };
-    finalizeButton.style.display='inline-flex';
-    if(window.timerPopupAPI?.startSession){
-      window.timerPopupAPI.startSession(currentSessionStats.totalQuestions, currentSessionStats.disciplina);
+    finalizeButton.style.display = 'inline-flex';
+    if (window.timerPopupAPI?.startSession) {
+      window.timerPopupAPI.startSession(
+        currentSessionStats.totalQuestions,
+        currentSessionStats.disciplina
+      );
     }
   });
 
-  finalizeButton.addEventListener('click', ()=>{
-    if(window.timerPopupAPI?.stopTimer) window.timerPopupAPI.stopTimer();
-    if(window.timerPopupAPI?.openPanel) window.timerPopupAPI.openPanel();
-    finalizeButton.style.display='none';
-    currentSessionStats = { id:null, totalQuestions:0, answeredCount:0, correctCount:0, disciplina:null };
+  finalizeButton.addEventListener('click', () => {
+    if (window.timerPopupAPI?.stopTimer) window.timerPopupAPI.stopTimer();
+    if (window.timerPopupAPI?.openPanel) window.timerPopupAPI.openPanel();
+    finalizeButton.style.display = 'none';
+    currentSessionStats = { id: null, totalQuestions: 0, answeredCount: 0, correctCount: 0, disciplina: null };
   });
 
-  abrirDrawer.addEventListener('click', ()=>{
+  abrirDrawer.addEventListener('click', () => {
     drawer.classList.add('open');
     backdrop.classList.add('active');
   });
-  backdrop.addEventListener('click', ()=>{
+  backdrop.addEventListener('click', () => {
     drawer.classList.remove('open');
     backdrop.classList.remove('active');
   });
-  aplicarFiltros.addEventListener('click', ()=>{
+  aplicarFiltros.addEventListener('click', () => {
     aplicarFiltrosAvancados();
     drawer.classList.remove('open');
     backdrop.classList.remove('active');
   });
-  redefinirFiltros.addEventListener('click', ()=>{
+  redefinirFiltros.addEventListener('click', () => {
     filtroTipo.clearStore();
     filtroDificuldade.clearStore();
     filtroAno.clearStore();
     document.querySelector('input[name="filtroResolvidas"][value="todas"]').checked = true;
   });
 
-  // Carregamento inicial
+  // INICIALIZAÇÃO
   resolvidas     = carregarResolvidas();
   todasQuestoes  = await (await fetch(QUESTOES_JSON_URL)).json();
   preencherFiltros();
