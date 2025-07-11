@@ -116,4 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) idade--;
         return idade;
     }
+    
+    // ✅ Detecta hash na URL e ativa a aba correspondente
+    const hash = window.location.hash?.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+        document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+        
+        const targetTab = document.getElementById(hash);
+        targetTab.classList.add('active');
+        
+        const btnMatch = document.querySelector(`.menu-btn[data-tab="${hash.replace('aba-', '')}"]`);
+        if (btnMatch) btnMatch.classList.add('active');
+    }
 });
