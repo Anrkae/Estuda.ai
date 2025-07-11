@@ -1,156 +1,260 @@
-/* Estilos Gerais e Abas */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* BLOQUEIO DE SELEÇÃO */
+* {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  box-sizing: border-box;
+}
+
+/* GERAL */
 body {
-    -webkit-tap-highlight-color: transparent;
-    outline: none; /* Adicionado por segurança para garantir que nenhum outline relacionado ao toque apareça */
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer/Edge */
-    user-select: none;         /* Padrão */
-    font-family: 'Montserrat', sans-serif; margin: 0; background-color: #f4f6f8;
-    padding-top: 70px; /* Ajuste conforme seu header fixo */
-    color: #333;
-    background-color: #f1f0ea;
-}
-.profile-container { display: flex;
-    flex-direction: column;
-    margin: 30px auto; /* Centralizado se você adicionar 'auto' */
-    max-width: 800px;
-    padding: 20px;
-    background-color: #f5f4f0;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Montserrat', sans-serif;
+  background-color: #eceae2;
+  color: #333;
+  padding: 0;
+  margin: 0;
 }
 
-/* --- Sistema de Abas --- */
-.tab-navigation { display: flex; border-bottom: 2px solid #eee; margin-bottom: 25px; }
+.profile-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* TÍTULOS */
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #6735bc;
+}
+
+#profile-dob-label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+#profile-dob {
+  margin-top: 0.3rem;
+  font-weight: 500;
+}
+
+/* CARTÃO DO PERFIL */
+.profile-card {
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid rgba(108, 47, 214, 1); /* Roxo */
+}
+
+/* FOTO DE PERFIL */
+.profile-picture-container {
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #6c2fd6;
+}
+
+.profile-picture-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DETALHES */
+.profile-details {
+  flex: 1;
+}
+
+.profile-details h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* AÇÕES */
+.profile-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.btn-edit-profile,
+.btn-logout {
+  background-color: #474c5f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 0.9rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-edit-profile:hover,
+.btn-logout:hover {
+  background-color: #5b6175;
+}
+
+/* LISTA DE DISCIPLINAS */
+#tab-preferencias {
+  margin-top: 2rem;
+}
+
+#lista-disciplinas {
+  margin-top: 1rem;
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: #333;
+}
+
+#lista-disciplinas li {
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
+}
+
+/* MENSAGEM DE ERRO */
+#profile-error-message {
+  color: #e74c3c;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* TABS */
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
 .tab-button {
-    padding: 12px 20px; background: none; border: none; border-bottom: 3px solid transparent;
-    cursor: pointer; font-size: 1.05em; font-weight: 500; color: #666; transition: color 0.2s ease, border-color 0.2s ease; margin-bottom: -2px;
-    font-family: inherit; display: inline-flex; align-items: center; gap: 8px;
-}
-.tab-button:hover { color: #452482; }
-.tab-button.active { color: #6735bc; border-bottom-color: #6735bc; font-weight: 600; }
-.tab-content { display: none; animation: fadeInContent 0.4s ease; }
-.tab-content.active { display: block; }
-@keyframes fadeInContent { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-/* --- Conteúdo da Aba "Perfil" --- */
-#tab-perfil { margin: 0 auto; }
-#tab-perfil .profile-card { padding: 20px; border: none; box-shadow: none; max-width: none; margin: 0; text-align: left; display: flex; align-items: center; gap: 30px; flex-wrap: wrap; }
-#tab-perfil .profile-picture-container {
-    flex-shrink: 0;
-    text-align: center;
-    border-radius: 50%;
-    outline: 3px solid #2C2C2C; /* Adiciona o contorno: espessura, estilo, cor */
-    outline-offset: 1px; /* Opcional: Afasta o contorno da imagem */
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.75);
-}
-#tab-perfil #profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-    background-color: #e0e0e0; /* Cor de fundo para a imagem */
-}
-#tab-perfil .profile-details { flex-grow: 1; }
-#tab-perfil #profile-name { margin: 0 0 5px 0; font-size: 1.7em; color: #444; font-weight: 600;}
-#tab-perfil #profile-dob-label { font-weight: 500; color: #777; font-size: 0.9em; margin-bottom: 2px; display: block; }
-#tab-perfil #profile-dob { color: #555; margin: 0 0 20px 0; font-size: 1.1em; }
-#tab-perfil .profile-actions { margin-top: 15px; display: flex; gap: 15px; align-items: center; }
-#tab-perfil .btn-edit-profile { background-color: #6735bc; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
-#tab-perfil .btn-edit-profile:hover { background-color: #562da4; }
-#tab-perfil .btn-logout { background-color: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 0.9em; font-weight: 500; transition: background-color 0.2s ease; display: inline-flex; align-items: center; gap: 6px; }
-#tab-perfil .btn-logout:hover { background-color: #c0392b; }
-#profile-error-message { color: #c62828; text-align: center; margin-top: 15px; font-weight: 500; display: none; }
-/* Adicionado para consistência, se você usar a classe 'success' via JS */
-#profile-error-message.success { color: #2e7d32; background-color: #e8f5e9; border: 1px solid #c8e6c9; padding:10px; }
-
-
-/* --- Conteúdo da Aba "Preferências" --- */
-#tab-preferencias { padding: 20px; }
-#tab-preferencias h3 { margin-top: 0; color: #555; font-weight: 600; }
-#tab-preferencias ul { list-style: disc; padding-left: 20px; color: #666; }
-#tab-preferencias li { margin-bottom: 8px; }
-
-/* --- Conteúdo da Aba "Armazenamento" --- */
-#tab-armazenamento { padding: 20px; }
-#tab-armazenamento h3 { margin-top: 0; color: #555; font-weight: 600; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;}
-#tab-armazenamento p { line-height: 1.6; margin-bottom: 12px; font-size: 0.95em; color: #444; }
-#tab-armazenamento strong { font-weight: 600; }
-#tab-armazenamento code { background-color: #eef; padding: 2px 5px; border-radius: 4px; font-family: monospace; font-size: 0.9em;}
-#tab-armazenamento .reset-section { margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; }
-#tab-armazenamento .reset-warning { color: #c62828; font-weight: 500; font-size: 0.9em; margin-bottom: 15px; }
-#reset-data-btn { background-color: #ff7043; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 1em; font-weight: 500; transition: background-color 0.2s ease; display: inline-flex; align-items: center; gap: 8px; }
-#reset-data-btn:hover { background-color: #f4511e; }
-#reset-status { margin-top: 15px; font-weight: 500; min-height: 1.2em;}
-#reset-status.success { color: #2e7d32; }
-#reset-status.error { color: #c62828; }
-#reset-status.info { color: #1565c0; } /* Para mensagens informativas */
-
-
-/* --- Modal de Confirmação Reset --- */
-.modal-overlay-reset { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: none; /* Modificado para none, JS controla com .show */ justify-content: center; align-items: center; z-index: 1050; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s 0.3s; }
-.modal-overlay-reset.show { display:flex; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s 0s; } /* JS adiciona/remove .show */
-.modal-dialog-reset { background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); width: 90%; max-width: 480px; transform: scale(0.9); transition: transform 0.3s ease; }
-.modal-overlay-reset.show .modal-dialog-reset { transform: scale(1); }
-.modal-title-reset { margin-top: 0; margin-bottom: 15px; font-size: 1.4em; color: #c62828; text-align: center; font-weight: 600; }
-.modal-message-reset { margin-bottom: 20px; line-height: 1.6; color: #555; text-align: left; font-size: 1em; }
-.modal-message-reset ul { list-style-type: disc; padding-left: 25px; margin-top: 10px; }
-.modal-message-reset strong { color: #c62828; }
-.modal-buttons-reset { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
-.modal-button-reset { padding: 10px 18px; border-radius: 5px; border: none; cursor: pointer; font-weight: 500; font-size: 0.95em; transition: background-color 0.2s ease; }
-.modal-cancel-reset { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
-.modal-cancel-reset:hover { background-color: #e0e0e0; }
-.modal-confirm-reset { background-color: #d9534f; color: white; border: 1px solid #d43f3a; }
-.modal-confirm-reset:hover { background-color: #c9302c; }
-
-/* --- Modal de Edição de Perfil --- */
-.modal-overlay-edit { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); display: none; /* Modificado para none, JS controla com .show */ justify-content: center; align-items: center; z-index: 1040; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s 0.3s; }
-.modal-overlay-edit.show { display:flex; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0s 0s; } /* JS adiciona/remove .show */
-.modal-dialog-edit { background-color: #fff; padding: 25px 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); width: 90%; max-width: 500px; transform: scale(0.9); transition: transform 0.3s ease; }
-.modal-overlay-edit.show .modal-dialog-edit { transform: scale(1); }
-.modal-title-edit { margin-top: 0; margin-bottom: 20px; font-size: 1.4em; color: #333; text-align: center; font-weight: 600; }
-.edit-profile-pic-area { text-align: center; margin-bottom: 20px; }
-#edit-profile-pic-preview { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #ccc; display: block; margin: 0 auto 10px auto; background-color: #f0f0f0; }
-#edit-profile-pic-label { display: inline-block; background-color: #eee; color: #555; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em; transition: background-color 0.2s; }
-#edit-profile-pic-label:hover { background-color: #ddd; }
-#edit-profile-pic-input { display: none; }
-.edit-form-grupo { margin-bottom: 15px; }
-.edit-form-grupo label { display: block; margin-bottom: 5px; font-weight: 500; color: #444; font-size: 0.9em; }
-.edit-form-grupo input[type="text"] { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 1em; }
-.edit-form-grupo input[type="text"]:focus { border-color: #6735bc; outline: none; box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15); }
-/* Adicionado para o campo de username desabilitado */
-.edit-form-grupo input[type="text"]:disabled { background-color: #e9ecef; color: #6c757d; cursor: not-allowed; }
-
-#edit-age-display { font-size: 0.8em; color: #555; margin-top: 4px; min-height: 1em; text-align: right; }
-#edit-age-display.invalid { color: #e53935; } /* Para feedback de data inválida */
-#edit-profile-status { margin-top: 15px; font-size: 0.9em; min-height: 1.1em; font-weight: 500; text-align: center; color: #c62828; display: none; /* JS controla visibilidade */ }
-#edit-profile-status.success { color: #2e7d32; background-color: #e8f5e9; border: 1px solid #c8e6c9; padding:8px; }
-#edit-profile-status.info { color: #1565c0; background-color: #e3f2fd; border: 1px solid #d1eaff; padding:8px;}
-
-
-.modal-buttons-edit { display: flex; justify-content: flex-end; gap: 10px; margin-top: 25px; }
-.modal-button-edit { padding: 10px 18px; border-radius: 5px; border: none; cursor: pointer; font-weight: 500; font-size: 0.95em; transition: background-color 0.2s ease; }
-.modal-cancel-edit { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
-.modal-cancel-edit:hover { background-color: #e0e0e0; }
-.modal-confirm-edit { background-color: #6735bc; color: white; } 
-.modal-confirm-edit:hover { background-color: #562da4; }
-
-
-/* Responsividade */
-@media (max-width: 600px) {
-    .profile-container { margin: 20px auto; padding: 15px; } /* Adicionado auto */
-    .tab-navigation { overflow-x: auto; white-space: nowrap; }
-    .tab-button { padding: 10px 15px; font-size: 1em; }
-    #tab-perfil .profile-card { flex-direction: column; text-align: center; gap: 15px;}
-    #tab-perfil #profile-name { font-size: 1.5em;}
-    #tab-perfil #profile-dob { font-size: 1em;}
-    #tab-perfil .profile-actions { justify-content: center; }
-    .modal-dialog-reset, .modal-dialog-edit { padding: 20px; max-width: 95%;} 
-    /* Removido .popup-content e .popup-close-button pois não existem no seu HTML de perfil com esses nomes genéricos */
+  background: rgba(255, 255, 255, 0.7);
+  color: #6c2fd6;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-/* --- Font Family (da sua referência, já aplicado ao body) --- */
-/* button, input, select, textarea { font-family: 'Montserrat', sans-serif; } */ /* Redundante se body já tem */
+.tab-button.active {
+  background: #6c2fd6;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* XP / NÍVEL */
+.xp-card {
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 4px solid #6c2fd6;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.xp-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.xp-bar {
+  background: #d7d3c6;
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+#xp-progresso {
+  height: 100%;
+  width: 0%;
+  background-color: #6c2fd6;
+  transition: width 0.4s ease;
+}
+
+/* ESTATÍSTICAS */
+.estatisticas-card {
+  margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.estatisticas-card h3 {
+  color: #6735bc;
+  margin-bottom: 0.8rem;
+}
+
+.estatisticas-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.estatisticas-card li {
+  font-size: 0.95rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+.menu-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.9);
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 0;
+  z-index: 999;
+}
+
+.menu-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  font-size: 0.8rem;
+  color: #6c2fd6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.menu-btn i {
+  font-size: 1.2rem;
+}
+
+.menu-btn.active {
+  color: #333;
+  font-weight: bold;
+}
+
