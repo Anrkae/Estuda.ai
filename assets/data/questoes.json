@@ -8923,5 +8923,222 @@
     ],
     "resposta_correta": "D",
     "resolucao": "As descrições do Quinhentismo revelam o olhar europeu sobre os indígenas, muitas vezes com o intuito de conversão religiosa e controle cultural."
+  },
+  {
+    "id": 1030,
+    "enunciado": "O poema épico 'Prosopopeia', de Bento Teixeira, é associado ao Barroco por apresentar:",
+    "disciplina": "Literatura",
+    "assunto": "Barroco",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Conteúdo pagão e linguagem objetiva." },
+      { "letra": "B", "texto": "Linguagem rebuscada e referências à luta entre bem e mal." },
+      { "letra": "C", "texto": "Inspiração arcádica e estilo bucólico." },
+      { "letra": "D", "texto": "Simplicidade formal e linguagem direta." },
+      { "letra": "E", "texto": "Narrativa humorística sobre o cotidiano." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Prosopopeia' reflete o estilo barroco por sua linguagem elaborada e dualismo moral-religioso."
+  },
+  {
+    "id": 1031,
+    "enunciado": "Cláudio Manuel da Costa é uma das principais figuras do Arcadismo brasileiro. Entre suas características literárias, destaca-se:",
+    "disciplina": "Literatura",
+    "assunto": "Arcadismo",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Uso do misticismo e da metáfora religiosa." },
+      { "letra": "B", "texto": "Valorização da vida urbana e do progresso." },
+      { "letra": "C", "texto": "Temas bucólicos, simplicidade formal e pseudônimo greco-latino." },
+      { "letra": "D", "texto": "Estilo grandiloquente e dramático." },
+      { "letra": "E", "texto": "Linguagem informal e coloquial." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O poeta seguia os preceitos do Arcadismo, inclusive adotando o pseudônimo 'Glauceste Satúrnio'."
+  },
+  {
+    "id": 1032,
+    "contexto": "Fragmento: 'A terra é de muito bons ares, frescos e temperados.' — Pero Vaz de Caminha.",
+    "enunciado": "O excerto acima representa uma característica da literatura:",
+    "disciplina": "Literatura",
+    "assunto": "Quinhentismo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Realista" },
+      { "letra": "B", "texto": "Naturalista" },
+      { "letra": "C", "texto": "Informativa, com viés de encantamento da terra brasileira." },
+      { "letra": "D", "texto": "Crítica e de denúncia social." },
+      { "letra": "E", "texto": "Regionalista e sentimental." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O trecho exalta as qualidades do território recém-descoberto, comum à literatura informativa do Quinhentismo."
+  },
+  {
+    "id": 1033,
+    "enunciado": "Assinale a alternativa em que todas as características pertencem ao Barroco:",
+    "disciplina": "Literatura",
+    "assunto": "Barroco",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Simplicidade, razão e objetividade." },
+      { "letra": "B", "texto": "Valorização do campo, equilíbrio e clareza." },
+      { "letra": "C", "texto": "Religiosidade, dualismo e linguagem rebuscada." },
+      { "letra": "D", "texto": "Racionalismo, crítica social e linguagem simples." },
+      { "letra": "E", "texto": "Bucolismo, idealização da mulher e clareza de ideias." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Barroco é marcado por conflito espiritual, linguagem complexa e intensa religiosidade."
+  },
+  {
+    "id": 1034,
+    "enunciado": "Sobre Gregório de Matos, é correto afirmar:",
+    "disciplina": "Literatura",
+    "assunto": "Barroco",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ficou conhecido como o principal poeta árcade do Brasil." },
+      { "letra": "B", "texto": "Sua poesia abordava apenas temas amorosos." },
+      { "letra": "C", "texto": "Foi apelidado de 'Boca do Inferno' por suas críticas e sátiras." },
+      { "letra": "D", "texto": "Escreveu sermões religiosos e prosa catequética." },
+      { "letra": "E", "texto": "Defendeu o movimento romântico em seus poemas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Gregório de Matos ficou conhecido como 'Boca do Inferno' por suas poesias satíricas e críticas à sociedade da época."
+  },
+  {
+    "id": 1035,
+    "enunciado": "Sobre os ideais do Arcadismo, assinale a alternativa incorreta:",
+    "disciplina": "Literatura",
+    "assunto": "Arcadismo",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Valorização da vida no campo." },
+      { "letra": "B", "texto": "Imitação dos clássicos greco-latinos." },
+      { "letra": "C", "texto": "Exaltação do misticismo e do exagero linguístico." },
+      { "letra": "D", "texto": "Ideal bucólico e simplicidade." },
+      { "letra": "E", "texto": "Uso de pseudônimos pastorais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A exaltação do misticismo e da linguagem exagerada é característica do Barroco, não do Arcadismo."
+  },
+  {
+    "id": 1036,
+    "enunciado": "Qual evento influenciou diretamente o surgimento do Arcadismo no Brasil?",
+    "disciplina": "Literatura",
+    "assunto": "Arcadismo",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "A Revolução Francesa e a independência dos EUA." },
+      { "letra": "B", "texto": "O Concílio de Trento e a Contra-Reforma." },
+      { "letra": "C", "texto": "O Iluminismo europeu e a fundação da Arcádia Ultramarina." },
+      { "letra": "D", "texto": "A catequese jesuítica." },
+      { "letra": "E", "texto": "A fundação da Companhia de Jesus no Brasil." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Arcadismo foi influenciado pelos ideais iluministas e pela fundação da Arcádia no Brasil (MG)."
+  },
+  {
+    "id": 1037,
+    "enunciado": "Marque a opção que apresenta corretamente a oposição fundamental no Barroco:",
+    "disciplina": "Literatura",
+    "assunto": "Barroco",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Cidade × Campo" },
+      { "letra": "B", "texto": "Razão × Fé" },
+      { "letra": "C", "texto": "Matéria × Espírito" },
+      { "letra": "D", "texto": "Natureza × Cultura" },
+      { "letra": "E", "texto": "Sociedade × Liberdade" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Barroco apresenta uma tensão entre o material e o espiritual, expressando a crise do homem da época."
+  },
+  {
+    "id": 1038,
+    "enunciado": "Sobre o Quinhentismo, é correto afirmar que:",
+    "disciplina": "Literatura",
+    "assunto": "Quinhentismo",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Não se considera um movimento literário, mas uma fase de produção escrita." },
+      { "letra": "B", "texto": "É marcado pelo sentimentalismo romântico." },
+      { "letra": "C", "texto": "Produziu romances naturalistas e contos psicológicos." },
+      { "letra": "D", "texto": "Exaltou o nacionalismo brasileiro." },
+      { "letra": "E", "texto": "Foi o ápice da poesia barroca no Brasil." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O Quinhentismo é mais descritivo que literário e não é considerado um movimento formal."
+  },
+  {
+    "id": 1039,
+    "enunciado": "A principal diferença entre o estilo de Gregório de Matos e o de Padre Vieira está:",
+    "disciplina": "Literatura",
+    "assunto": "Barroco",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "No uso de linguagem objetiva por ambos." },
+      { "letra": "B", "texto": "Na ausência de religiosidade em ambos os autores." },
+      { "letra": "C", "texto": "No foco da crítica: Vieira atuava como pregador; Gregório, como poeta satírico." },
+      { "letra": "D", "texto": "No uso de pseudônimos pastoris." },
+      { "letra": "E", "texto": "Na nacionalidade, pois Vieira era português e Gregório, espanhol." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Padre Vieira pregava em defesa da fé; Gregório fazia crítica mordaz em sua poesia."
+  },
+  {
+    "id": 1040,
+    "enunciado": "Tomás Antônio Gonzaga, autor de 'Marília de Dirceu', apresenta na obra:",
+    "disciplina": "Literatura",
+    "assunto": "Arcadismo",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ideal amoroso, bucólico e linguagem equilibrada." },
+      { "letra": "B", "texto": "Tensão entre alma e corpo." },
+      { "letra": "C", "texto": "Humor e sátira social." },
+      { "letra": "D", "texto": "Crítica ao Iluminismo." },
+      { "letra": "E", "texto": "Realismo psicológico e introspectivo." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O autor expressa ideais amorosos com forte presença de pastoralismo e simplicidade formal."
+  },
+  {
+    "id": 1041,
+    "enunciado": "Qual alternativa apresenta autores representativos de cada período: Quinhentismo, Barroco e Arcadismo?",
+    "disciplina": "Literatura",
+    "assunto": "Literatura Brasileira",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Camões, Gregório de Matos, Castro Alves" },
+      { "letra": "B", "texto": "Padre Vieira, Machado de Assis, Olavo Bilac" },
+      { "letra": "C", "texto": "Pero Vaz de Caminha, Padre Vieira, Tomás Antônio Gonzaga" },
+      { "letra": "D", "texto": "José de Alencar, Gregório de Matos, Cláudio Manuel da Costa" },
+      { "letra": "E", "texto": "Padre Anchieta, Álvares de Azevedo, Gonçalves Dias" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Cada autor representa seu período: Caminha (Quinhentismo), Vieira (Barroco), Gonzaga (Arcadismo)."
   }
 ]
