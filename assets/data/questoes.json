@@ -9140,5 +9140,332 @@
     ],
     "resposta_correta": "C",
     "resolucao": "Cada autor representa seu período: Caminha (Quinhentismo), Vieira (Barroco), Gonzaga (Arcadismo)."
+  },
+  {
+    "id": 1042,
+    "enunciado": "Durante o período colonial, qual era a principal função do sistema de capitanias hereditárias implantado pela Coroa portuguesa no Brasil?",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Facilitar a urbanização e o comércio interno." },
+      { "letra": "B", "texto": "Delegar a administração colonial aos indígenas." },
+      { "letra": "C", "texto": "Incentivar a mineração de forma autônoma." },
+      { "letra": "D", "texto": "Promover a colonização e exploração econômica através de concessões privadas." },
+      { "letra": "E", "texto": "Criar uma república federativa sob domínio português." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "As capitanias foram uma forma de descentralizar e acelerar a colonização por meio de doações de terras a particulares com poderes administrativos."
+  },
+  {
+    "id": 1043,
+    "enunciado": "Sobre o Governo-Geral instalado em 1549, é correto afirmar que:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Substituiu por completo o sistema de capitanias hereditárias." },
+      { "letra": "B", "texto": "Foi criado para garantir centralização administrativa e combater ameaças externas." },
+      { "letra": "C", "texto": "Tinha como objetivo principal a liberdade comercial." },
+      { "letra": "D", "texto": "Resultou na independência dos donatários." },
+      { "letra": "E", "texto": "Teve início apenas no século XVII." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Governo-Geral foi instituído para reforçar o controle metropolitano, coordenando a administração das capitanias."
+  },
+  {
+    "id": 1044,
+    "contexto": "No século XVII, a descentralização administrativa levou ao surgimento de estruturas intermediárias entre as vilas e a Coroa.",
+    "enunciado": "Nesse contexto, qual foi uma das instituições criadas para representar os interesses locais durante a administração colonial portuguesa?",
+    "disciplina": "História",
+    "assunto": "Brasil Colônia",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Câmara Municipal" },
+      { "letra": "B", "texto": "Senado do Brasil" },
+      { "letra": "C", "texto": "Assembléia Geral" },
+      { "letra": "D", "texto": "Corte do Rio de Janeiro" },
+      { "letra": "E", "texto": "Ministério da Fazenda" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "As Câmaras Municipais representavam os homens bons e organizavam a administração local nas vilas coloniais."
+  },
+  {
+    "id": 1045,
+    "enunciado": "O cargo de Ouvidor no período colonial tinha como principal função:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Cobrar impostos e administrar os engenhos de açúcar." },
+      { "letra": "B", "texto": "Julgar causas civis e criminais no âmbito colonial." },
+      { "letra": "C", "texto": "Coordenar o comércio com a metrópole." },
+      { "letra": "D", "texto": "Organizar as câmaras eclesiásticas." },
+      { "letra": "E", "texto": "Atuar como comandante militar em conflitos internos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Ouvidor era o magistrado responsável pela justiça local, exercendo funções judiciais de 1ª e 2ª instância."
+  },
+  {
+    "id": 1046,
+    "enunciado": "Qual era a principal função do provedor-mor durante o Brasil Colonial?",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Administrar a justiça local." },
+      { "letra": "B", "texto": "Comandar tropas militares contra indígenas." },
+      { "letra": "C", "texto": "Controlar as finanças, arrecadar tributos e supervisionar os rendimentos da Coroa." },
+      { "letra": "D", "texto": "Liderar expedições missionárias jesuíticas." },
+      { "letra": "E", "texto": "Cuidar das terras devolutas e doações reais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O provedor-mor era o responsável pela administração financeira e pela arrecadação dos tributos da Coroa."
+  },
+  {
+    "id": 1047,
+    "contexto": "A relação entre a metrópole e a colônia era regida pelo princípio do exclusivismo comercial.",
+    "enunciado": "Esse princípio significava que:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "A colônia era obrigada a consumir apenas produtos locais." },
+      { "letra": "B", "texto": "Somente a Inglaterra poderia comerciar com o Brasil." },
+      { "letra": "C", "texto": "A colônia só podia negociar com sua metrópole." },
+      { "letra": "D", "texto": "O Brasil mantinha liberdade comercial com outras colônias." },
+      { "letra": "E", "texto": "Os comerciantes coloniais controlavam a política metropolitana." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O pacto colonial impunha o exclusivo: a colônia produzia para e comprava apenas da metrópole."
+  },
+  {
+    "id": 1048,
+    "enunciado": "A criação do sistema de capitanias hereditárias em 1534 foi influenciada pela experiência portuguesa em:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Exploração de ouro no Oriente." },
+      { "letra": "B", "texto": "Concessão de terras em ilhas atlânticas como Madeira e Açores." },
+      { "letra": "C", "texto": "Guerra de Reconquista contra os mouros." },
+      { "letra": "D", "texto": "Domínio da navegação científica." },
+      { "letra": "E", "texto": "Formação das primeiras universidades portuguesas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A experiência de doação de terras nas ilhas atlânticas serviu como modelo para a implantação das capitanias no Brasil."
+  },
+  {
+    "id": 1049,
+    "enunciado": "A atuação dos donatários nas capitanias hereditárias foi, em geral, limitada por:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Intervenções indígenas organizadas em conselhos políticos." },
+      { "letra": "B", "texto": "Falta de recursos financeiros, hostilidade indígena e isolamento geográfico." },
+      { "letra": "C", "texto": "Resistência da nobreza metropolitana." },
+      { "letra": "D", "texto": "Proibição do cultivo de cana-de-açúcar." },
+      { "letra": "E", "texto": "Pressões francesas pelo domínio colonial." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As dificuldades econômicas e logísticas, além de conflitos com povos nativos, limitaram a eficácia da maioria dos donatários."
+  },
+  {
+    "id": 1050,
+    "enunciado": "Qual medida administrativa visava aumentar o controle direto da Coroa sobre o território colonial após o fracasso de várias capitanias?",
+    "disciplina": "História",
+    "assunto": "Brasil Colônia",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Criação do Tribunal do Santo Ofício." },
+      { "letra": "B", "texto": "Formação do Conselho Ultramarino." },
+      { "letra": "C", "texto": "Implantação do Governo-Geral em 1549." },
+      { "letra": "D", "texto": "Fundação da Companhia das Índias Ocidentais." },
+      { "letra": "E", "texto": "Expansão do voto censitário." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Governo-Geral foi criado para centralizar a administração após o insucesso de muitas capitanias."
+  },
+  {
+    "id": 1051,
+    "contexto": "O modelo de administração colonial portuguesa foi centralizado e voltado para a exploração econômica.",
+    "enunciado": "Nesse sentido, a autoridade máxima na colônia durante o século XVII era exercida por:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Senado da Câmara" },
+      { "letra": "B", "texto": "Vice-rei" },
+      { "letra": "C", "texto": "Capitão-do-mato" },
+      { "letra": "D", "texto": "Jesuíta" },
+      { "letra": "E", "texto": "Conselho do Brasil" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O vice-rei era o representante direto da Coroa e detinha autoridade sobre toda a colônia."
+  },
+  {
+    "id": 1052,
+    "enunciado": "A instalação do Conselho Ultramarino em 1642 teve como principal objetivo:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Representar a população colonial no governo português." },
+      { "letra": "B", "texto": "Administrar os assuntos coloniais de forma mais direta, substituindo o rei." },
+      { "letra": "C", "texto": "Promover a autonomia das colônias." },
+      { "letra": "D", "texto": "Supervisionar exclusivamente as missões religiosas." },
+      { "letra": "E", "texto": "Fiscalizar o comércio marítimo entre as colônias espanholas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Conselho Ultramarino foi um órgão da metrópole para centralizar e fortalecer a administração colonial portuguesa."
+  },
+  {
+    "id": 1053,
+    "enunciado": "O título de 'Homem bom', utilizado nas Câmaras Municipais coloniais, referia-se a:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Funcionários nomeados pela Igreja." },
+      { "letra": "B", "texto": "Homens livres, brancos e proprietários com poder local." },
+      { "letra": "C", "texto": "Ex-escravos alforriados com status político." },
+      { "letra": "D", "texto": "Comerciantes estrangeiros autorizados a atuar no Brasil." },
+      { "letra": "E", "texto": "Membros da guarda real destacados para o interior." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os 'homens bons' eram os colonos com poder local nas vilas, responsáveis por administrar e representar a elite colonial."
+  },
+  {
+    "id": 1054,
+    "enunciado": "Assinale a alternativa que apresenta apenas órgãos ou cargos administrativos do período colonial:",
+    "disciplina": "História",
+    "assunto": "Brasil Colônia",
+    "dificuldade": "Muito difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Senado, Alcaide, Juiz de Fora." },
+      { "letra": "B", "texto": "Juiz Ordinário, Provedor, Ouvidor." },
+      { "letra": "C", "texto": "Prefeito, Vereador, Capitão-do-mato." },
+      { "letra": "D", "texto": "Presidente da Província, Secretário-Geral, Procurador-Geral." },
+      { "letra": "E", "texto": "Governador de Estado, Deputado, Sargento-mor." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Esses cargos eram típicos da estrutura administrativa colonial portuguesa no Brasil."
+  },
+  {
+    "id": 1055,
+    "enunciado": "Os capitães-mores eram responsáveis por:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Promover a educação religiosa indígena." },
+      { "letra": "B", "texto": "Realizar comércio com potências rivais." },
+      { "letra": "C", "texto": "Chefiar militarmente as vilas e manter a ordem local." },
+      { "letra": "D", "texto": "Comandar as tropas portuguesas no Reino." },
+      { "letra": "E", "texto": "Cuidar dos assuntos eclesiásticos." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O capitão-mor exercia funções militares e de segurança pública na administração local."
+  },
+  {
+    "id": 1056,
+    "enunciado": "A função do 'juiz de fora' nas vilas coloniais era importante porque:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Atuava como representante eleito pelos habitantes." },
+      { "letra": "B", "texto": "Exercia funções militares e religiosas." },
+      { "letra": "C", "texto": "Representava a Coroa, sendo nomeado para evitar favorecimentos locais." },
+      { "letra": "D", "texto": "Era designado pelas ordens religiosas." },
+      { "letra": "E", "texto": "Controlava os engenhos e a produção açucareira." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O juiz de fora era nomeado pela Coroa para garantir imparcialidade judicial nas vilas."
+  },
+  {
+    "id": 1057,
+    "enunciado": "Qual fator contribuiu para a centralização administrativa no final do período colonial?",
+    "disciplina": "História",
+    "assunto": "Brasil Colônia",
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Declínio das minas e interesse comercial inglês." },
+      { "letra": "B", "texto": "Chegada da Família Real e instalação do Reino Unido." },
+      { "letra": "C", "texto": "Formação de partidos políticos coloniais." },
+      { "letra": "D", "texto": "Revoltas nativistas no sul." },
+      { "letra": "E", "texto": "Expansão dos bandeirantes para a Amazônia." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Com o declínio do ouro, aumentou-se o controle fiscal e administrativo sobre as capitanias."
+  },
+  {
+    "id": 1058,
+    "enunciado": "As capitanias que prosperaram, como Pernambuco e São Vicente, conseguiram êxito devido a:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Apoio militar direto da metrópole." },
+      { "letra": "B", "texto": "Maior número de missões religiosas." },
+      { "letra": "C", "texto": "Boa localização, investimento privado e organização social." },
+      { "letra": "D", "texto": "Autonomia econômica garantida por alvarás." },
+      { "letra": "E", "texto": "Exploração de petróleo e gás." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Essas capitanias tinham localização estratégica e estrutura administrativa mais eficiente."
+  },
+  {
+    "id": 1059,
+    "enunciado": "O pacto colonial determinava que a economia colonial estivesse voltada para:",
+    "disciplina": "História",
+    "assunto": "Administração Colonial",
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Produção para o abastecimento local." },
+      { "letra": "B", "texto": "Atendimento dos interesses metropolitanos." },
+      { "letra": "C", "texto": "Comércio direto com outras colônias." },
+      { "letra": "D", "texto": "Independência alfandegária." },
+      { "letra": "E", "texto": "Formação de indústrias navais." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A colônia devia produzir para suprir os interesses econômicos e políticos da metrópole."
   }
 ]

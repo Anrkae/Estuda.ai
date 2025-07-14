@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             position: fixed; top: 0; left: 0; right: 0; height: 70px; background-color: #f5f4f0;
             display: flex; align-items: center; padding: 0 1.2rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-            z-index: 1000; justify-content: space-between;
+            z-index: 9999; justify-content: space-between;
             border-bottom: 1px solid #eee;
         }
         .header-left, .header-right { display: flex; align-items: center; }
@@ -159,6 +159,49 @@ document.addEventListener('DOMContentLoaded', () => {
             outline: 3px inset #6735bc; outline-offset: 1px;
         }
         #profileButton #profileIconFallback { display: block; }
+        
+        /* Container do menu */
+        .tippy-box .tippy-menu {
+          display: flex;
+          flex-direction: column;
+          background-color: #fff !important;
+          padding: 8px 0;
+          border-radius: 10px;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          min-width: 160px;
+        }
+        
+        /* Botões internos */
+        .tippy-menu button {
+          background: none;
+          border: none;
+          padding: 10px 16px;
+          text-align: left;
+          font-family: 'Montserrat', sans-serif;
+          color: #333;
+          cursor: pointer;
+          transition: background 0.2s ease;
+          width: 100%;
+        }
+        
+        /* Hover dos botões */
+        .tippy-menu button:hover {
+          background-color: #f5f4f0;
+          color: #6735bc;
+        }
+        
+        /* Personaliza o container externo */
+        .tippy - box[data - theme~ = 'light'] {
+                background - color: transparent; /* ou remova o fundo se quiser só o .tippy-menu */
+                box - shadow: none; /* se quiser remover sombra dupla */
+                border: none;
+                padding: 0;
+            }
+            
+            /* Remove padding interno do conteúdo */
+            .tippy - box.tippy - content {
+                padding: 0!important; /* muito importante! */
+            }
     `;
 
     // Injeta CSS e HTML
@@ -227,10 +270,10 @@ document.addEventListener('DOMContentLoaded', () => {
             tippy(profileBtn, {
                 content: `
                     <div class="tippy-menu">
-                        <button onclick="window.location.href='perfil.html'">👤 Perfil</button>
-                        <button onclick="window.location.href='estatisticas.html'">📊 Estatísticas</button>
-                        <button onclick="window.location.href='missoes.html'">⚡ Missões</button>
-                        <button onclick="window.location.href='configuracoes.html'">⚙️ Configurações</button>
+                        <button onclick="window.location.href='perfil.html#aba-perfil'"> Perfil</button>
+                        <button onclick="window.location.href='perfil.html#aba-estatisticas'"> Estatísticas</button>
+                        <button onclick="window.location.href='perfil.html#aba-missoes'"> Missões</button>
+                        <button onclick="window.location.href='perfil.html#aba-configuracoes'"> Configurações</button>
                     </div>
                 `,
                 allowHTML: true,
