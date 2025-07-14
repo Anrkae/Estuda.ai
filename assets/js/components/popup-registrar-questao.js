@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
             style.innerHTML = `
 /* Estilos base do container e header (sem alterações) */
 .popup-container {
-    position: fixed; bottom: 0; left: 0; width: 100vw; height: 100vh; z-index: 1000;
+    position: fixed; bottom: 0; left: 0; width: 100vw; height: 100vh; z-index: 9999;
     transition: transform 0.4s ease-in-out;
     background-color: #ffffff; display: flex; flex-direction: column;
     font-family: 'Montserrat', sans-serif; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1); overflow: hidden;

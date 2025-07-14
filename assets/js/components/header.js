@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             position: fixed; top: 0; left: 0; right: 0; height: 70px; background-color: #f5f4f0;
             display: flex; align-items: center; padding: 0 1.2rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-            z-index: 9999; justify-content: space-between;
+            z-index: 9995; justify-content: space-between;
             border-bottom: 1px solid #eee;
         }
         .header-left, .header-right { display: flex; align-items: center; }
