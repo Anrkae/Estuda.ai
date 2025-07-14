@@ -9467,5 +9467,446 @@
     ],
     "resposta_correta": "B",
     "resolucao": "A colônia devia produzir para suprir os interesses econômicos e políticos da metrópole."
+  },
+  {
+    "id": 1060,
+    "enunciado": "A economia açucareira, dominante no Brasil Colônia entre os séculos XVI e XVII, caracterizava-se principalmente por:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pequenas propriedades voltadas para o mercado interno." },
+      { "letra": "B", "texto": "Uso de mão de obra livre e autossuficiência econômica." },
+      { "letra": "C", "texto": "Diversificação produtiva com técnicas indígenas." },
+      { "letra": "D", "texto": "Latifúndio monocultor escravista voltado à exportação." },
+      { "letra": "E", "texto": "Sistema comunal baseado em missões jesuíticas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O modelo de plantation predominou com grandes propriedades rurais voltadas para exportação, utilizando trabalho escravizado."
+  },
+  {
+    "id": 1061,
+    "enunciado": "A economia açucareira no Brasil colonial foi, em grande parte, financiada por:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Capitais espanhóis e holandeses em parceria com Portugal." },
+      { "letra": "B", "texto": "Capitais ingleses e comércio direto com a França." },
+      { "letra": "C", "texto": "Recursos da própria metrópole portuguesa." },
+      { "letra": "D", "texto": "Investimentos holandeses e a técnica do engenho de açúcar." },
+      { "letra": "E", "texto": "Rendas e tributos das Câmaras Municipais." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Os holandeses forneceram capital, crédito e know-how técnico para a produção açucareira, especialmente nos engenhos."
+  },
+  {
+    "id": 1062,
+    "contexto": "O modelo produtivo no Brasil Colônia, especialmente o da produção açucareira, tornou-se um exemplo clássico de plantation.",
+    "enunciado": "Esse modelo tinha como principais características:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Pequena propriedade, economia de mercado e mão de obra indígena livre." },
+      { "letra": "B", "texto": "Grande propriedade, monocultura, trabalho escravo e exportação." },
+      { "letra": "C", "texto": "Propriedade coletiva, diversidade de culturas e economia de subsistência." },
+      { "letra": "D", "texto": "Latifúndio, produção autossuficiente e integração ao mercado interno." },
+      { "letra": "E", "texto": "Produção urbana, liberdade trabalhista e mercado interno." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O plantation se baseava na monocultura voltada à exportação, em grandes propriedades e com uso intensivo de trabalho escravizado."
+  },
+  {
+    "id": 1063,
+    "enunciado": "A presença holandesa no Nordeste brasileiro, entre 1630 e 1654, contribuiu economicamente com:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "A destruição total dos engenhos." },
+      { "letra": "B", "texto": "O incentivo à policultura para exportação." },
+      { "letra": "C", "texto": "A modernização de engenhos e o crédito agrícola." },
+      { "letra": "D", "texto": "A substituição da escravidão africana pela indígena." },
+      { "letra": "E", "texto": "O bloqueio do comércio açucareiro com a Europa." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Sob o governo de Nassau, os holandeses promoveram melhorias técnicas e ampliaram o crédito aos senhores de engenho."
+  },
+  {
+    "id": 1064,
+    "contexto": "O engenho era a unidade básica da produção de açúcar no Brasil colonial.",
+    "enunciado": "Além do maquinário e das instalações, ele envolvia também:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Uma estrutura urbana com casas comerciais e igrejas." },
+      { "letra": "B", "texto": "Apenas terras públicas e mão de obra assalariada." },
+      { "letra": "C", "texto": "Plantação, moradia de escravizados e estrutura para moagem." },
+      { "letra": "D", "texto": "A cultura do café como principal produto exportado." },
+      { "letra": "E", "texto": "Produção exclusiva de subsistência." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O engenho compreendia a plantação de cana, moradias e o aparato técnico necessário à transformação da cana em açúcar."
+  },
+  {
+    "id": 1065,
+    "enunciado": "O açúcar produzido no Brasil colonial era exportado principalmente para:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2020 },
+    "opcoes": [
+      { "letra": "A", "texto": "China e Japão." },
+      { "letra": "B", "texto": "França e colônias espanholas." },
+      { "letra": "C", "texto": "Estados Unidos e México." },
+      { "letra": "D", "texto": "Países Baixos e Europa Ocidental." },
+      { "letra": "E", "texto": "África Ocidental e Índias Orientais." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Europa ocidental, especialmente os Países Baixos e Portugal, eram os principais mercados consumidores do açúcar colonial."
+  },
+  {
+    "id": 1066,
+    "enunciado": "Durante o século XVII, o Brasil perdeu parte do mercado açucareiro europeu devido a:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Crise de abastecimento provocada pelas secas." },
+      { "letra": "B", "texto": "Concorrência das Antilhas e queda de produtividade." },
+      { "letra": "C", "texto": "Fim da escravidão nas colônias espanholas." },
+      { "letra": "D", "texto": "Interdição do comércio de açúcar pela Coroa." },
+      { "letra": "E", "texto": "Abolição da monocultura." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A concorrência das Antilhas, com açúcar de menor preço, reduziu a participação brasileira no mercado europeu."
+  },
+  {
+    "id": 1067,
+    "contexto": "Durante o período colonial, o açúcar foi o principal produto de exportação brasileiro. Esse ciclo moldou profundamente a sociedade e a economia da época.",
+    "enunciado": "Assinale a alternativa que caracteriza corretamente a estrutura social gerada pela economia açucareira.",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sociedade urbana e igualitária, marcada pela mobilidade social." },
+      { "letra": "B", "texto": "Predomínio de camadas médias e pequena propriedade rural." },
+      { "letra": "C", "texto": "Estrutura hierárquica, com concentração de terras e escravizados." },
+      { "letra": "D", "texto": "Organização tribal com base em comunidades indígenas autônomas." },
+      { "letra": "E", "texto": "Sociedade matriarcal e de economia coletivista." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A economia açucareira gerou uma sociedade altamente hierarquizada, centrada nos senhores de engenho e sustentada pelo trabalho escravo."
+  },
+  {
+    "id": 1068,
+    "enunciado": "No Brasil colonial, o sistema de plantation tinha como um de seus sustentáculos principais:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "O excedente de produção voltado ao mercado interno." },
+      { "letra": "B", "texto": "O trabalho livre e assalariado das comunidades locais." },
+      { "letra": "C", "texto": "O apoio da Igreja às técnicas indígenas de cultivo." },
+      { "letra": "D", "texto": "A utilização da mão de obra escrava africana em larga escala." },
+      { "letra": "E", "texto": "A exploração mineral financiando a agricultura." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O uso da mão de obra africana escravizada foi essencial para a viabilidade econômica do plantation açucareiro no Brasil colonial."
+  },
+  {
+    "id": 1069,
+    "enunciado": "A maior parte da produção de açúcar no período colonial destinava-se:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ao mercado interno brasileiro." },
+      { "letra": "B", "texto": "À África, como parte do escambo." },
+      { "letra": "C", "texto": "À América espanhola e ao México." },
+      { "letra": "D", "texto": "À Europa, sobretudo Países Baixos e Inglaterra." },
+      { "letra": "E", "texto": "À manutenção das tropas portuguesas no Brasil." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O açúcar era o principal produto de exportação e seu destino predominante era o mercado europeu, especialmente Holanda e Inglaterra."
+  },
+  {
+    "id": 1070,
+    "contexto": "Os senhores de engenho não apenas controlavam a produção açucareira, mas também exerciam grande influência política e social no Brasil Colônia.",
+    "enunciado": "Esse poder dos senhores de engenho se explicava, principalmente, por:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Sua atuação como membros do exército colonial." },
+      { "letra": "B", "texto": "A força de trabalho indígena que dominavam." },
+      { "letra": "C", "texto": "A aliança direta com o rei de Portugal." },
+      { "letra": "D", "texto": "O monopólio econômico e sua autonomia nas Câmaras Municipais." },
+      { "letra": "E", "texto": "A oposição constante ao clero e aos jesuítas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Os senhores de engenho acumulavam poder econômico e político, atuando como líderes locais com influência nas instituições municipais."
+  },
+  {
+    "id": 1071,
+    "enunciado": "A escolha da cana-de-açúcar como principal produto da economia colonial se deu por:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Açucareira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2020 },
+    "opcoes": [
+      { "letra": "A", "texto": "Imposição da Igreja por questões dietéticas." },
+      { "letra": "B", "texto": "Facilidade de produção em regiões áridas do interior." },
+      { "letra": "C", "texto": "Alta demanda no mercado europeu e adaptação ao solo nordestino." },
+      { "letra": "D", "texto": "Baixo custo de produção com mão de obra assalariada." },
+      { "letra": "E", "texto": "Tentativa de rivalizar com o café no mercado externo." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A cana-de-açúcar foi escolhida por ser altamente lucrativa, com grande aceitação no mercado europeu e clima favorável no Nordeste."
+  },
+  {
+    "id": 1072,
+    "enunciado": "O ciclo do ouro, no século XVIII, teve como principal consequência para o território colonial:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "A centralização do poder nas mãos do clero local." },
+      { "letra": "B", "texto": "A decadência da produção agrícola no Nordeste." },
+      { "letra": "C", "texto": "A interiorização da ocupação e crescimento de cidades." },
+      { "letra": "D", "texto": "A destruição da sociedade escravista." },
+      { "letra": "E", "texto": "A autonomia política das capitanias do Norte." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A mineração impulsionou a ocupação do interior, levando à criação de vilas e cidades, como Vila Rica e Sabará."
+  },
+  {
+    "id": 1073,
+    "contexto": "Durante o ciclo do ouro, Portugal criou diversas formas de controlar e arrecadar impostos sobre a produção aurífera.",
+    "enunciado": "Assinale a alternativa que corresponde a um desses mecanismos fiscais.",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Dízimo Real." },
+      { "letra": "B", "texto": "Capitação." },
+      { "letra": "C", "texto": "Quinto." },
+      { "letra": "D", "texto": "Imposto sobre terras devolutas." },
+      { "letra": "E", "texto": "Sisa Colonial." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O 'Quinto' correspondia a 20% do ouro encontrado, devendo ser entregue à Coroa portuguesa."
+  },
+  {
+    "id": 1074,
+    "enunciado": "As Casas de Fundição foram criadas pela Coroa portuguesa com o objetivo de:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Armazenar a produção agrícola do sul da colônia." },
+      { "letra": "B", "texto": "Produzir moedas com o ouro extraído na metrópole." },
+      { "letra": "C", "texto": "Fundir o ouro bruto e assegurar o recolhimento do Quinto." },
+      { "letra": "D", "texto": "Controlar as exportações de açúcar e tabaco." },
+      { "letra": "E", "texto": "Substituir os senados da câmara na administração fiscal." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As Casas de Fundição fundiam o ouro bruto em barras, marcadas com o selo real após recolhido o imposto (o Quinto)."
+  },
+  {
+    "id": 1075,
+    "contexto": "A Coroa portuguesa, diante da redução da arrecadação aurífera, estabeleceu em 1750 a Derrama.",
+    "enunciado": "Sobre a Derrama, é correto afirmar que:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Era um prêmio dado a mineradores que excediam as cotas anuais." },
+      { "letra": "B", "texto": "Imposto fixo que substituía o Quinto nas regiões açucareiras." },
+      { "letra": "C", "texto": "Recolhimento forçado para compensar o ouro não arrecadado." },
+      { "letra": "D", "texto": "Taxa sobre a compra de escravizados africanos." },
+      { "letra": "E", "texto": "Penhora de terras improdutivas no sertão." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Derrama era um imposto compulsório aplicado quando a meta anual de arrecadação de ouro não era atingida."
+  },
+  {
+    "id": 1076,
+    "enunciado": "Durante o ciclo do ouro, a estrutura social da colônia passou a apresentar:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2020 },
+    "opcoes": [
+      { "letra": "A", "texto": "Descentralização do poder das câmaras municipais." },
+      { "letra": "B", "texto": "Ascensão de grupos urbanos ligados ao comércio e ao funcionalismo." },
+      { "letra": "C", "texto": "Supremacia dos senhores de engenho mesmo nas regiões mineradoras." },
+      { "letra": "D", "texto": "Redução drástica da escravidão africana." },
+      { "letra": "E", "texto": "Estagnação das vilas mineiras e fuga em massa para o sertão." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O ciclo do ouro criou uma sociedade mais urbana, favorecendo comerciantes, militares e funcionários ligados à Coroa."
+  },
+  {
+    "id": 1077,
+    "contexto": "A mineração intensiva levou a um aumento significativo das populações em regiões até então inexploradas.",
+    "enunciado": "Esse movimento foi importante para:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A fundação de Salvador como capital do ouro." },
+      { "letra": "B", "texto": "A delimitação de fronteiras naturais com a América espanhola." },
+      { "letra": "C", "texto": "A interiorização da colônia e surgimento de novas vilas." },
+      { "letra": "D", "texto": "A construção de fortalezas contra piratas no interior." },
+      { "letra": "E", "texto": "O surgimento das primeiras universidades mineiras." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A corrida do ouro promoveu a interiorização da colônia e a criação de vilas como Ouro Preto, Mariana e Diamantina."
+  },
+  {
+    "id": 1078,
+    "enunciado": "A Capitania de Minas Gerais foi criada a partir da necessidade de:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Expandir a produção de cana-de-açúcar no interior do país." },
+      { "letra": "B", "texto": "Reduzir a influência dos senhores de engenho do Nordeste." },
+      { "letra": "C", "texto": "Facilitar a administração e o controle da atividade mineradora." },
+      { "letra": "D", "texto": "Criar uma zona de defesa contra os franceses." },
+      { "letra": "E", "texto": "Impedir o avanço bandeirante em direção ao litoral." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Capitania de Minas Gerais foi criada para melhorar o controle administrativo e fiscal sobre a intensa atividade mineradora."
+  },
+  {
+    "id": 1079,
+    "contexto": "Durante o século XVIII, a extração de ouro concentrou-se principalmente na região das Minas Gerais.",
+    "enunciado": "Essa concentração da atividade mineradora na região centro-sul resultou, entre outros efeitos:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Na marginalização completa da economia açucareira do Nordeste." },
+      { "letra": "B", "texto": "Na descentralização política da colônia e fortalecimento das Câmaras." },
+      { "letra": "C", "texto": "Na formação de uma sociedade urbana e mais heterogênea." },
+      { "letra": "D", "texto": "Na substituição da escravidão por mão de obra assalariada." },
+      { "letra": "E", "texto": "Na transferência da capital para o sul da colônia." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A mineração gerou núcleos urbanos e diversificou a sociedade, que passou a incluir comerciantes, artesãos e funcionários públicos."
+  },
+  {
+    "id": 1080,
+    "enunciado": "Entre as medidas da Coroa portuguesa para conter o contrabando de ouro estava:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Criação da Intendência das Minas e das Casas de Fundição." },
+      { "letra": "B", "texto": "Distribuição de cartas régias aos mineradores autônomos." },
+      { "letra": "C", "texto": "Isenção fiscal dos bandeirantes nas regiões auríferas." },
+      { "letra": "D", "texto": "Abolição do Quinto em favor do imposto de fronteira." },
+      { "letra": "E", "texto": "Uso exclusivo de mão de obra indígena nas minas." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A Intendência das Minas e as Casas de Fundição foram criadas para controlar e fiscalizar a produção de ouro e impedir o contrabando."
+  },
+  {
+    "id": 1081,
+    "enunciado": "A mineração contribuiu para a formação de uma nova dinâmica econômica na colônia ao:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Incentivar a industrialização das regiões mineradoras." },
+      { "letra": "B", "texto": "Estabelecer uma economia voltada exclusivamente ao mercado interno." },
+      { "letra": "C", "texto": "Promover o surgimento de atividades comerciais e de serviços urbanos." },
+      { "letra": "D", "texto": "Reduzir o controle da metrópole sobre a arrecadação fiscal." },
+      { "letra": "E", "texto": "Desestimular a formação de novas vilas e cidades." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Com o crescimento das cidades mineradoras, surgiram atividades ligadas ao comércio, serviços e circulação de produtos."
+  },
+  {
+    "id": 1082,
+    "contexto": "A crescente evasão de ouro e o declínio da produção levaram a metrópole a adotar políticas mais severas.",
+    "enunciado": "Nesse contexto, a chamada Derrama visava:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "Estimular os mineradores a explorar novas jazidas." },
+      { "letra": "B", "texto": "Punir capitães do mato e ex-escravizados fugitivos." },
+      { "letra": "C", "texto": "Cobrar à força o ouro faltante para completar a cota anual de impostos." },
+      { "letra": "D", "texto": "Reforçar o controle do tráfico de escravos na região mineradora." },
+      { "letra": "E", "texto": "Reduzir os encargos sobre os mineradores mais pobres." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Derrama era aplicada como cobrança compulsória quando a meta de arrecadação de ouro (100 arrobas/ano) não era alcançada."
+  },
+  {
+    "id": 1083,
+    "enunciado": "Sobre os impactos sociais da mineração, é correto afirmar que:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Mineração"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Favoreceu a emancipação de grupos indígenas e aboliu o trabalho escravo." },
+      { "letra": "B", "texto": "Intensificou o uso da mão de obra escravizada e promoveu maior mobilidade social urbana." },
+      { "letra": "C", "texto": "Centralizou o poder apenas nos senhores de engenho do litoral." },
+      { "letra": "D", "texto": "Eliminou a desigualdade entre colonos e nativos." },
+      { "letra": "E", "texto": "Inibiu a diversificação da economia nas regiões mineradoras." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A mineração intensificou o uso de escravizados africanos, mas também gerou espaços urbanos com mobilidade social limitada."
   }
 ]
