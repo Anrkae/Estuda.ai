@@ -9908,5 +9908,152 @@
     ],
     "resposta_correta": "B",
     "resolucao": "A mineração intensificou o uso de escravizados africanos, mas também gerou espaços urbanos com mobilidade social limitada."
+  },
+  {
+    "id": 1084,
+    "enunciado": "A pecuária no Brasil colonial teve papel importante principalmente para:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Pecuária"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "A produção de açúcar e exportação de carne para a Europa." },
+      { "letra": "B", "texto": "O abastecimento interno e ocupação do interior." },
+      { "letra": "C", "texto": "A industrialização do Nordeste no século XVII." },
+      { "letra": "D", "texto": "O comércio de charque com a África Oriental." },
+      { "letra": "E", "texto": "A defesa militar das fronteiras do sul." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A criação de gado abastecia os engenhos e cidades e contribuiu para a interiorização da colônia, especialmente no Nordeste e Sertão."
+  },
+  {
+    "id": 1085,
+    "contexto": "A atividade pecuária, muitas vezes desenvolvida longe do litoral, cumpriu uma função estratégica no território colonial.",
+    "enunciado": "Essa função estava ligada, principalmente:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Pecuária"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2022 },
+    "opcoes": [
+      { "letra": "A", "texto": "À substituição do trabalho escravo pelo assalariado." },
+      { "letra": "B", "texto": "À ocupação de áreas proibidas pela metrópole." },
+      { "letra": "C", "texto": "À sustentação das zonas mineradoras e engenhos." },
+      { "letra": "D", "texto": "Ao controle indígena das rotas comerciais." },
+      { "letra": "E", "texto": "À organização da indústria alimentícia urbana." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A criação de gado foi essencial para abastecer engenhos, vilas e cidades com carne, couro, transporte e tração animal."
+  },
+  {
+    "id": 1086,
+    "enunciado": "Diferentemente da economia açucareira, a atividade pecuária no Brasil colonial foi marcada por:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Pecuária"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2023 },
+    "opcoes": [
+      { "letra": "A", "texto": "Uso intensivo de mão de obra indígena escravizada." },
+      { "letra": "B", "texto": "Produção exclusivamente voltada à exportação." },
+      { "letra": "C", "texto": "Utilização majoritária de mão de obra livre e itinerante." },
+      { "letra": "D", "texto": "Concentração nas áreas litorâneas do sudeste." },
+      { "letra": "E", "texto": "Subordinação direta à Coroa e seus monopólios." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A criação de gado se desenvolvia longe dos centros açucareiros, com trabalhadores livres como vaqueiros e tropeiros."
+  },
+  {
+    "id": 1087,
+    "contexto": "A economia colonial brasileira não se restringiu aos produtos de exportação. Muitas atividades eram voltadas à subsistência e abastecimento interno.",
+    "enunciado": "Essas atividades incluíam:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Subsistência"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2024 },
+    "opcoes": [
+      { "letra": "A", "texto": "Mineração de metais raros no sertão nordestino." },
+      { "letra": "B", "texto": "Produção de alimentos, tecidos e utensílios para consumo local." },
+      { "letra": "C", "texto": "Exportação de algodão cru para a Inglaterra." },
+      { "letra": "D", "texto": "Implantação de manufaturas estatais no Recôncavo Baiano." },
+      { "letra": "E", "texto": "Distribuição de víveres pelo sistema de sesmarias." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A produção interna abastecia vilas, engenhos e mineradores com alimentos, roupas e objetos do dia a dia — não destinados à exportação."
+  },
+  {
+    "id": 1088,
+    "enunciado": "As feiras e os tropeiros no Brasil colonial eram elementos centrais:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Interna"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Do sistema de coleta de impostos nas regiões de fronteira." },
+      { "letra": "B", "texto": "Da economia interna e circulação de produtos entre as regiões." },
+      { "letra": "C", "texto": "Das missões jesuíticas voltadas à catequese." },
+      { "letra": "D", "texto": "Da exportação de escravizados para o Sul." },
+      { "letra": "E", "texto": "Do controle alfandegário da Coroa portuguesa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os tropeiros percorriam longas distâncias ligando regiões produtoras e centros urbanos, viabilizando a circulação de mercadorias internas."
+  },
+  {
+    "id": 1089,
+    "enunciado": "Uma das características da economia de abastecimento no Brasil colonial era:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Interna"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2021 },
+    "opcoes": [
+      { "letra": "A", "texto": "Base na monocultura voltada ao mercado europeu." },
+      { "letra": "B", "texto": "Organização empresarial e uso de capital estrangeiro." },
+      { "letra": "C", "texto": "Caráter policultor e uso de mão de obra familiar ou livre." },
+      { "letra": "D", "texto": "Envolvimento direto da Coroa portuguesa com subsídios." },
+      { "letra": "E", "texto": "Planejamento estatal e redistribuição equitativa da produção." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A economia de subsistência era marcada pela diversidade agrícola e geralmente utilizava mão de obra livre e técnicas rudimentares."
+  },
+  {
+    "id": 1090,
+    "contexto": "Em diversas regiões do interior do Brasil, surgiram pequenas propriedades voltadas à economia de subsistência.",
+    "enunciado": "Essa dinâmica diferenciava-se da plantation, pois:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Subsistência"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2020 },
+    "opcoes": [
+      { "letra": "A", "texto": "Produzia exclusivamente para o mercado externo." },
+      { "letra": "B", "texto": "Utilizava mão de obra escravizada em larga escala." },
+      { "letra": "C", "texto": "Buscava o lucro rápido e a exportação contínua." },
+      { "letra": "D", "texto": "Tinha baixa produtividade e voltava-se ao consumo local." },
+      { "letra": "E", "texto": "Era financiada pela Companhia de Jesus." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A economia de subsistência estava voltada ao abastecimento local e não visava lucro ou exportação como o plantation."
+  },
+  {
+    "id": 1091,
+    "enunciado": "A importância da economia interna no período colonial cresceu especialmente com:",
+    "disciplina": "História",
+    "assunto": ["Economia Colonial", "Economia Interna"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "ESA", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A decadência da mineração e necessidade de abastecimento regional." },
+      { "letra": "B", "texto": "A proibição do açúcar no mercado europeu." },
+      { "letra": "C", "texto": "A expansão das feitorias portuguesas no Brasil Central." },
+      { "letra": "D", "texto": "A política de substituição de importações do século XVII." },
+      { "letra": "E", "texto": "O abandono das lavouras pelo governo metropolitano." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Com a crise da mineração e mudanças econômicas, a economia interna tornou-se fundamental para manter o abastecimento e o consumo."
   }
 ]
