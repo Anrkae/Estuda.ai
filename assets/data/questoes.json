@@ -1023,5 +1023,261 @@
     ],
     "resposta_correta": "B",
     "resolucao": "A derrama era a cobrança forçada do ouro devido ao não pagamento do quinto. Quando a cota anual não era atingida, a população era obrigada a contribuir com o restante, gerando revoltas."
+  },
+  {
+    "id": 49,
+    "enunciado": "As Capitanias Hereditárias representaram uma tentativa da Coroa portuguesa de colonizar o território brasileiro. Sobre esse sistema, é correto afirmar que:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Capitanias Hereditárias"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Foram todas bem-sucedidas, consolidando rapidamente a ocupação do território." },
+      { "letra": "B", "texto": "Foram doadas a particulares chamados donatários, que tinham plenos poderes administrativos." },
+      { "letra": "C", "texto": "Eram subordinadas diretamente ao governo espanhol, por causa da União Ibérica." },
+      { "letra": "D", "texto": "Foram abolidas logo após o descobrimento do ouro em Minas Gerais." },
+      { "letra": "E", "texto": "Apenas a Capitania de São Vicente recebeu carta de doação." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O sistema de capitanias foi baseado na doação de terras a donatários, que tinham autonomia relativa para administrar, explorar e povoar os territórios recebidos."
+  },
+  {
+    "id": 50,
+    "enunciado": "Durante o Ciclo do Ouro, o controle metropolitano sobre a produção mineral intensificou-se. Uma das medidas criadas foi:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do ouro"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Abolição do quinto real para estimular a produção aurífera." },
+      { "letra": "B", "texto": "Criação da Intendência das Minas para fiscalizar a atividade mineradora." },
+      { "letra": "C", "texto": "Liberação do ouro de aluvião ao comércio clandestino." },
+      { "letra": "D", "texto": "Isenção tributária às regiões produtoras de diamantes." },
+      { "letra": "E", "texto": "Descentralização da cobrança de impostos entre as vilas mineradoras." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Intendência das Minas foi criada com o objetivo de fiscalizar a extração e controlar os tributos da mineração, como o quinto e a capitação."
+  },
+  {
+    "id": 51,
+    "contexto": "O modelo econômico açucareiro foi fundamental nos primeiros séculos da colonização portuguesa no Brasil.",
+    "enunciado": "O sucesso inicial da produção açucareira no Nordeste brasileiro está relacionado:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do açúcar"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ao clima temperado da região e ao uso de trabalho livre." },
+      { "letra": "B", "texto": "À ausência de concorrência no mercado europeu." },
+      { "letra": "C", "texto": "À presença de solo massapê, clima favorável e apoio da Holanda nos engenhos." },
+      { "letra": "D", "texto": "Ao uso de técnicas indígenas de plantio e colheita." },
+      { "letra": "E", "texto": "À mecanização do plantio promovida pela Coroa." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O solo fértil (massapê), o clima quente e úmido e a parceria financeira e técnica com os holandeses foram fatores decisivos para o sucesso inicial da economia açucareira."
+  },
+  {
+    "id": 52,
+    "enunciado": "Durante o Governo-Geral, a relação entre a administração colonial e os jesuítas foi marcada por:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Governo-Geral"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Conflitos constantes pela posse de terras e disputas religiosas." },
+      { "letra": "B", "texto": "Aliança estratégica para a catequese e controle dos indígenas." },
+      { "letra": "C", "texto": "Divisão da colônia em missões religiosas e comerciais." },
+      { "letra": "D", "texto": "Proibição da atuação dos jesuítas em Salvador e Olinda." },
+      { "letra": "E", "texto": "Dependência da administração civil em relação à autoridade do Papa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A presença jesuíta foi fundamental na catequese e submissão dos indígenas, o que contribuía para os interesses da Coroa em estabilizar o domínio sobre o interior."
+  },
+  {
+    "id": 53,
+    "enunciado": "A pecuária, como atividade econômica complementar, teve papel importante durante a colonização. Sobre essa atividade, é correto afirmar:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Economia Complementar"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Limitou-se ao litoral do Sudeste, onde havia maior população." },
+      { "letra": "B", "texto": "Serviu como base da subsistência interna e expansão territorial para o interior." },
+      { "letra": "C", "texto": "Foi proibida pela Coroa portuguesa por competir com o açúcar." },
+      { "letra": "D", "texto": "Era realizada apenas por pequenos proprietários sem recursos." },
+      { "letra": "E", "texto": "Foi impulsionada pela descoberta de petróleo no Recôncavo Baiano." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A criação de gado contribuiu para a interiorização da ocupação e abastecimento das áreas de lavoura e mineração, desempenhando função estratégica para a economia colonial."
+  },
+  {
+    "id": 54,
+    "contexto": "A economia colonial brasileira seguiu o modelo do pacto colonial, comum às colônias de exploração da época moderna.",
+    "enunciado": "Qual das alternativas expressa corretamente uma característica do pacto colonial aplicado ao Brasil?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Economia Colonial"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Liberdade de comércio entre colônia e outros países europeus." },
+      { "letra": "B", "texto": "Dependência econômica da metrópole, com exportação de matérias-primas e importação de manufaturados." },
+      { "letra": "C", "texto": "Autonomia fiscal das capitanias frente à Coroa." },
+      { "letra": "D", "texto": "Substituição do açúcar por carvão vegetal nas exportações." },
+      { "letra": "E", "texto": "Domínio econômico dos jesuítas sobre a produção agrícola da colônia." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O pacto colonial impunha à colônia a função de fornecer matérias-primas para a metrópole e consumir produtos manufaturados dela, consolidando a dependência econômica."
+  },
+  {
+    "id": 55,
+    "enunciado": "A centralização administrativa imposta com a criação do Governo-Geral no Brasil visava principalmente:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Governo-Geral"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Combater a influência holandesa no comércio regional." },
+      { "letra": "B", "texto": "Padronizar o ensino religioso nas capitanias." },
+      { "letra": "C", "texto": "Reforçar o controle da Coroa sobre as capitanias e ampliar a eficiência administrativa." },
+      { "letra": "D", "texto": "Dividir o Brasil entre Espanha e Portugal." },
+      { "letra": "E", "texto": "Eliminar o poder dos donatários nas áreas produtivas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Governo-Geral foi criado para centralizar a administração da colônia, superar o fracasso das capitanias hereditárias e garantir maior controle da Coroa sobre o território."
+  },
+  {
+    "id": 56,
+    "contexto": "No século XVIII, o controle fiscal sobre a produção de ouro aumentou consideravelmente devido à queda na arrecadação dos impostos.",
+    "enunciado": "Uma das medidas de coerção utilizadas pela Coroa portuguesa para garantir o pagamento do quinto foi:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do ouro"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Criação de companhias de mineração privadas para substituir os mineradores individuais." },
+      { "letra": "B", "texto": "Imposição da Derrama, medida extrema de cobrança de impostos atrasados." },
+      { "letra": "C", "texto": "Anistia fiscal aos contrabandistas de ouro." },
+      { "letra": "D", "texto": "Extinção do imposto do quinto por falta de arrecadação." },
+      { "letra": "E", "texto": "Intervenção direta da Inglaterra na cobrança dos tributos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Derrama consistia em uma cobrança compulsória dos valores devidos em impostos, geralmente feita com extrema rigidez, gerando tensão nas regiões mineradoras."
+  },
+  {
+    "id": 57,
+    "enunciado": "Qual das alternativas apresenta uma consequência direta da decadência do ciclo do açúcar no Brasil colonial?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do açúcar"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A fundação de universidades nos engenhos do Nordeste." },
+      { "letra": "B", "texto": "O fim da escravidão africana nas lavouras." },
+      { "letra": "C", "texto": "A migração da elite colonial para o interior em busca de ouro." },
+      { "letra": "D", "texto": "A substituição do açúcar por algodão como principal produto de exportação." },
+      { "letra": "E", "texto": "A retomada da economia do pau-brasil no litoral." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Com a decadência do ciclo do açúcar e o auge do ciclo do ouro, houve um deslocamento populacional e econômico para as áreas mineradoras, como Minas Gerais."
+  },
+  {
+    "id": 58,
+    "contexto": "A economia colonial brasileira era baseada na lógica do sistema mercantilista europeu, o que implicava em um modelo voltado à metrópole.",
+    "enunciado": "Dentro do contexto do sistema colonial, a função da colônia brasileira era:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Economia Colonial"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Consolidar uma economia autônoma e autosuficiente." },
+      { "letra": "B", "texto": "Fornecer matéria-prima e garantir superávit na balança comercial portuguesa." },
+      { "letra": "C", "texto": "Garantir independência política e equilíbrio econômico com a metrópole." },
+      { "letra": "D", "texto": "Controlar o comércio entre metrópoles concorrentes." },
+      { "letra": "E", "texto": "Servir como base militar para dominação da América Espanhola." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Segundo o mercantilismo, a colônia deveria abastecer a metrópole com matéria-prima, garantindo a acumulação de riquezas por meio de exportações superiores às importações."
+  },
+  {
+    "id": 59,
+    "enunciado": "Entre os desafios enfrentados pela administração portuguesa no início da colonização brasileira, destaca-se:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Capitanias Hereditárias"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O rápido crescimento econômico das capitanias que dificultava o controle metropolitano." },
+      { "letra": "B", "texto": "A resistência indígena, a distância da metrópole e a falta de recursos dos donatários." },
+      { "letra": "C", "texto": "A intensa competição comercial com os espanhóis pelo domínio do açúcar." },
+      { "letra": "D", "texto": "O desinteresse da Coroa em ocupar o território brasileiro." },
+      { "letra": "E", "texto": "A interferência direta da França no interior do Brasil." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As capitanias fracassaram em sua maioria devido à escassez de recursos, resistência indígena e dificuldades logísticas, levando à criação do Governo-Geral em 1549."
+  },
+  {
+    "id": 60,
+    "enunciado": "A economia complementar da colônia brasileira foi essencial para manter a estrutura agrária voltada à exportação. Qual atividade se encaixa nesse conceito?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Economia Complementar"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O cultivo de cana-de-açúcar em larga escala no litoral nordestino." },
+      { "letra": "B", "texto": "A criação de gado no interior nordestino para abastecimento das zonas canavieiras." },
+      { "letra": "C", "texto": "A mineração em Minas Gerais sob monopólio inglês." },
+      { "letra": "D", "texto": "A extração do pau-brasil nas florestas amazônicas." },
+      { "letra": "E", "texto": "A exploração de ouro em rios da Bacia do Prata." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A pecuária no sertão nordestino abastecia engenhos com carne, couro e tração animal, sendo uma atividade complementar essencial para a manutenção da economia açucareira."
   }
 ]
