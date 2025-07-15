@@ -5,6 +5,17 @@ body {
   padding: 20px;
 }
 
+.headerAdim {
+  margin-bottom: 20px !important;
+  display: flex;
+  gap: 50px;
+  align-content: space-between !important;
+}
+
+.tituloH1 {
+  font-size: 1.2rem;
+}
+
 h1 {
   color: #9f70ff;
 }
