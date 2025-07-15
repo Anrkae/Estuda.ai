@@ -316,5 +316,326 @@
     ],
     "resposta_correta": "C",
     "resolucao": "As planícies são áreas de acumulação sedimentar recente, associadas a rios, mares ou lagos, com relevo pouco acidentado e baixa altitude."
+  },
+  {
+    "id": 16,
+    "contexto": "O relevo do território brasileiro é caracterizado por sua antiga formação geológica, sem a presença de dobramentos modernos.",
+    "enunciado": "Essa característica implica que o Brasil:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Apresente grande número de montanhas jovens e instabilidade sísmica." },
+      { "letra": "B", "texto": "Possua baixos índices de erosão devido à recente formação geológica." },
+      { "letra": "C", "texto": "Tenha predominância de formas suaves de relevo, como planaltos desgastados." },
+      { "letra": "D", "texto": "Seja composto por escudos cristalinos formados no Mesozóico." },
+      { "letra": "E", "texto": "Esteja inserido em zonas de convergência de placas tectônicas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Por estar fora das zonas de dobramentos modernos, o relevo brasileiro é marcado por superfícies aplainadas, planaltos e depressões antigas, com baixa atividade tectônica."
+  },
+  {
+    "id": 17,
+    "enunciado": "Qual característica geomorfológica distingue a Serra do Mar dentro da classificação do relevo brasileiro?",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Serra do Mar"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "É um dobramento moderno com atividade vulcânica." },
+      { "letra": "B", "texto": "Trata-se de uma cadeia montanhosa com origem sedimentar recente." },
+      { "letra": "C", "texto": "Constitui uma escarpa resultante da erosão diferencial de rochas cristalinas." },
+      { "letra": "D", "texto": "Corresponde a uma planície costeira rebaixada por afundamento tectônico." },
+      { "letra": "E", "texto": "É formada exclusivamente por depósitos aluviais recentes." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Serra do Mar é uma escarpa associada a rochas cristalinas, resultado da erosão diferencial e do soerguimento relativo do planalto atlântico."
+  },
+  {
+    "id": 18,
+    "enunciado": "Em relação ao Planalto Central brasileiro, assinale a alternativa correta:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto Central"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "É uma unidade de relevo composta por rochas vulcânicas recentes, situadas abaixo do nível do mar." },
+      { "letra": "B", "texto": "Apresenta áreas extensas de acumulação sedimentar marinha recente." },
+      { "letra": "C", "texto": "Abriga chapadões e cuestas, com altitudes elevadas e atuação intensa da erosão." },
+      { "letra": "D", "texto": "É constituído exclusivamente por planícies úmidas." },
+      { "letra": "E", "texto": "Se estende apenas pela região Sul do país." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Planalto Central é formado por extensos chapadões e cuestas, com relevo elevado e fortemente erodido, abrigando as nascentes de importantes rios brasileiros."
+  },
+  {
+    "id": 19,
+    "enunciado": "Assinale a alternativa que melhor descreve a importância geoeconômica do Planalto da Borborema:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto da Borborema"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Favorece a instalação de usinas hidrelétricas e a mineração de ferro em grande escala." },
+      { "letra": "B", "texto": "Atua como divisor de águas e influencia negativamente a distribuição das chuvas no interior nordestino." },
+      { "letra": "C", "texto": "É um ponto de convergência tectônica e sismicidade frequente." },
+      { "letra": "D", "texto": "Abriga bacias sedimentares propícias à exploração de gás natural." },
+      { "letra": "E", "texto": "Concentra as maiores reservas de calcário da região Sudeste." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Planalto da Borborema impede a penetração de massas de ar úmidas no interior do Nordeste, influenciando o clima semiárido da região e atuando como divisor de águas."
+  },
+  {
+    "id": 20,
+    "contexto": "Ao analisar um mapa com altitudes e unidades de relevo do Brasil, observa-se que parte significativa do território está entre 200 e 800 metros de altitude.",
+    "enunciado": "Essa observação reforça a predominância de qual unidade de relevo no Brasil?",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Planícies sedimentares recentes e alagadas." },
+      { "letra": "B", "texto": "Planaltos de origem vulcânica com dobramentos recentes." },
+      { "letra": "C", "texto": "Planalto Atlântico com escarpas abruptas." },
+      { "letra": "D", "texto": "Depressões e planaltos de origem antiga e desgastada." },
+      { "letra": "E", "texto": "Cadeias montanhosas modernas como os Andes." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O relevo brasileiro é dominado por planaltos e depressões com altitudes moderadas, resultado da longa ação de processos erosivos e ausência de tectonismo recente."
+  },
+  {
+    "id": 21,
+    "enunciado": "A classificação de Jurandyr Ross reorganizou as unidades do relevo brasileiro com base em critérios mais modernos. Nesse modelo, as depressões passaram a ser:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Rejeitadas por não representarem formas significativas no relevo." },
+      { "letra": "B", "texto": "Consideradas áreas de deposição sedimentar marinha." },
+      { "letra": "C", "texto": "Classificadas como áreas rebaixadas entre planaltos, moldadas pela erosão." },
+      { "letra": "D", "texto": "Unificadas com planícies devido à semelhança topográfica." },
+      { "letra": "E", "texto": "Ignoradas na nova classificação por falta de relevância geológica." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "No modelo de Jurandyr Ross (1995), as depressões são áreas de relevo rebaixado em relação ao entorno, geralmente esculpidas por erosão, e não apenas áreas sedimentares como se pensava anteriormente."
+  },
+  {
+    "id": 22,
+    "contexto": "O Brasil apresenta feições de relevo variadas, mesmo estando em uma área de estabilidade tectônica.",
+    "enunciado": "Dentre as formas predominantes no relevo do território nacional, destacam-se:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Montanhas jovens com dobramentos modernos." },
+      { "letra": "B", "texto": "Depressões absolutas e zonas de subducção." },
+      { "letra": "C", "texto": "Planalto Atlântico e planícies costeiras alagadas." },
+      { "letra": "D", "texto": "Planalto, planície e depressão, formados por processos erosivos e sedimentares." },
+      { "letra": "E", "texto": "Terras vulcânicas com grande atividade sísmica e altitudes elevadas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O relevo brasileiro é composto predominantemente por planaltos, planícies e depressões, moldados por processos de desgaste e deposição, sem dobramentos modernos ou grande atividade sísmica."
+  },
+  {
+    "id": 23,
+    "enunciado": "Sobre o Planalto da Borborema, pode-se afirmar corretamente que:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto da Borborema"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Se trata de um planalto sedimentar de origem recente." },
+      { "letra": "B", "texto": "Tem influência direta na dinâmica das chuvas na região semiárida." },
+      { "letra": "C", "texto": "Apresenta dobramentos modernos e vulcanismo ativo." },
+      { "letra": "D", "texto": "É uma área plana com ausência de processos erosivos." },
+      { "letra": "E", "texto": "Faz parte do Pantanal Mato-grossense." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Planalto da Borborema é uma área elevada do Nordeste que interfere na dinâmica das chuvas ao bloquear a umidade vinda do oceano, o que contribui para o clima semiárido do sertão."
+  },
+  {
+    "id": 24,
+    "contexto": "A Serra do Mar estende-se ao longo do litoral sudeste e sul do Brasil, atuando como uma barreira geográfica natural.",
+    "enunciado": "Sobre a Serra do Mar, é correto afirmar que:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Serra do Mar"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Apresenta uma morfologia plana, com baixa interferência na dinâmica climática." },
+      { "letra": "B", "texto": "É um dobramento moderno que separa bacias sedimentares." },
+      { "letra": "C", "texto": "Corresponde a um conjunto de escarpas cristalinas voltadas para o litoral." },
+      { "letra": "D", "texto": "Faz parte da formação do Pantanal e possui áreas alagadas." },
+      { "letra": "E", "texto": "É formada por depósitos recentes originados de rios amazônicos." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Serra do Mar é composta por rochas cristalinas antigas, com escarpas íngremes voltadas para o Atlântico, interferindo no clima e na ocupação do litoral."
+  },
+  {
+    "id": 25,
+    "enunciado": "Assinale a alternativa que caracteriza corretamente o Planalto Central Brasileiro:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto Central"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Área de planícies sedimentares com formação glacial recente." },
+      { "letra": "B", "texto": "Região plana e alagada, sem relevos residuais ou diferenciação altimétrica." },
+      { "letra": "C", "texto": "Área de origem tectônica ativa, com dobramentos modernos." },
+      { "letra": "D", "texto": "Extensa região de chapadões e cuestas, com grande importância hidrográfica." },
+      { "letra": "E", "texto": "Dominado por formações vulcânicas recentes e escarpas costeiras." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Planalto Central possui chapadões, cuestas e áreas elevadas que abrigam nascentes dos principais rios brasileiros, como o São Francisco e o Tocantins."
+  },
+  {
+    "id": 26,
+    "enunciado": "No contexto do relevo brasileiro, as planícies são caracterizadas principalmente por serem:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Formações cristalinas esculpidas por processos erosivos." },
+      { "letra": "B", "texto": "Superfícies rebaixadas e acidentadas por vulcanismo recente." },
+      { "letra": "C", "texto": "Áreas de sedimentação recente, associadas a rios, mares ou lagos." },
+      { "letra": "D", "texto": "Formações antigas resultantes de dobramentos modernos." },
+      { "letra": "E", "texto": "Unidades geológicas compostas por rochas ígneas intrusivas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As planícies são formas de relevo resultantes da deposição de sedimentos, geralmente associados a áreas fluviais, litorâneas ou lacustres, apresentando baixa altitude e superfície relativamente plana."
+  },
+  {
+    "id": 27,
+    "contexto": "A região Sudeste do Brasil apresenta forte contraste entre áreas elevadas e a faixa litorânea.",
+    "enunciado": "Esse contraste é resultado direto da presença de qual unidade de relevo?",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Serra do Mar"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Planalto das Guianas" },
+      { "letra": "B", "texto": "Planalto do Maranhão-Piauí" },
+      { "letra": "C", "texto": "Serra do Espinhaço" },
+      { "letra": "D", "texto": "Serra do Mar" },
+      { "letra": "E", "texto": "Planalto Meridional" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Serra do Mar é uma escarpa voltada para o litoral que separa o planalto atlântico da planície litorânea, gerando o acentuado desnível da paisagem na região Sudeste."
+  },
+  {
+    "id": 28,
+    "enunciado": "A respeito das características do relevo na Região Nordeste, é correto afirmar que:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Relevo de regiões"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O relevo é marcado exclusivamente por planícies costeiras e áreas alagadas." },
+      { "letra": "B", "texto": "O Planalto da Borborema atua como divisor de águas e influencia a aridez do interior." },
+      { "letra": "C", "texto": "A Serra do Mar delimita toda a porção oriental da região." },
+      { "letra": "D", "texto": "A predominância é de dobramentos modernos com atividade vulcânica." },
+      { "letra": "E", "texto": "Trata-se da única região brasileira que não apresenta depressões." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A presença do Planalto da Borborema dificulta a entrada de massas de ar úmidas no Sertão nordestino, atuando como divisor de águas e contribuindo para o clima semiárido da região."
+  },
+  {
+    "id": 29,
+    "enunciado": "No Planalto Central brasileiro, uma das principais formações geomorfológicas são os chapadões. Eles se caracterizam por:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto Central"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Serem áreas planas e inundadas, com pouca ação erosiva." },
+      { "letra": "B", "texto": "Apresentarem cumeadas irregulares esculpidas por geleiras antigas." },
+      { "letra": "C", "texto": "Constituírem superfícies elevadas, amplas e dissecadas por rios." },
+      { "letra": "D", "texto": "Serem zonas de planície com origem sedimentar marinha." },
+      { "letra": "E", "texto": "Resultarem da deposição de sedimentos vulcânicos recentes." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os chapadões do Planalto Central são grandes superfícies elevadas e planas, desgastadas por erosão fluvial, com importância na hidrografia nacional por abrigarem nascentes de grandes rios."
+  },
+  {
+    "id": 30,
+    "contexto": "O modelo do relevo brasileiro proposto por Jurandyr Ross divide o território em 28 unidades morfoestruturais.",
+    "enunciado": "Esse modelo é considerado mais preciso que os anteriores por:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Classificar o relevo com base exclusivamente na altitude das formações." },
+      { "letra": "B", "texto": "Dividir o território apenas entre planaltos e planícies, eliminando depressões." },
+      { "letra": "C", "texto": "Utilizar critérios morfodinâmicos e morfoestruturais, considerando o processo de formação." },
+      { "letra": "D", "texto": "Focar na tectônica de placas como único critério de definição." },
+      { "letra": "E", "texto": "Adotar nomenclaturas estrangeiras para padronizar com modelos internacionais." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A proposta de Jurandyr Ross (1995) leva em consideração não só a forma, mas os processos que originaram o relevo, o que oferece uma leitura mais geográfica e precisa das unidades do território brasileiro."
   }
 ]
