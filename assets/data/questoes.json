@@ -637,5 +637,391 @@
     ],
     "resposta_correta": "C",
     "resolucao": "A proposta de Jurandyr Ross (1995) leva em consideração não só a forma, mas os processos que originaram o relevo, o que oferece uma leitura mais geográfica e precisa das unidades do território brasileiro."
+  },
+  {
+    "id": 31,
+    "enunciado": "O sistema de Capitanias Hereditárias, implantado por Portugal em 1534, tinha como objetivo principal:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Capitanias Hereditárias"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Conceder autonomia política às regiões brasileiras." },
+      { "letra": "B", "texto": "Descentralizar a colonização e reduzir os custos da Coroa portuguesa." },
+      { "letra": "C", "texto": "Implantar o governo direto da metrópole sobre toda a colônia." },
+      { "letra": "D", "texto": "Incentivar a imigração de espanhóis ao Brasil." },
+      { "letra": "E", "texto": "Impedir a exploração do pau-brasil por particulares." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O sistema de Capitanias Hereditárias foi criado como uma forma de colonização descentralizada, transferindo parte da responsabilidade e dos custos da colonização aos donatários."
+  },
+  {
+    "id": 32,
+    "contexto": "O fracasso de várias capitanias levou a Coroa a repensar o modelo administrativo colonial.",
+    "enunciado": "Qual foi a medida adotada pela Coroa portuguesa para centralizar o poder e garantir maior controle sobre o território colonial?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Governo-Geral"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Criação do Conselho Ultramarino." },
+      { "letra": "B", "texto": "Estabelecimento do Governo-Geral em 1549." },
+      { "letra": "C", "texto": "Fusão das capitanias em uma única unidade administrativa." },
+      { "letra": "D", "texto": "Revogação do sistema de donatarias." },
+      { "letra": "E", "texto": "Criação de vilas autônomas em todo o litoral." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Com o fracasso do sistema de Capitanias Hereditárias, a Coroa instituiu o Governo-Geral em 1549 para centralizar a administração e fortalecer o controle metropolitano sobre a colônia."
+  },
+  {
+    "id": 33,
+    "enunciado": "Durante o Ciclo do Açúcar, a produção era voltada majoritariamente para:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do açúcar"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Consumo interno e abastecimento das missões religiosas." },
+      { "letra": "B", "texto": "Exportação para a Europa, especialmente para o mercado português." },
+      { "letra": "C", "texto": "Comércio com as colônias espanholas do Caribe." },
+      { "letra": "D", "texto": "Fornecimento aos Estados Unidos em formação." },
+      { "letra": "E", "texto": "Estoque nacional para sustento das tropas lusas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O açúcar era um dos principais produtos de exportação do Brasil colonial, sendo enviado para o mercado europeu, especialmente Portugal e outros centros consumidores."
+  },
+  {
+    "id": 34,
+    "contexto": "A descoberta de ouro em Minas Gerais, no final do século XVII, alterou profundamente a dinâmica econômica e social da colônia.",
+    "enunciado": "Entre os impactos da atividade mineradora na sociedade colonial, destaca-se:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do ouro"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Redução da escravidão e aumento da pequena propriedade agrícola." },
+      { "letra": "B", "texto": "Intensa urbanização em áreas antes despovoadas." },
+      { "letra": "C", "texto": "Transferência da capital da colônia para Salvador." },
+      { "letra": "D", "texto": "Abolição do quinto como forma de arrecadação." },
+      { "letra": "E", "texto": "Fuga em massa da população indígena para o Sul." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A mineração favoreceu o crescimento de núcleos urbanos nas regiões mineradoras, como Vila Rica (Ouro Preto), e promoveu uma maior mobilidade social e econômica."
+  },
+  {
+    "id": 35,
+    "enunciado": "A economia complementar desenvolvida durante o Brasil Colonial tinha como função principal:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Economia Complementar"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Substituir a produção açucareira no mercado externo." },
+      { "letra": "B", "texto": "Atender às necessidades internas da população colonial." },
+      { "letra": "C", "texto": "Concorrer com o comércio europeu no Atlântico." },
+      { "letra": "D", "texto": "Explorar mão de obra indígena exclusivamente." },
+      { "letra": "E", "texto": "Iniciar a produção industrial nas cidades mineradoras." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A economia complementar era voltada principalmente para o consumo interno, com produção de alimentos, criação de animais e atividades que garantiam o abastecimento da população da colônia."
+  },
+  {
+    "id": 36,
+    "contexto": "Durante o período do Governo-Geral, foi estruturada uma administração mais ampla, com a criação de cargos específicos.",
+    "enunciado": "Qual função era exercida pelo ouvidor-mor no Governo-Geral?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Governo-Geral"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Supervisionar a arrecadação do quinto." },
+      { "letra": "B", "texto": "Exercer funções judiciais e representar a justiça real." },
+      { "letra": "C", "texto": "Definir os limites das capitanias hereditárias." },
+      { "letra": "D", "texto": "Gerenciar o comércio de escravos no litoral." },
+      { "letra": "E", "texto": "Administrar os engenhos reais em nome da Coroa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O ouvidor-mor era responsável pela aplicação da justiça em nome da Coroa portuguesa, atuando como autoridade judicial máxima na colônia durante o Governo-Geral."
+  },
+  {
+    "id": 37,
+    "enunciado": "As capitanias hereditárias enfrentaram inúmeros problemas que levaram ao fracasso da maioria delas. Entre os fatores que explicam esse insucesso, destaca-se:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Capitanias Hereditárias"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A completa ausência de conflitos com indígenas." },
+      { "letra": "B", "texto": "O isolamento geográfico e a falta de recursos dos donatários." },
+      { "letra": "C", "texto": "O apoio constante da Coroa portuguesa às capitanias." },
+      { "letra": "D", "texto": "O excesso de mão de obra europeia." },
+      { "letra": "E", "texto": "A intensa atividade mineradora nas faixas costeiras." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A maioria das capitanias fracassou por conta do isolamento, ataques indígenas, falta de infraestrutura e ausência de apoio contínuo da Coroa aos donatários."
+  },
+  {
+    "id": 38,
+    "contexto": "Com a criação do Governo-Geral, o Brasil Colônia passou a ter uma estrutura administrativa centralizada em Salvador.",
+    "enunciado": "Qual foi o primeiro governador-geral do Brasil, nomeado em 1549?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Governo-Geral"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Martim Afonso de Souza" },
+      { "letra": "B", "texto": "Tomé de Souza" },
+      { "letra": "C", "texto": "Duarte da Costa" },
+      { "letra": "D", "texto": "Mem de Sá" },
+      { "letra": "E", "texto": "Gaspar de Lemos" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Tomé de Souza foi o primeiro governador-geral do Brasil, nomeado em 1549 com a missão de fundar Salvador e organizar a administração colonial."
+  },
+  {
+    "id": 39,
+    "enunciado": "Durante o ciclo do açúcar, o modelo econômico adotado na colônia era baseado em:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do açúcar"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Latifúndio, escravidão e monocultura voltada para o mercado externo." },
+      { "letra": "B", "texto": "Pequena propriedade, trabalho assalariado e consumo interno." },
+      { "letra": "C", "texto": "Cultivo diversificado com mão de obra indígena voluntária." },
+      { "letra": "D", "texto": "Cooperativas agrícolas lideradas por religiosos jesuítas." },
+      { "letra": "E", "texto": "Exploração mineral com técnicas europeias avançadas." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O modelo agroexportador brasileiro no ciclo do açúcar se baseava em latifúndios, uso de mão de obra escravizada africana e monocultura destinada ao mercado europeu."
+  },
+  {
+    "id": 40,
+    "contexto": "A mineração no Brasil provocou uma série de alterações sociais e econômicas, especialmente na região das Minas Gerais.",
+    "enunciado": "A cobrança do \"quinto\" representava:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do ouro"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Imposto cobrado sobre terras improdutivas no interior da colônia." },
+      { "letra": "B", "texto": "Tributo de 20% sobre todo ouro extraído, destinado à Coroa portuguesa." },
+      { "letra": "C", "texto": "Doação voluntária feita pelos mineradores à administração local." },
+      { "letra": "D", "texto": "Imposto eclesiástico recolhido pelos jesuítas." },
+      { "letra": "E", "texto": "Taxa alfandegária sobre mercadorias importadas das colônias africanas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O \"quinto\" era um imposto que representava 20% de todo ouro extraído, sendo obrigatório seu pagamento à Coroa portuguesa como parte do pacto colonial."
+  },
+  {
+    "id": 41,
+    "enunciado": "A pecuária teve papel fundamental na economia colonial, especialmente porque:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Economia Complementar"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi a atividade mais lucrativa da colônia." },
+      { "letra": "B", "texto": "Expandiu-se pelo interior e ajudou a integrar regiões distantes." },
+      { "letra": "C", "texto": "Fornecia mão de obra para as lavouras de açúcar." },
+      { "letra": "D", "texto": "Era incentivada pela Coroa como alternativa à mineração." },
+      { "letra": "E", "texto": "Gerava conflitos constantes com as populações indígenas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A pecuária foi essencial para abastecimento interno e integração territorial, especialmente nas áreas afastadas do litoral, facilitando a ocupação do sertão."
+  },
+  {
+    "id": 42,
+    "contexto": "A estrutura econômica colonial era marcada por desigualdades e forte dependência da metrópole.",
+    "enunciado": "Qual das alternativas a seguir expressa corretamente uma característica da economia colonial brasileira?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do açúcar"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Economia fechada com foco na autossuficiência alimentar." },
+      { "letra": "B", "texto": "Produção voltada para o mercado europeu, com uso extensivo de mão de obra escrava." },
+      { "letra": "C", "texto": "Predomínio da pequena propriedade rural nas zonas produtivas." },
+      { "letra": "D", "texto": "Inexistência de tributos cobrados pela Coroa." },
+      { "letra": "E", "texto": "Autonomia regional dos produtores sobre as decisões comerciais." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A economia colonial era marcada pela monocultura de exportação, como o açúcar, com trabalho escravo e submissão às exigências do pacto colonial com a metrópole portuguesa."
+  },
+  {
+    "id": 43,
+    "enunciado": "Uma das funções atribuídas ao provedor-mor, dentro da estrutura do Governo-Geral no Brasil Colônia, era:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Governo-Geral"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Administrar os conflitos judiciais em nome do rei." },
+      { "letra": "B", "texto": "Coordenar as finanças da colônia, fiscalizando a arrecadação e os gastos." },
+      { "letra": "C", "texto": "Controlar a atuação dos religiosos e missionários jesuítas." },
+      { "letra": "D", "texto": "Estabelecer relações diplomáticas com as colônias espanholas." },
+      { "letra": "E", "texto": "Presidir as câmaras municipais em todo o litoral brasileiro." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O provedor-mor era o responsável pela área financeira da colônia, sendo encarregado da fiscalização da arrecadação e da aplicação dos recursos públicos."
+  },
+  {
+    "id": 44,
+    "contexto": "A estrutura administrativa do Governo-Geral no século XVI incluía cargos fundamentais para a administração da colônia.",
+    "enunciado": "Assinale a alternativa que indica corretamente um cargo e sua função na estrutura do Governo-Geral.",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Governo-Geral"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Capitão-mor: fiscalizava o comércio de escravos entre capitanias." },
+      { "letra": "B", "texto": "Ouvidor-mor: responsável pelas funções jurídicas e judiciais da colônia." },
+      { "letra": "C", "texto": "Tesoureiro-geral: encarregado das missões religiosas com os indígenas." },
+      { "letra": "D", "texto": "Alcaide-mor: organizava o ensino nas vilas do litoral." },
+      { "letra": "E", "texto": "Comissário do rei: exercia funções militares nos engenhos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O ouvidor-mor exercia funções ligadas à justiça na colônia, sendo uma das figuras mais importantes na aplicação das leis coloniais em nome da Coroa portuguesa."
+  },
+  {
+    "id": 45,
+    "enunciado": "O Ciclo do Ouro, iniciado no final do século XVII, levou à criação de instituições específicas para o controle da produção. Entre elas, destaca-se:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do ouro"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Conselho de Extração Colonial" },
+      { "letra": "B", "texto": "Casa de Fundição" },
+      { "letra": "C", "texto": "Companhia das Minas Gerais" },
+      { "letra": "D", "texto": "Tribunal Real de Lavras" },
+      { "letra": "E", "texto": "Junta Colonial de Pesagem" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Casa de Fundição foi criada para fundir o ouro extraído, transformando-o em barras com o selo real, garantindo o pagamento do 'quinto' à Coroa portuguesa."
+  },
+  {
+    "id": 46,
+    "enunciado": "Durante o Ciclo do Açúcar, qual das características abaixo era mais marcante na organização social da colônia?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do açúcar"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Igualdade econômica entre senhores e escravizados." },
+      { "letra": "B", "texto": "Predomínio da pequena propriedade familiar." },
+      { "letra": "C", "texto": "Estrutura baseada no latifúndio escravista exportador." },
+      { "letra": "D", "texto": "Autossuficiência econômica das vilas litorâneas." },
+      { "letra": "E", "texto": "Ausência de qualquer vínculo com o mercado externo." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A economia açucareira era baseada no latifúndio, com monocultura voltada para exportação e uso intensivo de mão de obra escravizada."
+  },
+  {
+    "id": 47,
+    "enunciado": "A economia complementar desenvolveu-se em regiões onde a atividade açucareira e mineradora era menos presente. Um dos exemplos mais expressivos dessa economia foi:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Economia Complementar"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Exploração do pau-brasil na Amazônia." },
+      { "letra": "B", "texto": "Criação de gado nas regiões do sertão nordestino e interior do Sul." },
+      { "letra": "C", "texto": "Lavras de ouro em Mato Grosso." },
+      { "letra": "D", "texto": "Cultura do café nas zonas litorâneas." },
+      { "letra": "E", "texto": "Extração de metais preciosos no litoral paulista." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A criação de gado no sertão nordestino e no interior foi parte essencial da economia complementar, ajudando no abastecimento das áreas açucareiras e mineradoras."
+  },
+  {
+    "id": 48,
+    "contexto": "A administração colonial buscava controlar não apenas a produção, mas também a circulação de riquezas no território.",
+    "enunciado": "A derrama era uma medida fiscal que consistia em:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colônia", "Ciclo do ouro"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Distribuição igualitária de lucros entre mineradores." },
+      { "letra": "B", "texto": "Cobrança forçada do ouro devido ao não atingimento da cota anual de impostos." },
+      { "letra": "C", "texto": "Isenção fiscal concedida a áreas de baixa produtividade." },
+      { "letra": "D", "texto": "Fim da cobrança do quinto em todas as minas da colônia." },
+      { "letra": "E", "texto": "Medida de incentivo à produção em áreas litorâneas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A derrama era a cobrança forçada do ouro devido ao não pagamento do quinto. Quando a cota anual não era atingida, a população era obrigada a contribuir com o restante, gerando revoltas."
   }
 ]
