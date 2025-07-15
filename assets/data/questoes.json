@@ -1,750 +1,320 @@
 [
   {
-    "id": 3456324,
-    "enunciado": "Os povos de língua tupi-guarani que vasculharam e fizeram migrações sucessivas e progressivas por milhões de quilômetros quadrados do território tropical e subtropical da América do Sul caracterizam-se por forte adaptabilidade aos domínios de florestas, ao uso dos rios, incluindo moradias e tabas construídas em pontos de diques marginais e sítios de baixos terraços. [...] os tupis incorporaram pela primeira vez, na pré-história brasileira, toda a faixa litorânea frontal do país, tendo por preferência barras de rios e riachos encostados em morrotes ou maciços costeiros florestados. E chegaram até a Amazônia.\n\n(Aziz Nacib Ab’Sáber, “Incursões à pré-história da América tropical”. In: Carlos Guilherme Mota (Org.) Viagem incompleta: a experiência brasileira (1500 – 2000). Formação: histórias, 2000)\n\nA ocupação do litoral pelos tupis, mencionada pelo excerto,",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 1,
+    "enunciado": "A classificação do relevo brasileiro proposta por Jurandyr Ross, amplamente adotada nos livros didáticos atuais, baseia-se principalmente:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Médio",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
+      "fonte": "Estuda AI",
       "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "favoreceu a instalação do Governo Geral na cidade de Salvador."
-      },
-      {
-        "letra": "B",
-        "texto": "forneceu a mão de obra escravizada para a colheita do pau-brasil."
-      },
-      {
-        "letra": "C",
-        "texto": "condicionou a colonização europeia aos contatos intercivilizacionais."
-      },
-      {
-        "letra": "D",
-        "texto": "dificultou o conhecimento do território pelos colonos portugueses."
-      },
-      {
-        "letra": "E",
-        "texto": "intensificou a circulação de mercadorias portuguesas para fora da Europa."
-      }
+      { "letra": "A", "texto": "Na estrutura geológica e idade dos terrenos." },
+      { "letra": "B", "texto": "Na altitude absoluta de cada região." },
+      { "letra": "C", "texto": "Na vegetação predominante em cada unidade." },
+      { "letra": "D", "texto": "Na classificação morfoestrutural do IBGE de 1960." },
+      { "letra": "E", "texto": "Na análise de placas tectônicas e sismos recentes." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "A",
+    "resolucao": "A proposta de Ross considera aspectos morfoestruturais e morfoclimáticos, utilizando critérios como estrutura geológica, processos de erosão e altitude relativa."
   },
   {
-    "id": 3430450,
-    "enunciado": "Assim, exemplificando, o estudo da história das populações indígenas deve partir dos grupos existentes no presente ou que já viveram na região, para conhecer as singularidades históricas de cada grupo nativo e evitar a generalização “índios”. Uma abordagem genérica sobre o índio brasileiro impossibilita o conhecimento da história das relações e formas de contato com o mundo branco, diferente para cada população indígena e com consequências igualmente diversas para a História do Brasil.\n\n(Circe Bittencourt, Identidade nacional e o ensino de História do Brasil. Em: Leandro Karnal (org.), História na sala de aula:conceitos, práticas e propostas. Adaptado)\n\nO fragmento exemplifica",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 2,
+    "enunciado": "Na classificação de Jurandyr Ross, o território brasileiro é dividido em:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Médio",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
+      "fonte": "Estuda AI",
       "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "uma análise historiográfica de natureza eurocêntrica, mas que valoriza a identidade cultural dos povos originários."
-      },
-      {
-        "letra": "B",
-        "texto": "a articulação entre história local e regional com a nacional, requerendo compreensão sobre fundamentos da micro-história."
-      },
-      {
-        "letra": "C",
-        "texto": "a aplicação prática do conceito antropológico de identidade cultural, em consonância ao de nação."
-      },
-      {
-        "letra": "D",
-        "texto": "a valorização de mitos que mascaram problemas sociais e discriminações no contexto da colonização do Brasil."
-      },
-      {
-        "letra": "E",
-        "texto": "a reflexão sobre os conteúdos tradicionais para a consolidação identitária dos segmentos de públicos da Educação."
-      }
+      { "letra": "A", "texto": "Planaltos, planícies e montanhas." },
+      { "letra": "B", "texto": "Planaltos, planícies e depressões." },
+      { "letra": "C", "texto": "Escudos cristalinos, bacias sedimentares e dobramentos modernos." },
+      { "letra": "D", "texto": "Terrenos antigos, recentes e vulcânicos." },
+      { "letra": "E", "texto": "Zonas tropicais, temperadas e equatoriais." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "B",
+    "resolucao": "A classificação de Ross divide o relevo em três grandes formas: planaltos, planícies e depressões, com base em processos predominantes de erosão e sedimentação."
   },
   {
-    "id": 3408987,
-    "enunciado": "Por volta de 1500, uma miríade de comunidades indígenas habitava o que atualmente é o Estado nacional brasileiro. Acerca deste tema, analisar os itens abaixo:\n\nI. Os povos que não pertenciam ao tronco linguístico Tupi eram conhecidos como Tapuias.\nII. No litoral, poucos povos, como Charrua, Goitacá, Aimoré e Tremembé, não eram de origem tupi-guarani.\nIII. Independentemente da relação de aliança ou inimizade com os colonizadores portugueses, os povos Tupis sempre permaneceram unidos nas disputas territoriais e militares.\n\nEstão CORRETOS:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 3,
+    "enunciado": "O Planalto Central, uma das principais unidades de relevo do Brasil, destaca-se por:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto Central"],
+    "dificuldade": "Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Todos os itens."
-      },
-      {
-        "letra": "B",
-        "texto": "Somente os itens I e II."
-      },
-      {
-        "letra": "C",
-        "texto": "Somente os itens I e III."
-      },
-      {
-        "letra": "D",
-        "texto": "Somente os itens II e III."
-      }
+      { "letra": "A", "texto": "Ser a região mais antiga e acidentada do país." },
+      { "letra": "B", "texto": "Apresentar predominância de planícies aluviais." },
+      { "letra": "C", "texto": "Ter relevância por ser uma área de nascentes de grandes rios." },
+      { "letra": "D", "texto": "Concentrar as maiores altitudes do território nacional." },
+      { "letra": "E", "texto": "Formar uma bacia de sedimentação marinha recente." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "C",
+    "resolucao": "O Planalto Central é uma importante área de dispersão fluvial, com nascentes de grandes rios como o São Francisco, Tocantins e Paraná."
   },
   {
-    "id": 3403444,
-    "enunciado": "Ao chegarem à terra que futuramente seria conhecida como Brasil, os europeus depararam-se com uma população bastante homogênea em termos culturais e linguísticos, espalhada ao longo da costa e na bacia dos Rios Paraná-Paraguai. Acerca dos grupos indígenas, assinale a alternativa INCORRETA:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos ,",
-      "Mercantilismo, Colonialismo e a ocupação portuguesa no Brasil"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 4,
+    "enunciado": "A Serra do Mar é uma formação de relevo do tipo:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Serra do Mar"],
+    "dificuldade": "Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Apesar da localização geográfica diversa dos grupos tupis e dos grupos guaranis, fala-se em tupi-guarani devido à semelhança em alguns aspectos culturais e linguísticos."
-      },
-      {
-        "letra": "B",
-        "texto": "Os grupos tupis praticavam a pesca, a caça, a coleta de frutas e a agricultura. E, quando ocorria uma relativa exaustão de alimentos nessas áreas, migravam temporária ou definitivamente para outras."
-      },
-      {
-        "letra": "C",
-        "texto": "Os brancos eram respeitados entre os indígenas, em contrapartida a maior parte das tradições indígenas foram valorizadas pelos colonizadores."
-      },
-      {
-        "letra": "D",
-        "texto": "Como não existia uma nação indígena, muitas vezes os portugueses encontraram aliados entre os próprios indígenas, na luta contra os grupos que resistiam a eles."
-      },
-      {
-        "letra": "E",
-        "texto": "Cada aldeia produzia alimentos para satisfazer suas necessidades, não havendo muitas trocas de gêneros alimentícios entre elas."
-      }
+      { "letra": "A", "texto": "Depressão marginal atlântica." },
+      { "letra": "B", "texto": "Dobramento moderno ativo." },
+      { "letra": "C", "texto": "Escarpa de planalto." },
+      { "letra": "D", "texto": "Falha tectônica recente." },
+      { "letra": "E", "texto": "Cordilheira sedimentar." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "C",
+    "resolucao": "A Serra do Mar é uma escarpa de planalto que acompanha o litoral sudeste do Brasil, marcando a transição entre o planalto e a planície costeira."
   },
   {
-    "id": 3385687,
-    "enunciado": "“(...) Afinal, aqui falamos de muitos brasis em um Brasil; de realidades tão distintas que vão de um norte ameríndio até um sul com feição germânica; de uma Bahia africana a uma região sudeste mestiçada por muitas etnias e emigrações. A diferença se manifesta em modelos econômicos e culturais, nos perfis populacionais ou prognósticos diferenciados de vida. Enfim, por detrás de trópicos se esconde, mais uma vez, uma grande diversidade, difícil de ordenar.”\n\n\n\n\n\n\n\nAssinale a alternativa INCORRETA:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 5,
+    "contexto": "O Planalto da Borborema localiza-se na região Nordeste do Brasil e apresenta forte influência nas condições climáticas locais.",
+    "enunciado": "Qual das alternativas descreve corretamente uma consequência dessa formação geológica?",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto da Borborema"],
+    "dificuldade": "Muito Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Por meio do excerto acima, vê-se a diversidade de Brasis presentes no Brasil e na cultura brasileira."
-      },
-      {
-        "letra": "B",
-        "texto": "Essas análises comprovam a multiculturalidade observada em nosso país, especialmente por meio da miscigenação."
-      },
-      {
-        "letra": "C",
-        "texto": "Por essas análises, foi possível verificar a quantidade de pessoas que compõem a população do Brasil."
-      },
-      {
-        "letra": "D",
-        "texto": "Essas análises nos permitiram observar a extensão e a riqueza do Brasil, bem como, os dados nos mostram como os Brasis têm diferentes brasileiros."
-      }
+      { "letra": "A", "texto": "Intensificação dos ventos úmidos no interior do sertão." },
+      { "letra": "B", "texto": "Formação de grandes lagos glaciais e aumento da umidade." },
+      { "letra": "C", "texto": "Atuação como barreira orográfica, provocando o semiárido." },
+      { "letra": "D", "texto": "Presença de vulcanismo ativo e sismos frequentes." },
+      { "letra": "E", "texto": "Origem de depressões absolutas e manguezais." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "C",
+    "resolucao": "O Planalto da Borborema atua como uma barreira natural que impede a chegada de umidade ao interior, contribuindo para a aridez do sertão nordestino."
   },
   {
-    "id": 3385685,
-    "enunciado": "Analise a imagem: \n\n\n\n\n\n\n\n\n\n\n\n\n\n    Durante muito tempo, pessoas e povos indígenas foram pouco considerados na escrita da história do Brasil. Geralmente abordados apenas nos primeiros momentos da invasão portuguesa, era como se os índios estivessem fadados a desaparecer, não havendo muito o que dizer sobre eles no decorrer da nossa história. Felizmente, essa visão vem mudando. Um olhar sobre a historiografia e sobre a própria realidade atual, mostra que uma maior visibilidade tem sido conferida aos sujeitos indígenas. Sem estes, não é possível compreender a história do Brasil e da América como um todo. Longe de serem passivos, os povos indígenas mostraram uma grande capacidade de se adaptar, resistir e lidar com as realidades brutais, desencadeadas pelo processo de colonização.\n\n\n\n\n(Fonte: SIQUEIRA, Suelen. “Resistências nativas” in: https://www.historia.uff.br/impressoesrebeldes/revista/resistenciasnativas/)\n\n\n\n\n\n\n\nAs afirmativas a seguir exemplificam corretamente programas historiográficos que valorizam o protagonismo indígena e repensam a história do Brasil. Assinale a alternativa INCORRETA:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 6,
+    "enunciado": "As depressões no relevo brasileiro, segundo a classificação de Ross, são caracterizadas principalmente por:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Médio",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Considerar os indígenas como sujeitos históricos para reconstituir os múltiplos processos de interação entre suas sociedades e as populações que surgiram com a colonização europeia."
-      },
-      {
-        "letra": "B",
-        "texto": "Levar em conta a diversidade de interesses e de atuação significativas dos distintos povos nativos do continente para superar o apagamento de suas identidades étnicas corroborado pela categoria generalizante de “índios”."
-      },
-      {
-        "letra": "C",
-        "texto": "Escrever a história dos vencidos e denunciar a violência colonial para mostrar a enfatizar a condição de vítima dos ameríndios, deixados sem alternativa a não ser a fuga, a morte por rebeldia ou a submissão aos dominadores."
-      },
-      {
-        "letra": "D",
-        "texto": "Não ocorreram contribuições indígena para repensar a História do Brasil, por isso, não podemos mostrar índios como protagonistas principais na elaboração da nossa história, especialmente, na atualidade."
-      }
+      { "letra": "A", "texto": "Serem áreas planas acima de 1.000 metros de altitude." },
+      { "letra": "B", "texto": "Resultarem da acumulação recente de sedimentos marinhos." },
+      { "letra": "C", "texto": "Estarem localizadas obrigatoriamente no litoral." },
+      { "letra": "D", "texto": "Serem áreas rebaixadas em relação aos relevos vizinhos, com predomínio de erosão." },
+      { "letra": "E", "texto": "Apresentarem dobramentos modernos e atividade sísmica." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "D",
+    "resolucao": "As depressões são áreas mais rebaixadas que os planaltos e planícies adjacentes, resultantes principalmente de processos erosivos ao longo do tempo."
   },
   {
-    "id": 3328544,
-    "enunciado": "“É no norte e no oeste da região amazônica que se desenvolvem diferentes padrões linguísticos. Já apontamos para o papel do empréstimo no caso das línguas Karib e também em algumas línguas Maipure-Arawak. Que tipos de contato teriam levado a esses empréstimos? Tratar-se-ia de um multilinguismo difundido? Línguas de comércio teriam se formado nessa área em tempos pré-colombianos? Qual a idade desses padrões? Essas são algumas das questões que é preciso abordar em relação ao papel da língua [entre os povos pré-colombianos].”\n\n\n\n\n\n\n\n(URBAN, Greg. A história da cultura brasileira segundo as línguas nativas. In: CUNHA, Manuela Carneiro da (Org.). História dos Índios no Brasil. São Paulo: Companhia das Letras: Secretaria Municipal de Cultura: FAPESP, 1992, p. 101, adaptado.)\n\n\n\n\n\n\n\nGreg Urban aponta como o estudo da língua pode ser útil para reconstruir a história dos povos originários e da cultura brasileira, segundo estes estudos, é possível afirmar que:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 7,
+    "contexto": "Observe o comportamento das chuvas e da vegetação na região sudeste do Brasil, especialmente nas áreas que fazem contato com o relevo da Serra do Mar.",
+    "enunciado": "A Serra do Mar influencia o clima e a vegetação local principalmente por:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Serra do Mar"],
+    "dificuldade": "Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "As plantas também são um importante indício de que existia um intercâmbio entre norte e sul na América. Através de estudos recentes é possível explicar com precisão como espécies domesticadas na Amazônia, como o tabaco, chegaram à região do atual Canadá."
-      },
-      {
-        "letra": "B",
-        "texto": "Através dos estudos dos grandes grupos linguísticos Jê e Tupi, a questão que surge em relação à reconstrução da cultura desses povos é a da profundidade cronológica, pois tornou-se possível saber quando as duas línguas se diferenciaram de uma ancestral comum."
-      },
-      {
-        "letra": "C",
-        "texto": "As divergências entre as línguas podem ser atribuídas às divergências entre as comunidades indígenas, as quais, uma vez separadas, tendem a permanecer separadas, com exceção dos Macro-Jê, grupo que a diferenciação linguística se deve a dispersão desse povo pelo Nordeste brasileiro."
-      },
-      {
-        "letra": "D",
-        "texto": "As línguas Tupi, considerando o atual estado do conhecimento, parecem se distinguir das línguas Jê em seus padrões de dispersão geográfica. Entre os Jê, a distância geográfica parece corresponder, grosso modo, à distância histórica."
-      },
-      {
-        "letra": "E",
-        "texto": "Através das redes de comércio, toda a região do Xingu estava conectada a civilizações espalhadas pela América Latina. Algo assim não existia nem na Grécia antiga, nem na Europa feudal, onde havia cidades, mas elas não estavam conectadas a outras comunidades de maneira tão precisa."
-      }
+      { "letra": "A", "texto": "Concentrar áreas desérticas devido à barreira de ventos quentes." },
+      { "letra": "B", "texto": "Atuar como divisor de bacias hidrográficas de forma transversal." },
+      { "letra": "C", "texto": "Favorecer o aumento da umidade ao bloquear massas de ar oceânicas." },
+      { "letra": "D", "texto": "Formar um corredor seco que dificulta a formação de rios." },
+      { "letra": "E", "texto": "Atuar como área de transição entre planaltos e dobramentos modernos." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "C",
+    "resolucao": "A Serra do Mar funciona como barreira orográfica, interceptando as massas de ar úmidas vindas do oceano, favorecendo chuvas na vertente voltada para o mar."
   },
   {
-    "id": 3148727,
-    "enunciado": "Durante a chegada dos europeus à terra que posteriormente seria chamada Brasil, encontraram uma população bem homogênea nas formas culturais e linguísticas, que estavam distribuídas ao longo da costa e na bacia dos Rios Paraná-Paraguai. Podem se distinguir dois grandes blocos que subdividiam essa população entre:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 8,
+    "enunciado": "Sobre o Planalto Central brasileiro, marque a alternativa INCORRETA:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto Central"],
+    "dificuldade": "Muito Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "os tapuias e os xavanti."
-      },
-      {
-        "letra": "B",
-        "texto": "os yanomami e os xavanti."
-      },
-      {
-        "letra": "C",
-        "texto": "os tupis-guaranis e os tapuias."
-      },
-      {
-        "letra": "D",
-        "texto": "os tupis-guaranis e os yanomami."
-      }
+      { "letra": "A", "texto": "Está associado a formações cristalinas e sedimentares antigas." },
+      { "letra": "B", "texto": "É considerado área de planície devido à baixa declividade." },
+      { "letra": "C", "texto": "Abriga o Distrito Federal, região de nascente de grandes rios." },
+      { "letra": "D", "texto": "Possui relevância geopolítica e econômica para o Brasil central." },
+      { "letra": "E", "texto": "É palco de grandes chapadões e áreas de erosão intensa." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "B",
+    "resolucao": "O Planalto Central é uma área de planalto, com formações cristalinas e chapadões, e não uma planície. A alternativa B está incorreta."
   },
   {
-    "id": 3143835,
-    "enunciado": "Sobre as populações da Mesoamérica no período anterior à invasão europeia, considere as afirmativas a seguir e assinale V, para as verdadeiras, e F, para as falsas:\n\n(__)As populações da Mesoamérica congregavam-se harmoniosamente para formar um grande reino denominado Asteca, diferentes grupos assumiam a autoridade do responsável pela cidade principal.\n(__)Os povos da Mesoamérica possuíam conhecimentos matemáticos avançados, inclusive conheciam o conceito do zero para o qual criaram uma representação.\n(__)Na Mesoamérica, as populações, antes do século XV, tinham uma noção de tempo inscrita na temporalidade cíclica, contudo, não possuíam formas de marcação temporal definida.",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 9,
+    "enunciado": "A unidade de relevo conhecida como Planalto da Borborema exerce um papel fundamental sobre:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto da Borborema"],
+    "dificuldade": "Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "V − F − F."
-      },
-      {
-        "letra": "B",
-        "texto": "V − V − F."
-      },
-      {
-        "letra": "C",
-        "texto": "V − F − V."
-      },
-      {
-        "letra": "D",
-        "texto": "F − V − F."
-      },
-      {
-        "letra": "E",
-        "texto": "F − F − V."
-      }
+      { "letra": "A", "texto": "A formação de grandes lagos tropicais e umidade constante." },
+      { "letra": "B", "texto": "A transição entre climas tropicais úmidos e semiáridos." },
+      { "letra": "C", "texto": "A concentração de recursos minerais e petróleo." },
+      { "letra": "D", "texto": "O desenvolvimento de florestas de araucária e clima temperado." },
+      { "letra": "E", "texto": "A atuação de dobramentos modernos e atividade vulcânica." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "B",
+    "resolucao": "O Planalto da Borborema atua como divisor climático no Nordeste, separando áreas úmidas litorâneas de regiões semiáridas do interior."
   },
   {
-    "id": 3133762,
-    "enunciado": "Herança dos povos originários, Manto Tupinambá é apresentado oficialmente ao país Produzido com milhares de penas vermelhas de pássaros Guará e com 1,80m de altura, o Manto Tupinambá, vestimenta sagrada para essa etnia brasileira, impressiona pela suntuosidade e resistência ao tempo. São quase 400 anos desde sua confecção, 335 deles passados no Museu Nacional da Dinamarca. A recondução faz parte de um movimento global que está trazendo artefatos de volta aos países que foram colonizados. E foi acompanhada por representantes da etnia.\n\nO retorno do manto, até então parte do acervo do Museu Nacional da Dinamarca, é um marco e o começo de uma nova história de conquista do povo indígena.\n\nhttps://www.gov.br/cultura/pt-br/assuntos/noticias/heranca-dospovos-originarios-manto-tupinamba-e-apresentadooficialmente-ao-pais\n\nOs povos originários antes da chegada dos portugueses tinham a característica nas comunidades de:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 10,
+    "enunciado": "Sobre as depressões brasileiras, assinale a alternativa correta:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Muito Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Exploração de recursos minerais e planificação das tarefas."
-      },
-      {
-        "letra": "B",
-        "texto": "Exploração de recursos naturais e simplicidade na organização."
-      },
-      {
-        "letra": "C",
-        "texto": "Escravização hierárquica e atividades simplórias."
-      },
-      {
-        "letra": "D",
-        "texto": "Recuperação das culturas e intercâmbio das atividades laborais."
-      },
-      {
-        "letra": "E",
-        "texto": "Escravização de grupos e alta produtividade no campo."
-      }
+      { "letra": "A", "texto": "Todas apresentam altitudes inferiores a 200 metros." },
+      { "letra": "B", "texto": "São sempre formadas por dobramentos recentes." },
+      { "letra": "C", "texto": "Estão associadas apenas a regiões costeiras." },
+      { "letra": "D", "texto": "Podem apresentar altitudes elevadas, desde que inferiores aos planaltos vizinhos." },
+      { "letra": "E", "texto": "Fazem parte de zonas tectonicamente instáveis." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "D",
+    "resolucao": "As depressões podem ter altitudes variadas, inclusive superiores a 500 metros, desde que estejam rebaixadas em relação às unidades vizinhas."
   },
   {
-    "id": 3128770,
-    "enunciado": "Os povos indígenas brasileiros, habitantes originários do território nacional, enfrentam persistentes desafios no que concerne à demarcação de suas terras e à proteção de seus direitos territoriais. A morosidade nos processos demarcatórios e as invasões por atividades extrativistas ilegais, como o garimpo e a exploração madeireira, configuram graves violações aos direitos constitucionais e internacionais desses povos, resultando em um quadro de insegurança jurídica e ambiental, além de comprometer a integridade física e cultural dessas comunidades. Em relação aos povos originários, assinale a afirmativa correta.",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 11,
+    "enunciado": "Na classificação do relevo brasileiro, o Planalto Meridional se destaca por:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Relevo de regiões"],
+    "dificuldade": "Médio",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Os povos indígenas no Brasil falam a mesma língua, com pequenas variações regionais."
-      },
-      {
-        "letra": "B",
-        "texto": "A maior parte dos povos indígenas vivem em áreas urbanas, afastando-se de suas terras tradicionais."
-      },
-      {
-        "letra": "C",
-        "texto": "Há uma grande diversidade de povos indígenas no Brasil, mas entre os maiores grupos estão os ianomâmis, os guajajaras e os guaranis."
-      },
-      {
-        "letra": "D",
-        "texto": "Desde o início da colonização, as terras indígenas foram demarcadas de forma eficaz, garantindo a preservação de suas tradições e territórios."
-      }
+      { "letra": "A", "texto": "Ser formado por dobramentos recentes com alta sismicidade." },
+      { "letra": "B", "texto": "Apresentar chapadas, escarpas e solos férteis derivados de basalto." },
+      { "letra": "C", "texto": "Ser uma área de deposição fluvial e baixa declividade." },
+      { "letra": "D", "texto": "Fazer parte das planícies costeiras da Amazônia." },
+      { "letra": "E", "texto": "Estar situado exclusivamente no estado do Mato Grosso." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "B",
+    "resolucao": "O Planalto Meridional apresenta formações como chapadas e cuestas, além de solos férteis formados por derrames basálticos, como o solo roxo."
   },
   {
-    "id": 3126015,
-    "enunciado": "TRF4 mantém condenações por falta de preservação de sítio arqueológico em Florianópolis\nDois empresários, o IPHAN (Instituto do Patrimônio Histórico e Artístico Nacional) e a Prefeitura de Florianópolis tiveram mantidas as condenações pelo TRF4 (Tribunal Regional Federal da 4ª Região) por danos ao patrimônio cultural. Os réus foram denunciados pela falta de preservação do sítio arqueológico Sambaqui Aldeia Fúlvio Aducci, localizado na rua que leva o mesmo nome, no bairro Estreito, região Continental de Florianópolis. (...) A mesma decisão pediu ao município, ao Iphan e aos comerciantes dentro da área do sítio para garantirem a salvaguarda do local. Além disso, os réus devem financiar a elaboração de um estudo arqueológico e museológico que identifique, delimite, investigue e analise a integralidade do sítio arqueológico para poder indicar as medidas a serem executadas.\nFonte: ND Rádio. Justiça. TRF4 mantém condenações por falta de preservação de sítio arqueológico em Florianópolis Disponível em:https://ndmais.com.br/justica/trf4-mantem-condenacoes-por-faltade-preservacao-de-sitio-arqueologico-em-florianopolis/ (Último acesso dia 22/10, às 13 horas).\n\nCom base no texto, assinale a alternativa correta.",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 12,
+    "contexto": "A região Sudeste do Brasil apresenta grande diversidade de formas de relevo, incluindo áreas escarpadas, planaltos e depressões.",
+    "enunciado": "Dentre as unidades de relevo da região Sudeste, destaca-se:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Relevo de regiões"],
+    "dificuldade": "Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "O conceito de preservação impede qualquer uso das áreas de proteção arqueológicas, especialmente, os sambaquis por ser um fenômeno exclusivo do Brasil."
-      },
-      {
-        "letra": "B",
-        "texto": "Os sambaquis são formações naturais de origem geológica, com pouca relevância para o estudo de antigas populações humanas ou suas práticas culturais."
-      },
-      {
-        "letra": "C",
-        "texto": "A preservação dos sambaquis é importante para garantir a continuidade de atividades econômicas locais, como a mineração e a construção civil."
-      },
-      {
-        "letra": "D",
-        "texto": "A preservação dos sambaquis envolve a destruição controlada dessas formações para estudar seu conteúdo arqueológico de forma mais eficiente, garantindo um aproveitamento máximo dos recursos econômicos encontrados."
-      },
-      {
-        "letra": "E",
-        "texto": "Os sambaquis são sítios arqueológicos construídos por povos pré-históricos, compostos por restos de conchas, ossos e outros materiais, e sua preservação é essencial para o estudo das primeiras ocupações humanas no litoral brasileiro."
-      }
+      { "letra": "A", "texto": "A predominância de planícies costeiras extensas e contínuas." },
+      { "letra": "B", "texto": "A ausência de escarpas e de variações altimétricas expressivas." },
+      { "letra": "C", "texto": "A presença da Serra do Mar, formando escarpas voltadas para o litoral." },
+      { "letra": "D", "texto": "A dominação exclusiva de terrenos sedimentares recentes." },
+      { "letra": "E", "texto": "A constituição geológica exclusivamente vulcânica." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "C",
+    "resolucao": "A Serra do Mar marca a transição entre o planalto atlântico e a planície litorânea, formando escarpas que impactam o clima e o uso da terra."
   },
   {
-    "id": 3086391,
-    "enunciado": "Analise as afirmativas abaixo. Segundo, Pedro Paulo Funari e Ana Piñon:\n\n\n\n\n1. Os indígenas não são personagens de um passado distante. Existem, no Brasil contemporâneo, cerca de 235 povos indígenas.\n\n\n\n\n2. A história do Brasil tem início em 1500 quando os navegadores portugueses aqui aportaram.\n\n\n\n\n3. Os indígenas foram vítimas do avanço da civilização branca e hoje estão quase extintos, exceto por algumas centenas de sobreviventes esquecidos nos rincões das florestas.\n\n\n\n\n4. A mandioca, o tomate, a batata e o chocolate são algumas das contribuições dos povos americanos para o mundo.\n\n\n\n\n5. Muitas palavras da língua brasileira, como caju, Pindamonhangaba e Anhanguera, são de origem indígena.\n\n\n\n\nAssinale a alternativa que indica todas as afirmativas corretas.",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 13,
+    "enunciado": "Qual das alternativas apresenta corretamente uma característica do Planalto da Borborema?",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Planalto da Borborema"],
+    "dificuldade": "Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "São corretas apenas as afirmativas 1, 2 e 3."
-      },
-      {
-        "letra": "B",
-        "texto": "São corretas apenas as afirmativas 1, 2 e 4."
-      },
-      {
-        "letra": "C",
-        "texto": "São corretas apenas as afirmativas 1, 4 e 5."
-      },
-      {
-        "letra": "D",
-        "texto": "São corretas apenas as afirmativas 1, 3, 4 e 5."
-      },
-      {
-        "letra": "E",
-        "texto": "São corretas as afirmativas 1, 2, 3, 4 e 5."
-      }
+      { "letra": "A", "texto": "Possui origem sedimentar recente e altitudes inferiores a 200 metros." },
+      { "letra": "B", "texto": "É uma unidade de relevo com intensa atividade tectônica atual." },
+      { "letra": "C", "texto": "É um maciço cristalino, com papel relevante na dinâmica climática nordestina." },
+      { "letra": "D", "texto": "Abriga formações glaciárias preservadas." },
+      { "letra": "E", "texto": "Está associado ao pantanal mato-grossense." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "C",
+    "resolucao": "O Planalto da Borborema é um antigo maciço cristalino que interfere diretamente na dinâmica climática, dificultando a penetração de umidade no sertão."
   },
   {
-    "id": 3032610,
-    "enunciado": "No Brasil um grupo se especializou na exploração litorânea, em seus acampamentos deixaram conchas de peixes, seus mortos e instrumentos da indústria lítica, formando grandes amontoados. Esses vestígios da ocupação pré-histórica litorânea são chamados de:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 14,
+    "enunciado": "A unidade geomorfológica conhecida como Depressão Sertaneja do São Francisco apresenta como principal característica:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Relevo de regiões"],
+    "dificuldade": "Muito Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Ceramistas do litoral."
-      },
-      {
-        "letra": "B",
-        "texto": "Cultivadores do Amazonas."
-      },
-      {
-        "letra": "C",
-        "texto": "Tradição Humaitá."
-      },
-      {
-        "letra": "D",
-        "texto": "Sambaquis."
-      }
+      { "letra": "A", "texto": "Grande presença de planícies aluviais permanentemente inundadas." },
+      { "letra": "B", "texto": "Área de erosão intensiva que separa planaltos cristalinos." },
+      { "letra": "C", "texto": "Zona de dobramentos modernos com solos férteis vulcânicos." },
+      { "letra": "D", "texto": "Área de elevação constante e origem tectônica recente." },
+      { "letra": "E", "texto": "Região pantanosa de clima equatorial úmido." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "B",
+    "resolucao": "A Depressão Sertaneja é uma área de relevo rebaixado por processos erosivos, situada entre planaltos cristalinos do Nordeste."
   },
   {
-    "id": 3026881,
-    "enunciado": "“Indígenas, negros e mulheres estão entre os atores históricos menos reconhecidos. Não que não tenham sido importantes, não que não tenham influenciado sua própria geração e as seguintes: simplesmente não foram por muito tempo objeto da atenção dos pesquisadores”\nTexto extraído de: JALES, Luanna. Visibilidade histórica para mulheres, negros e indígenas. In: PINSKY, Jaime;\nPINSKY, Carla Bassanezi. Novos combates pela história: desafios-ensino. São Paulo: Contexto, 2021, p. 201.\n\nO parágrafo acima do capítulo escrito pela historiadora Luanna Jales traduz seu diagnóstico quanto à forma como os grupos minoritários foram vistos por longo período por historiadores. Sobre essa questão, conforme o olhar da autora, julgue as afirmativas abaixo:\n\nI. Os grupos minoritários (ou sub-representados) têm em comum o fato de, por longos períodos, não terem sido vistos como cidadãos ou terem sido considerados apenas cidadãos de segunda classe. Trata-se, hoje, de pessoas que raramente ocupam um número significativo de posições políticas, profissões consideradas de elite e protagonismo em peças publicitárias e produções midiáticas.\nII. A visão de que apenas pessoas vitoriosas, de grandeza, de importância e de genialidade incomparável merecem ser estudadas na escola dificulta a percepção de que todos, independentemente de posição social e capacidade de liderança, podem ser agentes históricos e influenciar de alguma forma o meio em que vivem.\nIII. Estudar as minorias nas escolas deve ocorrer não apenas por uma questão de representatividade, mas porque elas são historicamente importantes. Por isso, é primordial identificar a força de atuação dos grupos minoritários dentro da história do país e mostrar que as minorias são mais do que ícones eleitos por essa ou aquela militância.\nIV. É importante estudar as minorias de modo a reforçar o conhecimento das habilidades extraordinárias de personagens que emergiram de camadas sociais consideradas inferiores, possibilitando ao aluno compreender que personagens protagonistas emergem não apenas das camadas sociais mais abastadas.\n\nEstão CORRETAS:",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
+    "id": 15,
+    "enunciado": "Sobre as planícies brasileiras, assinale a alternativa correta:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo Brasileiro", "Classificação do relevo"],
+    "dificuldade": "Muito Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
+      "fonte": "Estuda AI",
+      "ano": 2025
     },
     "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Apenas as afirmativas I, II e III."
-      },
-      {
-        "letra": "B",
-        "texto": "Apenas as afirmativas II, III e IV."
-      },
-      {
-        "letra": "C",
-        "texto": "Apenas as afirmativas I, II e IV."
-      },
-      {
-        "letra": "D",
-        "texto": "Apenas as afirmativas I, III e IV."
-      },
-      {
-        "letra": "E",
-        "texto": "As afirmativas I, II, III e IV."
-      }
+      { "letra": "A", "texto": "São formadas por rochas cristalinas com forte dobramento." },
+      { "letra": "B", "texto": "Estão localizadas apenas no litoral sudeste." },
+      { "letra": "C", "texto": "Resultam do acúmulo de sedimentos recentes, com baixa altitude e pouca declividade." },
+      { "letra": "D", "texto": "Concentram os terrenos mais antigos do território nacional." },
+      { "letra": "E", "texto": "Têm origem vulcânica predominante e altitudes superiores a 1000 metros." }
     ],
-    "resposta_correta": null,
-    "resolucao": null
-  },
-  {
-    "id": 2611830,
-    "enunciado": "Nós, povos indígenas do mundo, unidos numa grande assembleia de homens sábios, declaramos a todas as nações:\n\nQuando a terra-mãe era nosso alimento\nQuando a noite escura formava o nosso teto,\nQuando o céu e a lua eram nossos pais,\nQuando todos éramos irmãos e irmãs,\nQuando nossos caciques e anciãos eram grandes líderes,\nQuando a justiça dirigia a lei e sua execução, \nAí outras civilizações chegaram!\n\nCom fome [...] de ouro, de terra e de todas as riquezas, trazendo numa mão a cruz e na outra a espada, sem conhecer ou querer aprender os costumes de nossos povos, nos classificaram abaixo dos animais, roubaram nossas terras e nos levaram para longe delas, transformando em escravos os “filhos do sol”.\nEntretanto não puderam nos eliminar e nem fazer esquecer o que somos […]\nE mesmo que nosso universo inteiro seja destruído Nós sobreviveremos por mais tempo que o império da morte!\n\nDeclaração solene dos povos indígenas do mundo. Port Alberni, Canadá, 1975. (adaptado)\n\nA Declaração Solene dos Povos Indígenas atenta para a resistência dos povos indígenas frente ao preconceito e o menosprezo do processo colonizador. A destruição das populações nativas do Brasil iniciou-se no século XVI e continua até hoje, embora tenha acontecido em ritmos diferentes ao longo dos séculos e em áreas distintas.\nSobre a questão indígena no Brasil, assinale a alternativa correta.",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos ,",
-      "Período Colonial: produção de riqueza e escravismo",
-      "Reconstrução Democrática: Governos Lula e Dilma – (PT no poder)"
-    ],
-    "dificuldade": "Desconhecida",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
-    },
-    "opcoes": [
-      {
-        "letra": "A",
-        "texto": "A Fundação Nacional do Índio (Funai) é a principal executora de políticas para a proteção e o reconhecimento dos costumes, línguas, crenças e tradições dos povos indígenas."
-      },
-      {
-        "letra": "B",
-        "texto": "As tensões geradoras dos massacres e da dizimação das populações nativas ocorreram principalmente no século XVI. Com a introdução da escravidão africana, a mão de obra indígena foi substituída, o que eliminou os conflitos e contribuiu para a formação de um Estado pluriétnico."
-      },
-      {
-        "letra": "C",
-        "texto": "A demarcação de reservas indígenas e o desenvolvimento de programas para a integração dos índios eliminaram os eventos de violência e a exploração ilegal de suas terras."
-      },
-      {
-        "letra": "D",
-        "texto": "Os eventos de violência contra a população indígena têm origem recente, haja vista que os contatos estabelecidos no período colonial foram pautados por trocas harmoniosas conhecidas como escambo."
-      }
-    ],
-    "resposta_correta": null,
-    "resolucao": null
-  },
-  {
-    "id": 2605233,
-    "enunciado": "No dia 21 de abril, é comemorado em todo o Brasil o Dia de Tiradentes. A data faz referência ao dia da morte do militar que teve importante participação na Inconfidência Mineira. A Inconfidência Mineira, ou Conjuração Mineira foi um movimento que defendia:",
-    "disciplina": "História",
-    "assunto": [
-      "História Geral ,",
-      "Fundamentos da História : Tempo, Memória e Cultura ,",
-      "História do Brasil",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
-    },
-    "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Proclamação de uma República."
-      },
-      {
-        "letra": "B",
-        "texto": "Abolição da escravidão no Brasil."
-      },
-      {
-        "letra": "C",
-        "texto": "Proclamação de uma Monarquia."
-      },
-      {
-        "letra": "D",
-        "texto": "Transferência da Corte para o Brasil."
-      }
-    ],
-    "resposta_correta": null,
-    "resolucao": null
-  },
-  {
-    "id": 2605232,
-    "enunciado": "O termo “capoeira” significa “o mato que nasce depois do desmatamento”. O nome está relacionado à forma como se dava a prática em seu início, realizada nas regiões de mato. O surgimento da expressão ocorreu na zona rural; somente depois chegou aos espaços urbanos. Além da intenção de desenvolver algo como defesa corporal, a capoeira foi criada como mecanismo de resistência cultural. A origem da capoeira está associada ao contexto da:",
-    "disciplina": "História",
-    "assunto": [
-      "História Geral ,",
-      "Fundamentos da História : Tempo, Memória e Cultura ,",
-      "História do Brasil",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
-    },
-    "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Escravidão indígena."
-      },
-      {
-        "letra": "B",
-        "texto": "Escravidão no Brasil."
-      },
-      {
-        "letra": "C",
-        "texto": "Colonização espanhola."
-      },
-      {
-        "letra": "D",
-        "texto": "Ocupação da África Oriental."
-      }
-    ],
-    "resposta_correta": null,
-    "resolucao": null
-  },
-  {
-    "id": 2602671,
-    "enunciado": "Qual grupo étnico indígena tem marcado significativamente a história pré-colonial e colonial do território paraibano, evidenciando uma rica trajetória de resistência e interações culturais com os primeiros colonizadores europeus?",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos"
-    ],
-    "dificuldade": "Desconhecida",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
-    },
-    "opcoes": [
-      {
-        "letra": "A",
-        "texto": "Tupinambá."
-      },
-      {
-        "letra": "B",
-        "texto": "Guarani."
-      },
-      {
-        "letra": "C",
-        "texto": "Xavante."
-      },
-      {
-        "letra": "D",
-        "texto": "Potiguara."
-      },
-      {
-        "letra": "E",
-        "texto": "Kaingang."
-      }
-    ],
-    "resposta_correta": null,
-    "resolucao": null
-  },
-  {
-    "id": 2560893,
-    "enunciado": "Durante o período de expansão marítima e colonização europeia, o Tratado de Tordesilhas (1494) teve um impacto significativo na distribuição territorial entre Espanha e Portugal. Assinale corretamente uma consequência indireta desse tratado.",
-    "disciplina": "História",
-    "assunto": [
-      "História do Brasil ,",
-      "Pré-História Brasileira: Legado de povos nativos ,",
-      "Mercantilismo, Colonialismo e a ocupação portuguesa no Brasil"
-    ],
-    "dificuldade": "Desconhecida",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "QConcursos",
-      "ano": 2024
-    },
-    "opcoes": [
-      {
-        "letra": "A",
-        "texto": "A aceleração da unificação italiana."
-      },
-      {
-        "letra": "B",
-        "texto": "A demarcação de áreas de influência que anteciparam disputas territoriais na América do Sul."
-      },
-      {
-        "letra": "C",
-        "texto": "O fortalecimento do Império Otomano."
-      },
-      {
-        "letra": "D",
-        "texto": "A facilitação da colonização francesa no Canadá."
-      }
-    ],
-    "resposta_correta": null,
-    "resolucao": null
+    "resposta_correta": "C",
+    "resolucao": "As planícies são áreas de acumulação sedimentar recente, associadas a rios, mares ou lagos, com relevo pouco acidentado e baixa altitude."
   }
 ]
