@@ -102,15 +102,42 @@
   <script src="../assets/js/pages/perfil.js"></script>
   
   
-  <script>
-    window.addEventListener('load', () => {
-      console.log('Chaves do localStorage:');
-      for (let i = 0; i < localStorage.length; i++) {
-        const chave = localStorage.key(i);
-        console.log(chave);
+<script>
+  window.addEventListener('load', () => {
+    const chavesDesejadas = [
+      'sessoesEstudo',
+      'userInfo',
+      'progresso_trilha_estudo',
+      'questoesResolvidas',
+      'fotoPerfil',
+      'estudaai_openrouter_apikey',
+      'apiKeyUsuario',
+      'cronograma',
+      'minhasAnotacoes',
+      'estudaAiSummaries',
+      'disciplinas'
+    ];
+    
+    const resultado = {};
+    
+    chavesDesejadas.forEach((chave) => {
+      const valor = localStorage.getItem(chave);
+      if (valor !== null) {
+        try {
+          // tenta converter de JSON se possível
+          resultado[chave] = JSON.parse(valor);
+        } catch (e) {
+          // se não for JSON, salva como string mesmo
+          resultado[chave] = valor;
+        }
+      } else {
+        resultado[chave] = null; // ou você pode omitir se preferir
       }
     });
-  </script>
+    
+    console.log('🧠 Dados do localStorage selecionado:', resultado);
+  });
+</script>
 
 
 </body>
