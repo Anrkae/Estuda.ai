@@ -130,18 +130,25 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnMatch) btnMatch.classList.add('active');
     }
     
-const btnCopiar = document.getElementById('btnCopiarLS');
-btnCopiar?.addEventListener('click', () => {
+    
+    const btnDownload = document.getElementById('btnDownloadLS');
+btnDownload?.addEventListener('click', () => {
     try {
-        const json = JSON.stringify(localStorage, null, 2);
-        navigator.clipboard.writeText(json).then(() => {
-            alert('📋 Copiado com sucesso!');
-        }).catch(() => {
-            alert('❌ Erro ao copiar!');
-        });
+        const dados = JSON.stringify(localStorage, null, 2);
+        const blob = new Blob([dados], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'backup-localStorage.json';
+        a.click();
+        
+        URL.revokeObjectURL(url); // Limpa depois
     } catch (e) {
-        console.error('Erro ao copiar localStorage:', e);
-        alert('❌ Erro inesperado.');
+        console.error('❌ Erro ao gerar arquivo:', e);
+        alert('Erro ao gerar o arquivo de backup.');
     }
 });
+
+
 });
