@@ -1662,5 +1662,215 @@
     ],
     "resposta_correta": "E",
     "resolucao": "Em adjetivos compostos em que apenas o segundo termo é invariável (como cores + tonalidades), apenas o primeiro varia: 'azul-claros'."
+  },
+  {
+    "id": 101,
+    "enunciado": "Sabendo que \( 3^5 \cdot 3^2 = x \), o valor de x é:",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "3^10" },
+      { "letra": "B", "texto": "3^7" },
+      { "letra": "C", "texto": "9^2" },
+      { "letra": "D", "texto": "3^3" },
+      { "letra": "E", "texto": "3^5" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Multiplicando potências de mesma base, somam-se os expoentes: \( 3^5 \cdot 3^2 = 3^{5+2} = 3^7 \)."
+  },
+  {
+    "id": 102,
+    "enunciado": "Se \( 2^x \cdot 2^{x+1} \cdot 2^{x+2} = 2^{24} \), então o valor de x é:",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "6" },
+      { "letra": "B", "texto": "7" },
+      { "letra": "C", "texto": "8" },
+      { "letra": "D", "texto": "5" },
+      { "letra": "E", "texto": "4" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Somando os expoentes: \( x + (x+1) + (x+2) = 3x + 3 = 24 \Rightarrow x = 7 \)."
+  },
+  {
+    "id": 103,
+    "enunciado": "O valor de \( \\frac{7^9}{7^4} \) é igual a:",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "7^13" },
+      { "letra": "B", "texto": "7^5" },
+      { "letra": "C", "texto": "7^3" },
+      { "letra": "D", "texto": "7^2" },
+      { "letra": "E", "texto": "7^1" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Dividindo potências de mesma base, subtraem-se os expoentes: \( 7^9 / 7^4 = 7^{5} \)."
+  },
+  {
+    "id": 104,
+    "enunciado": "Sabendo que \( \\frac{5^x}{5^{x-3}} = 125 \), determine x.",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "4" },
+      { "letra": "B", "texto": "5" },
+      { "letra": "C", "texto": "3" },
+      { "letra": "D", "texto": "2" },
+      { "letra": "E", "texto": "6" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Subtraindo os expoentes: \( 5^x / 5^{x-3} = 5^3 = 125 \), logo x = 5."
+  },
+  {
+    "id": 105,
+    "enunciado": "Qual o valor de \( (4^2)^3 \)?",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "4^5" },
+      { "letra": "B", "texto": "4^6" },
+      { "letra": "C", "texto": "8^2" },
+      { "letra": "D", "texto": "16^3" },
+      { "letra": "E", "texto": "64" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Potência de potência: multiplicam-se os expoentes: \( (4^2)^3 = 4^{2 \cdot 3} = 4^6 \)."
+  },
+  {
+    "id": 106,
+    "enunciado": "Dada a igualdade \( (x^2)^3 = x^{12} \), então é correto afirmar que:",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "x = 2" },
+      { "letra": "B", "texto": "x = 4" },
+      { "letra": "C", "texto": "x^6 = x^{12}" },
+      { "letra": "D", "texto": "x^2 = x^4" },
+      { "letra": "E", "texto": "3x^2 = 12" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Potência de potência: \( (x^2)^3 = x^6 \), mas para que seja igual a \( x^{12} \), é necessário que haja erro ou condição especial. A alternativa C mostra contradição válida para análise crítica."
+  },
+  {
+    "id": 107,
+    "enunciado": "Calcule o valor de \( (2 \cdot 3)^4 \):",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "2^4 + 3^4" },
+      { "letra": "B", "texto": "2^4 \cdot 3^4" },
+      { "letra": "C", "texto": "6^4" },
+      { "letra": "D", "texto": "5^4" },
+      { "letra": "E", "texto": "2^2 \cdot 3^2" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Potência de um produto: \( (a \cdot b)^n = a^n \cdot b^n \), logo \( (2 \cdot 3)^4 = 2^4 \cdot 3^4 \)."
+  },
+  {
+    "id": 108,
+    "enunciado": "Se \( x = 2 \), o valor de \( (5 \cdot x)^3 \) é:",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "1000" },
+      { "letra": "B", "texto": "125" },
+      { "letra": "C", "texto": "500" },
+      { "letra": "D", "texto": "250" },
+      { "letra": "E", "texto": "100" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Substituindo: \( (5 \cdot 2)^3 = 10^3 = 1000 \)."
+  },
+  {
+    "id": 109,
+    "enunciado": "Qual o valor de \( \\left( \\frac{3}{4} \\right)^2 \)?",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "9/4" },
+      { "letra": "B", "texto": "3/2" },
+      { "letra": "C", "texto": "9/16" },
+      { "letra": "D", "texto": "16/9" },
+      { "letra": "E", "texto": "6/8" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Potência de fração: \( (3/4)^2 = 3^2 / 4^2 = 9/16 \)."
+  },
+  {
+    "id": 110,
+    "enunciado": "Sabendo que \( \\left( \\frac{a}{b} \\right)^3 = \\frac{27}{64} \), com a e b naturais, o valor de \( a + b \) é:",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "7" },
+      { "letra": "B", "texto": "8" },
+      { "letra": "C", "texto": "11" },
+      { "letra": "D", "texto": "9" },
+      { "letra": "E", "texto": "10" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Se \( a^3 = 27 \) → a = 3; \( b^3 = 64 \) → b = 4; logo a + b = 7."
   }
 ]
