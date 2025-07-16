@@ -241,9 +241,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileIconFallback = document.getElementById('profileIconFallback');
     const profileImage = document.getElementById('profileImage');
     function loadProfilePicOnButton() {
-        const userInfo = getUserInfoFromStorage();
-        if (userInfo?.profilePicBase64) {
-            profileImage.src = userInfo.profilePicBase64;
+        const foto = localStorage.getItem('fotoPerfil');
+        if (foto) {
+            profileImage.src = foto;
             profileImage.style.display = 'block';
             profileIconFallback.style.display = 'none';
         } else {

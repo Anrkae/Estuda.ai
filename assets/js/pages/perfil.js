@@ -129,4 +129,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnMatch = document.querySelector(`.menu-btn[data-tab="${hash.replace('aba-', '')}"]`);
         if (btnMatch) btnMatch.classList.add('active');
     }
+    
+const btnCopiar = document.getElementById('btnCopiarLS');
+btnCopiar?.addEventListener('click', () => {
+    try {
+        const json = JSON.stringify(localStorage, null, 2);
+        navigator.clipboard.writeText(json).then(() => {
+            alert('📋 Copiado com sucesso!');
+        }).catch(() => {
+            alert('❌ Erro ao copiar!');
+        });
+    } catch (e) {
+        console.error('Erro ao copiar localStorage:', e);
+        alert('❌ Erro inesperado.');
+    }
+});
 });
