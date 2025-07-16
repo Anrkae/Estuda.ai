@@ -27,6 +27,12 @@
   <div>
     <script src="../assets/js/components/header.js"></script>
   </div>
+  
+  
+  <textarea id="jsonOutput" rows="25" style="width:100%; font-family: monospace;"></textarea>
+<button onclick="copiarParaClipboard()">📋 Copiar JSON</button>
+
+
 
   <div class="profile-container">
 
@@ -101,15 +107,14 @@
 
   <script src="../assets/js/pages/perfil.js"></script>
   
-  
+
 <script>
-  window.addEventListener('load', () => {
+  function gerarJsonLocalStorage() {
     const chavesDesejadas = [
       'sessoesEstudo',
       'userInfo',
       'progresso_trilha_estudo',
       'questoesResolvidas',
-      'fotoPerfil',
       'estudaai_openrouter_apikey',
       'apiKeyUsuario',
       'cronograma',
@@ -117,25 +122,32 @@
       'estudaAiSummaries',
       'disciplinas'
     ];
-    
     const resultado = {};
-    
     chavesDesejadas.forEach((chave) => {
       const valor = localStorage.getItem(chave);
       if (valor !== null) {
         try {
-          // tenta converter de JSON se possível
           resultado[chave] = JSON.parse(valor);
-        } catch (e) {
-          // se não for JSON, salva como string mesmo
+        } catch {
           resultado[chave] = valor;
         }
       } else {
-        resultado[chave] = null; // ou você pode omitir se preferir
+        resultado[chave] = null;
       }
     });
-    
-    console.log('🧠 Dados do localStorage selecionado:', resultado);
+    return JSON.stringify(resultado, null, 2); // JSON bem formatado
+  }
+  
+  function copiarParaClipboard() {
+    const textarea = document.getElementById('jsonOutput');
+    textarea.select();
+    document.execCommand('copy');
+    alert('✅ JSON copiado!');
+  }
+  
+  // Mostrar JSON ao carregar
+  window.addEventListener('load', () => {
+    document.getElementById('jsonOutput').value = gerarJsonLocalStorage();
   });
 </script>
 
