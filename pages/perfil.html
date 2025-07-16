@@ -18,19 +18,15 @@
   <script src="https://unpkg.com/@popperjs/core@2"></script>
   <script src="https://unpkg.com/tippy.js@6"></script>
   
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script>eruda.init();</script>
+  
 </head>
 <body>
   
   <div>
     <script src="../assets/js/components/header.js"></script>
   </div>
-  
-  
-  <div id="localStorageViewer" style="margin-top: 20px;">
-  <textarea id="localStorageText" rows="12" style="width: 100%; max-width: 100%; font-family: monospace;"></textarea>
-  <button id="copiarLS" style="margin-top: 5px;">📋 Copiar Dados</button>
-</div>
-  
 
   <div class="profile-container">
 
@@ -105,5 +101,17 @@
 
   <script src="../assets/js/pages/perfil.js"></script>
   
+  
+  <script>
+    window.addEventListener('load', () => {
+      console.log('Chaves do localStorage:');
+      for (let i = 0; i < localStorage.length; i++) {
+        const chave = localStorage.key(i);
+        console.log(chave);
+      }
+    });
+  </script>
+
+
 </body>
 </html>

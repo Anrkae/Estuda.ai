@@ -129,34 +129,5 @@ document.addEventListener('DOMContentLoaded', () => {
         const btnMatch = document.querySelector(`.menu-btn[data-tab="${hash.replace('aba-', '')}"]`);
         if (btnMatch) btnMatch.classList.add('active');
     }
-    
-    
-    const textareaLS = document.getElementById('localStorageText');
-const copiarBtn = document.getElementById('copiarLS');
-
-// Preenche a caixa com o localStorage completo
-if (textareaLS) {
-    const data = {};
-    for (let i = 0; i < localStorage.length; i++) {
-        const chave = localStorage.key(i);
-        data[chave] = localStorage.getItem(chave);
-    }
-    textareaLS.value = JSON.stringify(data, null, 2);
-}
-
-// Copiar ao clicar no botão
-copiarBtn?.addEventListener('click', () => {
-    if (!textareaLS) return;
-    
-    textareaLS.select();
-    try {
-        const sucesso = document.execCommand('copy');
-        alert(sucesso ? '📋 Copiado com sucesso!' : '❌ Falha ao copiar!');
-    } catch (err) {
-        console.error('Erro ao copiar:', err);
-        alert('❌ Erro ao copiar!');
-    }
-});
-
 
 });
