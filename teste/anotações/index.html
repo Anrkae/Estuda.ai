@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Anotações</title>
+  
+  <link rel="stylesheet" href="../../assets/css/essentials.css" />
+  <link rel="stylesheet" href="estilo.css" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/components/components.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+</head>
+<body>
+
+  <!-- SEU HEADER PERSONALIZADO AQUI -->
+  <div>
+    <script src="../../assets/js/components/header.js"></script>
+  </div>
+
+  <!-- Conteúdos das tabs -->
+  <main class="conteudo">
+    <section class="tab-content active" id="resumos">
+      <input type="text" class="busca" placeholder="Buscar resumos..." data-type="resumos">
+      <div class="lista-anotacoes" id="lista-resumos"></div>
+    </section>
+
+    <section class="tab-content" id="flashcards">
+      <input type="text" class="busca" placeholder="Buscar flashcards..." data-type="flashcards">
+      <div class="lista-anotacoes" id="lista-flashcards"></div>
+    </section>
+
+    <section class="tab-content" id="mapas">
+      <input type="text" class="busca" placeholder="Buscar mapas mentais..." data-type="mapas">
+      <div class="lista-anotacoes" id="lista-mapas"></div>
+    </section>
+  </main>
+
+  <!-- Botão flutuante para adicionar -->
+  <button class="add-btn" id="btnAdd"><i class="fas fa-plus"></i></button>
+
+  <!-- Navegação inferior -->
+  <nav class="bottom-nav">
+    <button class="nav-btn active" data-tab="resumos"><i class="fas fa-file-lines"></i><span>Resumos</span></button>
+    <button class="nav-btn" data-tab="flashcards"><i class="fas fa-clone"></i><span>Flashcards</span></button>
+    <button class="nav-btn" data-tab="mapas"><i class="fas fa-brain"></i><span>Mapas</span></button>
+  </nav>
+  
+  <script src="anotacoes.js"></script>
+</body>
+</html>
