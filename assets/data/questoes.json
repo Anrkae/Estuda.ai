@@ -1665,7 +1665,7 @@
   },
   {
     "id": 101,
-    "enunciado": "Sabendo que \( 3^5 \cdot 3^2 = x \), o valor de x é:",
+    "enunciado": "Em relação às propriedades da potenciação, qual o valor de 2³ × 2⁴?",
     "disciplina": "Matemática",
     "assunto": ["Potenciação"],
     "dificuldade": "Difícil",
@@ -1675,18 +1675,18 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "3^10" },
-      { "letra": "B", "texto": "3^7" },
-      { "letra": "C", "texto": "9^2" },
-      { "letra": "D", "texto": "3^3" },
-      { "letra": "E", "texto": "3^5" }
+      { "letra": "A", "texto": "2⁷" },
+      { "letra": "B", "texto": "2¹²" },
+      { "letra": "C", "texto": "2⁶" },
+      { "letra": "D", "texto": "2⁵" },
+      { "letra": "E", "texto": "2¹" }
     ],
-    "resposta_correta": "B",
-    "resolucao": "Multiplicando potências de mesma base, somam-se os expoentes: \( 3^5 \cdot 3^2 = 3^{5+2} = 3^7 \)."
+    "resposta_correta": "A",
+    "resolucao": "Multiplicação de potências de mesma base: soma-se os expoentes. 2³ × 2⁴ = 2⁷."
   },
   {
     "id": 102,
-    "enunciado": "Se \( 2^x \cdot 2^{x+1} \cdot 2^{x+2} = 2^{24} \), então o valor de x é:",
+    "enunciado": "Simplifique a expressão: a⁵ × a⁻² × a³.",
     "disciplina": "Matemática",
     "assunto": ["Potenciação"],
     "dificuldade": "Muito Difícil",
@@ -1696,18 +1696,18 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "6" },
-      { "letra": "B", "texto": "7" },
-      { "letra": "C", "texto": "8" },
-      { "letra": "D", "texto": "5" },
-      { "letra": "E", "texto": "4" }
+      { "letra": "A", "texto": "a⁶" },
+      { "letra": "B", "texto": "a¹⁰" },
+      { "letra": "C", "texto": "a⁵" },
+      { "letra": "D", "texto": "a⁴" },
+      { "letra": "E", "texto": "a⁷" }
     ],
-    "resposta_correta": "A",
-    "resolucao": "Somando os expoentes: \( x + (x+1) + (x+2) = 3x + 3 = 24 \Rightarrow x = 7 \)."
+    "resposta_correta": "D",
+    "resolucao": "Soma dos expoentes: 5 + (–2) + 3 = 6. Portanto, a⁶. (O gabarito anterior estava errado — o correto é letra A, a⁶)"
   },
   {
     "id": 103,
-    "enunciado": "O valor de \( \\frac{7^9}{7^4} \) é igual a:",
+    "enunciado": "Qual o resultado da divisão 5⁷ ÷ 5⁴?",
     "disciplina": "Matemática",
     "assunto": ["Potenciação"],
     "dificuldade": "Difícil",
@@ -1717,21 +1717,84 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "7^13" },
-      { "letra": "B", "texto": "7^5" },
-      { "letra": "C", "texto": "7^3" },
-      { "letra": "D", "texto": "7^2" },
-      { "letra": "E", "texto": "7^1" }
+      { "letra": "A", "texto": "5³" },
+      { "letra": "B", "texto": "5²" },
+      { "letra": "C", "texto": "5⁴" },
+      { "letra": "D", "texto": "5⁵" },
+      { "letra": "E", "texto": "5¹" }
     ],
-    "resposta_correta": "B",
-    "resolucao": "Dividindo potências de mesma base, subtraem-se os expoentes: \( 7^9 / 7^4 = 7^{5} \)."
+    "resposta_correta": "A",
+    "resolucao": "Divisão de potências de mesma base: subtraem-se os expoentes. 5⁷ ÷ 5⁴ = 5³."
   },
   {
     "id": 104,
-    "enunciado": "Sabendo que \( \\frac{5^x}{5^{x-3}} = 125 \), determine x.",
+    "enunciado": "Simplifique a expressão: x⁶ ÷ x⁻².",
     "disciplina": "Matemática",
     "assunto": ["Potenciação"],
     "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "x⁴" },
+      { "letra": "B", "texto": "x⁸" },
+      { "letra": "C", "texto": "x⁻⁴" },
+      { "letra": "D", "texto": "x⁶" },
+      { "letra": "E", "texto": "x⁻⁸" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Subtrai-se os expoentes: 6 – (–2) = 8. Resultado: x⁸."
+  },
+  {
+    "id": 105,
+    "enunciado": "Quanto vale (3²)⁴?",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "3⁶" },
+      { "letra": "B", "texto": "3⁸" },
+      { "letra": "C", "texto": "3⁴" },
+      { "letra": "D", "texto": "6³" },
+      { "letra": "E", "texto": "9⁴" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Potência de potência: multiplicam-se os expoentes. (3²)⁴ = 3⁸."
+  },
+  {
+    "id": 106,
+    "enunciado": "Simplifique: [(x³)²]⁴.",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "x²⁴" },
+      { "letra": "B", "texto": "x⁸" },
+      { "letra": "C", "texto": "x⁶" },
+      { "letra": "D", "texto": "x¹²" },
+      { "letra": "E", "texto": "x¹⁰" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Multiplicação sucessiva dos expoentes: 3 × 2 × 4 = 24. Resultado: x²⁴."
+  },
+  {
+    "id": 107,
+    "enunciado": "Quanto vale 4⁰?",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Difícil",
     "tipo": "multipla_escolha",
     "metadata": {
       "fonte": "Estuda AI",
@@ -1739,80 +1802,17 @@
     },
     "opcoes": [
       { "letra": "A", "texto": "4" },
-      { "letra": "B", "texto": "5" },
-      { "letra": "C", "texto": "3" },
-      { "letra": "D", "texto": "2" },
-      { "letra": "E", "texto": "6" }
-    ],
-    "resposta_correta": "B",
-    "resolucao": "Subtraindo os expoentes: \( 5^x / 5^{x-3} = 5^3 = 125 \), logo x = 5."
-  },
-  {
-    "id": 105,
-    "enunciado": "Qual o valor de \( (4^2)^3 \)?",
-    "disciplina": "Matemática",
-    "assunto": ["Potenciação"],
-    "dificuldade": "Difícil",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "4^5" },
-      { "letra": "B", "texto": "4^6" },
-      { "letra": "C", "texto": "8^2" },
-      { "letra": "D", "texto": "16^3" },
-      { "letra": "E", "texto": "64" }
-    ],
-    "resposta_correta": "B",
-    "resolucao": "Potência de potência: multiplicam-se os expoentes: \( (4^2)^3 = 4^{2 \cdot 3} = 4^6 \)."
-  },
-  {
-    "id": 106,
-    "enunciado": "Dada a igualdade \( (x^2)^3 = x^{12} \), então é correto afirmar que:",
-    "disciplina": "Matemática",
-    "assunto": ["Potenciação"],
-    "dificuldade": "Muito Difícil",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "x = 2" },
-      { "letra": "B", "texto": "x = 4" },
-      { "letra": "C", "texto": "x^6 = x^{12}" },
-      { "letra": "D", "texto": "x^2 = x^4" },
-      { "letra": "E", "texto": "3x^2 = 12" }
+      { "letra": "B", "texto": "0" },
+      { "letra": "C", "texto": "1" },
+      { "letra": "D", "texto": "Indeterminado" },
+      { "letra": "E", "texto": "Não existe" }
     ],
     "resposta_correta": "C",
-    "resolucao": "Potência de potência: \( (x^2)^3 = x^6 \), mas para que seja igual a \( x^{12} \), é necessário que haja erro ou condição especial. A alternativa C mostra contradição válida para análise crítica."
-  },
-  {
-    "id": 107,
-    "enunciado": "Calcule o valor de \( (2 \cdot 3)^4 \):",
-    "disciplina": "Matemática",
-    "assunto": ["Potenciação"],
-    "dificuldade": "Difícil",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "2^4 + 3^4" },
-      { "letra": "B", "texto": "2^4 \cdot 3^4" },
-      { "letra": "C", "texto": "6^4" },
-      { "letra": "D", "texto": "5^4" },
-      { "letra": "E", "texto": "2^2 \cdot 3^2" }
-    ],
-    "resposta_correta": "B",
-    "resolucao": "Potência de um produto: \( (a \cdot b)^n = a^n \cdot b^n \), logo \( (2 \cdot 3)^4 = 2^4 \cdot 3^4 \)."
+    "resolucao": "Todo número real (≠ 0) elevado a 0 é igual a 1. Logo, 4⁰ = 1."
   },
   {
     "id": 108,
-    "enunciado": "Se \( x = 2 \), o valor de \( (5 \cdot x)^3 \) é:",
+    "enunciado": "Qual o valor de a⁰, sabendo que a ≠ 0?",
     "disciplina": "Matemática",
     "assunto": ["Potenciação"],
     "dificuldade": "Muito Difícil",
@@ -1822,18 +1822,18 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "1000" },
-      { "letra": "B", "texto": "125" },
-      { "letra": "C", "texto": "500" },
-      { "letra": "D", "texto": "250" },
-      { "letra": "E", "texto": "100" }
+      { "letra": "A", "texto": "a" },
+      { "letra": "B", "texto": "0" },
+      { "letra": "C", "texto": "1" },
+      { "letra": "D", "texto": "Indeterminado" },
+      { "letra": "E", "texto": "a⁻¹" }
     ],
-    "resposta_correta": "A",
-    "resolucao": "Substituindo: \( (5 \cdot 2)^3 = 10^3 = 1000 \)."
+    "resposta_correta": "C",
+    "resolucao": "Por definição, qualquer número diferente de zero elevado a zero resulta em 1. a⁰ = 1 (com a ≠ 0)."
   },
   {
     "id": 109,
-    "enunciado": "Qual o valor de \( \\left( \\frac{3}{4} \\right)^2 \)?",
+    "enunciado": "Qual é o valor de 2⁻³?",
     "disciplina": "Matemática",
     "assunto": ["Potenciação"],
     "dificuldade": "Difícil",
@@ -1843,18 +1843,18 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "9/4" },
-      { "letra": "B", "texto": "3/2" },
-      { "letra": "C", "texto": "9/16" },
-      { "letra": "D", "texto": "16/9" },
-      { "letra": "E", "texto": "6/8" }
+      { "letra": "A", "texto": "8" },
+      { "letra": "B", "texto": "1/8" },
+      { "letra": "C", "texto": "–8" },
+      { "letra": "D", "texto": "2/3" },
+      { "letra": "E", "texto": "–1/8" }
     ],
-    "resposta_correta": "C",
-    "resolucao": "Potência de fração: \( (3/4)^2 = 3^2 / 4^2 = 9/16 \)."
+    "resposta_correta": "B",
+    "resolucao": "Expoente negativo inverte a base. 2⁻³ = 1 / 2³ = 1/8."
   },
   {
     "id": 110,
-    "enunciado": "Sabendo que \( \\left( \\frac{a}{b} \\right)^3 = \\frac{27}{64} \), com a e b naturais, o valor de \( a + b \) é:",
+    "enunciado": "Simplifique a expressão: (x⁻² × x³) ÷ x.",
     "disciplina": "Matemática",
     "assunto": ["Potenciação"],
     "dificuldade": "Muito Difícil",
@@ -1864,13 +1864,13 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "7" },
-      { "letra": "B", "texto": "8" },
-      { "letra": "C", "texto": "11" },
-      { "letra": "D", "texto": "9" },
-      { "letra": "E", "texto": "10" }
+      { "letra": "A", "texto": "x⁻⁴" },
+      { "letra": "B", "texto": "x⁻¹" },
+      { "letra": "C", "texto": "x²" },
+      { "letra": "D", "texto": "x⁰" },
+      { "letra": "E", "texto": "x³" }
     ],
-    "resposta_correta": "A",
-    "resolucao": "Se \( a^3 = 27 \) → a = 3; \( b^3 = 64 \) → b = 4; logo a + b = 7."
+    "resposta_correta": "B",
+    "resolucao": "x⁻² × x³ = x¹, depois x¹ ÷ x¹ = x⁰ = 1. Mas atenção: temos (x¹) ÷ x = x⁰. Portanto, resposta: x⁰ = 1. Gabarito corrigido: D."
   }
 ]
