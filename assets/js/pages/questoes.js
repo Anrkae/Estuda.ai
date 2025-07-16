@@ -57,43 +57,52 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   };
 
-  // Função de resposta (igual ao base questoes(11).js)
+  // Função de resposta
   const responderQuestao = (btn) => {
     const container = btn.closest('.question-item');
-    const id        = container.id;
-    const questao   = questionsDataStore[id];
-    const resposta  = container.dataset.selected;
+    const id = container.id;
+    const questao = questionsDataStore[id];
+    const resposta = container.dataset.selected;
     if (!questao || !resposta || container.classList.contains('answered')) return;
-
+    
+    container.querySelectorAll('.option-btn').forEach(opt => {
+      opt.classList.remove('cortada', 'selected-preview', 'selected');
+      const corteBtn = opt.closest('.option-wrapper')?.querySelector('.corte-btn');
+      if (corteBtn) {
+        corteBtn.innerHTML = '<i class="fas fa-scissors"></i>';
+        corteBtn.style.display = 'none';
+      }
+    });
+    
     const correta = questao.resposta_correta;
     const acertou = resposta === correta;
     container.classList.add('answered', acertou ? 'correct' : 'incorrect');
-
+    
     container.querySelectorAll('.option-btn').forEach(b => {
       b.disabled = true;
       if (b.dataset.value === resposta) b.classList.add('selected');
       if (b.dataset.value === correta) b.classList.add('correct-answer-highlight');
     });
-
-    container.querySelector('.feedback-message').textContent = acertou
-      ? 'Resposta Correta!'
-      : `Incorreto. A resposta correta é: ${correta}`;
-
+    
+    container.querySelector('.feedback-message').textContent = acertou ?
+      'Resposta Correta!' :
+      `Incorreto. A resposta correta é: ${correta}`;
+    
     const gabaritoBtn = container.querySelector('.view-resolution-btn');
     if (gabaritoBtn) gabaritoBtn.style.display = 'inline-flex';
-
+    
     currentSessionStats.answeredCount++;
     if (acertou) currentSessionStats.correctCount++;
-
+    
     salvarResolvida(questao.id, acertou);
-
+    
     if (window.timerPopupAPI?.updateStats) {
       window.timerPopupAPI.updateStats(
         currentSessionStats.answeredCount,
         currentSessionStats.correctCount
       );
     }
-
+    
     if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
       finalizeButton.click();
     }
@@ -302,6 +311,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Buscar questões e iniciar sessão
   buscarQuestoes.addEventListener('click', async () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.querySelector('.bloco')?.classList.add('minimizado');
+  
     aplicarFiltrosAvancados();
     const qtd = parseInt(numeroQuestoes.value) || 5;
     if (!questoesFiltradas.length) {
