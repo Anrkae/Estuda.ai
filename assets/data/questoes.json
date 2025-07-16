@@ -1279,5 +1279,388 @@
     ],
     "resposta_correta": "B",
     "resolucao": "A pecuária no sertão nordestino abastecia engenhos com carne, couro e tração animal, sendo uma atividade complementar essencial para a manutenção da economia açucareira."
+  },
+  {
+    "id": 61,
+    "enunciado": "Assinale a alternativa em que o substantivo é abstrato:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Substantivos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Cadeira" },
+      { "letra": "B", "texto": "Beleza" },
+      { "letra": "C", "texto": "Janela" },
+      { "letra": "D", "texto": "Parede" },
+      { "letra": "E", "texto": "Lápis" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Beleza é um substantivo abstrato porque depende de um ser para existir. Já os demais são concretos, com existência física independente."
+  },
+  {
+    "id": 62,
+    "enunciado": "Em qual alternativa o adjetivo modifica corretamente o substantivo, mantendo concordância em gênero e número?",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Adjetivos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "As menino inteligente resolveram o problema." },
+      { "letra": "B", "texto": "A crianças felizes brincavam no pátio." },
+      { "letra": "C", "texto": "Os alunos dedicados fizeram a tarefa." },
+      { "letra": "D", "texto": "O mulher forte ajudou o idoso." },
+      { "letra": "E", "texto": "Os estudante aplicado passaram no teste." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A alternativa C apresenta concordância correta: 'alunos' (masculino plural) com 'dedicados' (adjetivo no mesmo gênero e número)."
+  },
+  {
+    "id": 63,
+    "contexto": "Leia o trecho: 'Esta é a decisão que todos esperávamos.'",
+    "enunciado": "O termo destacado no trecho é um exemplo de:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Pronomes"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Pronome possessivo" },
+      { "letra": "B", "texto": "Pronome demonstrativo" },
+      { "letra": "C", "texto": "Pronome pessoal" },
+      { "letra": "D", "texto": "Pronome relativo" },
+      { "letra": "E", "texto": "Pronome indefinido" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O termo 'Esta' é um pronome demonstrativo, pois indica algo próximo do emissor no tempo, espaço ou no discurso."
+  },
+  {
+    "id": 64,
+    "enunciado": "Assinale a alternativa em que há emprego correto do artigo definido:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Artigos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ela encontrou a aluno na sala." },
+      { "letra": "B", "texto": "As garotos brincavam no quintal." },
+      { "letra": "C", "texto": "O pessoas chegaram cedo." },
+      { "letra": "D", "texto": "O livro estava sobre a mesa." },
+      { "letra": "E", "texto": "As amigo viajaram ontem." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'O livro' e 'a mesa' estão corretamente precedidos por artigos definidos que concordam em gênero e número com os substantivos."
+  },
+  {
+    "id": 65,
+    "enunciado": "Marque a opção em que o verbo está conjugado no tempo verbal incorreto, considerando o contexto:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Verbos"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Se eu estudasse, passaria no exame." },
+      { "letra": "B", "texto": "Quando ela chegou, todos haviam saído." },
+      { "letra": "C", "texto": "Caso ele vim, traga o documento." },
+      { "letra": "D", "texto": "Se você tivesse dito, eu teria ajudado." },
+      { "letra": "E", "texto": "Mesmo que ele tente, não conseguirá sozinho." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O verbo 'vim' está incorretamente conjugado. O correto seria 'vier' (forma do futuro do subjuntivo: 'Caso ele vier')."
+  },
+  {
+    "id": 66,
+    "enunciado": "Em qual das alternativas o substantivo foi empregado como núcleo do sujeito?",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Substantivos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Na biblioteca, estudava-se em silêncio." },
+      { "letra": "B", "texto": "Havia livros por toda parte." },
+      { "letra": "C", "texto": "Estudos aprofundados revelaram os dados." },
+      { "letra": "D", "texto": "Chovia muito na cidade ontem." },
+      { "letra": "E", "texto": "Ficou claro o problema." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Na alternativa C, 'Estudos' é o núcleo do sujeito da oração. As demais ou não possuem sujeito determinado ou possuem sujeito oculto ou inexistente."
+  },
+  {
+    "id": 67,
+    "enunciado": "Qual das alternativas apresenta apenas adjetivos pátrios corretamente empregados?",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Adjetivos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Português, paulistano e carioca" },
+      { "letra": "B", "texto": "Brasileiro, paulista e argentino" },
+      { "letra": "C", "texto": "Rio-grandense, mineirense e baianense" },
+      { "letra": "D", "texto": "Portuguesa, goianês e fluminense" },
+      { "letra": "E", "texto": "Brasileiro, carioca e pernambucano" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Adjetivos pátrios indicam a origem das pessoas. 'Brasileiro', 'carioca' e 'pernambucano' são corretamente formados e usualmente aceitos."
+  },
+  {
+    "id": 68,
+    "enunciado": "Em qual alternativa o artigo definido altera o sentido do substantivo?",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Artigos"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O almoço foi servido às 12h." },
+      { "letra": "B", "texto": "Ela gosta de assistir ao filme." },
+      { "letra": "C", "texto": "O João chegou cedo." },
+      { "letra": "D", "texto": "A saudade apertou o peito." },
+      { "letra": "E", "texto": "Ele virou o Pedro da esquina." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Ao usar o artigo 'o' antes do nome próprio 'João', o substantivo passa a ter um tom mais generalizante, ou até pejorativo, dependendo do contexto. O artigo altera o sentido."
+  },
+  {
+    "id": 69,
+    "contexto": "Trecho: 'Tu me disseste que virias ontem, mas não apareceste.'",
+    "enunciado": "A forma verbal 'disseste' está conjugada na:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Verbos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Primeira pessoa do singular do presente do indicativo" },
+      { "letra": "B", "texto": "Segunda pessoa do singular do pretérito perfeito do indicativo" },
+      { "letra": "C", "texto": "Terceira pessoa do singular do pretérito perfeito do indicativo" },
+      { "letra": "D", "texto": "Segunda pessoa do singular do pretérito imperfeito do subjuntivo" },
+      { "letra": "E", "texto": "Segunda pessoa do plural do pretérito perfeito do indicativo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Disseste' é conjugado na segunda pessoa do singular (tu), no pretérito perfeito do indicativo: tu disseste."
+  },
+  {
+    "id": 70,
+    "enunciado": "Assinale a alternativa em que o pronome de tratamento foi usado incorretamente:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Pronomes"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Vossa Excelência não compareceu à audiência." },
+      { "letra": "B", "texto": "Vossa Senhoria disse a verdade em juízo." },
+      { "letra": "C", "texto": "Sua Excelência está equivocado." },
+      { "letra": "D", "texto": "Vossa Reverendíssima preside a cerimônia." },
+      { "letra": "E", "texto": "Vossa Magnificência está à frente da universidade." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os pronomes de tratamento devem ser utilizados com a forma pronominal de segunda pessoa. A forma correta seria: 'Vossa Excelência está equivocada(o)', e não 'Sua Excelência'."
+  },
+  {
+    "id": 71,
+    "enunciado": "Assinale a alternativa em que o verbo está corretamente conjugado na forma nominal infinitiva:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Verbos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Correndo muito, ele chegou a tempo." },
+      { "letra": "B", "texto": "Estudado com afinco, passará na prova." },
+      { "letra": "C", "texto": "Aprender é essencial para evoluir." },
+      { "letra": "D", "texto": "Chegado o momento, partiu." },
+      { "letra": "E", "texto": "Chorando, contou o que havia acontecido." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Aprender' e 'evoluir' estão no infinitivo, que é uma das formas nominais do verbo. As demais são formas nominais diferentes (gerúndio ou particípio)."
+  },
+  {
+    "id": 72,
+    "contexto": "Trecho: 'Ela é linda, mas arrogante e desonesta.'",
+    "enunciado": "Os termos 'arrogante' e 'desonesta' são, respectivamente:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Adjetivos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Adjetivos simples e compostos" },
+      { "letra": "B", "texto": "Adjetivos uniformes quanto ao gênero" },
+      { "letra": "C", "texto": "Adjetivos pátrios" },
+      { "letra": "D", "texto": "Adjetivos derivados de substantivos abstratos" },
+      { "letra": "E", "texto": "Adjetivos sobrecomuns" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os adjetivos 'arrogante' e 'desonesta' são uniformes quanto ao gênero, ou seja, possuem a mesma forma para masculino e feminino (com variação apenas em número)."
+  },
+  {
+    "id": 73,
+    "enunciado": "Assinale a alternativa em que ocorre flexão de gênero no substantivo de forma irregular:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Substantivos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Gato – Gata" },
+      { "letra": "B", "texto": "Menino – Menina" },
+      { "letra": "C", "texto": "Cavaleiro – Dama" },
+      { "letra": "D", "texto": "Tigre – Tigresa" },
+      { "letra": "E", "texto": "Príncipe – Princesa" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A flexão de gênero regular ocorre com mudança de desinência (gato/gata). Em 'cavaleiro/dama', temos formas diferentes para masculino e feminino — portanto, é flexão irregular."
+  },
+  {
+    "id": 74,
+    "contexto": "Trecho: 'Comprei o jornal de ontem e li o artigo sobre educação.'",
+    "enunciado": "Sobre os artigos utilizados na frase, é correto afirmar que:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Artigos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ambos são artigos indefinidos." },
+      { "letra": "B", "texto": "Ambos os artigos determinam substantivos já conhecidos no discurso." },
+      { "letra": "C", "texto": "O primeiro artigo é definido, o segundo é indefinido." },
+      { "letra": "D", "texto": "Nenhum dos artigos possui função específica." },
+      { "letra": "E", "texto": "O artigo 'o' indica generalização." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os artigos 'o' em 'o jornal' e 'o artigo' são definidos, indicando substantivos específicos, conhecidos do falante e do ouvinte/leitor."
+  },
+  {
+    "id": 75,
+    "enunciado": "Qual alternativa apresenta substantivos coletivos corretamente empregados?",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Substantivos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Alcateia de bois, cardume de lobos e enxame de pessoas" },
+      { "letra": "B", "texto": "Matilha de cães, cardume de peixes e enxame de abelhas" },
+      { "letra": "C", "texto": "Rebanho de gatos, bando de peixes e manada de pássaros" },
+      { "letra": "D", "texto": "Enxame de vacas, cardume de cobras e alcateia de tigres" },
+      { "letra": "E", "texto": "Matilha de bois, bando de cavalos e rebanho de pássaros" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Matilha de cães', 'cardume de peixes' e 'enxame de abelhas' são os coletivos corretos para os respectivos grupos de animais mencionados."
+  },
+  {
+    "id": 76,
+    "enunciado": "Em qual alternativa o uso do pronome está inadequado quanto à norma-padrão?",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Pronomes"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Entre eu e tu não há segredos." },
+      { "letra": "B", "texto": "Vi ela na feira mais cedo." },
+      { "letra": "C", "texto": "Dei o presente a ele." },
+      { "letra": "D", "texto": "Chamou-me para a reunião." },
+      { "letra": "E", "texto": "Entreguei-lhe os documentos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O correto seria 'Vi-a na feira mais cedo' ou 'A vi na feira'. O pronome 'ela' não deve ser usado como objeto direto na norma culta. O uso adequado é o pronome oblíquo átono."
+  },
+  {
+    "id": 77,
+    "contexto": "Trecho: 'Estes documentos devem ser entregues ainda hoje.'",
+    "enunciado": "Aponte a alternativa que justifica o uso do pronome demonstrativo 'estes':",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Pronomes"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Refere-se a elementos distantes no tempo." },
+      { "letra": "B", "texto": "Indica proximidade com o ouvinte." },
+      { "letra": "C", "texto": "Indica proximidade com o falante." },
+      { "letra": "D", "texto": "Está ligado a termos anteriores no discurso." },
+      { "letra": "E", "texto": "Refere-se a tempo passado." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O pronome 'estes' indica proximidade com quem fala (primeira pessoa). Se estivesse próximo do ouvinte, usar-se-ia 'esses'."
+  },
+  {
+    "id": 78,
+    "enunciado": "Qual das alternativas apresenta um adjetivo composto corretamente flexionado no plural?",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Adjetivos"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Sociais-democratas" },
+      { "letra": "B", "texto": "Verde-claros" },
+      { "letra": "C", "texto": "Azuis-marinho" },
+      { "letra": "D", "texto": "Amarelo-claros" },
+      { "letra": "E", "texto": "Azul-claros" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Em adjetivos compostos em que apenas o segundo termo é invariável (como cores + tonalidades), apenas o primeiro varia: 'azul-claros'."
   }
 ]
