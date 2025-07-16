@@ -29,9 +29,10 @@
   </div>
   
   
-  <textarea id="jsonOutput" rows="25" style="width:100%; font-family: monospace;"></textarea>
-<button onclick="copiarParaClipboard()">📋 Copiar JSON</button>
-
+  <div>
+    <input type="file" id="jsonFileInput" accept=".json">
+    <button onclick="importarDados()">Importar</button>
+  </div>
 
 
   <div class="profile-container">
@@ -106,48 +107,41 @@
   </nav>
 
   <script src="../assets/js/pages/perfil.js"></script>
-  
-
-<script>
-  function gerarJsonLocalStorage() {
-    const chavesDesejadas = [
-      'sessoesEstudo',
-      'userInfo',
-      'progresso_trilha_estudo',
-      'questoesResolvidas',
-      'estudaai_openrouter_apikey',
-      'apiKeyUsuario',
-      'cronograma',
-      'disciplinas'
-    ];
-    const resultado = {};
-    chavesDesejadas.forEach((chave) => {
-      const valor = localStorage.getItem(chave);
-      if (valor !== null) {
-        try {
-          resultado[chave] = JSON.parse(valor);
-        } catch {
-          resultado[chave] = valor;
-        }
-      } else {
-        resultado[chave] = null;
-      }
-    });
-    return JSON.stringify(resultado, null, 2); // JSON bem formatado
-  }
-  
-  function copiarParaClipboard() {
-    const textarea = document.getElementById('jsonOutput');
-    textarea.select();
-    document.execCommand('copy');
-    alert('✅ JSON copiado!');
-  }
-  
-  // Mostrar JSON ao carregar
-  window.addEventListener('load', () => {
-    document.getElementById('jsonOutput').value = gerarJsonLocalStorage();
-  });
-</script>
+ 
+ <script>
+   let dadosImportados = null;
+   
+   // Carrega o arquivo selecionado
+   document.getElementById("jsonFileInput").addEventListener("change", function(event) {
+     const file = event.target.files[0];
+     if (!file) return;
+     
+     const reader = new FileReader();
+     reader.onload = function(e) {
+       try {
+         dadosImportados = JSON.parse(e.target.result);
+         alert("JSON carregado com sucesso. Clique em 'Importar' para salvar no localStorage.");
+       } catch (err) {
+         alert("Erro ao ler o JSON: " + err.message);
+       }
+     };
+     reader.readAsText(file);
+   });
+   
+   // Salva os dados no localStorage
+   function importarDados() {
+     if (!dadosImportados) {
+       alert("Nenhum dado carregado ainda.");
+       return;
+     }
+     
+     for (const chave in dadosImportados) {
+       localStorage.setItem(chave, JSON.stringify(dadosImportados[chave]));
+     }
+     
+     alert("Dados importados para o localStorage com sucesso!");
+   }
+ </script>
 
 
 </body>
