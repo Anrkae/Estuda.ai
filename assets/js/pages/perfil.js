@@ -131,22 +131,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     
-    const btnDownload = document.getElementById('btnDownloadLS');
-btnDownload?.addEventListener('click', () => {
+    const textareaLS = document.getElementById('localStorageText');
+const copiarBtn = document.getElementById('copiarLS');
+
+// Preenche a caixa com o localStorage completo
+if (textareaLS) {
+    const data = {};
+    for (let i = 0; i < localStorage.length; i++) {
+        const chave = localStorage.key(i);
+        data[chave] = localStorage.getItem(chave);
+    }
+    textareaLS.value = JSON.stringify(data, null, 2);
+}
+
+// Copiar ao clicar no botão
+copiarBtn?.addEventListener('click', () => {
+    if (!textareaLS) return;
+    
+    textareaLS.select();
     try {
-        const dados = JSON.stringify(localStorage, null, 2);
-        const blob = new Blob([dados], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'backup-localStorage.json';
-        a.click();
-        
-        URL.revokeObjectURL(url); // Limpa depois
-    } catch (e) {
-        console.error('❌ Erro ao gerar arquivo:', e);
-        alert('Erro ao gerar o arquivo de backup.');
+        const sucesso = document.execCommand('copy');
+        alert(sucesso ? '📋 Copiado com sucesso!' : '❌ Falha ao copiar!');
+    } catch (err) {
+        console.error('Erro ao copiar:', err);
+        alert('❌ Erro ao copiar!');
     }
 });
 
