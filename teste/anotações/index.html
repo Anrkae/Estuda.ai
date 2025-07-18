@@ -109,18 +109,19 @@
                         <span class="toggle-knob"></span>
                     </button>
                 </div>
-                <div class="flex gap-2 mb-4">
-                    <button id="study-deck-btn" class="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg transition-colors relative">
+                <div class="mb-4">
+                    <button id="study-deck-btn" class="w-full flex items-center justify-center gap-2 text-white font-bold py-3 px-4 rounded-lg transition-colors relative">
                         <i data-lucide="book-open"></i>
-                        <span>Estudar</span>
+                        <span id="study-deck-btn-text">Estudar</span>
                         <span id="study-count-indicator" class="absolute -top-2 -right-2 h-6 w-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white"></span>
                     </button>
-                    <button id="add-card-btn" class="w-full flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition-colors">
-                        <i data-lucide="plus-circle"></i>
-                        <span>Adicionar Cartão</span>
-                    </button>
+                    <p id="study-helper-text" class="text-center text-sm text-gray-500 mt-2 hidden"></p>
                 </div>
-                <div id="card-list"></div>
+                <button id="add-card-btn" class="w-full flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg transition-colors">
+                    <i data-lucide="plus-circle"></i>
+                    <span>Adicionar Cartão</span>
+                </button>
+                <div id="card-list" class="mt-4"></div> <!-- A classe 'hidden' foi removida daqui -->
             </main>
         </div>
 

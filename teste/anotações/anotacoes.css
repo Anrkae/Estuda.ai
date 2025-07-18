@@ -48,7 +48,7 @@ input, textarea, [contenteditable="true"] {
 }
 
 .filter-drawer.open {
-    transform: translateY(0)
+    transform: translateY(0);
 }
 
 .toggle-switch {

@@ -30,6 +30,18 @@ document.addEventListener('DOMContentLoaded', () => {
         buttonsStyling: false
     });
 
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    });
+
     // --- ELEMENTOS DO DOM ---
     const views = {
         explorer: $('#explorer-view'),
@@ -69,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         deckTagify: null,
         filterTagify: null,
         modal: { createType: null },
-        studySession: { deck: null, currentIndex: 0, shuffle: false },
+        studySession: { deck: null, currentIndex: 0, shuffle: false, dueCards: [] },
         filters: { colors: [], tags: [], showFavoritesOnly: false },
         tempFilters: { colors: [], tags: [], showFavoritesOnly: false },
         sortMode: 'default',
@@ -87,6 +99,49 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('estuda_ai_resumos', JSON.stringify(state.resumos));
         localStorage.setItem('estuda_ai_flashcardDecks', JSON.stringify(state.flashcardDecks));
         localStorage.setItem('sortMode', state.sortMode);
+    };
+
+    // --- LÓGICA DE REPETIÇÃO ESPAÇADA (SRS) ---
+    const getTodayDate = () => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return today;
+    };
+
+    const addDays = (date, days) => {
+        const result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    };
+
+    const calculateNextReview = (card, rating) => {
+        card.srs = card.srs || { repetitions: 0, interval: 1, easeFactor: 2.5, dueDate: getTodayDate().toISOString() };
+
+        if (rating < 2) {
+            card.srs.repetitions = 0;
+            card.srs.interval = 1;
+        } else {
+            card.srs.repetitions += 1;
+            if (card.srs.repetitions === 1) {
+                card.srs.interval = 1;
+            } else if (card.srs.repetitions === 2) {
+                card.srs.interval = 6;
+            } else {
+                card.srs.interval = Math.ceil(card.srs.interval * card.srs.easeFactor);
+            }
+        }
+
+        card.srs.easeFactor = Math.max(1.3, card.srs.easeFactor + 0.1 - (3 - rating) * (0.08 + (3 - rating) * 0.02));
+        
+        card.srs.dueDate = addDays(getTodayDate(), card.srs.interval).toISOString();
+    };
+
+    const getDueCards = (deck) => {
+        const today = getTodayDate();
+        return deck.cards.filter(card => {
+            const dueDate = new Date((card.srs && card.srs.dueDate) || today);
+            return dueDate <= today;
+        });
     };
 
     // --- LÓGICA DE AÇÕES ---
@@ -111,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 saveData();
                 render();
-                swalTheme.fire('Excluído!', 'O item foi removido.', 'success');
+                Toast.fire({ icon: 'success', title: 'Item removido' });
             }
         });
     };
@@ -180,6 +235,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!deck) return;
         state.viewingDeckId = deckId;
         $('#deck-title').textContent = deck.nome;
+
+        const dueCardsCount = getDueCards(deck).length;
+        const studyBtn = $('#study-deck-btn');
+        const studyBtnText = $('#study-deck-btn-text');
+        const indicator = $('#study-count-indicator');
+        const helperText = $('#study-helper-text');
+
+        if (dueCardsCount > 0) {
+            indicator.textContent = dueCardsCount;
+            indicator.classList.remove('hidden');
+            studyBtnText.textContent = 'Estudar';
+            studyBtn.classList.remove('bg-blue-500', 'hover:bg-blue-600');
+            studyBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+            helperText.classList.add('hidden');
+        } else {
+            indicator.classList.add('hidden');
+            studyBtnText.textContent = 'Revisar Tudo';
+            studyBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+            studyBtn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+            helperText.textContent = 'Nenhum cartão agendado para hoje.';
+            helperText.classList.remove('hidden');
+        }
+
         renderCardList(deck.cards);
         showView('deck');
     };
@@ -202,15 +280,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const showStudyView = (deckId, shuffle = false) => {
         const deck = state.flashcardDecks.find(d => d.id === deckId);
+        let dueCards = getDueCards(deck);
+
         if (!deck || deck.cards.length === 0) {
-            swalTheme.fire('Baralho Vazio', 'Adicione cartões a este baralho para poder estudar.', 'info');
+            Toast.fire({ icon: 'info', title: 'Adicione cartões para poder estudar' });
             return;
         }
-        let cardsToStudy = [...deck.cards];
-        if (shuffle) {
-            cardsToStudy.sort(() => Math.random() - 0.5);
+
+        if (dueCards.length === 0) {
+            dueCards = deck.cards; // Estuda todos se não houver nenhum agendado
         }
-        state.studySession = { deck: { ...deck, cards: cardsToStudy }, currentIndex: 0 };
+        
+        if (shuffle) {
+            dueCards.sort(() => Math.random() - 0.5);
+        }
+        state.studySession = { deck: deck, dueCards: dueCards, currentIndex: 0, shuffle: shuffle };
         renderCurrentCard();
         showView('study');
     };
@@ -512,18 +596,17 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const renderCurrentCard = () => {
-        const { deck, currentIndex } = state.studySession;
-        if (!deck) return;
+        const { dueCards, currentIndex } = state.studySession;
+        if (!dueCards || dueCards.length === 0) return;
 
-        const card = deck.cards[currentIndex];
+        const card = dueCards[currentIndex];
         $('#study-card-front').textContent = card.frente;
         $('#study-card-back').textContent = card.verso;
-        $('#study-progress').textContent = `${currentIndex + 1} / ${deck.cards.length}`;
+        $('#study-progress').textContent = `${currentIndex + 1} / ${dueCards.length}`;
         
         $('#study-card-inner').classList.remove('is-flipped');
-        
-        $('#study-prev-btn').disabled = currentIndex === 0;
-        $('#study-next-btn').disabled = currentIndex === deck.cards.length - 1;
+        $('#study-instructions').classList.remove('hidden');
+        $('#study-actions').classList.add('hidden');
     };
 
     const render = () => {
@@ -623,7 +706,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const front = $('#edit-card-front').value.trim();
         const back = $('#edit-card-back').value.trim();
         if (!front || !back) {
-            swalTheme.fire('Oops...', 'A frente e o verso não podem estar vazios.', 'error');
+            Toast.fire({ icon: 'error', title: 'A frente e o verso não podem estar vazios.' });
             return;
         }
 
@@ -663,16 +746,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!resumo || !navigator.clipboard) return;
         try {
             await navigator.clipboard.writeText(`${resumo.titulo}\n\n${resumo.conteudo}`);
-            swalTheme.fire({ icon: 'success', title: 'Copiado!', showConfirmButton: false, timer: 1500 });
+            Toast.fire({ icon: 'success', title: 'Copiado para a área de transferência' });
         } catch (err) {
-            swalTheme.fire({ icon: 'error', title: 'Oops...', text: 'Falha ao copiar o texto.' });
+            Toast.fire({ icon: 'error', title: 'Falha ao copiar o texto.' });
         }
     };
 
     const shareResumo = async () => {
         const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
         if (!resumo || !navigator.share) {
-            swalTheme.fire({ icon: 'error', title: 'Oops...', text: 'O seu navegador não suporta esta função.' });
+            Toast.fire({ icon: 'error', title: 'O seu navegador não suporta esta função.' });
             return;
         }
         try {
@@ -697,29 +780,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextIndex = (currentIndex + 1) % SORT_MODES.length;
         state.sortMode = SORT_MODES[nextIndex];
         
-        Swal.fire({
-            toast: true,
-            position: 'top-end',
+        Toast.fire({
             icon: 'info',
-            title: `Ordenado por: ${SORT_LABELS[state.sortMode]}`,
-            showConfirmButton: false,
-            timer: 1500
+            title: `Ordenado por: ${SORT_LABELS[state.sortMode]}`
         });
 
         render();
     };
 
     const renameItem = (id, type) => {
-        const item = type === 'folder' ? state.folders.find(f => f.id === id) : 
-                     type === 'resumo' ? state.resumos.find(r => r.id === id) : 
-                     state.flashcardDecks.find(d => d.id === id);
+        const item = type === 'folder' ? state.folders.find(f => f.id === id) : null;
         
         if (!item) return;
 
-        swalTheme.fire({
-            title: `Renomear ${type}`,
+        swalMinimal.fire({
+            title: `Renomear Pasta`,
             input: 'text',
-            inputValue: item.name || item.titulo || item.nome,
+            inputValue: item.name,
             showCancelButton: true,
             confirmButtonText: 'Guardar',
             cancelButtonText: 'Cancelar',
@@ -730,9 +807,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                if (type === 'folder') item.name = result.value;
-                if (type === 'resumo') item.titulo = result.value;
-                if (type === 'deck') item.nome = result.value;
+                item.name = result.value;
                 saveData();
                 render();
             }
@@ -953,7 +1028,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.studySession.currentIndex++;
                 if (state.studySession.currentIndex >= state.studySession.dueCards.length) {
                     saveData();
-                    swalTheme.fire('Parabéns!', 'Você revisou todos os cartões de hoje!', 'success').then(() => {
+                    Toast.fire({ icon: 'success', title: 'Parabéns! Sessão concluída.' }).then(() => {
                         showDeckView(state.studySession.deck.id);
                     });
                 } else {
