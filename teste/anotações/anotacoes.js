@@ -22,26 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         favorites_first: 'Favoritos Primeiro'
     };
 
-    const swalTheme = Swal.mixin({
-        customClass: {
-            confirmButton: 'bg-blue-500 text-white font-bold py-2 px-4 rounded-lg',
-            cancelButton: 'bg-gray-500 text-white font-bold py-2 px-4 rounded-lg mr-2'
-        },
-        buttonsStyling: false
-    });
-
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    });
-
     // --- ELEMENTOS DO DOM ---
     const views = {
         explorer: $('#explorer-view'),
@@ -55,6 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         choice: $('#add-choice-modal'),
         create: $('#create-item-modal'),
         editCard: $('#edit-card-modal'),
+        confirmation: $('#confirmation-modal'),
+        input: $('#input-modal'),
     };
     const filterDrawer = {
         backdrop: $('#filter-drawer-backdrop'),
@@ -101,6 +83,90 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('sortMode', state.sortMode);
     };
 
+    // --- LÓGICA DE NOTIFICAÇÕES PERSONALIZADAS ---
+    const showToast = (message, type = 'info') => {
+        const toastContainer = $('#toast-container');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `<span>${message}</span>`;
+        toastContainer.appendChild(toast);
+
+        setTimeout(() => {
+            toast.classList.add('show');
+        }, 10);
+
+        setTimeout(() => {
+            toast.classList.remove('show');
+            toast.addEventListener('transitionend', () => toast.remove());
+        }, 3000);
+    };
+
+    const showConfirmationModal = ({ title, text, confirmText = 'Confirmar', onConfirm }) => {
+        const modal = modals.confirmation;
+        $('#confirmation-title').textContent = title;
+        $('#confirmation-text').textContent = text;
+        const confirmBtn = $('#confirmation-confirm-btn');
+        confirmBtn.textContent = confirmText;
+
+        const handleConfirm = () => {
+            onConfirm();
+            closeModal('confirmation');
+            cleanup();
+        };
+
+        const handleCancel = () => {
+            closeModal('confirmation');
+            cleanup();
+        };
+
+        const cleanup = () => {
+            confirmBtn.removeEventListener('click', handleConfirm);
+            $('#confirmation-cancel-btn').removeEventListener('click', handleCancel);
+        };
+
+        confirmBtn.addEventListener('click', handleConfirm);
+        $('#confirmation-cancel-btn').addEventListener('click', handleCancel);
+
+        openModal('confirmation');
+    };
+
+    const showInputModal = ({ title, inputValue, onConfirm }) => {
+        const modal = modals.input;
+        $('#input-modal-title').textContent = title;
+        const input = $('#input-modal-input');
+        const errorEl = $('#input-modal-error');
+        input.value = inputValue;
+        errorEl.classList.add('hidden');
+
+        const handleConfirm = () => {
+            if (!input.value.trim()) {
+                errorEl.textContent = 'O nome não pode estar vazio!';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            onConfirm(input.value);
+            closeModal('input');
+            cleanup();
+        };
+
+        const handleCancel = () => {
+            closeModal('input');
+            cleanup();
+        };
+
+        const cleanup = () => {
+            $('#input-modal-confirm-btn').removeEventListener('click', handleConfirm);
+            $('#input-modal-cancel-btn').removeEventListener('click', handleCancel);
+        };
+
+        $('#input-modal-confirm-btn').addEventListener('click', handleConfirm);
+        $('#input-modal-cancel-btn').addEventListener('click', handleCancel);
+
+        openModal('input');
+        input.focus();
+    };
+
+
     // --- LÓGICA DE REPETIÇÃO ESPAÇADA (SRS) ---
     const getTodayDate = () => {
         const today = new Date();
@@ -146,11 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA DE AÇÕES ---
     const deleteItem = (id, type) => {
-        swalTheme.fire({
-            title: 'Tem certeza?', text: "Esta ação não pode ser desfeita!", icon: 'warning',
-            showCancelButton: true, confirmButtonText: 'Sim, excluir!', cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
+        showConfirmationModal({
+            title: 'Tem certeza?', text: "Esta ação não pode ser desfeita!", confirmText: 'Sim, excluir',
+            onConfirm: () => {
                 if (type === 'folder') {
                     let foldersToDelete = [id];
                     for (let i = 0; i < foldersToDelete.length; i++) {
@@ -166,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 saveData();
                 render();
-                Toast.fire({ icon: 'success', title: 'Item removido' });
+                showToast('Item removido', 'success');
             }
         });
     };
@@ -283,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let dueCards = getDueCards(deck);
 
         if (!deck || deck.cards.length === 0) {
-            Toast.fire({ icon: 'info', title: 'Adicione cartões para poder estudar' });
+            showToast('Adicione cartões para poder estudar', 'info');
             return;
         }
 
@@ -302,12 +366,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const openFilterDrawer = () => {
         state.tempFilters = JSON.parse(JSON.stringify(state.filters));
         renderFilterDrawer();
-        filterDrawer.backdrop.classList.remove('hidden');
+        filterDrawer.backdrop.classList.add('visible');
         filterDrawer.drawer.classList.add('open');
     };
 
     const closeFilterDrawer = () => {
-        filterDrawer.backdrop.classList.add('hidden');
+        filterDrawer.backdrop.classList.remove('visible');
         filterDrawer.drawer.classList.remove('open');
     };
 
@@ -324,8 +388,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- LÓGICA DOS MODAIS ---
-    const openModal = (modalName) => modals[modalName].classList.remove('hidden');
-    const closeModal = (modalName) => modals[modalName].classList.add('hidden');
+    const openModal = (modalName) => modals[modalName].classList.add('visible');
+    const closeModal = (modalName) => modals[modalName].classList.remove('visible');
 
     const openChoiceModal = () => {
         const optionsContainer = $('#add-choice-options');
@@ -706,7 +770,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const front = $('#edit-card-front').value.trim();
         const back = $('#edit-card-back').value.trim();
         if (!front || !back) {
-            Toast.fire({ icon: 'error', title: 'A frente e o verso não podem estar vazios.' });
+            showToast('A frente e o verso não podem estar vazios.', 'error');
             return;
         }
 
@@ -729,11 +793,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const deck = state.flashcardDecks.find(d => d.id === state.viewingDeckId);
         if (!deck) return;
         
-        swalTheme.fire({
-            title: 'Excluir Cartão?', text: "Esta ação não pode ser desfeita.", icon: 'warning',
-            showCancelButton: true, confirmButtonText: 'Sim, excluir!', cancelButtonText: 'Cancelar'
-        }).then((result) => {
-            if (result.isConfirmed) {
+        showConfirmationModal({
+            title: 'Excluir Cartão?', text: "Esta ação não pode ser desfeita.",
+            onConfirm: () => {
                 deck.cards = deck.cards.filter(c => c.id !== cardId);
                 saveData();
                 renderCardList(deck.cards);
@@ -746,16 +808,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!resumo || !navigator.clipboard) return;
         try {
             await navigator.clipboard.writeText(`${resumo.titulo}\n\n${resumo.conteudo}`);
-            Toast.fire({ icon: 'success', title: 'Copiado para a área de transferência' });
+            showToast('Copiado para a área de transferência', 'success');
         } catch (err) {
-            Toast.fire({ icon: 'error', title: 'Falha ao copiar o texto.' });
+            showToast('Falha ao copiar o texto.', 'error');
         }
     };
 
     const shareResumo = async () => {
         const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
         if (!resumo || !navigator.share) {
-            Toast.fire({ icon: 'error', title: 'O seu navegador não suporta esta função.' });
+            showToast('O seu navegador não suporta esta função.', 'error');
             return;
         }
         try {
@@ -780,10 +842,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextIndex = (currentIndex + 1) % SORT_MODES.length;
         state.sortMode = SORT_MODES[nextIndex];
         
-        Toast.fire({
-            icon: 'info',
-            title: `Ordenado por: ${SORT_LABELS[state.sortMode]}`
-        });
+        showToast(`Ordenado por: ${SORT_LABELS[state.sortMode]}`, 'info');
 
         render();
     };
@@ -793,21 +852,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (!item) return;
 
-        swalMinimal.fire({
+        showInputModal({
             title: `Renomear Pasta`,
-            input: 'text',
             inputValue: item.name,
-            showCancelButton: true,
-            confirmButtonText: 'Guardar',
-            cancelButtonText: 'Cancelar',
-            inputValidator: (value) => {
-                if (!value) {
-                    return 'O nome não pode estar vazio!'
-                }
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                item.name = result.value;
+            onConfirm: (newValue) => {
+                item.name = newValue;
                 saveData();
                 render();
             }
@@ -966,7 +1015,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $('#confirm-create-btn').addEventListener('click', createItem);
         $$('.modal-cancel-btn').forEach(btn => btn.addEventListener('click', () => {
             const modal = btn.closest('.modal-backdrop');
-            if(modal) modal.classList.add('hidden');
+            if(modal) modal.classList.remove('visible');
         }));
 
         // Listeners do Filtro
@@ -1028,9 +1077,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.studySession.currentIndex++;
                 if (state.studySession.currentIndex >= state.studySession.dueCards.length) {
                     saveData();
-                    Toast.fire({ icon: 'success', title: 'Parabéns! Sessão concluída.' }).then(() => {
-                        showDeckView(state.studySession.deck.id);
-                    });
+                    Toast.fire({ icon: 'success', title: 'Parabéns! Sessão concluída.' });
+                    showDeckView(state.studySession.deck.id);
                 } else {
                     renderCurrentCard();
                 }

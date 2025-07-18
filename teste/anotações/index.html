@@ -14,12 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- AutoAnimate -->
     <script type="module">
@@ -29,7 +23,6 @@
     
     <!-- O nosso ficheiro de estilos -->
     <link rel="stylesheet" href="anotacoes.css">
-    
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans antialiased">
 
@@ -38,9 +31,9 @@
         
         <!-- 1. Ecrã Principal (Explorador) -->
         <div id="explorer-view">
-            <div>
-                <script src="../../assets/js/components/header.js"></script>
-            </div>
+            <header class="p-4 border-b border-gray-200 sticky top-0 bg-white z-20">
+                <h1 class="text-xl font-bold text-center text-blue-600">Estuda AI</h1>
+            </header>
             <nav class="flex justify-around border-b border-gray-200 sticky top-[73px] bg-white z-20">
                 <button id="tab-resumos" class="w-full p-4 text-center border-b-2 border-transparent">Resumos</button>
                 <button id="tab-flashcards" class="w-full p-4 text-center border-b-2 border-transparent">Flashcards</button>
@@ -123,9 +116,9 @@
                 </div>
                 <button id="add-card-btn" class="w-full flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg transition-colors">
                     <i data-lucide="plus-circle"></i>
-                    <span>Adicionar Cartão</span>
+                    <span>Adicionar/Ver Cartões</span>
                 </button>
-                <div id="card-list" class="mt-4"></div> <!-- A classe 'hidden' foi removida daqui -->
+                <div id="card-list" class="mt-4"></div>
             </main>
         </div>
 
@@ -183,7 +176,7 @@
     <!-- Modais e Drawers -->
     <div id="overlays-container">
         <!-- Drawer de Filtros -->
-        <div id="filter-drawer-backdrop" class="modal-backdrop hidden"></div>
+        <div id="filter-drawer-backdrop" class="modal-backdrop"></div>
         <div id="filter-drawer" class="filter-drawer">
             <div class="p-4 border-b border-gray-200 flex justify-between items-center">
                 <h3 class="text-lg font-semibold">Filtros</h3>
@@ -212,14 +205,14 @@
         </div>
 
         <!-- Outros Modais -->
-        <div id="add-choice-modal" class="modal-backdrop hidden">
+        <div id="add-choice-modal" class="modal-backdrop">
             <div class="modal-content">
                 <h3 class="text-lg font-semibold mb-4 text-center">O que deseja criar?</h3>
                 <div id="add-choice-options" class="space-y-3"></div>
                 <button id="close-choice-modal" class="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">Cancelar</button>
             </div>
         </div>
-        <div id="create-item-modal" class="modal-backdrop hidden">
+        <div id="create-item-modal" class="modal-backdrop">
             <div class="modal-content">
                 <h3 id="create-modal-title" class="text-lg font-semibold mb-4"></h3>
                 <input type="text" id="create-modal-input" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -233,7 +226,7 @@
                 </div>
             </div>
         </div>
-        <div id="edit-card-modal" class="modal-backdrop hidden">
+        <div id="edit-card-modal" class="modal-backdrop">
             <div class="modal-content">
                 <h3 id="edit-card-modal-title" class="text-lg font-semibold mb-4"></h3>
                 <div class="space-y-4">
@@ -252,6 +245,34 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal de Confirmação Personalizado -->
+        <div id="confirmation-modal" class="modal-backdrop">
+            <div class="modal-content">
+                <h3 id="confirmation-title" class="text-lg font-semibold mb-2"></h3>
+                <p id="confirmation-text" class="text-gray-600 mb-6"></p>
+                <div class="flex justify-end gap-3">
+                    <button id="confirmation-cancel-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancelar</button>
+                    <button id="confirmation-confirm-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg">Confirmar</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal de Input Personalizado -->
+        <div id="input-modal" class="modal-backdrop">
+            <div class="modal-content">
+                <h3 id="input-modal-title" class="text-lg font-semibold mb-4"></h3>
+                <input type="text" id="input-modal-input" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p id="input-modal-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                <div class="flex justify-end gap-3 mt-4">
+                    <button id="input-modal-cancel-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancelar</button>
+                    <button id="input-modal-confirm-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contentor de Toasts -->
+        <div id="toast-container" class="fixed top-5 right-5 z-[100] space-y-2"></div>
     </div>
 
     <!-- O nosso ficheiro de script -->

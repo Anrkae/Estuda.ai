@@ -26,8 +26,8 @@ input, textarea, [contenteditable="true"] {
 
 /* --- ITEM CARD (BORDA LATERAL) --- */
 .item-card {
-    border-left-width: 5px !important;
-    border-radius: 12px !important;
+    border-left-width: 4px;
+    border-left-style: solid;
 }
 
 /* --- PAINEL DE FILTROS (DRAWER) --- */
@@ -229,7 +229,7 @@ input, textarea, [contenteditable="true"] {
 
 .options-menu button:hover { background-color: var(--bg-secondary); }
 
-/* --- MODAIS --- */
+/* --- MODAIS PERSONALIZADOS --- */
 .modal-backdrop {
     position: fixed;
     inset: 0;
@@ -238,16 +238,49 @@ input, textarea, [contenteditable="true"] {
     align-items: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+.modal-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal-content {
     background-color: var(--bg-primary);
-    border-radius: 0.5rem;
+    border-radius: 0.75rem;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     padding: 1.5rem;
     width: 91.666667%;
     max-width: 24rem;
+    transform: scale(0.95);
+    transition: transform 0.2s ease-in-out;
 }
+.modal-backdrop.visible .modal-content {
+    transform: scale(1);
+}
+
+/* --- NOTIFICAÇÕES TOAST --- */
+.toast {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+.toast.success { background-color: #22c55e; } /* green-500 */
+.toast.error { background-color: #ef4444; } /* red-500 */
+.toast.info { background-color: #3b82f6; } /* blue-500 */
 
 /* --- PALETA DE CORES --- */
 .color-circle {
@@ -264,34 +297,6 @@ input, textarea, [contenteditable="true"] {
 
 .color-circle:hover { transform: scale(1.1); }
 .color-circle.selected { border-color: var(--primary-color); }
-
-/* --- TEMA DO SWEETALERT2 --- */
-.swal2-popup {
-    border-radius: 1rem !important;
-    font-family: inherit !important;
-}
-.swal2-title {
-    color: var(--text-primary) !important;
-}
-.swal2-html-container {
-    color: var(--text-secondary) !important;
-}
-.swal2-confirm {
-    background-color: var(--primary-color) !important;
-    border-radius: 0.5rem !important;
-    box-shadow: none !important;
-}
-.swal2-cancel {
-    border-radius: 0.5rem !important;
-}
-.swal2-input {
-    border-color: var(--border-color) !important;
-    color: var(--text-primary) !important;
-}
-.swal2-input:focus {
-    border-color: var(--primary-color) !important;
-    box-shadow: 0 0 0 2px var(--primary-color) !important;
-}
 
 /* --- ESTILOS PARA MARKDOWN (PROSE) --- */
 .prose {
