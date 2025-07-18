@@ -5,23 +5,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONSTANTES ---
     const COLORS = [
-        { name: 'gray', bg: 'bg-gray-300' }, { name: 'red', bg: 'bg-red-300' },
-        { name: 'yellow', bg: 'bg-yellow-300' }, { name: 'green', bg: 'bg-green-300' },
-        { name: 'blue', bg: 'bg-blue-300' }, { name: 'purple', bg: 'bg-purple-300' },
+        { name: 'gray', bg: 'bg-gray-300', border: 'border-gray-300' }, 
+        { name: 'red', bg: 'bg-red-300', border: 'border-red-300' },
+        { name: 'yellow', bg: 'bg-yellow-300', border: 'border-yellow-300' }, 
+        { name: 'green', bg: 'bg-green-300', border: 'border-green-300' },
+        { name: 'blue', bg: 'bg-blue-300', border: 'border-blue-300' }, 
+        { name: 'purple', bg: 'bg-purple-300', border: 'border-purple-300' },
     ];
     const DEFAULT_COLOR = COLORS[0].name;
+
+    const SORT_MODES = ['default', 'alpha_asc', 'alpha_desc', 'favorites_first'];
+    const SORT_LABELS = {
+        default: 'Padrão',
+        alpha_asc: 'A-Z',
+        alpha_desc: 'Z-A',
+        favorites_first: 'Favoritos Primeiro'
+    };
+
+    const swalTheme = Swal.mixin({
+        customClass: {
+            confirmButton: 'bg-blue-500 text-white font-bold py-2 px-4 rounded-lg',
+            cancelButton: 'bg-gray-500 text-white font-bold py-2 px-4 rounded-lg mr-2'
+        },
+        buttonsStyling: false
+    });
 
     // --- ELEMENTOS DO DOM ---
     const views = {
         explorer: $('#explorer-view'),
         resumoView: $('#resumo-view'),
         resumoEdit: $('#resumo-edit-view'),
-        deck: $('#deck-view')
+        deck: $('#deck-view'),
+        deckEdit: $('#deck-edit-view'),
+        study: $('#study-view'),
     };
     const modals = {
         choice: $('#add-choice-modal'),
         create: $('#create-item-modal'),
         editCard: $('#edit-card-modal'),
+    };
+    const filterDrawer = {
+        backdrop: $('#filter-drawer-backdrop'),
+        drawer: $('#filter-drawer'),
+        colorPalette: $('#filter-color-palette'),
+        tagsInput: $('#filter-tags-input'),
+        favoritesToggle: $('#filter-favorites-toggle'),
     };
 
     // --- ESTADO DA APLICAÇÃO ---
@@ -37,8 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
         tempSelectedColor: DEFAULT_COLOR,
         tempIsFavorite: false,
         searchTerm: '',
-        tagifyInstance: null,
-        modal: { createType: null }
+        resumoTagify: null,
+        deckTagify: null,
+        filterTagify: null,
+        modal: { createType: null },
+        studySession: { deck: null, currentIndex: 0, shuffle: false },
+        filters: { colors: [], tags: [], showFavoritesOnly: false },
+        tempFilters: { colors: [], tags: [], showFavoritesOnly: false },
+        sortMode: 'default',
     };
 
     // --- FUNÇÕES DE DADOS ---
@@ -46,24 +80,20 @@ document.addEventListener('DOMContentLoaded', () => {
         state.folders = JSON.parse(localStorage.getItem('estuda_ai_folders')) || [];
         state.resumos = JSON.parse(localStorage.getItem('estuda_ai_resumos')) || [];
         state.flashcardDecks = JSON.parse(localStorage.getItem('estuda_ai_flashcardDecks')) || [];
+        state.sortMode = localStorage.getItem('sortMode') || 'default';
     };
     const saveData = () => {
         localStorage.setItem('estuda_ai_folders', JSON.stringify(state.folders));
         localStorage.setItem('estuda_ai_resumos', JSON.stringify(state.resumos));
         localStorage.setItem('estuda_ai_flashcardDecks', JSON.stringify(state.flashcardDecks));
+        localStorage.setItem('sortMode', state.sortMode);
     };
 
     // --- LÓGICA DE AÇÕES ---
     const deleteItem = (id, type) => {
-        Swal.fire({
-            title: 'Tem certeza?',
-            text: "Esta ação não pode ser desfeita!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Sim, excluir!',
-            cancelButtonText: 'Cancelar'
+        swalTheme.fire({
+            title: 'Tem certeza?', text: "Esta ação não pode ser desfeita!", icon: 'warning',
+            showCancelButton: true, confirmButtonText: 'Sim, excluir!', cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
                 if (type === 'folder') {
@@ -74,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     state.folders = state.folders.filter(f => !foldersToDelete.includes(f.id));
                     state.resumos = state.resumos.filter(r => !foldersToDelete.includes(r.folderId));
-                    state.flashcardDecks = state.flashcardDecks.filter(d => !foldersToDelete.includes(d.folderId));
                 } else if (type === 'resumo') {
                     state.resumos = state.resumos.filter(r => r.id !== id);
                 } else if (type === 'deck') {
@@ -82,24 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 saveData();
                 render();
-                Swal.fire('Excluído!', 'O item foi removido.', 'success');
+                swalTheme.fire('Excluído!', 'O item foi removido.', 'success');
             }
         });
     };
 
-    const toggleFavorite = (resumoId) => {
-        const resumo = state.resumos.find(r => r.id === resumoId);
-        if (resumo) {
-            resumo.isFavorite = !resumo.isFavorite;
+    const toggleFavorite = (itemId, type) => {
+        const item = type === 'resumo' ? state.resumos.find(r => r.id === itemId) : state.flashcardDecks.find(d => d.id === itemId);
+        if (item) {
+            item.isFavorite = !item.isFavorite;
             saveData();
-            if (state.currentView === 'resumoView' && state.viewingResumoId === resumoId) {
-                updateFavoriteButton($('#resumo-view-favorite-btn'), resumo.isFavorite);
+            if (state.currentView === 'resumoView' && state.viewingResumoId === itemId) {
+                updateFavoriteButton($('#resumo-view-favorite-btn'), item.isFavorite);
             }
             render();
         }
     };
     
-    // --- CONTROLE DE VISUALIZAÇÃO ---
+    // --- CONTROLE DE VISUALIZAÇÃO E FILTROS ---
     const showView = (viewName) => {
         Object.values(views).forEach(v => v.classList.add('hidden'));
         views[viewName].classList.remove('hidden');
@@ -119,16 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
         state.viewingResumoId = resumoId;
         $('#resumo-view-title').textContent = resumo.titulo;
         $('#resumo-view-content').innerHTML = marked.parse(resumo.conteudo);
-        // Ação de favoritar foi movida para o menu de opções
         showView('resumoView');
     };
     
     const showResumoEditView = (resumoId) => {
         state.viewingResumoId = resumoId;
-        
-        // Atualiza a whitelist e limpa as tags existentes
-        state.tagifyInstance.settings.whitelist = getAllUniqueTags();
-        state.tagifyInstance.removeAllTags();
+        state.resumoTagify.settings.whitelist = getAllUniqueTags('resumo');
+        state.resumoTagify.removeAllTags();
 
         if (resumoId) { // Editando
             const resumo = state.resumos.find(r => r.id === resumoId);
@@ -137,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
             $('#resumo-textarea').value = resumo.conteudo;
             state.tempSelectedColor = resumo.color || DEFAULT_COLOR;
             state.tempIsFavorite = resumo.isFavorite || false;
-            state.tagifyInstance.loadOriginalValues(resumo.tags || []);
+            state.resumoTagify.loadOriginalValues(resumo.tags || []);
         } else { // Criando
             $('#resumo-edit-title').value = '';
             $('#resumo-textarea').value = '';
@@ -145,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             state.tempIsFavorite = false;
         }
         updateFavoriteButton($('#favorite-btn'), state.tempIsFavorite);
-        renderColorPalette();
+        renderColorPalette('color-palette');
         showView('resumoEdit');
     };
 
@@ -158,6 +184,61 @@ document.addEventListener('DOMContentLoaded', () => {
         showView('deck');
     };
 
+    const showDeckEditView = (deckId) => {
+        state.viewingDeckId = deckId;
+        const deck = state.flashcardDecks.find(d => d.id === deckId);
+        if (!deck) return;
+
+        state.deckTagify.settings.whitelist = getAllUniqueTags('deck');
+        state.deckTagify.removeAllTags();
+
+        $('#deck-edit-title').value = deck.nome;
+        state.tempSelectedColor = deck.color || DEFAULT_COLOR;
+        state.deckTagify.loadOriginalValues(deck.tags || []);
+        
+        renderColorPalette('deck-color-palette');
+        showView('deckEdit');
+    };
+
+    const showStudyView = (deckId, shuffle = false) => {
+        const deck = state.flashcardDecks.find(d => d.id === deckId);
+        if (!deck || deck.cards.length === 0) {
+            swalTheme.fire('Baralho Vazio', 'Adicione cartões a este baralho para poder estudar.', 'info');
+            return;
+        }
+        let cardsToStudy = [...deck.cards];
+        if (shuffle) {
+            cardsToStudy.sort(() => Math.random() - 0.5);
+        }
+        state.studySession = { deck: { ...deck, cards: cardsToStudy }, currentIndex: 0 };
+        renderCurrentCard();
+        showView('study');
+    };
+
+    const openFilterDrawer = () => {
+        state.tempFilters = JSON.parse(JSON.stringify(state.filters));
+        renderFilterDrawer();
+        filterDrawer.backdrop.classList.remove('hidden');
+        filterDrawer.drawer.classList.add('open');
+    };
+
+    const closeFilterDrawer = () => {
+        filterDrawer.backdrop.classList.add('hidden');
+        filterDrawer.drawer.classList.remove('open');
+    };
+
+    const applyFilters = () => {
+        state.filters = JSON.parse(JSON.stringify(state.tempFilters));
+        state.filters.tags = state.filterTagify.value.map(tag => tag.value);
+        closeFilterDrawer();
+        render();
+    };
+
+    const clearFilters = () => {
+        state.tempFilters = { colors: [], tags: [], showFavoritesOnly: false };
+        applyFilters();
+    };
+
     // --- LÓGICA DOS MODAIS ---
     const openModal = (modalName) => modals[modalName].classList.remove('hidden');
     const closeModal = (modalName) => modals[modalName].classList.add('hidden');
@@ -167,11 +248,9 @@ document.addEventListener('DOMContentLoaded', () => {
         optionsContainer.innerHTML = '';
         const isResumosTab = state.currentTab === 'resumos';
 
-        const options = [
-            { text: 'Nova Pasta', icon: 'folder-plus', action: () => openCreateModal('folder') }
-        ];
-
+        const options = [];
         if (isResumosTab) {
+            options.push({ text: 'Nova Pasta', icon: 'folder-plus', action: () => openCreateModal('folder') });
             options.push({ text: 'Novo Resumo', icon: 'file-text', action: () => showResumoEditView(null) });
         } else {
             options.push({ text: 'Novo Baralho', icon: 'layers', action: () => openCreateModal('deck') });
@@ -195,18 +274,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = $('#create-modal-input');
         input.value = '';
         input.placeholder = `Nome d${type === 'folder' ? 'a' : 'o'} ${titles[type].split(' ')[1].toLowerCase()}...`;
+        
+        const colorContainer = $('#create-modal-color-container');
+        if (type === 'deck') {
+            state.tempSelectedColor = DEFAULT_COLOR;
+            renderColorPalette('create-modal-color-palette');
+            colorContainer.classList.remove('hidden');
+        } else {
+            colorContainer.classList.add('hidden');
+        }
+
         openModal('create');
         input.focus();
     };
 
     const openEditCardModal = (cardId) => {
         const deck = state.flashcardDecks.find(d => d.id === state.viewingDeckId);
-        const card = deck?.cards.find(c => c.id === cardId);
-        if (!card) return;
+        const card = cardId ? deck?.cards.find(c => c.id === cardId) : null;
         
         state.editingCardId = cardId;
-        $('#edit-card-front').value = card.frente;
-        $('#edit-card-back').value = card.verso;
+        $('#edit-card-modal-title').textContent = cardId ? 'Editar Cartão' : 'Novo Cartão';
+        $('#edit-card-front').value = card ? card.frente : '';
+        $('#edit-card-back').value = card ? card.verso : '';
         openModal('editCard');
     };
 
@@ -214,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const renderBreadcrumbs = () => {
         const container = $('#breadcrumbs');
         container.innerHTML = '';
-        if(state.currentFolderId === null) {
+        if(state.currentTab === 'flashcards' || state.currentFolderId === null) {
             container.style.display = 'none';
             return;
         }
@@ -256,21 +345,54 @@ document.addEventListener('DOMContentLoaded', () => {
         $('#item-list').innerHTML = '';
         const isResumosTab = state.currentTab === 'resumos';
         
-        let itemsToRender = isResumosTab ? state.resumos : state.flashcardDecks;
+        let itemsToRender, foldersInView = [];
         
-        if (isResumosTab && state.searchTerm) {
-            const term = state.searchTerm.toLowerCase();
-            itemsToRender = itemsToRender.filter(resumo => 
-                resumo.titulo.toLowerCase().includes(term) ||
-                (resumo.tags && resumo.tags.some(tag => tag.toLowerCase().includes(term)))
+        if (isResumosTab) {
+            itemsToRender = state.resumos;
+            foldersInView = state.folders.filter(f => f.parentId === state.currentFolderId);
+            itemsToRender = itemsToRender.filter(i => i.folderId === state.currentFolderId);
+        } else {
+            itemsToRender = state.flashcardDecks;
+        }
+
+        // Aplicar filtros
+        if (state.filters.showFavoritesOnly) {
+            itemsToRender = itemsToRender.filter(item => item.isFavorite);
+        }
+        if (state.filters.colors.length > 0) {
+            itemsToRender = itemsToRender.filter(item => state.filters.colors.includes(item.color || DEFAULT_COLOR));
+        }
+        if (state.filters.tags.length > 0) {
+            itemsToRender = itemsToRender.filter(item => 
+                item.tags && state.filters.tags.every(filterTag => item.tags.includes(filterTag))
+            );
+        }
+        
+        const term = state.searchTerm.toLowerCase();
+        if (term) {
+            itemsToRender = itemsToRender.filter(item => 
+                (item.titulo || item.nome).toLowerCase().includes(term) ||
+                (item.tags && item.tags.some(tag => tag.toLowerCase().includes(term)))
             );
         }
 
-        const foldersInView = state.folders.filter(f => f.parentId === state.currentFolderId);
-        const itemsInView = itemsToRender.filter(i => i.folderId === state.currentFolderId);
+        // Ordenação
+        const sorter = (a, b) => {
+            if (state.sortMode === 'alpha_asc') {
+                return (a.titulo || a.nome).localeCompare(b.titulo || b.nome);
+            }
+            if (state.sortMode === 'alpha_desc') {
+                return (b.titulo || b.nome).localeCompare(a.titulo || a.nome);
+            }
+            if (state.sortMode === 'favorites_first') {
+                return (b.isFavorite || false) - (a.isFavorite || false);
+            }
+            return 0; // Padrão
+        };
+        itemsToRender.sort(sorter);
 
-        if (foldersInView.length === 0 && itemsInView.length === 0) {
-            $('#item-list').innerHTML = `<div class="text-center text-gray-500 mt-10 p-4"><i data-lucide="folder-open" class="mx-auto h-16 w-16"></i><p class="mt-4 font-semibold">${state.searchTerm ? 'Nenhum resultado encontrado' : 'Esta pasta está vazia'}.</p></div>`;
+        if (foldersInView.length === 0 && itemsToRender.length === 0) {
+            $('#item-list').innerHTML = `<div class="text-center text-gray-500 mt-10 p-4"><i data-lucide="folder-open" class="mx-auto h-16 w-16"></i><p class="mt-4 font-semibold">${state.searchTerm || state.filters.colors.length > 0 || state.filters.tags.length > 0 || state.filters.showFavoritesOnly ? 'Nenhum resultado encontrado' : 'Nada por aqui ainda'}.</p></div>`;
         }
 
         foldersInView.forEach(folder => {
@@ -280,20 +402,19 @@ document.addEventListener('DOMContentLoaded', () => {
             $('#item-list').appendChild(itemEl);
         });
 
-        itemsInView.forEach(item => {
+        itemsToRender.forEach(item => {
+            const colorName = item.color || DEFAULT_COLOR;
+            const colorClass = COLORS.find(c => c.name === colorName)?.border || 'border-gray-300';
             const itemEl = document.createElement('div');
-            itemEl.className = 'bg-white rounded-lg mb-2 border border-gray-200 hover:bg-gray-50';
+            itemEl.className = `item-card bg-white rounded-lg mb-2 border hover:bg-gray-50 ${colorClass}`;
             
             let contentHtml = '';
+            const heartIcon = `<button class="favorite-toggle-btn p-1 rounded-full" data-id="${item.id}" data-type="${isResumosTab ? 'resumo' : 'deck'}">${item.isFavorite ? '<i data-lucide="heart" class="h-5 w-5 favorite-icon"></i>' : '<i data-lucide="heart" class="h-5 w-5 text-gray-300 hover:text-red-400"></i>'}</button>`;
+            
             if (isResumosTab) {
-                const colorName = item.color || DEFAULT_COLOR;
-                const colorClass = COLORS.find(c => c.name === colorName)?.bg || 'bg-gray-300';
-                const heartIcon = `<button class="favorite-toggle-btn p-1 rounded-full" data-id="${item.id}">${item.isFavorite ? '<i data-lucide="heart" class="h-5 w-5 favorite-icon"></i>' : '<i data-lucide="heart" class="h-5 w-5 text-gray-300 hover:text-red-400"></i>'}</button>`;
-                
                 contentHtml = `
                     <div class="flex items-center">
                         <div class="flex-1 p-4 flex items-center gap-3 cursor-pointer" data-id="${item.id}" data-type="resumo">
-                            <div class="color-indicator ${colorClass}"></div>
                             <span class="font-medium">${item.titulo}</span>
                         </div>
                         <div class="item-actions flex items-center p-2">
@@ -303,20 +424,27 @@ document.addEventListener('DOMContentLoaded', () => {
                             </button>
                         </div>
                     </div>`;
-                
                 if (item.tags && item.tags.length > 0) {
                     const tagsHtml = item.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('');
                     contentHtml += `<div class="tags-container px-4 pb-3">${tagsHtml}</div>`;
                 }
             } else {
                 contentHtml = `
-                    <div class="p-4 flex items-center gap-3 cursor-pointer" data-id="${item.id}" data-type="deck">
-                        <i data-lucide="layers" class="text-purple-500"></i>
-                        <span class="flex-1 font-medium">${item.nome}</span>
-                        <button class="options-btn p-2 rounded-full hover:bg-gray-200" data-id="${item.id}" data-type="deck">
-                            <i data-lucide="more-vertical" class="h-5 w-5 pointer-events-none"></i>
-                        </button>
+                    <div class="p-4 flex items-center gap-3">
+                        <div class="flex-1 flex items-center gap-3 cursor-pointer" data-id="${item.id}" data-type="deck">
+                            <span class="font-medium">${item.nome}</span>
+                        </div>
+                        <div class="item-actions flex items-center">
+                            ${heartIcon}
+                            <button class="options-btn p-2 rounded-full hover:bg-gray-200" data-id="${item.id}" data-type="deck">
+                                <i data-lucide="more-vertical" class="h-5 w-5 pointer-events-none"></i>
+                            </button>
+                        </div>
                     </div>`;
+                 if (item.tags && item.tags.length > 0) {
+                    const tagsHtml = item.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('');
+                    contentHtml += `<div class="tags-container px-4 pt-0 pb-3">${tagsHtml}</div>`;
+                }
             }
             
             itemEl.innerHTML = contentHtml;
@@ -325,8 +453,8 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     };
     
-    const renderColorPalette = () => {
-        const paletteContainer = $('#color-palette');
+    const renderColorPalette = (containerId) => {
+        const paletteContainer = $(`#${containerId}`);
         paletteContainer.innerHTML = '';
         COLORS.forEach(color => {
             const circle = document.createElement('button');
@@ -341,10 +469,77 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     };
 
+    const renderFilterDrawer = () => {
+        filterDrawer.colorPalette.innerHTML = '';
+        COLORS.forEach(color => {
+            const circle = document.createElement('button');
+            const isSelected = state.tempFilters.colors.includes(color.name);
+            circle.className = `color-circle ${color.bg} ${isSelected ? 'selected' : ''}`;
+            circle.dataset.color = color.name;
+            if (isSelected) circle.innerHTML = `<i data-lucide="check" class="h-4 w-4 text-black opacity-60"></i>`;
+            filterDrawer.colorPalette.appendChild(circle);
+        });
+        
+        filterDrawer.favoritesToggle.classList.toggle('active', state.tempFilters.showFavoritesOnly);
+
+        state.filterTagify.settings.whitelist = getAllUniqueTags(state.currentTab);
+        state.filterTagify.loadOriginalValues(state.tempFilters.tags);
+
+        lucide.createIcons();
+    };
+
+    const renderCardList = (cards) => {
+        const cardListContainer = $('#card-list');
+        if (window.autoAnimate) window.autoAnimate(cardListContainer);
+        cardListContainer.innerHTML = '';
+        if (!cards || cards.length === 0) {
+            cardListContainer.innerHTML = `<div class="text-center text-gray-500 mt-10 p-4"><i data-lucide="inbox" class="mx-auto h-16 w-16"></i><p class="mt-4 font-semibold">Nenhum cartão aqui.</p></div>`;
+        } else {
+            cards.forEach(card => {
+                const cardEl = document.createElement('div');
+                cardEl.className = 'bg-white border border-gray-200 rounded-lg mb-3 shadow-sm';
+                cardEl.innerHTML = `
+                    <div class="p-3 border-b border-gray-100"><p class="text-xs text-gray-500 font-semibold">FRENTE</p><p class="text-gray-800">${card.frente.replace(/\n/g, '<br>')}</p></div>
+                    <div class="p-3 bg-gray-50"><p class="text-xs text-gray-500 font-semibold">VERSO</p><p class="text-gray-800">${card.verso.replace(/\n/g, '<br>')}</p></div>
+                    <div class="p-2 flex justify-end gap-2 border-t border-gray-100">
+                        <button class="edit-card-btn p-2 text-gray-500 hover:text-blue-600" data-card-id="${card.id}"><i data-lucide="pencil" class="h-4 w-4 pointer-events-none"></i></button>
+                        <button class="delete-card-btn p-2 text-gray-500 hover:text-red-600" data-card-id="${card.id}"><i data-lucide="trash-2" class="h-4 w-4 pointer-events-none"></i></button>
+                    </div>`;
+                cardListContainer.appendChild(cardEl);
+            });
+        }
+        lucide.createIcons();
+    };
+
+    const renderCurrentCard = () => {
+        const { deck, currentIndex } = state.studySession;
+        if (!deck) return;
+
+        const card = deck.cards[currentIndex];
+        $('#study-card-front').textContent = card.frente;
+        $('#study-card-back').textContent = card.verso;
+        $('#study-progress').textContent = `${currentIndex + 1} / ${deck.cards.length}`;
+        
+        $('#study-card-inner').classList.remove('is-flipped');
+        
+        $('#study-prev-btn').disabled = currentIndex === 0;
+        $('#study-next-btn').disabled = currentIndex === deck.cards.length - 1;
+    };
+
     const render = () => {
         $('#tab-resumos').classList.toggle('tab-active', state.currentTab === 'resumos');
         $('#tab-flashcards').classList.toggle('tab-active', state.currentTab === 'flashcards');
-        $('#search-container').classList.toggle('hidden', state.currentTab !== 'resumos');
+        $('#search-input').placeholder = state.currentTab === 'resumos' ? 'Procurar por título ou tag...' : 'Procurar por nome do baralho...';
+        
+        const activeFiltersCount = state.filters.colors.length + state.filters.tags.length + (state.filters.showFavoritesOnly ? 1 : 0);
+        const filterIndicator = $('#filter-indicator');
+        if (activeFiltersCount > 0) {
+            filterIndicator.textContent = activeFiltersCount;
+            filterIndicator.classList.remove('hidden');
+        } else {
+            filterIndicator.classList.add('hidden');
+        }
+
         renderBreadcrumbs();
         renderItemList();
     };
@@ -355,6 +550,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.currentFolderId = null;
         state.searchTerm = '';
         $('#search-input').value = '';
+        clearFilters();
         showExplorerView();
     };
 
@@ -368,16 +564,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = input.value.trim();
         if (!name) return;
         const type = state.modal.createType;
-        const newItem = { id: crypto.randomUUID(), folderId: state.currentFolderId };
-
+        
         if (type === 'folder') {
-            newItem.name = name;
-            newItem.parentId = state.currentFolderId;
-            delete newItem.folderId;
+            const newItem = { id: crypto.randomUUID(), parentId: state.currentFolderId, name: name };
             state.folders.push(newItem);
         } else if (type === 'deck') {
-            newItem.nome = name;
-            newItem.cards = [];
+            const newItem = { id: crypto.randomUUID(), nome: name, cards: [], isFavorite: false, color: state.tempSelectedColor, tags: [] };
             state.flashcardDecks.push(newItem);
         }
         
@@ -391,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const conteudo = $('#resumo-textarea').value;
         const color = state.tempSelectedColor;
         const isFavorite = state.tempIsFavorite;
-        const tags = state.tagifyInstance.value.map(tag => tag.value);
+        const tags = state.resumoTagify.value.map(tag => tag.value);
 
         if (state.viewingResumoId) { // Atualizando
             const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
@@ -412,26 +604,80 @@ document.addEventListener('DOMContentLoaded', () => {
         showExplorerView();
     };
 
+    const saveDeck = () => {
+        const deck = state.flashcardDecks.find(d => d.id === state.viewingDeckId);
+        if (!deck) return;
+
+        deck.nome = $('#deck-edit-title').value.trim() || 'Baralho sem nome';
+        deck.color = state.tempSelectedColor;
+        deck.tags = state.deckTagify.value.map(tag => tag.value);
+
+        saveData();
+        showExplorerView();
+    };
+
+    const saveCard = (isNew = false) => {
+        const deck = state.flashcardDecks.find(d => d.id === state.viewingDeckId);
+        if (!deck) return;
+
+        const front = $('#edit-card-front').value.trim();
+        const back = $('#edit-card-back').value.trim();
+        if (!front || !back) {
+            swalTheme.fire('Oops...', 'A frente e o verso não podem estar vazios.', 'error');
+            return;
+        }
+
+        if (isNew) {
+            deck.cards.push({ id: crypto.randomUUID(), frente: front, verso: back });
+        } else {
+            const card = deck.cards.find(c => c.id === state.editingCardId);
+            if (card) {
+                card.frente = front;
+                card.verso = back;
+            }
+        }
+        
+        saveData();
+        renderCardList(deck.cards);
+        closeModal('editCard');
+    };
+    
+    const deleteCard = (cardId) => {
+        const deck = state.flashcardDecks.find(d => d.id === state.viewingDeckId);
+        if (!deck) return;
+        
+        swalTheme.fire({
+            title: 'Excluir Cartão?', text: "Esta ação não pode ser desfeita.", icon: 'warning',
+            showCancelButton: true, confirmButtonText: 'Sim, excluir!', cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                deck.cards = deck.cards.filter(c => c.id !== cardId);
+                saveData();
+                renderCardList(deck.cards);
+            }
+        });
+    };
+
     const copyResumo = async () => {
         const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
         if (!resumo || !navigator.clipboard) return;
         try {
             await navigator.clipboard.writeText(`${resumo.titulo}\n\n${resumo.conteudo}`);
-            Swal.fire({ icon: 'success', title: 'Copiado!', showConfirmButton: false, timer: 1500 });
+            swalTheme.fire({ icon: 'success', title: 'Copiado!', showConfirmButton: false, timer: 1500 });
         } catch (err) {
-            Swal.fire({ icon: 'error', title: 'Oops...', text: 'Falha ao copiar o texto.' });
+            swalTheme.fire({ icon: 'error', title: 'Oops...', text: 'Falha ao copiar o texto.' });
         }
     };
 
     const shareResumo = async () => {
         const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
         if (!resumo || !navigator.share) {
-            Swal.fire({ icon: 'error', title: 'Oops...', text: 'Seu navegador não suporta esta função.' });
+            swalTheme.fire({ icon: 'error', title: 'Oops...', text: 'O seu navegador não suporta esta função.' });
             return;
         }
         try {
             await navigator.share({ title: resumo.titulo, text: resumo.conteudo });
-        } catch (err) { /* Silencioso se o usuário cancelar */ }
+        } catch (err) { /* Silencioso se o utilizador cancelar */ }
     };
 
     const updateFavoriteButton = (buttonElement, isFavorite) => {
@@ -440,9 +686,57 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    const getAllUniqueTags = () => {
-        const allTags = state.resumos.flatMap(resumo => resumo.tags || []);
+    const getAllUniqueTags = (type) => {
+        const items = type === 'resumo' ? state.resumos : state.flashcardDecks;
+        const allTags = items.flatMap(item => item.tags || []);
         return [...new Set(allTags)];
+    };
+
+    const cycleSortMode = () => {
+        const currentIndex = SORT_MODES.indexOf(state.sortMode);
+        const nextIndex = (currentIndex + 1) % SORT_MODES.length;
+        state.sortMode = SORT_MODES[nextIndex];
+        
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'info',
+            title: `Ordenado por: ${SORT_LABELS[state.sortMode]}`,
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+        render();
+    };
+
+    const renameItem = (id, type) => {
+        const item = type === 'folder' ? state.folders.find(f => f.id === id) : 
+                     type === 'resumo' ? state.resumos.find(r => r.id === id) : 
+                     state.flashcardDecks.find(d => d.id === id);
+        
+        if (!item) return;
+
+        swalTheme.fire({
+            title: `Renomear ${type}`,
+            input: 'text',
+            inputValue: item.name || item.titulo || item.nome,
+            showCancelButton: true,
+            confirmButtonText: 'Guardar',
+            cancelButtonText: 'Cancelar',
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'O nome não pode estar vazio!'
+                }
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (type === 'folder') item.name = result.value;
+                if (type === 'resumo') item.titulo = result.value;
+                if (type === 'deck') item.nome = result.value;
+                saveData();
+                render();
+            }
+        });
     };
 
     // --- MENU DE OPÇÕES ---
@@ -453,8 +747,10 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.className = 'options-menu';
 
         let buttons = '';
-        if (type === 'resumo') {
-            buttons += `<button class="edit-from-menu-btn" data-id="${id}"><i data-lucide="pencil" class="h-4 w-4 text-blue-500"></i><span>Editar</span></button>`;
+        if (type === 'folder') {
+            buttons += `<button class="rename-from-menu-btn" data-id="${id}" data-type="${type}"><i data-lucide="pencil" class="h-4 w-4 text-blue-500"></i><span>Renomear</span></button>`;
+        } else {
+            buttons += `<button class="edit-from-menu-btn" data-id="${id}" data-type="${type}"><i data-lucide="pencil" class="h-4 w-4 text-blue-500"></i><span>Editar</span></button>`;
         }
         buttons += `<button class="delete-from-menu-btn" data-id="${id}" data-type="${type}"><i data-lucide="trash-2" class="h-4 w-4 text-red-500"></i><span>Excluir</span></button>`;
         
@@ -479,7 +775,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button id="favorite-resumo-menu-btn"><i data-lucide="heart" class="h-4 w-4 ${favoriteIconClass}"></i><span>${favoriteText}</span></button>
             <button id="copy-resumo-btn"><i data-lucide="copy" class="h-4 w-4 text-gray-600"></i><span>Copiar</span></button>
             <button id="edit-resumo-menu-btn"><i data-lucide="pencil" class="h-4 w-4 text-blue-500"></i><span>Editar</span></button>
-            <button id="share-resumo-btn"><i data-lucide="share-2" class="h-4 w-4 text-green-500"></i><span>Compartilhar</span></button>
+            <button id="share-resumo-btn"><i data-lucide="share-2" class="h-4 w-4 text-green-500"></i><span>Partilhar</span></button>
         `;
         document.body.appendChild(menu);
         lucide.createIcons();
@@ -501,8 +797,10 @@ document.addEventListener('DOMContentLoaded', () => {
         $('#view-resumo-back-btn').addEventListener('click', showExplorerView);
         $('#edit-resumo-back-btn').addEventListener('click', showExplorerView);
         $('#deck-back-btn').addEventListener('click', showExplorerView);
+        $('#edit-deck-back-btn').addEventListener('click', showExplorerView);
         
         $('#resumo-save-btn').addEventListener('click', saveResumo);
+        $('#deck-save-btn').addEventListener('click', saveDeck);
         $('#resumo-view-options-btn').addEventListener('click', (e) => {
             e.stopPropagation();
             openResumoViewMenu(e.currentTarget);
@@ -512,7 +810,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const circle = e.target.closest('.color-circle');
             if (circle) {
                 state.tempSelectedColor = circle.dataset.color;
-                renderColorPalette();
+                renderColorPalette('color-palette');
+            }
+        });
+        $('#deck-color-palette').addEventListener('click', (e) => {
+            const circle = e.target.closest('.color-circle');
+            if (circle) {
+                state.tempSelectedColor = circle.dataset.color;
+                renderColorPalette('deck-color-palette');
+            }
+        });
+        
+        $('#create-modal-color-palette').addEventListener('click', (e) => {
+            const circle = e.target.closest('.color-circle');
+            if (circle) {
+                state.tempSelectedColor = circle.dataset.color;
+                renderColorPalette('create-modal-color-palette');
             }
         });
 
@@ -530,7 +843,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const favoriteBtn = e.target.closest('.favorite-toggle-btn');
             if (favoriteBtn) {
                 e.stopPropagation();
-                toggleFavorite(favoriteBtn.dataset.id);
+                toggleFavorite(favoriteBtn.dataset.id, favoriteBtn.dataset.type);
                 return;
             }
 
@@ -558,10 +871,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const editBtn = e.target.closest('.edit-from-menu-btn');
             if (editBtn) {
-                showResumoEditView(editBtn.dataset.id);
+                const { id, type } = editBtn.dataset;
+                if (type === 'resumo') showResumoEditView(id);
+                if (type === 'deck') showDeckEditView(id);
                 closeOptionsMenu();
             }
-            if (e.target.closest('#favorite-resumo-menu-btn')) { toggleFavorite(state.viewingResumoId); closeOptionsMenu(); }
+            const renameBtn = e.target.closest('.rename-from-menu-btn');
+            if (renameBtn) {
+                renameItem(renameBtn.dataset.id, renameBtn.dataset.type);
+                closeOptionsMenu();
+            }
+            if (e.target.closest('#favorite-resumo-menu-btn')) { toggleFavorite(state.viewingResumoId, 'resumo'); closeOptionsMenu(); }
             if (e.target.closest('#copy-resumo-btn')) { copyResumo(); closeOptionsMenu(); }
             if (e.target.closest('#share-resumo-btn')) { shareResumo(); closeOptionsMenu(); }
             if (e.target.closest('#edit-resumo-menu-btn')) { showResumoEditView(state.viewingResumoId); closeOptionsMenu(); }
@@ -573,12 +893,92 @@ document.addEventListener('DOMContentLoaded', () => {
             const modal = btn.closest('.modal-backdrop');
             if(modal) modal.classList.add('hidden');
         }));
+
+        // Listeners do Filtro
+        $('#filter-btn').addEventListener('click', openFilterDrawer);
+        $('#close-filter-drawer-btn').addEventListener('click', closeFilterDrawer);
+        filterDrawer.backdrop.addEventListener('click', closeFilterDrawer);
+        $('#apply-filters-btn').addEventListener('click', applyFilters);
+        $('#clear-filters-btn').addEventListener('click', clearFilters);
+
+        filterDrawer.colorPalette.addEventListener('click', (e) => {
+            const circle = e.target.closest('.color-circle');
+            if (circle) {
+                const color = circle.dataset.color;
+                const index = state.tempFilters.colors.indexOf(color);
+                if (index > -1) {
+                    state.tempFilters.colors.splice(index, 1);
+                } else {
+                    state.tempFilters.colors.push(color);
+                }
+                renderFilterDrawer();
+            }
+        });
+
+        filterDrawer.favoritesToggle.addEventListener('click', (e) => {
+            state.tempFilters.showFavoritesOnly = !state.tempFilters.showFavoritesOnly;
+            e.currentTarget.classList.toggle('active', state.tempFilters.showFavoritesOnly);
+        });
+
+        // Listeners do Modo de Estudo
+        $('#study-deck-btn').addEventListener('click', () => {
+            showStudyView(state.viewingDeckId, state.shuffleMode);
+        });
+        $('#add-card-btn').addEventListener('click', () => openEditCardModal(null));
+        $('#confirm-edit-card-btn').addEventListener('click', () => saveCard(state.editingCardId === null));
+        $('#card-list').addEventListener('click', (e) => {
+            const editBtn = e.target.closest('.edit-card-btn');
+            const deleteBtn = e.target.closest('.delete-card-btn');
+            if (editBtn) openEditCardModal(editBtn.dataset.cardId);
+            if (deleteBtn) deleteCard(deleteBtn.dataset.cardId);
+        });
+
+        $('#study-exit-btn').addEventListener('click', () => {
+            showDeckView(state.studySession.deck.id);
+        });
+
+        $('#study-card-inner').addEventListener('click', (e) => {
+            e.currentTarget.classList.toggle('is-flipped');
+            $('#study-instructions').classList.add('hidden');
+            $('#study-actions').classList.remove('hidden');
+        });
+
+        $('#study-actions').addEventListener('click', (e) => {
+            const ratingBtn = e.target.closest('.study-rating-btn');
+            if (ratingBtn) {
+                const rating = parseInt(ratingBtn.dataset.rating, 10);
+                const currentCard = state.studySession.dueCards[state.studySession.currentIndex];
+                calculateNextReview(currentCard, rating);
+
+                state.studySession.currentIndex++;
+                if (state.studySession.currentIndex >= state.studySession.dueCards.length) {
+                    saveData();
+                    swalTheme.fire('Parabéns!', 'Você revisou todos os cartões de hoje!', 'success').then(() => {
+                        showDeckView(state.studySession.deck.id);
+                    });
+                } else {
+                    renderCurrentCard();
+                }
+            }
+        });
+
+        $('#shuffle-toggle').addEventListener('click', (e) => {
+            state.shuffleMode = !state.shuffleMode;
+            e.currentTarget.classList.toggle('active', state.shuffleMode);
+        });
+        
+        $('#sort-btn').addEventListener('click', cycleSortMode);
     };
     
     // --- INICIALIZAÇÃO ---
-    const tagInputElement = $('#tags-input');
-    state.tagifyInstance = new Tagify(tagInputElement); // Inicializa uma vez
-    loadData();
-    showExplorerView();
-    setupEventListeners();
+    const init = () => {
+        state.resumoTagify = new Tagify($('#tags-input'));
+        state.deckTagify = new Tagify($('#deck-tags-input'));
+        state.filterTagify = new Tagify(filterDrawer.tagsInput);
+        loadData();
+        showExplorerView();
+        setupEventListeners();
+    };
+
+    init();
 });

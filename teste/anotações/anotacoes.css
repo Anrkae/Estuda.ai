@@ -24,6 +24,135 @@ input, textarea, [contenteditable="true"] {
     user-select: auto;
 }
 
+/* --- ITEM CARD (BORDA LATERAL) --- */
+.item-card {
+    border-left-width: 4px;
+    border-left-style: solid;
+}
+
+/* --- PAINEL DE FILTROS (DRAWER) --- */
+.filter-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: var(--bg-primary);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.filter-drawer.open {
+    transform: translateY(0)
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.toggle-switch.active {
+    background-color: var(--primary-color);
+}
+
+.toggle-knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 9999px;
+    transition: transform 0.2s;
+}
+
+.toggle-switch.active .toggle-knob {
+    transform: translateX(20px);
+}
+
+/* --- MODO DE ESTUDO --- */
+.study-view-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background-color: #111827; /* gray-900 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-scene {
+    width: 100%;
+    max-width: 400px;
+    height: 60vh;
+    max-height: 500px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1rem; /* rounded-2xl */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600;
+}
+
+.card-front {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.card-back {
+    background-color: var(--primary-color);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.study-rating-btn {
+    padding: 1rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 0.75rem;
+    transition: transform 0.1s ease;
+}
+
+.study-rating-btn:active {
+    transform: scale(0.95);
+}
+
 /* --- ABAS --- */
 .tab-active {
     border-color: var(--primary-color);
@@ -57,7 +186,7 @@ input, textarea, [contenteditable="true"] {
     color: var(--text-secondary);
     padding: 0.25rem 0.75rem;
     border-radius: 9999px;
-    font-size: 0.75rem; /* text-xs */
+    font-size: 0.75rem;
     font-weight: 500;
 }
 
@@ -71,9 +200,7 @@ input, textarea, [contenteditable="true"] {
     border-radius: 0.5rem;
 }
 
-.tagify:hover {
-    --tags-border-color: #9ca3af;
-}
+.tagify:hover { --tags-border-color: #9ca3af; }
 .tagify__tag { margin: 4px; }
 .tagify__input { margin: 4px; }
 .tagify__dropdown__item--active { background: var(--primary-color); }
@@ -100,9 +227,7 @@ input, textarea, [contenteditable="true"] {
     gap: 0.75rem;
 }
 
-.options-menu button:hover {
-    background-color: var(--bg-secondary);
-}
+.options-menu button:hover { background-color: var(--bg-secondary); }
 
 /* --- MODAIS --- */
 .modal-backdrop {
@@ -140,12 +265,32 @@ input, textarea, [contenteditable="true"] {
 .color-circle:hover { transform: scale(1.1); }
 .color-circle.selected { border-color: var(--primary-color); }
 
-/* --- INDICADOR DE COR NA LISTA --- */
-.color-indicator {
-    width: 0.75rem;
-    height: 0.75rem;
-    border-radius: 9999px;
-    flex-shrink: 0;
+/* --- TEMA DO SWEETALERT2 --- */
+.swal2-popup {
+    border-radius: 1rem !important;
+    font-family: inherit !important;
+}
+.swal2-title {
+    color: var(--text-primary) !important;
+}
+.swal2-html-container {
+    color: var(--text-secondary) !important;
+}
+.swal2-confirm {
+    background-color: var(--primary-color) !important;
+    border-radius: 0.5rem !important;
+    box-shadow: none !important;
+}
+.swal2-cancel {
+    border-radius: 0.5rem !important;
+}
+.swal2-input {
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+.swal2-input:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 2px var(--primary-color) !important;
 }
 
 /* --- ESTILOS PARA MARKDOWN (PROSE) --- */
