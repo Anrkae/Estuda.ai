@@ -1,3 +1,15 @@
+/* --- Variáveis de Cor (Tema) --- */
+:root {
+    --primary-color: #3b82f6; /* blue-500 */
+    --primary-color-dark: #2563eb; /* blue-600 */
+    --favorite-color: #ef4444; /* red-500 */
+    --border-color: #e5e7eb; /* gray-200 */
+    --bg-primary: #ffffff; /* white */
+    --bg-secondary: #f3f4f6; /* gray-100 */
+    --text-primary: #1f2937; /* gray-800 */
+    --text-secondary: #6b7280; /* gray-500 */
+}
+
 /* --- GERAL --- */
 body {
     -webkit-tap-highlight-color: transparent;
@@ -14,9 +26,82 @@ input, textarea, [contenteditable="true"] {
 
 /* --- ABAS --- */
 .tab-active {
-    border-color: #3b82f6; /* Tailwind blue-500 */
-    color: #3b82f6;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
     font-weight: 600;
+}
+
+/* --- NAVEGAÇÃO (Breadcrumbs) --- */
+#breadcrumbs {
+    background-color: var(--bg-secondary);
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px;
+}
+
+/* --- FAVORITOS --- */
+.favorite-btn.favorited, .favorite-icon {
+    color: var(--favorite-color);
+    fill: var(--favorite-color);
+}
+
+/* --- TAGS --- */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tag-pill {
+    background-color: var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 500;
+}
+
+/* Customização do Tagify */
+.tagify {
+    --tag-bg: var(--primary-color);
+    --tag-hover: var(--primary-color-dark);
+    --tags-border-color: #d1d5db;
+    --tag-text-color: white;
+    --tag-remove-btn-color: white;
+    border-radius: 0.5rem;
+}
+
+.tagify:hover {
+    --tags-border-color: #9ca3af;
+}
+.tagify__tag { margin: 4px; }
+.tagify__input { margin: 4px; }
+.tagify__dropdown__item--active { background: var(--primary-color); }
+
+/* --- MENU DE OPÇÕES --- */
+.options-menu {
+    position: absolute;
+    z-index: 30;
+    background-color: var(--bg-primary);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    min-width: 150px;
+}
+
+.options-menu button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    gap: 0.75rem;
+}
+
+.options-menu button:hover {
+    background-color: var(--bg-secondary);
 }
 
 /* --- MODAIS --- */
@@ -31,44 +116,42 @@ input, textarea, [contenteditable="true"] {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: var(--bg-primary);
     border-radius: 0.5rem;
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     padding: 1.5rem;
-    width: 91.666667%; /* w-11/12 */
-    max-width: 24rem; /* max-w-xs */
+    width: 91.666667%;
+    max-width: 24rem;
 }
 
-/* --- MENU DE OPÇÕES (3 PONTOS) --- */
-.options-menu {
-    position: absolute;
-    z-index: 30;
-    background-color: white;
-    border-radius: 0.5rem;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    border: 1px solid #e5e7eb; /* gray-200 */
-    padding: 0.5rem;
-    min-width: 140px;
-}
-
-.options-menu button {
+/* --- PALETA DE CORES --- */
+.color-circle {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease;
     display: flex;
     align-items: center;
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 0.875rem;
-    border-radius: 0.25rem;
-    gap: 0.5rem;
+    justify-content: center;
 }
 
-.options-menu button:hover {
-    background-color: #f3f4f6; /* gray-100 */
+.color-circle:hover { transform: scale(1.1); }
+.color-circle.selected { border-color: var(--primary-color); }
+
+/* --- INDICADOR DE COR NA LISTA --- */
+.color-indicator {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    flex-shrink: 0;
 }
 
 /* --- ESTILOS PARA MARKDOWN (PROSE) --- */
 .prose {
     all: revert;
-    color: #374151; /* gray-700 */
+    color: var(--text-primary);
     line-height: 1.7;
 }
 .prose h1, .prose h2, .prose h3 {
@@ -76,46 +159,31 @@ input, textarea, [contenteditable="true"] {
     margin-top: 1.5em;
     margin-bottom: 0.8em;
     line-height: 1.3;
-    color: #111827; /* gray-900 */
+    color: var(--text-primary);
 }
-.prose h1 { font-size: 1.875rem; } /* text-3xl */
-.prose h2 { font-size: 1.5rem; } /* text-2xl */
-.prose h3 { font-size: 1.25rem; } /* text-xl */
-
+.prose h1 { font-size: 1.875rem; }
+.prose h2 { font-size: 1.5rem; }
+.prose h3 { font-size: 1.25rem; }
 .prose p { margin-bottom: 1.25em; }
-
-.prose ul, .prose ol {
-    margin-left: 1.5em;
-    margin-bottom: 1.25em;
-}
+.prose ul, .prose ol { margin-left: 1.5em; margin-bottom: 1.25em; }
 .prose li { margin-bottom: 0.5em; }
-
-.prose strong { font-weight: 600; color: #1f2937; }
-.prose em { font-style: italic; }
-
+.prose strong { font-weight: 600; color: var(--text-primary); }
 .prose blockquote {
-    border-left: 4px solid #d1d5db; /* gray-300 */
+    border-left: 4px solid var(--border-color);
     padding-left: 1em;
     margin-left: 0;
     font-style: italic;
-    color: #4b5563; /* gray-600 */
-}
-.prose pre {
-    background-color: #f3f4f6; /* gray-100 */
-    color: #1f2937;
-    padding: 1em;
-    border-radius: 0.5rem;
-    overflow-x: auto;
+    color: var(--text-secondary);
 }
 .prose code {
     font-family: monospace;
-    background-color: #e5e7eb; /* gray-200 */
+    background-color: var(--border-color);
     padding: 0.2em 0.4em;
     border-radius: 0.25rem;
     font-size: 0.9em;
 }
 .prose a {
-    color: #3b82f6; /* blue-500 */
+    color: var(--primary-color);
     text-decoration: underline;
     font-weight: 500;
 }

@@ -3,6 +3,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const $ = (selector) => document.querySelector(selector);
     const $$ = (selector) => document.querySelectorAll(selector);
 
+    // --- CONSTANTES ---
+    const COLORS = [
+        { name: 'gray', bg: 'bg-gray-300' }, { name: 'red', bg: 'bg-red-300' },
+        { name: 'yellow', bg: 'bg-yellow-300' }, { name: 'green', bg: 'bg-green-300' },
+        { name: 'blue', bg: 'bg-blue-300' }, { name: 'purple', bg: 'bg-purple-300' },
+    ];
+    const DEFAULT_COLOR = COLORS[0].name;
+
     // --- ELEMENTOS DO DOM ---
     const views = {
         explorer: $('#explorer-view'),
@@ -13,28 +21,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const modals = {
         choice: $('#add-choice-modal'),
         create: $('#create-item-modal'),
-        ai: $('#ai-generate-modal'),
         editCard: $('#edit-card-modal'),
-        loading: $('#loading-modal')
     };
-    const addFab = $('#add-fab');
-    const tabResumosBtn = $('#tab-resumos');
-    const tabFlashcardsBtn = $('#tab-flashcards');
-    const itemListContainer = $('#item-list');
-    const breadcrumbsContainer = $('#breadcrumbs');
-    
+
     // --- ESTADO DA APLICAÇÃO ---
     let state = {
-        currentView: 'explorer',
         currentTab: 'resumos',
         currentFolderId: null,
-        editingResumoId: null,
+        viewingResumoId: null,
         viewingDeckId: null,
         editingCardId: null,
         folders: [],
         resumos: [],
         flashcardDecks: [],
-        modal: { createType: null, aiType: null }
+        tempSelectedColor: DEFAULT_COLOR,
+        tempIsFavorite: false,
+        searchTerm: '',
+        tagifyInstance: null,
+        modal: { createType: null }
     };
 
     // --- FUNÇÕES DE DADOS ---
@@ -49,16 +53,61 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('estuda_ai_flashcardDecks', JSON.stringify(state.flashcardDecks));
     };
 
+    // --- LÓGICA DE AÇÕES ---
+    const deleteItem = (id, type) => {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: "Esta ação não pode ser desfeita!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (type === 'folder') {
+                    let foldersToDelete = [id];
+                    for (let i = 0; i < foldersToDelete.length; i++) {
+                        const parentId = foldersToDelete[i];
+                        state.folders.filter(f => f.parentId === parentId).forEach(f => foldersToDelete.push(f.id));
+                    }
+                    state.folders = state.folders.filter(f => !foldersToDelete.includes(f.id));
+                    state.resumos = state.resumos.filter(r => !foldersToDelete.includes(r.folderId));
+                    state.flashcardDecks = state.flashcardDecks.filter(d => !foldersToDelete.includes(d.folderId));
+                } else if (type === 'resumo') {
+                    state.resumos = state.resumos.filter(r => r.id !== id);
+                } else if (type === 'deck') {
+                    state.flashcardDecks = state.flashcardDecks.filter(d => d.id !== id);
+                }
+                saveData();
+                render();
+                Swal.fire('Excluído!', 'O item foi removido.', 'success');
+            }
+        });
+    };
+
+    const toggleFavorite = (resumoId) => {
+        const resumo = state.resumos.find(r => r.id === resumoId);
+        if (resumo) {
+            resumo.isFavorite = !resumo.isFavorite;
+            saveData();
+            if (state.currentView === 'resumoView' && state.viewingResumoId === resumoId) {
+                updateFavoriteButton($('#resumo-view-favorite-btn'), resumo.isFavorite);
+            }
+            render();
+        }
+    };
+    
     // --- CONTROLE DE VISUALIZAÇÃO ---
     const showView = (viewName) => {
-        state.currentView = viewName;
         Object.values(views).forEach(v => v.classList.add('hidden'));
         views[viewName].classList.remove('hidden');
-        addFab.classList.toggle('hidden', viewName !== 'explorer');
+        $('#add-fab').classList.toggle('hidden', viewName !== 'explorer');
     };
 
     const showExplorerView = () => {
-        state.editingResumoId = null;
+        state.viewingResumoId = null;
         state.viewingDeckId = null;
         showView('explorer');
         render();
@@ -67,17 +116,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const showResumoReaderView = (resumoId) => {
         const resumo = state.resumos.find(r => r.id === resumoId);
         if (!resumo) return;
+        state.viewingResumoId = resumoId;
         $('#resumo-view-title').textContent = resumo.titulo;
         $('#resumo-view-content').innerHTML = marked.parse(resumo.conteudo);
+        // Ação de favoritar foi movida para o menu de opções
         showView('resumoView');
     };
     
     const showResumoEditView = (resumoId) => {
-        const resumo = state.resumos.find(r => r.id === resumoId);
-        if (!resumo) return;
-        state.editingResumoId = resumoId;
-        $('#resumo-edit-title').value = resumo.titulo;
-        $('#resumo-textarea').value = resumo.conteudo;
+        state.viewingResumoId = resumoId;
+        
+        // Atualiza a whitelist e limpa as tags existentes
+        state.tagifyInstance.settings.whitelist = getAllUniqueTags();
+        state.tagifyInstance.removeAllTags();
+
+        if (resumoId) { // Editando
+            const resumo = state.resumos.find(r => r.id === resumoId);
+            if (!resumo) return;
+            $('#resumo-edit-title').value = resumo.titulo;
+            $('#resumo-textarea').value = resumo.conteudo;
+            state.tempSelectedColor = resumo.color || DEFAULT_COLOR;
+            state.tempIsFavorite = resumo.isFavorite || false;
+            state.tagifyInstance.loadOriginalValues(resumo.tags || []);
+        } else { // Criando
+            $('#resumo-edit-title').value = '';
+            $('#resumo-textarea').value = '';
+            state.tempSelectedColor = DEFAULT_COLOR;
+            state.tempIsFavorite = false;
+        }
+        updateFavoriteButton($('#favorite-btn'), state.tempIsFavorite);
+        renderColorPalette();
         showView('resumoEdit');
     };
 
@@ -89,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCardList(deck.cards);
         showView('deck');
     };
-    
+
     // --- LÓGICA DOS MODAIS ---
     const openModal = (modalName) => modals[modalName].classList.remove('hidden');
     const closeModal = (modalName) => modals[modalName].classList.add('hidden');
@@ -100,11 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const isResumosTab = state.currentTab === 'resumos';
 
         const options = [
-            { text: 'Nova Pasta', icon: 'folder-plus', action: () => openCreateModal('folder') },
-            { text: isResumosTab ? 'Novo Resumo' : 'Novo Baralho', icon: isResumosTab ? 'file-text' : 'layers', action: () => openCreateModal(isResumosTab ? 'resumo' : 'deck') },
+            { text: 'Nova Pasta', icon: 'folder-plus', action: () => openCreateModal('folder') }
         ];
-        if (!isResumosTab) {
-            options.push({ text: '✨ Gerar Baralho com IA', icon: 'sparkles', action: () => openAiModal('deck') });
+
+        if (isResumosTab) {
+            options.push({ text: 'Novo Resumo', icon: 'file-text', action: () => showResumoEditView(null) });
+        } else {
+            options.push({ text: 'Novo Baralho', icon: 'layers', action: () => openCreateModal('deck') });
         }
         
         options.forEach(opt => {
@@ -120,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const openCreateModal = (type) => {
         state.modal.createType = type;
-        const titles = { folder: 'Nova Pasta', resumo: 'Novo Resumo', deck: 'Novo Baralho' };
+        const titles = { folder: 'Nova Pasta', deck: 'Novo Baralho' };
         $('#create-modal-title').textContent = titles[type];
         const input = $('#create-modal-input');
         input.value = '';
@@ -129,14 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
         input.focus();
     };
 
-    const openAiModal = (type) => {
-        state.modal.aiType = type;
-        $('#ai-modal-title').textContent = 'Gerar Baralho com IA';
-        $('#ai-modal-input').value = '';
-        openModal('ai');
-        $('#ai-modal-input').focus();
-    };
-    
     const openEditCardModal = (cardId) => {
         const deck = state.flashcardDecks.find(d => d.id === state.viewingDeckId);
         const card = deck?.cards.find(c => c.id === cardId);
@@ -149,13 +211,15 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // --- RENDERIZAÇÃO ---
-    const updateActiveTab = () => {
-        tabResumosBtn.classList.toggle('tab-active', state.currentTab === 'resumos');
-        tabFlashcardsBtn.classList.toggle('tab-active', state.currentTab === 'flashcards');
-    };
-
     const renderBreadcrumbs = () => {
-        breadcrumbsContainer.innerHTML = '';
+        const container = $('#breadcrumbs');
+        container.innerHTML = '';
+        if(state.currentFolderId === null) {
+            container.style.display = 'none';
+            return;
+        }
+        container.style.display = 'flex';
+
         let path = [];
         let currentId = state.currentFolderId;
         while (currentId) {
@@ -165,83 +229,140 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentId = folder.parentId;
             } else break;
         }
+        
         const rootBtn = document.createElement('button');
-        rootBtn.className = 'hover:text-blue-600';
-        rootBtn.textContent = 'Início';
-        rootBtn.onclick = () => navigateToFolder(null);
-        breadcrumbsContainer.appendChild(rootBtn);
+        rootBtn.className = 'p-1 hover:bg-gray-200 rounded-full';
+        rootBtn.innerHTML = `<i data-lucide="home" class="h-4 w-4"></i>`;
+        rootBtn.addEventListener('click', () => navigateToFolder(null));
+        container.appendChild(rootBtn);
+
         path.forEach(folder => {
             const separator = document.createElement('span');
-            separator.className = 'mx-2';
+            separator.className = 'mx-2 text-gray-400';
             separator.textContent = '/';
-            breadcrumbsContainer.appendChild(separator);
+            container.appendChild(separator);
+
             const folderBtn = document.createElement('button');
             folderBtn.className = 'hover:text-blue-600';
             folderBtn.textContent = folder.name;
-            folderBtn.onclick = () => navigateToFolder(folder.id);
-            breadcrumbsContainer.appendChild(folderBtn);
+            folderBtn.addEventListener('click', () => navigateToFolder(folder.id));
+            container.appendChild(folderBtn);
         });
+        lucide.createIcons();
     };
 
     const renderItemList = () => {
-        if (window.autoAnimate) window.autoAnimate(itemListContainer);
-        itemListContainer.innerHTML = '';
-        const foldersInView = state.folders.filter(f => f.parentId === state.currentFolderId);
+        if (window.autoAnimate) window.autoAnimate($('#item-list'));
+        $('#item-list').innerHTML = '';
         const isResumosTab = state.currentTab === 'resumos';
-        const itemsInView = (isResumosTab ? state.resumos : state.flashcardDecks).filter(i => i.folderId === state.currentFolderId);
+        
+        let itemsToRender = isResumosTab ? state.resumos : state.flashcardDecks;
+        
+        if (isResumosTab && state.searchTerm) {
+            const term = state.searchTerm.toLowerCase();
+            itemsToRender = itemsToRender.filter(resumo => 
+                resumo.titulo.toLowerCase().includes(term) ||
+                (resumo.tags && resumo.tags.some(tag => tag.toLowerCase().includes(term)))
+            );
+        }
+
+        const foldersInView = state.folders.filter(f => f.parentId === state.currentFolderId);
+        const itemsInView = itemsToRender.filter(i => i.folderId === state.currentFolderId);
 
         if (foldersInView.length === 0 && itemsInView.length === 0) {
-            itemListContainer.innerHTML = `<div class="text-center text-gray-500 mt-10 p-4"><i data-lucide="folder-open" class="mx-auto h-16 w-16"></i><p class="mt-4 font-semibold">Esta pasta está vazia.</p></div>`;
+            $('#item-list').innerHTML = `<div class="text-center text-gray-500 mt-10 p-4"><i data-lucide="folder-open" class="mx-auto h-16 w-16"></i><p class="mt-4 font-semibold">${state.searchTerm ? 'Nenhum resultado encontrado' : 'Esta pasta está vazia'}.</p></div>`;
         }
 
         foldersInView.forEach(folder => {
             const itemEl = document.createElement('div');
-            itemEl.className = 'relative flex items-center justify-between p-3 bg-gray-50 rounded-lg mb-2 hover:bg-gray-200 transition-colors';
+            itemEl.className = 'relative flex items-center justify-between p-3 bg-gray-50 rounded-lg mb-2 hover:bg-gray-200';
             itemEl.innerHTML = `<div class="flex items-center gap-3 cursor-pointer flex-1" data-id="${folder.id}" data-type="folder"><i data-lucide="folder" class="text-blue-500"></i><span class="font-medium">${folder.name}</span></div><button class="options-btn p-2 rounded-full hover:bg-gray-300" data-id="${folder.id}" data-type="folder"><i data-lucide="more-vertical" class="h-5 w-5 pointer-events-none"></i></button>`;
-            itemListContainer.appendChild(itemEl);
+            $('#item-list').appendChild(itemEl);
         });
 
         itemsInView.forEach(item => {
             const itemEl = document.createElement('div');
-            itemEl.className = 'relative flex items-center justify-between p-3 bg-white rounded-lg mb-2 border border-gray-200 hover:bg-gray-50';
-            const icon = isResumosTab ? 'file-text' : 'layers';
-            const color = isResumosTab ? 'text-green-500' : 'text-purple-500';
-            itemEl.innerHTML = `<div class="flex items-center gap-3 cursor-pointer flex-1" data-id="${item.id}" data-type="${isResumosTab ? 'resumo' : 'deck'}"><i data-lucide="${icon}" class="${color}"></i><span>${item.titulo || item.nome}</span></div><button class="options-btn p-2 rounded-full hover:bg-gray-300" data-id="${item.id}" data-type="${isResumosTab ? 'resumo' : 'deck'}"><i data-lucide="more-vertical" class="h-5 w-5 pointer-events-none"></i></button>`;
-            itemListContainer.appendChild(itemEl);
+            itemEl.className = 'bg-white rounded-lg mb-2 border border-gray-200 hover:bg-gray-50';
+            
+            let contentHtml = '';
+            if (isResumosTab) {
+                const colorName = item.color || DEFAULT_COLOR;
+                const colorClass = COLORS.find(c => c.name === colorName)?.bg || 'bg-gray-300';
+                const heartIcon = `<button class="favorite-toggle-btn p-1 rounded-full" data-id="${item.id}">${item.isFavorite ? '<i data-lucide="heart" class="h-5 w-5 favorite-icon"></i>' : '<i data-lucide="heart" class="h-5 w-5 text-gray-300 hover:text-red-400"></i>'}</button>`;
+                
+                contentHtml = `
+                    <div class="flex items-center">
+                        <div class="flex-1 p-4 flex items-center gap-3 cursor-pointer" data-id="${item.id}" data-type="resumo">
+                            <div class="color-indicator ${colorClass}"></div>
+                            <span class="font-medium">${item.titulo}</span>
+                        </div>
+                        <div class="item-actions flex items-center p-2">
+                            ${heartIcon}
+                            <button class="options-btn p-2 rounded-full hover:bg-gray-200" data-id="${item.id}" data-type="resumo">
+                                <i data-lucide="more-vertical" class="h-5 w-5 pointer-events-none"></i>
+                            </button>
+                        </div>
+                    </div>`;
+                
+                if (item.tags && item.tags.length > 0) {
+                    const tagsHtml = item.tags.map(tag => `<span class="tag-pill">${tag}</span>`).join('');
+                    contentHtml += `<div class="tags-container px-4 pb-3">${tagsHtml}</div>`;
+                }
+            } else {
+                contentHtml = `
+                    <div class="p-4 flex items-center gap-3 cursor-pointer" data-id="${item.id}" data-type="deck">
+                        <i data-lucide="layers" class="text-purple-500"></i>
+                        <span class="flex-1 font-medium">${item.nome}</span>
+                        <button class="options-btn p-2 rounded-full hover:bg-gray-200" data-id="${item.id}" data-type="deck">
+                            <i data-lucide="more-vertical" class="h-5 w-5 pointer-events-none"></i>
+                        </button>
+                    </div>`;
+            }
+            
+            itemEl.innerHTML = contentHtml;
+            $('#item-list').appendChild(itemEl);
         });
         lucide.createIcons();
     };
     
-    const renderCardList = (cards) => {
-        const cardListContainer = $('#card-list');
-        if (window.autoAnimate) window.autoAnimate(cardListContainer);
-        cardListContainer.innerHTML = '';
-        if (!cards || cards.length === 0) {
-            cardListContainer.innerHTML = `<div class="text-center text-gray-500 mt-10 p-4"><i data-lucide="inbox" class="mx-auto h-16 w-16"></i><p class="mt-4 font-semibold">Nenhum cartão aqui.</p></div>`;
-        } else {
-            cards.forEach(card => {
-                const cardEl = document.createElement('div');
-                cardEl.className = 'bg-white border border-gray-200 rounded-lg mb-3 shadow-sm';
-                cardEl.innerHTML = `
-                    <div class="p-3 border-b border-gray-100"><p class="text-xs text-gray-500 font-semibold">FRENTE</p><p class="text-gray-800">${card.frente.replace(/\n/g, '<br>')}</p></div>
-                    <div class="p-3 bg-gray-50"><p class="text-xs text-gray-500 font-semibold">VERSO</p><p class="text-gray-800">${card.verso.replace(/\n/g, '<br>')}</p></div>
-                    <div class="p-2 flex justify-end gap-2 border-t border-gray-100">
-                        <button class="edit-card-btn p-2 text-gray-500 hover:text-blue-600" data-card-id="${card.id}"><i data-lucide="pencil" class="h-4 w-4 pointer-events-none"></i></button>
-                        <button class="delete-card-btn p-2 text-gray-500 hover:text-red-600" data-card-id="${card.id}"><i data-lucide="trash-2" class="h-4 w-4 pointer-events-none"></i></button>
-                    </div>`;
-                cardListContainer.appendChild(cardEl);
-            });
-        }
+    const renderColorPalette = () => {
+        const paletteContainer = $('#color-palette');
+        paletteContainer.innerHTML = '';
+        COLORS.forEach(color => {
+            const circle = document.createElement('button');
+            circle.className = `color-circle ${color.bg}`;
+            circle.dataset.color = color.name;
+            if (color.name === state.tempSelectedColor) {
+                circle.classList.add('selected');
+                circle.innerHTML = `<i data-lucide="check" class="h-4 w-4 text-black opacity-60"></i>`;
+            }
+            paletteContainer.appendChild(circle);
+        });
         lucide.createIcons();
     };
 
     const render = () => {
-        updateActiveTab();
+        $('#tab-resumos').classList.toggle('tab-active', state.currentTab === 'resumos');
+        $('#tab-flashcards').classList.toggle('tab-active', state.currentTab === 'flashcards');
+        $('#search-container').classList.toggle('hidden', state.currentTab !== 'resumos');
         renderBreadcrumbs();
         renderItemList();
     };
 
-    // --- LÓGICA DE AÇÕES (CRUD) ---
+    // --- LÓGICA DE AÇÕES ---
+    const switchTab = (tabName) => {
+        state.currentTab = tabName;
+        state.currentFolderId = null;
+        state.searchTerm = '';
+        $('#search-input').value = '';
+        showExplorerView();
+    };
+
+    const navigateToFolder = (folderId) => {
+        state.currentFolderId = folderId;
+        render();
+    };
+
     const createItem = () => {
         const input = $('#create-modal-input');
         const name = input.value.trim();
@@ -254,10 +375,6 @@ document.addEventListener('DOMContentLoaded', () => {
             newItem.parentId = state.currentFolderId;
             delete newItem.folderId;
             state.folders.push(newItem);
-        } else if (type === 'resumo') {
-            newItem.titulo = name;
-            newItem.conteudo = `# ${name}\n\n`;
-            state.resumos.push(newItem);
         } else if (type === 'deck') {
             newItem.nome = name;
             newItem.cards = [];
@@ -269,76 +386,65 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal('create');
     };
 
-    const deleteItem = (id, type) => {
-        const confirmation = confirm(`Tem certeza que deseja excluir? Se for uma pasta, todo o seu conteúdo será perdido.`);
-        if (!confirmation) return;
+    const saveResumo = () => {
+        const titulo = $('#resumo-edit-title').value.trim() || 'Resumo sem título';
+        const conteudo = $('#resumo-textarea').value;
+        const color = state.tempSelectedColor;
+        const isFavorite = state.tempIsFavorite;
+        const tags = state.tagifyInstance.value.map(tag => tag.value);
 
-        if (type === 'folder') {
-            const foldersToDelete = [id];
-            for (let i = 0; i < foldersToDelete.length; i++) {
-                const parentId = foldersToDelete[i];
-                state.folders.filter(f => f.parentId === parentId).forEach(f => foldersToDelete.push(f.id));
+        if (state.viewingResumoId) { // Atualizando
+            const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
+            if (resumo) {
+                resumo.titulo = titulo;
+                resumo.conteudo = conteudo;
+                resumo.color = color;
+                resumo.isFavorite = isFavorite;
+                resumo.tags = tags;
             }
-            state.folders = state.folders.filter(f => !foldersToDelete.includes(f.id));
-            state.resumos = state.resumos.filter(r => !foldersToDelete.includes(r.folderId));
-            state.flashcardDecks = state.flashcardDecks.filter(d => !foldersToDelete.includes(d.folderId));
-        } else if (type === 'resumo') {
-            state.resumos = state.resumos.filter(r => r.id !== id);
-        } else if (type === 'deck') {
-            state.flashcardDecks = state.flashcardDecks.filter(d => d.id !== id);
+        } else { // Criando
+            state.resumos.push({
+                id: crypto.randomUUID(), folderId: state.currentFolderId,
+                titulo, conteudo, color, isFavorite, tags
+            });
         }
         saveData();
-        render();
+        showExplorerView();
     };
 
-    const saveResumo = () => {
-        const resumo = state.resumos.find(r => r.id === state.editingResumoId);
-        if(resumo) {
-            resumo.titulo = $('#resumo-edit-title').value.trim() || 'Resumo sem título';
-            resumo.conteudo = $('#resumo-textarea').value;
-            saveData();
-            showExplorerView();
+    const copyResumo = async () => {
+        const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
+        if (!resumo || !navigator.clipboard) return;
+        try {
+            await navigator.clipboard.writeText(`${resumo.titulo}\n\n${resumo.conteudo}`);
+            Swal.fire({ icon: 'success', title: 'Copiado!', showConfirmButton: false, timer: 1500 });
+        } catch (err) {
+            Swal.fire({ icon: 'error', title: 'Oops...', text: 'Falha ao copiar o texto.' });
         }
     };
-    
-    const saveCard = (isNew = false) => {
-        const deck = state.flashcardDecks.find(d => d.id === state.viewingDeckId);
-        if (!deck) return;
 
-        const front = $('#edit-card-front').value.trim();
-        const back = $('#edit-card-back').value.trim();
-        if (!front || !back) {
-            alert('A frente e o verso não podem estar vazios.');
+    const shareResumo = async () => {
+        const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
+        if (!resumo || !navigator.share) {
+            Swal.fire({ icon: 'error', title: 'Oops...', text: 'Seu navegador não suporta esta função.' });
             return;
         }
+        try {
+            await navigator.share({ title: resumo.titulo, text: resumo.conteudo });
+        } catch (err) { /* Silencioso se o usuário cancelar */ }
+    };
 
-        if (isNew) {
-            deck.cards.push({ id: crypto.randomUUID(), frente: front, verso: back });
-        } else {
-            const card = deck.cards.find(c => c.id === state.editingCardId);
-            if (card) {
-                card.frente = front;
-                card.verso = back;
-            }
-        }
-        
-        saveData();
-        renderCardList(deck.cards);
-        closeModal('editCard');
-    };
-    
-    const deleteCard = (cardId) => {
-        const deck = state.flashcardDecks.find(d => d.id === state.viewingDeckId);
-        if (!deck) return;
-        
-        const confirmation = confirm('Tem certeza que deseja excluir este cartão?');
-        if (confirmation) {
-            deck.cards = deck.cards.filter(c => c.id !== cardId);
-            saveData();
-            renderCardList(deck.cards);
+    const updateFavoriteButton = (buttonElement, isFavorite) => {
+        if (buttonElement) {
+            buttonElement.classList.toggle('favorited', isFavorite);
         }
     };
-    
+
+    const getAllUniqueTags = () => {
+        const allTags = state.resumos.flatMap(resumo => resumo.tags || []);
+        return [...new Set(allTags)];
+    };
+
     // --- MENU DE OPÇÕES ---
     const openOptionsMenu = (target, id, type) => {
         closeOptionsMenu();
@@ -348,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let buttons = '';
         if (type === 'resumo') {
-            buttons += `<button class="edit-from-menu-btn" data-id="${id}" data-type="${type}"><i data-lucide="pencil" class="h-4 w-4 text-blue-500"></i><span>Editar</span></button>`;
+            buttons += `<button class="edit-from-menu-btn" data-id="${id}"><i data-lucide="pencil" class="h-4 w-4 text-blue-500"></i><span>Editar</span></button>`;
         }
         buttons += `<button class="delete-from-menu-btn" data-id="${id}" data-type="${type}"><i data-lucide="trash-2" class="h-4 w-4 text-red-500"></i><span>Excluir</span></button>`;
         
@@ -359,28 +465,75 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.style.top = `${rect.bottom + window.scrollY + 5}px`;
         menu.style.right = `${window.innerWidth - rect.right}px`;
     };
+    
+    const openResumoViewMenu = (target) => {
+        closeOptionsMenu();
+        const menu = document.createElement('div');
+        menu.id = 'options-menu-popup';
+        menu.className = 'options-menu';
+        const resumo = state.resumos.find(r => r.id === state.viewingResumoId);
+        const favoriteText = resumo?.isFavorite ? 'Desfavoritar' : 'Favoritar';
+        const favoriteIconClass = resumo?.isFavorite ? 'favorite-icon' : 'text-gray-600';
 
+        menu.innerHTML = `
+            <button id="favorite-resumo-menu-btn"><i data-lucide="heart" class="h-4 w-4 ${favoriteIconClass}"></i><span>${favoriteText}</span></button>
+            <button id="copy-resumo-btn"><i data-lucide="copy" class="h-4 w-4 text-gray-600"></i><span>Copiar</span></button>
+            <button id="edit-resumo-menu-btn"><i data-lucide="pencil" class="h-4 w-4 text-blue-500"></i><span>Editar</span></button>
+            <button id="share-resumo-btn"><i data-lucide="share-2" class="h-4 w-4 text-green-500"></i><span>Compartilhar</span></button>
+        `;
+        document.body.appendChild(menu);
+        lucide.createIcons();
+        const rect = target.getBoundingClientRect();
+        menu.style.top = `${rect.bottom + window.scrollY + 5}px`;
+        menu.style.right = `${window.innerWidth - rect.right}px`;
+    };
+    
     const closeOptionsMenu = () => {
         $('#options-menu-popup')?.remove();
     };
 
     // --- EVENT LISTENERS ---
     const setupEventListeners = () => {
-        // Navegação
-        addFab.addEventListener('click', openChoiceModal);
-        tabResumosBtn.addEventListener('click', () => switchTab('resumos'));
-        tabFlashcardsBtn.addEventListener('click', () => switchTab('flashcards'));
+        $('#add-fab').addEventListener('click', openChoiceModal);
+        $('#tab-resumos').addEventListener('click', () => switchTab('resumos'));
+        $('#tab-flashcards').addEventListener('click', () => switchTab('flashcards'));
 
-        // Botões de voltar
         $('#view-resumo-back-btn').addEventListener('click', showExplorerView);
         $('#edit-resumo-back-btn').addEventListener('click', showExplorerView);
         $('#deck-back-btn').addEventListener('click', showExplorerView);
         
-        // Salvar resumo
         $('#resumo-save-btn').addEventListener('click', saveResumo);
+        $('#resumo-view-options-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            openResumoViewMenu(e.currentTarget);
+        });
 
-        // Ações na lista principal
-        itemListContainer.addEventListener('click', (e) => {
+        $('#color-palette').addEventListener('click', (e) => {
+            const circle = e.target.closest('.color-circle');
+            if (circle) {
+                state.tempSelectedColor = circle.dataset.color;
+                renderColorPalette();
+            }
+        });
+
+        $('#search-input').addEventListener('input', (e) => {
+            state.searchTerm = e.target.value;
+            render();
+        });
+
+        $('#favorite-btn').addEventListener('click', () => {
+            state.tempIsFavorite = !state.tempIsFavorite;
+            updateFavoriteButton($('#favorite-btn'), state.tempIsFavorite);
+        });
+
+        $('#item-list').addEventListener('click', (e) => {
+            const favoriteBtn = e.target.closest('.favorite-toggle-btn');
+            if (favoriteBtn) {
+                e.stopPropagation();
+                toggleFavorite(favoriteBtn.dataset.id);
+                return;
+            }
+
             const itemDiv = e.target.closest('div[data-id][data-type]');
             const optionsButton = e.target.closest('.options-btn');
             if (optionsButton) {
@@ -394,7 +547,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Ações no menu de opções e modais
         document.body.addEventListener('click', (e) => {
             if (!e.target.closest('.options-btn') && !e.target.closest('#options-menu-popup')) {
                 closeOptionsMenu();
@@ -409,39 +561,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 showResumoEditView(editBtn.dataset.id);
                 closeOptionsMenu();
             }
+            if (e.target.closest('#favorite-resumo-menu-btn')) { toggleFavorite(state.viewingResumoId); closeOptionsMenu(); }
+            if (e.target.closest('#copy-resumo-btn')) { copyResumo(); closeOptionsMenu(); }
+            if (e.target.closest('#share-resumo-btn')) { shareResumo(); closeOptionsMenu(); }
+            if (e.target.closest('#edit-resumo-menu-btn')) { showResumoEditView(state.viewingResumoId); closeOptionsMenu(); }
         });
         
-        // Modais
         $('#close-choice-modal').addEventListener('click', () => closeModal('choice'));
         $('#confirm-create-btn').addEventListener('click', createItem);
         $$('.modal-cancel-btn').forEach(btn => btn.addEventListener('click', () => {
             const modal = btn.closest('.modal-backdrop');
             if(modal) modal.classList.add('hidden');
         }));
-        
-        // Tela de Baralho
-        $('#add-card-btn').addEventListener('click', () => {
-            state.editingCardId = null; 
-            $('#edit-card-front').value = '';
-            $('#edit-card-back').value = '';
-            openModal('editCard');
-        });
-        $('#confirm-edit-card-btn').addEventListener('click', () => saveCard(state.editingCardId === null));
-        $('#card-list').addEventListener('click', (e) => {
-            const editBtn = e.target.closest('.edit-card-btn');
-            const deleteBtn = e.target.closest('.delete-card-btn');
-            if (editBtn) openEditCardModal(editBtn.dataset.cardId);
-            if (deleteBtn) deleteCard(deleteBtn.dataset.cardId);
-        });
     };
     
     // --- INICIALIZAÇÃO ---
-    const navigateToFolder = (folderId) => {
-        state.currentFolderId = folderId;
-        render();
-    };
+    const tagInputElement = $('#tags-input');
+    state.tagifyInstance = new Tagify(tagInputElement); // Inicializa uma vez
     loadData();
-    render();
+    showExplorerView();
     setupEventListeners();
-    lucide.createIcons();
 });

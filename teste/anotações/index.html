@@ -9,6 +9,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Tagify -->
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- AutoAnimate -->
     <script type="module">
         import autoAnimate from 'https://cdn.jsdelivr.net/npm/@formkit/auto-animate@0.8.2/index.mjs'
         window.autoAnimate = autoAnimate;
@@ -24,7 +34,6 @@
         
         <!-- 1. Tela Principal (Explorador) -->
         <div id="explorer-view">
-            <!-- ... (código do header e nav sem alterações) ... -->
             <header class="p-4 border-b border-gray-200 sticky top-0 bg-white z-20">
                 <h1 class="text-xl font-bold text-center text-blue-600">Estuda AI</h1>
             </header>
@@ -32,6 +41,12 @@
                 <button id="tab-resumos" class="w-full p-4 text-center border-b-2 border-transparent">Resumos</button>
                 <button id="tab-flashcards" class="w-full p-4 text-center border-b-2 border-transparent">Flashcards</button>
             </nav>
+            <div class="p-4 border-b border-gray-200">
+                <div id="search-container" class="relative">
+                    <input type="text" id="search-input" placeholder="Buscar por título ou tag..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5"></i>
+                </div>
+            </div>
             <main class="p-4">
                 <div id="breadcrumbs" class="flex items-center text-sm text-gray-500 mb-4 overflow-x-auto whitespace-nowrap"></div>
                 <div id="item-list"></div>
@@ -45,11 +60,12 @@
         <div id="resumo-view" class="hidden">
             <header class="p-4 border-b border-gray-200 flex items-center gap-2 sticky top-0 bg-white z-20">
                 <button id="view-resumo-back-btn" class="p-2 hover:bg-gray-100 rounded-full"><i data-lucide="arrow-left"></i></button>
-                <h2 id="resumo-view-title" class="text-xl font-bold truncate"></h2>
+                <h2 id="resumo-view-title" class="text-xl font-bold truncate flex-1"></h2>
+                <button id="resumo-view-options-btn" class="p-2 hover:bg-gray-100 rounded-full">
+                    <i data-lucide="more-vertical"></i>
+                </button>
             </header>
-            <div id="resumo-view-content" class="p-5 prose">
-                <!-- Conteúdo do resumo renderizado será inserido aqui -->
-            </div>
+            <div id="resumo-view-content" class="p-5 prose"></div>
         </div>
         
         <!-- 3. Tela de Edição de Resumo -->
@@ -57,14 +73,24 @@
             <header class="p-4 border-b border-gray-200 flex items-center gap-2 sticky top-0 bg-white z-20">
                 <button id="edit-resumo-back-btn" class="p-2 hover:bg-gray-100 rounded-full"><i data-lucide="arrow-left"></i></button>
                 <input type="text" id="resumo-edit-title" class="text-xl font-bold bg-transparent focus:outline-none w-full" placeholder="Título do resumo...">
+                <button id="favorite-btn" class="favorite-btn p-2 text-gray-400 hover:text-red-500 rounded-full"><i data-lucide="heart" class="h-6 w-6"></i></button>
                 <button id="resumo-save-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 whitespace-nowrap">Salvar</button>
             </header>
-            <textarea id="resumo-textarea" class="w-full h-[calc(100vh-74px)] p-4 text-base leading-7 focus:outline-none" placeholder="Escreva seu resumo aqui..."></textarea>
+            <div class="p-4 border-b border-gray-200 space-y-4">
+                <div>
+                    <p class="text-sm font-medium text-gray-600 mb-2">Cor da anotação</p>
+                    <div id="color-palette" class="flex gap-3"></div>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-600 mb-2">Tags</p>
+                    <input id="tags-input" placeholder="Adicione tags...">
+                </div>
+            </div>
+            <textarea id="resumo-textarea" class="w-full h-[calc(100vh-222px)] p-4 text-base leading-7 focus:outline-none" placeholder="Escreva seu resumo aqui..."></textarea>
         </div>
 
         <!-- 4. Tela de Visualização de Baralho -->
         <div id="deck-view" class="hidden">
-            <!-- ... (código da tela de baralho sem alterações) ... -->
             <header class="p-4 border-b border-gray-200 flex items-center gap-2 sticky top-0 bg-white z-20">
                 <button id="deck-back-btn" class="p-2 hover:bg-gray-100 rounded-full"><i data-lucide="arrow-left"></i></button>
                 <h2 id="deck-title" class="text-xl font-bold truncate"></h2>
@@ -81,7 +107,7 @@
 
     <!-- Modais -->
     <div id="modals-container">
-        <!-- ... (código dos modais sem alterações) ... -->
+        <!-- Modal de Escolha -->
         <div id="add-choice-modal" class="modal-backdrop hidden">
             <div class="modal-content">
                 <h3 class="text-lg font-semibold mb-4 text-center">O que deseja criar?</h3>
@@ -89,6 +115,7 @@
                 <button id="close-choice-modal" class="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">Cancelar</button>
             </div>
         </div>
+        <!-- Modal de Criação Manual -->
         <div id="create-item-modal" class="modal-backdrop hidden">
             <div class="modal-content">
                 <h3 id="create-modal-title" class="text-lg font-semibold mb-4"></h3>
@@ -99,19 +126,7 @@
                 </div>
             </div>
         </div>
-        <div id="ai-generate-modal" class="modal-backdrop hidden">
-            <div class="modal-content">
-                <h3 id="ai-modal-title" class="text-lg font-semibold mb-4"></h3>
-                <p class="text-sm text-gray-600 mb-3">Ex: "Capitais da Europa", "Ciclo de Krebs"</p>
-                <input type="text" id="ai-modal-input" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Digite um tópico...">
-                <div class="flex justify-end gap-3 mt-4">
-                    <button class="modal-cancel-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancelar</button>
-                    <button id="confirm-ai-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2">
-                        <i data-lucide="sparkles" class="w-4 h-4"></i><span>Gerar</span>
-                    </button>
-                </div>
-            </div>
-        </div>
+        <!-- Modal para Edição de Cartão -->
         <div id="edit-card-modal" class="modal-backdrop hidden">
             <div class="modal-content">
                 <h3 class="text-lg font-semibold mb-4">Editar Cartão</h3>
@@ -129,12 +144,6 @@
                     <button class="modal-cancel-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancelar</button>
                     <button id="confirm-edit-card-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Salvar</button>
                 </div>
-            </div>
-        </div>
-        <div id="loading-modal" class="modal-backdrop hidden">
-            <div class="bg-white rounded-lg shadow-xl p-8 w-11/12 max-w-xs text-center">
-                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                <p id="loading-message" class="mt-4 text-gray-700 font-semibold">Gerando com IA...</p>
             </div>
         </div>
     </div>
