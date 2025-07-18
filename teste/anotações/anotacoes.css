@@ -26,8 +26,8 @@ input, textarea, [contenteditable="true"] {
 
 /* --- ITEM CARD (BORDA LATERAL) --- */
 .item-card {
-    border-left-width: 4px;
-    border-left-style: solid;
+    border-left-width: 5px !important;
+    border-radius: 12px !important;
 }
 
 /* --- PAINEL DE FILTROS (DRAWER) --- */

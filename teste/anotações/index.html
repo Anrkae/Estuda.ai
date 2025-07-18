@@ -14,6 +14,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
     <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -26,6 +29,7 @@
     
     <!-- O nosso ficheiro de estilos -->
     <link rel="stylesheet" href="anotacoes.css">
+    
 </head>
 <body class="bg-gray-100 text-gray-800 font-sans antialiased">
 
@@ -34,9 +38,9 @@
         
         <!-- 1. Ecrã Principal (Explorador) -->
         <div id="explorer-view">
-            <header class="p-4 border-b border-gray-200 sticky top-0 bg-white z-20">
-                <h1 class="text-xl font-bold text-center text-blue-600">Estuda AI</h1>
-            </header>
+            <div>
+                <script src="../../assets/js/components/header.js"></script>
+            </div>
             <nav class="flex justify-around border-b border-gray-200 sticky top-[73px] bg-white z-20">
                 <button id="tab-resumos" class="w-full p-4 text-center border-b-2 border-transparent">Resumos</button>
                 <button id="tab-flashcards" class="w-full p-4 text-center border-b-2 border-transparent">Flashcards</button>
