@@ -1,0 +1,121 @@
+/* --- GERAL --- */
+body {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input, textarea, [contenteditable="true"] {
+    -webkit-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+}
+
+/* --- ABAS --- */
+.tab-active {
+    border-color: #3b82f6; /* Tailwind blue-500 */
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+/* --- MODAIS --- */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    padding: 1.5rem;
+    width: 91.666667%; /* w-11/12 */
+    max-width: 24rem; /* max-w-xs */
+}
+
+/* --- MENU DE OPÇÕES (3 PONTOS) --- */
+.options-menu {
+    position: absolute;
+    z-index: 30;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border: 1px solid #e5e7eb; /* gray-200 */
+    padding: 0.5rem;
+    min-width: 140px;
+}
+
+.options-menu button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    gap: 0.5rem;
+}
+
+.options-menu button:hover {
+    background-color: #f3f4f6; /* gray-100 */
+}
+
+/* --- ESTILOS PARA MARKDOWN (PROSE) --- */
+.prose {
+    all: revert;
+    color: #374151; /* gray-700 */
+    line-height: 1.7;
+}
+.prose h1, .prose h2, .prose h3 {
+    font-weight: 700;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    line-height: 1.3;
+    color: #111827; /* gray-900 */
+}
+.prose h1 { font-size: 1.875rem; } /* text-3xl */
+.prose h2 { font-size: 1.5rem; } /* text-2xl */
+.prose h3 { font-size: 1.25rem; } /* text-xl */
+
+.prose p { margin-bottom: 1.25em; }
+
+.prose ul, .prose ol {
+    margin-left: 1.5em;
+    margin-bottom: 1.25em;
+}
+.prose li { margin-bottom: 0.5em; }
+
+.prose strong { font-weight: 600; color: #1f2937; }
+.prose em { font-style: italic; }
+
+.prose blockquote {
+    border-left: 4px solid #d1d5db; /* gray-300 */
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+    color: #4b5563; /* gray-600 */
+}
+.prose pre {
+    background-color: #f3f4f6; /* gray-100 */
+    color: #1f2937;
+    padding: 1em;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+}
+.prose code {
+    font-family: monospace;
+    background-color: #e5e7eb; /* gray-200 */
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+}
+.prose a {
+    color: #3b82f6; /* blue-500 */
+    text-decoration: underline;
+    font-weight: 500;
+}
