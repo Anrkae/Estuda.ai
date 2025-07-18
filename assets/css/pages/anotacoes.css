@@ -1,489 +1,351 @@
 /* === Importação de Fonte === */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
 
-/* === Estilos Gerais === */
+/* --- Variáveis de Cor (Tema) --- */
+:root {
+    --primary-color: #673ab7; /* blue-500 */
+    --primary-color-dark: #673ab7; /* blue-600 */
+    --favorite-color: #ef4444; /* red-500 */
+    --border-color: #e5e7eb; /* gray-200 */
+    --bg-primary: #ffffff; /* white */
+    --bg-secondary: #f3f4f6; /* gray-100 */
+    --text-primary: #1f2937; /* gray-800 */
+    --text-secondary: #6b7280; /* gray-500 */
+}
+
+/* --- GERAL --- */
 body {
     -webkit-tap-highlight-color: transparent;
-    outline: none;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer/Edge */
-    user-select: none;         /* Padrão */
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f1f0ea;
-    color: #333;
-    margin: 0;
-    padding-top: 70px;
-    min-height: 100vh;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: 'Montserrat', sans-serif !important;
 }
 
-/* === Container Principal e Abas === */
-.container-principal.tab-page-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
-    width: calc(100% - 40px);
-    box-sizing: border-box;
-    background-color: #f5f4f0;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+input, textarea, [contenteditable="true"] {
+    -webkit-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
 }
 
-.tab-nav {
-    display: flex;
-    margin-bottom: 25px;
-}
-
-.tab-link {
-    font-family: 'Montserrat', sans-serif;
-    padding: 12px 25px;
-    cursor: pointer;
-    border: none;
-    background-color: transparent;
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: #2C2C2C;
-    margin-bottom: -2px;
-    border-bottom: 2px solid transparent;
-    transition: color 0.3s ease, border-bottom-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.tab-link:hover {
-    color: #fff !important; /* Mantido conforme seu CSS - verificar se é intencional */
-}
-
-.tab-link.active {
-    color: #fff;
-    background-color: #2C2C2C;
-    font-weight: 600;
-    border-bottom-color: #6735bc;
-}
-
-.tab-content-area {
-    flex-grow: 1;
-}
-
-.tab-content {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-.tab-content.active {
-    display: block;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* === Cabeçalho Dentro das Abas === */
-.content-header-tab {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.content-header-tab h3 {
-    margin: 0;
-    text-align: left;
-    font-size: 1.4rem;
-    color: #444;
-}
-
-/* Botão Principal */
-.btn-principal {
-    padding: 10px 20px;
-    background-color: #6735bc;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-.btn-principal:hover {
-    background-color: #512da8;
-}
-.btn-principal:active {
-    transform: scale(0.98);
-}
-
-/* Botão Secundário */
-.btn-secundario {
-     padding: 10px 20px;
-     background-color: #f5f5f5;
-     color: #555;
-     border: 1px solid #ddd;
-     border-radius: 25px;
-     cursor: pointer;
-     font-size: 0.95rem;
-     font-weight: 500;
-     transition: background-color 0.2s ease, color 0.2s ease;
-}
-.btn-secundario:hover {
-    background-color: #eee;
-    color: #333;
-}
-
-/* Busca */
-.search-container {
-    margin-bottom: 20px;
-}
-#busca-notas, #busca-resumos{
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-#busca-notas:focus, #busca-resumos:focus { /* Aplica a ambos */
-     border-color: #6735bc;
-     outline: none;
-     box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.1);
-}
-
-/* === Lista de Itens (Notas e Resumos) === */
-.lista-itens-tab {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    padding-top: 10px;
-}
-
+/* --- ITEM CARD (BORDA LATERAL) --- */
 .item-card {
-    background-color: rgba(255, 255, 255, 0.2); /* Mantido do seu CSS */
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-    padding: 18px;
+    border-left-width: 5px !important;
+    border-radius: 12px !important;
+}
+
+/* --- PAINEL DE FILTROS (DRAWER) --- */
+.filter-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: var(--bg-primary);
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-top: 1px solid var(--border-color);
+}
+
+.filter-drawer.open {
+    transform: translateY(0);
+}
+
+#resumo-edit-title, #deck-edit-title {
+    padding: 8px !important;
+}
+
+#add-fab {
+    background: var(--primary-color) !important;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+    background-color: #ccc;
+    border-radius: 9999px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.toggle-switch.active {
+    background-color: var(--primary-color);
+}
+
+.toggle-knob {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 9999px;
+    transition: transform 0.2s;
+}
+
+.toggle-switch.active .toggle-knob {
+    transform: translateX(20px);
+}
+
+/* --- MODO DE ESTUDO --- */
+.study-view-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background-color: #111827; /* gray-900 */
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    transition: box-shadow 0.3s ease, transform 0.2s ease;
-    cursor: pointer;
-    min-height: 150px;
-    /* Adicionado para garantir que o conteúdo interno respeite o padding */
-    box-sizing: border-box;
-    /* Adicionado para evitar quebras estranhas com flex */
-    overflow: hidden;
-}
-.item-card:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-3px);
-}
-/* Cursor padrão para resumo, clicável apenas na anotação */
-.resumo-card {
-    cursor: default;
-}
-.anotacao-card .card-content {
-    cursor: pointer;
+    align-items: center;
+    justify-content: center;
 }
 
-.card-content {
-    margin-bottom: 15px;
-    flex-grow: 1;
-    /* Adicionado para garantir que o conteúdo interno quebre corretamente */
-    overflow: hidden; /* Evita que conteúdo interno estoure sem quebrar */
+.card-scene {
+    width: 100%;
+    max-width: 400px;
+    height: 60vh;
+    max-height: 500px;
+    perspective: 1000px;
 }
 
-.item-card h4 {
-    margin-top: 0;
-    margin-bottom: 8px;
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #6735bc;
-    word-break: break-word;
-}
-/* Título sem título */
-.item-card h4.sem-titulo {
-    font-style: italic;
-    color: #777;
-    font-weight: 500; /* Um pouco menos forte */
-}
-
-.card-preview { /* Preview da ANOTAÇÃO */
-    font-size: 0.9rem;
-    color: #555;
-    line-height: 1.5;
-    margin-bottom: 10px;
-    word-break: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* Adicionado para garantir quebras de linha no preview da NOTA também */
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
-}
-
-.card-date {
-    font-size: 0.75rem;
-    color: #888;
-    margin-top: 5px;
-    display: block;
-}
-
-.card-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: auto;
-    padding-top: 10px;
-    border-top: 1px solid #f0f0f0;
-}
-
-.btn-icon {
-    background: none;
-    border: none;
-    color: #888;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 5px;
-    transition: color 0.2s ease;
-}
-.btn-icon:hover {
-    color: #6735bc;
-}
-.btn-delete:hover {
-    color: #e53935;
-}
-
-/* === Estilos Específicos Resumo Card === */
-.resumo-card .resumo-texto { /* Aplicado ao <p> que contém o resumo */
-    font-family: inherit; /* Herda a fonte do card */
-    font-size: 0.9rem;  /* Mesmo tamanho do preview da nota */
-    color: #555;       /* Mesma cor */
-    line-height: 1.5;   /* Mesma altura de linha */
-    margin-bottom: 10px;/* Mesma margem */
-    word-break: break-word; /* Mantém quebra de palavra */
-    white-space: pre-wrap;   /* ESSENCIAL para quebras de linha */
-    overflow-wrap: break-word; /* ESSENCIAL para palavras longas */
-
-    /* Truncamento inicial (igual ao .card-preview) */
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: calc(1.5em * 4); /* Altura aproximada para 4 linhas */
-    transition: max-height 0.3s ease-out; /* Suaviza a expansão */
-
-    /* Permite seleção de texto no resumo */
-    -webkit-user-select: text !important;
-    -moz-user-select: text !important;
-    -ms-user-select: text !important;
-    user-select: text !important;
-}
-
-/* Estado expandido do resumo */
-.resumo-card .resumo-texto.expanded {
-    display: block; /* Muda para block para remover o clamp */
-    -webkit-line-clamp: unset; /* Remove limite de linhas */
-    overflow: visible; /* Mostra todo o conteúdo */
-    text-overflow: clip;
-    max-height: 10000px; /* Permite altura grande, ajuste se necessário */
-}
-
-/* Estilo para o botão "Ver Completo" / "Minimizar" */
-.btn-toggle-resumo {
-    display: block; /* Fica em linha própria */
-    margin-top: 8px; /* Espaço acima do botão */
-    margin-bottom: 5px; /* Espaço abaixo */
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #6735bc;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-}
-.btn-toggle-resumo:hover {
-    background-color: transparent;
-}
-
-
-/* Estilos de stats não utilizados no JS atual, mantidos */
-.resumo-stats { display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; color: #555; margin: 10px 0; align-items: center; }
-.resumo-stats span { display: flex; align-items: center; gap: 5px; }
-.resumo-percentual { font-weight: 600; padding: 2px 6px; border-radius: 4px; font-size: 0.8rem; }
-.resumo-percentual.bom { background-color: #e8f5e9; color: #2e7d32; }
-.resumo-percentual.medio { background-color: #fff3e0; color: #e65100; }
-.resumo-percentual.ruim { background-color: #ffebee; color: #c62828; }
-
-/* Placeholder (quando lista vazia) */
-.placeholder-tab {
-    text-align: center;
-    color: #888;
-    font-size: 1rem;
-    padding: 40px 20px;
-    grid-column: 1 / -1;
-}
-.placeholder-tab.erro {
-     color: #c62828;
-     font-weight: 500;
-}
-
-/* === Estilos do Modal === */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1050;
-    left: 0;
-    top: 0;
+.card-inner {
+    position: relative;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    animation: modalFadeIn 0.3s ease;
-    padding: 15px; /* Adicionado para evitar que toque as bordas */
-    box-sizing: border-box; /* Adicionado */
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
 }
-@keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1rem; /* rounded-2xl */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem; /* text-2xl */
+    font-weight: 600;
+}
+
+.card-front {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.card-back {
+    background-color: var(--primary-color);
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.study-rating-btn {
+    padding: 1rem;
+    color: white;
+    font-weight: bold;
+    border-radius: 0.75rem;
+    transition: transform 0.1s ease;
+}
+
+.study-rating-btn:active {
+    transform: scale(0.95);
+}
+
+/* --- ABAS --- */
+.tab-active {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* --- NAVEGAÇÃO (Breadcrumbs) --- */
+#breadcrumbs {
+    background-color: var(--bg-secondary);
+    padding: 0.5rem 0.75rem;
+    border-radius: 9999px;
+}
+
+/* --- FAVORITOS --- */
+.favorite-btn.favorited, .favorite-icon {
+    color: var(--favorite-color);
+    fill: var(--favorite-color);
+}
+
+/* --- TAGS --- */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tag-pill {
+    background-color: var(--border-color);
+    color: var(--text-secondary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Customização do Tagify */
+.tagify {
+    --tag-bg: var(--primary-color);
+    --tag-hover: var(--primary-color-dark);
+    --tags-border-color: #d1d5db;
+    --tag-text-color: white;
+    --tag-remove-btn-color: white;
+    border-radius: 0.5rem;
+}
+
+.tagify:hover { --tags-border-color: #9ca3af; }
+.tagify__tag { margin: 4px; }
+.tagify__input { margin: 4px; }
+.tagify__dropdown__item--active { background: var(--primary-color); }
+
+/* --- MENU DE OPÇÕES --- */
+.options-menu {
+    position: absolute;
+    z-index: 30;
+    background-color: var(--bg-primary);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+    min-width: 150px;
+}
+
+.options-menu button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+    gap: 0.75rem;
+}
+
+.options-menu button:hover { background-color: var(--bg-secondary); }
+
+/* --- MODAIS PERSONALIZADOS --- */
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    pointer-events: none;
+}
+.modal-backdrop.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
 
 .modal-content {
-    background-color: #fff;
-    margin: auto;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 600px;
-    position: relative;
-    animation: modalSlideIn 0.3s ease-out;
-    box-sizing: border-box; /* Adicionado */
+    background-color: var(--bg-primary);
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    padding: 1.5rem;
+    width: 91.666667%;
+    max-width: 24rem;
+    transform: scale(0.95);
+    transition: transform 0.2s ease-in-out;
 }
-@keyframes modalSlideIn { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
-.modal-close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    color: #aaa;
-    font-size: 2rem;
-    font-weight: bold;
-    border: none;
-    background: none;
-    cursor: pointer;
-    line-height: 1;
-}
-.modal-close-btn:hover,
-.modal-close-btn:focus {
-    color: black;
-    text-decoration: none;
+.modal-backdrop.visible .modal-content {
+    transform: scale(1);
 }
 
-.modal-content h3 {
-    margin-top: 0;
-    margin-bottom: 25px;
-    text-align: center;
-    color: #444;
-}
-
-.form-grupo {
-    margin-bottom: 20px;
-}
-
-.form-grupo label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #555;
-    font-size: 0.9rem;
-}
-
-.form-grupo input[type="text"],
-.form-grupo select,
-.form-grupo textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-family: inherit;
-    font-size: 1rem;
-}
-.form-grupo textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.form-grupo input[type="text"]:focus,
-.form-grupo select:focus,
-.form-grupo textarea:focus {
-    border-color: #6735bc;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(103, 53, 188, 0.15);
-}
-.form-grupo select {
-     appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.6-3.5%205.4-7.8%205.4-12.8%200-5-1.8-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 10px auto;
-    padding-right: 35px;
-}
-
-.modal-actions {
+/* --- NOTIFICAÇÕES TOAST --- */
+.toast {
     display: flex;
-    justify-content: flex-end;
-    gap: 15px;
-    margin-top: 25px;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+.toast.success { background-color: #22c55e; } /* green-500 */
+.toast.error { background-color: #ef4444; } /* red-500 */
+.toast.info { background-color: #3b82f6; } /* blue-500 */
+
+/* --- PALETA DE CORES --- */
+.color-circle {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.modal-feedback {
-    margin-top: 15px;
-    padding: 8px;
-    border-radius: 4px;
-    text-align: center;
+.color-circle:hover { transform: scale(1.1); }
+.color-circle.selected { border-color: var(--primary-color); }
+
+/* --- ESTILOS PARA MARKDOWN (PROSE) --- */
+.prose {
+    all: revert;
+    color: var(--text-primary);
+    line-height: 1.7;
+}
+.prose h1, .prose h2, .prose h3 {
+    font-weight: 700;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    line-height: 1.3;
+    color: var(--text-primary);
+}
+.prose h1 { font-size: 1.875rem; }
+.prose h2 { font-size: 1.5rem; }
+.prose h3 { font-size: 1.25rem; }
+.prose p { margin-bottom: 1.25em; }
+.prose ul, .prose ol { margin-left: 1.5em; margin-bottom: 1.25em; }
+.prose li { margin-bottom: 0.5em; }
+.prose strong { font-weight: 600; color: var(--text-primary); }
+.prose blockquote {
+    border-left: 4px solid var(--border-color);
+    padding-left: 1em;
+    margin-left: 0;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+.prose code {
+    font-family: monospace;
+    background-color: var(--border-color);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
     font-size: 0.9em;
-    display: none;
 }
-.modal-feedback.sucesso { background-color: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
-.modal-feedback.erro { background-color: #ffebee; color: #c62828; border: 1px solid #ffcdd2; }
-
-/* === Responsividade Adicional === */
-@media (max-width: 768px) {
-    body { padding-top: 60px; } /* Ajusta se header for menor */
-    .container-principal.tab-page-container {
-        width: calc(100% - 30px);
-        padding: 15px;
-        margin: 15px auto; /* Ajuste */
-    }
-    .tab-link { padding: 10px 15px; font-size: 0.95rem; }
-    .content-header-tab { flex-direction: column; align-items: flex-start; gap: 15px; }
-    .content-header-tab h3 { font-size: 1.3rem; }
-    .lista-itens-tab { grid-template-columns: 1fr; gap: 15px; }
-    .item-card { padding: 15px; }
-    .modal-content { width: 95%; padding: 20px; }
-    .modal-actions { justify-content: center; }
+.prose a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 500;
 }
-
-@media (max-width: 480px) {
-    body { padding-top: 55px; } /* Ajusta se header for menor */
-    .tab-nav { justify-content: space-around; }
-    .tab-link { padding: 10px 8px; font-size: 0.85rem; gap: 4px; }
-    .btn-principal, .btn-secundario { width: 100%; margin-bottom: 10px; justify-content: center;} /* Centraliza texto/ícone */
-    .modal-actions { flex-direction: column-reverse; gap: 10px;} /* Empilha botões, mantém gap */
-    .modal-actions .btn-principal, .modal-actions .btn-secundario { margin-bottom: 0; } /* Remove margem dupla */
-}
-
-/* Regra .resumo-texto.expanded removida pois foi incorporada em .resumo-card .resumo-texto.expanded */
-

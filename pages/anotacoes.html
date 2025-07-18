@@ -3,113 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Anotações e Resumos</title>
+    <title>Estuda AI - Anotações</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Bibliotecas Externas -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Tagify -->
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  
+    <!-- AutoAnimate -->
+    <script type="module">
+        import autoAnimate from 'https://cdn.jsdelivr.net/npm/@formkit/auto-animate@0.8.2/index.mjs'
+        window.autoAnimate = autoAnimate;
+    </script>
+    
+    <!-- O nosso ficheiro de estilos -->
     <link rel="stylesheet" href="../assets/css/pages/anotacoes.css">
-    <link rel="stylesheet" href="../assets/css/components/components.css">
-    <link rel="stylesheet" href="../assets/css/essentials.css">
+    
+    <link rel="stylesheet" href="../assets/css/essentials.css" />
 
+  
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased">
 
-    <div>
-        <script src="../assets/js/components/header.js"></script>
-    </div>
-
-    <div class="container-principal tab-page-container">
-
-        <nav class="tab-nav">
-            <button class="tab-link active" data-tab="notas">
-                <i class="fas fa-pencil-alt"></i> Minhas Notas
+    <!-- Container Principal da App -->
+    <div id="app-container" class="max-w-lg mx-auto bg-white min-h-screen shadow-lg">
+        
+        <!-- 1. Ecrã Principal (Explorador) -->
+        <div id="explorer-view">
+            <div>
+                <script src="../assets/js/components/header.js"></script>
+            </div>
+            <nav class="flex justify-around border-b border-gray-200 sticky top-[73px] bg-white z-20">
+                <button id="tab-resumos" class="w-full p-4 text-center border-b-2 border-transparent">Resumos</button>
+                <button id="tab-flashcards" class="w-full p-4 text-center border-b-2 border-transparent">Flashcards</button>
+            </nav>
+            <div class="p-4 border-b border-gray-200 flex items-center gap-2">
+                <div id="search-container" class="relative flex-1">
+                    <input type="text" id="search-input" placeholder="Procurar..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-5 w-5"></i>
+                </div>
+                <button id="sort-btn" class="p-2 rounded-full hover:bg-gray-200">
+                    <i data-lucide="arrow-up-down" class="h-6 w-6 text-gray-600"></i>
+                </button>
+                <button id="filter-btn" class="p-2 rounded-full hover:bg-gray-200 relative">
+                    <i data-lucide="filter" class="h-6 w-6 text-gray-600"></i>
+                    <span id="filter-indicator" class="hidden absolute -top-1 -right-1 h-4 w-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center"></span>
+                </button>
+            </div>
+            <main class="p-4">
+                <div id="breadcrumbs" class="flex items-center text-sm text-gray-500 mb-4 overflow-x-auto whitespace-nowrap"></div>
+                <div id="item-list"></div>
+            </main>
+            <button id="add-fab" class="fixed bottom-6 right-6 bg-blue-600 text-white rounded-full p-4 shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-transform transform hover:scale-110">
+                <i data-lucide="plus"></i>
             </button>
-            <button class="tab-link" data-tab="resumos">
-                <i class="fas fa-list-check"></i> Resumos Salvos
-            </button>
-        </nav>
+        </div>
 
-        <div class="tab-content-area">
+        <!-- 2. Ecrã de Visualização de Resumo -->
+        <div id="resumo-view" class="hidden">
+            <header class="p-4 border-b border-gray-200 flex items-center gap-2 sticky top-0 bg-white z-20">
+                <button id="view-resumo-back-btn" class="p-2 hover:bg-gray-100 rounded-full"><i data-lucide="arrow-left"></i></button>
+                <h2 id="resumo-view-title" class="text-xl font-bold truncate flex-1"></h2>
+                <button id="resumo-view-options-btn" class="p-2 hover:bg-gray-100 rounded-full">
+                    <i data-lucide="more-vertical"></i>
+                </button>
+            </header>
+            <div id="resumo-view-content" class="p-5 prose"></div>
+        </div>
+        
+        <!-- 3. Ecrã de Edição de Resumo -->
+        <div id="resumo-edit-view" class="hidden">
+            <header class="p-4 border-b border-gray-200 flex items-center gap-2 sticky top-0 bg-white z-20">
+                <button id="edit-resumo-back-btn" class="p-2 hover:bg-gray-100 rounded-full"><i data-lucide="arrow-left"></i></button>
+                <input type="text" id="resumo-edit-title" class="text-xl font-bold bg-transparent focus:outline-none w-full" placeholder="Título do resumo...">
+                <button id="favorite-btn" class="favorite-btn p-2 text-gray-400 hover:text-red-500 rounded-full"><i data-lucide="heart" class="h-6 w-6"></i></button>
+                <button id="resumo-save-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 whitespace-nowrap">Guardar</button>
+            </header>
+            <div class="p-4 border-b border-gray-200 space-y-4">
+                <div>
+                    <p class="text-sm font-medium text-gray-600 mb-2">Cor da anotação</p>
+                    <div id="color-palette" class="flex gap-3"></div>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-600 mb-2">Tags</p>
+                    <input id="tags-input" placeholder="Adicione tags...">
+                </div>
+            </div>
+            <textarea id="resumo-textarea" class="w-full h-[calc(100vh-222px)] p-4 text-base leading-7 focus:outline-none" placeholder="Escreva o seu resumo aqui..."></textarea>
+        </div>
 
-            <div id="tab-notas" class="tab-content active">
-                <div class="content-header-tab">
-                    <h3>Suas Anotações Pessoais</h3>
-                    <button id="btn-nova-anotacao" class="btn-principal btn-pill">
-                        <i class="fas fa-plus"></i> Nova Anotação
+        <!-- 4. Ecrã de Visualização de Baralho -->
+        <div id="deck-view" class="hidden">
+            <header class="p-4 border-b border-gray-200 flex items-center gap-2 sticky top-0 bg-white z-20">
+                <button id="deck-back-btn" class="p-2 hover:bg-gray-100 rounded-full"><i data-lucide="arrow-left"></i></button>
+                <h2 id="deck-title" class="text-xl font-bold truncate"></h2>
+            </header>
+            <main class="p-4">
+                <div class="flex items-center justify-between mb-4 p-3 bg-gray-100 rounded-lg">
+                    <label for="shuffle-toggle" class="font-medium">Modo Aleatório</label>
+                    <button id="shuffle-toggle" class="toggle-switch">
+                        <span class="toggle-knob"></span>
                     </button>
                 </div>
-                <div class="search-container">
-                     <input type="search" id="busca-notas" placeholder="Buscar em minhas notas...">
+                <div class="mb-4">
+                    <button id="study-deck-btn" class="w-full flex items-center justify-center gap-2 text-white font-bold py-3 px-4 rounded-lg transition-colors relative">
+                        <i data-lucide="book-open"></i>
+                        <span id="study-deck-btn-text">Estudar</span>
+                        <span id="study-count-indicator" class="absolute -top-2 -right-2 h-6 w-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white"></span>
+                    </button>
+                    <p id="study-helper-text" class="text-center text-sm text-gray-500 mt-2 hidden"></p>
                 </div>
-                <div id="lista-anotacoes" class="lista-itens-tab">
-                    <p class="placeholder-tab">Nenhuma anotação criada ainda.</p>
+                <button id="add-card-btn" class="w-full flex items-center justify-center gap-2 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg transition-colors">
+                    <i data-lucide="plus-circle"></i>
+                    <span>Adicionar/Ver Cartões</span>
+                </button>
+                <div id="card-list" class="mt-4"></div>
+            </main>
+        </div>
+
+        <!-- 5. Ecrã de Edição de Baralho -->
+        <div id="deck-edit-view" class="hidden">
+            <header class="p-4 border-b border-gray-200 flex items-center gap-2 sticky top-0 bg-white z-20">
+                <button id="edit-deck-back-btn" class="p-2 hover:bg-gray-100 rounded-full"><i data-lucide="arrow-left"></i></button>
+                <input type="text" id="deck-edit-title" class="text-xl font-bold bg-transparent focus:outline-none w-full" placeholder="Nome do baralho...">
+                <button id="deck-save-btn" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 whitespace-nowrap">Guardar</button>
+            </header>
+            <div class="p-4 border-b border-gray-200 space-y-4">
+                <div>
+                    <p class="text-sm font-medium text-gray-600 mb-2">Cor do baralho</p>
+                    <div id="deck-color-palette" class="flex gap-3"></div>
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-gray-600 mb-2">Tags</p>
+                    <input id="deck-tags-input" placeholder="Adicione tags...">
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. Ecrã de Estudo de Flashcards -->
+        <div id="study-view" class="study-view-overlay hidden">
+            <header class="p-4 flex items-center justify-between text-white w-full max-w-lg mx-auto">
+                <button id="study-exit-btn" class="p-2 rounded-full hover:bg-white/20">
+                    <i data-lucide="x"></i>
+                </button>
+                <div id="study-progress" class="font-semibold text-lg"></div>
+                <div class="w-10"></div> <!-- Espaçador -->
+            </header>
+            
+            <div class="flex-1 flex items-center justify-center w-full p-4">
+                <div class="card-scene">
+                    <div id="study-card-inner" class="card-inner">
+                        <div id="study-card-front" class="card-face card-front"></div>
+                        <div id="study-card-back" class="card-face card-back"></div>
+                    </div>
                 </div>
             </div>
 
-            <div id="tab-resumos" class="tab-content">
-                 <div class="content-header-tab">
-                    <h3>Resumos Salvos</h3>
-                    <button id="btn-novo-resumo" class="btn-principal btn-pill" style="display: none;"> <i class="fas fa-plus"></i> Novo Resumo
-                    </button>
-                 </div>
-                 <div class="search-container">
-                     <input type="search" id="busca-resumos" placeholder="Buscar em resumos salvos...">
-                 </div>
-                 <div id="lista-resumos" class="lista-itens-tab">
-                    <p class="placeholder-tab">Nenhum resumo salvo ainda. Clique em "Novo Resumo" para adicionar.</p>
-                 </div>
+            <footer class="p-4 w-full max-w-lg mx-auto">
+                <div id="study-instructions" class="text-center text-sm font-medium text-white mb-4">Toque no cartão para virar</div>
+                <div id="study-actions" class="hidden grid grid-cols-4 gap-2">
+                    <button data-rating="0" class="study-rating-btn bg-red-500">Errei</button>
+                    <button data-rating="1" class="study-rating-btn bg-orange-500">Difícil</button>
+                    <button data-rating="2" class="study-rating-btn bg-green-500">Bom</button>
+                    <button data-rating="3" class="study-rating-btn bg-blue-500">Fácil</button>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Modais e Drawers -->
+    <div id="overlays-container">
+        <!-- Drawer de Filtros -->
+        <div id="filter-drawer-backdrop" class="modal-backdrop"></div>
+        <div id="filter-drawer" class="filter-drawer">
+            <div class="p-4 border-b border-gray-200 flex justify-between items-center">
+                <h3 class="text-lg font-semibold">Filtros</h3>
+                <button id="close-filter-drawer-btn" class="p-2 rounded-full hover:bg-gray-200"><i data-lucide="x"></i></button>
             </div>
-
+            <div class="p-4 space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Cor</label>
+                    <div id="filter-color-palette" class="flex flex-wrap gap-3"></div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+                    <input id="filter-tags-input" placeholder="Filtrar por tags...">
+                </div>
+                <div class="flex items-center justify-between">
+                    <label for="filter-favorites-toggle" class="text-sm font-medium text-gray-700">Mostrar apenas favoritos</label>
+                    <button id="filter-favorites-toggle" class="toggle-switch">
+                        <span class="toggle-knob"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-200 flex gap-2">
+                <button id="clear-filters-btn" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-4 rounded-lg">Limpar</button>
+                <button id="apply-filters-btn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg">Aplicar</button>
+            </div>
         </div>
+
+        <!-- Outros Modais -->
+        <div id="add-choice-modal" class="modal-backdrop">
+            <div class="modal-content">
+                <h3 class="text-lg font-semibold mb-4 text-center">O que deseja criar?</h3>
+                <div id="add-choice-options" class="space-y-3"></div>
+                <button id="close-choice-modal" class="w-full mt-6 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">Cancelar</button>
+            </div>
+        </div>
+        <div id="create-item-modal" class="modal-backdrop">
+            <div class="modal-content">
+                <h3 id="create-modal-title" class="text-lg font-semibold mb-4"></h3>
+                <input type="text" id="create-modal-input" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <div id="create-modal-color-container" class="mt-4 hidden">
+                    <p class="text-sm font-medium text-gray-600 mb-2">Cor do baralho</p>
+                    <div id="create-modal-color-palette" class="flex gap-3"></div>
+                </div>
+                <div class="flex justify-end gap-3 mt-4">
+                    <button class="modal-cancel-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancelar</button>
+                    <button id="confirm-create-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Criar</button>
+                </div>
+            </div>
+        </div>
+        <div id="edit-card-modal" class="modal-backdrop">
+            <div class="modal-content">
+                <h3 id="edit-card-modal-title" class="text-lg font-semibold mb-4"></h3>
+                <div class="space-y-4">
+                    <div>
+                        <label for="edit-card-front" class="block text-sm font-medium text-gray-700 mb-1">Frente</label>
+                        <textarea id="edit-card-front" rows="3" class="w-full border border-gray-300 rounded-md p-2"></textarea>
+                    </div>
+                    <div>
+                        <label for="edit-card-back" class="block text-sm font-medium text-gray-700 mb-1">Verso</label>
+                        <textarea id="edit-card-back" rows="3" class="w-full border border-gray-300 rounded-md p-2"></textarea>
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 mt-4">
+                    <button class="modal-cancel-btn bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancelar</button>
+                    <button id="confirm-edit-card-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Confirmação Personalizado -->
+        <div id="confirmation-modal" class="modal-backdrop">
+            <div class="modal-content">
+                <h3 id="confirmation-title" class="text-lg font-semibold mb-2"></h3>
+                <p id="confirmation-text" class="text-gray-600 mb-6"></p>
+                <div class="flex justify-end gap-3">
+                    <button id="confirmation-cancel-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancelar</button>
+                    <button id="confirmation-confirm-btn" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg">Confirmar</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal de Input Personalizado -->
+        <div id="input-modal" class="modal-backdrop">
+            <div class="modal-content">
+                <h3 id="input-modal-title" class="text-lg font-semibold mb-4"></h3>
+                <input type="text" id="input-modal-input" class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <p id="input-modal-error" class="text-red-500 text-sm mt-1 hidden"></p>
+                <div class="flex justify-end gap-3 mt-4">
+                    <button id="input-modal-cancel-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg">Cancelar</button>
+                    <button id="input-modal-confirm-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contentor de Toasts -->
+        <div id="toast-container" class="fixed top-5 right-5 z-[100] space-y-2"></div>
     </div>
 
-    <div id="modal-anotacao" class="modal" style="display: none;">
-        <div class="modal-content">
-            <button class="modal-close-btn" id="modal-close-btn">&times;</button>
-            <h3 id="modal-titulo">Nova Anotação</h3>
-            <form id="form-anotacao-modal" novalidate>
-                <input type="hidden" id="id-anotacao-editando">
-
-                <div class="form-grupo">
-                    <label for="titulo-anotacao-modal">Título:</label>
-                    <input type="text" id="titulo-anotacao-modal" placeholder="Digite o título (opcional)">
-                </div>
-
-                <div class="form-grupo">
-                    <label for="texto-anotacao-modal">Anotação:*</label>
-                    <textarea id="texto-anotacao-modal" placeholder="Digite sua anotação..." rows="10" required></textarea>
-                </div>
-
-                <div class="modal-actions">
-                    <button type="button" id="btn-cancelar-modal" class="btn-secundario">Cancelar</button>
-                    <button type="submit" id="btn-salvar-modal" class="btn-principal">Salvar Anotação</button>
-                 </div>
-                 <div id="modal-feedback" class="modal-feedback" style="display: none;"></div>
-            </form>
-        </div>
-    </div>
-
-    <div id="modal-novo-resumo" class="modal" style="display: none;">
-        <div class="modal-content">
-            <button class="modal-close-btn" id="modal-novo-resumo-close-btn">&times;</button>
-            <h3 id="modal-novo-resumo-titulo">Novo Resumo</h3>
-            <form id="form-novo-resumo-modal" novalidate>
-                <div class="form-grupo">
-                    <label for="titulo-novo-resumo-modal">Título:</label>
-                    <input type="text" id="titulo-novo-resumo-modal" placeholder="Digite o título (opcional)">
-                </div>
-                <div class="form-grupo">
-                    <label for="texto-novo-resumo-modal">Resumo:</label>
-                    <textarea id="texto-novo-resumo-modal" placeholder="Digite o conteúdo do resumo..." rows="8" required></textarea>
-                </div>
-                <div id="modal-novo-resumo-feedback" class="modal-feedback" style="display:none;"></div>
-                <div class="modal-actions">
-                    <button type="button" id="btn-cancelar-novo-resumo-modal" class="btn-secundario">Cancelar</button>
-                    <button type="submit" id="btn-salvar-novo-resumo-modal" class="btn-principal">Salvar Resumo</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script src="../assets/js/pages/anotacoes.js"></script>
+    <!-- O nosso ficheiro de script -->
+    <script type="module" src="../assets/js/pages/anotacoes.js"></script>
 </body>
 </html>
