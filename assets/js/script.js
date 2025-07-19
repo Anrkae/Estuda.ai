@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     let sessoesEstudo = [];
+    let flashcardDecks = []; // Adicionado para guardar os baralhos
     let graficoLinha = null;
     let graficoDisciplinas = null;
 
@@ -43,9 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             sessoesEstudo = JSON.parse(localStorage.getItem('sessoesEstudo')) || [];
             sessoesEstudo.forEach(s => { if (s.data && typeof s.data === 'string') { s.data = new Date(s.data); } });
+            
+            // Carrega também os dados dos flashcards
+            flashcardDecks = JSON.parse(localStorage.getItem('estuda_ai_flashcardDecks')) || [];
+
         } catch (e) {
-            console.error("Erro ao carregar/parsear sessoesEstudo:", e);
+            console.error("Erro ao carregar/parsear dados:", e);
             sessoesEstudo = [];
+            flashcardDecks = [];
         }
     }
 
@@ -63,23 +69,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function obterIntervalo() { return selectIntervalo ? parseInt(selectIntervalo.value) : 7; }
 
-    function calcularConstancia(sessoes) {
+    /**
+     * Calcula o número de dias consecutivos de estudo até hoje.
+     * @param {Array} sessoes - Uma lista de sessões de estudo gerais.
+     * @param {Array} baralhos - Uma lista de baralhos de flashcards.
+     * @returns {number} - O número de dias consecutivos de estudo.
+     */
+    function calcularConstancia(sessoes, baralhos) {
         let diasConstancia = 0;
-        if (!sessoes || sessoes.length === 0) return 0;
         const hoje = new Date();
         hoje.setHours(0, 0, 0, 0);
+
         const datasComSessao = new Set();
-        sessoes.forEach(s => {
-            if (s.data && s.data instanceof Date && !isNaN(s.data.getTime())) {
-                const ano = s.data.getFullYear();
-                const mes = String(s.data.getMonth() + 1).padStart(2, '0');
-                const dia = String(s.data.getDate()).padStart(2, '0');
-                datasComSessao.add(`${ano}-${mes}-${dia}`);
-            } else if (s.data && typeof s.data === 'string') {
-                const dateStrMatch = s.data.match(/^(\d{4})-(\d{2})-(\d{2})/);
-                if (dateStrMatch) datasComSessao.add(dateStrMatch[0]);
-            }
-        });
+
+        // Processa as sessões de estudo gerais
+        if (sessoes && sessoes.length > 0) {
+            sessoes.forEach(s => {
+                if (s.data && s.data instanceof Date && !isNaN(s.data.getTime())) {
+                    const ano = s.data.getFullYear();
+                    const mes = String(s.data.getMonth() + 1).padStart(2, '0');
+                    const dia = String(s.data.getDate()).padStart(2, '0');
+                    datasComSessao.add(`${ano}-${mes}-${dia}`);
+                } else if (s.data && typeof s.data === 'string') {
+                    const dateStrMatch = s.data.match(/^(\d{4})-(\d{2})-(\d{2})/);
+                    if (dateStrMatch) datasComSessao.add(dateStrMatch[0]);
+                }
+            });
+        }
+
+        // Processa os estudos dos baralhos de flashcards
+        if (baralhos && baralhos.length > 0) {
+            baralhos.forEach(baralho => {
+                if (baralho.cards && baralho.cards.length > 0) {
+                    baralho.cards.forEach(cartao => {
+                        if (cartao.srs && cartao.srs.dueDate) {
+                            const proximaRevisao = new Date(cartao.srs.dueDate);
+                            const intervalo = cartao.srs.interval || 1;
+                            const dataDaRevisao = new Date(proximaRevisao);
+                            dataDaRevisao.setDate(proximaRevisao.getDate() - intervalo);
+
+                            const ano = dataDaRevisao.getFullYear();
+                            const mes = String(dataDaRevisao.getMonth() + 1).padStart(2, '0');
+                            const dia = String(dataDaRevisao.getDate()).padStart(2, '0');
+                            datasComSessao.add(`${ano}-${mes}-${dia}`);
+                        }
+                    });
+                }
+            });
+        }
+        
+        if (datasComSessao.size === 0) return 0;
+
         for (let i = 0; ; i++) {
             const diaVerificar = new Date(hoje); diaVerificar.setDate(hoje.getDate() - i);
             const ano = diaVerificar.getFullYear(); const mes = String(diaVerificar.getMonth() + 1).padStart(2, '0'); const dia = String(diaVerificar.getDate()).padStart(2, '0');
@@ -337,8 +377,10 @@ document.addEventListener('DOMContentLoaded', () => {
         constanciaDiasEl.innerHTML = '';
 
         const sessoesAtuais = sessoesEstudo && sessoesEstudo.length > 0 ? sessoesEstudo : JSON.parse(localStorage.getItem('sessoesEstudo')) || [];
-        if (sessoesAtuais.length === 0 && constanciaDiasEl) {
-            constanciaDiasEl.innerHTML = '<p style="color:#888;font-size:0.9em;width:100%;text-align:center;">Sem registros para exibir a constância.</p>';
+        const baralhosAtuais = flashcardDecks && flashcardDecks.length > 0 ? flashcardDecks : JSON.parse(localStorage.getItem('estuda_ai_flashcardDecks')) || [];
+
+        if (sessoesAtuais.length === 0 && baralhosAtuais.length === 0 && constanciaDiasEl) {
+            constanciaDiasEl.innerHTML = '<p style="color:#888;font-size:0.9em;width:100%;text-align:center;">Sem registos para exibir a constância.</p>';
             return;
         }
 
@@ -350,6 +392,24 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (s.data && typeof s.data === 'string') {
                 const match = s.data.match(/^(\d{4})-(\d{2})-(\d{2})/);
                 if (match) datasComSessao.add(match[0]);
+            }
+        });
+        
+        baralhosAtuais.forEach(baralho => {
+            if (baralho.cards && baralho.cards.length > 0) {
+                baralho.cards.forEach(cartao => {
+                    if (cartao.srs && cartao.srs.dueDate) {
+                        const proximaRevisao = new Date(cartao.srs.dueDate);
+                        const intervalo = cartao.srs.interval || 1;
+                        const dataDaRevisao = new Date(proximaRevisao);
+                        dataDaRevisao.setDate(proximaRevisao.getDate() - intervalo);
+
+                        const ano = dataDaRevisao.getFullYear();
+                        const mes = String(dataDaRevisao.getMonth() + 1).padStart(2, '0');
+                        const dia = String(dataDaRevisao.getDate()).padStart(2, '0');
+                        datasComSessao.add(`${ano}-${mes}-${dia}`);
+                    }
+                });
             }
         });
 
@@ -380,7 +440,11 @@ document.addEventListener('DOMContentLoaded', () => {
         carregarDados();
         const intervalo = obterIntervalo();
         const sessoesFiltradasIntervalo = sessoesEstudo.filter(s => s.data && ultimosDias(s.data, intervalo));
-        const tempoTotal = sessoesFiltradasIntervalo.reduce((s, i) => s + (i.tempo || 0), 0); const qTotal = sessoesFiltradasIntervalo.reduce((s, i) => s + (i.questoes || 0), 0); const aTotal = sessoesFiltradasIntervalo.reduce((s, i) => s + (i.acertos || 0), 0); const txAcertos = qTotal > 0 ? Math.round((aTotal / qTotal) * 100) : 0; const diasConst = calcularConstancia(sessoesEstudo);
+        const tempoTotal = sessoesFiltradasIntervalo.reduce((s, i) => s + (i.tempo || 0), 0); const qTotal = sessoesFiltradasIntervalo.reduce((s, i) => s + (i.questoes || 0), 0); const aTotal = sessoesFiltradasIntervalo.reduce((s, i) => s + (i.acertos || 0), 0); const txAcertos = qTotal > 0 ? Math.round((aTotal / qTotal) * 100) : 0; 
+        
+        // Atualiza a chamada para incluir os baralhos de flashcards
+        const diasConst = calcularConstancia(sessoesEstudo, flashcardDecks);
+        
         const tEl = document.getElementById('tempo-total'); if (tEl) { const h = Math.floor(tempoTotal / 60); const m = tempoTotal % 60; tEl.innerText = `${h}h ${m}min`; }
         const qEl = document.getElementById('questoes-semana'); if (qEl) qEl.innerText = qTotal;
         const aEl = document.getElementById('acertos-semana'); if (aEl) aEl.innerText = `${txAcertos}%`;
