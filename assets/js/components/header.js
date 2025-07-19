@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             position: fixed; top: 0; left: 0; right: 0; height: 70px; background-color: #f5f4f0;
             display: flex; align-items: center; padding: 0 1.2rem;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-            z-index: 9990; justify-content: space-between;
+            z-index: 40; justify-content: space-between;
             border-bottom: 1px solid #eee;
         }
         .header-left, .header-right { display: flex; align-items: center; }
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             position: fixed; top: 0; left: -300px; width: 260px; max-width: 85%;
             background-color: #f5f4f0; color: #333;
             transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 9996; box-shadow: 4px 0 15px rgba(0,0,0,0.08); padding: 0;
+            z-index: 45; box-shadow: 4px 0 15px rgba(0,0,0,0.08); padding: 0;
         }
         .sidebar.active { left: 0; }
 
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .sidebar h1#headerInside { font-size: 1.3rem; color: #333; margin: 0; font-weight: 600; }
         .sidebar #toggleSidebarInside {
             background: none; border: none; font-size: 1.7rem;
-            color: #555; cursor: pointer; z-index: 9996;
+            color: #555; cursor: pointer; z-index: 46;
             padding: 5px; margin-right: 5px; line-height: 1;
             transition: color 0.2s;
         }
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         .overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.4); z-index: 9995;
+            background: rgba(0, 0, 0, 0.4); z-index: 42;
             opacity: 0; pointer-events: none;
             transition: opacity 0.3s ease-in-out;
         }

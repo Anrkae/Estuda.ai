@@ -1077,7 +1077,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 state.studySession.currentIndex++;
                 if (state.studySession.currentIndex >= state.studySession.dueCards.length) {
                     saveData();
-                    Toast.fire({ icon: 'success', title: 'Parabéns! Sessão concluída.' });
+                    showToast('Parabéns! Sessão concluída.', 'success');
                     showDeckView(state.studySession.deck.id);
                 } else {
                     renderCurrentCard();
