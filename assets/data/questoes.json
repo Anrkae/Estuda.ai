@@ -2125,5 +2125,1105 @@
   ],
   "resposta_correta": "B",
   "resolucao": "Para comparar as potências, precisamos igualar as bases ou os expoentes. Igualar os expoentes é mais fácil. O MDC dos expoentes 60, 45, 30, 15 é 15. Reescrevemos as potências: 2⁶⁰ = (2⁴)¹⁵ = 16¹⁵. 3⁴⁵ = (3³)¹⁵ = 27¹⁵. 5³⁰ = (5²)¹⁵ = 25¹⁵. 6¹⁵ e 7¹⁵ já estão com expoente 15. Comparando as bases 16, 27, 25, 6 e 7, vemos que 27 é a maior. Portanto, 3⁴⁵ é o maior valor."
+  },
+  {
+    "id": 101,
+    "contexto": "Analise o trecho a seguir: 'O trabalho árduo e a incessante busca pelo conhecimento são chaves para o sucesso.'",
+    "enunciado": "No trecho apresentado, as palavras 'trabalho' e 'busca' são classificadas, morfologicamente, como:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Substantivação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Verbos no infinitivo." },
+      { "letra": "B", "texto": "Substantivos abstratos." },
+      { "letra": "C", "texto": "Adjetivos." },
+      { "letra": "D", "texto": "Substantivos derivados de verbos." },
+      { "letra": "E", "texto": "Advérbios de modo." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "As palavras 'trabalho' (do verbo trabalhar) e 'busca' (do verbo buscar) funcionam como substantivos no contexto, sendo formadas a partir de verbos. Esse processo é chamado de derivação deverbal. Embora sejam também abstratos, a opção D é mais específica e completa ao indicar a origem verbal, uma característica frequentemente cobrada."
+  },
+  {
+    "id": 102,
+    "contexto": "",
+    "enunciado": "Considerando os conjuntos A = {x ∈ N | 1 < x ≤ 5} e B = {x ∈ Z | -2 ≤ x < 2}, qual é o conjunto resultante da interseção A ∩ B?",
+    "disciplina": "Matemática",
+    "assunto": ["Conjuntos", "Interseção de Conjuntos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "{1}" },
+      { "letra": "B", "texto": "{ }" },
+      { "letra": "C", "texto": "{0, 1}" },
+      { "letra": "D", "texto": "{1, 2}" },
+      { "letra": "E", "texto": "{-1, 0, 1}" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Primeiro, listamos os elementos de cada conjunto. O conjunto A é composto por números naturais (N) maiores que 1 e menores ou iguais a 5: A = {2, 3, 4, 5}. O conjunto B é composto por números inteiros (Z) maiores ou iguais a -2 e menores que 2: B = {-2, -1, 0, 1}. A interseção (A ∩ B) busca os elementos comuns a ambos. Comparando A e B, não há elementos em comum. Portanto, a interseção é o conjunto vazio { }."
+  },
+  {
+    "id": 103,
+    "contexto": "",
+    "enunciado": "A administração colonial portuguesa no Brasil implementou um sistema de controle fiscal e administrativo centrado na figura dos vice-reis e governadores-gerais. Contudo, o poder local era exercido por uma instituição específica. Qual era essa instituição, fundamental na organização social e política do Brasil Colônia?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Administração Colonial"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "As Donatarias Hereditárias." },
+      { "letra": "B", "texto": "As Câmaras Municipais." },
+      { "letra": "C", "texto": "As Intendências das Minas." },
+      { "letra": "D", "texto": "As Companhias de Comércio." },
+      { "letra": "E", "texto": "Os Tribunais da Relação." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As Câmaras Municipais eram os órgãos que exerciam o poder político e administrativo em nível local no Brasil Colônia. Eram controladas pelos 'homens bons', grandes proprietários de terras e de escravos, representando os interesses da elite agrária local. As outras opções representam diferentes estruturas administrativas ou econômicas, mas não o principal órgão de poder local."
+  },
+  {
+    "id": 104,
+    "contexto": "",
+    "enunciado": "A palavra 'exceção' possui quantos fonemas?",
+    "disciplina": "Português",
+    "assunto": ["Fonética e Fonologia"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "8 fonemas." },
+      { "letra": "B", "texto": "7 fonemas." },
+      { "letra": "C", "texto": "6 fonemas." },
+      { "letra": "D", "texto": "5 fonemas." },
+      { "letra": "E", "texto": "4 fonemas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Analisando a palavra 'exceção' (/esesẽw̃/): 'ex' tem som de /es/ (2 fonemas), 'ce' tem som de /se/ (1 fonema, pois o 'c' com 'e' soa 's'), e 'ção' representa o fonema nasal /sãw̃/ (3 fonemas: /s/, /ɐ̃/ e /w̃/ - lembre-se do ditongo nasal). Somando: 2 (es) + 1 (se) + 3 (sãw̃) = 6 fonemas. A pegadinha está no 'ex' que soa /es/ e no dígrafo vocálico 'ão'."
+  },
+  {
+    "id": 105,
+    "contexto": "A plain in Brazil, located in the central part of the country, is characterized by its vast, flat terrain and is crucial for agriculture. This landform is one of the most significant in the country.",
+    "enunciado": "Based on the text, what landform is being described?",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A mountain range." },
+      { "letra": "B", "texto": "A coastal area." },
+      { "letra": "C", "texto": "A plateau." },
+      { "letra": "D", "texto": "A plain or flatland." },
+      { "letra": "E", "texto": "A deep canyon." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "The text explicitly uses the word 'plain' and describes it as having 'vast, flat terrain', which directly corresponds to the definition of a plain or flatland. The other options describe different types of landforms not mentioned in the text."
+  },
+  {
+    "id": 106,
+    "contexto": "",
+    "enunciado": "O Quinhentismo no Brasil é marcado por uma literatura de caráter predominantemente informativo e doutrinário. Qual das seguintes obras é considerada o marco inicial da literatura brasileira, pertencente a este período?",
+    "disciplina": "Literatura",
+    "assunto": ["Quinhentismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Prosopopeia, de Bento Teixeira." },
+      { "letra": "B", "texto": "O Auto da Compadecida, de Ariano Suassuna." },
+      { "letra": "C", "texto": "Iracema, de José de Alencar." },
+      { "letra": "D", "texto": "A Carta de Pero Vaz de Caminha." },
+      { "letra": "E", "texto": "Marília de Dirceu, de Tomás Antônio Gonzaga." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'A Carta de Pero Vaz de Caminha', escrita em 1500, é o primeiro documento escrito sobre o Brasil e, por isso, é considerada o marco da literatura informativa do Quinhentismo. 'Prosopopeia' marca o início do Barroco. As outras obras são de períodos literários posteriores."
+  },
+  {
+    "id": 107,
+    "contexto": "",
+    "enunciado": "Uma aeronave decola de Rio Branco (AC), que está no fuso UTC-5, às 10:00 da manhã (hora local) com destino a Fernando de Noronha (PE), que está no fuso UTC-2. Se o tempo de voo é de 4 horas, qual será o horário local em Fernando de Noronha no momento do pouso?",
+    "disciplina": "Geografia",
+    "assunto": ["Fusos horários brasileiros"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "14:00" },
+      { "letra": "B", "texto": "15:00" },
+      { "letra": "C", "texto": "16:00" },
+      { "letra": "D", "texto": "17:00" },
+      { "letra": "E", "texto": "18:00" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "1. Converter a hora de decolagem para UTC: Rio Branco está a UTC-5. Se lá são 10:00, em UTC são 10 + 5 = 15:00 UTC. 2. Adicionar o tempo de voo: 15:00 UTC + 4 horas = 19:00 UTC. 3. Converter a hora de chegada para o fuso local de Fernando de Noronha (UTC-2): 19:00 UTC - 2 = 17:00. A pegadinha está em não apenas somar o tempo de voo, mas também ajustar a diferença de 3 horas entre os fusos."
+  },
+  {
+    "id": 108,
+    "contexto": "",
+    "enunciado": "Qual o valor da expressão (2⁻¹ + 2⁻²) / 2⁻³?",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "2" },
+      { "letra": "B", "texto": "4" },
+      { "letra": "C", "texto": "6" },
+      { "letra": "D", "texto": "8" },
+      { "letra": "E", "texto": "1/2" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Primeiro, resolvemos o numerador: 2⁻¹ = 1/2 e 2⁻² = 1/4. A soma é 1/2 + 1/4 = 2/4 + 1/4 = 3/4. O denominador é 2⁻³ = 1/8. Agora, dividimos o numerador pelo denominador: (3/4) / (1/8). Para dividir frações, multiplicamos a primeira pelo inverso da segunda: (3/4) * (8/1) = 24/4 = 6."
+  },
+  {
+    "id": 109,
+    "contexto": "",
+    "enunciado": "A exploração econômica do Brasil Colonial foi marcada por ciclos. O primeiro grande ciclo econômico, que sustentou a colônia em seus primórdios, foi o:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Economia Colonial"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ciclo do Ouro." },
+      { "letra": "B", "texto": "Ciclo do Café." },
+      { "letra": "C", "texto": "Ciclo da Borracha." },
+      { "letra": "D", "texto": "Ciclo do Pau-Brasil." },
+      { "letra": "E", "texto": "Ciclo do Açúcar." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Embora a extração de pau-brasil tenha sido a primeira atividade econômica, o Ciclo do Açúcar foi o primeiro grande ciclo econômico estruturado, baseado em latifúndios, monocultura e mão de obra escrava, que efetivamente colonizou e sustentou o Brasil a partir de meados do século XVI. O Ciclo do Pau-Brasil foi extrativista e predatório, não chegando a configurar um ciclo econômico de povoamento como o do açúcar."
+  },
+  {
+    "id": 110,
+    "contexto": "",
+    "enunciado": "A forma de relevo que predomina no território brasileiro, caracterizada por superfícies elevadas e relativamente planas, com altitudes geralmente acima de 300 metros e que sofre intenso processo de erosão, é denominada:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo brasileiro"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Planície." },
+      { "letra": "B", "texto": "Depressão." },
+      { "letra": "C", "texto": "Planalto." },
+      { "letra": "D", "texto": "Chapada." },
+      { "letra": "E", "texto": "Cuesta." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A descrição corresponde à definição de planalto, que são áreas elevadas e aplainadas onde os processos de erosão superam os de sedimentação. As planícies são áreas baixas e planas onde predomina a sedimentação. As depressões são áreas mais baixas que as áreas ao redor. Chapadas e cuestas são tipos específicos de planaltos."
+  },
+  {
+    "id": 111,
+    "contexto": "Leia a frase: 'Os soldados, que são disciplinados, foram elogiados pelo comandante.'",
+    "enunciado": "A oração 'que são disciplinados' classifica-se como:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Período Composto"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Oração Subordinada Adjetiva Restritiva." },
+      { "letra": "B", "texto": "Oração Subordinada Adjetiva Explicativa." },
+      { "letra": "C", "texto": "Oração Coordenada Sindética Explicativa." },
+      { "letra": "D", "texto": "Oração Subordinada Substantiva Apositiva." },
+      { "letra": "E", "texto": "Oração Principal." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A oração está entre vírgulas, o que indica que ela adiciona uma informação extra sobre o termo antecedente ('Os soldados'), mas não restringe seu sentido. Ela explica uma característica de todos os soldados mencionados. Se fosse restritiva, viria sem vírgulas e especificaria que apenas os soldados disciplinados foram elogiados, e não todos. A pegadinha está em confundir a função explicativa da oração com uma oração coordenada explicativa, que geralmente é iniciada por conjunções como 'pois' ou 'porque'."
+  },
+  {
+    "id": 112,
+    "contexto": "",
+    "enunciado": "Sendo f(x) = 2x + 3 e g(x) = x² - 1, o valor de g(f(1)) é:",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Afim", "Função Quadrática"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "5" },
+      { "letra": "B", "texto": "10" },
+      { "letra": "C", "texto": "24" },
+      { "letra": "D", "texto": "26" },
+      { "letra": "E", "texto": "35" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Para calcular g(f(1)), primeiro calculamos o valor de f(1). Substituindo x por 1 em f(x), temos: f(1) = 2(1) + 3 = 5. Agora, usamos esse resultado como entrada para a função g(x). Calculamos g(5): g(5) = (5)² - 1 = 25 - 1 = 24."
+  },
+  {
+    "id": 113,
+    "contexto": "",
+    "enunciado": "A Revolta de Beckman (1684), ocorrida no Maranhão, é classificada como uma revolta nativista porque:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Revoltas Nativistas"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Buscava a independência do Maranhão em relação a Portugal." },
+      { "letra": "B", "texto": "Protestava contra a criação das Casas de Fundição." },
+      { "letra": "C", "texto": "Lutava pela expulsão dos holandeses do Nordeste." },
+      { "letra": "D", "texto": "Questionava a política da Coroa, mas sem propor a separação de Portugal." },
+      { "letra": "E", "texto": "Defendia a coroação de um rei brasileiro." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "As revoltas nativistas, como a de Beckman, caracterizam-se por serem movimentos que contestavam aspectos específicos da administração ou da política econômica da Coroa Portuguesa (neste caso, o monopólio da Companhia de Comércio do Maranhão e a questão da escravidão indígena), mas não tinham como objetivo a separação política e a independência, diferentemente das revoltas separatistas como a Inconfidência Mineira."
+  },
+  {
+    "id": 114,
+    "contexto": "The Barroco (Baroque) period in Brazil was an artistic style that flourished in the 18th century, especially in the mining regions. It is known for its dramatic intensity, emotionalism, and ornate details. The artist Antônio Francisco Lisboa, known as Aleijadinho, is the most famous exponent of this style, particularly in sculpture and architecture.",
+    "enunciado": "According to the text, which of the following is NOT a characteristic of the Baroque style?",
+    "disciplina": "Literatura",
+    "assunto": ["Barroco", "Interpretação de textos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Dramatic intensity." },
+      { "letra": "B", "texto": "Simplicity and minimalism." },
+      { "letra": "C", "texto": "Ornate details." },
+      { "letra": "D", "texto": "Emotionalism." },
+      { "letra": "E", "texto": "Association with the 18th century mining regions." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "The text explicitly states that the Baroque style is known for 'dramatic intensity, emotionalism, and ornate details'. Simplicity and minimalism are characteristics of opposite artistic movements, such as Neoclassicism or modern art, and are therefore not features of the Baroque style described."
+  },
+  {
+    "id": 115,
+    "contexto": "",
+    "enunciado": "A estrutura geológica brasileira é antiga e estável, o que explica a ausência de dobramentos modernos. As principais formas de relevo encontradas no país são planaltos, planícies e depressões. O Pico da Neblina, ponto mais alto do Brasil, está localizado em qual unidade do relevo?",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo brasileiro"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "No Planalto Central." },
+      { "letra": "B", "texto": "Na Planície Amazônica." },
+      { "letra": "C", "texto": "No Planalto das Guianas." },
+      { "letra": "D", "texto": "Na Depressão Sertaneja." },
+      { "letra": "E", "texto": "No Planalto Meridional." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Pico da Neblina está localizado na Serra do Imeri, que faz parte do Planalto das Guianas, uma das unidades de relevo do Escudo das Guianas, no extremo norte do Brasil. A pegadinha está em associar a Amazônia apenas à planície, quando na verdade a região amazônica também abrange áreas de planalto, como o Planalto das Guianas, onde se encontram os pontos mais altos do país."
+  },
+  {
+    "id": 116,
+    "contexto": "",
+    "enunciado": "Seja a função f(x) = |x - 3| + 2. Qual é o valor de f(0) + f(5)?",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Modular"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "5" },
+      { "letra": "B", "texto": "7" },
+      { "letra": "C", "texto": "9" },
+      { "letra": "D", "texto": "11" },
+      { "letra": "E", "texto": "13" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Primeiro, calculamos f(0): f(0) = |0 - 3| + 2 = |-3| + 2. O módulo de -3 é 3. Então, f(0) = 3 + 2 = 5. Agora, calculamos f(5): f(5) = |5 - 3| + 2 = |2| + 2. O módulo de 2 é 2. Então, f(5) = 2 + 2 = 4. Finalmente, somamos os resultados: f(0) + f(5) = 5 + 4 = 9."
+  },
+  {
+    "id": 117,
+    "contexto": "Leia o texto para responder à questão. 'Military training is demanding. It requires not only physical strength but also mental resilience. Soldiers must be prepared to face adverse situations and make quick decisions under pressure. This preparation is crucial for mission success.'",
+    "enunciado": "The word 'demanding' in the text is closest in meaning to:",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos", "Vocabulário"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Easy" },
+      { "letra": "B", "texto": "Simple" },
+      { "letra": "C", "texto": "Challenging" },
+      { "letra": "D", "texto": "Optional" },
+      { "letra": "E", "texto": "Rewarding" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "In the context of 'military training', the word 'demanding' means that it requires a lot of effort, skill, and perseverance. The best synonym among the options is 'challenging', which also implies difficulty and the need for effort. 'Easy' and 'simple' are antonyms."
+  },
+  {
+    "id": 118,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa em que o uso do acento grave indicativo da crase está INCORRETO:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Crase"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Refiro-me àquele soldado, e não a este." },
+      { "letra": "B", "texto": "O treinamento começará às 8 horas da manhã." },
+      { "letra": "C", "texto": "Estou disposto à colaborar com a missão." },
+      { "letra": "D", "texto": "Fui à Bahia nas férias." },
+      { "letra": "E", "texto": "A dedicação à pátria é fundamental." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A regra geral proíbe o uso de crase antes de verbos no infinitivo. Na frase 'Estou disposto a colaborar', 'colaborar' é um verbo. Portanto, a crase é indevida. Nas outras opções, o uso está correto: (A) crase com pronome demonstrativo 'aquele'; (B) antes de locução adverbial de tempo com hora determinada; (D) 'Vou a, volto da Bahia', crase há; (E) 'dedicação a' + 'a pátria'."
+  },
+  {
+    "id": 119,
+    "contexto": "",
+    "enunciado": "O Arcadismo brasileiro, movimento literário do século XVIII, tinha como uma de suas principais características o 'fugere urbem'. O que significa este lema?",
+    "disciplina": "Literatura",
+    "assunto": ["Arcadismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Aproveitar o dia, viver o momento." },
+      { "letra": "B", "texto": "Cortar o inútil, buscar a simplicidade." },
+      { "letra": "C", "texto": "Fugir da cidade, buscar a vida no campo." },
+      { "letra": "D", "texto": "A inutilidade de tudo." },
+      { "letra": "E", "texto": "O fingimento poético." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Fugere urbem' (fugir da cidade) é um lema latino que expressa a valorização da vida bucólica, do campo, da natureza, em oposição à agitação e aos 'males' da vida urbana. Esta era uma característica central do Arcadismo, que buscava um ideal de vida simples e pastoril. As outras opções são outros lemas árcades: (A) Carpe diem, (B) Inutilia truncat."
+  },
+  {
+    "id": 120,
+    "contexto": "",
+    "enunciado": "Em uma cidade no fuso horário de Brasília (UTC-3), um jogo de futebol está marcado para começar às 21:00. Para um espectador em Manaus (AM), que está no fuso UTC-4, a que horas o jogo começará, em horário local?",
+    "disciplina": "Geografia",
+    "assunto": ["Fusos horários brasileiros"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "19:00" },
+      { "letra": "B", "texto": "20:00" },
+      { "letra": "C", "texto": "21:00" },
+      { "letra": "D", "texto": "22:00" },
+      { "letra": "E", "texto": "23:00" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O fuso de Brasília (UTC-3) está uma hora adiantado em relação ao fuso de Manaus (UTC-4). Portanto, se em Brasília são 21:00, em Manaus será uma hora a menos. 21:00 - 1 hora = 20:00."
+  },
+  {
+    "id": 121,
+    "contexto": "",
+    "enunciado": "Resolva a equação exponencial 3^(x+1) = 243. O valor de x é:",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Exponencial"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "2" },
+      { "letra": "B", "texto": "3" },
+      { "letra": "C", "texto": "4" },
+      { "letra": "D", "texto": "5" },
+      { "letra": "E", "texto": "6" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Para resolver a equação, devemos igualar as bases. Fatorando 243, encontramos que 243 = 3⁵. Assim, a equação se torna 3^(x+1) = 3⁵. Com as bases iguais, podemos igualar os expoentes: x + 1 = 5. Resolvendo para x, temos x = 5 - 1, o que resulta em x = 4."
+  },
+  {
+    "id": 122,
+    "contexto": "",
+    "enunciado": "A Conjuração Baiana (1798), também conhecida como Revolta dos Alfaiates, diferenciou-se da Inconfidência Mineira (1789) principalmente pelo(a):",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Revoltas Separatistas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Influência da Revolução Francesa e do Iluminismo." },
+      { "letra": "B", "texto": "Caráter popular e pela proposta de abolição da escravatura." },
+      { "letra": "C", "texto": "Desejo de proclamar uma República independente de Portugal." },
+      { "letra": "D", "texto": "Participação exclusiva de membros da elite intelectual." },
+      { "letra": "E", "texto": "Repressão violenta imposta pela Coroa Portuguesa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A principal diferença entre os dois movimentos é a composição social e os objetivos. A Inconfidência Mineira foi um movimento elitista, que não propunha o fim da escravidão. Já a Conjuração Baiana teve forte participação popular (alfaiates, soldados, escravos libertos) e defendia, além da independência, o fim da escravidão e a igualdade racial, sendo socialmente mais radical. As outras opções são características comuns a ambos (A, C, E) ou incorretas (D)."
+  },
+  {
+    "id": 123,
+    "contexto": "",
+    "enunciado": "Em 'Aquele livro é interessantíssimo', a palavra destacada é um adjetivo no grau:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Adjetivo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Comparativo de Superioridade." },
+      { "letra": "B", "texto": "Superlativo Relativo de Superioridade." },
+      { "letra": "C", "texto": "Comparativo de Igualdade." },
+      { "letra": "D", "texto": "Superlativo Absoluto Sintético." },
+      { "letra": "E", "texto": "Superlativo Absoluto Analítico." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O sufixo '-íssimo' é a marca do grau Superlativo Absoluto Sintético, que intensifica uma característica de forma concisa. A forma analítica seria 'muito interessante'. O grau comparativo (superioridade, inferioridade, igualdade) compara a característica entre dois seres, e o superlativo relativo a destaca em relação a um grupo."
+  },
+  {
+    "id": 124,
+    "contexto": "",
+    "enunciado": "Dado que os conjuntos A e B possuem, respectivamente, 4 e 5 elementos, e que a união A ∪ B possui 7 elementos, quantos elementos possui a interseção A ∩ B?",
+    "disciplina": "Matemática",
+    "assunto": ["Conjuntos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "1" },
+      { "letra": "B", "texto": "2" },
+      { "letra": "C", "texto": "3" },
+      { "letra": "D", "texto": "4" },
+      { "letra": "E", "texto": "5" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Utilizamos o Princípio da Inclusão-Exclusão para conjuntos finitos: n(A ∪ B) = n(A) + n(B) - n(A ∩ B). Substituindo os valores dados: 7 = 4 + 5 - n(A ∩ B). Logo, 7 = 9 - n(A ∩ B). Isolando n(A ∩ B), temos n(A ∩ B) = 9 - 7 = 2. A interseção possui 2 elementos."
+  },
+  {
+    "id": 125,
+    "contexto": "Read the text below. 'The Amazon Rainforest, often called the 'lungs of the Earth', faces severe threats from deforestation. This destruction is mainly driven by cattle ranching and agriculture. Despite global awareness, the rate of deforestation remains a critical issue, affecting biodiversity and climate patterns worldwide.'",
+    "enunciado": "What is the main purpose of the text?",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "To promote tourism in the Amazon." },
+      { "letra": "B", "texto": "To describe the biodiversity of the rainforest." },
+      { "letra": "C", "texto": "To inform about the causes and effects of deforestation in the Amazon." },
+      { "letra": "D", "texto": "To praise the efforts to conserve the Amazon." },
+      { "letra": "E", "texto": "To discuss the history of cattle ranching." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "The text focuses on identifying the 'severe threats' to the Amazon, specifically 'deforestation', and points out its main causes ('cattle ranching and agriculture') and consequences ('affecting biodiversity and climate patterns'). Therefore, its main purpose is to inform about this critical issue."
+  },
+  {
+    "id": 126,
+    "contexto": "",
+    "enunciado": "A chamada 'economia açucareira' no Brasil Colonial era baseada no sistema de 'plantations', que NÃO incluía como característica:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Economia Colonial"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A monocultura da cana-de-açúcar." },
+      { "letra": "B", "texto": "O trabalho assalariado em pequena escala." },
+      { "letra": "C", "texto": "O latifúndio como unidade de produção." },
+      { "letra": "D", "texto": "A produção voltada para o mercado externo." },
+      { "letra": "E", "texto": "O uso extensivo de mão de obra escrava africana." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O sistema de plantation era definido pelo tripé: latifúndio (grandes propriedades), monocultura (cana-de-açúcar) e mão de obra escrava. A produção era voltada para exportação. O trabalho assalariado era praticamente inexistente e contradiz a lógica do sistema escravista, que era a base da economia açucareira. A pegadinha está em pensar em formas de trabalho, mas a característica central era a escravidão, não o trabalho assalariado."
+  },
+  {
+    "id": 127,
+    "contexto": "",
+    "enunciado": "A literatura do Barroco brasileiro é conhecida pelo uso de figuras de linguagem que expressam o conflito e a dualidade do homem da época, dividido entre a fé e a razão, o pecado e o perdão. A figura de linguagem que consiste na aproximação de termos opostos é a:",
+    "disciplina": "Literatura",
+    "assunto": ["Barroco", "Figuras de Linguagem"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Metáfora." },
+      { "letra": "B", "texto": "Hipérbole." },
+      { "letra": "C", "texto": "Antítese." },
+      { "letra": "D", "texto": "Metonímia." },
+      { "letra": "E", "texto": "Eufemismo." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A antítese é a figura de linguagem que melhor representa o dualismo barroco, pois coloca lado a lado palavras ou ideias de sentido contrário (ex: vida/morte, céu/inferno). O Paradoxo também é comum, mas expressa uma contradição lógica na mesma ideia, enquanto a antítese opõe termos."
+  },
+  {
+    "id": 128,
+    "contexto": "",
+    "enunciado": "A função f(x) = ax + b é uma função afim. Se f(1) = 5 e f(2) = 7, quais são os valores de 'a' e 'b', respectivamente?",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Afim"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "a = 2, b = 3" },
+      { "letra": "B", "texto": "a = 3, b = 2" },
+      { "letra": "C", "texto": "a = 2, b = 1" },
+      { "letra": "D", "texto": "a = 1, b = 4" },
+      { "letra": "E", "texto": "a = -2, b = 7" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Temos um sistema de equações: 1) a(1) + b = 5 => a + b = 5. 2) a(2) + b = 7 => 2a + b = 7. Subtraindo a primeira equação da segunda, temos: (2a - a) + (b - b) = 7 - 5 => a = 2. Substituindo 'a' na primeira equação: 2 + b = 5 => b = 3. Portanto, a = 2 e b = 3."
+  },
+  {
+    "id": 129,
+    "contexto": "",
+    "enunciado": "As Chapadas, como a Diamantina e a dos Veadeiros, são formas de relevo que se caracterizam por:",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo brasileiro"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Serem áreas rebaixadas e planas, resultantes de intensa sedimentação." },
+      { "letra": "B", "texto": "Terem topos arredondados, conhecidos como 'mares de morros'." },
+      { "letra": "C", "texto": "Possuírem topo extenso e plano, com lados formados por escarpas." },
+      { "letra": "D", "texto": "Corresponderem a dobramentos recentes da crosta terrestre." },
+      { "letra": "E", "texto": "Serem vales profundos esculpidos por rios." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Chapadas são um tipo de planalto tabular, caracterizado por uma superfície muito plana e extensa no topo e delimitada por escarpas (encostas íngremes). Essa morfologia é típica de bacias sedimentares. 'Mares de morros' (B) são característicos do Planalto Atlântico. As outras opções descrevem planícies (A), dobramentos modernos inexistentes no Brasil (D) e cânions (E)."
+  },
+  {
+    "id": 130,
+    "contexto": "",
+    "enunciado": "Na frase 'Necessita-se de soldados corajosos para a missão', o 'se' é classificado como:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Funções do SE"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Partícula apassivadora." },
+      { "letra": "B", "texto": "Índice de indeterminação do sujeito." },
+      { "letra": "C", "texto": "Pronome reflexivo." },
+      { "letra": "D", "texto": "Partícula expletiva ou de realce." },
+      { "letra": "E", "texto": "Conjunção subordinativa condicional." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O verbo 'necessitar' é transitivo indireto (quem necessita, necessita DE algo). Quando o 'se' acompanha um verbo transitivo indireto, verbo intransitivo ou verbo de ligação, ele funciona como índice de indeterminação do sujeito, tornando o sujeito indeterminado. A partícula apassivadora (A) só ocorre com verbos transitivos diretos, permitindo a conversão para a voz passiva analítica. A pegadinha está em confundir as duas funções, que é um erro comum."
+  },
+  {
+    "id": 131,
+    "contexto": "",
+    "enunciado": "Simplificando a expressão (x²)³ * x⁴ / (x³)², com x ≠ 0, obtemos:",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "x²" },
+      { "letra": "B", "texto": "x³" },
+      { "letra": "C", "texto": "x⁴" },
+      { "letra": "D", "texto": "x⁵" },
+      { "letra": "E", "texto": "x⁶" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Aplicamos as propriedades da potenciação. Numerador: (x²)³ = x^(2*3) = x⁶. Então, o numerador fica x⁶ * x⁴ = x^(6+4) = x¹⁰. Denominador: (x³)² = x^(3*2) = x⁶. A expressão se torna x¹⁰ / x⁶. Na divisão de potências de mesma base, subtraímos os expoentes: x^(10-6) = x⁴."
+  },
+  {
+    "id": 132,
+    "contexto": "The general inspection of the barracks will occur next Friday. However, the captain might postpone it due to the storm. The final decision will be announced tomorrow.",
+    "enunciado": "The word 'postpone' means to:",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos", "Vocabulário"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Cancel the event permanently." },
+      { "letra": "B", "texto": "Schedule it for an earlier time." },
+      { "letra": "C", "texto": "Confirm the event's date." },
+      { "letra": "D", "texto": "Move the event to a later date." },
+      { "letra": "E", "texto": "Announce the event." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'To postpone' means to delay or reschedule an event for a later time or date. The context, mentioning a storm, suggests that the inspection might happen later, not be canceled or brought forward."
+  },
+  {
+    "id": 133,
+    "contexto": "",
+    "enunciado": "O principal poeta do Arcadismo brasileiro, conhecido por suas liras dedicadas à sua musa Marília e por sua participação na Inconfidência Mineira, foi:",
+    "disciplina": "Literatura",
+    "assunto": ["Arcadismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Cláudio Manuel da Costa." },
+      { "letra": "B", "texto": "Gregório de Matos." },
+      { "letra": "C", "texto": "Basílio da Gama." },
+      { "letra": "D", "texto": "Santa Rita Durão." },
+      { "letra": "E", "texto": "Tomás Antônio Gonzaga." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Tomás Antônio Gonzaga, sob o pseudônimo árcade de Dirceu, é o autor da obra lírica 'Marília de Dirceu', uma das mais importantes do Arcadismo. Ele também foi uma figura central na Inconfidência Mineira. Gregório de Matos (B) pertence ao Barroco. Os outros (A, C, D) também são árcades importantes, mas Gonzaga é o autor associado diretamente a 'Marília'."
+  },
+  {
+    "id": 134,
+    "contexto": "",
+    "enunciado": "Qual das seguintes revoltas coloniais NÃO pode ser classificada como nativista?",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Revoltas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Revolta de Beckman (1684)." },
+      { "letra": "B", "texto": "Guerra dos Emboabas (1707-1709)." },
+      { "letra": "C", "texto": "Guerra dos Mascates (1710-1711)." },
+      { "letra": "D", "texto": "Revolta de Vila Rica (1720)." },
+      { "letra": "E", "texto": "Conjuração Baiana (1798)." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A Conjuração Baiana é classificada como uma revolta separatista, pois tinha como objetivo a proclamação de uma república independente de Portugal, influenciada pelos ideais da Revolução Francesa. As outras revoltas (A, B, C, D) são consideradas nativistas, pois, embora se voltassem contra a administração portuguesa, não propunham o rompimento político definitivo com a metrópole."
+  },
+  {
+    "id": 135,
+    "contexto": "",
+    "enunciado": "O vértice da parábola da função f(x) = x² - 4x + 3 é o ponto:",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Quadrática"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "(2, -1)" },
+      { "letra": "B", "texto": "(-2, 1)" },
+      { "letra": "C", "texto": "(2, 1)" },
+      { "letra": "D", "texto": "(4, 3)" },
+      { "letra": "E", "texto": "(-4, 3)" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "As coordenadas do vértice (X_v, Y_v) são dadas por X_v = -b/(2a) e Y_v = -Δ/(4a). Na função, a=1, b=-4, c=3. X_v = -(-4)/(2*1) = 4/2 = 2. Para achar Y_v, podemos calcular f(X_v): Y_v = f(2) = (2)² - 4(2) + 3 = 4 - 8 + 3 = -1. Portanto, o vértice é o ponto (2, -1)."
+  },
+  {
+    "id": 136,
+    "contexto": "Analise a frase: 'O sargento deu a ordem ao pelotão.'",
+    "enunciado": "Os termos 'a ordem' e 'ao pelotão' exercem, respectivamente, as funções sintáticas de:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais", "Sintaxe"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Objeto direto e objeto indireto." },
+      { "letra": "B", "texto": "Objeto indireto e objeto direto." },
+      { "letra": "C", "texto": "Sujeito e objeto direto." },
+      { "letra": "D", "texto": "Objeto direto e adjunto adverbial." },
+      { "letra": "E", "texto": "Complemento nominal e objeto indireto." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O verbo 'dar' nesta frase é transitivo direto e indireto (quem dá, dá algo a alguém). 'a ordem' é o que foi dado, completando o sentido do verbo sem preposição (objeto direto). 'ao pelotão' é a quem a ordem foi dada, completando o sentido com a preposição 'a' (objeto indireto)."
+  },
+  {
+    "id": 137,
+    "contexto": "",
+    "enunciado": "A maior parte do território brasileiro está localizada em qual hemisfério e zona térmica?",
+    "disciplina": "Geografia",
+    "assunto": ["Relevo brasileiro", "Localização"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Hemisfério Norte, Zona Temperada do Norte." },
+      { "letra": "B", "texto": "Hemisfério Sul, Zona Temperada do Sul." },
+      { "letra": "C", "texto": "Hemisfério Ocidental, Zona Intertropical." },
+      { "letra": "D", "texto": "Hemisfério Oriental, Zona Polar." },
+      { "letra": "E", "texto": "Hemisfério Setentrional, Zona Glacial." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Brasil está inteiramente no Hemisfério Ocidental (a oeste do Meridiano de Greenwich). A maior parte do seu território (cerca de 92%) está na Zona Intertropical, localizada entre o Trópico de Câncer e o Trópico de Capricórnio. Apenas o extremo sul do país está na Zona Temperada do Sul."
+  },
+  {
+    "id": 138,
+    "contexto": "The agreement between the two nations was a landmark achievement. It was based on mutual respect and a shared commitment to peace. Both sides had to compromise, but the outcome was beneficial for everyone.",
+    "enunciado": "The word 'compromise' in this context means:",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos", "Vocabulário"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "To win the negotiation completely." },
+      { "letra": "B", "texto": "To make concessions to reach an agreement." },
+      { "letra": "C", "texto": "To abandon the negotiation." },
+      { "letra": "D", "texto": "To disrespect the other party." },
+      { "letra": "E", "texto": "To create a new proposal from scratch." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'To compromise' means that each side gives up some of its demands in order to find a middle ground and reach an agreement. It implies making concessions for a mutual benefit. The other options represent different negotiation tactics or outcomes but not the meaning of 'compromise'."
+  },
+  {
+    "id": 139,
+    "contexto": "",
+    "enunciado": "Se log₂(x - 1) = 4, então o valor de x é:",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Logarítmica"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "8" },
+      { "letra": "B", "texto": "9" },
+      { "letra": "C", "texto": "15" },
+      { "letra": "D", "texto": "16" },
+      { "letra": "E", "texto": "17" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Pela definição de logaritmo, se logₐ(b) = c, então aᶜ = b. Aplicando à questão: 2⁴ = x - 1. Sabemos que 2⁴ = 16. Então, 16 = x - 1. Resolvendo para x, temos x = 16 + 1 = 17. A pegadinha está em não esquecer de somar 1 ao resultado da potência. Além disso, é preciso verificar a condição de existência do logaritmo (logaritmando > 0): x - 1 > 0 => x > 1. Como 17 > 1, a solução é válida."
+  },
+  {
+    "id": 140,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa que contém apenas palavras que NÃO seguem a mesma regra de acentuação de 'exército'.",
+    "disciplina": "Português",
+    "assunto": ["Fonética e Fonologia", "Acentuação"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "análise, máximo, lógico" },
+      { "letra": "B", "texto": "hífen, útil, revólver" },
+      { "letra": "C", "texto": "público, médico, último" },
+      { "letra": "D", "texto": "parabéns, também, alguém" },
+      { "letra": "E", "texto": "história, série, consequência" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A palavra 'exército' é uma proparoxítona (antepenúltima sílaba tônica), e todas as proparoxítonas são acentuadas. As palavras nas alternativas A, C e E são todas proparoxítonas (as da alternativa E são paroxítonas terminadas em ditongo, que seguem a mesma regra das proparoxítonas para muitos gramáticos, ou são consideradas 'proparoxítonas eventuais'). A alternativa D contém oxítonas. A alternativa B é a única que contém apenas palavras paroxítonas acentuadas por outras regras (terminadas em -n, -l, -r). A pegadinha está em identificar o grupo que foge completamente da regra principal da palavra-base, e não apenas de outras regras de acentuação."
+  },
+  {
+    "id": 141,
+    "contexto": "The sergeant ordered the troop to assemble at 0600 hours. The mission required an early start. Despite the cold morning, every soldier was ready on time. Their discipline was commendable.",
+    "enunciado": "The word 'commendable' means:",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos", "Vocabulário"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Worthy of praise." },
+      { "letra": "B", "texto": "Unexpected." },
+      { "letra": "C", "texto": "Problematic." },
+      { "letra": "D", "texto": "Common." },
+      { "letra": "E", "texto": "Mandatory." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Commendable' derives from 'to commend', which means to praise or approve of something officially or publicly. Therefore, something that is commendable is worthy of praise due to its excellence. The discipline of the soldiers was so good it deserved praise."
+  },
+  {
+    "id": 142,
+    "contexto": "",
+    "enunciado": "Se f(x) = 3x - 2, qual é a lei de formação de sua função inversa, f⁻¹(x)?",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Inversa"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "(x + 2) / 3" },
+      { "letra": "B", "texto": "(x - 2) / 3" },
+      { "letra": "C", "texto": "3x + 2" },
+      { "letra": "D", "texto": "x/3 - 2" },
+      { "letra": "E", "texto": "2x + 3" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Para encontrar a função inversa, primeiro trocamos x por y e y por x na função original: y = 3x - 2 se torna x = 3y - 2. Agora, isolamos o y. x + 2 = 3y. y = (x + 2) / 3. Portanto, f⁻¹(x) = (x + 2) / 3."
+  },
+  {
+    "id": 143,
+    "contexto": "",
+    "enunciado": "A obra 'Prosopopeia', de Bento Teixeira, é considerada o marco inicial de qual movimento literário no Brasil?",
+    "disciplina": "Literatura",
+    "assunto": ["Barroco", "Quinhentismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Quinhentismo." },
+      { "letra": "B", "texto": "Barroco." },
+      { "letra": "C", "texto": "Arcadismo." },
+      { "letra": "D", "texto": "Romantismo." },
+      { "letra": "E", "texto": "Modernismo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Publicada em 1601, 'Prosopopeia' é um poema épico que, apesar de ainda ter traços do Classicismo, é convencionalmente aceito como a obra que inaugura o Barroco no Brasil, por já apresentar características desse estilo, como o uso de uma linguagem mais rebuscada e de figuras de linguagem complexas."
+  },
+  {
+    "id": 144,
+    "contexto": "",
+    "enunciado": "Qual das alternativas apresenta uma característica que NÃO pertence ao movimento árcade?",
+    "disciplina": "Literatura",
+    "assunto": ["Arcadismo", "Barroco"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Bucolismo e pastoralismo." },
+      { "letra": "B", "texto": "Uso de pseudônimos latinos." },
+      { "letra": "C", "texto": "Racionalismo e busca pela simplicidade (inutilia truncat)." },
+      { "letra": "D", "texto": "Linguagem rebuscada, cultismo e conceptismo." },
+      { "letra": "E", "texto": "Inspiração na cultura greco-romana clássica." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A linguagem rebuscada, o uso do cultismo (jogo de palavras) e do conceptismo (jogo de ideias) são as principais características do movimento anterior, o Barroco. O Arcadismo surgiu como uma reação ao Barroco, pregando justamente o contrário: a simplicidade (inutilia truncat), a clareza e a objetividade, inspirando-se nos clássicos."
+  },
+  {
+    "id": 145,
+    "contexto": "",
+    "enunciado": "Um soldado está em Boa Vista (RR), no fuso UTC-4. Ele precisa ligar para sua família em Recife (PE), no fuso UTC-3, às 19:00 do horário de Recife. A que horas, no horário local de Boa Vista, ele deve fazer a ligação?",
+    "disciplina": "Geografia",
+    "assunto": ["Fusos horários brasileiros"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "17:00" },
+      { "letra": "B", "texto": "18:00" },
+      { "letra": "C", "texto": "19:00" },
+      { "letra": "D", "texto": "20:00" },
+      { "letra": "E", "texto": "21:00" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Recife (UTC-3) está 1 hora adiantado em relação a Boa Vista (UTC-4). Se o horário de destino é 19:00, o soldado deve fazer a ligação uma hora antes em seu fuso local. Portanto, 19:00 - 1 hora = 18:00 no horário de Boa Vista."
+  },
+  {
+    "id": 146,
+    "contexto": "The candidate must fulfill all the prerequisites to be eligible for the position. A thorough background check is also mandatory.",
+    "enunciado": "The word 'prerequisites' is closest in meaning to:",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos", "Vocabulário"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Benefits." },
+      { "letra": "B", "texto": "Requirements." },
+      { "letra": "C", "texto": "Preferences." },
+      { "letra": "D", "texto": "Skills." },
+      { "letra": "E", "texto": "Goals." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A 'prerequisite' is something that is required as a prior condition for something else to happen or exist. In this context, it refers to the necessary conditions or requirements a candidate must meet. 'Skills' can be a type of prerequisite, but 'requirements' is a more general and accurate synonym in this context."
+  },
+  {
+    "id": 147,
+    "contexto": "",
+    "enunciado": "A Guerra dos Mascates (1710-1711) em Pernambuco foi um conflito que opôs:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Revoltas Nativistas"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Paulistas e forasteiros pelo controle das minas de ouro." },
+      { "letra": "B", "texto": "Colonizadores portugueses e indígenas." },
+      { "letra": "C", "texto": "A aristocracia rural de Olinda e os comerciantes portugueses do Recife." },
+      { "letra": "D", "texto": "Senhores de engenho e a Coroa Portuguesa devido aos impostos." },
+      { "letra": "E", "texto": "Escravos e seus senhores pela liberdade." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Guerra dos Mascates foi um conflito de interesses entre a elite agrária de Olinda, então a principal vila de Pernambuco, e os comerciantes portugueses (apelidados de 'mascates') do Recife, que haviam enriquecido e buscavam autonomia política para sua localidade. A alternativa A descreve a Guerra dos Emboabas."
+  },
+  {
+    "id": 148,
+    "contexto": "",
+    "enunciado": "A imagem da função quadrática f(x) = -x² + 6x - 5, cujo gráfico é uma parábola, é dada pelo conjunto:",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Quadrática"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "{y ∈ R | y ≤ 4}" },
+      { "letra": "B", "texto": "{y ∈ R | y ≥ 4}" },
+      { "letra": "C", "texto": "{y ∈ R | y ≤ -5}" },
+      { "letra": "D", "texto": "{y ∈ R | y ≥ 3}" },
+      { "letra": "E", "texto": "{y ∈ R | y ≤ 3}" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O conjunto imagem de uma função quadrática depende do coeficiente 'a' e da coordenada Y do vértice (Y_v). Como 'a' = -1 (negativo), a parábola tem concavidade para baixo, e o vértice é o ponto de máximo. A imagem será {y ∈ R | y ≤ Y_v}. Calculamos Y_v = -Δ/(4a). Δ = b²-4ac = 6² - 4(-1)(-5) = 36 - 20 = 16. Y_v = -16 / (4*(-1)) = -16 / -4 = 4. Portanto, a imagem é {y ∈ R | y ≤ 4}."
+  },
+  {
+    "id": 149,
+    "contexto": "",
+    "enunciado": "Todas as alternativas apresentam ditongos, EXCETO:",
+    "disciplina": "Português",
+    "assunto": ["Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "caixa" },
+      { "letra": "B", "texto": "saúde" },
+      { "letra": "C", "texto": "pátria" },
+      { "letra": "D", "texto": "herói" },
+      { "letra": "E", "texto": "mãe" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Um ditongo é o encontro de uma vogal e uma semivogal na mesma sílaba. Em 'sa-ú-de', o 'a' e o 'u' estão em sílabas separadas, formando um hiato. Nas outras opções temos: 'cai-xa' (ditongo decrescente 'ai'), 'pá-tria' (ditongo crescente 'ia'), 'he-rói' (ditongo decrescente 'ói'), 'mãe' (ditongo decrescente nasal 'ãe')."
+  },
+  {
+    "id": 150,
+    "contexto": "Despite the inherent risks, the soldiers embarked on the perilous journey. Their mission was to gather intelligence behind enemy lines. The success of the entire operation hinged on their ability to remain undetected.",
+    "enunciado": "The word 'perilous' is closest in meaning to:",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos", "Vocabulário"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Long." },
+      { "letra": "B", "texto": "Secret." },
+      { "letra": "C", "texto": "Safe." },
+      { "letra": "D", "texto": "Dangerous." },
+      { "letra": "E", "texto": "Important." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "'Perilous' is an adjective that means full of danger or risk. The context of a mission 'behind enemy lines' reinforces this meaning. Therefore, 'dangerous' is the best synonym. 'Safe' is the antonym."
   }
 ]

@@ -1,1007 +1,472 @@
-document.addEventListener("DOMContentLoaded", () => {
-
-    // === Elementos DOM: Etapas e Controles ===
-    const steps = document.querySelectorAll(".step");
-    const step1 = document.getElementById("step-1");
-    const step2 = document.getElementById("step-2");
-    const step3 = document.getElementById("step-3");
-    const goToStep1Button = document.getElementById("goToStep1Button");
-    const goToStep2Button = document.getElementById("goToStep2Button");
-    const startGenerationButton = document.getElementById("startGenerationButton");
-
-    // === Elementos DOM: Inputs Etapa 1 ===
-    const totalQuestoesInput = document.getElementById("totalQuestoesInput");
-    const tempoInputHoras = document.getElementById("tempoInputHoras");
-    const tempoInputMinutos = document.getElementById("tempoInputMinutos");
-    const editalInput = document.getElementById("editalInput");
-    const disciplinasCheckboxContainer = document.getElementById("disciplinasCheckboxContainer");
-    const disciplinasSortableList = document.getElementById("disciplinasSortableList");
-
-    // === Elementos DOM: Inputs Etapa 2 ===
-    const disciplinaDetailContainer = document.getElementById("disciplinaDetailContainer");
-    const distributeCheckbox = document.getElementById("distributeCheckbox");
-    const distributeHelperText = document.getElementById("distributeHelperText");
-    const totalAllocatedText = document.getElementById("totalAllocatedText");
-    const nivelQuestaoSelect = document.getElementById("nivelQuestaoSelect");
-
-    // === Elementos DOM: Geração Etapa 3 ===
-    const motivationalQuote = document.getElementById("motivationalQuote");
-    const progressBar = document.getElementById("progressBar");
-    const progressText = document.getElementById("progressText");
-    const generationStatus = document.getElementById("generationStatus");
-
-    // === Elementos DOM: Visualização do Simulado ===
-    const simuladoView = document.getElementById("simuladoView");
-    const questoesOutput = document.getElementById("questoesOutput");
-    const finalizeButton = document.getElementById("finalizeButton");
-
-    // === Elementos DOM: Footer Fixo ===
-    const simuladoFixedFooter = document.getElementById("simulado-fixed-footer");
-    const progressIndicatorFixed = document.getElementById("progressIndicatorFixed");
-    const timeRemainingFixed = document.getElementById("timeRemainingFixed");
-
-    // === Elementos DOM: Popup ===
-    const popupOverlay = document.getElementById("popupOverlay");
-    const popupMessageBox = document.getElementById("popupMessageBox");
-    const popupContent = document.getElementById("popupContent");
-    const popupCloseButton = document.getElementById("popupCloseButton");
-    // Popup de Resultados
-    const popupTextMessage = document.getElementById("popupTextMessage");
-    const resultsContainer = document.getElementById("resultsContainer");
-    const resultsTitle = document.getElementById("resultsTitle");
-    const resultsMessage = document.getElementById("resultsMessage");
-    const resultsStats = document.getElementById("resultsStats");
-    const resultsButtons = document.getElementById("resultsButtons");
-    const resultsSaveButton = document.getElementById("resultsSaveButton");
-    const resultsCloseButton = document.getElementById("resultsCloseButton");
-
-    // === Configurações e Constantes ===
-    // !!! ATENÇÃO: SUBSTITUA PELA SUA CHAVE REAL !!!
-    // !!!         Recomendado: Mover para backend em produção !!!
-    const GEMINI_API_KEY = "AIzaSyDfmegc9Aue6YlTphmcVV0p_I9rgsKVXKs";
-    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-latest:generateContent?key=${GEMINI_API_KEY}`;
-    const RESULTS_STORAGE_KEY = "sessoesEstudo";
-    const DISCIPLINAS_STORAGE_KEY = "disciplinas";
-    const MOTIVATIONAL_QUOTES = [
-        "Acredite em você mesmo e todo o resto virá naturalmente.",
-        "O sucesso nasce do querer, da determinação e persistência.",
-        "Não espere por oportunidades extraordinárias. Agarre ocasiões comuns e torne-as grandes.",
-        "Sua maior tarefa é descobrir seu potencial, e então, usá-lo.",
-        "A jornada de mil milhas começa com um único passo.",
-        "Continue aprendendo. O conhecimento é o único tesouro que não pode ser roubado.",
-        "Pequenos progressos todos os dias somam grandes resultados.",
-        "A persistência realiza o impossível.",
-        "Quanto maior o desafio, maior a oportunidade de crescimento.",
-        "Respire fundo. Você consegue.",
-        "Foco no processo, não apenas no resultado.",
-        "Cada erro é uma lição. Aprenda e siga em frente.",
-        "A calma é um superpoder. Use-o.",
+document.addEventListener('DOMContentLoaded', () => {
+    // --- CONFIGURAÇÕES E CONSTANTES ---
+    const QUESTOES_JSON_URL = '../assets/data/questoes.json';
+    const PRE_CONFIGURADOS_PATH = '../assets/data/simulados/';
+    const PRE_CONFIGURADOS = [
+        { name: 'Selecione um simulado...', url: '' },
+        { name: 'Simulado 07/2025', url: `${PRE_CONFIGURADOS_PATH}Simulado.json` },
+        { name: 'Conhecimentos Gerais (10q)', url: `${PRE_CONFIGURADOS_PATH}simulado_geral.json` }
     ];
-    const QUOTE_INTERVAL = 8000; // 8 segundos
+    const STORAGE_KEY_RESOLVIDAS = 'questoesResolvidas';
+    const STORAGE_KEY_HISTORICO = 'historicoSimulados';
 
-    // === Estado da Aplicação ===
-    let currentStep = 1;
-    let simuladoConfig = {
-        totalQuestoes: 0, tempoTotalSegundos: 0, edital: "",
-        disciplinasSelecionadas: [], // { nome: "Nome" } - ORDENADO
-        questoesPorDisciplina: {}, // { "Nome": count }
-        assuntosPorDisciplina: {}, // { "Nome": ["Assunto1"] }
-        nivel: "",
+    // --- SELEÇÃO DE ELEMENTOS DA DOM ---
+    const dom = {
+        setupScreen: document.getElementById('setup-screen'),
+        simuladoScreen: document.getElementById('simulado-screen'),
+        resultsScreen: document.getElementById('results-screen'),
+        historyScreen: document.getElementById('history-screen'),
+        pauseOverlay: document.getElementById('pause-overlay'),
+        confirmModal: document.getElementById('confirm-modal'),
+        preConfigCheckbox: document.getElementById('pre-config-checkbox'),
+        preConfigSelectContainer: document.getElementById('pre-config-select-container'),
+        manualFiltersContainer: document.getElementById('manual-filters-container'),
+        startSimuladoBtn: document.getElementById('start-simulado-btn'),
+        historyBtn: document.getElementById('history-btn'),
+        backToSetupBtn: document.getElementById('back-to-setup-btn'),
+        historyList: document.getElementById('history-list'),
+        timeDisplay: document.getElementById('time-display'),
+        pauseBtn: document.getElementById('pause-btn'),
+        resumeBtn: document.getElementById('resume-btn'),
+        questionsContainer: document.getElementById('questions-container'),
+        reviewContainer: document.getElementById('review-container'),
+        reviewBtn: document.getElementById('review-btn'),
+        reviewFilterMainBtn: document.getElementById('review-filter-main-btn'),
+        reviewFilterOptions: document.getElementById('review-filter-options'),
+        reviewQuestionsArea: document.getElementById('review-questions-area'),
+        restartSimuladoBtn: document.getElementById('restart-simulado-btn'),
+        disciplinePerformanceList: document.getElementById('discipline-performance-list'),
+        preConfigSelect: document.getElementById('pre-config-select'),
+        numQuestionsInput: document.getElementById('num-questions'),
+        simuladoTimeInput: document.getElementById('simulado-time'),
+        prevDisciplineBtn: document.getElementById('prev-discipline-btn'),
+        nextDisciplineBtn: document.getElementById('next-discipline-btn'),
+        currentDisciplineTitle: document.getElementById('current-discipline-title'),
+        finishBtn: document.getElementById('finish-btn'),
+        forceFinishBtn: document.getElementById('force-finish-btn'),
+        resultsChartEl: document.getElementById('results-chart'),
+        correctCountEl: document.getElementById('correct-count'),
+        incorrectCountEl: document.getElementById('incorrect-count'),
+        unansweredCountEl: document.getElementById('unanswered-count'),
+        percentageEl: document.getElementById('percentage-count')
     };
-    let allDisciplinas = [];
-    let generatedQuestions = [];
-    let questionsDataStore = {}; // NOVO: Armazena dados completos das questões (incluindo resolução)
-    let currentSessionStats = {
-        id: null, totalQuestions: 0, answeredCount: 0, correctCount: 0,
-        startTime: null, endTime: null, durationMs: 0, timedOut: false, config: {}
+
+    // --- INSTÂNCIAS DE BIBLIOTECAS ---
+    const choices = {
+        disciplina: new Choices(dom.manualFiltersContainer.querySelector('#filtroDisciplina'), { removeItemButton: true, placeholder: true, placeholderValue: 'Todas' }),
+        assunto: new Choices(dom.manualFiltersContainer.querySelector('#filtroAssunto'), { removeItemButton: true, placeholder: true, placeholderValue: 'Todos' }),
+        dificuldade: new Choices(dom.manualFiltersContainer.querySelector('#filtroDificuldade'), { removeItemButton: true, placeholder: true, placeholderValue: 'Todos' })
     };
-    let timerIntervalId = null;
-    let quoteIntervalId = null;
-    let popupTimeoutId = null;
-    let sortableInstance = null;
 
-    // === Inicialização ===
-    function initializeApp() {
-        loadDisciplinas();
-        setupEventListeners();
-        showStep(1);
-        updateSortableListPlaceholder();
-    }
+    // --- ESTADO DO APLICATIVO ---
+    const state = {
+        todasQuestoes: [],
+        simuladoQuestoes: [],
+        questoesAgrupadas: {},
+        disciplinasDoSimulado: [],
+        currentDisciplinaIndex: 0,
+        userAnswers: {},
+        timerInterval: null,
+        resultsChart: null,
+        simuladoStartTime: 0,
+        remainingTime: 0,
+        isPaused: false,
+        markedQuestions: new Set(),
+        confirmCallback: null
+    };
 
-    // === Carregamento de Disciplinas ===
-    function loadDisciplinas() {
-        disciplinasCheckboxContainer.innerHTML = "<p>Carregando...</p>";
+    // --- FUNÇÕES DE STORAGE ---
+    const getFromStorage = (key) => JSON.parse(localStorage.getItem(key)) || [];
+    const saveToStorage = (key, data) => localStorage.setItem(key, JSON.stringify(data));
+
+    // --- INICIALIZAÇÃO E CONFIGURAÇÃO ---
+    async function inicializar() {
         try {
-            const storedData = localStorage.getItem(DISCIPLINAS_STORAGE_KEY);
-            if (storedData) {
-                const parsedData = JSON.parse(storedData);
-                if (Array.isArray(parsedData) && parsedData.every(item => typeof item === "object" && item?.nome)) {
-                    allDisciplinas = parsedData.sort((a, b) => a.nome.localeCompare(b.nome));
-                    renderDisciplinaCheckboxes();
-                } else { throw new Error("Formato inválido"); }
-            } else {
-                disciplinasCheckboxContainer.innerHTML = "<p>Nenhuma disciplina cadastrada.</p>"; allDisciplinas = [];
-            }
+            const response = await fetch(QUESTOES_JSON_URL);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            state.todasQuestoes = await response.json();
+            configurarFiltros();
+            configurarPreConfigurados();
+            vincularEventos();
         } catch (error) {
-            console.error("Erro ao carregar disciplinas:", error);
-            showErrorPopup("Erro ao carregar disciplinas do armazenamento local.");
-            disciplinasCheckboxContainer.innerHTML = "<p class=\"error-text\">Erro ao carregar.</p>"; allDisciplinas = [];
+            console.error("Falha crítica ao carregar questões:", error);
+            showConfirmationModal("Não foi possível carregar o banco de questões. Verifique sua conexão ou o arquivo de dados.");
         }
     }
 
-    function renderDisciplinaCheckboxes() {
-        if (allDisciplinas.length === 0) {
-             disciplinasCheckboxContainer.innerHTML = "<p>Nenhuma disciplina cadastrada.</p>"; return;
-        }
-        disciplinasCheckboxContainer.innerHTML = "";
-        allDisciplinas.forEach((disciplina, index) => {
-            const id = `disciplina-cb-${index}`;
-            const div = document.createElement("div"); div.className = "checkbox-item";
-            const input = document.createElement("input");
-            input.type = "checkbox"; input.id = id; input.value = disciplina.nome;
-            input.dataset.disciplinaNome = disciplina.nome;
-            input.addEventListener("change", handleDisciplinaSelectionChange);
-            const label = document.createElement("label"); label.htmlFor = id; label.textContent = disciplina.nome;
-            div.appendChild(input); div.appendChild(label);
-            disciplinasCheckboxContainer.appendChild(div);
+    function configurarFiltros() {
+        const disciplinas = [...new Set(state.todasQuestoes.map(q => q.disciplina))].sort();
+        choices.disciplina.setChoices(disciplinas.map(d => ({ value: d, label: d })), 'value', 'label', false);
+        atualizarAssuntosPorDisciplina();
+    }
+
+    function configurarPreConfigurados() {
+        PRE_CONFIGURADOS.forEach(simulado => {
+            const option = document.createElement('option');
+            option.value = simulado.url;
+            option.textContent = simulado.name;
+            dom.preConfigSelect.appendChild(option);
         });
-        initializeSortableList();
     }
 
-    // === Lógica de Ordenação (Drag and Drop) ===
-    function initializeSortableList() {
-        if (sortableInstance) sortableInstance.destroy();
-        if (typeof Sortable !== "undefined") { // Verifica se SortableJS está carregado
-             sortableInstance = new Sortable(disciplinasSortableList, {
-                 animation: 150, ghostClass: "sortable-ghost", chosenClass: "sortable-chosen",
-                 filter: ".sortable-placeholder", // Não permite arrastar o placeholder
-                 onMove: function (evt) { // Previne mover para antes do placeholder se ele existir
-                     return evt.related.className.indexOf("sortable-placeholder") === -1;
-                 },
-                 onEnd: () => console.log("Nova ordem:", getSelectedDisciplinasOrdered())
-             });
-        } else {
-            console.error("SortableJS não carregado. A ordenação de disciplinas não funcionará.");
-            // Informar usuário?
-        }
+    function atualizarAssuntosPorDisciplina() {
+        const disciplinasSelecionadas = choices.disciplina.getValue(true);
+        let assuntosDisponiveis = (disciplinasSelecionadas.length === 0) 
+            ? state.todasQuestoes.flatMap(q => q.assuntos || q.assunto || []) 
+            : state.todasQuestoes.filter(q => disciplinasSelecionadas.includes(q.disciplina)).flatMap(q => q.assuntos || q.assunto || []);
+        const uniqueAssuntos = [...new Set(assuntosDisponiveis)].sort();
+        choices.assunto.setChoices(uniqueAssuntos.map(a => ({ value: a, label: a })), 'value', 'label', false);
     }
 
-    function handleDisciplinaSelectionChange(event) {
-        const checkbox = event.target;
-        const disciplinaNome = checkbox.dataset.disciplinaNome;
-        const items = Array.from(disciplinasSortableList.querySelectorAll("li:not(.sortable-placeholder)"));
+    // --- LÓGICA PRINCIPAL DO SIMULADO ---
+    const embaralhar = (array) => [...array].sort(() => Math.random() - 0.5);
 
-        if (checkbox.checked) {
-            // Adiciona se não existir
-            if (!items.some(item => item.dataset.disciplinaNome === disciplinaNome)) {
-                const listItem = document.createElement("li");
-                listItem.dataset.disciplinaNome = disciplinaNome;
-                listItem.textContent = disciplinaNome;
-                disciplinasSortableList.appendChild(listItem);
-            }
+    async function iniciarSimulado() {
+        let questoesParaSimulado = [];
+        const numQuestions = parseInt(dom.numQuestionsInput.value, 10);
+
+        if (dom.preConfigCheckbox.checked) {
+            const url = dom.preConfigSelect.value;
+            if (!url) { showConfirmationModal('Por favor, selecione um simulado pré-configurado.'); return; }
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Não foi possível carregar o simulado de ${url}`);
+                questoesParaSimulado = await response.json();
+            } catch (error) { console.error(error); showConfirmationModal(error.message); return; }
         } else {
-            // Remove se existir
-            items.forEach(item => {
-                if (item.dataset.disciplinaNome === disciplinaNome) {
-                    disciplinasSortableList.removeChild(item);
-                }
+            const discs = choices.disciplina.getValue(true);
+            const assSel = choices.assunto.getValue(true);
+            const diffs = choices.dificuldade.getValue(true);
+            questoesParaSimulado = state.todasQuestoes.filter(q => {
+                const temas = Array.isArray(q.assuntos) ? q.assuntos : [q.assunto].filter(Boolean);
+                return (!discs.length || discs.includes(q.disciplina)) && 
+                       (!assSel.length || temas.some(a => assSel.includes(a))) && 
+                       (!diffs.length || diffs.includes(q.dificuldade));
             });
         }
-        updateSortableListPlaceholder();
+
+        state.simuladoQuestoes = embaralhar(questoesParaSimulado).slice(0, numQuestions);
+        if (state.simuladoQuestoes.length === 0) { showConfirmationModal("Nenhuma questão foi encontrada com os filtros selecionados. Tente uma busca mais ampla."); return; }
+
+        // Resetar estado para um novo simulado
+        state.userAnswers = {};
+        state.markedQuestions.clear();
+        state.simuladoStartTime = Date.now();
+        state.questoesAgrupadas = state.simuladoQuestoes.reduce((acc, questao) => {
+            (acc[questao.disciplina] = acc[questao.disciplina] || []).push(questao);
+            return acc;
+        }, {});
+        state.disciplinasDoSimulado = Object.keys(state.questoesAgrupadas);
+        state.currentDisciplinaIndex = 0;
+        
+        // Mudar de tela e iniciar
+        [dom.setupScreen, dom.historyScreen, dom.resultsScreen, dom.pauseOverlay, dom.reviewContainer].forEach(el => el.classList.add('hidden'));
+        dom.simuladoScreen.classList.remove('hidden');
+        
+        exibirDisciplinaAtual();
+        iniciarTimer(parseInt(dom.simuladoTimeInput.value, 10) * 60);
     }
 
-    function updateSortableListPlaceholder() {
-        const hasItems = disciplinasSortableList.querySelector("li:not(.sortable-placeholder)");
-        let placeholder = disciplinasSortableList.querySelector(".sortable-placeholder");
-        if (!placeholder && !hasItems) { // Cria se não existe e está vazio
-            placeholder = document.createElement("li");
-            placeholder.className = "sortable-placeholder";
-            placeholder.textContent = "Selecione as disciplinas acima para ordená-las aqui.";
-            disciplinasSortableList.appendChild(placeholder);
-        }
-        if(placeholder) placeholder.style.display = hasItems ? "none" : "list-item";
-    }
+    function exibirDisciplinaAtual() {
+        const disciplinaAtual = state.disciplinasDoSimulado[state.currentDisciplinaIndex];
+        dom.currentDisciplineTitle.textContent = disciplinaAtual;
+        dom.questionsContainer.innerHTML = '';
+        let questionCounter = state.simuladoQuestoes.indexOf(state.questoesAgrupadas[disciplinaAtual][0]);
 
-    function getSelectedDisciplinasOrdered() {
-        return Array.from(disciplinasSortableList.querySelectorAll("li:not(.sortable-placeholder)"))
-                    .map(item => ({ nome: item.dataset.disciplinaNome }));
-    }
+        state.questoesAgrupadas[disciplinaAtual].forEach(questao => {
+            questionCounter++;
+            const questionItem = document.createElement('div');
+            questionItem.className = 'question-item';
+            questionItem.id = `q-${questao.id}`;
+            const isAnswered = !!state.userAnswers[questionItem.id];
+            const isMarked = state.markedQuestions.has(String(questao.id));
 
-    // === Lógica de Navegação entre Etapas ===
-    function showStep(stepNumber) {
-        steps.forEach(step => step.classList.remove("active-step"));
-        const nextStep = document.getElementById(`step-${stepNumber}`);
-        if (nextStep) { nextStep.classList.add("active-step"); currentStep = stepNumber; }
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function handleGoToStep2() { if (validateStep1()) { generateDisciplinaDetailInputs(); showStep(2); } }
-    function handleGoToStep1() { showStep(1); }
-    async function handleStartGeneration() { if (validateStep2()) { showStep(3); await generateSimulado(); } }
-
-    // === Validação das Etapas ===
-    function validateStep1() {
-        hidePopup();
-        simuladoConfig.totalQuestoes = parseInt(totalQuestoesInput.value, 10);
-        const horas = parseInt(tempoInputHoras.value, 10) || 0;
-        const minutos = parseInt(tempoInputMinutos.value, 10) || 0;
-        simuladoConfig.tempoTotalSegundos = (horas * 3600) + (minutos * 60);
-        simuladoConfig.edital = editalInput.value.trim();
-        simuladoConfig.disciplinasSelecionadas = getSelectedDisciplinasOrdered();
-
-        if (isNaN(simuladoConfig.totalQuestoes) || simuladoConfig.totalQuestoes < 1 || simuladoConfig.totalQuestoes > 100) {
-            showErrorPopup("Número total de questões inválido (1-100)."); totalQuestoesInput.focus(); return false; }
-        if (simuladoConfig.tempoTotalSegundos <= 0) {
-            showErrorPopup("Tempo de prova inválido (> 0)."); tempoInputHoras.focus(); return false; }
-        if (simuladoConfig.disciplinasSelecionadas.length === 0) {
-            showErrorPopup("Selecione e ordene pelo menos uma disciplina."); return false; }
-        if (simuladoConfig.totalQuestoes < simuladoConfig.disciplinasSelecionadas.length) {
-            showErrorPopup(`Total de questões (${simuladoConfig.totalQuestoes}) menor que nº de disciplinas (${simuladoConfig.disciplinasSelecionadas.length}).`); totalQuestoesInput.focus(); return false; }
-
-        console.log("Step 1 Validated:", simuladoConfig);
-        return true;
-    }
-
-    function validateStep2() {
-        hidePopup();
-        let allocatedQuestoes = 0; let isValid = true;
-        simuladoConfig.questoesPorDisciplina = {}; simuladoConfig.assuntosPorDisciplina = {};
-
-        simuladoConfig.disciplinasSelecionadas.forEach((disciplina, index) => {
-            const countInputId = `disciplina-count-${index}`;
-            const assuntosInputId = `disciplina-assuntos-${index}`;
-            const countEl = document.getElementById(countInputId);
-            const assuntosEl = document.getElementById(assuntosInputId);
-            if (!countEl || !assuntosEl) { console.error(`Inputs não encontrados para ${disciplina.nome}`); isValid = false; return; }
-
-            const count = parseInt(countEl.value, 10);
-            const assuntosStr = assuntosEl.value.trim();
-
-            if (isNaN(count) || count < 1) {
-                showErrorPopup(`Número de questões inválido (≥ 1) para "${disciplina.nome}".`); countEl.focus(); isValid = false;
-            } else {
-                simuladoConfig.questoesPorDisciplina[disciplina.nome] = count;
-                allocatedQuestoes += count;
-                simuladoConfig.assuntosPorDisciplina[disciplina.nome] = assuntosStr ? assuntosStr.split(",").map(s => s.trim()).filter(Boolean) : [];
-            }
+            questionItem.innerHTML = `
+                <div class="question-header">
+                    <div class="question-meta">${questao.metadata?.fonte || ''} ${questao.metadata?.ano || ''}</div>
+                    <button class="mark-btn ${isMarked ? 'marked' : ''}" aria-label="Marcar questão"><i class="fas fa-flag"></i></button>
+                </div>
+                <div class="question-tags">${(Array.isArray(questao.assuntos) ? questao.assuntos : [questao.assunto].filter(Boolean)).map(a => `<span class="tag-assunto">${a}</span>`).join('')}<span class="tag-dificuldade">${questao.dificuldade || ''}</span></div>
+                <p class="question-text"><strong>${questionCounter}.</strong> ${questao.enunciado}</p>
+                <div class="options-container ${isAnswered ? 'answered' : ''}">${questao.opcoes.map(op => `<button class="option-btn" data-value="${op.letra}"><span class="option-letter">${op.letra}</span><span class="option-content">${op.texto}</span></button>`).join('')}</div>
+                <div class="feedback-area">
+                    <button class="btn btn-secondary change-answer-btn ${isAnswered ? '' : 'hidden'}">Trocar</button>
+                    <button class="btn btn-primary confirm-answer-btn" ${isAnswered ? 'disabled' : ''}>${isAnswered ? 'Respondido' : 'Responder'}</button>
+                </div>`;
+            
+            if (isAnswered) { questionItem.querySelector(`.option-btn[data-value="${state.userAnswers[questionItem.id]}"]`).classList.add('selected-preview'); }
+            dom.questionsContainer.appendChild(questionItem);
         });
-
-        if (!isValid) return false;
-        if (allocatedQuestoes !== simuladoConfig.totalQuestoes) {
-            totalAllocatedText.textContent = `Erro: Soma (${allocatedQuestoes}) diferente do total (${simuladoConfig.totalQuestoes}).`;
-            totalAllocatedText.className = "helper-text error-text"; // Garante classe de erro
-            totalAllocatedText.style.display = "block";
-            showErrorPopup(`Soma das questões (${allocatedQuestoes}) diferente do total (${simuladoConfig.totalQuestoes}). Ajuste.`);
-            return false;
-        } else { totalAllocatedText.style.display = "none"; }
-
-        simuladoConfig.nivel = nivelQuestaoSelect.value;
-        console.log("Step 2 Validated:", simuladoConfig);
-        return true;
+        atualizarNavDisciplina();
+    }
+    
+    function atualizarNavDisciplina() {
+        dom.prevDisciplineBtn.disabled = state.currentDisciplinaIndex === 0;
+        dom.nextDisciplineBtn.disabled = state.currentDisciplinaIndex >= state.disciplinasDoSimulado.length - 1;
     }
 
-    // === Geração Dinâmica de Inputs (Etapa 2) ===
-    function generateDisciplinaDetailInputs() {
-        disciplinaDetailContainer.innerHTML = "";
-        const numDisciplinas = simuladoConfig.disciplinasSelecionadas.length;
-        distributeHelperText.textContent = `Total: ${simuladoConfig.totalQuestoes} questões para ${numDisciplinas} disciplina(s).`;
-        totalAllocatedText.style.display = "none";
-        distributeCheckbox.disabled = numDisciplinas <= 1;
-        distributeCheckbox.checked = false;
+    function handleQuestionClick(event) {
+        const target = event.target;
+        const questionItem = target.closest('.question-item');
+        if (!questionItem) return;
+        const questionId = questionItem.id.replace('q-', '');
 
-        simuladoConfig.disciplinasSelecionadas.forEach((disciplina, index) => {
-            const countInputId = `disciplina-count-${index}`;
-            const assuntosInputId = `disciplina-assuntos-${index}`;
-            const div = document.createElement("div"); div.className = "disciplina-detail-item";
-
-            const labelCount = document.createElement("label"); labelCount.htmlFor = countInputId;
-            labelCount.innerHTML = `Questões para <strong>${disciplina.nome}</strong>:`;
-            const inputCount = document.createElement("input"); inputCount.type = "number";
-            inputCount.id = countInputId; inputCount.min = "1"; inputCount.dataset.disciplinaNome = disciplina.nome;
-            inputCount.placeholder = "Qtd."; inputCount.addEventListener("input", updateTotalAllocatedFeedback);
-
-            const labelAssuntos = document.createElement("label"); labelAssuntos.htmlFor = assuntosInputId;
-            labelAssuntos.textContent = `Assuntos (opcional, separados por vírgula):`;
-            const inputAssuntos = document.createElement("input"); inputAssuntos.type = "text";
-            inputAssuntos.id = assuntosInputId; inputAssuntos.dataset.disciplinaNome = disciplina.nome;
-            inputAssuntos.placeholder = "Ex: Brasil Colônia, Regência";
-
-            div.appendChild(labelCount); div.appendChild(inputCount);
-            div.appendChild(labelAssuntos); div.appendChild(inputAssuntos);
-            disciplinaDetailContainer.appendChild(div);
-        });
-        setDefaultQuestionCounts();
-        updateTotalAllocatedFeedback();
-    }
-
-    function setDefaultQuestionCounts() {
-        let assigned = 0;
-        const inputs = disciplinaDetailContainer.querySelectorAll("input[type=\"number\"]");
-        const numDisc = simuladoConfig.disciplinasSelecionadas.length;
-        const totalQ = simuladoConfig.totalQuestoes;
-        inputs.forEach((input, index) => {
-            if (index < numDisc - 1) { input.value = 1; assigned += 1; }
-            else { input.value = Math.max(1, totalQ - assigned); } // Último recebe restante
-        });
-        if (distributeCheckbox.checked) distributeQuestionsEqually();
-    }
-
-    // === Lógica de Distribuição (Etapa 2) ===
-    function handleDistributeCheckboxChange() {
-        if (distributeCheckbox.checked) distributeQuestionsEqually();
-        updateTotalAllocatedFeedback();
-    }
-
-    function distributeQuestionsEqually() {
-        const totalQ = simuladoConfig.totalQuestoes;
-        const numDisc = simuladoConfig.disciplinasSelecionadas.length;
-        if (numDisc === 0) return;
-        const baseCount = Math.floor(totalQ / numDisc); let remainder = totalQ % numDisc;
-        const inputs = disciplinaDetailContainer.querySelectorAll("input[type=\"number\"]");
-        inputs.forEach((input, index) => {
-            let count = baseCount + (remainder > 0 ? 1 : 0); remainder--;
-            input.value = Math.max(1, count);
-        });
-        updateTotalAllocatedFeedback();
-    }
-
-    function updateTotalAllocatedFeedback() {
-        let currentTotal = 0; let allValid = true;
-        const inputs = disciplinaDetailContainer.querySelectorAll("input[type=\"number\"]");
-        inputs.forEach(input => {
-            const count = parseInt(input.value, 10);
-            if (!isNaN(count) && count >= 1) currentTotal += count;
-            else if (input.value !== "") allValid = false;
-        });
-
-        const targetTotal = simuladoConfig.totalQuestoes;
-        totalAllocatedText.classList.remove("success-text", "error-text");
-        if (!allValid) {
-            totalAllocatedText.textContent = `Atenção: Número inválido (≥ 1).`;
-            totalAllocatedText.className = "helper-text error-text";
-            totalAllocatedText.style.display = "block";
-        } else if (currentTotal !== targetTotal) {
-            totalAllocatedText.textContent = `Soma atual: ${currentTotal} / ${targetTotal}`;
-            totalAllocatedText.className = "helper-text error-text";
-            totalAllocatedText.style.display = "block";
-        } else {
-            totalAllocatedText.textContent = `Soma correta: ${currentTotal} / ${targetTotal}`;
-            totalAllocatedText.className = "helper-text success-text";
-            totalAllocatedText.style.display = "block";
-        }
-    }
-
-    // === Geração do Simulado (API Calls - Etapa 3) ===
-    async function generateSimulado() {
-        console.log("Starting simulation generation...");
-        generationStatus.innerHTML = ""; // Limpa logs anteriores
-        updateProgressBar(0); // Reseta barra
-        startMotivationalQuotes();
-        generatedQuestions = [];
-        questionsDataStore = {}; // Limpa dados anteriores
-        const promises = [];
-        let generatedCount = 0;
-        const totalDisciplinas = simuladoConfig.disciplinasSelecionadas.length;
-
-        addGenerationLog(`Elaborando ${simuladoConfig.totalQuestoes} questões...`);
-
-        simuladoConfig.disciplinasSelecionadas.forEach(disciplina => {
-            const nome = disciplina.nome;
-            const numQ = simuladoConfig.questoesPorDisciplina[nome];
-            const assuntos = simuladoConfig.assuntosPorDisciplina[nome] || [];
-            const nivel = simuladoConfig.nivel;
-            const edital = simuladoConfig.edital;
-
-            addGenerationLog(`Preparando questões de ${nome}...`);
-            console.log(`Generating ${numQ} questions for ${nome} (Subjects: ${assuntos.join(", ") || "Any"})`);
-
-            const promise = generateQuestionsForDisciplina(nome, numQ, nivel, edital, assuntos)
-                .then(result => {
-                    generatedCount++;
-                    updateProgressBar(Math.round((generatedCount / totalDisciplinas) * 100)); // CORRIGIDO: Atualiza barra aqui
-                    const questions = result.map(q => ({ ...q, disciplina: nome }));
-                    console.log(`Disciplina ${nome}: ${result.length} questões geradas.`);
-                    return questions;
-                })
-                .catch(error => {
-                    generatedCount++;
-                    updateProgressBar(Math.round((generatedCount / totalDisciplinas) * 100)); // CORRIGIDO: Atualiza barra mesmo em erro
-                    addGenerationLog(`Problema ao buscar questões de ${nome}.`, "error");
-                    console.error(`Falha ao gerar ${nome}:`, error);
-                    return []; // Retorna array vazio em caso de erro para não quebrar Promise.all
-                });
-            promises.push(promise);
-        });
-
-        const resultsArrays = await Promise.all(promises);
-        stopMotivationalQuotes();
-
-        resultsArrays.forEach(arr => generatedQuestions = generatedQuestions.concat(arr));
-
-        // Armazena dados completos para resolução posterior
-        generatedQuestions.forEach(q => { if(q.id) questionsDataStore[q.id] = q; });
-
-        addGenerationLog("Organizando o simulado...");
-        updateProgressBar(100); // Garante 100% no final
-        console.log(`Generation complete. Total questions: ${generatedQuestions.length}`);
-
-        if (generatedQuestions.length > 0) {
-            const msgType = generatedQuestions.length < simuladoConfig.totalQuestoes ? "warning" : "success";
-            const msgText = msgType === "warning" ? `Geradas ${generatedQuestions.length} de ${simuladoConfig.totalQuestoes} questões.` : `Simulado gerado com ${generatedQuestions.length} questões!`;
-            showStatusPopup(msgText, msgType);
-            setTimeout(() => { hidePopup(); startSimuladoView(); }, 1500);
-        } else {
-            showErrorPopup("Falha total: Nenhuma questão gerada. Verifique a Chave de API e tente novamente.");
-             setTimeout(() => { hidePopup(); showStep(2); }, 3000);
-        }
-    }
-
-    async function generateQuestionsForDisciplina(disciplinaNome, numQuestoes, nivel, edital, assuntos = []) {
-        // MELHORADO: Prompt para incluir resolução e imagem opcional
-        let prompt = `Gere ${numQuestoes} questão(ões) EXCLUSIVAMENTE sobre a Disciplina "${disciplinaNome}".\n`;
-        prompt += `Nível de dificuldade: ${nivel}.\n`;
-        if (edital) prompt += `Contexto do Edital/Concurso: "${edital}".\n`;
-        if (assuntos.length > 0) prompt += `Tópicos/Assuntos específicos: ${assuntos.join(", ")}.\n`;
-        prompt += `Tipo: Múltipla Escolha (A, B, C, D).\nFormato OBRIGATÓRIO:\n`;
-        prompt += `- Separe questões com "[SEP]".\n`;
-        prompt += `- Dentro de cada questão:\n`;
-        prompt += `  - Enunciado: "[Q] texto..."\n`;
-        prompt += `  - (Opcional) Imagem ESSENCIAL: "[IMG] URL_ou_descrição_detalhada" (Use raramente)\n`;
-        prompt += `  - Alternativas: "[A] texto...", "[B] texto...", etc.\n`;
-        prompt += `  - Resposta Correta: "[R] LETRA_CORRETA" (A, B, C ou D).\n`;
-        prompt += `  - Resolução DETALHADA: "[RES] Explicação completa..." (OBRIGATÓRIO)\n`; // Exige resolução
-        prompt += `Exemplo:
-[Q] Exemplo ${disciplinaNome}?
-[A] Op1
-[B] Op2
-[C] Op3
-[D] Op4
-[R] B
-[RES] A resposta é B porque...
-[SEP]
-`;
-        prompt += `IMPORTANTE: Siga ESTRITAMENTE o formato. Gere APENAS o texto das questões. TODAS as questões DEVEM ter [RES].`;
-
-        const requestBody = {
-             contents: [{ parts: [{ text: prompt }] }],
-             generationConfig: { "temperature": 0.7, "maxOutputTokens": 500 * numQuestoes + 500 }, // Aumentado para resolução
-             safetySettings: [
-                 {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-                 {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-                 {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"},
-                 {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_MEDIUM_AND_ABOVE"}
-             ]
-        };
-
-        try {
-             const response = await fetch(API_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(requestBody) });
-             if (!response.ok) {
-                 const errorBody = await response.json().catch(() => ({ error: { message: `Erro HTTP ${response.status}` } }));
-                 throw new Error(`API Error: ${errorBody?.error?.message || response.statusText}`);
-             }
-             const data = await response.json();
-             if (data.promptFeedback?.blockReason) throw new Error(`API blocked: ${data.promptFeedback.blockReason}`);
-             const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-             if (!text) throw new Error("API response format invalid or empty.");
-
-             const questionsArray = parseGeneratedText(text, "multipla_escolha"); // Usa o parser atualizado
-             const validQuestions = questionsArray.filter(q => q.type !== "error");
-
-             if (validQuestions.length !== numQuestoes) {
-                  console.warn(`Disciplina ${disciplinaNome}: Esperadas ${numQuestoes}, Parseadas ${validQuestions.length}.`);
-                  if (validQuestions.length === 0 && questionsArray.length > 0) throw new Error(`Erro no parsing das ${questionsArray.length} questões retornadas.`);
-                  if (validQuestions.length === 0 && questionsArray.length === 0) throw new Error("Nenhuma questão válida retornada ou parseada.");
-             }
-            return validQuestions;
-        } catch (error) {
-             console.error(`Falha em generateQuestionsForDisciplina (${disciplinaNome}):`, error);
-             throw error; // Re-throw para Promise.all
-        }
-    }
-
-    // Log Simplificado
-    function addGenerationLog(message, type = "info") {
-        if(!generationStatus) return;
-        const p = document.createElement("p");
-        let icon = "";
-        if (type === "error") icon = "<i class=\"fas fa-exclamation-circle\" style=\"color: #dc3545; margin-right: 8px;\"></i>";
-        else icon = "<i class=\"fas fa-check-circle\" style=\"color: #28a745; margin-right: 8px;\"></i>"; // Default to success/info icon
-        p.innerHTML = `${icon} ${message}`;
-        generationStatus.appendChild(p);
-        generationStatus.scrollTop = generationStatus.scrollHeight;
-    }
-
-    // CORRIGIDO: Função para atualizar a barra de progresso
-    function updateProgressBar(percentage) {
-        const clampedPercentage = Math.max(0, Math.min(100, percentage)); // Garante 0-100
-        if (progressBar) {
-            progressBar.style.width = `${clampedPercentage}%`;
-        }
-        if (progressText) {
-            progressText.textContent = `${Math.round(clampedPercentage)}%`;
-        }
-    }
-
-    function startMotivationalQuotes() {
-        stopMotivationalQuotes(); // Garante que não haja múltiplos intervalos
-        function showRandomQuote() {
-            if (motivationalQuote) {
-                const randomIndex = Math.floor(Math.random() * MOTIVATIONAL_QUOTES.length);
-                motivationalQuote.textContent = MOTIVATIONAL_QUOTES[randomIndex];
-            }
-        }
-        showRandomQuote(); // Mostra uma imediatamente
-        quoteIntervalId = setInterval(showRandomQuote, QUOTE_INTERVAL);
-    }
-
-    function stopMotivationalQuotes() {
-        if (quoteIntervalId) {
-            clearInterval(quoteIntervalId);
-            quoteIntervalId = null;
-        }
-    }
-
-    // === Lógica da Visualização do Simulado ===
-    function startSimuladoView() {
-        steps.forEach(step => step.style.display = "none");
-        simuladoView.style.display = "block";
-        if(simuladoFixedFooter) simuladoFixedFooter.style.display = "flex";
-        window.scrollTo({ top: 0, behavior: "smooth" });
-
-        currentSessionStats = { // Reset stats
-            id: `sim-${Date.now()}`,
-            totalQuestions: generatedQuestions.length,
-            answeredCount: 0,
-            correctCount: 0,
-            startTime: Date.now(),
-            endTime: null,
-            durationMs: 0,
-            timedOut: false,
-            config: { ...simuladoConfig }
-        };
-        finalizeButton.disabled = false;
-        finalizeButton.innerHTML = 
-        '<i class="fas fa-check-circle"></i> Finalizar Simulado'; // Reset texto/ícone
-
-        displaySimuladoQuestions(generatedQuestions);
-        updateProgressIndicator();
-        startTimer(simuladoConfig.tempoTotalSegundos);
-    }
-
-    // ATUALIZADO: Exibe questões com imagem e área/botão de resolução
-    function displaySimuladoQuestions(questionsArray) {
-        questoesOutput.innerHTML = "";
-        if (!questionsArray || questionsArray.length === 0) {
-            questoesOutput.innerHTML = "<p class=\"empty-state\">Nenhuma questão encontrada.</p>";
+        if (target.closest('.mark-btn')) {
+            const markBtn = target.closest('.mark-btn');
+            markBtn.classList.toggle('marked');
+            if (state.markedQuestions.has(questionId)) { state.markedQuestions.delete(questionId); } else { state.markedQuestions.add(questionId); }
             return;
         }
-        let currentDisciplina = null;
-        let questionNumber = 0;
-        questionsArray.forEach(qData => {
-            if (!qData || qData.type === "error") {
-                console.warn("Pulando questão com erro:", qData);
-                return;
-            }
-            questionNumber++;
 
-            if (qData.disciplina !== currentDisciplina) {
-                currentDisciplina = qData.disciplina;
-                const h3 = document.createElement("h3");
-                h3.className = "disciplina-heading";
-                h3.textContent = currentDisciplina;
-                questoesOutput.appendChild(h3);
-            }
-
-            const qDiv = document.createElement("div");
-            qDiv.className = "question-item";
-            qDiv.id = qData.id || `q-${questionNumber}`;
-            qDiv.dataset.questionType = qData.type;
-            qDiv.dataset.answered = "false";
-            qDiv.dataset.correctAnswer = qData.correctAnswer || "";
-            qDiv.dataset.selectedOption = "";
-
-            const qText = document.createElement("p");
-            qText.className = "question-text";
-            const cleanText = qData.text.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-            qText.innerHTML = `<strong>${questionNumber}.</strong> ${cleanText.replace(/\n/g, "<br>")}`;
-            qDiv.appendChild(qText);
-
-            // Adiciona imagem se existir
-            if (qData.image) {
-                const imgElement = document.createElement("img");
-                imgElement.src = qData.image; // Assume URL válida
-                imgElement.alt = `Imagem para a questão ${questionNumber}`;
-                imgElement.className = "question-image";
-                imgElement.onerror = () => {
-                    console.warn(`Erro ao carregar imagem: ${qData.image} para questão ${qData.id}`);
-                    imgElement.alt = `Erro ao carregar imagem para a questão ${questionNumber}`;
-                };
-                qDiv.appendChild(imgElement);
-            }
-
-            const optsCont = document.createElement("div");
-            optsCont.className = "options-container";
-            const optsKeys = Object.keys(qData.options || {}).filter(k => ["A", "B", "C", "D"].includes(k)).sort();
-            optsKeys.forEach(key => {
-                const optBtn = document.createElement("button");
-                optBtn.className = "option-btn";
-                optBtn.dataset.value = key;
-                const cleanOpt = (qData.options[key] || "").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                optBtn.textContent = `${key}) ${cleanOpt}`;
-                optsCont.appendChild(optBtn);
-            });
-            qDiv.appendChild(optsCont);
-
-            // Área de Feedback (agora inclui botão de resolução)
-            const feedbackArea = document.createElement("div");
-            feedbackArea.className = "feedback-area";
-
-            // Botão Ver Resolução (adicionado aqui, mas escondido inicialmente)
-            if (qData.resolution) {
-                const resolutionButton = document.createElement("button");
-                resolutionButton.className = "view-resolution-btn";
-                resolutionButton.innerHTML = 
-                '<i class="fas fa-eye"></i> Ver Resolução';
-                resolutionButton.dataset.questionId = qData.id;
-                resolutionButton.style.display = "none"; // Começa escondido
-                feedbackArea.appendChild(resolutionButton);
-            }
-            qDiv.appendChild(feedbackArea);
-
-            // Área para exibir a resolução (escondida)
-            if (qData.resolution) {
-                const resolutionDiv = document.createElement("div");
-                resolutionDiv.className = "resolution-area";
-                resolutionDiv.style.display = "none";
-                qDiv.appendChild(resolutionDiv);
-            }
-
-            questoesOutput.appendChild(qDiv);
-        });
-    }
-
-    function updateProgressIndicator() {
-        if(progressIndicatorFixed) progressIndicatorFixed.textContent = `${currentSessionStats.answeredCount} / ${currentSessionStats.totalQuestions}`;
-    }
-
-    function startTimer(totalSeconds) {
-        stopTimer();
-        let remainingSeconds = totalSeconds;
-        function updateDisplay() {
-            const mins = Math.floor(remainingSeconds / 60);
-            const secs = remainingSeconds % 60;
-            if(timeRemainingFixed) timeRemainingFixed.textContent = `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+        if (target.classList.contains('change-answer-btn')) {
+            questionItem.querySelector('.options-container').classList.remove('answered');
+            questionItem.querySelector('.confirm-answer-btn').disabled = false;
+            target.classList.add('hidden');
+            return;
         }
-        updateDisplay();
-        timerIntervalId = setInterval(() => {
-            remainingSeconds--;
-            updateDisplay();
-            if (remainingSeconds < 0) {
-                stopTimer();
-                finalizeSimulado(true); // Finaliza por tempo esgotado
-            }
+        
+        if (questionItem.querySelector('.options-container.answered')) return;
+
+        if (target.closest('.option-btn')) {
+            const selectedBtn = target.closest('.option-btn');
+            questionItem.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected-preview'));
+            selectedBtn.classList.add('selected-preview');
+            questionItem.dataset.selectedValue = selectedBtn.dataset.value;
+        }
+
+        if (target.classList.contains('confirm-answer-btn')) {
+            const answer = questionItem.dataset.selectedValue;
+            if (!answer) { showConfirmationModal("Por favor, selecione uma alternativa."); return; }
+            state.userAnswers[questionItem.id] = answer;
+            questionItem.querySelector('.options-container').classList.add('answered');
+            target.textContent = 'Respondido';
+            target.disabled = true;
+            questionItem.querySelector('.change-answer-btn').classList.remove('hidden');
+            questionItem.classList.add('answered-flash');
+            setTimeout(() => questionItem.classList.remove('answered-flash'), 700);
+        }
+    }
+
+    // --- CONTROLE DE TEMPO E PAUSA ---
+    function iniciarTimer(duration) {
+        state.remainingTime = duration; state.isPaused = false; clearInterval(state.timerInterval);
+        const startTime = Date.now();
+        state.timerInterval = setInterval(() => {
+            if (state.isPaused) return;
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const currentRemaining = duration - elapsed;
+            state.remainingTime = currentRemaining;
+            const minutes = Math.floor(currentRemaining / 60), seconds = currentRemaining % 60;
+            dom.timeDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            if (currentRemaining <= 0) { clearInterval(state.timerInterval); finalizarSimulado(); }
         }, 1000);
     }
 
-    function stopTimer() {
-        if (timerIntervalId) {
-            clearInterval(timerIntervalId);
-            timerIntervalId = null;
+    function pausarSimulado() { state.isPaused = true; clearInterval(state.timerInterval); dom.pauseOverlay.classList.remove('hidden'); }
+    function retomarSimulado() { state.isPaused = false; dom.pauseOverlay.classList.add('hidden'); iniciarTimer(state.remainingTime); }
+
+    // --- FINALIZAÇÃO, RESULTADOS, HISTÓRICO E REVISÃO ---
+    function finalizarSimulado() {
+        clearInterval(state.timerInterval);
+        const timeTaken = Math.round((Date.now() - state.simuladoStartTime) / 1000);
+        let correct = 0, incorrect = 0, unanswered = 0;
+        state.simuladoQuestoes.forEach(q => {
+            const userAnswer = state.userAnswers[`q-${q.id}`];
+            if (!userAnswer) unanswered++;
+            else if (userAnswer === q.resposta_correta) correct++;
+            else incorrect++;
+        });
+        const total = state.simuladoQuestoes.length;
+        const percentage = total > 0 ? ((correct / total) * 100).toFixed(1) : 0;
+        
+        salvarSessaoQuestoes();
+        salvarHistoricoSimulado({ correct, incorrect, unanswered, total, percentage, timeTaken });
+
+        dom.correctCountEl.textContent = correct; dom.incorrectCountEl.textContent = incorrect;
+        dom.unansweredCountEl.textContent = unanswered; dom.percentageEl.textContent = `${percentage}%`;
+        dom.simuladoScreen.classList.add('hidden');
+        dom.resultsScreen.classList.remove('hidden');
+        exibirGraficoResultados(correct, incorrect, unanswered);
+        exibirDesempenhoDisciplina();
+    }
+
+    function salvarSessaoQuestoes() {
+        let resolvidas = getFromStorage(STORAGE_KEY_RESOLVIDAS);
+        const resolvidasMap = new Map(resolvidas.map(r => [r.id, r]));
+        state.simuladoQuestoes.forEach(questao => {
+            const userAnswer = state.userAnswers[`q-${questao.id}`];
+            if (userAnswer) { resolvidasMap.set(questao.id, { id: questao.id, correta: userAnswer === questao.resposta_correta }); }
+        });
+        saveToStorage(STORAGE_KEY_RESOLVIDAS, Array.from(resolvidasMap.values()));
+    }
+
+    function salvarHistoricoSimulado(summary) {
+        let historico = getFromStorage(STORAGE_KEY_HISTORICO);
+        historico.unshift({ id: `sim-${Date.now()}`, date: new Date().toISOString(), ...summary });
+        saveToStorage(STORAGE_KEY_HISTORICO, historico);
+    }
+
+    function exibirHistorico() {
+        dom.setupScreen.classList.add('hidden');
+        dom.historyScreen.classList.remove('hidden');
+        const historico = getFromStorage(STORAGE_KEY_HISTORICO);
+        dom.historyList.innerHTML = historico.length === 0 ? '<p>Nenhum simulado foi concluído ainda.</p>' : '';
+        historico.forEach(item => {
+            const date = new Date(item.date);
+            const formattedDate = `${date.toLocaleDateString('pt-BR')} às ${date.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'})}`;
+            const minutes = Math.floor(item.timeTaken / 60), seconds = item.timeTaken % 60;
+            const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            const itemEl = document.createElement('div');
+            itemEl.className = 'history-item';
+            itemEl.innerHTML = `<div class="history-item-date">${formattedDate}</div><div class="history-item-stats"><div class="history-stat"><span class="label">Acertos</span><span class="value correct">${item.correct}</span></div><div class="history-stat"><span class="label">Erros</span><span class="value incorrect">${item.incorrect}</span></div><div class="history-stat"><span class="label">Questões</span><span class="value">${item.totalQuestions}</span></div><div class="history-stat"><span class="label">Tempo</span><span class="value">${formattedTime}</span></div><div class="history-stat"><span class="label">%</span><span class="value correct">${item.percentage}%</span></div></div>`;
+            dom.historyList.appendChild(itemEl);
+        });
+    }
+
+    function exibirDesempenhoDisciplina() {
+        dom.disciplinePerformanceList.innerHTML = '';
+        const performance = {};
+        state.simuladoQuestoes.forEach(q => {
+            const disc = q.disciplina;
+            if (!performance[disc]) performance[disc] = { correct: 0, total: 0 };
+            performance[disc].total++;
+            if (state.userAnswers[`q-${q.id}`] === q.resposta_correta) { performance[disc].correct++; }
+        });
+        for (const disc in performance) {
+            const item = performance[disc];
+            const perc = item.total > 0 ? ((item.correct / item.total) * 100).toFixed(0) : 0;
+            const itemEl = document.createElement('div');
+            itemEl.className = 'discipline-perf-item';
+            itemEl.innerHTML = `<span class="name">${disc}</span> <span class="stats">${item.correct}/${item.total} (${perc}%)</span>`;
+            dom.disciplinePerformanceList.appendChild(itemEl);
         }
     }
 
-    // === Interação com Questões ===
-    function handleSimuladoOptionClick(clickedButton) {
-        const questionDiv = clickedButton.closest(".question-item");
-        if (!questionDiv || clickedButton.disabled) return; // Ignora se desabilitado (pós-finalizar)
-
-        const allOptionButtons = questionDiv.querySelectorAll(".option-btn");
-        const selectedValue = clickedButton.dataset.value;
-
-        allOptionButtons.forEach(btn => btn.classList.remove("selected"));
-        clickedButton.classList.add("selected");
-        questionDiv.dataset.selectedOption = selectedValue;
-
-        markQuestionAsAnswered(questionDiv);
+    function exibirGraficoResultados(correct, incorrect, unanswered) {
+        if (state.resultsChart) state.resultsChart.destroy();
+        state.resultsChart = new Chart(dom.resultsChartEl, { type: 'doughnut', data: { labels: ['Acertos', 'Erros', 'Em Branco'], datasets: [{ data: [correct, incorrect, unanswered], backgroundColor: ['rgba(40, 167, 69, 0.8)', 'rgba(220, 53, 69, 0.8)', 'rgba(108, 117, 125, 0.8)'], borderColor: ['#28a745', '#dc3545', '#6c757d'], borderWidth: 1 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top' } } } });
     }
 
-    function markQuestionAsAnswered(questionDiv) {
-        if (questionDiv.dataset.answered === "false") {
-            questionDiv.dataset.answered = "true";
-            questionDiv.classList.add("answered-pending-review");
-            currentSessionStats.answeredCount++;
-            updateProgressIndicator();
-            if (currentSessionStats.answeredCount === currentSessionStats.totalQuestions) {
-                 showStatusPopup("Todas as questões respondidas! Finalize quando quiser.", "info");
-            }
+    function toggleRevisao() {
+        const isHidden = dom.reviewContainer.classList.toggle('hidden');
+        if (!isHidden) {
+            exibirRevisao('all');
+            dom.reviewContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-        // Não calcula acerto aqui
     }
 
-    // === Finalização do Simulado ===
-    function finalizeSimulado(timedOut = false) {
-        console.log("Executando finalizeSimulado...", { timedOut });
-        stopTimer();
-        currentSessionStats.endTime = Date.now();
-        currentSessionStats.durationMs = currentSessionStats.endTime - (currentSessionStats.startTime || currentSessionStats.endTime);
-        currentSessionStats.timedOut = timedOut;
-
-        let finalCorrect = 0;
-        let finalAnswered = 0;
-        const allQuestionItems = questoesOutput.querySelectorAll(".question-item");
-
-        allQuestionItems.forEach(qDiv => {
-            const isAnswered = qDiv.dataset.answered === "true";
-            const userAnswer = qDiv.dataset.selectedOption;
-            const correctAnswer = qDiv.dataset.correctAnswer;
-            const resolutionButton = qDiv.querySelector(".view-resolution-btn"); // Pega botão de resolução
-
-            qDiv.classList.remove("answered-pending-review");
-            qDiv.querySelectorAll(".option-btn").forEach(btn => btn.disabled = true); // Desabilita opções
-
-            if (isAnswered && userAnswer) {
-                finalAnswered++;
-                if (userAnswer === correctAnswer) {
-                    finalCorrect++;
-                    qDiv.classList.add("correct");
-                } else {
-                    qDiv.classList.add("incorrect");
-                }
-                // Marca a selecionada (já está com .selected)
-                // Destaca a correta
-                const correctBtn = qDiv.querySelector(`.option-btn[data-value="${correctAnswer}"]`);
-                if (correctBtn) correctBtn.classList.add("correct-answer-highlight");
-
-            } else { // Não respondida
-                qDiv.classList.add("incorrect"); // Conta como errada
-                 // Apenas destaca a correta
-                 const correctBtn = qDiv.querySelector(`.option-btn[data-value="${correctAnswer}"]`);
-                 if (correctBtn) correctBtn.classList.add("correct-answer-highlight");
-            }
-
-            // Mostra o botão "Ver Resolução" após finalizar
-            if (resolutionButton) {
-                resolutionButton.style.display = "inline-flex";
+    function exibirRevisao(filter) {
+        dom.reviewFilterOptions.querySelectorAll('.review-filter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
+        dom.reviewQuestionsArea.innerHTML = '';
+        let filteredQuestions = state.simuladoQuestoes.filter(q => {
+            const userAnswer = state.userAnswers[`q-${q.id}`];
+            switch (filter) {
+                case 'incorrect': return userAnswer && userAnswer !== q.resposta_correta;
+                case 'unanswered': return !userAnswer;
+                case 'marked': return state.markedQuestions.has(String(q.id));
+                default: return true;
             }
         });
 
-        currentSessionStats.answeredCount = finalAnswered;
-        currentSessionStats.correctCount = finalCorrect;
-        console.log("Stats finais:", currentSessionStats);
+        if (filteredQuestions.length === 0) { dom.reviewQuestionsArea.innerHTML = `<p class="empty-state" style="text-align: center; padding: 20px;">Nenhuma questão para exibir neste filtro.</p>`; return; }
 
-        finalizeButton.disabled = true;
-        finalizeButton.innerHTML = 
-        '<i class="fas fa-check"></i> Simulado Finalizado';
-        if(simuladoFixedFooter) simuladoFixedFooter.style.display = "none";
-
-        console.log("Chamando showResultsScreen()...");
-        try {
-            showResultsScreen(); // CORRIGIDO: Chama a função para mostrar o MODAL
-        } catch (error) {
-            console.error("Erro ao chamar showResultsScreen:", error);
-            alert("Erro ao exibir resultados. Verifique o console.");
-        }
+        filteredQuestions.forEach((questao, index) => {
+            const userAnswer = state.userAnswers[`q-${questao.id}`];
+            const reviewItem = document.createElement('div');
+            reviewItem.className = 'review-question';
+            let optionsHtml = questao.opcoes.map(op => {
+                let optionClass = '';
+                if (op.letra === questao.resposta_correta) optionClass = 'correct-answer';
+                if (op.letra === userAnswer) optionClass += ' selected';
+                if (op.letra === userAnswer && userAnswer !== questao.resposta_correta) optionClass += ' wrong-answer';
+                return `<div class="option-btn ${optionClass}"><span class="option-letter">${op.letra}</span><span class="option-content">${op.texto}</span></div>`;
+            }).join('');
+            reviewItem.innerHTML = `<p><strong>${index + 1}. ${questao.enunciado}</strong></p><div class="options-container">${optionsHtml}</div><div class="feedback-area">${questao.resolucao ? `<button class="btn btn-secondary view-resolution-btn">Ver Resolução</button>` : ''}</div>${questao.resolucao ? `<div class="resolution-area hidden">${questao.resolucao}</div>` : ''}`;
+            dom.reviewQuestionsArea.appendChild(reviewItem);
+        });
     }
 
-    // === Tela de Resultados (Modal) ===
-    // CORRIGIDO: Garante que o popup seja exibido
-    function showResultsScreen() {
-        console.log("Dentro de showResultsScreen...");
-        if (!popupOverlay || !resultsContainer || !resultsMessage || !resultsStats || !resultsButtons || !popupTextMessage) {
-            console.error("Elementos do popup de resultados não encontrados!");
-            return;
-        }
+    // --- MODAL DE CONFIRMAÇÃO ---
+    function showConfirmationModal(text, onConfirm) {
+        const modalTitle = dom.confirmModal.querySelector('#confirm-modal-title');
+        const modalText = dom.confirmModal.querySelector('#confirm-modal-text');
+        const confirmBtn = dom.confirmModal.querySelector('#confirm-modal-confirm-btn');
+        const cancelBtn = dom.confirmModal.querySelector('#confirm-modal-cancel-btn');
 
-        const total = currentSessionStats.totalQuestions;
-        const correct = currentSessionStats.correctCount;
-        const answered = currentSessionStats.answeredCount;
-        const timeUsed = formatDuration(currentSessionStats.durationMs);
-        const percentage = total > 0 ? Math.round((correct / total) * 100) : 0;
+        modalText.textContent = text;
+        state.confirmCallback = onConfirm;
 
-        let msgText = "", msgClass = "warning";
-        if (percentage >= 70) { msgText = `Parabéns! 🎉 Acertos: ${percentage}%.`; msgClass = "success"; }
-        else if (percentage >= 50) { msgText = `Bom trabalho! Acertos: ${percentage}%. Continue estudando!`; msgClass = "info"; }
-        else { msgText = `Não desanime! Acertos: ${percentage}%. Use como motivação!`; msgClass = "warning"; }
-        if (currentSessionStats.timedOut) msgText += "\n(Tempo Esgotado)";
-
-        resultsMessage.textContent = msgText;
-        resultsMessage.className = `results-message ${msgClass}`;
-        resultsStats.innerHTML = `<p><strong>Total:</strong> <span>${total}</span></p> <p><strong>Respondidas:</strong> <span>${answered}</span></p> <p><strong>Acertos:</strong> <span>${correct} (<span id="statPercentage">${percentage}</span>%)</span></p> <p><strong>Tempo:</strong> <span>${timeUsed}</span></p>`;
-
-        popupTextMessage.style.display = "none"; // Esconde texto genérico
-        resultsContainer.style.display = "block"; // Mostra container de resultados
-        popupMessageBox.classList.add("results-popup"); // Adiciona classe específica se necessário
-        if(popupCloseButton) popupCloseButton.style.display = "none"; // Esconde X padrão no popup de resultado
-        resultsSaveButton.disabled = false; // Habilita botão salvar
-        resultsSaveButton.innerHTML = 
-        '<i class="fas fa-save"></i> Salvar Resumo'; // Reseta texto/ícone
-
-        console.log("Exibindo overlay do resultado...");
-        popupOverlay.classList.add("visible"); // CORRIGIDO: Torna o overlay visível
-        console.log("showResultsScreen concluída.");
-    }
-
-    function handleSaveResults() {
-        saveSimuladoSummary();
-        resultsSaveButton.disabled = true;
-        resultsSaveButton.innerHTML = 
-        '<i class="fas fa-check"></i> Salvo!';
-    }
-
-    function handleCloseResults() {
-        hidePopup();
-    }
-
-    function saveSimuladoSummary() {
-         if (!currentSessionStats.id) return;
-         console.log("Salvando resumo:", currentSessionStats.id);
-         const summary = {
-             id: currentSessionStats.id,
-             timestamp: new Date().toISOString(),
-             disciplina: currentSessionStats.config.disciplinasSelecionadas.map(d=>d.nome).join(", ") || "Simulado",
-             totalQuestions: currentSessionStats.totalQuestions,
-             answeredCount: currentSessionStats.answeredCount,
-             correctCount: currentSessionStats.correctCount,
-             durationMs: currentSessionStats.durationMs,
-             timedOut: currentSessionStats.timedOut,
-             config: currentSessionStats.config // Salva a configuração usada
-         };
-         try {
-             const summaries = JSON.parse(localStorage.getItem(RESULTS_STORAGE_KEY) || "[]");
-             if (!Array.isArray(summaries)) throw new Error("LocalStorage inválido");
-             summaries.push(summary);
-             localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(summaries));
-             console.log(`Resumo ${summary.id} salvo.`);
-         } catch (error) {
-             console.error("Erro ao salvar resumo:", error);
-             showErrorPopup("Erro ao salvar o resumo.");
-             resultsSaveButton.disabled = false; // Permite tentar salvar novamente
-             resultsSaveButton.innerHTML = 
-             '<i class="fas fa-save"></i> Salvar Resumo';
-         }
-     }
-
-    // === Funções Auxiliares (Popup, Parse, Format) ===
-    function showPopup(message, type = "info", autoCloseDelay = null) {
-        if (!popupOverlay || !popupMessageBox || !popupContent || !popupTextMessage || !resultsContainer) {
-             console.error("Elementos do Popup não encontrados."); alert(message); return; }
-        if (popupTimeoutId) { clearTimeout(popupTimeoutId); popupTimeoutId = null; }
-
-        resultsContainer.style.display = "none"; // Garante que resultados estejam escondidos
-        popupTextMessage.style.display = "block"; // Mostra texto genérico
-        popupTextMessage.textContent = message;
-        popupMessageBox.className = `popup-message-box ${type}`; // Define tipo/cor
-        popupMessageBox.classList.remove("results-popup"); // Remove classe de resultado se houver
-        if(popupCloseButton) popupCloseButton.style.display = "block"; // Mostra X padrão
-        popupOverlay.classList.add("visible");
-
-        if (autoCloseDelay && typeof autoCloseDelay === "number" && autoCloseDelay > 0) {
-            popupTimeoutId = setTimeout(hidePopup, autoCloseDelay);
-        }
-    }
-
-    function hidePopup() {
-        if (popupTimeoutId) { clearTimeout(popupTimeoutId); popupTimeoutId = null; }
-        if (popupOverlay) popupOverlay.classList.remove("visible");
-        // Reseta estado do popup para próximo uso
-        if (popupMessageBox) popupMessageBox.className = "popup-message-box";
-        if (resultsContainer) resultsContainer.style.display = "none";
-        if (popupTextMessage) popupTextMessage.style.display = "block";
-        if (popupCloseButton) popupCloseButton.style.display = "block";
-    }
-    function showErrorPopup(message) { showPopup(message, "error"); }
-    function showStatusPopup(message, type = "info") { showPopup(message, type, 3000); } // Fecha após 3s
-
-    // ATUALIZADO: Parser para incluir [RES] e [IMG]
-    function parseGeneratedText(text, expectedType) {
-         const questions = [];
-         const startIndex = Math.min( text.indexOf("[Q]") !== -1 ? text.indexOf("[Q]") : Infinity, text.indexOf("[SEP]") !== -1 ? text.indexOf("[SEP]") : Infinity );
-         const relevantText = startIndex !== Infinity ? text.substring(startIndex) : text;
-         const questionBlocks = relevantText.trim().split(/\s*\[SEP\]\s*/i).filter(block => block.trim() && block.toUpperCase().startsWith("[Q]"));
-
-         if (questionBlocks.length === 0 && relevantText.trim()) {
-              if (relevantText.trim().toUpperCase().startsWith("[Q]")) { questionBlocks.push(relevantText.trim()); }
-              else { console.error("Texto da API não reconhecido:", relevantText); return [{ id: `q-error-parse-global`, text: `Erro: Formato da API irreconhecível.`, type: "error", resolution: null, image: null }]; }
-         }
-
-         questionBlocks.forEach((block, index) => {
-             try {
-                 const qId = `q-${Date.now()}-${index}`;
-                 const qData = { id: qId, text: "", options: {}, correctAnswer: null, type: expectedType, disciplina: "", resolution: null, image: null }; // Adiciona resolution e image
-
-                 // Extrai [Q], [IMG], [RES] e o resto
-                 const qMatch = block.match(/\[Q\]([\s\S]*?)(?:\n\s*\[IMG\]|\n\s*\[A\]|\n\s*\[RES\]|$)/i);
-                 if (qMatch?.[1]) qData.text = qMatch[1].trim();
-                 else { throw new Error("[Q] não encontrado ou formato inválido."); }
-
-                 const imgMatch = block.match(/\n\s*\[IMG\]\s*(.*)/i);
-                 if (imgMatch?.[1]) qData.image = imgMatch[1].trim();
-
-                 const resMatch = block.match(/\n\s*\[RES\]([\s\S]*?)(?:\n\s*\[SEP\]|$)/i);
-                 if (resMatch?.[1]) qData.resolution = resMatch[1].trim();
-                 else { throw new Error("[RES] não encontrado."); } // Exige resolução
-
-                 let foundR = false;
-                 block.trim().split("\n").forEach(line => {
-                     line = line.trim();
-                     if (/^\[A\]/i.test(line)) qData.options["A"] = line.substring(3).trim();
-                     else if (/^\[B\]/i.test(line)) qData.options["B"] = line.substring(3).trim();
-                     else if (/^\[C\]/i.test(line)) qData.options["C"] = line.substring(3).trim();
-                     else if (/^\[D\]/i.test(line)) qData.options["D"] = line.substring(3).trim();
-                     else if (/^\[R\]/i.test(line)) { qData.correctAnswer = line.substring(3).trim().toUpperCase(); foundR = true; }
-                 });
-
-                 if (!foundR || !qData.correctAnswer) throw new Error(`[R] não encontrado ou vazio.`);
-                 if (Object.keys(qData.options).length < 2) throw new Error(`Menos de 2 opções encontradas.`);
-                 if (!["A", "B", "C", "D"].includes(qData.correctAnswer)) throw new Error(`Resposta [R] "${qData.correctAnswer}" inválida.`);
-                 if (!qData.options[qData.correctAnswer]) throw new Error(`Resposta [R] "${qData.correctAnswer}" não corresponde a uma opção.`);
-
-                 questions.push(qData);
-             } catch (error) {
-                 console.error(`Erro ao processar bloco ${index + 1}:`, error, "\nBloco:\n", block);
-                 questions.push({ id: `q-error-${Date.now()}-${index}`, text: `Erro ao carregar questão (${error.message}).`, type: "error", resolution: null, image: null });
-             }
-         });
-         return questions;
-     }
-
-    // NOVO: Função para lidar com clique em "Ver Resolução"
-    function handleViewResolution(resolutionButton) {
-        const questionId = resolutionButton.dataset.questionId;
-        const questionDiv = document.getElementById(questionId);
-        const resolutionArea = questionDiv ? questionDiv.querySelector(".resolution-area") : null;
-        const questionData = questionsDataStore[questionId];
-
-        if (!questionDiv || !resolutionArea || !questionData || !questionData.resolution) {
-            console.error(`Erro ao tentar mostrar resolução para questão ${questionId}. Elementos ou dados não encontrados.`);
-            showStatusPopup("Erro ao carregar a resolução.", "error");
-            return;
-        }
-
-        // Preenche e mostra a área de resolução
-        const sanitizedResolution = questionData.resolution.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-        resolutionArea.innerHTML = `<strong>Resolução:</strong><br>${sanitizedResolution.replace(/\n/g, "<br>")}`;
-        resolutionArea.style.display = "block";
-
-        // Opcional: Desabilitar ou mudar texto do botão após clique
-        resolutionButton.disabled = true;
-        resolutionButton.innerHTML = 
-        '<i class="fas fa-check"></i> Resolução Exibida';
-
-        console.log(`Resolução exibida para ${questionId}`);
-    }
-
-    function formatDuration(ms) {
-        if (ms < 0) ms = 0;
-        const totalSeconds = Math.floor(ms / 1000);
-        const hours = Math.floor(totalSeconds / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-        if (hours > 0) {
-            return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+        if (!onConfirm) {
+            modalTitle.textContent = "Aviso";
+            confirmBtn.classList.add('hidden');
+            cancelBtn.textContent = "Fechar";
         } else {
-            return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+            modalTitle.textContent = "Confirmar Ação";
+            confirmBtn.classList.remove('hidden');
+            cancelBtn.textContent = "Cancelar";
         }
+        
+        dom.confirmModal.classList.remove('hidden');
     }
 
-    // === Setup dos Event Listeners Globais ===
-    function setupEventListeners() {
-        goToStep1Button?.addEventListener("click", handleGoToStep1);
-        goToStep2Button?.addEventListener("click", handleGoToStep2);
-        startGenerationButton?.addEventListener("click", handleStartGeneration);
-        distributeCheckbox?.addEventListener("change", handleDistributeCheckboxChange);
-        questoesOutput?.addEventListener("click", (event) => {
-            if (event.target.matches(".option-btn")) handleSimuladoOptionClick(event.target);
-            if (event.target.matches(".view-resolution-btn")) handleViewResolution(event.target); // NOVO: Listener para resolução
+    function hideConfirmModal() {
+        dom.confirmModal.classList.add('hidden');
+        state.confirmCallback = null;
+    }
+    
+    // --- VINCULAÇÃO DE EVENTOS ---
+    function vincularEventos() {
+        dom.startSimuladoBtn.addEventListener('click', iniciarSimulado);
+        dom.historyBtn.addEventListener('click', exibirHistorico);
+        dom.backToSetupBtn.addEventListener('click', () => { dom.historyScreen.classList.add('hidden'); dom.setupScreen.classList.remove('hidden'); });
+        dom.pauseBtn.addEventListener('click', pausarSimulado);
+        dom.resumeBtn.addEventListener('click', retomarSimulado);
+        dom.questionsContainer.addEventListener('click', handleQuestionClick);
+        dom.reviewBtn.addEventListener('click', toggleRevisao);
+        dom.reviewFilterMainBtn.addEventListener('click', () => dom.reviewFilterOptions.classList.toggle('hidden'));
+        dom.reviewFilterOptions.addEventListener('click', (e) => { if (e.target.matches('.review-filter-btn')) { exibirRevisao(e.target.dataset.filter); dom.reviewFilterOptions.classList.add('hidden'); } });
+        dom.reviewQuestionsArea.addEventListener('click', (e) => { if (e.target.matches('.view-resolution-btn')) { const resArea = e.target.closest('.review-question').querySelector('.resolution-area'); resArea.classList.toggle('hidden'); e.target.textContent = resArea.classList.contains('hidden') ? 'Ver Resolução' : 'Ocultar Resolução'; } });
+        dom.prevDisciplineBtn.addEventListener('click', () => { if (state.currentDisciplinaIndex > 0) { state.currentDisciplinaIndex--; exibirDisciplinaAtual(); } });
+        dom.nextDisciplineBtn.addEventListener('click', () => { if (state.currentDisciplinaIndex < state.disciplinasDoSimulado.length - 1) { state.currentDisciplinaIndex++; exibirDisciplinaAtual(); } });
+        dom.finishBtn.addEventListener('click', () => showConfirmationModal("Tem certeza que deseja finalizar e ver seu resultado?", finalizarSimulado));
+        dom.forceFinishBtn.addEventListener('click', () => showConfirmationModal("Tem certeza que deseja finalizar o simulado?", finalizarSimulado));
+        dom.restartSimuladoBtn.addEventListener('click', () => { dom.resultsScreen.classList.add('hidden'); dom.setupScreen.classList.remove('hidden'); });
+        dom.confirmModal.querySelector('#confirm-modal-confirm-btn').addEventListener('click', () => { if (state.confirmCallback) { state.confirmCallback(); } hideConfirmModal(); });
+        dom.confirmModal.querySelector('#confirm-modal-cancel-btn').addEventListener('click', hideConfirmModal);
+        document.addEventListener('click', (e) => { if (!dom.reviewFilterMainBtn.contains(e.target) && !dom.reviewFilterOptions.contains(e.target)) { dom.reviewFilterOptions.classList.add('hidden'); } });
+        dom.preConfigCheckbox.addEventListener('change', (e) => {
+            const isChecked = e.target.checked;
+            dom.manualFiltersContainer.classList.toggle('disabled', isChecked);
+            dom.preConfigSelectContainer.classList.toggle('hidden', !isChecked);
+            Object.values(choices).forEach(c => isChecked ? c.disable() : c.enable());
         });
-        finalizeButton?.addEventListener("click", () => finalizeSimulado(false));
-        popupCloseButton?.addEventListener("click", hidePopup);
-        popupOverlay?.addEventListener("click", (event) => { if (event.target === popupOverlay) hidePopup(); });
-        resultsCloseButton?.addEventListener("click", handleCloseResults);
-        resultsSaveButton?.addEventListener("click", handleSaveResults);
+        dom.manualFiltersContainer.querySelector('#filtroDisciplina').addEventListener('change', atualizarAssuntosPorDisciplina);
     }
+    // --- INICIALIZAÇÃO DO SCRIPT ---
+    inicializar();
+});
 
-    // --- Inicia a aplicação ---
-    initializeApp();
-
-}); // Fim do DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('discipline-nav');
+    const sentinel = document.getElementById('sticky-sentinel');
+    const questions = document.getElementById('questions-container');
+    
+    const observer = new IntersectionObserver(
+        ([entry]) => {
+            if (!entry.isIntersecting) {
+                const navHeight = nav.offsetHeight;
+                nav.classList.add('stuck');
+                questions.style.transform = `translateY(${navHeight}px)`;
+            } else {
+                nav.classList.remove('stuck');
+                questions.style.transform = 'translateY(0px)';
+            }
+        },
+        {
+            rootMargin: "-77px 0px 0px 0px",
+            threshold: 0
+        }
+    );
+    
+    observer.observe(sentinel);
+});
