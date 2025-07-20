@@ -252,6 +252,7 @@ body {
     min-height: 44px;
     flex-grow: 1;
 }
+
 .option-btn .option-letter {
     font-size: 1.2em;
     background-color: #fff;

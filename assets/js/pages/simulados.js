@@ -148,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
         state.simuladoQuestoes = embaralhar(questoesParaSimulado).slice(0, numQuestions);
         if (state.simuladoQuestoes.length === 0) { showConfirmationModal("Nenhuma questão foi encontrada com os filtros selecionados. Tente uma busca mais ampla."); return; }
 
-        // Resetar estado para um novo simulado
         state.userAnswers = {};
         state.markedQuestions.clear();
         state.simuladoStartTime = Date.now();
@@ -159,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
         state.disciplinasDoSimulado = Object.keys(state.questoesAgrupadas);
         state.currentDisciplinaIndex = 0;
         
-        // Mudar de tela e iniciar
         [dom.setupScreen, dom.historyScreen, dom.resultsScreen, dom.pauseOverlay, dom.reviewContainer].forEach(el => el.classList.add('hidden'));
         dom.simuladoScreen.classList.remove('hidden');
         
@@ -188,10 +186,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="question-tags">${(Array.isArray(questao.assuntos) ? questao.assuntos : [questao.assunto].filter(Boolean)).map(a => `<span class="tag-assunto">${a}</span>`).join('')}<span class="tag-dificuldade">${questao.dificuldade || ''}</span></div>
                 <p class="question-text"><strong>${questionCounter}.</strong> ${questao.enunciado}</p>
+                ${questao.contexto ? `
+                  <div class="question-context">
+                    <button class="btn-contexto toggle-btn" data-target="ctx-${questao.id}">Contexto +</button>
+                    <div id="ctx-${questao.id}" class="toggle-content oculto" >
+                      ${questao.contexto}
+                    </div>
+                  </div>
+                ` : ''}
+                
                 <div class="options-container ${isAnswered ? 'answered' : ''}">${questao.opcoes.map(op => `<button class="option-btn" data-value="${op.letra}"><span class="option-letter">${op.letra}</span><span class="option-content">${op.texto}</span></button>`).join('')}</div>
                 <div class="feedback-area">
-                    <button class="btn btn-secondary change-answer-btn ${isAnswered ? '' : 'hidden'}">Trocar</button>
-                    <button class="btn btn-primary confirm-answer-btn" ${isAnswered ? 'disabled' : ''}>${isAnswered ? 'Respondido' : 'Responder'}</button>
+                    <button class="btn btn-secondary cancel-answer-btn ${isAnswered ? '' : 'hidden'}">Cancelar Resposta</button>
+                    <button class="btn btn-primary confirm-answer-btn" disabled>${isAnswered ? 'Respondido' : 'Responder'}</button>
                 </div>`;
             
             if (isAnswered) { questionItem.querySelector(`.option-btn[data-value="${state.userAnswers[questionItem.id]}"]`).classList.add('selected-preview'); }
@@ -211,20 +218,49 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!questionItem) return;
         const questionId = questionItem.id.replace('q-', '');
 
-        if (target.closest('.mark-btn')) {
-            const markBtn = target.closest('.mark-btn');
-            markBtn.classList.toggle('marked');
-            if (state.markedQuestions.has(questionId)) { state.markedQuestions.delete(questionId); } else { state.markedQuestions.add(questionId); }
+        if (target.classList.contains('toggle-btn')) {
+            const contentId = target.dataset.target;
+            const contentArea = document.getElementById(contentId);
+            if (contentArea) {
+                const isHidden = contentArea.classList.toggle('oculto');
+                target.textContent = isHidden ? 'Contexto +' : 'Contexto -';
+            }
             return;
         }
 
-        if (target.classList.contains('change-answer-btn')) {
-            questionItem.querySelector('.options-container').classList.remove('answered');
-            questionItem.querySelector('.confirm-answer-btn').disabled = false;
-            target.classList.add('hidden');
+        if (target.closest('.mark-btn')) {
+            const markBtn = target.closest('.mark-btn');
+            markBtn.classList.toggle('marked');
+            if (state.markedQuestions.has(questionId)) {
+                state.markedQuestions.delete(questionId);
+            } else {
+                state.markedQuestions.add(questionId);
+            }
             return;
         }
-        
+
+        if (target.classList.contains('cancel-answer-btn')) {
+            delete state.userAnswers[questionItem.id];
+            
+            const optionsContainer = questionItem.querySelector('.options-container');
+            optionsContainer.classList.remove('answered');
+            optionsContainer.querySelectorAll('.option-btn').forEach(btn => {
+                btn.classList.remove('selected-preview');
+                btn.disabled = false;
+            });
+
+            delete questionItem.dataset.selectedValue;
+
+            const confirmBtn = questionItem.querySelector('.confirm-answer-btn');
+            confirmBtn.disabled = true;
+            confirmBtn.textContent = 'Responder';
+            
+            target.classList.add('hidden');
+            questionItem.classList.remove('answered-flash');
+
+            return;
+        }
+
         if (questionItem.querySelector('.options-container.answered')) return;
 
         if (target.closest('.option-btn')) {
@@ -232,20 +268,33 @@ document.addEventListener('DOMContentLoaded', () => {
             questionItem.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected-preview'));
             selectedBtn.classList.add('selected-preview');
             questionItem.dataset.selectedValue = selectedBtn.dataset.value;
+            questionItem.querySelector('.confirm-answer-btn').disabled = false;
+            return;
         }
 
         if (target.classList.contains('confirm-answer-btn')) {
             const answer = questionItem.dataset.selectedValue;
-            if (!answer) { showConfirmationModal("Por favor, selecione uma alternativa."); return; }
+            if (!answer) {
+                showConfirmationModal("Por favor, selecione uma alternativa.");
+                return;
+            }
             state.userAnswers[questionItem.id] = answer;
             questionItem.querySelector('.options-container').classList.add('answered');
             target.textContent = 'Respondido';
             target.disabled = true;
-            questionItem.querySelector('.change-answer-btn').classList.remove('hidden');
+
+            questionItem.querySelector('.cancel-answer-btn').classList.remove('hidden');
+
             questionItem.classList.add('answered-flash');
             setTimeout(() => questionItem.classList.remove('answered-flash'), 700);
+            return;
         }
+
+        questionItem.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('selected-preview'));
+        delete questionItem.dataset.selectedValue;
+        questionItem.querySelector('.confirm-answer-btn').disabled = true;
     }
+
 
     // --- CONTROLE DE TEMPO E PAUSA ---
     function iniciarTimer(duration) {
@@ -270,20 +319,25 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(state.timerInterval);
         const timeTaken = Math.round((Date.now() - state.simuladoStartTime) / 1000);
         let correct = 0, incorrect = 0, unanswered = 0;
+        
         state.simuladoQuestoes.forEach(q => {
             const userAnswer = state.userAnswers[`q-${q.id}`];
             if (!userAnswer) unanswered++;
             else if (userAnswer === q.resposta_correta) correct++;
             else incorrect++;
         });
+        
         const total = state.simuladoQuestoes.length;
         const percentage = total > 0 ? ((correct / total) * 100).toFixed(1) : 0;
         
-        salvarSessaoQuestoes();
-        salvarHistoricoSimulado({ correct, incorrect, unanswered, total, percentage, timeTaken });
+        const summary = { correct, incorrect, unanswered, total, percentage, timeTaken };
+        salvarHistoricoSimulado(summary);
 
-        dom.correctCountEl.textContent = correct; dom.incorrectCountEl.textContent = incorrect;
-        dom.unansweredCountEl.textContent = unanswered; dom.percentageEl.textContent = `${percentage}%`;
+        dom.correctCountEl.textContent = correct; 
+        dom.incorrectCountEl.textContent = incorrect;
+        dom.unansweredCountEl.textContent = unanswered; 
+        dom.percentageEl.textContent = `${percentage}%`;
+        
         dom.simuladoScreen.classList.add('hidden');
         dom.resultsScreen.classList.remove('hidden');
         exibirGraficoResultados(correct, incorrect, unanswered);
@@ -302,23 +356,78 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function salvarHistoricoSimulado(summary) {
         let historico = getFromStorage(STORAGE_KEY_HISTORICO);
-        historico.unshift({ id: `sim-${Date.now()}`, date: new Date().toISOString(), ...summary });
+
+        const sessaoCompleta = {
+            id: `sim-${state.simuladoStartTime}`,
+            date: new Date().toISOString(),
+            summary: summary,
+            questoes: state.simuladoQuestoes,
+            userAnswers: state.userAnswers,
+            markedQuestions: Array.from(state.markedQuestions)
+        };
+
+        historico.unshift(sessaoCompleta);
         saveToStorage(STORAGE_KEY_HISTORICO, historico);
+    }
+
+    function carregarSessaoParaRevisao(sessionId) {
+        const historico = getFromStorage(STORAGE_KEY_HISTORICO);
+        const sessao = historico.find(s => s.id === sessionId);
+
+        if (!sessao) {
+            showConfirmationModal("Sessão do histórico não encontrada.");
+            return;
+        }
+
+        state.simuladoQuestoes = sessao.questoes;
+        state.userAnswers = sessao.userAnswers;
+        state.markedQuestions = new Set(sessao.markedQuestions);
+
+        const { correct, incorrect, unanswered, percentage } = sessao.summary;
+        dom.correctCountEl.textContent = correct;
+        dom.incorrectCountEl.textContent = incorrect;
+        dom.unansweredCountEl.textContent = unanswered;
+        dom.percentageEl.textContent = `${percentage}%`;
+        exibirGraficoResultados(correct, incorrect, unanswered);
+        exibirDesempenhoDisciplina();
+
+        dom.historyScreen.classList.add('hidden');
+        dom.resultsScreen.classList.remove('hidden');
+        
+        if (dom.reviewContainer.classList.contains('hidden')) {
+            toggleRevisao();
+        } else {
+            exibirRevisao('all');
+        }
     }
 
     function exibirHistorico() {
         dom.setupScreen.classList.add('hidden');
+        dom.resultsScreen.classList.add('hidden');
         dom.historyScreen.classList.remove('hidden');
+        
         const historico = getFromStorage(STORAGE_KEY_HISTORICO);
         dom.historyList.innerHTML = historico.length === 0 ? '<p>Nenhum simulado foi concluído ainda.</p>' : '';
+        
         historico.forEach(item => {
             const date = new Date(item.date);
             const formattedDate = `${date.toLocaleDateString('pt-BR')} às ${date.toLocaleTimeString('pt-BR', {hour: '2-digit', minute:'2-digit'})}`;
-            const minutes = Math.floor(item.timeTaken / 60), seconds = item.timeTaken % 60;
-            const formattedTime = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            
             const itemEl = document.createElement('div');
             itemEl.className = 'history-item';
-            itemEl.innerHTML = `<div class="history-item-date">${formattedDate}</div><div class="history-item-stats"><div class="history-stat"><span class="label">Acertos</span><span class="value correct">${item.correct}</span></div><div class="history-stat"><span class="label">Erros</span><span class="value incorrect">${item.incorrect}</span></div><div class="history-stat"><span class="label">Questões</span><span class="value">${item.totalQuestions}</span></div><div class="history-stat"><span class="label">Tempo</span><span class="value">${formattedTime}</span></div><div class="history-stat"><span class="label">%</span><span class="value correct">${item.percentage}%</span></div></div>`;
+            itemEl.dataset.sessionId = item.id;
+            
+            itemEl.innerHTML = `
+                <div class="history-item-info">
+                    <div class="history-item-date">${formattedDate}</div>
+                    <div class="history-item-score">
+                        <i class="fas fa-check-circle correct"></i> ${item.summary.correct} / ${item.summary.total}
+                    </div>
+                </div>
+                <div class="history-item-action">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            `;
             dom.historyList.appendChild(itemEl);
         });
     }
@@ -368,7 +477,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        if (filteredQuestions.length === 0) { dom.reviewQuestionsArea.innerHTML = `<p class="empty-state" style="text-align: center; padding: 20px;">Nenhuma questão para exibir neste filtro.</p>`; return; }
+        if (filteredQuestions.length === 0) {
+            dom.reviewQuestionsArea.innerHTML = `<p class="empty-state" style="text-align: center; padding: 20px;">Nenhuma questão para exibir neste filtro.</p>`;
+            return;
+        }
 
         filteredQuestions.forEach((questao, index) => {
             const userAnswer = state.userAnswers[`q-${questao.id}`];
@@ -381,7 +493,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (op.letra === userAnswer && userAnswer !== questao.resposta_correta) optionClass += ' wrong-answer';
                 return `<div class="option-btn ${optionClass}"><span class="option-letter">${op.letra}</span><span class="option-content">${op.texto}</span></div>`;
             }).join('');
-            reviewItem.innerHTML = `<p><strong>${index + 1}. ${questao.enunciado}</strong></p><div class="options-container">${optionsHtml}</div><div class="feedback-area">${questao.resolucao ? `<button class="btn btn-secondary view-resolution-btn">Ver Resolução</button>` : ''}</div>${questao.resolucao ? `<div class="resolution-area hidden">${questao.resolucao}</div>` : ''}`;
+
+            reviewItem.innerHTML = `
+                <p><strong>${index + 1}. ${questao.enunciado}</strong></p>
+                
+                ${questao.contexto ? `
+                  <div class="question-context">
+                    <button class="btn-contexto toggle-btn" data-target="review-ctx-${questao.id}">Contexto +</button>
+                    <div id="review-ctx-${questao.id}" class="toggle-content oculto">
+                      ${questao.contexto}
+                    </div>
+                  </div>
+                ` : ''}
+
+                <div class="options-container">${optionsHtml}</div>
+                <div class="feedback-area">
+                    ${questao.resolucao ? `<button class="btn btn-secondary view-resolution-btn">Ver Resolução</button>` : ''}
+                </div>
+                ${questao.resolucao ? `<div class="resolution-area hidden">${questao.resolucao}</div>` : ''}
+            `;
             dom.reviewQuestionsArea.appendChild(reviewItem);
         });
     }
@@ -422,10 +552,39 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.pauseBtn.addEventListener('click', pausarSimulado);
         dom.resumeBtn.addEventListener('click', retomarSimulado);
         dom.questionsContainer.addEventListener('click', handleQuestionClick);
+        
+        dom.historyList.addEventListener('click', (e) => {
+            const item = e.target.closest('.history-item');
+            if (item && item.dataset.sessionId) {
+                carregarSessaoParaRevisao(item.dataset.sessionId);
+            }
+        });
+        
         dom.reviewBtn.addEventListener('click', toggleRevisao);
         dom.reviewFilterMainBtn.addEventListener('click', () => dom.reviewFilterOptions.classList.toggle('hidden'));
         dom.reviewFilterOptions.addEventListener('click', (e) => { if (e.target.matches('.review-filter-btn')) { exibirRevisao(e.target.dataset.filter); dom.reviewFilterOptions.classList.add('hidden'); } });
-        dom.reviewQuestionsArea.addEventListener('click', (e) => { if (e.target.matches('.view-resolution-btn')) { const resArea = e.target.closest('.review-question').querySelector('.resolution-area'); resArea.classList.toggle('hidden'); e.target.textContent = resArea.classList.contains('hidden') ? 'Ver Resolução' : 'Ocultar Resolução'; } });
+        
+        dom.reviewQuestionsArea.addEventListener('click', (e) => {
+            const target = e.target;
+            // Lógica para o botão 'Ver Resolução'
+            if (target.matches('.view-resolution-btn')) {
+                const resArea = target.closest('.review-question').querySelector('.resolution-area');
+                if(resArea) {
+                    const isHidden = resArea.classList.toggle('hidden');
+                    target.textContent = isHidden ? 'Ver Resolução' : 'Ocultar Resolução';
+                }
+            }
+            // Lógica para o botão 'Contexto'
+            if (target.matches('.toggle-btn')) {
+                const contentId = target.dataset.target;
+                const contentArea = document.getElementById(contentId);
+                if (contentArea) {
+                    const isHidden = contentArea.classList.toggle('oculto');
+                    target.textContent = isHidden ? 'Contexto +' : 'Contexto -';
+                }
+            }
+        });
+
         dom.prevDisciplineBtn.addEventListener('click', () => { if (state.currentDisciplinaIndex > 0) { state.currentDisciplinaIndex--; exibirDisciplinaAtual(); } });
         dom.nextDisciplineBtn.addEventListener('click', () => { if (state.currentDisciplinaIndex < state.disciplinasDoSimulado.length - 1) { state.currentDisciplinaIndex++; exibirDisciplinaAtual(); } });
         dom.finishBtn.addEventListener('click', () => showConfirmationModal("Tem certeza que deseja finalizar e ver seu resultado?", finalizarSimulado));
@@ -451,22 +610,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const sentinel = document.getElementById('sticky-sentinel');
     const questions = document.getElementById('questions-container');
     
-    const observer = new IntersectionObserver(
-        ([entry]) => {
-            if (!entry.isIntersecting) {
-                const navHeight = nav.offsetHeight;
-                nav.classList.add('stuck');
-                questions.style.transform = `translateY(${navHeight}px)`;
-            } else {
-                nav.classList.remove('stuck');
-                questions.style.transform = 'translateY(0px)';
+    if (nav && sentinel && questions) {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (!entry.isIntersecting) {
+                    const navHeight = nav.offsetHeight;
+                    nav.classList.add('stuck');
+                    questions.style.transform = `translateY(${navHeight}px)`;
+                } else {
+                    nav.classList.remove('stuck');
+                    questions.style.transform = 'translateY(0px)';
+                }
+            },
+            {
+                rootMargin: "-77px 0px 0px 0px",
+                threshold: 0
             }
-        },
-        {
-            rootMargin: "-77px 0px 0px 0px",
-            threshold: 0
-        }
-    );
-    
-    observer.observe(sentinel);
+        );
+        
+        observer.observe(sentinel);
+    }
 });

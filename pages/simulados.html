@@ -108,7 +108,7 @@
             <main id="questions-container" class="questions-area"></main>
 
             <footer class="simulado-footer">
-                <button id="finish-btn" class="btn btn-danger">
+                <button id="finish-btn" class="hidden btn btn-danger">
                     <i class="fas fa-check-circle"></i> Finalizar e Ver Resultado
                 </button>
             </footer>
@@ -122,9 +122,9 @@
                     <canvas id="results-chart"></canvas>
                 </div>
                 <div class="results-summary">
-                    <div class="summary-item"><span class="summary-label">Acertos</span><span id="correct-count" class="summary-value correct">0</span></div>
-                    <div class="summary-item"><span class="summary-label">Erros</span><span id="incorrect-count" class="summary-value incorrect">0</span></div>
-                    <div class="summary-item"><span class="summary-label">Em Branco</span><span id="unanswered-count" class="summary-value">0</span></div>
+                    <div class="summary-item summary-item-acertos"><span class="summary-label">Acertos</span><span id="correct-count" class="summary-value correct">0</span></div>
+                    <div class="summary-item summary-item-erros"><span class="summary-label">Erros</span><span id="incorrect-count" class="summary-value incorrect">0</span></div>
+                    <div class="summary-item summary-item-branco"><span class="summary-label">Em Branco</span><span id="unanswered-count" class="summary-value">0</span></div>
                     <div class="summary-item"><span class="summary-label">Aproveitamento</span><span id="percentage-count" class="summary-value">0%</span></div>
                 </div>
             </div>
@@ -139,7 +139,10 @@
                     <i class="fas fa-search"></i> Revisar Gabarito
                 </button>
                 <button id="restart-simulado-btn" class="btn btn-primary">
-                    <i class="fas fa-redo"></i> Novo Simulado
+                    <i class="fas fa-redo"></i> Início
+                </button>
+                <button id="history-btn" class="btn btn-secondary">
+                    <i class="fas fa-history"></i> Histórico
                 </button>
             </div>
 
