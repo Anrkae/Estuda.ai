@@ -28,6 +28,12 @@ html {
 }
 
 body {
+    -webkit-tap-highlight-color: transparent;
+    outline: none; /* Adicionado por segurança para garantir que nenhum outline relacionado ao toque apareça */
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none;
     font-family: 'Montserrat', sans-serif !important;
     background-color: var(--background-color);
     color: var(--text-color);
