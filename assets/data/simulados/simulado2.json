@@ -1,0 +1,329 @@
+[
+  {
+    "id": 151,
+    "contexto": "Leia o trecho: 'A necessidade de uma reforma administrativa era evidente, mas a burocracia impedia qualquer avanço.'",
+    "enunciado": "No trecho, o termo 'necessidade' e 'avanço' são, morfologicamente, classificados como:",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Adjetivos" },
+      { "letra": "B", "texto": "Advérbios" },
+      { "letra": "C", "texto": "Substantivos abstratos" },
+      { "letra": "D", "texto": "Verbos no particípio" },
+      { "letra": "E", "texto": "Substantivos concretos" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Ambos os termos nomeiam conceitos e ações (o ato de necessitar, o ato de avançar), cuja existência depende de outros seres. Portanto, são classificados como substantivos abstratos."
+  },
+  {
+    "id": 152,
+    "contexto": "",
+    "enunciado": "A obra que é considerada o poema épico que marca o início do Barroco no Brasil, de autoria de Bento Teixeira, é:",
+    "disciplina": "Literatura",
+    "assunto": ["Barroco"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O Uraguai" },
+      { "letra": "B", "texto": "Marília de Dirceu" },
+      { "letra": "C", "texto": "Prosopopeia" },
+      { "letra": "D", "texto": "Caramuru" },
+      { "letra": "E", "texto": "A Carta de Caminha" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Prosopopeia', publicada em 1601, é a obra que introduz o estilo barroco na literatura brasileira, apesar de ainda ter traços clássicos."
+  },
+  {
+    "id": 153,
+    "contexto": "",
+    "enunciado": "A Guerra dos Emboabas (1707-1709) foi um conflito que refletiu as tensões entre:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Revoltas Nativistas"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Indígenas e portugueses pela posse de terras." },
+      { "letra": "B", "texto": "Senhores de engenho de Olinda e comerciantes do Recife." },
+      { "letra": "C", "texto": "Paulistas descobridores das minas e forasteiros (portugueses e de outras capitanias)." },
+      { "letra": "D", "texto": "A Coroa Portuguesa e os colonos contra a criação das Casas de Fundição." },
+      { "letra": "E", "texto": "Jesuítas e bandeirantes pela questão da escravidão indígena." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Guerra dos Emboabas foi uma disputa violenta pelo controle das recém-descobertas minas de ouro na região de Minas Gerais, opondo os bandeirantes paulistas, que se consideravam os legítimos donos por terem encontrado o ouro, e os 'emboabas', como eram chamados os recém-chegados de Portugal e de outras partes da colônia."
+  },
+  {
+    "id": 154,
+    "contexto": "Read the text. 'The soldier needs to clean his rifle every day. It is an important part of his routine.'",
+    "enunciado": "According to the text, what does the soldier have to do daily?",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Read a book." },
+      { "letra": "B", "texto": "Clean his rifle." },
+      { "letra": "C", "texto": "Exercise." },
+      { "letra": "D", "texto": "Talk to his family." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "The text clearly states: 'The soldier needs to clean his rifle every day.' (O soldado precisa limpar seu fuzil todos os dias)."
+  },
+  {
+    "id": 155,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa em que a palavra apresenta um dígrafo consonantal e um ditongo crescente.",
+    "disciplina": "Português",
+    "assunto": ["Fonética e Fonologia"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Guerra" },
+      { "letra": "B", "texto": "Pai" },
+      { "letra": "C", "texto": "Qualidade" },
+      { "letra": "D", "texto": "Ninho" },
+      { "letra": "E", "texto": "Mãe" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Em 'qua-li-da-de', temos o dígrafo 'qu' (em que o 'u' não é pronunciado) e o ditongo crescente 'ua' (semivogal + vogal)."
+  },
+    {
+    "id": 156,
+    "contexto": "",
+    "enunciado": "A literatura do Quinhentismo brasileiro é dividida em duas categorias principais. Quais são elas?",
+    "disciplina": "Literatura",
+    "assunto": ["Quinhentismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Poesia lírica e poesia épica." },
+      { "letra": "B", "texto": "Literatura informativa e literatura dos jesuítas." },
+      { "letra": "C", "texto": "Prosa romântica e teatro realista." },
+      { "letra": "D", "texto": "Cultismo e Conceptismo." },
+      { "letra": "E", "texto": "Pastoralismo e Neoclassicismo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Quinhentismo compreende a literatura informativa (crônicas de viagem, como a de Caminha, que descreviam a terra) e a literatura dos jesuítas (textos de caráter catequético, como os do Padre Anchieta)."
+  },
+  {
+    "id": 157,
+    "contexto": "My name is John. I am a soldier. I am from the United States.",
+    "enunciado": "Where is John from?",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Brazil." },
+      { "letra": "B", "texto": "Canada." },
+      { "letra": "C", "texto": "The United States." },
+      { "letra": "D", "texto": "The United Kingdom." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "The text says: 'I am from the United States.' (Eu sou dos Estados Unidos)."
+  },
+  {
+    "id": 158,
+    "contexto": "",
+    "enunciado": "No Brasil Colonial, as Câmaras Municipais representavam principalmente os interesses dos:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Administração Colonial"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Comerciantes portugueses recém-chegados." },
+      { "letra": "B", "texto": "Trabalhadores livres e artesãos." },
+      { "letra": "C", "texto": "Grandes proprietários de terras e de escravos." },
+      { "letra": "D", "texto": "Funcionários da Coroa Portuguesa." },
+      { "letra": "E", "texto": "Membros do clero e jesuítas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As Câmaras Municipais eram o principal órgão do poder local e eram dominadas pelos 'homens bons', a elite agrária colonial, composta por grandes latifundiários e senhores de escravos."
+  },
+  {
+    "id": 159,
+    "contexto": "Assinale a alternativa em que a palavra 'SE' atua como conjunção subordinativa condicional.",
+    "enunciado": "Qual o valor sintático do 'SE' na frase?",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Vende-se esta casa." },
+      { "letra": "B", "texto": "Ele se feriu durante o treinamento." },
+      { "letra": "C", "texto": "Não sei se ele virá para a formatura." },
+      { "letra": "D", "texto": "Se chover, não haverá a cerimônia." },
+      { "letra": "E", "texto": "Precisa-se de voluntários." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Na opção D, 'Se chover' estabelece uma condição para que a oração principal ('não haverá a cerimônia') ocorra. Nas outras opções, o 'se' é partícula apassivadora (A), pronome reflexivo (B), conjunção subordinativa integrante (C) e índice de indeterminação do sujeito (E)."
+  },
+  {
+    "id": 160,
+    "contexto": "",
+    "enunciado": "O lema 'Fugere urbem' (fugir da cidade) é uma das principais características de qual movimento literário?",
+    "disciplina": "Literatura",
+    "assunto": ["Arcadismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Barroco" },
+      { "letra": "B", "texto": "Quinhentismo" },
+      { "letra": "C", "texto": "Romantismo" },
+      { "letra": "D", "texto": "Arcadismo" },
+      { "letra": "E", "texto": "Modernismo" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Arcadismo valorizava a vida simples no campo, em oposição à agitação e corrupção das cidades. 'Fugere urbem' é um dos lemas latinos que sintetizam esse ideal bucólico."
+  },
+  {
+    "id": 161,
+    "contexto": "",
+    "enunciado": "A Revolta de Beckman, ocorrida no Maranhão em 1684, foi motivada principalmente:",
+    "disciplina": "História",
+    "assunto": ["Brasil Colonial", "Revoltas Nativistas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Pela expulsão dos holandeses." },
+      { "letra": "B", "texto": "Pelo desejo de independência de Portugal." },
+      { "letra": "C", "texto": "Pela insatisfação com o monopólio da Companhia de Comércio do Maranhão e a proibição da escravidão indígena." },
+      { "letra": "D", "texto": "Pela alta dos impostos sobre o ouro." },
+      { "letra": "E", "texto": "Pela disputa de poder entre Olinda e Recife." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Este movimento nativista lutava contra os abusos da Companhia de Comércio, que não fornecia os produtos prometidos (incluindo escravos africanos) e pagava pouco pelos produtos locais, e também contra as leis jesuíticas que impediam a escravização de indígenas, mão de obra que os colonos desejavam utilizar."
+  },
+  {
+    "id": 162,
+    "contexto": "This is a blue car. That is a red house.",
+    "enunciado": "What color is the car?",
+    "disciplina": "Inglês",
+    "assunto": ["Interpretação de textos"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Red" },
+      { "letra": "B", "texto": "Green" },
+      { "letra": "C", "texto": "Yellow" },
+      { "letra": "D", "texto": "Blue" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "The first sentence is 'This is a blue car.' (Este é um carro azul)."
+  },
+  {
+    "id": 163,
+    "contexto": "Na frase 'A tropa avançou rapidamente pelo campo inimigo', os termos destacados são classificados, respectivamente, como:",
+    "enunciado": "Análise morfológica dos termos.",
+    "disciplina": "Português",
+    "assunto": ["Classes Gramaticais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Advérbio e Adjetivo" },
+      { "letra": "B", "texto": "Adjetivo e Advérbio" },
+      { "letra": "C", "texto": "Advérbio e Advérbio" },
+      { "letra": "D", "texto": "Adjetivo e Substantivo" },
+      { "letra": "E", "texto": "Verbo e Adjetivo" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Rapidamente' é um advérbio de modo, pois modifica o verbo 'avançou'. 'Inimigo' é um adjetivo, pois caracteriza o substantivo 'campo'."
+  },
+  {
+    "id": 164,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa que contém a correta divisão silábica da palavra 'suboficial'.",
+    "disciplina": "Português",
+    "assunto": ["Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "su-bo-fi-ci-al" },
+      { "letra": "B", "texto": "sub-o-fi-ci-al" },
+      { "letra": "C", "texto": "su-bo-fi-cial" },
+      { "letra": "D", "texto": "sub-o-fi-cial" },
+      { "letra": "E", "texto": "su-b-o-fi-ci-al" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A regra geral é que consoantes que iniciam sílabas não se separam da vogal seguinte. O 'b' de 'sub' forma sílaba com a vogal 'o' seguinte, resultando em 'su-bo-fi-ci-al'."
+  },
+  {
+    "id": 165,
+    "contexto": "",
+    "enunciado": "A 'Carta de Pero Vaz de Caminha' é o principal exemplo da chamada:",
+    "disciplina": "Literatura",
+    "assunto": ["Quinhentismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Literatura de Catequese" },
+      { "letra": "B", "texto": "Poesia Barroca" },
+      { "letra": "C", "texto": "Literatura de Informação" },
+      { "letra": "D", "texto": "Poesia Árcade" },
+      { "letra": "E", "texto": "Prosa Romântica" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Este documento tinha o objetivo principal de descrever a nova terra, seus habitantes e suas potencialidades para o rei de Portugal, sendo um marco da literatura informativa ou de viajantes."
+  }
+]

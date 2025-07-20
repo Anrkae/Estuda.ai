@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const PRE_CONFIGURADOS = [
         { name: 'Selecione um simulado...', url: '' },
         { name: 'Simulado 07/2025', url: `${PRE_CONFIGURADOS_PATH}Simulado.json` },
-        { name: 'Conhecimentos Gerais (10q)', url: `${PRE_CONFIGURADOS_PATH}simulado_geral.json` }
+        { name: 'Simulado 2 07/2025', url: `${PRE_CONFIGURADOS_PATH}simulado2.json` }
     ];
     const STORAGE_KEY_RESOLVIDAS = 'questoesResolvidas';
     const STORAGE_KEY_HISTORICO = 'historicoSimulados';
