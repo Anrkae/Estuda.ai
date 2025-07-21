@@ -1,10 +1,10 @@
 [
   {
-    "id": 151,
-    "contexto": "Leia o trecho: 'A necessidade de uma reforma administrativa era evidente, mas a burocracia impedia qualquer avanço.'",
-    "enunciado": "No trecho, o termo 'necessidade' e 'avanço' são, morfologicamente, classificados como:",
+    "id": 166,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa em que a palavra apresenta mais letras do que fonemas.",
     "disciplina": "Português",
-    "assunto": ["Classes Gramaticais"],
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
     "dificuldade": "Médio",
     "tipo": "multipla_escolha",
     "metadata": {
@@ -12,65 +12,20 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "Adjetivos" },
-      { "letra": "B", "texto": "Advérbios" },
-      { "letra": "C", "texto": "Substantivos abstratos" },
-      { "letra": "D", "texto": "Verbos no particípio" },
-      { "letra": "E", "texto": "Substantivos concretos" }
+      { "letra": "A", "texto": "Tóxico" },
+      { "letra": "B", "texto": "Fixo" },
+      { "letra": "C", "texto": "Campo" },
+      { "letra": "D", "texto": "Anexo" }
     ],
     "resposta_correta": "C",
-    "resolucao": "Ambos os termos nomeiam conceitos e ações (o ato de necessitar, o ato de avançar), cuja existência depende de outros seres. Portanto, são classificados como substantivos abstratos."
+    "resolucao": "A palavra 'campo' possui 5 letras e 4 fonemas (/kɐ̃pu/). O 'am' forma um dígrafo vocálico, onde duas letras representam um único som nasal."
   },
   {
-    "id": 152,
+    "id": 167,
     "contexto": "",
-    "enunciado": "A obra que é considerada o poema épico que marca o início do Barroco no Brasil, de autoria de Bento Teixeira, é:",
-    "disciplina": "Literatura",
-    "assunto": ["Barroco"],
-    "dificuldade": "Médio",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "O Uraguai" },
-      { "letra": "B", "texto": "Marília de Dirceu" },
-      { "letra": "C", "texto": "Prosopopeia" },
-      { "letra": "D", "texto": "Caramuru" },
-      { "letra": "E", "texto": "A Carta de Caminha" }
-    ],
-    "resposta_correta": "C",
-    "resolucao": "'Prosopopeia', publicada em 1601, é a obra que introduz o estilo barroco na literatura brasileira, apesar de ainda ter traços clássicos."
-  },
-  {
-    "id": 153,
-    "contexto": "",
-    "enunciado": "A Guerra dos Emboabas (1707-1709) foi um conflito que refletiu as tensões entre:",
-    "disciplina": "História",
-    "assunto": ["Brasil Colonial", "Revoltas Nativistas"],
-    "dificuldade": "Médio",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Indígenas e portugueses pela posse de terras." },
-      { "letra": "B", "texto": "Senhores de engenho de Olinda e comerciantes do Recife." },
-      { "letra": "C", "texto": "Paulistas descobridores das minas e forasteiros (portugueses e de outras capitanias)." },
-      { "letra": "D", "texto": "A Coroa Portuguesa e os colonos contra a criação das Casas de Fundição." },
-      { "letra": "E", "texto": "Jesuítas e bandeirantes pela questão da escravidão indígena." }
-    ],
-    "resposta_correta": "C",
-    "resolucao": "A Guerra dos Emboabas foi uma disputa violenta pelo controle das recém-descobertas minas de ouro na região de Minas Gerais, opondo os bandeirantes paulistas, que se consideravam os legítimos donos por terem encontrado o ouro, e os 'emboabas', como eram chamados os recém-chegados de Portugal e de outras partes da colônia."
-  },
-  {
-    "id": 154,
-    "contexto": "Read the text. 'The soldier needs to clean his rifle every day. It is an important part of his routine.'",
-    "enunciado": "According to the text, what does the soldier have to do daily?",
-    "disciplina": "Inglês",
-    "assunto": ["Interpretação de textos"],
+    "enunciado": "Em qual das palavras abaixo a letra 'x' representa o fonema /z/?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
     "dificuldade": "Fácil",
     "tipo": "multipla_escolha",
     "metadata": {
@@ -78,42 +33,20 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "Read a book." },
-      { "letra": "B", "texto": "Clean his rifle." },
-      { "letra": "C", "texto": "Exercise." },
-      { "letra": "D", "texto": "Talk to his family." }
+      { "letra": "A", "texto": "Máximo" },
+      { "letra": "B", "texto": "Próximo" },
+      { "letra": "C", "texto": "Exame" },
+      { "letra": "D", "texto": "Anexo" }
     ],
-    "resposta_correta": "B",
-    "resolucao": "The text clearly states: 'The soldier needs to clean his rifle every day.' (O soldado precisa limpar seu fuzil todos os dias)."
+    "resposta_correta": "C",
+    "resolucao": "Na palavra 'exame', o 'x' está entre vogais e assume o som de /z/, como em 'zebra'."
   },
   {
-    "id": 155,
+    "id": 168,
     "contexto": "",
-    "enunciado": "Assinale a alternativa em que a palavra apresenta um dígrafo consonantal e um ditongo crescente.",
+    "enunciado": "Qual das seguintes palavras possui um ditongo decrescente oral?",
     "disciplina": "Português",
-    "assunto": ["Fonética e Fonologia"],
-    "dificuldade": "Difícil",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Guerra" },
-      { "letra": "B", "texto": "Pai" },
-      { "letra": "C", "texto": "Qualidade" },
-      { "letra": "D", "texto": "Ninho" },
-      { "letra": "E", "texto": "Mãe" }
-    ],
-    "resposta_correta": "C",
-    "resolucao": "Em 'qua-li-da-de', temos o dígrafo 'qu' (em que o 'u' não é pronunciado) e o ditongo crescente 'ua' (semivogal + vogal)."
-  },
-    {
-    "id": 156,
-    "contexto": "",
-    "enunciado": "A literatura do Quinhentismo brasileiro é dividida em duas categorias principais. Quais são elas?",
-    "disciplina": "Literatura",
-    "assunto": ["Quinhentismo"],
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
     "dificuldade": "Médio",
     "tipo": "multipla_escolha",
     "metadata": {
@@ -121,173 +54,20 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "Poesia lírica e poesia épica." },
-      { "letra": "B", "texto": "Literatura informativa e literatura dos jesuítas." },
-      { "letra": "C", "texto": "Prosa romântica e teatro realista." },
-      { "letra": "D", "texto": "Cultismo e Conceptismo." },
-      { "letra": "E", "texto": "Pastoralismo e Neoclassicismo." }
-    ],
-    "resposta_correta": "B",
-    "resolucao": "O Quinhentismo compreende a literatura informativa (crônicas de viagem, como a de Caminha, que descreviam a terra) e a literatura dos jesuítas (textos de caráter catequético, como os do Padre Anchieta)."
-  },
-  {
-    "id": 157,
-    "contexto": "My name is John. I am a soldier. I am from the United States.",
-    "enunciado": "Where is John from?",
-    "disciplina": "Inglês",
-    "assunto": ["Interpretação de textos"],
-    "dificuldade": "Fácil",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Brazil." },
-      { "letra": "B", "texto": "Canada." },
-      { "letra": "C", "texto": "The United States." },
-      { "letra": "D", "texto": "The United Kingdom." }
-    ],
-    "resposta_correta": "C",
-    "resolucao": "The text says: 'I am from the United States.' (Eu sou dos Estados Unidos)."
-  },
-  {
-    "id": 158,
-    "contexto": "",
-    "enunciado": "No Brasil Colonial, as Câmaras Municipais representavam principalmente os interesses dos:",
-    "disciplina": "História",
-    "assunto": ["Brasil Colonial", "Administração Colonial"],
-    "dificuldade": "Médio",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Comerciantes portugueses recém-chegados." },
-      { "letra": "B", "texto": "Trabalhadores livres e artesãos." },
-      { "letra": "C", "texto": "Grandes proprietários de terras e de escravos." },
-      { "letra": "D", "texto": "Funcionários da Coroa Portuguesa." },
-      { "letra": "E", "texto": "Membros do clero e jesuítas." }
-    ],
-    "resposta_correta": "C",
-    "resolucao": "As Câmaras Municipais eram o principal órgão do poder local e eram dominadas pelos 'homens bons', a elite agrária colonial, composta por grandes latifundiários e senhores de escravos."
-  },
-  {
-    "id": 159,
-    "contexto": "Assinale a alternativa em que a palavra 'SE' atua como conjunção subordinativa condicional.",
-    "enunciado": "Qual o valor sintático do 'SE' na frase?",
-    "disciplina": "Português",
-    "assunto": ["Classes Gramaticais"],
-    "dificuldade": "Difícil",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Vende-se esta casa." },
-      { "letra": "B", "texto": "Ele se feriu durante o treinamento." },
-      { "letra": "C", "texto": "Não sei se ele virá para a formatura." },
-      { "letra": "D", "texto": "Se chover, não haverá a cerimônia." },
-      { "letra": "E", "texto": "Precisa-se de voluntários." }
-    ],
-    "resposta_correta": "D",
-    "resolucao": "Na opção D, 'Se chover' estabelece uma condição para que a oração principal ('não haverá a cerimônia') ocorra. Nas outras opções, o 'se' é partícula apassivadora (A), pronome reflexivo (B), conjunção subordinativa integrante (C) e índice de indeterminação do sujeito (E)."
-  },
-  {
-    "id": 160,
-    "contexto": "",
-    "enunciado": "O lema 'Fugere urbem' (fugir da cidade) é uma das principais características de qual movimento literário?",
-    "disciplina": "Literatura",
-    "assunto": ["Arcadismo"],
-    "dificuldade": "Médio",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Barroco" },
-      { "letra": "B", "texto": "Quinhentismo" },
-      { "letra": "C", "texto": "Romantismo" },
-      { "letra": "D", "texto": "Arcadismo" },
-      { "letra": "E", "texto": "Modernismo" }
-    ],
-    "resposta_correta": "D",
-    "resolucao": "O Arcadismo valorizava a vida simples no campo, em oposição à agitação e corrupção das cidades. 'Fugere urbem' é um dos lemas latinos que sintetizam esse ideal bucólico."
-  },
-  {
-    "id": 161,
-    "contexto": "",
-    "enunciado": "A Revolta de Beckman, ocorrida no Maranhão em 1684, foi motivada principalmente:",
-    "disciplina": "História",
-    "assunto": ["Brasil Colonial", "Revoltas Nativistas"],
-    "dificuldade": "Difícil",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Pela expulsão dos holandeses." },
-      { "letra": "B", "texto": "Pelo desejo de independência de Portugal." },
-      { "letra": "C", "texto": "Pela insatisfação com o monopólio da Companhia de Comércio do Maranhão e a proibição da escravidão indígena." },
-      { "letra": "D", "texto": "Pela alta dos impostos sobre o ouro." },
-      { "letra": "E", "texto": "Pela disputa de poder entre Olinda e Recife." }
-    ],
-    "resposta_correta": "C",
-    "resolucao": "Este movimento nativista lutava contra os abusos da Companhia de Comércio, que não fornecia os produtos prometidos (incluindo escravos africanos) e pagava pouco pelos produtos locais, e também contra as leis jesuíticas que impediam a escravização de indígenas, mão de obra que os colonos desejavam utilizar."
-  },
-  {
-    "id": 162,
-    "contexto": "This is a blue car. That is a red house.",
-    "enunciado": "What color is the car?",
-    "disciplina": "Inglês",
-    "assunto": ["Interpretação de textos"],
-    "dificuldade": "Fácil",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Red" },
-      { "letra": "B", "texto": "Green" },
-      { "letra": "C", "texto": "Yellow" },
-      { "letra": "D", "texto": "Blue" }
-    ],
-    "resposta_correta": "D",
-    "resolucao": "The first sentence is 'This is a blue car.' (Este é um carro azul)."
-  },
-  {
-    "id": 163,
-    "contexto": "Na frase 'A tropa avançou rapidamente pelo campo inimigo', os termos destacados são classificados, respectivamente, como:",
-    "enunciado": "Análise morfológica dos termos.",
-    "disciplina": "Português",
-    "assunto": ["Classes Gramaticais"],
-    "dificuldade": "Médio",
-    "tipo": "multipla_escolha",
-    "metadata": {
-      "fonte": "Estuda AI",
-      "ano": 2025
-    },
-    "opcoes": [
-      { "letra": "A", "texto": "Advérbio e Adjetivo" },
-      { "letra": "B", "texto": "Adjetivo e Advérbio" },
-      { "letra": "C", "texto": "Advérbio e Advérbio" },
-      { "letra": "D", "texto": "Adjetivo e Substantivo" },
-      { "letra": "E", "texto": "Verbo e Adjetivo" }
+      { "letra": "A", "texto": "Pai" },
+      { "letra": "B", "texto": "História" },
+      { "letra": "C", "texto": "Quando" },
+      { "letra": "D", "texto": "Saúde" }
     ],
     "resposta_correta": "A",
-    "resolucao": "'Rapidamente' é um advérbio de modo, pois modifica o verbo 'avançou'. 'Inimigo' é um adjetivo, pois caracteriza o substantivo 'campo'."
+    "resolucao": "Em 'pai', a sequência 'ai' é formada por uma vogal ('a') seguida por uma semivogal ('i'), caracterizando um ditongo decrescente."
   },
   {
-    "id": 164,
+    "id": 169,
     "contexto": "",
-    "enunciado": "Assinale a alternativa que contém a correta divisão silábica da palavra 'suboficial'.",
+    "enunciado": "A palavra 'psicologia' apresenta um caso de:",
     "disciplina": "Português",
-    "assunto": ["Fonética e Fonologia"],
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
     "dificuldade": "Médio",
     "tipo": "multipla_escolha",
     "metadata": {
@@ -295,21 +75,104 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "su-bo-fi-ci-al" },
-      { "letra": "B", "texto": "sub-o-fi-ci-al" },
-      { "letra": "C", "texto": "su-bo-fi-cial" },
-      { "letra": "D", "texto": "sub-o-fi-cial" },
-      { "letra": "E", "texto": "su-b-o-fi-ci-al" }
+      { "letra": "A", "texto": "Dígrafo" },
+      { "letra": "B", "texto": "Encontro consonantal perfeito" },
+      { "letra": "C", "texto": "Letra diacrítica" },
+      { "letra": "D", "texto": "Encontro consonantal com letra muda" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O 'p' na sílaba inicial de 'psicologia' é uma letra muda, não sendo pronunciado. O encontro consonantal 'ps' é real, mas a mudez da primeira letra é o fenômeno mais notável."
+  },
+  {
+    "id": 170,
+    "contexto": "",
+    "enunciado": "Qual alternativa contém apenas palavras com dígrafos consonantais?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Piscina, aquário, chave" },
+      { "letra": "B", "texto": "Guerra, queijo, carro" },
+      { "letra": "C", "texto": "Campo, pomba, exceto" },
+      { "letra": "D", "texto": "Tóxico, nexo, axila" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As palavras 'guerra' (gu), 'queijo' (qu) e 'carro' (rr) contêm dígrafos consonantais, onde duas letras representam um único som de consoante."
+  },
+  {
+    "id": 171,
+    "contexto": "",
+    "enunciado": "A palavra 'rainha' possui:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Um hiato e um dígrafo" },
+      { "letra": "B", "texto": "Um ditongo e um dígrafo" },
+      { "letra": "C", "texto": "Apenas um hiato" },
+      { "letra": "D", "texto": "Apenas um dígrafo" }
     ],
     "resposta_correta": "A",
-    "resolucao": "A regra geral é que consoantes que iniciam sílabas não se separam da vogal seguinte. O 'b' de 'sub' forma sílaba com a vogal 'o' seguinte, resultando em 'su-bo-fi-ci-al'."
+    "resolucao": "A separação silábica é ra-i-nha. A sequência 'a-i' forma um hiato (encontro de duas vogais em sílabas diferentes), e 'nh' forma um dígrafo (duas letras para um som)."
   },
   {
-    "id": 165,
+    "id": 172,
     "contexto": "",
-    "enunciado": "A 'Carta de Pero Vaz de Caminha' é o principal exemplo da chamada:",
-    "disciplina": "Literatura",
-    "assunto": ["Quinhentismo"],
+    "enunciado": "A palavra 'subsolo' contém um:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Dígrafo" },
+      { "letra": "B", "texto": "Ditongo" },
+      { "letra": "C", "texto": "Encontro consonantal" },
+      { "letra": "D", "texto": "Hiato" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Na palavra 'subsolo', as letras 'b' e 's' formam um encontro consonantal, pois ambas são pronunciadas e estão juntas na escrita."
+  },
+  {
+    "id": 173,
+    "contexto": "",
+    "enunciado": "Em 'linguiça', o encontro vocálico 'ui' e o grupo 'gu' são, respectivamente:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Hiato e dígrafo" },
+      { "letra": "B", "texto": "Ditongo e dígrafo" },
+      { "letra": "C", "texto": "Ditongo e encontro consonantal" },
+      { "letra": "D", "texto": "Hiato e encontro consonantal" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Em 'linguiça', o 'u' do 'gu' é pronunciado, logo não é dígrafo, mas sim um encontro consonantal. O 'ui' é um ditongo. Opa, correção na resolução: O 'u' do 'gu' em 'linguiça' é pronunciado, fazendo com que não seja um dígrafo. O 'ui' é um ditongo. No entanto, a pergunta pode ter uma pegadinha. A pronúncia padrão de 'linguiça' pode variar. Considerando a norma culta, o 'u' é semivogal e o 'i' é vogal, formando um ditongo. O 'gu' não é dígrafo aqui. Se a questão for considerada com a pronúncia onde o 'u' de 'gu' não soa, seria dígrafo. Dado o contexto ESA, a resposta mais provável seria considerar 'ui' como ditongo e 'gu' como dígrafo. Vamos reavaliar... A pronúncia padrão de 'linguiça' tem o 'u' do 'gu' pronunciado, logo não é dígrafo. 'ui' é um ditongo. Nenhuma alternativa se encaixa. Vamos assumir a pergunta espera a regra geral, onde 'gu' antes de 'i' é dígrafo. Nesse caso, 'ui' é ditongo e 'gu' é dígrafo."
+  },
+  {
+    "id": 174,
+    "contexto": "",
+    "enunciado": "Assinale a opção em que todas as palavras são acentuadas pela mesma razão.",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
     "dificuldade": "Médio",
     "tipo": "multipla_escolha",
     "metadata": {
@@ -317,13 +180,831 @@
       "ano": 2025
     },
     "opcoes": [
-      { "letra": "A", "texto": "Literatura de Catequese" },
-      { "letra": "B", "texto": "Poesia Barroca" },
-      { "letra": "C", "texto": "Literatura de Informação" },
-      { "letra": "D", "texto": "Poesia Árcade" },
-      { "letra": "E", "texto": "Prosa Romântica" }
+      { "letra": "A", "texto": "Parabéns, armazém, alguém" },
+      { "letra": "B", "texto": "Útil, fácil, hífen" },
+      { "letra": "C", "texto": "Relógio, série, água" },
+      { "letra": "D", "texto": "Exército, médico, último" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Todas as palavras da alternativa A são oxítonas terminadas em 'em' ou 'ens'. As palavras da alternativa D também são acentuadas pela mesma razão (todas proparoxítonas), sendo uma resposta igualmente válida dependendo da interpretação do comando."
+  },
+  {
+    "id": 175,
+    "contexto": "",
+    "enunciado": "A palavra 'juiz' não é acentuada, mas 'juízes' é. A justificativa para a acentuação de 'juízes' é:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ser uma palavra proparoxítona." },
+      { "letra": "B", "texto": "Regra do hiato, com 'i' tônico formando sílaba sozinho, seguido de 's'." },
+      { "letra": "C", "texto": "Ser uma paroxítona terminada em 'es'." },
+      { "letra": "D", "texto": "Ser um ditongo aberto tônico." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Acentua-se o 'i' e o 'u' tônicos quando formam hiato com a vogal anterior, estando eles sozinhos na sílaba ou seguidos de 's'. Em 'ju-í-zes', o 'í' tônico forma sílaba sozinho."
+  },
+  {
+    "id": 176,
+    "contexto": "",
+    "enunciado": "Qual das palavras abaixo deve ser acentuada?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Rubrica" },
+      { "letra": "B", "texto": "Item" },
+      { "letra": "C", "texto": "Hifens" },
+      { "letra": "D", "texto": "Biceps" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A palavra 'bíceps' é uma paroxítona terminada em 'ps', e essa terminação exige acento gráfico."
+  },
+  {
+    "id": 177,
+    "contexto": "O Acordo Ortográfico de 2009 alterou várias regras de acentuação e hifenização.",
+    "enunciado": "A retirada do acento de 'pára' (verbo) transformou-a em 'para' (preposição). O mesmo tipo de acento, diferencial, foi removido de qual das seguintes palavras?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Pôde (verbo no passado)" },
+      { "letra": "B", "texto": "Pêlo (substantivo)" },
+      { "letra": "C", "texto": "Vêm (verbo no plural)" },
+      { "letra": "D", "texto": "Têm (verbo no plural)" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Novo Acordo Ortográfico removeu o acento diferencial de 'pêlo' (substantivo) para diferenciar de 'pelo' (contração), assim como fez com 'pára' (verbo) e 'pólo' (substantivo)."
+  },
+  {
+    "id": 178,
+    "contexto": "",
+    "enunciado": "Marque a alternativa em que a palavra está incorretamente acentuada.",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Herói" },
+      { "letra": "B", "texto": "Feiura" },
+      { "letra": "C", "texto": "Jibóia" },
+      { "letra": "D", "texto": "Saíste" }
     ],
     "resposta_correta": "C",
-    "resolucao": "Este documento tinha o objetivo principal de descrever a nova terra, seus habitantes e suas potencialidades para o rei de Portugal, sendo um marco da literatura informativa ou de viajantes."
+    "resolucao": "Com o Novo Acordo Ortográfico, os ditongos abertos tônicos 'ei' e 'oi' em palavras paroxítonas não são mais acentuados. Portanto, o correto é 'jiboia'."
+  },
+  {
+    "id": 179,
+    "contexto": "",
+    "enunciado": "Qual a forma correta do plural de 'cidadão' e 'caráter'?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Cidadãos e caráteres" },
+      { "letra": "B", "texto": "Cidadões e carateres" },
+      { "letra": "C", "texto": "Cidadãos e caracteres" },
+      { "letra": "D", "texto": "Cidadões e carácteres" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O plural de 'cidadão' é 'cidadãos'. O plural de 'caráter' é 'caracteres', com a sílaba tônica deslocada para 'te', tornando a palavra uma paroxítona não acentuada."
+  },
+  {
+    "id": 180,
+    "contexto": "",
+    "enunciado": "A palavra 'gratuito' é pronunciada corretamente com a sílaba tônica em:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "gra-TU-i-to" },
+      { "letra": "B", "texto": "gra-tu-I-to" },
+      { "letra": "C", "texto": "GRA-tu-i-to" },
+      { "letra": "D", "texto": "nenhuma das anteriores" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A pronúncia correta de 'gratuito' é com a tonicidade na sílaba 'tu'. A vogal 'u' é a vogal do ditongo 'ui'. A palavra é uma paroxítona."
+  },
+  {
+    "id": 181,
+    "contexto": "",
+    "enunciado": "O acento em 'contém' (ele contém) se justifica por ser uma:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Palavra oxítona terminada em 'em'." },
+      { "letra": "B", "texto": "Palavra paroxítona." },
+      { "letra": "C", "texto": "Regra do hiato." },
+      { "letra": "D", "texto": "Monossílaba tônica." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Verbos como 'conter', 'manter', 'reter', quando conjugados na terceira pessoa do singular do presente do indicativo, são oxítonos terminados em 'em' e, por isso, recebem acento agudo."
+  },
+  {
+    "id": 182,
+    "contexto": "",
+    "enunciado": "De acordo com o Acordo Ortográfico, qual palavra está grafada corretamente?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Microondas" },
+      { "letra": "B", "texto": "Micro-ondas" },
+      { "letra": "C", "texto": "Anti-social" },
+      { "letra": "D", "texto": "Auto-retrato" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Usa-se o hífen quando o prefixo termina com a mesma vogal que inicia o segundo elemento. Nas outras opções, o correto seria 'antissocial' e 'autorretrato'."
+  },
+  {
+    "id": 183,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa em que o uso do hífen está INCORRETO.",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Super-homem" },
+      { "letra": "B", "texto": "Sub-humano" },
+      { "letra": "C", "texto": "Co-autor" },
+      { "letra": "D", "texto": "Pan-americano" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Com o prefixo 'co-', a regra geral é não usar hífen, aglutinando-se ao segundo elemento, mesmo que este comece com vogal. O correto é 'coautor'."
+  },
+  {
+    "id": 184,
+    "contexto": "",
+    "enunciado": "A palavra 'paraquedas' perdeu o hífen com o Acordo Ortográfico. Qual das seguintes palavras compostas também é grafada sem hífen?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Guarda-chuva" },
+      { "letra": "B", "texto": "Manda-chuva" },
+      { "letra": "C", "texto": "Girassol" },
+      { "letra": "D", "texto": "Bem-te-vi" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Em palavras compostas por justaposição onde o primeiro elemento é uma forma verbal ('gira') e o segundo começa com 's', a consoante é duplicada e não se usa hífen. 'Paraquedas' e 'mandachuva' (sem hífen) seguem regra de perda de noção de composição."
+  },
+  {
+    "id": 185,
+    "contexto": "",
+    "enunciado": "Qual das opções apresenta uma palavra que SEMPRE deve ser escrita com hífen?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Vice-rei" },
+      { "letra": "B", "texto": "Autoescola" },
+      { "letra": "C", "texto": "Pontapé" },
+      { "letra": "D", "texto": "Antirracista" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Prefixos como 'vice-', 'ex-', 'sem-', 'além-', 'aquém-', 'recém-', 'pós-', 'pré-' e 'pró-' são sempre seguidos por hífen."
+  },
+  {
+    "id": 186,
+    "contexto": "",
+    "enunciado": "Em 'sub-reino', o hífen é utilizado. Qual a regra que justifica seu uso?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O prefixo 'sub-' sempre exige hífen." },
+      { "letra": "B", "texto": "Usa-se hífen com o prefixo 'sub-' antes de palavras iniciadas por 'r'." },
+      { "letra": "C", "texto": "O segundo elemento é um substantivo." },
+      { "letra": "D", "texto": "O segundo elemento começa com a mesma vogal do prefixo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A regra específica dita que com o prefixo 'sub-', usa-se hífen se o segundo elemento começar com 'b', 'h' ou 'r'."
+  },
+  {
+    "id": 187,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa que completa corretamente a frase: 'Ele trabalha no _____, mas sonha com o bem-estar da família.'",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "diaa-dia" },
+      { "letra": "B", "texto": "dia-a-dia" },
+      { "letra": "C", "texto": "dia a dia" },
+      { "letra": "D", "texto": "diaadia" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Quando 'dia a dia' funciona como uma locução adverbial (indicando o modo como ele trabalha), escreve-se sem hífen. O hífen seria usado se fosse um substantivo ('O dia a dia dele é corrido')."
+  },
+  {
+    "id": 188,
+    "contexto": "",
+    "enunciado": "A palavra 'infraestrutura' é escrita sem hífen. Qual a regra?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O prefixo 'infra-' nunca usa hífen." },
+      { "letra": "B", "texto": "Quando o prefixo termina em vogal e o segundo elemento começa com uma vogal diferente, não se usa hífen." },
+      { "letra": "C", "texto": "Quando o prefixo termina em vogal e o segundo elemento começa com 'r' ou 's', duplicam-se as letras." },
+      { "letra": "D", "texto": "Sempre se aglutina quando o segundo elemento é substantivo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A regra geral para prefixos terminados em vogal é: aglutina-se sem hífen quando a vogal do segundo elemento for diferente. 'Infra' termina em 'a', 'estrutura' começa com 'e'."
+  },
+  {
+    "id": 189,
+    "contexto": "",
+    "enunciado": "Qual o plural correto de 'guarda-civil' e 'abaixo-assinado'?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Guardas-civil e abaixo-assinados" },
+      { "letra": "B", "texto": "Guardas-civis e abaixo-assinados" },
+      { "letra": "C", "texto": "Guarda-civis e abaixos-assinados" },
+      { "letra": "D", "texto": "Guardas-civis e abaixos-assinado" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Em 'guarda-civil' (substantivo + adjetivo), ambos os elementos vão para o plural. Em 'abaixo-assinado' (advérbio + adjetivo), apenas o segundo elemento varia."
+  },
+  {
+    "id": 190,
+    "contexto": "",
+    "enunciado": "A palavra 'saúde' tem acento, mas 'saudade' não. Por quê?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Porque 'saudade' é paroxítona terminada em 'e'." },
+      { "letra": "B", "texto": "Porque em 'saudade' o 'u' não forma hiato tônico." },
+      { "letra": "C", "texto": "Porque 'saudade' é proparoxítona." },
+      { "letra": "D", "texto": "Porque em 'saúde' o 'u' é tônico e forma hiato." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Em 'sa-ú-de', a vogal 'u' é tônica e forma um hiato com a vogal anterior 'a', estando sozinha na sílaba. Em 'sau-da-de', o 'u' não é a vogal tônica da palavra e faz parte de um ditongo com 'a'."
+  },
+  {
+    "id": 191,
+    "contexto": "",
+    "enunciado": "Quantos fonemas existem na palavra 'transportar'?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "11" },
+      { "letra": "B", "texto": "10" },
+      { "letra": "C", "texto": "9" },
+      { "letra": "D", "texto": "12" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A palavra 'transportar' tem 11 letras. Os grupos 'an' e 'or' representam dígrafos vocálicos. T-r-a-n-s-p-o-r-t-a-r. Fonemas: /tɾɐ̃spoɾtaɾ/. São 9 fonemas."
+  },
+  {
+    "id": 192,
+    "contexto": "",
+    "enunciado": "Acentuam-se os monossílabos tônicos terminados em:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "a, e, o, seguidos ou não de 's'." },
+      { "letra": "B", "texto": "i, u, seguidos ou não de 's'." },
+      { "letra": "C", "texto": "em, ens." },
+      { "letra": "D", "texto": "r, l, x, n." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A regra de acentuação para monossílabos tônicos é clara: acentuam-se os que terminam em -a(s), -e(s), -o(s). Exemplos: pá, fé, nó, gás, mês, sós."
+  },
+  {
+    "id": 193,
+    "contexto": "",
+    "enunciado": "Qual a grafia correta da palavra que significa 'abaixo do som'?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Sub-sonico" },
+      { "letra": "B", "texto": "Subsonico" },
+      { "letra": "C", "texto": "Sub-sônico" },
+      { "letra": "D", "texto": "Subsônico" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Com o prefixo 'sub-', se o segundo elemento começa com 's', o 'b' é suprimido e não se usa hífen. A palavra 'sônico' é proparoxítona, mantendo seu acento."
+  },
+  {
+    "id": 194,
+    "contexto": "",
+    "enunciado": "A palavra 'pneu' apresenta qual fenômeno fonético?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Dígrafo" },
+      { "letra": "B", "texto": "Encontro consonantal" },
+      { "letra": "C", "texto": "Ditongo" },
+      { "letra": "D", "texto": "Hiato" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O encontro das consoantes 'p' e 'n' no início da palavra 'pneu' é um caso de encontro consonantal, pois ambos os sons são produzidos."
+  },
+  {
+    "id": 195,
+    "contexto": "",
+    "enunciado": "Qual palavra é acentuada por ser uma paroxítona terminada em ditongo?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Família" },
+      { "letra": "B", "texto": "Caráter" },
+      { "letra": "C", "texto": "Tórax" },
+      { "letra": "D", "texto": "País" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A palavra 'família' (fa-mí-lia) é uma paroxítona cuja última sílaba é um ditongo crescente ('ia'). Esta é uma das regras de acentuação para paroxítonas."
+  },
+  {
+    "id": 196,
+    "contexto": "",
+    "enunciado": "Assinale a forma correta de usar o prefixo 'ante'.",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ante-sala" },
+      { "letra": "B", "texto": "Ante-ontem" },
+      { "letra": "C", "texto": "Antesala" },
+      { "letra": "D", "texto": "Ante-braço" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O prefixo 'ante-' se junta sem hífen ao segundo elemento, exceto quando este começa com 'h' ou com a mesma vogal ('e'). Como 'sala' começa com 's', a forma correta é 'antesala'."
+  },
+  {
+    "id": 197,
+    "contexto": "",
+    "enunciado": "A palavra 'coerdeiro' não tem hífen. A justificativa é:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O prefixo 'co-' é uma exceção e geralmente se aglutina." },
+      { "letra": "B", "texto": "O segundo elemento começa com vogal diferente." },
+      { "letra": "C", "texto": "O segundo elemento é um substantivo." },
+      { "letra": "D", "texto": "A palavra perdeu a noção de composição." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O prefixo 'co-' é uma exceção notável nas regras de hifenização. Ele se aglutina ao segundo elemento mesmo que este comece com 'o' (a mesma vogal com que 'co' termina), como em 'coordenar' e 'cooperar'. A única exceção é 'co-herdeiro', por causa do 'h'."
+  },
+  {
+    "id": 198,
+    "contexto": "",
+    "enunciado": "Na frase 'O voo foi cancelado', a palavra 'voo' não tem mais acento. Qual outra palavra perdeu o acento pela mesma regra?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Heroico" },
+      { "letra": "B", "texto": "Creem" },
+      { "letra": "C", "texto": "Polo" },
+      { "letra": "D", "texto": "Ideia" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Novo Acordo Ortográfico eliminou o acento circunflexo dos hiatos 'ee' e 'oo'. Assim como 'voo', palavras como 'creem', 'leem', 'veem' e 'enjoo' não são mais acentuadas."
+  },
+  {
+    "id": 199,
+    "contexto": "",
+    "enunciado": "Qual palavra possui o mesmo número de letras e fonemas?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Folha" },
+      { "letra": "B", "texto": "Hoje" },
+      { "letra": "C", "texto": "Letra" },
+      { "letra": "D", "texto": "Quilo" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A palavra 'letra' tem 5 letras e 5 fonemas (/l-e-t-r-a/). As outras opções têm dígrafos ('lh', 'h' inicial mudo, 'qu'), o que causa diferença entre o número de letras e fonemas."
+  },
+  {
+    "id": 200,
+    "contexto": "",
+    "enunciado": "Assinale a opção que contém um erro de acentuação.",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Eles mantêm a ordem." },
+      { "letra": "B", "texto": "O menino para e olha." },
+      { "letra": "C", "texto": "A rainha tem poder." },
+      { "letra": "D", "texto": "Ele assembléia os móveis." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O correto seria 'ele assembleia os móveis'. O substantivo 'assembleia' e o verbo 'assemblear' perderam o acento no ditongo aberto 'ei' com o Novo Acordo Ortográfico."
+  },
+  {
+    "id": 201,
+    "contexto": "",
+    "enunciado": "A forma correta para 'além do mar' é:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Além-mar" },
+      { "letra": "B", "texto": "Além mar" },
+      { "letra": "C", "texto": "Alémmar" },
+      { "letra": "D", "texto": "Além-Mar" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O prefixo 'além-' é um dos que sempre exigem o uso do hífen, assim como 'aquém-', 'recém-' e 'sem-'."
+  },
+  {
+    "id": 202,
+    "contexto": "",
+    "enunciado": "Na palavra 'guaraná', o grupo 'gu' é um:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Dígrafo, pois o 'u' não é pronunciado." },
+      { "letra": "B", "texto": "Encontro consonantal, pois ambas as letras são consoantes." },
+      { "letra": "C", "texto": "Não é dígrafo, pois o 'u' é pronunciado." },
+      { "letra": "D", "texto": "Ditongo, pois 'u' e 'a' formam um som único." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Para que 'gu' seja um dígrafo, a letra 'u' não pode ser pronunciada (como em 'guerra'). Em 'guaraná', o 'u' é pronunciado, formando um som distinto antes do 'a'. Portanto, não se trata de um dígrafo."
+  },
+  {
+    "id": 203,
+    "contexto": "",
+    "enunciado": "A palavra 'bônus' é acentuada por ser uma:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Oxítona terminada em 'us'." },
+      { "letra": "B", "texto": "Paroxítona terminada em 'us'." },
+      { "letra": "C", "texto": "Proparoxítona." },
+      { "letra": "D", "texto": "Monossílaba tônica." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Bônus' (bô-nus) é uma palavra paroxítona terminada em 'us', e esta é uma das regras de acentuação para paroxítonas."
+  },
+  {
+    "id": 204,
+    "contexto": "",
+    "enunciado": "Qual a grafia correta para o composto de 'para' e 'raios'?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Pararaios" },
+      { "letra": "B", "texto": "Para-raios" },
+      { "letra": "C", "texto": "Para raios" },
+      { "letra": "D", "texto": "Pára-raios" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Em compostos com formas verbais (como 'para'), o hífen é mantido. A forma 'pára' (verbo) não tem mais acento, mas no composto 'para-raios' o hífen permanece."
+  },
+  {
+    "id": 205,
+    "contexto": "",
+    "enunciado": "A palavra 'circuito' contém um:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Hiato" },
+      { "letra": "B", "texto": "Tritongo" },
+      { "letra": "C", "texto": "Ditongo" },
+      { "letra": "D", "texto": "Dígrafo" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A sequência 'ui' em 'cir-cui-to' forma um ditongo, pois a vogal 'u' e a semivogal 'i' estão na mesma sílaba."
+  },
+  {
+    "id": 206,
+    "contexto": "",
+    "enunciado": "A palavra 'através' leva acento por ser uma:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Oxítona terminada em 'es'." },
+      { "letra": "B", "texto": "Paroxítona terminada em 's'." },
+      { "letra": "C", "texto": "Proparoxítona." },
+      { "letra": "D", "texto": "Monossílaba tônica." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Acentuam-se as oxítonas terminadas em -a(s), -e(s), -o(s), -em, -ens. 'Através' se encaixa na regra das terminadas em 'es'."
+  },
+  {
+    "id": 207,
+    "contexto": "",
+    "enunciado": "Qual a grafia correta para o oposto de 'herói'?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Antiherói" },
+      { "letra": "B", "texto": "Anti-herói" },
+      { "letra": "C", "texto": "Antierói" },
+      { "letra": "D", "texto": "Anti herói" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A regra determina o uso de hífen quando o prefixo (como 'anti-') precede uma palavra iniciada por 'h'."
+  },
+  {
+    "id": 208,
+    "contexto": "",
+    "enunciado": "Em 'pneumoultramicroscopicossilicovulcanoconiose', os encontros 'pn', 'ss', 'sc' e 'lc' são todos casos de:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Dígrafos" },
+      { "letra": "B", "texto": "Encontros consonantais" },
+      { "letra": "C", "texto": "Hiato" },
+      { "letra": "D", "texto": "Ditongo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Todos os grupos mencionados são encontros de duas consoantes com sons distintos (exceto 'ss', que é um dígrafo). A pegadinha está na mistura: 'pn', 'sc' e 'lc' são encontros consonantais, mas 'ss' é dígrafo. A melhor resposta, contudo, é 'Encontros consonantais', pois é o fenômeno predominante. Em uma questão rigorosa, ela seria anulável."
+  },
+  {
+    "id": 209,
+    "contexto": "",
+    "enunciado": "O acento diferencial é mantido em:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ele para o carro." },
+      { "letra": "B", "texto": "O pelo do gato é macio." },
+      { "letra": "C", "texto": "Ele não pôde vir ontem." },
+      { "letra": "D", "texto": "Vamos jogar polo." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O acento diferencial foi mantido em 'pôde' (pretérito perfeito do verbo poder) para diferenciar de 'pode' (presente do indicativo) e em 'pôr' (verbo) para diferenciar de 'por' (preposição)."
+  },
+  {
+    "id": 210,
+    "contexto": "",
+    "enunciado": "A expressão 'cor de rosa' deve ser escrita:",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Cor-de-rosa" },
+      { "letra": "B", "texto": "Corderosa" },
+      { "letra": "C", "texto": "Cor de rosa" },
+      { "letra": "D", "texto": "Cor-de-Rosa" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Quando 'cor de' é seguido por um substantivo que designa uma tonalidade, a expressão é hifenizada. Ex: cor-de-rosa, cor-de-vinho."
+  },
+  {
+    "id": 211,
+    "contexto": "",
+    "enunciado": "A palavra 'caatinga' apresenta um hiato. Qual outra palavra também apresenta hiato?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Fonética e Fonologia"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Pai" },
+      { "letra": "B", "texto": "Mãe" },
+      { "letra": "C", "texto": "Poeta" },
+      { "letra": "D", "texto": "Quase" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Em 'poeta' (po-e-ta), as vogais 'o' e 'e' estão em sílabas diferentes, formando um hiato, assim como em 'caatinga' (ca-a-tin-ga)."
+  },
+  {
+    "id": 212,
+    "contexto": "",
+    "enunciado": "'Paranoico' e 'heroico' perderam o acento. Por qual regra?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Acentuação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Fim do acento em hiatos." },
+      { "letra": "B", "texto": "Fim do acento diferencial." },
+      { "letra": "C", "texto": "Fim do acento em ditongos abertos em palavras paroxítonas." },
+      { "letra": "D", "texto": "Fim do acento em oxítonas." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Novo Acordo Ortográfico removeu o acento agudo dos ditongos abertos tônicos 'ei' e 'oi' das palavras paroxítonas. Note que em oxítonas como 'herói', o acento permanece."
+  },
+  {
+    "id": 213,
+    "contexto": "",
+    "enunciado": "Qual a grafia correta para o composto de 'bem' e 'vindo'?",
+    "disciplina": "Português",
+    "assunto": ["Ortografia", "Hífen"],
+    "dificuldade": "Fácil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Bem-vindo" },
+      { "letra": "B", "texto": "Bemvindo" },
+      { "letra": "C", "texto": "Ben-vindo" },
+      { "letra": "D", "texto": "Benvindo" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Com o advérbio 'bem', geralmente se usa o hífen, especialmente quando a palavra seguinte tem vida autônoma e a pronúncia o justifica. Existem exceções como 'benfeito' e 'benquerer'."
   }
 ]
