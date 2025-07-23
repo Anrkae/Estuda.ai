@@ -3519,5 +3519,612 @@
     ],
     "resposta_correta": "B",
     "resolucao": "'The news' é um substantivo coletivo com sentido singular. O verbo leva S: 'starts'."
+  },
+  {
+    "id": 228,
+    "contexto": "A transferência da corte portuguesa para o Brasil em 1808 foi um evento sem precedentes, motivado diretamente pela conjuntura política europeia do início do século XIX.",
+    "enunciado": "Qual foi o fator determinante que forçou o príncipe regente D. João a transferir a sede do Império Português para o Brasil?",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "A Fuga da Corte Portuguesa"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Uma crise econômica interna em Portugal que tornava a administração inviável." },
+      { "letra": "B", "texto": "A recusa de Portugal em aderir ao Bloqueio Continental decretado por Napoleão contra a Inglaterra." },
+      { "letra": "C", "texto": "Um convite formal das elites coloniais brasileiras para que o príncipe governasse diretamente da colônia." },
+      { "letra": "D", "texto": "A iminência de uma guerra civil em Portugal entre liberais e absolutistas." },
+      { "letra": "E", "texto": "A descoberta de novas minas de ouro no Brasil, que exigia a presença do rei para garantir a arrecadação." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A transferência da corte foi uma fuga estratégica devido à pressão de Napoleão Bonaparte. Portugal, um antigo aliado da Inglaterra, recusou-se a aderir ao Bloqueio Continental (1806), que proibia o comércio com os britânicos. Como consequência, as tropas francesas invadiram Portugal, forçando D. João a se mudar para o Brasil com a escolta da marinha inglesa."
+  },
+  {
+    "id": 229,
+    "contexto": "Logo após sua chegada ao Brasil, D. João tomou uma medida econômica de impacto imediato e profundo, que alterou as relações comerciais da colônia para sempre.",
+    "enunciado": "A primeira e mais significativa medida econômica decretada por D. João em 1808, que na prática encerrou o Pacto Colonial, foi a:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Econômicas"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Criação do Banco do Brasil." },
+      { "letra": "B", "texto": "Revogação do Alvará de 1785." },
+      { "letra": "C", "texto": "Assinatura dos Tratados de Comércio e Navegação com a Inglaterra." },
+      { "letra": "D", "texto": "Abertura dos Portos às Nações Amigas." },
+      { "letra": "E", "texto": "Elevação do Brasil à condição de Reino Unido." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Abertura dos Portos às Nações Amigas, decretada por D. João assim que chegou a Salvador em 1808, foi a medida que rompeu com o monopólio comercial português, conhecido como Pacto Colonial. A partir de então, o Brasil pôde comerciar diretamente com outras nações, principalmente a Inglaterra."
+  },
+  {
+    "id": 230,
+    "contexto": "Em 1810, para consolidar a aliança com a Inglaterra, D. João assinou tratados que garantiam vantagens significativas aos britânicos no mercado brasileiro.",
+    "enunciado": "O Tratado de Comércio e Navegação de 1810 estabelecia tarifas alfandegárias distintas para os produtos importados pelo Brasil. Assinale a alternativa que apresenta corretamente as taxas.",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Econômicas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "15% para produtos portugueses, 16% para ingleses e 24% para os demais." },
+      { "letra": "B", "texto": "15% para produtos ingleses e 24% para todos os outros, incluindo os portugueses." },
+      { "letra": "C", "texto": "15% para produtos ingleses, 16% para portugueses e 24% para os demais." },
+      { "letra": "D", "texto": "16% para produtos ingleses e 15% para produtos portugueses, incentivando o comércio interno." },
+      { "letra": "E", "texto": "24% para todos os produtos estrangeiros, sem distinção, para proteger a economia portuguesa." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Tratado de Comércio e Navegação de 1810 é um exemplo claro do privilégio britânico. As tarifas foram fixadas em 15% para produtos ingleses, 16% para produtos portugueses e 24% para os de outras nações. Essa medida, na prática, tornava os produtos de Portugal mais caros que os da Inglaterra no mercado brasileiro, consolidando a hegemonia econômica britânica."
+  },
+  {
+    "id": 231,
+    "contexto": "A instalação da Corte no Rio de Janeiro demandou a criação de uma complexa estrutura administrativa, cultural e financeira, processo conhecido como 'Inversão Brasileira'.",
+    "enunciado": "Qual das seguintes instituições foi criada durante o Período Joanino com o objetivo de custear as despesas da Corte, realizar obras e emitir moeda?",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Administrativas e Culturais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A Casa da Moeda do Brasil." },
+      { "letra": "B", "texto": "O Tesouro Nacional." },
+      { "letra": "C", "texto": "A Junta de Comércio." },
+      { "letra": "D", "texto": "O Banco do Brasil." },
+      { "letra": "E", "texto": "A Casa de Suplicação." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Banco do Brasil foi fundado por D. João em 1808. Sua criação foi fundamental para financiar a reestruturação do Rio de Janeiro como sede do Império, custear a máquina pública e a vida luxuosa da Corte, além de ser o primeiro emissor de papel-moeda do país."
+  },
+  {
+    "id": 232,
+    "contexto": "No contexto pós-napoleônico, D. João precisou legitimar sua permanência no Brasil perante as potências europeias reunidas no Congresso de Viena.",
+    "enunciado": "A medida tomada por D. João em 1815, que alterou o status político do Brasil e formalmente pôs fim à sua condição de colônia, foi:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Administrativas e Culturais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A Abertura dos Portos às Nações Amigas." },
+      { "letra": "B", "texto": "A aclamação de D. João VI como Rei no Rio de Janeiro." },
+      { "letra": "C", "texto": "A convocação da Missão Artística Francesa para modernizar a capital." },
+      { "letra": "D", "texto": "A criação da Imprensa Régia, garantindo liberdade de expressão." },
+      { "letra": "E", "texto": "A elevação do Brasil à categoria de Reino Unido a Portugal e Algarves." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Em 1815, para poder participar do Congresso de Viena como soberano de um reino (e não como um rei governando de uma colônia), D. João elevou o Brasil à condição de Reino Unido a Portugal e Algarves. Essa medida, embora simbólica, foi crucial, pois extinguiu oficialmente o status colonial do Brasil, tornando o processo de independência quase irreversível."
+  },
+  {
+    "id": 233,
+    "contexto": "A Revolução Pernambucana de 1817 foi o mais importante movimento de contestação à administração joanina, chegando a instalar um governo provisório.",
+    "enunciado": "Entre as causas da Revolução Pernambucana de 1817, NÃO se pode citar:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Revolução Pernambucana de 1817"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A alta carga de impostos exigida para sustentar os luxos da Corte no Rio de Janeiro." },
+      { "letra": "B", "texto": "A influência de ideais iluministas e republicanos entre a elite intelectual local." },
+      { "letra": "C", "texto": "A crise econômica do açúcar e do algodão, principais produtos da região." },
+      { "letra": "D", "texto": "A grande seca de 1816, que agravou a fome e a miséria na capitania." },
+      { "letra": "E", "texto": "O desejo de abolir a escravidão e integrar a população negra à nova república." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Todas as alternativas, exceto a E, foram causas diretas da Revolução Pernambucana. A principal contradição do movimento foi que, apesar de seus ideais liberais e republicanos, ele manteve a escravidão intocada. Os líderes, em sua maioria grandes proprietários rurais, dependiam da mão de obra escrava e não tinham interesse em promover a abolição."
+  },
+  {
+    "id": 234,
+    "contexto": "A política externa de D. João no Brasil foi expansionista, buscando consolidar fronteiras e retaliar inimigos europeus na América do Sul.",
+    "enunciado": "Durante o Período Joanino, o governo luso-brasileiro anexou um território na região do Prata, que corresponde ao atual Uruguai. Esse território foi denominado:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Política Externa"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "República do Paraguai." },
+      { "letra": "B", "texto": "Província de Misiones." },
+      { "letra": "C", "texto": "Banda Oriental." },
+      { "letra": "D", "texto": "Província Cisplatina." },
+      { "letra": "E", "texto": "Alto Peru." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Aproveitando-se das lutas de independência na região do Rio da Prata, D. João ordenou a invasão da Banda Oriental do Rio Uruguai em 1816. A região foi anexada ao território brasileiro em 1821 com o nome de Província Cisplatina, permanecendo sob domínio brasileiro até 1828, quando se tornou a República Oriental do Uruguai."
+  },
+  {
+    "id": 235,
+    "enunciado": "A vinda da Missão Artística Francesa em 1816, liderada por Joachim Lebreton, teve como principal objetivo:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Administrativas e Culturais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Estudar a fauna e a flora brasileiras para catalogação." },
+      { "letra": "B", "texto": "Instruir militarmente o exército luso-brasileiro com táticas napoleônicas." },
+      { "letra": "C", "texto": "Introduzir o ensino superior de artes e ofícios no Brasil, fundando uma Academia de Belas Artes." },
+      { "letra": "D", "texto": "Estabelecer relações diplomáticas com o novo governo da França pós-Napoleão." },
+      { "letra": "E", "texto": "Desenvolver a produção de café na região do Vale do Paraíba." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Missão Artística Francesa foi contratada por D. João para estabelecer no Brasil o ensino oficial das artes. O grupo, que incluía artistas como Jean-Baptiste Debret e Nicolas-Antoine Taunay, foi responsável pela criação da Escola Real de Ciências, Artes e Ofícios, que mais tarde se tornaria a Academia Imperial de Belas Artes, introduzindo o estilo neoclássico no país."
+  },
+  {
+    "id": 236,
+    "contexto": "A Revolução Liberal do Porto, em 1820, foi o evento que precipitou o fim do Período Joanino no Brasil.",
+    "enunciado": "As cortes portuguesas, liderando a Revolução do Porto, exigiam de D. João VI o seu retorno imediato a Portugal e, em relação ao Brasil, pretendiam:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "O Fim do Período Joanino"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Manter a autonomia brasileira, transformando o império em uma federação." },
+      { "letra": "B", "texto": "Conceder a independência imediata ao Brasil, mas sob a condição de uma aliança militar." },
+      { "letra": "C", "texto": "A recolonização do Brasil, com a anulação das medidas liberais e a volta do monopólio comercial." },
+      { "letra": "D", "texto": "Enviar D. Pedro para governar Portugal, enquanto D. João permaneceria no Brasil." },
+      { "letra": "E", "texto": "Dividir o Brasil em várias colônias menores, diretamente administradas por Lisboa." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Revolução Liberal do Porto tinha um caráter duplo: liberal para Portugal (exigindo uma constituição) e conservador para o Brasil. A burguesia portuguesa, prejudicada pela perda do monopólio, exigia a volta da Corte e a recolonização do Brasil, ou seja, o restabelecimento do Pacto Colonial e a revogação das liberdades concedidas, como a Abertura dos Portos."
+  },
+  {
+    "id": 237,
+    "enunciado": "Dentre as várias instituições culturais criadas por D. João, qual foi responsável pela publicação do primeiro jornal impresso no Brasil, a 'Gazeta do Rio de Janeiro'?",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Administrativas e Culturais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A Biblioteca Real." },
+      { "letra": "B", "texto": "A Academia de Belas Artes." },
+      { "letra": "C", "texto": "A Imprensa Régia." },
+      { "letra": "D", "texto": "O Jardim Botânico." },
+      { "letra": "E", "texto": "A Casa de Suplicação." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Imprensa Régia, criada em 1808, foi a primeira editora oficial do Brasil. Ela detinha o monopólio das publicações e foi responsável por imprimir a 'Gazeta do Rio de Janeiro', o primeiro jornal do país, que funcionava, na prática, como um órgão oficial do governo."
+  },
+  {
+    "id": 238,
+    "contexto": "Apesar do incentivo nominal à industrialização, o desenvolvimento de manufaturas no Brasil durante o Período Joanino foi extremamente limitado.",
+    "enunciado": "A revogação do Alvará de 1785, que proibia manufaturas no Brasil, teve pouco efeito prático. O principal obstáculo ao desenvolvimento industrial brasileiro nesse período foi:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Econômicas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A falta de matérias-primas na colônia." },
+      { "letra": "B", "texto": "A proibição da mão de obra escrava nas fábricas." },
+      { "letra": "C", "texto": "A concorrência esmagadora dos produtos ingleses, favorecidos por baixas tarifas alfandegárias." },
+      { "letra": "D", "texto": "A resistência da elite agrária, que via a indústria como uma ameaça ao seu poder." },
+      { "letra": "E", "texto": "A ausência de rios navegáveis para o transporte da produção." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Embora a proibição de manufaturas tenha sido revogada, a indústria local não conseguiu prosperar. O principal motivo foi a concorrência avassaladora dos produtos manufaturados britânicos, que entravam no Brasil com uma tarifa baixíssima de 15% (Tratado de 1810), tornando impossível para qualquer produto nacional competir em preço e escala."
+  },
+  {
+    "id": 239,
+    "contexto": "A Revolução Pernambucana de 1817 foi um movimento complexo, com características liberais, mas também com contradições evidentes.",
+    "enunciado": "Analisando o governo provisório instalado pelos revoltosos em Pernambuco em 1817, sua principal contradição política e social foi:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Revolução Pernambucana de 1817"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Aumentar o soldo dos militares enquanto diminuía os impostos sobre o comércio." },
+      { "letra": "B", "texto": "Declarar liberdade de imprensa, mas perseguir os jornais que apoiavam a monarquia." },
+      { "letra": "C", "texto": "Defender ideais de liberdade e proclamar uma República, mas manter a escravidão." },
+      { "letra": "D", "texto": "Estabelecer a liberdade de culto, mas manter o catolicismo como religião oficial." },
+      { "letra": "E", "texto": "Buscar apoio de outras províncias, mas governar de forma centralizada a partir de Recife." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A maior contradição da Revolução Pernambucana foi a defesa de ideais iluministas de liberdade, igualdade e republicanismo, ao mesmo tempo em que preservava a instituição da escravidão. Isso ocorreu porque a base de apoio do movimento era a elite agrária, cuja riqueza dependia diretamente do trabalho escravo."
+  },
+  {
+    "id": 240,
+    "enunciado": "Qual alternativa descreve corretamente uma das cláusulas do Tratado de Aliança e Amizade de 1810 entre Portugal e Inglaterra?",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Econômicas"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A proibição total e imediata do tráfico de escravos para o Brasil." },
+      { "letra": "B", "texto": "A garantia de que súditos britânicos no Brasil seriam julgados por leis e juízes portugueses." },
+      { "letra": "C", "texto": "A concessão de liberdade religiosa aos protestantes (anglicanos) no Brasil." },
+      { "letra": "D", "texto": "A fixação da tarifa de 15% para produtos ingleses." },
+      { "letra": "E", "texto": "A entrega da Província Cisplatina para a administração britânica." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Tratado de Aliança e Amizade estabelecia, entre outras coisas, a garantia de liberdade religiosa para os anglicanos e um foro privilegiado para os súditos britânicos (direito de serem julgados por juízes ingleses). A tarifa de 15% estava no Tratado de Comércio e Navegação. O compromisso sobre o tráfico de escravos era de uma limitação gradual, não uma proibição imediata."
+  },
+  {
+    "id": 241,
+    "contexto": "Analise as afirmações sobre o Período Joanino e o processo de 'inversão brasileira'.",
+    "enunciado": "A expressão 'inversão brasileira' refere-se ao fato de que, durante o Período Joanino, a colônia passou a ser a sede do Império. Todas as alternativas abaixo são exemplos dessa inversão, EXCETO:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Administrativas e Culturais"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A instalação de ministérios e de um tribunal superior de justiça (Casa de Suplicação) no Rio de Janeiro." },
+      { "letra": "B", "texto": "A tomada de decisões políticas que afetavam todo o Império Português a partir do Brasil." },
+      { "letra": "C", "texto": "O envio de tropas luso-brasileiras para conquistar territórios vizinhos, como a Guiana Francesa." },
+      { "letra": "D", "texto": "A criação de um banco central, escolas superiores e uma biblioteca com o acervo real." },
+      { "letra": "E", "texto": "A subordinação da economia brasileira aos interesses comerciais da metrópole em Lisboa." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A 'inversão brasileira' significa que o Brasil se tornou o centro do poder. A subordinação da economia brasileira aos interesses de Lisboa era a essência do Pacto Colonial, exatamente a lógica que foi quebrada (invertida) com a vinda da Corte e a Abertura dos Portos. Todas as outras opções são exemplos da transformação do Brasil em sede administrativa, política, militar e cultural do Império."
+  },
+  {
+    "id": 242,
+    "enunciado": "A repressão de D. João VI à Revolução Pernambucana de 1817 pode ser caracterizada como:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Revolução Pernambucana de 1817"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Lenta e ineficaz, permitindo que a república se expandisse para outras províncias." },
+      { "letra": "B", "texto": "Negociadora, buscando um acordo pacífico e anistiando os líderes." },
+      { "letra": "C", "texto": "Extremamente violenta, com bloqueio naval, cerco terrestre e a execução dos principais líderes." },
+      { "letra": "D", "texto": "Diplomática, utilizando a influência da Igreja Católica para mediar o conflito." },
+      { "letra": "E", "texto": "Indiferente, pois o governo estava mais preocupado com os assuntos no Rio da Prata." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A reação de D. João VI foi implacável e violenta. O governo no Rio de Janeiro enviou uma poderosa força militar que impôs um bloqueio naval e um cerco por terra a Recife. Após a derrota do movimento em 75 dias, a repressão continuou com a prisão e execução exemplar de seus principais líderes, como Domingos José Martins."
+  },
+  {
+    "id": 243,
+    "contexto": "A política externa joanina envolveu a invasão da Guiana Francesa em 1809.",
+    "enunciado": "Qual foi a principal motivação para a ocupação da Guiana Francesa pelas tropas luso-brasileiras?",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Política Externa"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Uma retaliação direta à invasão de Portugal pelas tropas de Napoleão Bonaparte." },
+      { "letra": "B", "texto": "O interesse em controlar as ricas minas de ouro da região de Caiena." },
+      { "letra": "C", "texto": "Um pedido de ajuda dos colonos franceses que queriam se livrar do domínio napoleônico." },
+      { "letra": "D", "texto": "Expandir a fronteira norte do Brasil até o Caribe." },
+      { "letra": "E", "texto": "Um acordo com a Inglaterra para dividir os territórios franceses na América." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A invasão da Guiana Francesa foi uma clara retaliação pela invasão de Portugal ordenada por Napoleão. A sede do império português agora estava no Brasil, e de lá D. João ordenou o ataque ao território vizinho da França, ocupando sua capital, Caiena, que foi administrada pelos portugueses até 1817."
+  },
+  {
+    "id": 244,
+    "contexto": "Analise as seguintes afirmações sobre as transformações ocorridas no Brasil durante o Período Joanino.",
+    "enunciado": "I. A Abertura dos Portos beneficiou principalmente os comerciantes portugueses, que mantiveram seus privilégios.\nII. A elevação do Brasil a Reino Unido foi uma medida puramente simbólica, sem consequências políticas práticas.\nIII. A criação de instituições como o Banco do Brasil e a Imprensa Régia contribuiu para dotar a colônia de uma estrutura de Estado.\n\nEstá(ão) correta(s) apenas a(s) afirmativa(s):",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Econômicas", "Medidas Administrativas e Culturais"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "I" },
+      { "letra": "B", "texto": "II" },
+      { "letra": "C", "texto": "III" },
+      { "letra": "D", "texto": "I e II" },
+      { "letra": "E", "texto": "II e III" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Análise das afirmativas:\nI - Incorreta. A Abertura dos Portos e, principalmente, os Tratados de 1810 beneficiaram a Inglaterra, cujos produtos tinham tarifas mais baixas que os de Portugal.\nII - Incorreta. A elevação a Reino Unido teve uma consequência política crucial: o Brasil deixou de ser colônia formalmente, o que tornou a posterior exigência de recolonização inaceitável para as elites brasileiras.\nIII - Correta. A criação de toda a estrutura administrativa, financeira, jurídica e cultural no Rio de Janeiro foi fundamental para construir as bases do futuro Estado brasileiro."
+  },
+  {
+    "id": 245,
+    "enunciado": "A decisão de D. João VI de retornar a Portugal em 1821, deixando seu filho D. Pedro como príncipe regente no Brasil, foi uma consequência direta da:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "O Fim do Período Joanino"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Revolução Pernambucana de 1817, que demonstrou a instabilidade da colônia." },
+      { "letra": "B", "texto": "Derrota final de Napoleão Bonaparte em Waterloo." },
+      { "letra": "C", "texto": "Pressão das elites agrárias brasileiras, que desejavam a independência." },
+      { "letra": "D", "texto": "Revolução Liberal do Porto, que exigia a volta do rei e uma Constituição." },
+      { "letra": "E", "texto": "Crise de sucessão do trono português com a morte da rainha D. Maria I." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O evento que forçou D. João VI a retornar foi a Revolução Liberal do Porto (1820). As Cortes (parlamento) portuguesas exigiram seu retorno imediato para jurar uma Constituição, ameaçando destroná-lo caso não voltasse. Para não perder a coroa portuguesa, ele retornou, deixando D. Pedro como regente, o que acabou por acelerar a Independência do Brasil."
+  },
+  {
+    "id": 246,
+    "contexto": "O Período Joanino foi marcado por um grande aumento dos gastos públicos, financiados principalmente pela criação de novos impostos que recaíam sobre a população.",
+    "enunciado": "A insatisfação popular e das elites provinciais, como a de Pernambuco em 1817, com o governo de D. João devia-se, em grande parte, ao fato de que:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Revolução Pernambucana de 1817"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O governo proibia o comércio interno entre as capitanias, centralizando tudo no Rio de Janeiro." },
+      { "letra": "B", "texto": "As províncias, especialmente as do Nordeste, arcavam com pesados impostos para custear a luxuosa estrutura da Corte no Rio de Janeiro." },
+      { "letra": "C", "texto": "D. João se recusava a nomear brasileiros para cargos administrativos, preenchendo-os exclusivamente com nobres portugueses." },
+      { "letra": "D", "texto": "A Abertura dos Portos havia prejudicado as exportações do Nordeste, que só podiam vender para Portugal." },
+      { "letra": "E", "texto": "O Banco do Brasil se recusava a fornecer crédito para os agricultores de fora da capitania do Rio de Janeiro." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Um dos principais focos de tensão no Período Joanino era o fiscal. A instalação e a manutenção da gigantesca e luxuosa estrutura da Corte no Rio de Janeiro eram financiadas por impostos cobrados em todo o Brasil. As províncias, como Pernambuco, sentiam que estavam pagando a conta do desenvolvimento e do luxo de uma única cidade, o que gerou forte ressentimento e foi uma das principais causas da Revolução de 1817."
+  },
+  {
+    "id": 247,
+    "enunciado": "O governo republicano estabelecido em Pernambuco em 1817 tomou várias medidas de caráter liberal. Qual das alternativas abaixo apresenta uma dessas medidas?",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Revolução Pernambucana de 1817"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A abolição imediata da escravatura." },
+      { "letra": "B", "texto": "A criação de uma nova moeda para todo o Brasil." },
+      { "letra": "C", "texto": "O estabelecimento da liberdade de imprensa e de culto." },
+      { "letra": "D", "texto": "A assinatura de um tratado comercial com a França." },
+      { "letra": "E", "texto": "A expropriação das terras dos comerciantes portugueses." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Inspirado pelos ideais iluministas, o governo provisório da Revolução Pernambucana decretou, entre outras medidas, a liberdade de imprensa e a liberdade de culto religioso (tolerância religiosa), que eram pautas liberais avançadas para a época. No entanto, não aboliu a escravidão."
+  },
+  {
+    "id": 248,
+    "contexto": "Analise o impacto dos Tratados de 1810 na economia luso-brasileira.",
+    "enunciado": "Uma consequência direta da assinatura do Tratado de Comércio e Navegação foi que, no mercado brasileiro, os produtos:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Econômicas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Portugueses se tornaram mais baratos que os ingleses, incentivando o comércio metropolitano." },
+      { "letra": "B", "texto": "Franceses foram proibidos de circular, como retaliação pela invasão de Portugal." },
+      { "letra": "C", "texto": "Brasileiros passaram a ser exportados sem nenhuma taxa para a Europa." },
+      { "letra": "D", "texto": "Ingleses pagavam menos impostos de importação do que os próprios produtos portugueses." },
+      { "letra": "E", "texto": "De outras nações sul-americanas receberam isenção total de tarifas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A cláusula mais famosa do Tratado de Comércio e Navegação estabelecia as tarifas de importação: 15% para produtos ingleses, 16% para portugueses e 24% para os demais. A consequência direta e peculiar dessa medida foi que os produtos britânicos se tornaram mais baratos que os da própria metrópole portuguesa dentro do Brasil, o que prejudicou os comerciantes lusitanos e consolidou a dominância inglesa."
+  },
+  {
+    "id": 249,
+    "enunciado": "O legado da Revolução Pernambucana de 1817, apesar de sua derrota, foi significativo porque:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Revolução Pernambucana de 1817"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi o único movimento do período colonial que ultrapassou a fase de conspiração e efetivamente chegou ao poder." },
+      { "letra": "B", "texto": "Conseguiu abolir a escravidão na província de Pernambuco por 75 dias." },
+      { "letra": "C", "texto": "Levou D. João a antecipar a declaração de Independência do Brasil para evitar novas revoltas." },
+      { "letra": "D", "texto": "Forçou a Inglaterra a intervir militarmente no Nordeste para proteger seus interesses comerciais." },
+      { "letra": "E", "texto": "Resultou na deposição de D. João VI e na ascensão de D. Pedro como imperador." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Diferentemente de outras rebeliões e conspirações do período colonial (como a Inconfidência Mineira), a Revolução Pernambucana de 1817 foi o único movimento que conseguiu depor as autoridades locais, tomar o poder e instalar um governo próprio, que durou 75 dias. Esse fato a torna única e um importante precursor da Independência."
+  },
+  {
+    "id": 250,
+    "contexto": "A estrutura de poder que se formou no Brasil com a vinda da Corte alterou a relação entre as diferentes partes do Império Português.",
+    "enunciado": "Qual das alternativas abaixo melhor descreve a situação de Portugal em relação ao Brasil durante o Período Joanino?",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "A Fuga da Corte Portuguesa"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Portugal manteve seu status de metrópole, controlando rigidamente a economia brasileira." },
+      { "letra": "B", "texto": "Tornou-se uma nação independente e republicana após a partida de D. João." },
+      { "letra": "C", "texto": "Foi rebaixado a uma posição secundária, sendo governado a partir do Rio de Janeiro e sofrendo uma grave crise econômica." },
+      { "letra": "D", "texto": "Passou a ser administrado por um conselho britânico até o retorno do rei, conforme acordado na fuga." },
+      { "letra": "E", "texto": "Permaneceu como o centro cultural do império, enviando artistas e professores para educar a elite brasileira." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Esta questão exige uma compreensão da 'inversão'. Com a transferência da Corte, o centro de poder se deslocou para o Rio de Janeiro. Portugal, ocupado pelos franceses e depois administrado por uma regência sob influência britânica, perdeu seu status de metrópole. A economia portuguesa entrou em crise com a perda do monopólio sobre o Brasil, e o reino passou a ser, na prática, governado à distância. Essa situação humilhante foi o estopim para a Revolução do Porto de 1820."
+  },
+  {
+    "id": 251,
+    "enunciado": "A criação das escolas de Cirurgia e Anatomia na Bahia e no Rio de Janeiro em 1808 representou:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Administrativas e Culturais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O embrião do ensino superior no Brasil, voltado para a área da saúde." },
+      { "letra": "B", "texto": "Uma tentativa de treinar médicos exclusivamente para a família real." },
+      { "letra": "C", "texto": "Um projeto da Missão Artística Francesa para o desenvolvimento da ciência." },
+      { "letra": "D", "texto": "Uma exigência da Inglaterra para melhorar a saúde pública nos portos." },
+      { "letra": "E", "texto": "A fundação das primeiras universidades completas do país." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A criação das escolas de Cirurgia e Anatomia (que depois se tornariam as primeiras Faculdades de Medicina) marcou o início do ensino superior no Brasil. Antes da chegada da Corte, era proibida a criação de cursos superiores na colônia, e os interessados precisavam estudar na Europa, geralmente em Coimbra."
+  },
+  {
+    "id": 252,
+    "contexto": "A Revolução Liberal do Porto (1820) tinha um programa que era, ao mesmo tempo, liberal para Portugal e reacionário para o Brasil.",
+    "enunciado": "A exigência das Cortes portuguesas pela 'recolonização' do Brasil significava, na prática:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "O Fim do Período Joanino"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Enviar mais colonos portugueses para povoar o interior do Brasil." },
+      { "letra": "B", "texto": "Revogar a elevação do Brasil a Reino Unido e restabelecer o monopólio comercial de Lisboa." },
+      { "letra": "C", "texto": "Substituir todos os administradores brasileiros por portugueses natos." },
+      { "letra": "D", "texto": "Aumentar a presença militar portuguesa nas principais cidades brasileiras." },
+      { "letra": "E", "texto": "Fechar todas as instituições culturais criadas por D. João, como a Biblioteca Real." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O termo 'recolonização' se refere à principal demanda econômica e política da burguesia portuguesa: reverter as liberdades concedidas ao Brasil. Isso incluía anular a Abertura dos Portos, restabelecendo o monopólio comercial (Pacto Colonial), e revogar o status de Reino Unido, fazendo o Brasil voltar a ser politicamente subordinado a Lisboa. Foi essa intenção que tornou o confronto com as elites brasileiras inevitável, levando à Independência."
+  },
+  {
+    "id": 253,
+    "enunciado": "Qual das instituições abaixo NÃO foi criada ou instalada no Brasil durante o Período Joanino (1808-1821)?",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Administrativas e Culturais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Banco do Brasil." },
+      { "letra": "B", "texto": "Jardim Botânico do Rio de Janeiro." },
+      { "letra": "C", "texto": "Imprensa Régia." },
+      { "letra": "D", "texto": "Universidade do Brasil." },
+      { "letra": "E", "texto": "Biblioteca Real (atual Biblioteca Nacional)." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Durante o Período Joanino foram criados os primeiros cursos superiores isolados (Medicina, por exemplo), mas não uma universidade completa. O conceito de 'Universidade do Brasil' (futura UFRJ) só surgiria muito mais tarde, no século XX. Todas as outras instituições listadas foram fundadas por D. João."
+  },
+  {
+    "id": 254,
+    "contexto": "A permanência da Corte no Brasil gerou uma profunda transformação socioeconômica, mas também foi financiada por mecanismos que geraram instabilidade.",
+    "enunciado": "O Banco do Brasil, criado em 1808, acabou por enfrentar uma grave crise que levou à sua falência anos depois. Isso ocorreu, principalmente, porque:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Medidas Econômicas"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi sabotado por banqueiros ingleses que queriam controlar as finanças brasileiras." },
+      { "letra": "B", "texto": "D. João VI, ao retornar para Portugal, esvaziou os cofres do banco, levando consigo todas as reservas de ouro." },
+      { "letra": "C", "texto": "A população se recusou a aceitar o papel-moeda emitido pelo banco, continuando a usar apenas moedas de ouro e prata." },
+      { "letra": "D", "texto": "O banco investiu maciçamente em manufaturas que não conseguiram competir com os produtos ingleses." },
+      { "letra": "E", "texto": "A elite agrária boicotou a instituição, depositando seus recursos em bancos estrangeiros." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O primeiro Banco do Brasil foi fundamental para o governo joanino, mas sua gestão foi problemática, com emissão excessiva de moeda. O golpe final veio em 1821, quando D. João VI, antes de retornar a Portugal, realizou uma 'sangria' nos cofres do banco, sacando grande parte das reservas metálicas e depósitos para levar consigo. Isso deixou o banco insolvente, levando à sua liquidação em 1829. A questão é 'Muito Difícil' por exigir um conhecimento específico sobre o colapso da instituição, um detalhe frequentemente cobrado para diferenciar candidatos."
+  },
+  {
+    "id": 255,
+    "contexto": "A conjuntura política e militar do Período Joanino definiu as fronteiras do sul do Brasil.",
+    "enunciado": "A anexação da Província Cisplatina ao Brasil por D. João VI foi facilitada pela instabilidade política na região, causada principalmente:",
+    "disciplina": "História",
+    "assunto": ["Período Joanino", "Política Externa"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Pela guerra entre a Inglaterra e a França pelo controle do porto de Montevidéu." },
+      { "letra": "B", "texto": "Pelo processo de independência das Províncias Unidas do Rio da Prata (atual Argentina) em relação à Espanha." },
+      { "letra": "C", "texto": "Por uma guerra civil entre os habitantes da Banda Oriental e os do Paraguai." },
+      { "letra": "D", "texto": "Pelo apoio militar da Inglaterra, que desejava um porto aliado na região do Prata." },
+      { "letra": "E", "texto": "Pela descoberta de minas de prata no território, o que atraiu a cobiça portuguesa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A invasão e anexação da Banda Oriental (futura Província Cisplatina) foram possíveis porque a região do Prata estava em convulsão. As colônias espanholas lutavam por sua independência, e a liderança de Buenos Aires enfrentava a resistência de líderes locais na Banda Oriental, como José Artigas. D. João VI aproveitou essa instabilidade e o vácuo de poder deixado pela Espanha para intervir e anexar o território, alegando a necessidade de pacificar a fronteira sul do Brasil."
   }
 ]
