@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             style.id = styleId;
             style.innerHTML = `
 /* Estilos base do container e header */
-#${popupId} { position: fixed; bottom: 0; left: 0; width: 100vw; height: 100vh; z-index: 9990; transition: transform 0.4s ease-in-out; background-color: #ffffff; display: flex; flex-direction: column; font-family: 'Montserrat', sans-serif; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1); overflow: hidden; border-top-left-radius: 32px; border-top-right-radius: 32px; }
+#${popupId} { position: fixed; bottom: 0; left: 0; width: 100vw; height: 100vh; z-index: 40; transition: transform 0.4s ease-in-out; background-color: #ffffff; display: flex; flex-direction: column; font-family: 'Montserrat', sans-serif; box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1); overflow: hidden; border-top-left-radius: 32px; border-top-right-radius: 32px; }
 #${popupId}.level-2 { transform: translateY(calc(100% - 50px)); box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1); }
 #${popupId}.level-2 #timerPopupHeader { height: 50px; padding: 0 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; background-color: #f8f8f8; border-top: 1px solid #e0e0e0; width: 100%; flex-shrink: 0; border-radius: 0; }
 #${popupId}.level-2 #timerPopupTitle { font-weight: 600; color: #2C2C2C; font-size: 1rem; }
