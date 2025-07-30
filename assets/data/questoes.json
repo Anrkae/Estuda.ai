@@ -702,5 +702,598 @@
     ],
     "resposta_correta": "B",
     "resolucao": "'Mesmo', neste contexto, tem valor de 'próprio' ou 'idêntico', funcionando como um pronome demonstrativo adjetivo, acompanhando o substantivo 'soldado'. 'Que' é um pronome relativo, pois retoma o termo antecedente 'soldado' e pode ser substituído por 'o qual'."
+  },
+  {
+    "id": 33,
+    "contexto": "Após a abdicação de D. Pedro I em 7 de abril de 1831, o cenário político brasileiro foi marcado por uma complexa transição de poder. A análise das causas da abdicação revela as tensões entre o autoritarismo do imperador e as aspirações liberais das elites políticas.",
+    "enunciado": "Considerando a crise política que culminou na abdicação de D. Pedro I, qual das seguintes opções apresenta um fator que NÃO contribuiu diretamente para o desgaste de sua imagem e a consequente renúncia ao trono?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Crise Política"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O envolvimento de D. Pedro I na questão da sucessão do trono português, que gerou desconfiança sobre seus reais interesses e compromisso com o Brasil." },
+      { "letra": "B", "texto": "A dissolução da Assembleia Constituinte em 1823 e a outorga da Constituição de 1824, vistas como atos autoritários que centralizavam o poder nas mãos do monarca." },
+      { "letra": "C", "texto": "A execução do jornalista Líbero Badaró e a repressão violenta a manifestações de oposição, como na 'Noite das Garrafadas'." },
+      { "letra": "D", "texto": "O fracasso militar e diplomático na Guerra da Cisplatina, que resultou na independência do Uruguai e em altos custos financeiros e humanos para o Império." },
+      { "letra": "E", "texto": "A Revolta dos Malês, ocorrida em Salvador, que, embora tenha gerado grande instabilidade social, foi um evento isolado e sem conexão direta com a crise da sucessão imperial." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A Revolta dos Malês ocorreu em 1835, durante o Período Regencial, portanto, após a abdicação de D. Pedro I em 1831. Os demais eventos foram cruciais para o desgaste do imperador: a questão sucessória portuguesa alimentava o temor de uma recolonização, a dissolução da Constituinte e a Constituição outorgada consolidaram sua fama de autoritário, a repressão à oposição (morte de Badaró e Noite das Garrafadas) acirrou os ânimos, e a derrota na Guerra da Cisplatina gerou crise econômica e descontentamento militar."
+  },
+  {
+    "id": 34,
+    "contexto": "A Constituição de 1824, outorgada por D. Pedro I, estabeleceu os pilares do Estado monárquico brasileiro. Sua principal inovação institucional, o Poder Moderador, foi alvo de intensos debates e controvérsias.",
+    "enunciado": "Sobre o Poder Moderador, instituído pela Constituição de 1824, é correto afirmar que:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Constituições"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Era exercido pelo Conselho de Estado e tinha a função de mediar conflitos exclusivamente entre o Poder Executivo e o Legislativo." },
+      { "letra": "B", "texto": "Inspirado nas ideias de Montesquieu, representava a 'chave de toda a organização política' e era privativo do Imperador, conferindo-lhe a prerrogativa de intervir nos demais poderes." },
+      { "letra": "C", "texto": "Foi uma criação genuinamente brasileira, sem correspondentes no pensamento político europeu, e sua principal função era nomear os presidentes de província." },
+      { "letra": "D", "texto": "Podia ser delegado aos presidentes de província em situações de emergência, permitindo a dissolução das Assembleias Legislativas Provinciais." },
+      { "letra": "E", "texto": "Embora previsto na Constituição, foi raramente utilizado por D. Pedro I, que preferia governar em harmonia com o Parlamento." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Poder Moderador, inspirado no pensamento do francês Benjamin Constant, era de exercício exclusivo do Imperador. Era definido como a 'chave de toda a organização política', pois permitia ao monarca intervir nos outros três poderes (Executivo, Legislativo e Judiciário), nomeando senadores, dissolvendo a Câmara dos Deputados, nomeando e demitindo ministros, e suspendendo magistrados. Essa centralização de poder foi a principal característica da Constituição de 1824 e fonte de constantes atritos políticos."
+  },
+  {
+    "id": 35,
+    "enunciado": "A Confederação do Equador (1824) foi um dos mais significativos movimentos de oposição ao governo de D. Pedro I. Qual das alternativas abaixo apresenta corretamente uma de suas principais reivindicações e uma de suas lideranças?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Conflitos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Adoção do regime parlamentarista e a liderança de Cipriano Barata." },
+      { "letra": "B", "texto": "Fim da escravidão no Nordeste e a liderança de Frei Caneca." },
+      { "letra": "C", "texto": "Estabelecimento de uma república federativa e a liderança de Frei Caneca." },
+      { "letra": "D", "texto": "Separação entre Igreja e Estado e a liderança de Manuel de Carvalho Pais de Andrade." },
+      { "letra": "E", "texto": "Manutenção da monarquia, porém com maior autonomia provincial, e a liderança de Bento Gonçalves." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Confederação do Equador foi um movimento separatista e republicano, descontente com o autoritarismo de D. Pedro I, especialmente após a dissolução da Constituinte e a outorga da Constituição de 1824. O movimento, que eclodiu em Pernambuco e se espalhou por outras províncias nordestinas, defendia a criação de uma república federativa. Frei Caneca foi um de seus principais líderes e ideólogos, sendo executado após a derrota da revolta. Manuel de Carvalho Pais de Andrade também foi um líder importante, mas a principal reivindicação era a república, e não a separação Igreja-Estado. Bento Gonçalves foi líder da Revolução Farroupilha, posterior ao período."
+  },
+  {
+    "id": 36,
+    "enunciado": "A economia do Primeiro Reinado enfrentou graves desafios, marcados pela dependência externa e pela dificuldade em consolidar um modelo produtivo sustentável. Qual das seguintes medidas econômicas foi implementada pelo governo de D. Pedro I na tentativa de sanar a crise financeira do Império?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Economia Política"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A implementação da Tarifa Alves Branco, que aumentou significativamente os impostos sobre produtos importados para proteger a incipiente indústria nacional." },
+      { "letra": "B", "texto": "A criação do Banco do Brasil em 1821, com o objetivo de emitir papel-moeda e controlar a inflação herdada do Período Joanino." },
+      { "letra": "C", "texto": "A realização de sucessivos empréstimos junto a banqueiros ingleses, notadamente para financiar a Guerra da Cisplatina e cobrir o déficit da balança comercial." },
+      { "letra": "D", "texto": "A nacionalização de todas as minas de ouro e diamante, centralizando a exploração mineral nas mãos do Estado para aumentar as receitas imperiais." },
+      { "letra": "E", "texto": "O incentivo maciço à produção de café no Vale do Paraíba através de subsídios estatais, tornando-o o principal produto de exportação já em 1825." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A principal estratégia econômica do Primeiro Reinado para lidar com a crise foi a contração de empréstimos externos, principalmente da Inglaterra. O Brasil já nasceu endividado, assumindo uma dívida que Portugal tinha com os ingleses como condição para o reconhecimento da independência. Além disso, a custosa Guerra da Cisplatina e o déficit comercial crônico foram financiados com mais empréstimos, aprofundando a dependência financeira. A Tarifa Alves Branco é de 1844 (Segundo Reinado). O primeiro Banco do Brasil faliu e foi liquidado em 1829. A produção de café, embora crescente, só se consolidaria como principal produto de exportação mais tarde, no Segundo Reinado."
+  },
+  {
+    "id": 37,
+    "enunciado": "A Assembleia Constituinte de 1823, dissolvida por D. Pedro I, elaborou um projeto de constituição que ficou conhecido como 'Constituição da Mandioca'. Uma das características marcantes deste projeto era:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Assembleias Constituintes"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O estabelecimento do voto universal masculino, independentemente da renda, como forma de garantir ampla participação popular." },
+      { "letra": "B", "texto": "A criação de um Poder Moderador controlado pelo Legislativo, que poderia vetar as decisões do Imperador." },
+      { "letra": "C", "texto": "A definição de um sistema de voto censitário, no qual o direito ao voto e à elegibilidade era medido pela posse de terras e pela produção de farinha de mandioca." },
+      { "letra": "D", "texto": "A abolição imediata do tráfico de escravos e a previsão de uma libertação gradual dos cativos, refletindo as pressões da Inglaterra." },
+      { "letra": "E", "texto": "A subordinação explícita do poder do Imperador à Assembleia, limitando drasticamente suas prerrogativas executivas e militares." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A 'Constituição da Mandioca' tinha um forte caráter antiabsolutista e limitava significativamente os poderes do Imperador. O projeto estabelecia a soberania da nação, representada pela Assembleia, à qual o monarca estaria subordinado. O Imperador não teria poder de veto absoluto nem de dissolver a Câmara. O nome 'Constituição da Mandioca' (alternativa C) é um apelido derivado do critério censitário baseado na renda anual em alqueires de farinha de mandioca, mas a característica central que levou ao conflito com D. Pedro I e à sua dissolução foi a forte limitação do poder imperial, expressa na alternativa E."
+  },
+  {
+    "id": 38,
+    "contexto": "O reconhecimento da Independência do Brasil foi um processo diplomático complexo. Diferentes nações tinham interesses distintos e impuseram condições para aceitar o novo país no cenário internacional.",
+    "enunciado": "No processo de reconhecimento da Independência, os Estados Unidos foram a primeira nação a reconhecer o Brasil, em 1824. Qual princípio de sua política externa, formulado em 1823, justifica esse ato?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Contexto"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A Política do Big Stick, que visava garantir a hegemonia americana no continente através de intervenções militares." },
+      { "letra": "B", "texto": "A Doutrina Monroe, que defendia a não intervenção de potências europeias nos assuntos do continente americano." },
+      { "letra": "C", "texto": "O Destino Manifesto, que pregava a expansão territorial dos EUA em direção ao Oeste." },
+      { "letra": "D", "texto": "A Política de Boa Vizinhança, que buscava estabelecer relações de cooperação econômica e cultural com a América Latina." },
+      { "letra": "E", "texto": "O Corolário Roosevelt, que justificava a intervenção norte-americana em países latino-americanos para manter a ordem econômica." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O reconhecimento precoce da independência brasileira pelos Estados Unidos está diretamente ligado à Doutrina Monroe (1823), sintetizada na frase 'América para os americanos'. Ao reconhecer o Brasil, os EUA se opunham a qualquer tentativa das potências europeias da Santa Aliança de recolonizar ou intervir nas nações recém-independentes do continente americano, buscando afirmar sua própria esfera de influência. As demais políticas são de períodos posteriores da história dos EUA (Big Stick e Corolário Roosevelt no início do século XX, e Boa Vizinhança a partir de 1933)."
+  },
+  {
+    "id": 39,
+    "enunciado": "A abdicação de D. Pedro I, em 1831, foi precedida por uma série de eventos que acirraram a tensão entre brasileiros e portugueses no Rio de Janeiro. O episódio que envolveu confrontos físicos diretos entre esses dois grupos, motivados por homenagens ao Imperador após seu retorno de Minas Gerais, ficou conhecido como:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Crise Política"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Revolta dos Sargentos" },
+      { "letra": "B", "texto": "Noite das Garrafadas" },
+      { "letra": "C", "texto": "Rebelião dos Mercenários" },
+      { "letra": "D", "texto": "Ministério dos Marqueses" },
+      { "letra": "E", "texto": "Sedição de 1831" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A 'Noite das Garrafadas', ocorrida em março de 1831, foi um confronto direto nas ruas do Rio de Janeiro. Portugueses que apoiavam o Imperador prepararam festejos para recebê-lo de uma viagem a Minas Gerais, onde fora recebido com frieza. Brasileiros opositores ao governo provocaram os lusitanos, resultando em três dias de conflitos de rua, com arremesso de garrafas e pedras. Este evento simbolizou a profunda cisão política e o sentimento antilusitano, sendo um dos estopins para a abdicação de D. Pedro I menos de um mês depois."
+  },
+  {
+    "id": 40,
+    "enunciado": "A Guerra da Cisplatina (1825-1828) foi o principal conflito militar externo do Primeiro Reinado e teve consequências profundas para o Império. Qual das alternativas abaixo NÃO corresponde a uma consequência direta desse conflito?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Conflitos"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Aumento da impopularidade de D. Pedro I, associado ao fracasso militar e aos altos custos humanos e financeiros da guerra." },
+      { "letra": "B", "texto": "Agravamento da crise financeira do Brasil, com a desvalorização da moeda e o aumento da dívida externa para custear o conflito." },
+      { "letra": "C", "texto": "A anexação definitiva da Província Cisplatina ao território brasileiro, consolidando o domínio imperial na região do Prata." },
+      { "letra": "D", "texto": "A criação da República Oriental do Uruguai como um estado independente, resultado da mediação diplomática da Inglaterra." },
+      { "letra": "E", "texto": "Descontentamento nas fileiras do Exército Brasileiro, que sofreu com perdas, recrutamento forçado e falta de recursos, minando o apoio militar ao Imperador." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O resultado da Guerra da Cisplatina foi, na verdade, a perda da província para o Brasil. Com a mediação da Inglaterra, que tinha interesses comerciais na região do Prata, foi acordado que a província não seria reincorporada às Províncias Unidas do Rio da Prata (Argentina) nem permaneceria brasileira. Em vez disso, tornou-se um país independente, a República Oriental do Uruguai. Todas as outras alternativas são consequências diretas e precisas da guerra, contribuindo significativamente para a crise do Primeiro Reinado."
+  },
+  {
+    "id": 41,
+    "enunciado": "O processo de Proclamação da Independência, em 7 de setembro de 1822, embora simbólico, foi o clímax de um processo político complexo. Uma das ações decisivas de D. Pedro, que antecedeu e tornou o 'Grito do Ipiranga' quase inevitável, foi:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Proclamação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A decretação da abertura dos portos às nações amigas em 1808." },
+      { "letra": "B", "texto": "A sua recusa em acatar as ordens das Cortes de Lisboa para retornar a Portugal, episódio conhecido como o 'Dia do Fico'." },
+      { "letra": "C", "texto": "A convocação da Assembleia Constituinte de 1823 para elaborar a primeira constituição do Brasil." },
+      { "letra": "D", "texto": "A assinatura do Tratado de Comércio e Navegação com a Inglaterra, garantindo apoio militar para a separação." },
+      { "letra": "E", "texto": "A coroação como Imperador e Defensor Perpétuo do Brasil em dezembro de 1822." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O 'Dia do Fico', em 9 de janeiro de 1822, foi o ponto de ruptura política. Ao desobedecer publicamente às Cortes portuguesas, que exigiam seu retorno, D. Pedro sinalizou seu alinhamento com as elites brasileiras que desejavam a autonomia e a manutenção do status do Brasil como Reino Unido. Esse ato foi um passo decisivo no caminho da independência, tornando a separação formal uma questão de tempo. A Abertura dos Portos (1808) foi um ato de D. João VI. A convocação da Constituinte e a coroação ocorreram após a proclamação, sendo atos de consolidação do novo Estado."
+  },
+  {
+    "id": 42,
+    "enunciado": "A crise política que levou ao fim do Primeiro Reinado foi marcada pela oposição entre o 'partido brasileiro' e o 'partido português'. No contexto final do governo de D. Pedro I, a nomeação do chamado 'Ministério dos Marqueses' em 1831 teve qual significado político?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Crise Política"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Uma tentativa de conciliação, nomeando políticos moderados de ambas as facções para acalmar os ânimos e evitar a abdicação." },
+      { "letra": "B", "texto": "Uma concessão ao 'partido brasileiro', ao nomear um ministério composto exclusivamente por brasileiros natos e de ideologia liberal." },
+      { "letra": "C", "texto": "Um ato de desafio e autoritarismo do Imperador, que, após demitir um ministério mais liberal, nomeou um gabinete de perfil absolutista e impopular, composto por sua elite de confiança." },
+      { "letra": "D", "texto": "Uma manobra para garantir a aprovação de novos empréstimos com a Inglaterra, já que os ministros nomeados tinham fortes laços com banqueiros britânicos." },
+      { "letra": "E", "texto": "Uma reforma administrativa profunda para descentralizar o poder, entregando mais autonomia às províncias governadas por marqueses." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O 'Ministério dos Marqueses' foi a última tentativa de D. Pedro I de afirmar sua autoridade. Em um momento de extrema tensão política, ele demitiu um ministério que contava com alguns nomes mais moderados e aceitos pela oposição (como o Senador Vergueiro) e nomeou um gabinete composto por aristocratas de sua inteira confiança, vistos pela oposição como absolutistas e reacionários. Esse ato foi interpretado como uma afronta final, uma prova de que o Imperador não cederia às pressões liberais, o que uniu a oposição e precipitou os eventos que levaram à sua abdicação poucos dias depois."
+  },
+  {
+    "id": 43,
+    "enunciado": "Dentre os conflitos internos do Primeiro Reinado, destaca-se a Rebelião dos Mercenários (1828), no Rio de Janeiro. Esse evento específico está diretamente relacionado a qual contexto?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Conflitos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "À insatisfação de tropas estrangeiras (alemães e irlandeses) com as condições de serviço e soldo, no contexto do retorno de batalhões da Guerra da Cisplatina." },
+      { "letra": "B", "texto": "A uma revolta de escravizados que atuavam como soldados, exigindo a alforria prometida por sua participação em conflitos." },
+      { "letra": "C", "texto": "À oposição de comerciantes portugueses contra as altas taxas de impostos criadas para financiar o exército imperial." },
+      { "letra": "D", "texto": "A um motim da guarda pessoal do Imperador, exigindo a dissolução da Assembleia e a ampliação dos poderes de D. Pedro I." },
+      { "letra": "E", "texto": "À aliança entre militares brasileiros e mercenários estrangeiros para depor o Imperador e proclamar uma república." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A Rebelião dos Mercenários foi um motim de tropas de origem alemã e irlandesa contratadas pelo Império para lutar na Guerra da Cisplatina. Ao retornarem do conflito ou durante o serviço, esses soldados estavam extremamente insatisfeitos com os baixos salários (muitas vezes atrasados), as más condições dos quartéis e a disciplina rigorosa. A revolta causou pânico no Rio de Janeiro e foi duramente reprimida, evidenciando mais uma faceta da crise militar e do descrédito que cercava o governo de D. Pedro I."
+  },
+  {
+    "id": 44,
+    "enunciado": "A Constituição Outorgada de 1824 estabelecia um sistema eleitoral indireto e censitário. Para ser um 'eleitor de paróquia' (primeiro nível de votação), o cidadão precisava comprovar uma renda mínima anual de 100 mil réis. Qual era a principal consequência social dessa exigência?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Constituições"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A garantia da participação política de pequenos agricultores e artesãos, que geralmente atingiam essa renda." },
+      { "letra": "B", "texto": "A exclusão da maioria da população livre e de todos os escravizados do processo político, concentrando o poder nas mãos de uma elite." },
+      { "letra": "C", "texto": "A valorização do clero, pois os párocos tinham o poder de validar a renda dos votantes." },
+      { "letra": "D", "texto": "A inclusão de mulheres proprietárias de terras, desde que comprovassem a renda exigida." },
+      { "letra": "E", "texto": "O fortalecimento dos governos provinciais, que eram responsáveis por organizar e fiscalizar as eleições paroquiais." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O sistema censitário, tanto o proposto na 'Constituição da Mandioca' quanto o implementado na Constituição de 1824, tinha como objetivo principal restringir a participação política. A exigência de uma renda mínima de 100 mil réis para ser eleitor de paróquia (e 200 mil para ser eleitor de província) excluía a vasta maioria da população brasileira livre, que era pobre, além de, por definição, excluir os escravizados. Na prática, isso concentrava o poder político e o direito de escolha nas mãos de uma pequena elite de proprietários de terras, grandes comerciantes e altos funcionários, garantindo a manutenção da ordem social e econômica vigente."
+  },
+  {
+    "id": 45,
+    "enunciado": "A Proclamação da Independência do Brasil não significou uma ruptura imediata e pacífica em todo o território. Em algumas províncias, tropas leais a Portugal resistiram à separação. Qual das províncias abaixo NÃO foi um palco significativo dessas 'Guerras de Independência'?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Proclamação"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Bahia" },
+      { "letra": "B", "texto": "Grão-Pará" },
+      { "letra": "C", "texto": "Maranhão" },
+      { "letra": "D", "texto": "Cisplatina" },
+      { "letra": "E", "texto": "Minas Gerais" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "As províncias do Sudeste, como Minas Gerais, Rio de Janeiro e São Paulo, onde a elite agrária e a burocracia estatal estavam mais consolidadas em torno da figura de D. Pedro, aderiram à independência com relativa rapidez e sem grandes conflitos armados. A resistência portuguesa foi muito mais forte nas províncias do Norte e Nordeste, como Bahia (com a emblemática luta do 2 de Julho), Grão-Pará e Maranhão, e também na Província Cisplatina (atual Uruguai), onde havia expressivas guarnições militares portuguesas. Esses locais exigiram campanhas militares para garantir sua integração ao Império do Brasil."
+  },
+  {
+    "id": 46,
+    "enunciado": "A política externa do Primeiro Reinado foi marcada pela busca de reconhecimento diplomático e pela resolução de questões fronteiriças. O Tratado do Rio de Janeiro, assinado em 1825 com Portugal, reconheceu a independência do Brasil, mas impôs uma condição onerosa ao novo país. Que condição foi essa?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Contexto"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A cessão da província do Grão-Pará a Portugal por um período de 10 anos." },
+      { "letra": "B", "texto": "O compromisso brasileiro de acabar com o tráfico de escravos até 1830, sob fiscalização portuguesa." },
+      { "letra": "C", "texto": "A aceitação de D. João VI como Imperador Honorário e Perpétuo do Brasil." },
+      { "letra": "D", "texto": "O pagamento de uma indenização de 2 milhões de libras esterlinas a Portugal e a assunção de uma dívida que Portugal tinha com a Inglaterra." },
+      { "letra": "E", "texto": "A garantia de que cidadãos portugueses residentes no Brasil teriam direitos políticos plenos, incluindo a elegibilidade para o parlamento." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Mediante forte pressão e mediação da Inglaterra, o Brasil só obteve o reconhecimento de sua antiga metrópole ao concordar com termos financeiros extremamente pesados. O Brasil se comprometeu a pagar 2 milhões de libras a Portugal como indenização e, crucialmente, assumiu uma dívida que o governo de D. João VI havia contraído com a Inglaterra. Na prática, o Brasil já nasceu oficialmente endividado com os britânicos, o que marcou o início de uma longa história de dependência financeira. A aceitação de D. João VI como imperador honorário (alternativa C) também fez parte do acordo, mas a condição mais onerosa e de maior impacto foi a financeira."
+  },
+  {
+    "id": 47,
+    "contexto": "A figura de D. Pedro I é controversa na historiografia brasileira, frequentemente retratada de forma ambígua: ao mesmo tempo liberal em certos aspectos e autoritário em outros. Sua relação com a imprensa do período é um exemplo claro dessa dualidade.",
+    "enunciado": "Analisando a relação de D. Pedro I com a imprensa durante o Primeiro Reinado, é correto afirmar que o Imperador:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Crise Política"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Incentivou a liberdade de imprensa irrestrita, vendo-a como um pilar essencial para a legitimação do novo Império, mesmo quando alvo de críticas severas." },
+      { "letra": "B", "texto": "Estabeleceu, através da Constituição de 1824, a censura prévia para todos os jornais, submetendo-os ao controle direto do Poder Moderador." },
+      { "letra": "C", "texto": "Tolerava as críticas de jornais alinhados ao 'partido português', mas reprimia com violência os periódicos ligados ao 'partido brasileiro', como o jornal 'Aurora Fluminense'." },
+      { "letra": "D", "texto": "Apesar de a Constituição garantir a liberdade de expressão, na prática, o governo perseguia, empastava oficinas e processava jornalistas opositores, como Líbero Badaró e Cipriano Barata." },
+      { "letra": "E", "texto": "Financiou a criação de dezenas de jornais de oposição em todo o país para simular um ambiente democrático e angariar apoio popular." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Embora a Constituição de 1824, em seu artigo 179, garantisse a liberdade de imprensa (abolindo a censura prévia), na prática o governo de D. Pedro I foi extremamente hostil aos seus críticos. O período foi marcado pela perseguição a jornalistas opositores. Cipriano Barata foi preso diversas vezes e Líbero Badaró, diretor do 'Observador Constitucional', foi assassinado em São Paulo, um crime cuja autoria moral foi atribuída a aliados do imperador. Empastelamento de oficinas (destruição de tipografias) também era uma tática comum. Essa contradição entre a lei e a prática revela o caráter autoritário do monarca e foi um dos fatores de seu desgaste."
+  },
+  {
+    "id": 48,
+    "enunciado": "A dissolução da Assembleia Constituinte em 1823, conhecida como 'A Noite da Agonia', foi um marco do autoritarismo de D. Pedro I. Qual foi o estopim imediato que levou o Imperador a ordenar o cerco e o fechamento da Assembleia?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Assembleias Constituintes"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A aprovação de um artigo na Constituição que abolia o Poder Moderador." },
+      { "letra": "B", "texto": "A recusa da Assembleia em aprovar os empréstimos necessários para a Guerra da Cisplatina." },
+      { "letra": "C", "texto": "Um discurso inflamado de um deputado que comparou o autoritarismo do Imperador ao despotismo das Cortes de Lisboa, gerando uma crise de honra." },
+      { "letra": "D", "texto": "A descoberta de uma conspiração republicana liderada pelos irmãos Andrada dentro da própria Assembleia." },
+      { "letra": "E", "texto": "A exigência dos constituintes de que o comando das Forças Armadas fosse transferido do Imperador para o controle do Legislativo." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A tensão entre D. Pedro I e os constituintes atingiu o clímax em torno da questão do controle das Forças Armadas. O projeto da Constituição da Mandioca subordinava os militares ao poder Legislativo, retirando do Imperador o comando supremo do Exército e da Marinha. Essa proposta foi vista por D. Pedro como uma afronta direta à sua autoridade e soberania. Em resposta a essa e outras limitações ao seu poder, e utilizando como pretexto brigas entre oficiais portugueses e brasileiros (incluindo um discurso inflamado de um deputado, como mencionado na alternativa C, mas não sendo o fator principal), o Imperador ordenou que as tropas cercassem o prédio da Assembleia, dissolvendo-a à força na 'Noite da Agonia'."
+  },
+  {
+    "id": 49,
+    "enunciado": "No contexto da economia do Primeiro Reinado, a balança comercial brasileira era cronicamente deficitária. Isso se devia, em grande parte, a um tratado assinado ainda no Período Joanino, mas cujos efeitos perduraram. Que tratado era esse e qual sua principal consequência?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Economia Política"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Tratado de Madri (1750), que redefiniu fronteiras e desorganizou a produção de gado no sul." },
+      { "letra": "B", "texto": "Tratado de Utrecht (1713), que cedeu a Colônia do Sacramento e prejudicou o comércio de prata." },
+      { "letra": "C", "texto": "Tratados de Comércio e Navegação de 1810, que estabeleceram tarifas preferenciais para produtos ingleses, dificultando a concorrência." },
+      { "letra": "D", "texto": "Tratado do Rio de Janeiro (1825), que endividou o Brasil com o pagamento de indenizações a Portugal." },
+      { "letra": "E", "texto": "Tratado de Methuen (1703), que vinculou a economia portuguesa, e por consequência a brasileira, aos têxteis ingleses." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os Tratados de 1810, assinados por D. João com a Inglaterra, foram extremamente danosos para a economia brasileira. Eles estabeleciam que os produtos ingleses pagariam uma tarifa de importação de apenas 15%, enquanto os de Portugal pagariam 16% e os de outras nações, 24%. Essa tarifa privilegiada inundou o mercado brasileiro com manufaturados britânicos, impedindo o desenvolvimento de qualquer indústria local e contribuindo para um constante déficit na balança comercial. O Primeiro Reinado herdou essa estrutura econômica e sofreu com suas consequências diretas."
+  },
+  {
+    "id": 50,
+    "enunciado": "A abdicação de D. Pedro I em 7 de abril de 1831 foi o resultado de uma grave crise política. Um dos elementos que simbolizou o rompimento final do Imperador com as elites políticas brasileiras foi:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Crise Política"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A sua recusa em extraditar portugueses envolvidos na Noite das Garrafadas." },
+      { "letra": "B", "texto": "A demissão de um ministério composto por brasileiros e sua substituição pelo 'Ministério dos Marqueses', de perfil absolutista." },
+      { "letra": "C", "texto": "A proposta de um novo Ato Adicional à Constituição que extinguia as Assembleias Provinciais." },
+      { "letra": "D", "texto": "O fechamento do Banco do Brasil em 1829, culpando a elite cafeeira pela sua falência." },
+      { "letra": "E", "texto": "A assinatura de um decreto que restabelecia o monopólio comercial português sobre o Brasil." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A crise final foi precipitada por uma sucessão de atos vistos como autoritários. D. Pedro I, pressionado pela oposição, havia nomeado um ministério com figuras mais liberais e brasileiras. No entanto, em um gesto de reafirmação de poder, demitiu este gabinete e, em seu lugar, nomeou o 'Ministério dos Marqueses', composto por aristocratas de sua confiança e vistos como reacionários. Este ato foi a gota d'água para a oposição, que o interpretou como a prova final de que o Imperador governaria de forma despótica, levando a uma mobilização popular e militar que tornou sua permanência no trono insustentável."
+  },
+  {
+    "id": 51,
+    "enunciado": "A Constituição de 1824, além de criar o Poder Moderador, definiu a organização do Estado brasileiro. Qual das seguintes características NÃO estava presente na Constituição outorgada?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Constituições"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O estabelecimento do catolicismo como religião oficial do Estado, embora permitisse o culto doméstico de outras religiões." },
+      { "letra": "B", "texto": "A forma de governo monárquica, hereditária e constitucional." },
+      { "letra": "C", "texto": "A instituição do Senado vitalício, com membros escolhidos pelo Imperador a partir de uma lista tríplice." },
+      { "letra": "D", "texto": "A divisão do território em Províncias, cujos presidentes seriam eleitos diretamente pela população local." },
+      { "letra": "E", "texto": "O voto censitário e indireto para a escolha dos deputados e senadores." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Uma das características mais centralizadoras da Constituição de 1824 era justamente a forma de nomeação dos presidentes de província. Eles não eram eleitos pela população local, mas sim nomeados diretamente pelo Imperador (usando as prerrogativas do Poder Executivo/Moderador). Isso garantia o controle do poder central sobre as províncias, limitando a autonomia local e sendo uma constante fonte de atrito político ao longo de todo o Império. Todas as outras características estavam presentes na Constituição de 1824."
+  },
+  {
+    "id": 52,
+    "enunciado": "A Confederação do Equador (1824) foi duramente reprimida pelas forças imperiais. A execução de um de seus líderes, Frei Caneca, tornou-se um símbolo da truculência do governo de D. Pedro I. Qual foi a justificativa oficial para a sua condenação à morte?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Conflitos"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Heresia, por ser um religioso que defendia a república." },
+      { "letra": "B", "texto": "Traição, por ter negociado apoio militar da Colômbia para a revolta." },
+      { "letra": "C", "texto": "Crime de sedição e rebelião contra a autoridade imperial." },
+      { "letra": "D", "texto": "Assassinato de um oficial do exército imperial durante os combates." },
+      { "letra": "E", "texto": "Corrupção, por desviar fundos da província para financiar o movimento." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Frei Caneca, juntamente com outros líderes da Confederação do Equador, foi julgado por uma comissão militar nomeada pelo governo imperial. A acusação formal foi de sedição e rebelião, ou seja, de liderar um levante armado com o objetivo de destruir a forma de governo vigente e separar uma parte do território nacional. Sua execução por fuzilamento (após carrascos se recusarem a enforcá-lo) transformou-o em um mártir da causa republicana e liberal no Nordeste."
+  },
+  {
+    "id": 53,
+    "contexto": "A crise sucessória em Portugal após a morte de D. João VI em 1826 teve repercussões diretas no Brasil, alimentando a desconfiança da elite brasileira em relação a D. Pedro I.",
+    "enunciado": "Qual foi a atitude de D. Pedro I diante da crise sucessória portuguesa que aprofundou o seu desgaste político no Brasil?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Crise Política"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Renunciou imediatamente ao trono português em favor de seu irmão, D. Miguel, para demonstrar seu total compromisso com o Brasil." },
+      { "letra": "B", "texto": "Assumiu o trono português como Pedro IV, outorgou uma Constituição liberal para Portugal e, em seguida, abdicou em favor de sua filha, D. Maria da Glória, gerando a suspeita de que pretendia unir as duas coroas." },
+      { "letra": "C", "texto": "Enviou tropas brasileiras para lutar em Portugal contra seu irmão D. Miguel, utilizando recursos do tesouro brasileiro e enfraquecendo a defesa nacional." },
+      { "letra": "D", "texto": "Ignorou completamente a questão sucessória, declarando que o Brasil não tinha qualquer interesse nos assuntos internos de Portugal." },
+      { "letra": "E", "texto": "Propôs a criação de um império luso-brasileiro unificado, com capital em Lisboa, o que foi veementemente rechaçado pelas elites brasileiras." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Com a morte de seu pai, D. Pedro I era o herdeiro legítimo do trono português. Ele assumiu como D. Pedro IV de Portugal, mas, para acalmar as elites brasileiras que temiam uma reunificação, outorgou uma constituição liberal a Portugal e abdicou do trono português em favor de sua filha de sete anos, D. Maria da Glória. No entanto, seu envolvimento contínuo na política portuguesa para garantir o trono de sua filha contra as pretensões absolutistas de seu irmão, D. Miguel, consumiu sua atenção e recursos, alimentando no Brasil a desconfiança de que seus interesses estavam mais em Portugal do que no Império que governava."
+  },
+  {
+    "id": 54,
+    "enunciado": "A Assembleia Constituinte de 1823, apesar de dissolvida, apresentou um projeto que refletia os interesses de um grupo específico da elite. Esse projeto ficou conhecido como 'Constituição da Mandioca' porque:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Assembleias Constituintes"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Previa a reforma agrária, distribuindo terras para o cultivo de mandioca entre a população pobre." },
+      { "letra": "B", "texto": "Estabelecia um sistema eleitoral censitário em que o valor do voto era medido em alqueires de farinha de mandioca." },
+      { "letra": "C", "texto": "Tornava a mandioca o único produto de exportação isento de impostos, beneficiando os grandes latifundiários." },
+      { "letra": "D", "texto": "Foi redigida em uma fazenda de mandioca no interior do Rio de Janeiro, longe da influência da corte." },
+      { "letra": "E", "texto": "Proibia a participação política de portugueses que não fossem proprietários de plantações de mandioca." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O apelido 'Constituição da Mandioca' deriva diretamente do seu sistema de voto censitário. Para ser eleitor, era preciso ter uma renda anual equivalente a, no mínimo, 150 alqueires de farinha de mandioca. Para ser candidato a deputado, a exigência subia para 500 alqueires. Esse critério, baseado em um produto da terra, beneficiava diretamente a elite agrária (os 'homens bons' do campo) e excluía grande parte da população, inclusive comerciantes urbanos cuja renda não era medida por esse critério. O objetivo era consolidar o poder dos grandes proprietários rurais."
+  },
+  {
+    "id": 55,
+    "enunciado": "Dentre os fatores abaixo, qual representa uma característica da política econômica do Primeiro Reinado que o diferencia fundamentalmente do Período Colonial?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Economia Política"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A total superação do modelo agroexportador, com forte investimento estatal na industrialização." },
+      { "letra": "B", "texto": "A manutenção da mão de obra escrava como base da produção em larga escala." },
+      { "letra": "C", "texto": "A necessidade de gerir uma dívida externa crescente e a emissão de papel-moeda para cobrir déficits orçamentários." },
+      { "letra": "D", "texto": "A ausência total do Estado na economia, seguindo os princípios do liberalismo puro." },
+      { "letra": "E", "texto": "A dependência econômica exclusiva de Portugal, recriando laços de monopólio." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Enquanto o Período Colonial foi marcado pelo Pacto Colonial e pela transferência de riquezas para a metrópole, o Primeiro Reinado, como Estado independente, inaugurou uma nova realidade fiscal e financeira. O governo imperial precisava se financiar e, para isso, recorreu massivamente a empréstimos externos (iniciando a dívida externa brasileira) e à emissão de moeda, o que gerou inflação e desvalorização. Essa gestão de finanças públicas, com dívida soberana e política monetária própria, é uma característica fundamental do Estado nacional que o distingue da condição de colônia. A manutenção da escravidão (B) e do modelo agroexportador eram continuidades, e a industrialização (A) e o liberalismo puro (D) não ocorreram."
+  },
+  {
+    "id": 56,
+    "enunciado": "A 'Questão do Trono' refere-se à hesitação de D. Pedro I entre seus deveres como Imperador do Brasil e seus direitos como herdeiro da Coroa Portuguesa. Essa dualidade gerou imenso desgaste, pois alimentava no Brasil o temor de uma:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Crise Política"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Guerra civil entre as províncias do Norte e do Sul." },
+      { "letra": "B", "texto": "Intervenção da Santa Aliança para restaurar o absolutismo." },
+      { "letra": "C", "texto": "Recolonização ou união dos reinos, colocando os interesses portugueses acima dos brasileiros." },
+      { "letra": "D", "texto": "Crise econômica, devido à fuga de capitais portugueses para Lisboa." },
+      { "letra": "E", "texto": "Proclamação de uma república pelos militares insatisfeitos com a monarquia dual." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O cerne da desconfiança gerada pela 'Questão do Trono' era o medo, por parte das elites brasileiras, de que D. Pedro I priorizasse seus interesses em Portugal. Havia o temor de que ele usasse os recursos e o status do Brasil para resolver a crise sucessória portuguesa ou, no pior cenário, que tentasse reunificar as duas coroas, fazendo o Brasil retornar a uma posição secundária em relação a Portugal. Esse sentimento antilusitano e o medo de uma recolonização foram combustíveis poderosos para a oposição ao imperador."
+  },
+  {
+    "id": 57,
+    "enunciado": "O reconhecimento da Independência do Brasil pela Inglaterra, em 1827, foi crucial para a consolidação do novo país, mas veio acompanhado de exigências. Além da renovação dos tratados comerciais favoráveis aos britânicos, qual foi a outra condição fundamental imposta pela Inglaterra?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Contexto"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A nomeação de um embaixador inglês para o Conselho de Estado." },
+      { "letra": "B", "texto": "A entrega da base naval de Salvador para uso da Marinha Real Britânica." },
+      { "letra": "C", "texto": "O compromisso formal do Brasil em extinguir o tráfico negreiro em um prazo determinado." },
+      { "letra": "D", "texto": "A adoção do parlamentarismo como sistema de governo no Brasil." },
+      { "letra": "E", "texto": "A concessão de cidadania automática a todos os súditos britânicos residentes no Brasil." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Pressionada por interesses humanitários e, principalmente, econômicos (o trabalho assalariado criaria um mercado consumidor maior para seus produtos), a Inglaterra vinha pressionando pelo fim do tráfico de escravos. Para reconhecer a independência do Brasil, os britânicos exigiram e obtiveram a assinatura de um tratado em 1826 (ratificado em 1827) no qual o governo brasileiro se comprometia a tornar o tráfico ilegal a partir de três anos após a ratificação (o que levaria à Lei Feijó de 1831). Essa exigência contrariava os interesses da elite agrária brasileira e foi mais um ponto de desgaste para D. Pedro I."
+  },
+  {
+    "id": 58,
+    "enunciado": "A Constituição de 1824, outorgada por D. Pedro I, definia o Brasil como um Império unitário, o que significa que:",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Constituições"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "As províncias possuíam ampla autonomia legislativa e fiscal, semelhante a um sistema federalista." },
+      { "letra": "B", "texto": "O poder político e administrativo era fortemente centralizado na figura do Imperador e no governo do Rio de Janeiro, com pouca autonomia para as províncias." },
+      { "letra": "C", "texto": "Havia uma única câmara legislativa, o Congresso Imperial, sem a existência de um Senado." },
+      { "letra": "D", "texto": "Todas as leis aprovadas nas províncias precisavam ser ratificadas por Portugal." },
+      { "letra": "E", "texto": "Apenas uma religião, a Católica Apostólica Romana, era permitida em todo o território nacional, sem exceções." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Estado unitário ou unitarista é um modelo de organização estatal onde o poder é centralizado. Na Constituição de 1824, isso se manifestava na ausência de autonomia real para as províncias. Os presidentes de província eram nomeados pelo Imperador, e não eleitos localmente, e as leis mais importantes emanavam do poder central (a Assembleia Geral e o Imperador). Esse modelo se opunha diretamente aos anseios federalistas de muitas províncias, que desejavam maior autogoverno, sendo uma das causas de revoltas como a Confederação do Equador."
+  },
+  {
+    "id": 59,
+    "enunciado": "Qual evento europeu contemporâneo ao Primeiro Reinado influenciou diretamente a elite política brasileira, fornecendo o arcabouço ideológico (liberalismo) que era frequentemente usado para se opor ao autoritarismo de D. Pedro I?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Contexto"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A Revolução Industrial Inglesa." },
+      { "letra": "B", "texto": "As Guerras Napoleônicas e a deposição de monarcas absolutistas." },
+      { "letra": "C", "texto": "A Revolução Liberal do Porto de 1820." },
+      { "letra": "D", "texto": "A Comuna de Paris de 1871." },
+      { "letra": "E", "texto": "O Congresso de Viena e a restauração absolutista." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A Revolução Liberal do Porto de 1820 foi o evento que desencadeou todo o processo de independência do Brasil e que marcou profundamente a elite política da época. Foi uma revolução de caráter liberal, que exigia o retorno do rei a Portugal e a elaboração de uma Constituição que limitasse o poder real. As ideias de constitucionalismo, limitação do poder do monarca e soberania da nação, que animaram os revolucionários portugueses, foram as mesmas que inspiraram os deputados brasileiros na Constituinte de 1823 e que serviram de base para a oposição liberal a D. Pedro I durante todo o seu reinado."
+  },
+  {
+    "id": 60,
+    "enunciado": "A consolidação da Independência do Brasil envolveu a contratação de militares estrangeiros para lutar nas guerras de independência e para formar o novo exército imperial. Qual desses personagens foi um notório mercenário estrangeiro a serviço do Império durante o Primeiro Reinado?",
+    "disciplina": "História",
+    "assunto": ["Primeiro Reinado", "Proclamação", "Conflitos"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Duque de Caxias" },
+      { "letra": "B", "texto": "Almirante Tamandaré" },
+      { "letra": "C", "texto": "Lorde Cochrane" },
+      { "letra": "D", "texto": "General Osório" },
+      { "letra": "E", "texto": "Frei Caneca" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Lorde Thomas Cochrane foi um experiente e controverso almirante britânico contratado por D. Pedro I para comandar a marinha brasileira nas guerras de independência. Sua atuação foi decisiva para sufocar a resistência portuguesa nas províncias do Norte (Maranhão e Pará), utilizando de astúcia e blefes para forçar a rendição das tropas lusitanas. Outro mercenário notável foi o general francês Pierre Labatut. Caxias, Tamandaré e Osório são heróis militares brasileiros de períodos posteriores (principalmente do Segundo Reinado e Guerra do Paraguai). Frei Caneca foi um líder religioso da Confederação do Equador."
   }
 ]
