@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'Selecione um simulado...', url: '' },
         { name: 'Simulado 07/2025', url: `${PRE_CONFIGURADOS_PATH}Simulado.json` },
         { name: 'Simulado 2 07/2025', url: `${PRE_CONFIGURADOS_PATH}simulado2.json` },
-        { name: 'Simulado 3 07/2025', url: `${PRE_CONFIGURADOS_PATH}simulado3.json` }
+        { name: 'Simulado 3 07/2025', url: `${PRE_CONFIGURADOS_PATH}simulado3.json` },
+        { name: 'Simulado Iniciação 08/2025', url: `${PRE_CONFIGURADOS_PATH}simulado4.json` }
     ];
     const STORAGE_KEY_RESOLVIDAS = 'questoesResolvidas';
     const STORAGE_KEY_HISTORICO = 'historicoSimulados';

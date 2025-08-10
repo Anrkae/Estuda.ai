@@ -1,0 +1,1063 @@
+[
+  {
+    "id": 1,
+    "contexto": "A administração colonial portuguesa no Brasil buscava centralizar o poder e garantir a exploração econômica da colônia. Para isso, foram criados diversos cargos e instituições.",
+    "enunciado": "Durante o Período Colonial, a mais alta autoridade administrativa residente no Brasil, representante direto do Rei de Portugal, era o:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Período Colonial", "Administração Colonial"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Capitão-Mor" },
+      { "letra": "B", "texto": "Ouvidor-Geral" },
+      { "letra": "C", "texto": "Provedor-Mor" },
+      { "letra": "D", "texto": "Governador-Geral" },
+      { "letra": "E", "texto": "Donatário" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Governador-Geral era a principal autoridade da Coroa Portuguesa na colônia, centralizando a administração, a defesa e a justiça. Os demais cargos eram importantes, mas subordinados a ele. Os Donatários existiram no sistema de Capitanias Hereditárias, que precedeu o Governo-Geral."
+  },
+  {
+    "id": 2,
+    "contexto": "",
+    "enunciado": "Considerando um voo que parte de Fernando de Noronha (UTC-2) às 10h da manhã com destino a Rio Branco, no Acre (UTC-5), e com duração de 5 horas. Qual será o horário local de chegada da aeronave?",
+    "disciplina": "Geografia do Brasil",
+    "assunto": ["Território", "Fusos Horários"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "15h" },
+      { "letra": "B", "texto": "13h" },
+      { "letra": "C", "texto": "12h" },
+      { "letra": "D", "texto": "18h" },
+      { "letra": "E", "texto": "17h" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Primeiro, calculamos o horário de chegada no fuso de partida: 10h + 5h = 15h (em Fernando de Noronha). A diferença de fuso entre os locais é de 3 horas (UTC-2 para UTC-5). Como Rio Branco está a oeste, o horário é 'atrasado'. Portanto, subtraímos a diferença do horário de chegada: 15h - 3h = 12h."
+  },
+  {
+    "id": 3,
+    "contexto": "O valor da expressão $E = (2^{-1} + 4^{-1/2}) / (0,25)$ é:",
+    "enunciado": "Calcule o valor da expressão numérica $E$.",
+    "disciplina": "Matemática",
+    "assunto": ["Potenciação"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "1" },
+      { "letra": "B", "texto": "2" },
+      { "letra": "C", "texto": "3" },
+      { "letra": "D", "texto": "4" },
+      { "letra": "E", "texto": "1/2" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Resolvendo o numerador: $2^{-1} = 1/2$. $4^{-1/2} = 1 / 4^{1/2} = 1 / \\sqrt{4} = 1/2$. Somando: $1/2 + 1/2 = 1$. Resolvendo o denominador: $0,25 = 1/4$. A expressão fica $E = 1 / (1/4)$. Divisão de frações: mantemos a primeira e multiplicamos pelo inverso da segunda. $E = 1 * 4/1 = 4$."
+  },
+  {
+    "id": 4,
+    "contexto": "Leia o trecho: 'Aquele velho casarão, construído por imigrantes italianos, testemunhou gerações. Suas paredes, hoje carcomidas pelo tempo, guardam segredos e saudades.'",
+    "enunciado": "No trecho apresentado, as palavras 'velho', 'italianos' e 'carcomidas' classificam-se morfologicamente, de forma respectiva, como:",
+    "disciplina": "Português",
+    "assunto": ["Morfologia", "Classes Gramaticais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "adjetivo, substantivo, verbo" },
+      { "letra": "B", "texto": "adjetivo, adjetivo pátrio, adjetivo" },
+      { "letra": "C", "texto": "substantivo, adjetivo, verbo" },
+      { "letra": "D", "texto": "adjetivo, substantivo, adjetivo" },
+      { "letra": "E", "texto": "advérbio, adjetivo, verbo no particípio" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Velho' caracteriza o substantivo 'casarão' (adjetivo). 'Italianos' caracteriza 'imigrantes', indicando sua origem (adjetivo pátrio). 'Carcomidas' (no particípio, com função de adjetivo) caracteriza 'paredes'. Portanto, temos três adjetivos."
+  },
+  {
+    "id": 5,
+    "contexto": "A literatura do Quinhentismo no Brasil reflete as visões e os interesses do homem europeu que aqui chegava.",
+    "enunciado": "Assinale a alternativa que descreve corretamente a principal característica da literatura de informação produzida no Brasil durante o Quinhentismo.",
+    "disciplina": "Literatura brasileira",
+    "assunto": ["Quinhentismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A exaltação da vida e dos costumes dos povos indígenas." },
+      { "letra": "B", "texto": "A produção de textos com forte sentimentalismo e subjetividade." },
+      { "letra": "C", "texto": "A descrição da terra e de suas potencialidades, com objetivo informativo e documental." },
+      { "letra": "D", "texto": "O uso de linguagem rebuscada e complexa, típica do Barroco." },
+      { "letra": "E", "texto": "A crítica social à exploração da colônia pela metrópole." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A literatura de informação, representada principalmente pela Carta de Pero Vaz de Caminha, tinha o caráter de um relatório. Seu objetivo era descrever a nova terra, sua fauna, flora e seus habitantes para a Coroa Portuguesa, destacando as possíveis riquezas e o potencial de exploração."
+  },
+  {
+    "id": 6,
+    "contexto": "Choose the best alternative to complete the sentence: 'The soldier showed great _______ during the mission, even when facing danger.'",
+    "enunciado": "Complete the sentence with the most appropriate word.",
+    "disciplina": "Inglês",
+    "assunto": ["Vocabulário"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "cowardice" },
+      { "letra": "B", "texto": "bravery" },
+      { "letra": "C", "texto": "laziness" },
+      { "letra": "D", "texto": "anxiety" },
+      { "letra": "E", "texto": "equipment" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A frase descreve um soldado enfrentando o perigo. A palavra que melhor completa o sentido é 'bravery' (bravura, coragem). 'Cowardice' (covardia), 'laziness' (preguiça) e 'anxiety' (ansiedade) são opostos ao comportamento esperado. 'Equipment' (equipamento) não se encaixa no contexto."
+  },
+  {
+    "id": 7,
+    "contexto": "A Revolta de Beckman (1684), ocorrida no Maranhão, foi um dos primeiros movimentos nativistas do Brasil Colônia.",
+    "enunciado": "A principal motivação dos colonos maranhenses na Revolta de Beckman foi a insatisfação com:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Período Colonial", "Revoltas Nativistas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "os altos impostos cobrados sobre o ouro extraído na região." },
+      { "letra": "B", "texto": "a proibição da escravidão indígena e a atuação da Companhia de Comércio do Maranhão." },
+      { "letra": "C", "texto": "a tentativa da Coroa de instalar um governo-geral no estado do Maranhão e Grão-Pará." },
+      { "letra": "D", "texto": "a concorrência do açúcar produzido nas Antilhas, que prejudicava os produtores locais." },
+      { "letra": "E", "texto": "a expulsão dos jesuítas, que eram os principais compradores dos produtos da região." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Revolta de Beckman teve duas causas centrais: a crise de mão de obra, gerada pela proibição da escravização de indígenas (defendida pelos jesuítas), e o monopólio da Companhia de Comércio do Maranhão, que não fornecia os escravizados africanos prometidos e vendia produtos europeus a preços abusivos."
+  },
+  {
+    "id": 8,
+    "contexto": "As formas de relevo brasileiro são resultado de uma longa história geológica, predominando estruturas antigas e desgastadas.",
+    "enunciado": "Estruturas geomorfológicas de relevo residual, que se destacam na paisagem por serem mais resistentes aos processos erosivos em comparação às rochas ao redor, como o Pão de Açúcar no Rio de Janeiro, são denominadas:",
+    "disciplina": "Geografia do Brasil",
+    "assunto": ["Relevo"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Chapadas" },
+      { "letra": "B", "texto": "Depressões Relativas" },
+      { "letra": "C", "texto": "Inselbergs" },
+      { "letra": "D", "texto": "Cuestas" },
+      { "letra": "E", "texto": "Planícies Fluviais" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Inselbergs (ou 'montanhas-ilha') são relevos residuais isolados que se sobressaem em uma área de relevo mais plano. Eles são formados por rochas mais resistentes que o material ao redor, que foi removido pela erosão. O Pão de Açúcar é um exemplo clássico. Chapadas têm topo plano, Cuestas têm um lado íngreme e outro suave, e Depressões são áreas rebaixadas."
+  },
+  {
+    "id": 9,
+    "contexto": "Um observador em um ponto A avista o topo de um prédio (ponto C) sob um ângulo de 30º. Ao se aproximar 40 metros do prédio, em linha reta, chegando ao ponto B, ele passa a avistar o topo do mesmo prédio sob um ângulo de 60º. Considere a base do prédio no mesmo plano horizontal dos pontos A e B.",
+    "enunciado": "Qual é a altura do prédio em metros? (Considere $\\sqrt{3} \\approx 1,73$)",
+    "disciplina": "Matemática",
+    "assunto": ["Trigonometria", "Triângulo Retângulo"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "20 metros" },
+      { "letra": "B", "texto": "34,6 metros" },
+      { "letra": "C", "texto": "40 metros" },
+      { "letra": "D", "texto": "69,2 metros" },
+      { "letra": "E", "texto": "17,3 metros" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Seja h a altura do prédio e x a distância de B até a base do prédio. Temos dois triângulos retângulos. No primeiro (ponto B): $tan(60º) = h/x \\implies \\sqrt{3} = h/x \\implies x = h/\\sqrt{3}$. No segundo (ponto A): $tan(30º) = h/(x+40) \\implies 1/\\sqrt{3} = h/(x+40) \\implies x+40 = h\\sqrt{3}$. Substituindo x na segunda equação: $(h/\\sqrt{3}) + 40 = h\\sqrt{3}$. Multiplicando tudo por $\\sqrt{3}$: $h + 40\\sqrt{3} = 3h \\implies 2h = 40\\sqrt{3} \\implies h = 20\\sqrt{3}$. Usando $\\sqrt{3} \\approx 1,73$, temos $h \\approx 20 * 1,73 = 34,6$ metros."
+  },
+  {
+    "id": 10,
+    "contexto": "",
+    "enunciado": "Em qual das alternativas a palavra 'que' NÃO é um pronome relativo?",
+    "disciplina": "Português",
+    "assunto": ["Sintaxe", "Morfologia"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O livro que li é excelente." },
+      { "letra": "B", "texto": "A cidade em que nasci é pequena." },
+      { "letra": "C", "texto": "Ele tem que estudar mais para a prova." },
+      { "letra": "D", "texto": "Não conheço o rapaz de que você falou." },
+      { "letra": "E", "texto": "A prova, que estava difícil, foi anulada." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O 'que' é pronome relativo quando pode ser substituído por 'o qual' (e suas variações). Nas alternativas A, B, D e E, a substituição é possível. Em 'Ele tem que estudar mais', a expressão 'tem que' forma uma locução verbal com valor de 'deve'. Nesse caso, 'que' é uma preposição (ou parte da locução), e não um pronome que retoma um termo anterior."
+  },
+  {
+    "id": 11,
+    "contexto": "",
+    "enunciado": "A obra de Gregório de Matos Guerra, principal poeta do Barroco brasileiro, é marcada por fortes contrastes e pode ser dividida em três vertentes principais. Assinale a alternativa que NÃO corresponde a uma dessas vertentes.",
+    "disciplina": "Literatura brasileira",
+    "assunto": ["Barroco"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Poesia lírica, de caráter amoroso e reflexivo." },
+      { "letra": "B", "texto": "Poesia satírica, com críticas aos costumes e autoridades da Bahia." },
+      { "letra": "C", "texto": "Poesia religiosa, abordando o dilema entre pecado e perdão." },
+      { "letra": "D", "texto": "Poesia épica, narrando os grandes feitos dos bandeirantes." },
+      { "letra": "E", "texto": "Poesia filosófica, que reflete sobre a efemeridade da vida." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A produção poética de Gregório de Matos é tradicionalmente dividida em lírica (amorosa e filosófica), satírica (daí o apelido 'Boca do Inferno') e religiosa (sacra). A poesia épica, que narra feitos heroicos de um povo, não é uma característica marcante da sua obra, sendo mais associada a outros períodos e autores, como no Arcadismo com 'O Uraguai'."
+  },
+  {
+    "id": 12,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa em que todas as palavras apresentam dígrafo.",
+    "disciplina": "Português",
+    "assunto": ["Fonética e Fonologia"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Guerra, exceção, psicólogo, atleta" },
+      { "letra": "B", "texto": "Chave, quilo, nascer, campo" },
+      { "letra": "C", "texto": "Folha, descer, aguardar, aquático" },
+      { "letra": "D", "texto": "Excesso, queijo, carro, ninho" },
+      { "letra": "E", "texto": "Piscina, guincho, psique, ritmo" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Dígrafo é o encontro de duas letras que representam um único fonema. Em 'Excesso' (xc, ss), 'queijo' (qu), 'carro' (rr) e 'ninho' (nh), todas as palavras possuem dígrafos. Nas outras opções: 'atleta' não tem dígrafo; 'campo' tem dígrafo vocálico (am); 'aguardar' não tem; 'psique' não tem; 'ritmo' não tem."
+  },
+  {
+    "id": 13,
+    "contexto": "The Amazon Rainforest is home to an incredible variety of species. However, deforestation is a major _______ to its biodiversity.",
+    "enunciado": "Complete the sentence with the most suitable word.",
+    "disciplina": "Inglês",
+    "assunto": ["Vocabulário"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "benefit" },
+      { "letra": "B", "texto": "resource" },
+      { "letra": "C", "texto": "support" },
+      { "letra": "D", "texto": "threat" },
+      { "letra": "E", "texto": "incentive" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O desmatamento ('deforestation') é apresentado como algo negativo para a biodiversidade ('biodiversity'). A palavra que melhor se encaixa nesse contexto é 'threat' (ameaça). 'Benefit' (benefício), 'support' (apoio) e 'incentive' (incentivo) têm conotação positiva. 'Resource' (recurso) não se encaixa adequadamente na frase."
+  },
+  {
+    "id": 14,
+    "contexto": "Sendo a função $f(x) = x^2 - 6x + k$, sabe-se que seu valor mínimo é -1.",
+    "enunciado": "Determine o valor de 'k'.",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Quadrática"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "5" },
+      { "letra": "B", "texto": "6" },
+      { "letra": "C", "texto": "7" },
+      { "letra": "D", "texto": "8" },
+      { "letra": "E", "texto": "9" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O valor mínimo de uma função quadrática com concavidade para cima (a > 0) é dado pelo Y do vértice ($Y_v$), cuja fórmula é $Y_v = -\\Delta / 4a$. Sabemos que $Y_v = -1$. O discriminante $\\Delta$ é $b^2 - 4ac$. Na função, a=1, b=-6 e c=k. Então, $\\Delta = (-6)^2 - 4(1)(k) = 36 - 4k$. Substituindo na fórmula do $Y_v$: $-1 = -(36 - 4k) / (4*1) \\implies -1 = (-36 + 4k) / 4 \\implies -4 = -36 + 4k \\implies 32 = 4k \\implies k = 8$. A 'pegadinha' está em não confundir o valor mínimo (Yv) com a raiz da função ou o X do vértice."
+  },
+  {
+    "id": 15,
+    "contexto": "A vinda da família real portuguesa para o Brasil em 1808 desencadeou profundas transformações econômicas e administrativas na colônia.",
+    "enunciado": "Qual foi a primeira e mais impactante medida econômica tomada por D. João ao chegar ao Brasil?",
+    "disciplina": "História do Brasil",
+    "assunto": ["Período Joanino"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A criação do Banco do Brasil." },
+      { "letra": "B", "texto": "A elevação do Brasil a Reino Unido a Portugal e Algarves." },
+      { "letra": "C", "texto": "A assinatura dos Tratados de 1810 com a Inglaterra." },
+      { "letra": "D", "texto": "A revogação do Alvará de 1785, que proibia manufaturas no Brasil." },
+      { "letra": "E", "texto": "A Abertura dos Portos às Nações Amigas." }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "Logo ao chegar à Bahia, em janeiro de 1808, D. João decretou a Abertura dos Portos às Nações Amigas. Essa medida rompeu o Pacto Colonial, que garantia exclusividade de comércio a Portugal, sendo a mudança econômica mais imediata e significativa do período. As outras medidas ocorreram posteriormente."
+  },
+  {
+    "id": 16,
+    "contexto": "O Segundo Reinado foi um período de relativa estabilidade política e de importantes transformações socioeconômicas no Brasil, como a expansão cafeeira e o gradual processo de abolição da escravatura.",
+    "enunciado": "A Lei Eusébio de Queirós, promulgada em 1850, foi um marco no processo abolicionista brasileiro. Qual foi a sua principal determinação?",
+    "disciplina": "História do Brasil",
+    "assunto": ["Segundo Reinado"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Libertava os escravizados maiores de 60 anos." },
+      { "letra": "B", "texto": "Declarava livres os filhos de mulheres escravizadas nascidos a partir da data da lei." },
+      { "letra": "C", "texto": "Proibia definitivamente o tráfico interprovincial de escravos." },
+      { "letra": "D", "texto": "Extinguia o tráfico negreiro para o Brasil." },
+      { "letra": "E", "texto": "Estabelecia um fundo de emancipação para a compra de alforrias." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Lei Eusébio de Queirós, pressionada pela Inglaterra (Bill Aberdeen), determinou a proibição definitiva do tráfico de escravizados da África para o Brasil. A alternativa A refere-se à Lei dos Sexagenários (1885) e a B, à Lei do Ventre Livre (1871)."
+  },
+  {
+    "id": 17,
+    "contexto": "",
+    "enunciado": "O Domínio de Mares de Morros, característico de grande parte do litoral brasileiro, é formado predominantemente por um conjunto de relevos arredondados, conhecidos como 'meias-laranjas'. Este tipo de paisagem é resultado de intensa atuação de qual processo geomorfológico em clima tropical úmido?",
+    "disciplina": "Geografia do Brasil",
+    "assunto": ["Relevo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Erosão eólica" },
+      { "letra": "B", "texto": "Ação glacial" },
+      { "letra": "C", "texto": "Intemperismo químico" },
+      { "letra": "D", "texto": "Tectonismo recente" },
+      { "letra": "E", "texto": "Vulcanismo" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "As formas arredondadas dos Mares de Morros são o resultado clássico da ação prolongada do intemperismo químico (decomposição das rochas pela água) em um ambiente de clima quente e úmido. A água atua nas fraturas das rochas, decompondo-as e 'arredondando' as vertentes, num processo conhecido como erosão fluvial e pluvial."
+  },
+  {
+    "id": 18,
+    "contexto": "Dada a função exponencial $f(x) = (2k - 8)^x$.",
+    "enunciado": "Para que esta função seja crescente, o valor de 'k' deve ser:",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Exponencial"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "k > 4" },
+      { "letra": "B", "texto": "k < 4" },
+      { "letra": "C", "texto": "k = 4,5" },
+      { "letra": "D", "texto": "k > 4,5" },
+      { "letra": "E", "texto": "k < 4,5" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Para uma função exponencial $f(x) = a^x$ ser crescente, a base 'a' deve ser maior que 1 (a > 1). Neste caso, a base é $(2k - 8)$. Portanto, precisamos ter $2k - 8 > 1$. Resolvendo a inequação: $2k > 1 + 8 \\implies 2k > 9 \\implies k > 9/2 \\implies k > 4,5$. A pegadinha está em lembrar que a base não pode ser apenas maior que zero, mas sim maior que um para ser crescente."
+  },
+  {
+    "id": 19,
+    "contexto": "",
+    "enunciado": "Assinale a alternativa que apresenta um sujeito indeterminado.",
+    "disciplina": "Português",
+    "assunto": ["Sintaxe", "Período Simples"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Vendem-se casas nesta rua." },
+      { "letra": "B", "texto": "Precisa-se de funcionários competentes." },
+      { "letra": "C", "texto": "Houve muitos acidentes no feriado." },
+      { "letra": "D", "texto": "O soldado cumpriu sua missão." },
+      { "letra": "E", "texto": "Choveu muito ontem à noite." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O sujeito é indeterminado quando o verbo está na 3ª pessoa do singular acompanhado do pronome 'se' (índice de indeterminação do sujeito) e se refere a um verbo que exige preposição (quem precisa, precisa DE algo). Em 'A', temos voz passiva sintética ('Casas são vendidas'). Em 'C' e 'E', temos orações sem sujeito (verbo haver e fenômeno da natureza). Em 'D', o sujeito é simples ('O soldado')."
+  },
+  {
+    "id": 20,
+    "contexto": "O Arcadismo brasileiro, ou Neoclassicismo, buscou uma ruptura com os exageros do Barroco, propondo uma arte mais simples, equilibrada e inspirada nos modelos clássicos greco-romanos.",
+    "enunciado": "Qual dos seguintes lemas latinos, frequentemente associados ao Arcadismo, expressa a ideia de aproveitar o momento presente?",
+    "disciplina": "Literatura brasileira",
+    "assunto": ["Arcadismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Fugere urbem" },
+      { "letra": "B", "texto": "Locus amoenus" },
+      { "letra": "C", "texto": "Carpe diem" },
+      { "letra": "D", "texto": "Inutilia truncat" },
+      { "letra": "E", "texto": "Aurea mediocritas" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'Carpe diem' significa 'aproveite o dia', 'colha o momento', que é a exortação para viver o presente de forma intensa, dada a efemeridade da vida. 'Fugere urbem' (fugir da cidade), 'Locus amoenus' (lugar ameno), 'Inutilia truncat' (cortar o inútil) e 'Aurea mediocritas' (equilíbrio de ouro) são outros importantes lemas árcades, mas com outros significados."
+  },
+  {
+    "id": 21,
+    "contexto": "The general ordered his troops to _______ to a safer position after the enemy's advance.",
+    "enunciado": "Choose the phrasal verb that best completes the sentence.",
+    "disciplina": "Inglês",
+    "assunto": ["Vocabulário"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "look for" },
+      { "letra": "B", "texto": "call off" },
+      { "letra": "C", "texto": "give up" },
+      { "letra": "D", "texto": "stand by" },
+      { "letra": "E", "texto": "fall back" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "A frase indica um recuo tático ('to a safer position') após um avanço inimigo. O 'phrasal verb' que significa recuar ou retirar-se é 'fall back'. 'Look for' (procurar), 'call off' (cancelar), 'give up' (desistir) e 'stand by' (ficar de prontidão/apoiar) não se encaixam no contexto militar de reposicionamento."
+  },
+  {
+    "id": 22,
+    "contexto": "O Período Regencial (1831-1840) foi uma das fases mais conturbadas da história do Brasil, marcada por instabilidade política e inúmeras revoltas provinciais.",
+    "enunciado": "Dentre as revoltas regenciais listadas abaixo, a única que possuía um caráter declaradamente separatista e republicano foi a:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Período Regencial"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Cabanagem (Grão-Pará)" },
+      { "letra": "B", "texto": "Sabinada (Bahia)" },
+      { "letra": "C", "texto": "Balaiada (Maranhão)" },
+      { "letra": "D", "texto": "Guerra dos Farrapos (Rio Grande do Sul)" },
+      { "letra": "E", "texto": "Revolta dos Malês (Bahia)" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Guerra dos Farrapos, ou Revolução Farroupilha, foi a mais longa das revoltas regenciais e a única que efetivamente proclamou uma república independente (República Rio-Grandense), mantendo um caráter separatista durante quase toda a sua duração (1835-1845). As outras, embora graves, não tiveram a mesma longevidade e objetivo separatista consolidado."
+  },
+  {
+    "id": 23,
+    "contexto": "O conjunto solução da inequação modular $|2x - 3| \\leq 5$ é um intervalo $[a, b]$.",
+    "enunciado": "Qual o valor de $a + b$?",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Modular"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "1" },
+      { "letra": "B", "texto": "2" },
+      { "letra": "C", "texto": "3" },
+      { "letra": "D", "texto": "4" },
+      { "letra": "E", "texto": "5" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Uma inequação modular do tipo $|f(x)| \\leq k$ (com k>0) pode ser resolvida como $-k \\leq f(x) \\leq k$. Aplicando à questão: $-5 \\leq 2x - 3 \\leq 5$. Resolvemos as duas partes. Primeiro: $-5 \\leq 2x - 3 \\implies -5 + 3 \\leq 2x \\implies -2 \\leq 2x \\implies -1 \\leq x$. Segundo: $2x - 3 \\leq 5 \\implies 2x \\leq 5 + 3 \\implies 2x \\leq 8 \\implies x \\leq 4$. A solução é a interseção dos resultados, ou seja, $-1 \\leq x \\leq 4$. O intervalo é $[-1, 4]$, então $a = -1$ e $b = 4$. A soma $a + b = -1 + 4 = 3$. A pegadinha está em resolver corretamente a inequação dupla e realizar a soma final pedida."
+  },
+  {
+    "id": 24,
+    "contexto": "Leia o texto para responder à questão: 'O treinamento militar exige disciplina, resiliência e, acima de tudo, um profundo senso de camaradagem. Sem a confiança mútua entre os integrantes da equipe, o sucesso de operações complexas torna-se improvável. Cada indivíduo deve compreender seu papel e a importância do trabalho coletivo para superar os desafios impostos.'",
+    "enunciado": "De acordo com o texto, qual é o elemento fundamental, colocado acima dos demais, para o sucesso no ambiente militar?",
+    "disciplina": "Português",
+    "assunto": ["Interpretação de texto"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A disciplina individual." },
+      { "letra": "B", "texto": "A resiliência física e mental." },
+      { "letra": "C", "texto": "A compreensão do papel individual." },
+      { "letra": "D", "texto": "A camaradagem e a confiança mútua." },
+      { "letra": "E", "texto": "A complexidade das operações." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O texto lista 'disciplina' e 'resiliência', mas utiliza a expressão 'e, acima de tudo', para dar ênfase ao 'profundo senso de camaradagem'. Em seguida, reforça essa ideia ao mencionar a 'confiança mútua' como condição para o sucesso. Portanto, a camaradagem é o elemento mais enfatizado."
+  },
+  {
+    "id": 25,
+    "contexto": "",
+    "enunciado": "A crise do Primeiro Reinado culminou na abdicação de D. Pedro I em 1831. Dentre os fatores abaixo, assinale aquele que NÃO contribuiu diretamente para o desgaste de seu governo e consequente abdicação.",
+    "disciplina": "História do Brasil",
+    "assunto": ["Primeiro Reinado"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O autoritarismo do imperador, evidenciado pela dissolução da Assembleia Constituinte de 1823." },
+      { "letra": "B", "texto": "A crise econômica e o endividamento externo, agravados pela Guerra da Cisplatina." },
+      { "letra": "C", "texto": "A questão da sucessão do trono português, que desviava a atenção e os recursos do imperador." },
+      { "letra": "D", "texto": "A promulgação do Ato Adicional de 1834, que concedia maior autonomia às províncias." },
+      { "letra": "E", "texto": "O assassinato do jornalista Líbero Badaró e a repressão violenta em episódios como a Noite das Garrafadas." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "O Ato Adicional de 1834 foi uma emenda à Constituição de 1824, promulgada durante o Período Regencial, justamente como uma tentativa de aplacar as tensões provinciais após a abdicação de D. Pedro I. Portanto, é um evento posterior e não uma causa da crise do Primeiro Reinado."
+  },
+  {
+    "id": 26,
+    "contexto": "",
+    "enunciado": "Se $log_2(x) + log_2(x-2) = 3$, qual o valor de $x$?",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Logarítmica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "4" },
+      { "letra": "B", "texto": "-2" },
+      { "letra": "C", "texto": "2" },
+      { "letra": "D", "texto": "8" },
+      { "letra": "E", "texto": "-4" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Pela propriedade da soma de logaritmos de mesma base, temos: $log_2(x(x-2)) = 3$. Pela definição de logaritmo, $x(x-2) = 2^3$. Isso nos leva a $x^2 - 2x = 8$, ou $x^2 - 2x - 8 = 0$. Resolvendo a equação do segundo grau por Bhaskara ou soma e produto, encontramos as raízes x=4 e x=-2. No entanto, devemos verificar a condição de existência do logaritmo: o logaritmando deve ser positivo. Para $log_2(x)$, $x>0$. Para $log_2(x-2)$, $x-2>0 \\implies x>2$. A solução $x=-2$ não satisfaz a condição. Portanto, a única solução válida é $x=4$."
+  },
+  {
+    "id": 27,
+    "contexto": "Um terreno em formato de triângulo retângulo será cercado com 3 voltas de arame farpado. Seus catetos medem 30 metros e 40 metros.",
+    "enunciado": "Qual a metragem mínima de arame necessária para cercar o terreno?",
+    "disciplina": "Matemática",
+    "assunto": ["Trigonometria", "Triângulo Retângulo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "120 metros" },
+      { "letra": "B", "texto": "210 metros" },
+      { "letra": "C", "texto": "300 metros" },
+      { "letra": "D", "texto": "360 metros" },
+      { "letra": "E", "texto": "50 metros" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Primeiro, precisamos calcular a hipotenusa (h) do triângulo usando o Teorema de Pitágoras: $h^2 = 30^2 + 40^2 \\implies h^2 = 900 + 1600 \\implies h^2 = 2500 \\implies h = 50$ metros. O perímetro (comprimento de uma volta) é a soma dos lados: $P = 30 + 40 + 50 = 120$ metros. Como o terreno será cercado com 3 voltas de arame, a metragem total necessária é $3 * 120 = 360$ metros."
+  },
+  {
+    "id": 28,
+    "contexto": "",
+    "enunciado": "No período 'O oficial informou aos recrutas as novas ordens', os termos 'aos recrutas' e 'as novas ordens' exercem, respectivamente, a função sintática de:",
+    "disciplina": "Português",
+    "assunto": ["Sintaxe", "Período Simples"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Objeto indireto e objeto direto." },
+      { "letra": "B", "texto": "Objeto direto e objeto indireto." },
+      { "letra": "C", "texto": "Adjunto adnominal e objeto direto." },
+      { "letra": "D", "texto": "Complemento nominal e objeto indireto." },
+      { "letra": "E", "texto": "Objeto indireto e sujeito." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O verbo 'informar' é transitivo direto e indireto (V.T.D.I) neste contexto. Quem informa, informa algo (objeto direto) a alguém (objeto indireto). 'O oficial' é o sujeito. O que ele informou? 'as novas ordens' (objeto direto). A quem ele informou? 'aos recrutas' (objeto indireto, iniciado pela preposição 'a')."
+  },
+  {
+    "id": 29,
+    "contexto": "The acronym 'ASAP' is commonly used in messages and emails. What does it stand for?",
+    "enunciado": "Identify the meaning of the acronym 'ASAP'.",
+    "disciplina": "Inglês",
+    "assunto": ["Vocabulário"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "As slow as possible" },
+      { "letra": "B", "texto": "Always say a prayer" },
+      { "letra": "C", "texto": "As soon as possible" },
+      { "letra": "D", "texto": "Another subject, another problem" },
+      { "letra": "E", "texto": "As supervised as planned" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "'ASAP' é um acrônimo da expressão 'As Soon As Possible', que em português significa 'Assim que possível' ou 'O mais rápido possível'. É uma forma comum de indicar urgência."
+  },
+  {
+    "id": 30,
+    "contexto": "Dentre os principais planaltos do Brasil, um deles se destaca por ocupar grande parte do centro do país, sendo o divisor de importantes bacias hidrográficas (Amazônica, Tocantins-Araguaia e Prata) e abrigar o bioma Cerrado.",
+    "enunciado": "A qual unidade de relevo o texto se refere?",
+    "disciplina": "Geografia do Brasil",
+    "assunto": ["Relevo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Planalto da Borborema" },
+      { "letra": "B", "texto": "Planalto Meridional" },
+      { "letra": "C", "texto": "Planalto Central" },
+      { "letra": "D", "texto": "Escudo das Guianas" },
+      { "letra": "E", "texto": "Planalto Atlântico" }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O Planalto Central é a unidade de relevo que corresponde à descrição. Localizado no coração do Brasil, é conhecido como a 'caixa d'água do Brasil' por ser o divisor de águas (dispersor) das três maiores bacias hidrográficas do país. O bioma predominante nesta área é o Cerrado."
+  },
+  {
+    "id": 31,
+    "enunciado": "Durante o período colonial, o sistema de Capitanias Hereditárias foi implantado com o objetivo de:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Período Colonial", "Administração"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Centralizar o poder político na metrópole" },
+      { "letra": "B", "texto": "Facilitar a colonização e defesa do território" },
+      { "letra": "C", "texto": "Estimular o comércio interno entre as capitanias" },
+      { "letra": "D", "texto": "Abolir o trabalho escravo" },
+      { "letra": "E", "texto": "Implantar a mineração como principal atividade" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O sistema de Capitanias Hereditárias visava acelerar a colonização e proteger o litoral, transferindo parte da responsabilidade administrativa e financeira aos donatários."
+  },
+  {
+    "id": 32,
+    "enunciado": "A Inconfidência Mineira, ocorrida no século XVIII, teve como principal motivação:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Período Colonial", "Revoltas Separatistas"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A alta carga tributária imposta pela Coroa" },
+      { "letra": "B", "texto": "O desejo de independência religiosa" },
+      { "letra": "C", "texto": "A defesa da monarquia portuguesa" },
+      { "letra": "D", "texto": "A abolição imediata da escravidão" },
+      { "letra": "E", "texto": "A luta contra a invasão holandesa" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O movimento foi impulsionado pela insatisfação com a cobrança do 'quinto' e a ameaça da 'derrama', representando um descontentamento econômico e político."
+  },
+  {
+    "id": 33,
+    "enunciado": "O território brasileiro possui quatro fusos horários oficiais. Considerando Brasília como referência, a diferença de horário para o Acre é de:",
+    "disciplina": "Geografia do Brasil",
+    "assunto": ["Território", "Fusos Horários"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "1 hora a menos" },
+      { "letra": "B", "texto": "2 horas a menos" },
+      { "letra": "C", "texto": "3 horas a menos" },
+      { "letra": "D", "texto": "1 hora a mais" },
+      { "letra": "E", "texto": "2 horas a mais" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Acre está no fuso UTC-5, enquanto Brasília está no UTC-3, resultando em 2 horas de diferença a menos."
+  },
+  {
+    "id": 34,
+    "enunciado": "A função quadrática f(x) = -x² + 6x - 8 possui como vértice o ponto:",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Quadrática"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "(3, 1)" },
+      { "letra": "B", "texto": "(3, 1)" },
+      { "letra": "C", "texto": "(3, -1)" },
+      { "letra": "D", "texto": "(3, 8)" },
+      { "letra": "E", "texto": "(2, 8)" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O vértice é dado por x = -b/(2a) → x = -6/(2·(-1)) = 3. Substituindo em f(x): f(3) = -9 + 18 - 8 = 1."
+  },
+  {
+    "id": 35,
+    "enunciado": "No triângulo retângulo, se um cateto mede 6 cm e a hipotenusa mede 10 cm, o outro cateto mede:",
+    "disciplina": "Matemática",
+    "assunto": ["Trigonometria", "Triângulo Retângulo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "4 cm" },
+      { "letra": "B", "texto": "5 cm" },
+      { "letra": "C", "texto": "6 cm" },
+      { "letra": "D", "texto": "8 cm" },
+      { "letra": "E", "texto": "3 cm" }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "Pelo Teorema de Pitágoras: c² = 10² - 6² → c² = 100 - 36 = 64 → c = 8 cm."
+  },
+  {
+    "id": 36,
+    "contexto": "Leia o trecho: 'O sol brilhava intensamente sobre o sertão, e a poeira subia com o vento.'",
+    "enunciado": "No trecho, a palavra 'poeira' é classificada como:",
+    "disciplina": "Português",
+    "assunto": ["Morfologia", "Classes Gramaticais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Substantivo comum" },
+      { "letra": "B", "texto": "Adjetivo" },
+      { "letra": "C", "texto": "Verbo" },
+      { "letra": "D", "texto": "Advérbio" },
+      { "letra": "E", "texto": "Pronome" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "'Poeira' é um substantivo comum, pois nomeia algo de forma genérica, sem especificar."
+  },
+  {
+    "id": 37,
+    "enunciado": "O Quinhentismo no Brasil é marcado principalmente por:",
+    "disciplina": "Literatura Brasileira",
+    "assunto": ["Quinhentismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Poesia satírica e crítica social" },
+      { "letra": "B", "texto": "Textos informativos e catequéticos" },
+      { "letra": "C", "texto": "Narrativas realistas" },
+      { "letra": "D", "texto": "Romances regionalistas" },
+      { "letra": "E", "texto": "Poesia simbolista" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Quinhentismo caracteriza-se por textos de descrição da terra e catequese, escritos por viajantes e missionários."
+  },
+  {
+    "id": 38,
+    "enunciado": "No inglês, a tradução correta para 'Eu estou estudando para o exame' é:",
+    "disciplina": "Inglês",
+    "assunto": ["Vocabulário"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "I study for the exam" },
+      { "letra": "B", "texto": "I am studying for the exam" },
+      { "letra": "C", "texto": "I will study for the exam" },
+      { "letra": "D", "texto": "I have studied for the exam" },
+      { "letra": "E", "texto": "I studying for the exam" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A ação está ocorrendo no momento, exigindo o uso do Present Continuous: 'I am studying'."
+  },
+  {
+    "id": 39,
+    "enunciado": "A Confederação do Equador (1824) foi um movimento de caráter:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Primeiro Reinado", "Revoltas Separatistas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Monarquista e absolutista" },
+      { "letra": "B", "texto": "Republicano e separatista" },
+      { "letra": "C", "texto": "Federalista e monarquista" },
+      { "letra": "D", "texto": "Abolicionista e socialista" },
+      { "letra": "E", "texto": "Regionalista e defensora do comércio inglês" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Confederação do Equador defendia ideais republicanos e a separação de Pernambuco do Império do Brasil."
+  },
+  {
+    "id": 40,
+    "enunciado": "Assinale a alternativa em que todas as palavras apresentam encontro consonantal:",
+    "disciplina": "Português",
+    "assunto": ["Fonética e Fonologia"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Prato, atleta, classe" },
+      { "letra": "B", "texto": "Prato, atleta, alto" },
+      { "letra": "C", "texto": "Classe, prato, prato" },
+      { "letra": "D", "texto": "Atleta, prato, casa" },
+      { "letra": "E", "texto": "Classe, alto, prato" }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Todas apresentam encontro consonantal: 'pr', 'tl' e 'cl'."
+  },
+  {
+    "id": 41,
+    "contexto": "No século XIX, o Brasil passou por profundas transformações políticas e econômicas, influenciadas por eventos internacionais como a Revolução Industrial e a independência das colônias espanholas na América.",
+    "enunciado": "Durante o Primeiro Reinado (1822-1831), D. Pedro I enfrentou diversas crises internas. Entre os fatores que contribuíram para sua abdicação, podemos citar:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Primeiro Reinado", "Crises Políticas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A vitória na Guerra da Cisplatina, que gerou desgaste político" },
+      { "letra": "B", "texto": "A oposição liberal e a perda da província Cisplatina" },
+      { "letra": "C", "texto": "A implantação imediata do voto universal" },
+      { "letra": "D", "texto": "A renúncia por motivos exclusivamente pessoais" },
+      { "letra": "E", "texto": "A falta de apoio militar devido à abolição da escravidão" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A derrota na Guerra da Cisplatina, que resultou na independência do Uruguai, somada à oposição liberal e à crise econômica, fragilizou o governo de D. Pedro I."
+  },
+  {
+    "id": 42,
+    "contexto": "O relevo brasileiro apresenta formas diversificadas devido à sua antiga estrutura geológica, marcada por planaltos, planícies e depressões.",
+    "enunciado": "Assinale a alternativa que apresenta corretamente uma característica dos planaltos brasileiros.",
+    "disciplina": "Geografia do Brasil",
+    "assunto": ["Relevo", "Planaltos"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "São áreas de relevo com predomínio de deposição de sedimentos recentes" },
+      { "letra": "B", "texto": "Possuem altitudes médias superiores a 300 metros e predominância de processos erosivos" },
+      { "letra": "C", "texto": "São áreas exclusivamente cobertas por florestas tropicais" },
+      { "letra": "D", "texto": "Localizam-se apenas na região Sudeste" },
+      { "letra": "E", "texto": "São formados unicamente por rochas sedimentares" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os planaltos são áreas elevadas, com predominância de processos erosivos e altitudes médias geralmente superiores a 300 metros."
+  },
+  {
+    "id": 43,
+    "contexto": "Um estudante analisou a função f(x) = 2^(x-1) e percebeu que ela poderia ser deslocada horizontalmente para facilitar o cálculo de seu gráfico.",
+    "enunciado": "Assinale a alternativa correta sobre o comportamento da função f(x) = 2^(x-1).",
+    "disciplina": "Matemática",
+    "assunto": ["Funções", "Função Exponencial"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O gráfico é obtido deslocando a função 2^x uma unidade para a esquerda" },
+      { "letra": "B", "texto": "O gráfico é obtido deslocando a função 2^x uma unidade para a direita" },
+      { "letra": "C", "texto": "O gráfico é obtido deslocando a função 2^x duas unidades para a direita" },
+      { "letra": "D", "texto": "O gráfico é obtido deslocando a função 2^x duas unidades para a esquerda" },
+      { "letra": "E", "texto": "O gráfico é simétrico em relação ao eixo y" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O termo (x-1) provoca um deslocamento de 1 unidade para a direita no gráfico da função exponencial 2^x."
+  },
+  {
+    "id": 44,
+    "contexto": "Leia o trecho: 'A vida é como um rio que segue seu curso, contornando obstáculos e se adaptando ao terreno.'",
+    "enunciado": "No trecho acima, a comparação estabelecida é um exemplo de:",
+    "disciplina": "Português",
+    "assunto": ["Interpretação de Texto", "Figuras de Linguagem"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Metáfora" },
+      { "letra": "B", "texto": "Comparação" },
+      { "letra": "C", "texto": "Metonímia" },
+      { "letra": "D", "texto": "Hipérbole" },
+      { "letra": "E", "texto": "Ironia" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O uso da conjunção 'como' indica uma comparação explícita entre a vida e um rio."
+  },
+  {
+    "id": 45,
+    "contexto": "No Brasil colonial, diversas revoltas ocorreram motivadas por fatores econômicos, políticos e sociais.",
+    "enunciado": "A Revolta de Beckman (1684), ocorrida no Maranhão, teve como uma de suas causas principais:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Período Colonial", "Revoltas Nativistas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A alta tributação sobre a cana-de-açúcar" },
+      { "letra": "B", "texto": "A insatisfação com a Companhia de Comércio do Maranhão" },
+      { "letra": "C", "texto": "A resistência contra a abolição da escravidão" },
+      { "letra": "D", "texto": "O combate à invasão holandesa" },
+      { "letra": "E", "texto": "A defesa da independência do Maranhão" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A revolta foi motivada pelo monopólio e pelos altos preços impostos pela Companhia de Comércio do Maranhão."
+  },
+  {
+    "id": 46,
+    "contexto": "Leia o trecho: 'Na aurora do dia, os sinos repicavam anunciando a missa.'",
+    "enunciado": "A palavra 'aurora', no contexto, classifica-se morfologicamente como:",
+    "disciplina": "Português",
+    "assunto": ["Morfologia", "Classes Gramaticais"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Adjetivo" },
+      { "letra": "B", "texto": "Substantivo comum" },
+      { "letra": "C", "texto": "Advérbio" },
+      { "letra": "D", "texto": "Pronome" },
+      { "letra": "E", "texto": "Verbo" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "'Aurora' é substantivo comum, pois nomeia o nascer do dia de forma genérica."
+  },
+  {
+    "id": 47,
+    "contexto": "O Arcadismo, no Brasil, surge no final do século XVIII e é marcado por influências do Iluminismo e do Neoclassicismo.",
+    "enunciado": "Assinale a alternativa que NÃO representa uma característica do Arcadismo.",
+    "disciplina": "Literatura Brasileira",
+    "assunto": ["Arcadismo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Valorização da vida campestre" },
+      { "letra": "B", "texto": "Uso de pseudônimos pastorais" },
+      { "letra": "C", "texto": "Exaltação da natureza" },
+      { "letra": "D", "texto": "Culto ao carpe diem" },
+      { "letra": "E", "texto": "Linguagem rebuscada e obscura" }
+    ],
+    "resposta_correta": "E",
+    "resolucao": "O Arcadismo prezava por simplicidade e clareza, em oposição à linguagem rebuscada do Barroco."
+  },
+  {
+    "id": 48,
+    "contexto": "Em inglês, as preposições podem mudar completamente o sentido de uma frase.",
+    "enunciado": "A tradução correta para 'Ele desistiu do plano' é:",
+    "disciplina": "Inglês",
+    "assunto": ["Vocabulário"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "He gave in the plan" },
+      { "letra": "B", "texto": "He gave up the plan" },
+      { "letra": "C", "texto": "He turned off the plan" },
+      { "letra": "D", "texto": "He put down the plan" },
+      { "letra": "E", "texto": "He took up the plan" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A expressão 'give up' significa desistir, sendo adequada ao contexto."
+  },
+  {
+    "id": 49,
+    "contexto": "O Período Joanino (1808-1821) marcou a transferência da corte portuguesa para o Brasil e trouxe diversas mudanças.",
+    "enunciado": "Entre as medidas implementadas por D. João VI no Brasil, podemos citar:",
+    "disciplina": "História do Brasil",
+    "assunto": ["Período Joanino"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Fechamento dos portos às nações amigas" },
+      { "letra": "B", "texto": "Criação do Banco do Brasil e abertura dos portos" },
+      { "letra": "C", "texto": "Implantação de tarifas alfandegárias proibitivas" },
+      { "letra": "D", "texto": "Extinção da escravidão" },
+      { "letra": "E", "texto": "Declaração de independência do Brasil" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "D. João VI abriu os portos às nações amigas e criou o Banco do Brasil, modernizando a economia."
+  },
+  {
+    "id": 50,
+    "contexto": "No triângulo retângulo, a razão entre o cateto oposto e a hipotenusa define uma função trigonométrica.",
+    "enunciado": "Se em um triângulo retângulo o cateto oposto mede 7 cm e a hipotenusa mede 25 cm, o seno do ângulo agudo correspondente é:",
+    "disciplina": "Matemática",
+    "assunto": ["Trigonometria", "Triângulo Retângulo"],
+    "dificuldade": "Médio",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "0,25" },
+      { "letra": "B", "texto": "0,28" },
+      { "letra": "C", "texto": "0,30" },
+      { "letra": "D", "texto": "0,32" },
+      { "letra": "E", "texto": "0,35" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Seno = cateto oposto / hipotenusa = 7/25 = 0,28."
+  }
+]
