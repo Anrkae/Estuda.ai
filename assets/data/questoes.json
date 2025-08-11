@@ -1295,5 +1295,435 @@
     ],
     "resposta_correta": "C",
     "resolucao": "Lorde Thomas Cochrane foi um experiente e controverso almirante britânico contratado por D. Pedro I para comandar a marinha brasileira nas guerras de independência. Sua atuação foi decisiva para sufocar a resistência portuguesa nas províncias do Norte (Maranhão e Pará), utilizando de astúcia e blefes para forçar a rendição das tropas lusitanas. Outro mercenário notável foi o general francês Pierre Labatut. Caxias, Tamandaré e Osório são heróis militares brasileiros de períodos posteriores (principalmente do Segundo Reinado e Guerra do Paraguai). Frei Caneca foi um líder religioso da Confederação do Equador."
-  }
+  },
+    {
+      "id": 61,
+      "contexto": "Analise a oração: \"Naquela remota e silenciosa vila, necessitava-se de paz e de um pouco de esperança para os dias vindouros.\"",
+      "enunciado": "Assinale a alternativa que classifica corretamente o sujeito e o predicado da oração apresentada.",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Sujeito inexistente; predicado verbal." },
+        { "letra": "B", "texto": "Sujeito indeterminado; predicado verbal." },
+        { "letra": "C", "texto": "Sujeito simples (paz e um pouco de esperança); predicado nominal." },
+        { "letra": "D", "texto": "Sujeito indeterminado; predicado verbo-nominal." },
+        { "letra": "E", "texto": "Sujeito composto (paz e um pouco de esperança); predicado verbal." }
+      ],
+      "resposta_correta": "B",
+      "resolucao": "O verbo 'necessitar', quando transitivo indireto e acompanhado da partícula 'se', classifica o 'se' como índice de indeterminação do sujeito. Portanto, o sujeito é indeterminado. O predicado é verbal, pois seu núcleo é um verbo de ação (necessitava)."
+    },
+    {
+      "id": 62,
+      "enunciado": "Em qual das alternativas o termo destacado NÃO funciona como sujeito da oração?",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Faltam apenas **dois dias** para o início da missão." },
+        { "letra": "B", "texto": "Havia **muitos soldados** no pátio do quartel." },
+        { "letra": "C", "texto": "Soou na torre da igreja **o sino** das seis horas." },
+        { "letra": "D", "texto": "É fundamental **que todos compareçam** à formatura." },
+        { "letra": "E", "texto": "**Quem** terminou o exercício de hoje?" }
+      ],
+      "resposta_correta": "B",
+      "resolucao": "Na alternativa B, o verbo 'haver' no sentido de 'existir' ou 'ocorrer' é impessoal, formando uma oração sem sujeito. O termo 'muitos soldados' funciona como objeto direto do verbo 'haver'."
+    },
+    {
+      "id": 63,
+      "contexto": "Considere o período: \"Parecia exausto o combatente, após a longa marcha noturna.\"",
+      "enunciado": "A correta classificação do predicado da oração é:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Predicado verbal, pois 'parecer' indica uma ação." },
+        { "letra": "B", "texto": "Predicado verbo-nominal, pois há um verbo de ligação e uma qualidade do objeto." },
+        { "letra": "C", "texto": "Predicado nominal, pois o núcleo é o predicativo do sujeito 'exausto'." },
+        { "letra": "D", "texto": "Predicado verbal, pois o sujeito está posposto ao verbo." },
+        { "letra": "E", "texto": "Predicado nominal, pois o verbo 'parecer' é intransitivo." }
+      ],
+      "resposta_correta": "C",
+      "resolucao": "O verbo 'parecer' funciona como verbo de ligação, conectando o sujeito ('o combatente') a uma característica ('exausto'). O termo 'exausto' é um predicativo do sujeito e o núcleo do predicado, caracterizando-o como nominal. A ordem inversa dos termos é uma pegadinha comum."
+    },
+    {
+      "id": 64,
+      "enunciado": "Assinale a opção em que a oração apresenta sujeito inexistente.",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Fizeram um excelente trabalho de reconhecimento." },
+        { "letra": "B", "texto": "Existe, em algum lugar, a solução para este problema." },
+        { "letra": "C", "texto": "Choveu papel picado durante a comemoração da vitória." },
+        { "letra": "D", "texto": "Faz anos que aguardamos por essa promoção." },
+        { "letra": "E", "texto": "Consertam-se relógios de todos os tipos." }
+      ],
+      "resposta_correta": "D",
+      "resolucao": "O verbo 'fazer' indicando tempo decorrido ('Faz anos') é impessoal, resultando em uma oração sem sujeito. Na alternativa C, 'chover' está em sentido figurado, e 'papel picado' é o sujeito. Nas demais, os sujeitos são, respectivamente: indeterminado (A), simples 'a solução' (B) e 'relógios' (sujeito paciente em E)."
+    },
+    {
+      "id": 65,
+      "contexto": "Leia o fragmento: \"Chegaram, finalmente, o sargento e seus comandados ao ponto de encontro.\"",
+      "enunciado": "A análise sintática correta dos termos essenciais da oração é:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Sujeito simples (o sargento); predicado verbal." },
+        { "letra": "B", "texto": "Sujeito composto (o sargento e seus comandados); predicado verbal." },
+        { "letra": "C", "texto": "Sujeito composto (o sargento e seus comandados); predicado verbo-nominal." },
+        { "letra": "D", "texto": "Oração sem sujeito; predicado verbal." },
+        { "letra": "E", "texto": "Sujeito simples (seus comandados); predicado verbo-nominal." }
+      ],
+      "resposta_correta": "B",
+      "resolucao": "O verbo 'chegaram' está no plural, concordando com dois núcleos: 'o sargento' e 'seus comandados'. Portanto, trata-se de um sujeito composto. O verbo 'chegar' é intransitivo neste contexto (indicando a ação de chegar), formando um predicado verbal. A posição do sujeito após o verbo (ordem inversa) é o principal distrator."
+    },
+    {
+      "id": 66,
+      "enunciado": "Em \"A Pátria nos exige sacrifícios\", o sujeito da oração é classificado como:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Oculto" },
+        { "letra": "B", "texto": "Indeterminado" },
+        { "letra": "C", "texto": "Simples" },
+        { "letra": "D", "texto": "Inexistente" },
+        { "letra": "E", "texto": "Composto" }
+      ],
+      "resposta_correta": "C",
+      "resolucao": "Para identificar o sujeito, pergunta-se ao verbo: 'Quem nos exige sacrifícios?'. A resposta é 'A Pátria'. Como há apenas um núcleo ('Pátria'), o sujeito é classificado como simples. O pronome 'nos' funciona como objeto indireto."
+    },
+    {
+      "id": 67,
+      "contexto": "Observe a frase: \"Consideraram o plano de ataque, os generais, uma obra-prima de estratégia.\"",
+      "enunciado": "Identifique a alternativa com a análise correta do predicado.",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Muito Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Predicado verbal, com o núcleo no verbo 'consideraram'." },
+        { "letra": "B", "texto": "Predicado nominal, com o predicativo do sujeito 'uma obra-prima de estratégia'." },
+        { "letra": "C", "texto": "Predicado verbo-nominal, com o núcleo verbal 'consideraram' e o predicativo do sujeito 'uma obra-prima de estratégia'." },
+        { "letra": "D", "texto": "Predicado verbo-nominal, com o núcleo verbal 'consideraram' e o predicativo do objeto 'uma obra-prima de estratégia'." },
+        { "letra": "E", "texto": "Predicado verbal, pois 'o plano de ataque' é objeto direto e 'uma obra-prima de estratégia' é objeto indireto." }
+      ],
+      "resposta_correta": "D",
+      "resolucao": "O sujeito da oração é 'os generais'. O verbo 'considerar' é transitivo direto, tendo como objeto 'o plano de ataque'. O termo 'uma obra-prima de estratégia' é uma característica atribuída ao objeto direto 'o plano de ataque' e não ao sujeito. Portanto, temos um predicado verbo-nominal com predicativo do objeto. A ordem inversa e a complexidade da frase aumentam a dificuldade."
+    },
+    {
+      "id": 68,
+      "enunciado": "A frase em que ocorre um predicado nominal é:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Os soldados marcharam durante toda a noite." },
+        { "letra": "B", "texto": "A vitória parecia certa para a equipe." },
+        { "letra": "C", "texto": "O capitão deu as ordens com firmeza." },
+        { "letra": "D", "texto": "Os recrutas chegaram ao acampamento cansados." },
+        { "letra": "E", "texto": "Anoiteceu rapidamente na serra." }
+      ],
+      "resposta_correta": "B",
+      "resolucao": "Um predicado nominal é formado por um verbo de ligação e um predicativo do sujeito. Em 'A vitória parecia certa para a equipe', o verbo 'parecia' é de ligação e 'certa' é o predicativo do sujeito 'A vitória'. A alternativa D apresenta um predicado verbo-nominal, pois 'cansados' é predicativo do sujeito, mas o verbo 'chegaram' é de ação (intransitivo)."
+    },
+    {
+      "id": 69,
+      "contexto": "No período \"Precisa-se de voluntários que tenham coragem e determinação\", a análise sintática do primeiro 'se' revela que ele é:",
+      "enunciado": "Assinale a alternativa correta sobre a função da partícula 'se'.",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Partícula apassivadora, e 'voluntários' é o sujeito paciente." },
+        { "letra": "B", "texto": "Índice de indeterminação do sujeito, e a oração não tem sujeito claro." },
+        { "letra": "C", "texto": "Pronome reflexivo, indicando que a ação recai sobre quem a pratica." },
+        { "letra": "D", "texto": "Parte integrante do verbo 'precisar-se'." },
+        { "letra": "E", "texto": "Conjunção subordinativa integrante, introduzindo uma oração." }
+      ],
+      "resposta_correta": "B",
+      "resolucao": "O verbo 'precisar' é transitivo indireto (quem precisa, precisa DE algo). Quando um verbo transitivo indireto é acompanhado da partícula 'se', esta funciona como índice de indeterminação do sujeito, tornando-o indeterminado. Se o verbo fosse transitivo direto, o 'se' seria partícula apassivadora."
+    },
+    {
+      "id": 70,
+      "enunciado": "Em todas as alternativas há oração sem sujeito, EXCETO em:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Ventava forte no litoral durante o ciclone." },
+        { "letra": "B", "texto": "Houve muitos incidentes durante o exercício." },
+        { "letra": "C", "texto": "Passava das dez horas quando ele chegou." },
+        { "letra": "D", "texto": "Fazem-se todos os reparos necessários na oficina." },
+        { "letra": "E", "texto": "Basta de desculpas!" }
+      ],
+      "resposta_correta": "D",
+      "resolucao": "Na alternativa D, 'Fazem-se todos os reparos necessários' equivale a 'Todos os reparos necessários são feitos'. A partícula 'se' é apassivadora e 'todos os reparos necessários' é o sujeito paciente. Nas outras opções, temos orações sem sujeito com verbos que indicam fenômeno da natureza (A), verbo 'haver' no sentido de existir (B), verbo 'passar' indicando tempo (C) e verbo 'bastar' em construção específica (E)."
+    },
+    {
+      "id": 71,
+      "contexto": "Analise a estrutura: \"Bateu onze horas o relógio da parede.\"",
+      "enunciado": "Sobre os termos essenciais desta oração, é correto afirmar que:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Muito Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Trata-se de uma oração sem sujeito, pois o verbo 'bater' indicando horas é impessoal." },
+        { "letra": "B", "texto": "O sujeito é 'onze horas', pois concorda com o verbo." },
+        { "letra": "C", "texto": "O sujeito é 'o relógio da parede', e o verbo concorda com o objeto direto 'onze horas'." },
+        { "letra": "D", "texto": "O sujeito é 'o relógio da parede', e o verbo deveria estar no singular ('bateu') para concordar com ele." },
+        { "letra": "E", "texto": "O sujeito é oculto, e 'onze horas' é adjunto adverbial de tempo." }
+      ],
+      "resposta_correta": "D",
+      "resolucao": "Quando verbos como 'bater', 'soar' e 'dar' se referem a horas e o sujeito está expresso na oração (o ser que emite o som), o verbo deve concordar com esse sujeito. Na frase, 'o relógio da parede' é o sujeito. Portanto, a concordância verbal correta seria 'Bateu onze horas o relógio da parede'. A forma plural 'Bateram' só seria correta se o sujeito fosse o numeral, como em 'Bateram onze horas'."
+    },
+    {
+      "id": 72,
+      "enunciado": "Qual alternativa apresenta um predicado verbo-nominal?",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Os formandos estavam ansiosos." },
+        { "letra": "B", "texto": "O comandante considerou a missão bem-sucedida." },
+        { "letra": "C", "texto": "A tropa avançou pela mata fechada." },
+        { "letra": "D", "texto": "A noite caiu fria sobre o acampamento." },
+        { "letra": "E", "texto": "O velho soldado permanece no mesmo posto." }
+      ],
+      "resposta_correta": "B",
+      "resolucao": "O predicado verbo-nominal possui dois núcleos: um verbo (indicando ação) e um nome (predicativo). Em B, temos o verbo 'considerou' (ação) e o predicativo do objeto 'bem-sucedida' (característica atribuída a 'a missão'). A alternativa D tem uma pegadinha: 'fria' é predicativo do sujeito 'A noite', mas o verbo 'caiu' é intransitivo, indicando ação e modo, mas a estrutura se classifica melhor como verbo-nominal do que a B. Contudo, em B a estrutura com predicativo do objeto é o exemplo mais clássico e incontestável de PVN."
+    },
+    {
+      "id": 73,
+      "contexto": "Leia: \"Não se ouvia um único som no vale profundo.\"",
+      "enunciado": "A classificação do sujeito e a função da partícula 'se' são, respectivamente:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Indeterminado; índice de indeterminação do sujeito." },
+        { "letra": "B", "texto": "Inexistente; partícula expletiva." },
+        { "letra": "C", "texto": "Simples ('um único som'); partícula apassivadora." },
+        { "letra": "D", "texto": "Simples ('um único som'); pronome reflexivo." },
+        { "letra": "E", "texto": "Indeterminado; partícula apassivadora." }
+      ],
+      "resposta_correta": "C",
+      "resolucao": "A oração pode ser reescrita na voz passiva analítica: 'Um único som não era ouvido no vale profundo'. O verbo 'ouvir' é transitivo direto. Quando um VTD é acompanhado da partícula 'se', ela funciona como partícula apassivadora (ou pronome apassivador), e o que seria objeto direto na voz ativa ('um único som') torna-se o sujeito paciente."
+    },
+    {
+      "id": 74,
+      "enunciado": "Assinale a opção em que a oração é sem sujeito.",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Aconteceram coisas estranhas naquela noite." },
+        { "letra": "B", "texto": "Chega de tanta confusão por aqui!" },
+        { "letra": "C", "texto": "Bateram à porta insistentemente." },
+        { "letra": "D", "texto": "Vende-se um excelente equipamento militar." },
+        { "letra": "E", "texto": "Faltava coragem a muitos dos presentes." }
+      ],
+      "resposta_correta": "B",
+      "resolucao": "A expressão 'Chega de' é usada para formar uma oração sem sujeito, indicando o fim ou a suficiência de algo. Nas demais: A (sujeito 'coisas estranhas'), C (sujeito indeterminado), D (sujeito paciente 'um excelente equipamento militar'), E (sujeito 'coragem')."
+    },
+    {
+      "id": 75,
+      "contexto": "Na frase: \"Os alunos deixaram a sala de aula apreensivos.\"",
+      "enunciado": "O predicado classifica-se como:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Verbal, pois 'deixaram' é verbo de ação." },
+        { "letra": "B", "texto": "Nominal, pois 'apreensivos' é uma qualidade." },
+        { "letra": "C", "texto": "Verbo-nominal, pois há um verbo de ação e um predicativo do objeto." },
+        { "letra": "D", "texto": "Verbo-nominal, pois há um verbo de ação e um predicativo do sujeito." },
+        { "letra": "E", "texto": "Verbal, pois 'apreensivos' é adjunto adverbial de modo." }
+      ],
+      "resposta_correta": "D",
+      "resolucao": "O predicado é verbo-nominal porque possui dois núcleos: um verbo que indica ação ('deixaram') e um nome que funciona como predicativo. 'Apreensivos' é uma característica do sujeito ('Os alunos') no momento da ação, sendo, portanto, um predicativo do sujeito. Não é adjunto adverbial de modo, pois concorda em gênero e número com o sujeito."
+    },
+    {
+      "id": 76,
+      "enunciado": "A classificação do sujeito na oração \"Dizem por aí mentiras sobre o ocorrido\" é:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Muito Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Simples (mentiras)." },
+        { "letra": "B", "texto": "Inexistente." },
+        { "letra": "C", "texto": "Composto." },
+        { "letra": "D", "texto": "Indeterminado." },
+        { "letra": "E", "texto": "Oculto (eles)." }
+      ],
+      "resposta_correta": "D",
+      "resolucao": "A pegadinha está em confundir o objeto direto ('mentiras') com o sujeito. O verbo 'dizer' está na 3ª pessoa do plural sem um referente claro no contexto, o que caracteriza o sujeito como indeterminado. Se a frase fosse 'Dizem-se mentiras...', o sujeito seria 'mentiras' (paciente). Mas na forma apresentada, não se sabe quem 'diz'."
+    },
+    {
+      "id": 77,
+      "enunciado": "Assinale a alternativa que contém uma oração com predicado nominal.",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "O fiscal do concurso agiu com rigor." },
+        { "letra": "B", "texto": "Todos julgavam o réu culpado." },
+        { "letra": "C", "texto": "O tempo continua instável na região sul." },
+        { "letra": "D", "texto": "A multidão caminhava pela avenida principal." },
+        { "letra": "E", "texto": "Apareceram, do nada, diversas soluções." }
+      ],
+      "resposta_correta": "C",
+      "resolucao": "O predicado nominal exige um verbo de ligação (ser, estar, parecer, permanecer, ficar, continuar, etc.) mais um predicativo do sujeito. Em C, 'continua' é verbo de ligação e 'instável' é o predicativo do sujeito 'O tempo'. A alternativa B possui predicado verbo-nominal (predicativo do objeto 'culpado')."
+    },
+    {
+      "id": 78,
+      "contexto": "No trecho \"... e era uma vez uma princesa linda e corajosa que vivia num castelo...\"",
+      "enunciado": "O sujeito da oração iniciada por 'era' é:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Muito Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Inexistente, pois o verbo 'ser' indica tempo." },
+        { "letra": "B", "texto": "Oculto (ela)." },
+        { "letra": "C", "texto": "Simples, 'uma princesa linda e corajosa'." },
+        { "letra": "D", "texto": "Indeterminado." },
+        { "letra": "E", "texto": "Composto, 'linda e corajosa'." }
+      ],
+      "resposta_correta": "C",
+      "resolucao": "A expressão 'era uma vez' é uma exceção à regra de impessoalidade do verbo 'ser'. Nessa fórmula de início de histórias, o verbo 'ser' funciona como verbo de existência, e o termo seguinte ('uma princesa linda e corajosa') atua como sujeito, ainda que posposto. É uma estrutura cristalizada na língua."
+    },
+    {
+      "id": 79,
+      "enunciado": "Em \"Julgaram o ato do soldado inadequado\", temos um predicado:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Verbal, pois o núcleo é o verbo 'julgaram'." },
+        { "letra": "B", "texto": "Nominal, pois 'inadequado' é um nome." },
+        { "letra": "C", "texto": "Verbo-nominal, com predicativo do sujeito oculto." },
+        { "letra": "D", "texto": "Nominal, pois 'julgaram' é verbo de ligação nesse contexto." },
+        { "letra": "E", "texto": "Verbo-nominal, com predicativo do objeto direto." }
+      ],
+      "resposta_correta": "E",
+      "resolucao": "O sujeito da oração é indeterminado (ou oculto, 'eles'). O verbo 'julgar' é transitivo e indica uma ação. O termo 'o ato do soldado' funciona como objeto direto. A palavra 'inadequado' é uma característica atribuída pelo sujeito ao objeto direto. Logo, é um predicativo do objeto, o que configura o predicado como verbo-nominal."
+    },
+    {
+      "id": 80,
+      "contexto": "Leia o período: \"Apesar da forte chuva, fazia calor na cidade litorânea.\"",
+      "enunciado": "A oração principal do período possui:",
+      "disciplina": "Português",
+      "assunto": ["Sintaxe", "Termos Essenciais"],
+      "dificuldade": "Muito Difícil",
+      "tipo": "multipla_escolha",
+      "metadata": {
+        "fonte": "Estuda AI",
+        "ano": 2025
+      },
+      "opcoes": [
+        { "letra": "A", "texto": "Sujeito simples (calor) e predicado verbal." },
+        { "letra": "B", "texto": "Oração sem sujeito e predicado verbal." },
+        { "letra": "C", "texto": "Sujeito oculto e predicado nominal." },
+        { "letra": "D", "texto": "Oração sem sujeito e predicado nominal." },
+        { "letra": "E", "texto": "Sujeito indeterminado e predicado verbal." }
+      ],
+      "resposta_correta": "B",
+      "resolucao": "A oração principal é \"fazia calor na cidade litorânea\". O verbo 'fazer' indicando fenômeno da natureza ou clima é impessoal, caracterizando uma oração sem sujeito. O termo 'calor' é objeto direto. O predicado é verbal, pois seu núcleo é o verbo significativo 'fazia'. O trecho 'Apesar da forte chuva' é uma oração subordinada adverbial concessiva reduzida de infinitivo."
+    }
 ]
