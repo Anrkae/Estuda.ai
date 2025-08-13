@@ -2155,5 +2155,187 @@
     ],
     "resposta_correta": "A",
     "resolucao": "O conflito reforçou a necessidade, para a Coroa, de controlar diretamente as áreas mineradoras e de centralizar a administração para evitar novas disputas."
+  },
+  {
+    "id": 101,
+    "contexto": "No início do século XVIII, Pernambuco vivia um cenário de disputas políticas e econômicas envolvendo comerciantes portugueses e senhores de engenho locais.",
+    "enunciado": "A Guerra dos Mascates (1710–1711) foi um conflito que teve como principal causa:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A disputa pelo controle da produção de açúcar entre senhores de engenho e mineradores." },
+      { "letra": "B", "texto": "A rivalidade entre senhores de engenho de Olinda e comerciantes portugueses do Recife." },
+      { "letra": "C", "texto": "A resistência indígena contra a ocupação holandesa no litoral pernambucano." },
+      { "letra": "D", "texto": "O movimento separatista liderado por mineradores em Minas Gerais." },
+      { "letra": "E", "texto": "A imposição de novos impostos sobre produtos manufaturados no Recife." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O conflito foi motivado pela disputa política e econômica entre a elite açucareira de Olinda e os comerciantes portugueses instalados no Recife, apelidados de 'mascates'."
+  },
+  {
+    "id": 102,
+    "enunciado": "Durante a Guerra dos Mascates, os comerciantes do Recife foram acusados de buscar a autonomia política em relação a Olinda. Uma medida que intensificou o conflito foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A instalação da Câmara Municipal do Recife, independente de Olinda." },
+      { "letra": "B", "texto": "A fundação de uma companhia de comércio exclusiva para portugueses." },
+      { "letra": "C", "texto": "A expulsão de todos os senhores de engenho da região." },
+      { "letra": "D", "texto": "A ocupação militar de Olinda pelas tropas reais." },
+      { "letra": "E", "texto": "A proibição da venda de açúcar para comerciantes locais." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A criação da Câmara Municipal do Recife, separada da administração de Olinda, deu autonomia política aos comerciantes, o que gerou forte oposição dos senhores de engenho."
+  },
+  {
+    "id": 103,
+    "enunciado": "Qual das características abaixo NÃO está associada à Guerra dos Mascates?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O conflito ocorreu no contexto de rivalidades locais, sem caráter separatista." },
+      { "letra": "B", "texto": "A disputa envolveu questões econômicas ligadas ao comércio e à produção de açúcar." },
+      { "letra": "C", "texto": "Foi motivada por tensões entre colonos e a administração metropolitana portuguesa." },
+      { "letra": "D", "texto": "Teve como cenário principal a capitania de Minas Gerais." },
+      { "letra": "E", "texto": "Envolveu ataques e saques à cidade de Olinda." }
+    ],
+    "resposta_correta": "D",
+    "resolucao": "A Guerra dos Mascates ocorreu em Pernambuco, não em Minas Gerais. As demais características se relacionam diretamente ao conflito."
+  },
+  {
+    "id": 104,
+    "contexto": "Após a Restauração Pernambucana e o fim do domínio holandês, novas tensões internas surgiram na capitania.",
+    "enunciado": "Sobre as causas da Guerra dos Mascates, assinale a alternativa correta:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A revolta foi consequência direta da expulsão dos holandeses e do fortalecimento dos mascates." },
+      { "letra": "B", "texto": "A guerra foi causada por disputas fiscais entre a Coroa e mineradores da região." },
+      { "letra": "C", "texto": "A principal causa foi a disputa de poder entre Olinda e Recife." },
+      { "letra": "D", "texto": "Foi motivada pela tentativa de invasão francesa ao litoral pernambucano." },
+      { "letra": "E", "texto": "Teve origem na resistência indígena contra a cobrança de tributos." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "O conflito surgiu devido à disputa de poder político e econômico entre a nobreza açucareira de Olinda e os comerciantes portugueses do Recife."
+  },
+  {
+    "id": 105,
+    "enunciado": "O apelido 'mascates', dado aos comerciantes portugueses do Recife, estava relacionado:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "À prática de vender mercadorias de porta em porta." },
+      { "letra": "B", "texto": "Ao controle do comércio de escravos na região." },
+      { "letra": "C", "texto": "À origem lusitana e ao sotaque característico." },
+      { "letra": "D", "texto": "À participação no contrabando de ouro e prata." },
+      { "letra": "E", "texto": "À função administrativa exercida na Câmara Municipal." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O termo 'mascate' designava originalmente o comerciante ambulante, prática comum entre os portugueses que abasteciam a população local."
+  },
+  {
+    "id": 106,
+    "enunciado": "Durante a Guerra dos Mascates, os senhores de engenho de Olinda recorreram à violência. Uma de suas ações mais marcantes foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A destruição e saque das casas comerciais no Recife." },
+      { "letra": "B", "texto": "O incêndio de prédios públicos em Olinda." },
+      { "letra": "C", "texto": "A ocupação e destruição da cidade do Recife." },
+      { "letra": "D", "texto": "O bloqueio do porto do Recife." },
+      { "letra": "E", "texto": "A expulsão de comerciantes para outras capitanias." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os senhores de engenho invadiram e destruíram parte da cidade do Recife, como represália à autonomia concedida aos comerciantes."
+  },
+  {
+    "id": 107,
+    "enunciado": "Em relação às consequências da Guerra dos Mascates, assinale a alternativa correta:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Olinda perdeu importância política e Recife consolidou-se como centro administrativo." },
+      { "letra": "B", "texto": "A economia açucareira foi extinta na região." },
+      { "letra": "C", "texto": "O comércio recifense entrou em declínio irreversível." },
+      { "letra": "D", "texto": "A Coroa retirou a autonomia administrativa do Recife." },
+      { "letra": "E", "texto": "Os mascates foram expulsos da capitania." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Após o conflito, Recife manteve e consolidou sua autonomia, enquanto Olinda perdeu prestígio político."
+  },
+  {
+    "id": 108,
+    "enunciado": "Qual o papel da Coroa Portuguesa durante a Guerra dos Mascates?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Apoiar abertamente os senhores de engenho de Olinda." },
+      { "letra": "B", "texto": "Apoiar os comerciantes portugueses do Recife." },
+      { "letra": "C", "texto": "Manter neutralidade, sem interferir no conflito." },
+      { "letra": "D", "texto": "Enviar tropas para ocupar a região e destituir as duas partes." },
+      { "letra": "E", "texto": "Negociar diretamente com líderes indígenas para intervir no conflito." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Coroa apoiou os comerciantes portugueses, interessados no fortalecimento do Recife como centro econômico e político."
+  },
+  {
+    "id": 109,
+    "enunciado": "A Guerra dos Mascates se insere no conjunto das Revoltas Nativistas porque:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi um movimento de caráter separatista com participação popular massiva." },
+      { "letra": "B", "texto": "Foi um conflito local, sem ruptura com a metrópole, motivado por interesses internos." },
+      { "letra": "C", "texto": "Teve como objetivo principal a independência da capitania de Pernambuco." },
+      { "letra": "D", "texto": "Ocorreu em defesa de ideais republicanos e democráticos." },
+      { "letra": "E", "texto": "Foi uma guerra colonial contra potências estrangeiras." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Revoltas Nativistas eram movimentos locais contra autoridades ou grupos internos, sem intenção de independência em relação a Portugal."
+  },
+  {
+    "id": 110,
+    "enunciado": "Sobre o desfecho da Guerra dos Mascates, é correto afirmar que:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Mascates"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Os senhores de engenho retomaram o controle político de Pernambuco." },
+      { "letra": "B", "texto": "Recife manteve sua autonomia e consolidou-se como principal centro administrativo." },
+      { "letra": "C", "texto": "O conflito terminou com a vitória militar de Olinda." },
+      { "letra": "D", "texto": "A Coroa extinguiu a Câmara Municipal do Recife." },
+      { "letra": "E", "texto": "O governo português proibiu o comércio com Lisboa por cinco anos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O Recife manteve a autonomia administrativa obtida, consolidando-se como o principal centro de poder político e econômico de Pernambuco."
   }
 ]
