@@ -2518,5 +2518,588 @@
     ],
     "resposta_correta": "B",
     "resolucao": "O movimento careceu de organização e foi rapidamente reprimido pelas forças coloniais, facilitando a vitória da Coroa."
+  },
+  {
+    "id": 121,
+    "contexto": "A Inconfidência Mineira ocorreu em 1789, no contexto da exploração aurífera e das pressões fiscais impostas pela Coroa portuguesa.",
+    "enunciado": "Sobre a Inconfidência Mineira, assinale a alternativa correta.",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi motivada exclusivamente pela independência política de Minas Gerais." },
+      { "letra": "B", "texto": "Foi influenciada pelo Iluminismo e pela independência dos Estados Unidos." },
+      { "letra": "C", "texto": "Teve como principal causa a disputa territorial com São Paulo." },
+      { "letra": "D", "texto": "Contou com a participação de escravos como líderes do movimento." },
+      { "letra": "E", "texto": "Obteve sucesso, resultando na independência da capitania." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Inconfidência Mineira foi inspirada pelos ideais iluministas e pela independência dos EUA. Seu objetivo era romper com a dominação portuguesa, mas também havia insatisfação com as pesadas cobranças fiscais, como a derrama."
+  },
+  {
+    "id": 122,
+    "enunciado": "A chamada 'derrama' foi um dos estopins da Inconfidência Mineira. O que consistia esse mecanismo?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Um imposto sobre importação de produtos estrangeiros." },
+      { "letra": "B", "texto": "A cobrança compulsória de ouro quando a cota anual não era atingida." },
+      { "letra": "C", "texto": "A taxa para financiar expedições militares contra rebeldes." },
+      { "letra": "D", "texto": "Uma contribuição voluntária para obras públicas." },
+      { "letra": "E", "texto": "O confisco de terras de devedores da Coroa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A derrama era um mecanismo de cobrança fiscal no qual a Coroa portuguesa exigia o pagamento da cota anual de ouro (100 arrobas), complementada à força caso a produção fosse insuficiente."
+  },
+  {
+    "id": 123,
+    "enunciado": "Assinale a alternativa que apresenta corretamente o papel de Joaquim José da Silva Xavier, o Tiradentes, na Inconfidência Mineira.",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Era o governador de Minas Gerais e articulou a rebelião." },
+      { "letra": "B", "texto": "Foi um militar de baixa patente que se destacou como propagador das ideias do movimento." },
+      { "letra": "C", "texto": "Era um rico minerador que financiou toda a revolta." },
+      { "letra": "D", "texto": "Era um escravo alforriado que liderou a tomada de Vila Rica." },
+      { "letra": "E", "texto": "Atuou como emissário oficial da Coroa contra os revoltosos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Tiradentes, alferes da cavalaria, destacou-se na divulgação dos ideais separatistas e na tentativa de mobilizar a população, tornando-se o mártir da Inconfidência após sua execução."
+  },
+  {
+    "id": 124,
+    "enunciado": "A Inconfidência Mineira foi denunciada antes de sua execução. Qual foi o principal motivo dessa delação?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A pressão da Coroa para pagamento de dívidas de alguns envolvidos." },
+      { "letra": "B", "texto": "A disputa interna pelo comando militar da revolta." },
+      { "letra": "C", "texto": "O medo de represálias da Coroa e a promessa de perdão de dívidas ao delator." },
+      { "letra": "D", "texto": "A descoberta de armas escondidas em Vila Rica." },
+      { "letra": "E", "texto": "O apoio inesperado dos governadores vizinhos." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A delação foi feita por Joaquim Silvério dos Reis, motivado pela promessa de perdão de suas dívidas e pelo temor das severas punições impostas pela Coroa."
+  },
+  {
+    "id": 125,
+    "contexto": "O movimento fracassou e resultou em pesadas punições aos envolvidos.",
+    "enunciado": "Sobre as consequências da Inconfidência Mineira, é correto afirmar que:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Todos os inconfidentes foram executados." },
+      { "letra": "B", "texto": "Apenas Tiradentes foi executado, enquanto os demais tiveram penas brandas ou foram deportados." },
+      { "letra": "C", "texto": "Todos os líderes receberam anistia após a independência." },
+      { "letra": "D", "texto": "O ouro confiscado foi usado para financiar a Corte em Lisboa." },
+      { "letra": "E", "texto": "As capitanias de Minas e São Paulo foram unificadas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Tiradentes foi o único executado, transformando-se em símbolo da luta pela independência. Os demais sofreram degredo ou prisão."
+  },
+  {
+    "id": 126,
+    "enunciado": "Qual documento ou símbolo era planejado para representar a nova república proposta pela Inconfidência Mineira?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A bandeira com o lema 'Libertas Quae Sera Tamen'." },
+      { "letra": "B", "texto": "O brasão com a cruz de Malta." },
+      { "letra": "C", "texto": "A carta constitucional inspirada na França revolucionária." },
+      { "letra": "D", "texto": "O selo com a imagem de Vila Rica." },
+      { "letra": "E", "texto": "A bandeira verde e amarela com o brasão imperial." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Os inconfidentes planejavam adotar a bandeira com o lema em latim 'Libertas Quae Sera Tamen' ('Liberdade, ainda que tardia'), que mais tarde se tornaria símbolo de Minas Gerais."
+  },
+  {
+    "id": 127,
+    "enunciado": "Em relação ao contexto internacional, a Inconfidência Mineira foi influenciada por:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A Revolução Russa e a independência do México." },
+      { "letra": "B", "texto": "O Iluminismo e a independência dos Estados Unidos." },
+      { "letra": "C", "texto": "A Guerra do Paraguai e a Revolução Industrial." },
+      { "letra": "D", "texto": "O Tratado de Tordesilhas e a União Ibérica." },
+      { "letra": "E", "texto": "A Revolução Haitiana e a Confederação do Equador." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O movimento foi inspirado pelos ideais iluministas e pelo exemplo da independência dos Estados Unidos (1776), reforçando a ideia de autogoverno e liberdade."
+  },
+  {
+    "id": 128,
+    "contexto": "As elites mineiras enfrentavam forte queda na produção de ouro e alta pressão tributária.",
+    "enunciado": "Qual desses fatores internos foi o principal catalisador da Inconfidência Mineira?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O monopólio português sobre o comércio de escravos." },
+      { "letra": "B", "texto": "A imposição da derrama para garantir a arrecadação." },
+      { "letra": "C", "texto": "O bloqueio naval britânico." },
+      { "letra": "D", "texto": "A disputa por terras com o Rio de Janeiro." },
+      { "letra": "E", "texto": "A proibição da mineração de diamantes." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A derrama, decretada para garantir a arrecadação da Coroa, foi vista como opressiva num contexto de queda na extração aurífera, fomentando a revolta."
+  },
+  {
+    "id": 129,
+    "enunciado": "A participação de segmentos populares na Inconfidência Mineira foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Ampla, com camponeses e escravos liderando o movimento." },
+      { "letra": "B", "texto": "Restrita, com predomínio de elites mineradoras e letradas." },
+      { "letra": "C", "texto": "Inexistente, sendo um movimento exclusivo de militares." },
+      { "letra": "D", "texto": "Predominante, com maioria de artesãos urbanos." },
+      { "letra": "E", "texto": "Comandada por indígenas aliados." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Inconfidência Mineira foi marcada pela participação majoritária de elites, como mineradores, padres e militares, com pouca presença de setores populares."
+  },
+  {
+    "id": 130,
+    "enunciado": "Entre as seguintes afirmações sobre a Inconfidência Mineira, qual é a correta?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Inconfidência Mineira"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi vitoriosa e resultou na independência imediata de Minas Gerais." },
+      { "letra": "B", "texto": "Foi um movimento fracassado, mas que se tornou símbolo da luta por liberdade." },
+      { "letra": "C", "texto": "Ocorreram batalhas armadas prolongadas contra tropas portuguesas." },
+      { "letra": "D", "texto": "Foi um levante de caráter exclusivamente popular." },
+      { "letra": "E", "texto": "Teve apoio oficial da Inglaterra para enfraquecer Portugal." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Apesar do fracasso, a Inconfidência Mineira se consolidou como marco simbólico da luta contra a dominação portuguesa, especialmente pela figura de Tiradentes."
+  },
+  {
+    "id": 131,
+    "contexto": "A Conjuração Baiana, também conhecida como Revolta dos Alfaiates, ocorreu em 1798 na cidade de Salvador.",
+    "enunciado": "Sobre a Conjuração Baiana, assinale a alternativa correta.",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi um movimento restrito às elites coloniais, sem participação popular." },
+      { "letra": "B", "texto": "Teve ampla participação popular, incluindo soldados, alfaiates e escravizados." },
+      { "letra": "C", "texto": "Foi motivada exclusivamente pela cobrança da derrama." },
+      { "letra": "D", "texto": "Teve como objetivo principal manter a fidelidade à Coroa portuguesa." },
+      { "letra": "E", "texto": "Resultou na independência da Bahia ainda no século XVIII." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Conjuração Baiana contou com forte presença de setores populares, como soldados, artesãos, alfaiates e escravizados, defendendo a independência e igualdade social."
+  },
+  {
+    "id": 132,
+    "enunciado": "Entre as causas da Conjuração Baiana, pode-se destacar:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O desejo de manter o pacto colonial." },
+      { "letra": "B", "texto": "A miséria, o desemprego e a influência das ideias iluministas." },
+      { "letra": "C", "texto": "O aumento da produção de ouro em Minas Gerais." },
+      { "letra": "D", "texto": "A disputa territorial com Pernambuco." },
+      { "letra": "E", "texto": "A imposição da União Ibérica." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A crise econômica, marcada pela fome e desemprego, somada à influência das ideias iluministas e da Revolução Francesa, foi determinante para o surgimento do movimento."
+  },
+  {
+    "id": 133,
+    "enunciado": "O lema 'Igualdade, Liberdade e Fraternidade', associado à Conjuração Baiana, revela:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A inspiração direta na independência dos Estados Unidos." },
+      { "letra": "B", "texto": "A influência da Revolução Francesa e de ideais iluministas." },
+      { "letra": "C", "texto": "A influência exclusiva do absolutismo português." },
+      { "letra": "D", "texto": "A defesa da manutenção da escravidão." },
+      { "letra": "E", "texto": "O apoio britânico à independência da Bahia." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O lema reflete clara influência da Revolução Francesa e das ideias iluministas, que defendiam a igualdade social e o fim dos privilégios."
+  },
+  {
+    "id": 134,
+    "contexto": "A participação popular foi um diferencial da Conjuração Baiana em relação à Inconfidência Mineira.",
+    "enunciado": "Qual foi a principal diferença no perfil dos participantes entre a Conjuração Baiana e a Inconfidência Mineira?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Na Conjuração Baiana houve predominância de elites mineradoras." },
+      { "letra": "B", "texto": "Na Conjuração Baiana houve maior participação de camadas populares e escravizados." },
+      { "letra": "C", "texto": "Na Inconfidência Mineira a maioria era composta por soldados." },
+      { "letra": "D", "texto": "Ambas tiveram participação exclusivamente popular." },
+      { "letra": "E", "texto": "Na Conjuração Baiana não houve presença de militares." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Conjuração Baiana teve uma base social mais ampla, incluindo trabalhadores pobres, soldados e escravizados, diferentemente da Inconfidência Mineira, marcada pela presença de elites."
+  },
+  {
+    "id": 135,
+    "enunciado": "Um dos objetivos centrais da Conjuração Baiana era:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Manter a escravidão como base da economia." },
+      { "letra": "B", "texto": "Abolir a escravidão e garantir igualdade social." },
+      { "letra": "C", "texto": "Garantir privilégios para as elites locais." },
+      { "letra": "D", "texto": "Unificar a colônia sob controle espanhol." },
+      { "letra": "E", "texto": "Expandir a produção de ouro na região." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os conjurados defendiam a independência da Bahia e pautas sociais avançadas para a época, como o fim da escravidão e igualdade de direitos."
+  },
+  {
+    "id": 136,
+    "enunciado": "A Conjuração Baiana foi descoberta antes de ocorrer devido:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "À delação de participantes e à apreensão de panfletos revolucionários." },
+      { "letra": "B", "texto": "Ao bloqueio naval britânico na Bahia." },
+      { "letra": "C", "texto": "À invasão de tropas portuguesas vindas de Pernambuco." },
+      { "letra": "D", "texto": "À interceptação de correspondência com a França." },
+      { "letra": "E", "texto": "Ao levante armado precoce em Salvador." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A conspiração foi revelada por delações e pela apreensão de panfletos que divulgavam os ideais do movimento, o que levou à prisão e execução de líderes."
+  },
+  {
+    "id": 137,
+    "contexto": "A punição aos líderes da Conjuração Baiana foi severa e exemplar.",
+    "enunciado": "Qual foi a principal consequência imediata do fracasso da Conjuração Baiana?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Todos os envolvidos foram executados." },
+      { "letra": "B", "texto": "Quatro líderes foram enforcados e esquartejados, servindo de exemplo para evitar novas revoltas." },
+      { "letra": "C", "texto": "Os líderes receberam anistia após negociações com Portugal." },
+      { "letra": "D", "texto": "A Bahia tornou-se independente por breve período." },
+      { "letra": "E", "texto": "A Coroa aboliu a escravidão na região." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Quatro líderes foram executados e seus corpos expostos em locais públicos como forma de intimidar a população e desestimular novos levantes."
+  },
+  {
+    "id": 138,
+    "enunciado": "Dentre os seguintes fatores externos, qual exerceu maior influência sobre a Conjuração Baiana?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A Revolução Industrial." },
+      { "letra": "B", "texto": "A Revolução Francesa e a independência do Haiti." },
+      { "letra": "C", "texto": "A Guerra dos Sete Anos." },
+      { "letra": "D", "texto": "A independência da Argentina." },
+      { "letra": "E", "texto": "O Congresso de Viena." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Revolução Francesa influenciou o movimento com ideais de liberdade e igualdade, enquanto a independência do Haiti inspirou a luta contra a escravidão."
+  },
+  {
+    "id": 139,
+    "enunciado": "Entre as propostas defendidas pela Conjuração Baiana estava:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Manutenção do regime monárquico absolutista." },
+      { "letra": "B", "texto": "Formação de uma república independente na Bahia." },
+      { "letra": "C", "texto": "Fidelidade à Coroa portuguesa." },
+      { "letra": "D", "texto": "Aumento dos impostos sobre os pobres." },
+      { "letra": "E", "texto": "Restrição do voto às elites." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O movimento defendia a criação de uma república independente, com igualdade social e o fim dos privilégios aristocráticos."
+  },
+  {
+    "id": 140,
+    "contexto": "A Conjuração Baiana se destacou entre os movimentos separatistas do período colonial.",
+    "enunciado": "O que diferencia a Conjuração Baiana de outras revoltas separatistas coloniais, como a Inconfidência Mineira?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Conjuração Baiana"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi o único movimento a ocorrer sem participação de escravizados." },
+      { "letra": "B", "texto": "Foi o único movimento a propor a abolição da escravidão e igualdade racial de forma explícita." },
+      { "letra": "C", "texto": "Foi o único a obter apoio militar externo." },
+      { "letra": "D", "texto": "Foi o único a ter sucesso imediato na independência." },
+      { "letra": "E", "texto": "Foi o único a manter lealdade à Coroa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Conjuração Baiana se destacou por propor explicitamente a abolição da escravidão e a igualdade racial, algo inédito entre os movimentos separatistas coloniais."
+  },
+  {
+    "id": 141,
+    "enunciado": "A Revolução Pernambucana de 1817 foi um movimento separatista que se destacou no período colonial tardio. Entre os fatores que motivaram essa revolta, qual foi o principal elemento que levou a elite pernambucana a romper com a Coroa portuguesa?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O desejo de implementar o socialismo na província." },
+      { "letra": "B", "texto": "A insatisfação com a cobrança de altos impostos e o monopólio comercial da Coroa." },
+      { "letra": "C", "texto": "A disputa pelo controle das terras indígenas no interior." },
+      { "letra": "D", "texto": "A oposição à abolição da escravidão." },
+      { "letra": "E", "texto": "A tentativa de unir Pernambuco ao Haiti." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O estopim para a Revolução Pernambucana foi a crise econômica agravada pelos altos impostos e pelo controle comercial imposto pela Coroa, somados às influências do liberalismo e da independência dos EUA."
+  },
+  {
+    "id": 142,
+    "enunciado": "A Revolução Pernambucana contou com a participação de diversos setores sociais. Assinale a alternativa que melhor descreve a composição social desse movimento.",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Apenas a aristocracia rural e comerciantes portugueses." },
+      { "letra": "B", "texto": "Setores da elite local, militares, padres e parte da população urbana." },
+      { "letra": "C", "texto": "Somente escravizados e camponeses livres." },
+      { "letra": "D", "texto": "Exclusivamente comerciantes estrangeiros e marinheiros." },
+      { "letra": "E", "texto": "Apenas padres e estudantes." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A revolta envolveu elite agrária, militares, padres e parte da população urbana, refletindo um movimento de caráter amplo e influenciado pelo ideário iluminista."
+  },
+  {
+    "id": 143,
+    "enunciado": "Durante a Revolução Pernambucana, os líderes proclamaram um governo provisório. Qual foi o modelo político adotado por esse governo?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Monarquia absolutista." },
+      { "letra": "B", "texto": "República de inspiração liberal." },
+      { "letra": "C", "texto": "Federação comunalista." },
+      { "letra": "D", "texto": "Confederação aristocrática." },
+      { "letra": "E", "texto": "Protetorado sob o comando inglês." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O governo provisório implantou um regime republicano, inspirado nos ideais liberais e no exemplo das revoluções americana e francesa."
+  },
+  {
+    "id": 144,
+    "enunciado": "A Revolução Pernambucana foi rapidamente reprimida pelas forças leais à Coroa portuguesa. Qual foi o principal fator que contribuiu para a derrota do movimento?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Falta de apoio internacional efetivo e desorganização militar." },
+      { "letra": "B", "texto": "Ação rápida dos revoltosos, que não deu tempo à Coroa de reagir." },
+      { "letra": "C", "texto": "União entre todas as províncias do Nordeste contra Pernambuco." },
+      { "letra": "D", "texto": "Bloqueio econômico imposto pelos Estados Unidos." },
+      { "letra": "E", "texto": "Traição interna por parte dos padres participantes." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Apesar de buscar apoio externo, como dos EUA, a revolução não conseguiu ajuda militar significativa e sofreu com a desorganização, o que facilitou a repressão portuguesa."
+  },
+  {
+    "id": 145,
+    "enunciado": "Entre as inspirações ideológicas da Revolução Pernambucana, destacaram-se:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "As doutrinas absolutistas do Antigo Regime." },
+      { "letra": "B", "texto": "O socialismo científico do século XIX." },
+      { "letra": "C", "texto": "O liberalismo e o republicanismo." },
+      { "letra": "D", "texto": "O positivismo de Auguste Comte." },
+      { "letra": "E", "texto": "O fascismo italiano." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Os revolucionários se inspiraram no liberalismo, no republicanismo e nas ideias iluministas, defendendo um governo representativo e a liberdade econômica."
+  },
+  {
+    "id": 146,
+    "enunciado": "A bandeira criada durante a Revolução Pernambucana possuía símbolos marcantes. Assinale a alternativa que descreve corretamente esses elementos.",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Um fundo azul com estrelas representando as províncias unidas." },
+      { "letra": "B", "texto": "Um arco-íris, um sol, uma cruz e um fundo dividido em azul e branco." },
+      { "letra": "C", "texto": "Uma águia dourada sobre fundo vermelho." },
+      { "letra": "D", "texto": "Um mapa de Pernambuco sobre um campo verde." },
+      { "letra": "E", "texto": "Um navio ancorado representando o comércio." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A bandeira trazia o arco-íris (união), o sol (liberdade), a cruz (fé cristã) e as cores azul e branca, símbolos que se tornaram ícones pernambucanos."
+  },
+  {
+    "id": 147,
+    "enunciado": "Durante a Revolução Pernambucana, houve a tentativa de obter apoio externo. Para qual país os revolucionários enviaram emissários, buscando ajuda diplomática e militar?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "França" },
+      { "letra": "B", "texto": "Estados Unidos" },
+      { "letra": "C", "texto": "Inglaterra" },
+      { "letra": "D", "texto": "Espanha" },
+      { "letra": "E", "texto": "Haiti" }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os líderes enviaram representantes aos Estados Unidos buscando reconhecimento e apoio militar, mas não obtiveram auxílio efetivo."
+  },
+  {
+    "id": 148,
+    "enunciado": "A Revolução Pernambucana ocorreu em um contexto histórico específico. Qual evento internacional influenciou diretamente seus ideais e estratégias?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A independência dos Estados Unidos." },
+      { "letra": "B", "texto": "A Primeira Guerra Mundial." },
+      { "letra": "C", "texto": "A Guerra do Paraguai." },
+      { "letra": "D", "texto": "A Revolução Industrial." },
+      { "letra": "E", "texto": "O Congresso de Viena." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A independência dos EUA serviu de inspiração para os ideais de liberdade e autodeterminação adotados pelos revolucionários pernambucanos."
+  },
+  {
+    "id": 149,
+    "enunciado": "No contexto da Revolução Pernambucana, qual medida econômica foi proposta pelo governo provisório para estimular o comércio na região?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Criação de um imposto único sobre exportações." },
+      { "letra": "B", "texto": "Abertura dos portos ao comércio internacional." },
+      { "letra": "C", "texto": "Substituição da moeda colonial por moeda americana." },
+      { "letra": "D", "texto": "Proibição da exportação de açúcar." },
+      { "letra": "E", "texto": "Taxação dobrada sobre produtos ingleses." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Inspirados na abertura dos portos brasileiros em 1808, os revolucionários propuseram ampliar o comércio com outras nações, visando dinamizar a economia."
+  },
+  {
+    "id": 150,
+    "enunciado": "Qual foi o destino dos principais líderes da Revolução Pernambucana após a derrota do movimento?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foram exilados na França." },
+      { "letra": "B", "texto": "Receberam anistia do rei." },
+      { "letra": "C", "texto": "Foram presos e executados." },
+      { "letra": "D", "texto": "Tornaram-se governadores de províncias." },
+      { "letra": "E", "texto": "Migraram para os Estados Unidos." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "Após a derrota, muitos líderes foram capturados e executados como forma de exemplar punição para evitar novas revoltas."
+  },
+  {
+    "id": 151,
+    "enunciado": "A Revolução Pernambucana diferiu de outras revoltas da época por:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Defender a permanência do Brasil como colônia." },
+      { "letra": "B", "texto": "Propor a criação de uma república independente." },
+      { "letra": "C", "texto": "Exigir maior intervenção militar portuguesa." },
+      { "letra": "D", "texto": "Recusar qualquer influência estrangeira." },
+      { "letra": "E", "texto": "Apoiar integralmente o absolutismo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Ao contrário de movimentos nativistas, a Revolução Pernambucana defendia abertamente a independência e a criação de uma república."
+  },
+  {
+    "id": 152,
+    "enunciado": "O papel da Igreja Católica na Revolução Pernambucana foi marcante, pois:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Separatistas", "Revolução Pernambucana"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Todos os padres apoiaram a Coroa." },
+      { "letra": "B", "texto": "Padres influentes participaram ativamente da liderança do movimento." },
+      { "letra": "C", "texto": "A Igreja declarou neutralidade absoluta." },
+      { "letra": "D", "texto": "O clero boicotou o comércio local." },
+      { "letra": "E", "texto": "O papa enviou tropas para apoiar os revoltosos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Padres como João Ribeiro Pessoa contribuíram com ideais republicanos e tiveram papel de destaque na articulação e liderança da revolta."
   }
 ]
