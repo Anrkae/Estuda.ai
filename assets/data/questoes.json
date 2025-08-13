@@ -1725,5 +1725,435 @@
       ],
       "resposta_correta": "B",
       "resolucao": "A oração principal é \"fazia calor na cidade litorânea\". O verbo 'fazer' indicando fenômeno da natureza ou clima é impessoal, caracterizando uma oração sem sujeito. O termo 'calor' é objeto direto. O predicado é verbal, pois seu núcleo é o verbo significativo 'fazia'. O trecho 'Apesar da forte chuva' é uma oração subordinada adverbial concessiva reduzida de infinitivo."
-    }
+    },
+  {
+    "id": 81,
+    "contexto": "No final do século XVII, a produção açucareira no Maranhão enfrentava dificuldades devido à escassez de mão de obra e às restrições impostas pelo governo metropolitano.",
+    "enunciado": "A Revolta de Beckman (1684) foi motivada principalmente pela insatisfação dos colonos do Maranhão com:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A cobrança de impostos sobre o ouro recém-descoberto." },
+      { "letra": "B", "texto": "O monopólio comercial exercido pela Companhia de Comércio do Maranhão." },
+      { "letra": "C", "texto": "A proibição da pecuária na faixa litorânea." },
+      { "letra": "D", "texto": "A imposição do trabalho livre e voluntário nas lavouras." },
+      { "letra": "E", "texto": "A expulsão dos jesuítas das missões indígenas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Revolta de Beckman foi desencadeada pela insatisfação com a Companhia de Comércio do Maranhão, que detinha o monopólio do fornecimento de escravos africanos e mercadorias, mas não cumpria adequadamente suas funções, agravando a crise econômica local."
+  },
+  {
+    "id": 82,
+    "enunciado": "Durante a Revolta de Beckman, os colonos maranhenses exigiam a substituição da Companhia de Comércio do Maranhão por um sistema que lhes garantisse:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Livre comércio com as colônias espanholas." },
+      { "letra": "B", "texto": "Importação de escravos africanos sem intermediação." },
+      { "letra": "C", "texto": "Abertura de portos a todas as nações." },
+      { "letra": "D", "texto": "Fim da cobrança de dízimos pela Igreja." },
+      { "letra": "E", "texto": "Autonomia política plena para a capitania." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os colonos reivindicavam a liberdade de importar escravos africanos diretamente, já que a Companhia de Comércio não supria a demanda, comprometendo a economia açucareira e agrícola do Maranhão."
+  },
+  {
+    "id": 83,
+    "contexto": "A Revolta de Beckman contou com a participação de diversos segmentos da sociedade maranhense, incluindo grandes proprietários rurais e comerciantes.",
+    "enunciado": "Um dos fatores que uniu os revoltosos foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "O desejo de proclamar a independência do Maranhão." },
+      { "letra": "B", "texto": "A oposição à ação dos jesuítas junto aos indígenas." },
+      { "letra": "C", "texto": "A resistência contra a cobrança de tributos alfandegários." },
+      { "letra": "D", "texto": "O interesse em explorar ouro no sertão." },
+      { "letra": "E", "texto": "A defesa da posse das terras litorâneas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os colonos criticavam os jesuítas, que protegiam os indígenas e dificultavam sua utilização como mão de obra, o que agravava a crise de trabalhadores nas lavouras."
+  },
+  {
+    "id": 84,
+    "enunciado": "Após a tomada do controle de São Luís pelos revoltosos, quais medidas foram inicialmente adotadas pelos líderes da Revolta de Beckman?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Confisco das terras da Companhia e expulsão de jesuítas." },
+      { "letra": "B", "texto": "Abertura de comércio com estrangeiros e redução de impostos." },
+      { "letra": "C", "texto": "Libertação dos indígenas e ampliação do comércio interno." },
+      { "letra": "D", "texto": "Proclamação de independência e corte de relações com Portugal." },
+      { "letra": "E", "texto": "Distribuição de terras a colonos sem propriedade." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Os líderes revoltosos destituíram autoridades ligadas à Companhia, confiscaram bens e determinaram a expulsão dos jesuítas, visando controlar o trabalho indígena."
+  },
+  {
+    "id": 85,
+    "contexto": "O governo português respondeu de forma severa à Revolta de Beckman, enviando tropas e um novo governador.",
+    "enunciado": "Qual foi a principal consequência política imediata da repressão à Revolta de Beckman?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Execução de Manoel Beckman e outros líderes." },
+      { "letra": "B", "texto": "Anexação do Maranhão à Capitania de Pernambuco." },
+      { "letra": "C", "texto": "Revogação definitiva do monopólio da Companhia." },
+      { "letra": "D", "texto": "Criação de uma assembleia representativa no Maranhão." },
+      { "letra": "E", "texto": "Estabelecimento de autogoverno temporário." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A repressão incluiu o enforcamento de Manoel Beckman e a prisão de outros líderes, como forma de exemplo para desencorajar novas rebeliões."
+  },
+  {
+    "id": 86,
+    "enunciado": "A Revolta de Beckman é considerada um exemplo de revolta nativista porque:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Visava a completa independência do Brasil de Portugal." },
+      { "letra": "B", "texto": "Foi motivada por questões locais, sem intenção separatista." },
+      { "letra": "C", "texto": "Aliou-se a nações estrangeiras para combater Portugal." },
+      { "letra": "D", "texto": "Baseou-se em ideais iluministas e republicanos." },
+      { "letra": "E", "texto": "Aboliu a escravidão indígena e africana." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Revoltas nativistas eram movimentos contra decisões da metrópole que prejudicavam a colônia, mas não tinham caráter separatista; a Revolta de Beckman encaixa-se nesse perfil."
+  },
+  {
+    "id": 87,
+    "contexto": "O fracasso da Revolta de Beckman não significou o fim das tensões na região.",
+    "enunciado": "A permanência dos jesuítas após a repressão demonstra:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A importância estratégica dos indígenas para a Coroa." },
+      { "letra": "B", "texto": "A vitória parcial dos revoltosos." },
+      { "letra": "C", "texto": "O enfraquecimento da autoridade metropolitana." },
+      { "letra": "D", "texto": "A autonomia política da Igreja no Brasil." },
+      { "letra": "E", "texto": "A aliança formal entre colonos e jesuítas." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A Coroa manteve os jesuítas para garantir o controle sobre os indígenas, considerados fundamentais para a defesa e economia da região."
+  },
+  {
+    "id": 88,
+    "enunciado": "A Companhia de Comércio do Maranhão, criada pela Coroa Portuguesa, tinha como uma de suas atribuições:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Explorar o ouro das minas maranhenses." },
+      { "letra": "B", "texto": "Fornecer escravos africanos e mercadorias aos colonos." },
+      { "letra": "C", "texto": "Organizar expedições científicas à Amazônia." },
+      { "letra": "D", "texto": "Defender militarmente a costa contra invasões." },
+      { "letra": "E", "texto": "Administrar as missões religiosas na região." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Companhia tinha como função garantir o abastecimento de escravos africanos e produtos necessários aos colonos, mas sua ineficiência foi causa central da revolta."
+  },
+  {
+    "id": 89,
+    "contexto": "No Maranhão colonial, a produção agrícola era dependente de mão de obra escravizada.",
+    "enunciado": "A dificuldade de obter trabalhadores africanos no período que antecedeu a Revolta de Beckman se deveu principalmente:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Ao bloqueio imposto por potências europeias." },
+      { "letra": "B", "texto": "À incapacidade logística da Companhia de Comércio do Maranhão." },
+      { "letra": "C", "texto": "À proibição da escravidão africana pela Coroa." },
+      { "letra": "D", "texto": "À fuga em massa dos cativos." },
+      { "letra": "E", "texto": "À substituição da mão de obra por trabalhadores assalariados." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Companhia de Comércio do Maranhão não conseguia cumprir o fornecimento prometido, gerando crise na produção agrícola e alimentando o descontentamento dos colonos."
+  },
+  {
+    "id": 90,
+    "enunciado": "A Revolta de Beckman ocorreu no contexto do governo metropolitano português, que buscava:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Beckman"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Centralizar o controle político e econômico sobre as capitanias." },
+      { "letra": "B", "texto": "Estimular a independência gradual das colônias." },
+      { "letra": "C", "texto": "Adotar o liberalismo econômico no comércio colonial." },
+      { "letra": "D", "texto": "Conceder autonomia administrativa ao Maranhão." },
+      { "letra": "E", "texto": "Abolir a escravidão indígena." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O objetivo português era reforçar o centralismo e controlar diretamente o comércio e a produção colonial, o que entrou em choque com os interesses locais, gerando revoltas como a de Beckman."
+  },
+  {
+    "id": 91,
+    "contexto": "No início do século XVIII, a descoberta de ouro em Minas Gerais atraiu diversos grupos de diferentes regiões da colônia e de Portugal.",
+    "enunciado": "A Guerra dos Emboabas (1707-1709) teve como principal causa:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A disputa entre mineradores paulistas e reinóis pelo controle das minas." },
+      { "letra": "B", "texto": "A resistência indígena à exploração do ouro." },
+      { "letra": "C", "texto": "O aumento abusivo de impostos sobre o ouro." },
+      { "letra": "D", "texto": "A tentativa da Coroa de proibir o garimpo artesanal." },
+      { "letra": "E", "texto": "A expulsão dos jesuítas das regiões mineradoras." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A Guerra dos Emboabas resultou do conflito entre paulistas, descobridores das minas, e os forasteiros — chamados pejorativamente de emboabas — pelo controle das áreas auríferas."
+  },
+  {
+    "id": 92,
+    "enunciado": "O termo 'emboaba' era utilizado de forma pejorativa para designar:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Mineradores paulistas que se opunham à Coroa." },
+      { "letra": "B", "texto": "Forasteiros, principalmente portugueses e de outras capitanias, que chegaram às minas." },
+      { "letra": "C", "texto": "Indígenas que trabalhavam na mineração." },
+      { "letra": "D", "texto": "Escravos fugidos que exploravam ouro." },
+      { "letra": "E", "texto": "Comerciantes locais contrários ao garimpo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Os paulistas chamavam de 'emboabas' os forasteiros vindos de outras regiões da colônia ou de Portugal, com quem disputavam as riquezas minerais."
+  },
+  {
+    "id": 93,
+    "contexto": "O conflito da Guerra dos Emboabas foi marcado por batalhas violentas e grande rivalidade entre os grupos.",
+    "enunciado": "O episódio conhecido como Capão da Traição refere-se a:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A traição de líderes paulistas que se aliaram aos emboabas." },
+      { "letra": "B", "texto": "O massacre de paulistas após rendição, em uma emboscada." },
+      { "letra": "C", "texto": "O envenenamento de mineradores durante negociações." },
+      { "letra": "D", "texto": "A expulsão pacífica dos emboabas das minas." },
+      { "letra": "E", "texto": "A destruição proposital de lavras para evitar a apropriação inimiga." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "No Capão da Traição, paulistas que haviam se rendido foram cercados e mortos pelos emboabas, episódio que acirrou ainda mais o conflito."
+  },
+  {
+    "id": 94,
+    "enunciado": "Qual foi a posição da Coroa Portuguesa diante da Guerra dos Emboabas?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Apoiar militarmente os paulistas contra os emboabas." },
+      { "letra": "B", "texto": "Enviar tropas para reprimir ambos os lados e assumir o controle das minas." },
+      { "letra": "C", "texto": "Declarar independência administrativa das minas." },
+      { "letra": "D", "texto": "Conceder autonomia plena aos emboabas." },
+      { "letra": "E", "texto": "Aliar-se aos paulistas para manter o monopólio da extração." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A Coroa interveio para acabar com os combates e reforçar o controle direto sobre a região mineradora, criando a Capitania de São Paulo e Minas do Ouro."
+  },
+  {
+    "id": 95,
+    "contexto": "Após a Guerra dos Emboabas, a Coroa buscou reorganizar a administração colonial para evitar novos conflitos.",
+    "enunciado": "Uma medida administrativa decorrente desse conflito foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Criação da Capitania de Minas Gerais, separada de São Paulo." },
+      { "letra": "B", "texto": "Unificação de todas as capitanias do Sudeste." },
+      { "letra": "C", "texto": "Extinção do sistema de capitanias hereditárias." },
+      { "letra": "D", "texto": "Transferência da capital para Ouro Preto." },
+      { "letra": "E", "texto": "Fim da cobrança do quinto sobre o ouro." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Após o conflito, a Coroa criou a Capitania de Minas Gerais, separando-a de São Paulo, para reforçar seu controle administrativo e fiscal sobre a região aurífera."
+  },
+  {
+    "id": 96,
+    "enunciado": "A Guerra dos Emboabas é classificada como revolta nativista porque:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Defendia a independência total da colônia." },
+      { "letra": "B", "texto": "Foi um conflito interno, sem ideais separatistas, ligado a interesses locais." },
+      { "letra": "C", "texto": "Aliou-se a nações estrangeiras contra Portugal." },
+      { "letra": "D", "texto": "Visava a instalação de um governo republicano." },
+      { "letra": "E", "texto": "Teve apoio formal da Coroa." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As revoltas nativistas eram contra decisões ou interesses da metrópole, mas não buscavam independência; a Guerra dos Emboabas foi motivada por disputas regionais pelo ouro."
+  },
+  {
+    "id": 97,
+    "contexto": "A disputa pelo ouro das Minas Gerais envolveu tanto aspectos econômicos quanto sociais.",
+    "enunciado": "Entre os fatores que favoreceram o conflito estava:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "A proibição da mineração por não paulistas." },
+      { "letra": "B", "texto": "A falta de regras claras para a distribuição das áreas de lavra." },
+      { "letra": "C", "texto": "A intervenção militar inglesa na região." },
+      { "letra": "D", "texto": "A escassez de mão de obra escravizada." },
+      { "letra": "E", "texto": "A disputa por direitos sobre o comércio marítimo." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A ausência de regulamentação clara sobre a propriedade das lavras gerou disputas violentas, agravando a rivalidade entre paulistas e emboabas."
+  },
+  {
+    "id": 98,
+    "enunciado": "O desfecho da Guerra dos Emboabas beneficiou principalmente:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Os paulistas, que mantiveram o controle das minas." },
+      { "letra": "B", "texto": "Os emboabas, que consolidaram sua presença nas áreas mineradoras." },
+      { "letra": "C", "texto": "Os indígenas, que recuperaram o território." },
+      { "letra": "D", "texto": "A Coroa, que abandonou o quinto." },
+      { "letra": "E", "texto": "Os jesuítas, que administraram as minas." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Com a intervenção da Coroa, os emboabas conseguiram consolidar seu domínio sobre as áreas mineradoras, enquanto os paulistas foram afastados."
+  },
+  {
+    "id": 99,
+    "contexto": "Após serem derrotados, muitos paulistas migraram para outras regiões da colônia.",
+    "enunciado": "A expansão para o interior do Brasil, após a Guerra dos Emboabas, resultou em:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Descoberta de novas jazidas e ampliação do território explorado." },
+      { "letra": "B", "texto": "Declínio definitivo da mineração na colônia." },
+      { "letra": "C", "texto": "Aumento da influência dos jesuítas." },
+      { "letra": "D", "texto": "Retirada completa dos portugueses do interior." },
+      { "letra": "E", "texto": "Fim da escravidão africana nas minas." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Os bandeirantes paulistas deslocaram-se para novas áreas, descobrindo outras jazidas e ampliando a ocupação territorial do interior do Brasil."
+  },
+  {
+    "id": 100,
+    "enunciado": "Um dos efeitos indiretos da Guerra dos Emboabas foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Guerra dos Emboabas"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": {
+      "fonte": "Estuda AI",
+      "ano": 2025
+    },
+    "opcoes": [
+      { "letra": "A", "texto": "Fortalecimento do centralismo administrativo português." },
+      { "letra": "B", "texto": "Independência da Capitania de São Vicente." },
+      { "letra": "C", "texto": "Declínio do comércio interno." },
+      { "letra": "D", "texto": "Fim da cobrança do quinto do ouro." },
+      { "letra": "E", "texto": "Criação do primeiro parlamento colonial." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "O conflito reforçou a necessidade, para a Coroa, de controlar diretamente as áreas mineradoras e de centralizar a administração para evitar novas disputas."
+  }
 ]
