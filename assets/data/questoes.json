@@ -2337,5 +2337,186 @@
     ],
     "resposta_correta": "B",
     "resolucao": "O Recife manteve a autonomia administrativa obtida, consolidando-se como o principal centro de poder político e econômico de Pernambuco."
+  },
+  {
+    "id": 111,
+    "contexto": "A Revolta de Vila Rica, ocorrida em 1720, foi um dos primeiros movimentos de resistência na capitania de Minas Gerais, em plena expansão da mineração.",
+    "enunciado": "A principal causa da Revolta de Vila Rica foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A imposição de novas taxas sobre o ouro e a criação das Casas de Fundição." },
+      { "letra": "B", "texto": "A expulsão de comerciantes portugueses das vilas mineradoras." },
+      { "letra": "C", "texto": "A resistência à instalação da primeira Câmara Municipal em Ouro Preto." },
+      { "letra": "D", "texto": "A proibição do comércio de ouro entre colonos e estrangeiros." },
+      { "letra": "E", "texto": "O aumento do preço do açúcar e do sal na região." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "A Revolta foi desencadeada pela insatisfação com as medidas fiscais impostas pela Coroa, especialmente a obrigatoriedade de fundir o ouro nas Casas de Fundição, pagando o quinto."
+  },
+  {
+    "id": 112,
+    "enunciado": "A Revolta de Vila Rica se insere no contexto das Revoltas Nativistas porque:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Foi um movimento separatista contra a Coroa Portuguesa." },
+      { "letra": "B", "texto": "Teve caráter local e foi motivada por questões fiscais e administrativas." },
+      { "letra": "C", "texto": "Visava estabelecer um governo republicano em Minas Gerais." },
+      { "letra": "D", "texto": "Foi liderada por militares com apoio da Inglaterra." },
+      { "letra": "E", "texto": "Representou uma união entre mineradores e indígenas contra a metrópole." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "As Revoltas Nativistas tinham caráter local e não buscavam romper com Portugal, mas sim contestar medidas específicas, como impostos abusivos."
+  },
+  {
+    "id": 113,
+    "enunciado": "Qual foi a medida da Coroa Portuguesa que mais intensificou o descontentamento que levou à Revolta de Vila Rica?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A criação da derrama." },
+      { "letra": "B", "texto": "A exigência do pagamento em diamantes." },
+      { "letra": "C", "texto": "A instituição das Casas de Fundição e o pagamento do quinto." },
+      { "letra": "D", "texto": "A proibição da mineração por colonos não licenciados." },
+      { "letra": "E", "texto": "O aumento do dízimo sobre a produção agrícola." }
+    ],
+    "resposta_correta": "C",
+    "resolucao": "A criação das Casas de Fundição obrigava que todo ouro fosse fundido e registrado, com recolhimento de 20% para a Coroa, gerando grande insatisfação."
+  },
+  {
+    "id": 114,
+    "enunciado": "Quem foi o principal líder da Revolta de Vila Rica?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Felipe dos Santos." },
+      { "letra": "B", "texto": "Tiradentes." },
+      { "letra": "C", "texto": "Domingos Jorge Velho." },
+      { "letra": "D", "texto": "Manuel Beckman." },
+      { "letra": "E", "texto": "Amador Bueno." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "Felipe dos Santos liderou o movimento contra as medidas fiscais e o monopólio do ouro pela Coroa Portuguesa."
+  },
+  {
+    "id": 115,
+    "enunciado": "Sobre o desfecho da Revolta de Vila Rica, é correto afirmar que:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A Coroa cedeu às demandas e extinguiu as Casas de Fundição." },
+      { "letra": "B", "texto": "Felipe dos Santos foi preso e executado, e as medidas fiscais foram mantidas." },
+      { "letra": "C", "texto": "A revolta obteve êxito parcial, com redução do quinto." },
+      { "letra": "D", "texto": "Os líderes foram deportados para Angola." },
+      { "letra": "E", "texto": "A Coroa suspendeu a mineração por cinco anos." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "Felipe dos Santos foi preso e executado, e a Coroa manteve as Casas de Fundição e a cobrança do quinto."
+  },
+  {
+    "id": 116,
+    "enunciado": "Uma das consequências da Revolta de Vila Rica foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "O enfraquecimento da mineração em Minas Gerais." },
+      { "letra": "B", "texto": "O aumento da vigilância da Coroa sobre a extração de ouro." },
+      { "letra": "C", "texto": "A independência econômica de Vila Rica." },
+      { "letra": "D", "texto": "A expulsão de comerciantes portugueses da região." },
+      { "letra": "E", "texto": "A criação da derrama como forma de compensação fiscal." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "A revolta levou a Coroa a intensificar o controle sobre a produção e circulação do ouro na região mineradora."
+  },
+  {
+    "id": 117,
+    "enunciado": "A Revolta de Vila Rica foi um movimento importante para a história colonial brasileira porque:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Mostrou o primeiro movimento de independência do Brasil." },
+      { "letra": "B", "texto": "Revelou a resistência local contra abusos fiscais da Coroa, sem caráter separatista." },
+      { "letra": "C", "texto": "Estabeleceu uma república temporária em Minas Gerais." },
+      { "letra": "D", "texto": "Provocou o fim do sistema de capitanias hereditárias." },
+      { "letra": "E", "texto": "Resultou na assinatura de um tratado de paz com Portugal." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O movimento refletiu o descontentamento local contra medidas da metrópole, sem romper com Portugal."
+  },
+  {
+    "id": 118,
+    "enunciado": "O que eram as Casas de Fundição, cuja criação motivou a Revolta de Vila Rica?",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Locais onde o ouro era fundido, quintado e transformado em barras oficiais." },
+      { "letra": "B", "texto": "Armazéns destinados ao estoque de mercadorias importadas." },
+      { "letra": "C", "texto": "Edifícios para cobrança de impostos sobre o comércio de escravos." },
+      { "letra": "D", "texto": "Postos militares para defesa contra invasões estrangeiras." },
+      { "letra": "E", "texto": "Residências de autoridades coloniais." }
+    ],
+    "resposta_correta": "A",
+    "resolucao": "As Casas de Fundição eram locais onde todo o ouro deveria ser fundido e quintado, garantindo a cobrança do imposto de 20% pela Coroa."
+  },
+  {
+    "id": 119,
+    "enunciado": "A Revolta de Vila Rica ocorreu em um período em que a Coroa Portuguesa buscava:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "Estimular a autonomia das capitanias." },
+      { "letra": "B", "texto": "Ampliar a exploração das riquezas minerais." },
+      { "letra": "C", "texto": "Expandir a colonização no sul do Brasil." },
+      { "letra": "D", "texto": "Criar universidades na colônia." },
+      { "letra": "E", "texto": "Acabar com o monopólio comercial com a metrópole." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O início do século XVIII marcou o auge da mineração e o aumento do controle da Coroa sobre a exploração do ouro."
+  },
+  {
+    "id": 120,
+    "enunciado": "Um dos fatores que explica o fracasso da Revolta de Vila Rica foi:",
+    "disciplina": "História",
+    "assunto": ["Revoltas Nativistas", "Revolta de Vila Rica"],
+    "dificuldade": "Muito Difícil",
+    "tipo": "multipla_escolha",
+    "metadata": { "fonte": "Estuda AI", "ano": 2025 },
+    "opcoes": [
+      { "letra": "A", "texto": "A adesão de grande parte dos mineradores às medidas da Coroa." },
+      { "letra": "B", "texto": "A falta de unidade entre os revoltosos e a rápida reação das autoridades." },
+      { "letra": "C", "texto": "O apoio da Inglaterra às tropas coloniais." },
+      { "letra": "D", "texto": "A epidemia de varíola que atingiu a região no mesmo período." },
+      { "letra": "E", "texto": "A assinatura de um acordo de paz que dividiu o movimento." }
+    ],
+    "resposta_correta": "B",
+    "resolucao": "O movimento careceu de organização e foi rapidamente reprimido pelas forças coloniais, facilitando a vitória da Coroa."
   }
 ]
